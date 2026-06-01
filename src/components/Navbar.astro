@@ -1,0 +1,356 @@
+---
+const navItems = [
+  { label: "Home", href: "#", dropdown: false },
+  {
+    label: "Formulations", href: "#", dropdown: true,
+    children: ["Aerosol Formulations", "Propellants", "Actives & Excipients", "Custom Blends"]
+  },
+  {
+    label: "Services", href: "#", dropdown: true,
+    children: ["Process Engineering", "Filling Line Consultancy", "Regulatory Support", "Lab Testing"]
+  },
+  {
+    label: "About Us", href: "#", dropdown: true,
+    children: ["Our Story", "Team", "Accreditations", "Partners"]
+  },
+  { label: "Contact Us", href: "#", dropdown: false },
+  { label: "Blog", href: "#", dropdown: false },
+  {
+    label: "Aerosol Software", href: "#", dropdown: true,
+    children: ["Formulation Tool", "Filling Calculator", "Compliance Checker"]
+  },
+];
+
+const socialLinks = [
+  { href: "#", label: "Facebook",  svg: `<svg viewBox="0 0 24 24" fill="currentColor"><path d="M18 2h-3a5 5 0 0 0-5 5v3H7v4h3v8h4v-8h3l1-4h-4V7a1 1 0 0 1 1-1h3z"/></svg>` },
+  { href: "#", label: "Instagram", svg: `<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="2" width="20" height="20" rx="5" ry="5"/><path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z"/><line x1="17.5" y1="6.5" x2="17.51" y2="6.5"/></svg>` },
+  { href: "#", label: "LinkedIn",  svg: `<svg viewBox="0 0 24 24" fill="currentColor"><path d="M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-2-2 2 2 0 0 0-2 2v7h-4v-7a6 6 0 0 1 6-6z"/><rect x="2" y="9" width="4" height="12"/><circle cx="4" cy="4" r="2"/></svg>` },
+  { href: "#", label: "X",         svg: `<svg viewBox="0 0 24 24" fill="currentColor"><path d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-5.214-6.817L4.99 21.75H1.68l7.73-8.835L1.254 2.25H8.08l4.713 6.231zm-1.161 17.52h1.833L7.084 4.126H5.117z"/></svg>` },
+];
+---
+
+<nav id="ga-navbar">
+  <a href="/" class="nav-logo">Global Aerosols</a>
+
+  <ul class="nav-list">
+    {navItems.map(item => (
+      <li class={`nav-item${item.dropdown ? " has-dropdown" : ""}`}>
+        <a href={item.href} class="nav-link">
+          {item.label}
+          {item.dropdown && (
+            <svg class="chevron" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
+              <polyline points="6 9 12 15 18 9"/>
+            </svg>
+          )}
+        </a>
+        {item.dropdown && item.children && (
+          <ul class="dropdown">
+            {item.children.map(child => (
+              <li><a href="#">{child}</a></li>
+            ))}
+          </ul>
+        )}
+      </li>
+    ))}
+  </ul>
+
+  <div class="nav-right">
+    <div class="lang-selector">
+      <span>EN</span>
+      <svg class="chevron" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
+        <polyline points="6 9 12 15 18 9"/>
+      </svg>
+    </div>
+    <div class="social-icons">
+      {socialLinks.map(s => (
+        <a href={s.href} aria-label={s.label} class="social-icon" set:html={s.svg} />
+      ))}
+    </div>
+  </div>
+
+  <button class="mobile-toggle" aria-label="Open menu" id="mobile-toggle">
+    <span></span><span></span><span></span>
+  </button>
+</nav>
+
+<div id="mobile-drawer">
+  <button class="drawer-close" id="drawer-close" aria-label="Close menu">✕</button>
+  <ul class="drawer-list">
+    {navItems.map(item => (
+      <li>
+        <a href={item.href} class="drawer-link">{item.label}</a>
+        {item.dropdown && item.children && (
+          <ul class="drawer-sub">
+            {item.children.map(child => <li><a href="#">{child}</a></li>)}
+          </ul>
+        )}
+      </li>
+    ))}
+  </ul>
+</div>
+
+<style is:global>
+  #ga-navbar {
+    position: fixed;
+    top: 0; left: 0;
+    width: 100%;
+    z-index: 9000;
+    display: flex;
+    align-items: center;
+    gap: 0;
+    padding: 0 32px;
+    height: 64px;
+    background: transparent;
+    box-sizing: border-box;
+    transition: background 0.35s ease, backdrop-filter 0.35s ease;
+  }
+
+  #ga-navbar.scrolled {
+    background: rgba(1, 10, 10, 0.75);
+    backdrop-filter: blur(14px);
+    -webkit-backdrop-filter: blur(14px);
+    border-bottom: 1px solid rgba(0, 255, 204, 0.12);
+  }
+
+  /* --- LOGO --- */
+  .nav-logo {
+    font-family: 'Michroma', sans-serif;
+    font-size: 1.15rem;
+    color: #ffffff;
+    text-decoration: none;
+    letter-spacing: 1px;
+    white-space: nowrap;
+    margin-right: 32px;
+    flex-shrink: 0;
+    transition: color 0.2s;
+  }
+  .nav-logo:hover { color: #00ffcc; }
+
+  /* --- NAV LIST --- */
+  .nav-list {
+    display: flex;
+    align-items: center;
+    gap: 4px;
+    list-style: none;
+    margin: 0;
+    padding: 0;
+    flex: 1;
+  }
+
+  .nav-item { position: relative; }
+
+  .nav-link {
+    display: flex;
+    align-items: center;
+    gap: 4px;
+    padding: 8px 10px;
+    font-family: 'Poppins', sans-serif;
+    font-size: 0.78rem;
+    font-weight: 600;
+    letter-spacing: 0.8px;
+    text-transform: uppercase;
+    color: rgba(255,255,255,0.85);
+    text-decoration: none;
+    white-space: nowrap;
+    border-radius: 4px;
+    transition: color 0.2s, background 0.2s;
+  }
+  .nav-link:hover,
+  .nav-item:hover > .nav-link { color: #00ffcc; }
+
+  .nav-link.active {
+    color: #00ffcc;
+    border-bottom: 2px solid #00ffcc;
+    padding-bottom: 6px;
+  }
+
+  /* --- CHEVRON --- */
+  .chevron {
+    width: 12px; height: 12px;
+    flex-shrink: 0;
+    transition: transform 0.25s ease;
+  }
+  .nav-item:hover > .nav-link .chevron,
+  .lang-selector:hover .chevron { transform: rotate(180deg); }
+
+  /* --- DROPDOWN --- */
+  .dropdown {
+    position: absolute;
+    top: calc(100% + 8px);
+    left: 0;
+    min-width: 200px;
+    background: rgba(1, 10, 10, 0.92);
+    backdrop-filter: blur(16px);
+    -webkit-backdrop-filter: blur(16px);
+    border: 1px solid rgba(0, 255, 204, 0.2);
+    border-radius: 10px;
+    list-style: none;
+    margin: 0; padding: 8px 0;
+    opacity: 0;
+    pointer-events: none;
+    transform: translateY(-6px);
+    transition: opacity 0.2s ease, transform 0.2s ease;
+    z-index: 100;
+  }
+  .nav-item:hover > .dropdown {
+    opacity: 1;
+    pointer-events: auto;
+    transform: translateY(0);
+  }
+  .dropdown li a {
+    display: block;
+    padding: 9px 18px;
+    font-family: 'Poppins', sans-serif;
+    font-size: 0.78rem;
+    font-weight: 400;
+    color: rgba(255,255,255,0.8);
+    text-decoration: none;
+    transition: color 0.2s, background 0.2s;
+  }
+  .dropdown li a:hover {
+    color: #00ffcc;
+    background: rgba(0, 255, 204, 0.06);
+  }
+
+  /* --- RIGHT SIDE --- */
+  .nav-right {
+    display: flex;
+    align-items: center;
+    gap: 16px;
+    margin-left: auto;
+    flex-shrink: 0;
+  }
+
+  .lang-selector {
+    display: flex;
+    align-items: center;
+    gap: 3px;
+    font-family: 'Poppins', sans-serif;
+    font-size: 0.78rem;
+    font-weight: 600;
+    letter-spacing: 1px;
+    color: rgba(255,255,255,0.85);
+    cursor: pointer;
+    transition: color 0.2s;
+  }
+  .lang-selector:hover { color: #00ffcc; }
+
+  .social-icons {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+  }
+
+  .social-icon {
+    display: flex;
+    align-items: center;
+    color: rgba(255,255,255,0.75);
+    transition: color 0.2s, transform 0.2s;
+  }
+  .social-icon:hover { color: #00ffcc; transform: scale(1.15); }
+  .social-icon svg { width: 17px; height: 17px; }
+
+  /* --- MOBILE TOGGLE --- */
+  .mobile-toggle {
+    display: none;
+    flex-direction: column;
+    gap: 5px;
+    background: none;
+    border: none;
+    cursor: pointer;
+    padding: 4px;
+    margin-left: auto;
+  }
+  .mobile-toggle span {
+    display: block;
+    width: 24px; height: 2px;
+    background: #fff;
+    border-radius: 2px;
+    transition: background 0.2s;
+  }
+  .mobile-toggle:hover span { background: #00ffcc; }
+
+  /* --- MOBILE DRAWER --- */
+  #mobile-drawer {
+    display: none;
+    position: fixed;
+    top: 0; right: 0;
+    width: 280px; height: 100vh;
+    background: rgba(1, 10, 10, 0.97);
+    backdrop-filter: blur(20px);
+    z-index: 9100;
+    padding: 70px 24px 24px;
+    transform: translateX(100%);
+    transition: transform 0.35s cubic-bezier(0.4,0,0.2,1);
+    border-left: 1px solid rgba(0,255,204,0.15);
+    box-sizing: border-box;
+  }
+  #mobile-drawer.open { transform: translateX(0); }
+
+  .drawer-close {
+    position: absolute; top: 20px; right: 20px;
+    background: none; border: none; color: #fff; font-size: 1.4rem;
+    cursor: pointer; transition: color 0.2s;
+  }
+  .drawer-close:hover { color: #00ffcc; }
+
+  .drawer-list {
+    list-style: none; margin: 0; padding: 0;
+    display: flex; flex-direction: column; gap: 4px;
+  }
+  .drawer-link {
+    display: block; padding: 10px 0;
+    font-family: 'Poppins', sans-serif;
+    font-size: 0.9rem; font-weight: 600;
+    text-transform: uppercase; letter-spacing: 1px;
+    color: rgba(255,255,255,0.85); text-decoration: none;
+    border-bottom: 1px solid rgba(255,255,255,0.07);
+    transition: color 0.2s;
+  }
+  .drawer-link:hover { color: #00ffcc; }
+
+  .drawer-sub {
+    list-style: none; margin: 0; padding: 0 0 0 12px;
+  }
+  .drawer-sub li a {
+    display: block; padding: 7px 0;
+    font-family: 'Poppins', sans-serif;
+    font-size: 0.78rem; color: rgba(255,255,255,0.6);
+    text-decoration: none; transition: color 0.2s;
+  }
+  .drawer-sub li a:hover { color: #00ffcc; }
+
+  @media (max-width: 1100px) {
+    .nav-list { gap: 0; }
+    .nav-link { padding: 8px 7px; font-size: 0.72rem; }
+  }
+
+  @media (max-width: 900px) {
+    .nav-list, .nav-right { display: none; }
+    .mobile-toggle { display: flex; }
+    #mobile-drawer { display: block; }
+  }
+</style>
+
+<script is:inline>
+  const navbar = document.getElementById('ga-navbar');
+  const toggle = document.getElementById('mobile-toggle');
+  const drawer = document.getElementById('mobile-drawer');
+  const closeBtn = document.getElementById('drawer-close');
+
+  window.addEventListener('scroll', () => {
+    if (window.scrollY > 10) navbar.classList.add('scrolled');
+    else navbar.classList.remove('scrolled');
+  }, { passive: true });
+
+  toggle.addEventListener('click', () => drawer.classList.add('open'));
+  closeBtn.addEventListener('click', () => drawer.classList.remove('open'));
+
+  // Highlight active nav link
+  const links = document.querySelectorAll('.nav-link');
+  links.forEach(link => {
+    if (link.getAttribute('href') === window.location.pathname) {
+      link.classList.add('active');
+    }
+  });
+</script>
