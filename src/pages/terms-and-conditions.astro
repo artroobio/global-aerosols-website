@@ -1,0 +1,588 @@
+---
+import Layout from '../lc/layouts/Layout.astro';
+const lastUpdated = 'May 24, 2025';
+const sections = [
+  { id: 'acceptance',     title: '1. Acceptance of Terms' },
+  { id: 'services',       title: '2. Services' },
+  { id: 'engagements',    title: '3. Consulting Engagements' },
+  { id: 'ip',             title: '4. Intellectual Property' },
+  { id: 'confidentiality',title: '5. Confidentiality' },
+  { id: 'payment',        title: '6. Fees & Payment' },
+  { id: 'warranties',     title: '7. Disclaimer of Warranties' },
+  { id: 'liability',      title: '8. Limitation of Liability' },
+  { id: 'indemnification',title: '9. Indemnification' },
+  { id: 'termination',    title: '10. Termination' },
+  { id: 'conduct',        title: '11. Acceptable Use' },
+  { id: 'third-party',    title: '12. Third-Party Links' },
+  { id: 'governing-law',  title: '13. Governing Law' },
+  { id: 'disputes',       title: '14. Dispute Resolution' },
+  { id: 'changes',        title: '15. Changes to Terms' },
+  { id: 'contact',        title: '16. Contact Us' },
+];
+---
+
+<Layout title="Terms & Conditions | Global Formulation" description="Review the terms and conditions governing use of Global Formulation's website, consulting services, and digital products.">
+
+  <!-- ── Page Header ── -->
+  <section class="legal-hero">
+    <div class="legal-hero-inner">
+      <span class="legal-eyebrow">Legal &amp; Compliance</span>
+      <h1 class="legal-title">Terms &amp; Conditions</h1>
+      <p class="legal-meta">Effective date: <strong>{lastUpdated}</strong> &nbsp;|&nbsp; Global Formulation</p>
+      <p class="legal-summary">
+        Please read these Terms and Conditions carefully before using our website or engaging our
+        consulting services. By accessing this website or entering into a service engagement, you
+        agree to be bound by these terms.
+      </p>
+    </div>
+  </section>
+
+  <!-- ── Document Body ── -->
+  <div class="legal-body">
+
+    <!-- Sidebar ToC -->
+    <aside class="legal-toc">
+      <p class="toc-head">Contents</p>
+      <nav>
+        <ol class="toc-list">
+          {sections.map(s => (
+            <li><a href={`#${s.id}`}>{s.title}</a></li>
+          ))}
+        </ol>
+      </nav>
+    </aside>
+
+    <!-- Main document -->
+    <article class="legal-doc">
+
+      <section id="acceptance">
+        <h2>1. Acceptance of Terms</h2>
+        <p>
+          These Terms and Conditions ("Terms") constitute a legally binding agreement between you
+          (the "Client" or "User") and <strong>Global Formulation</strong> ("we", "our", or "us"),
+          a specialist chemical formulation and process engineering consultancy.
+        </p>
+        <p>
+          By visiting our website at <strong>globalformulation.com</strong>, submitting an enquiry,
+          or engaging our consulting services, you confirm that you have read, understood, and agree
+          to be bound by these Terms in their entirety. If you do not agree, you must not use this
+          website or engage our services.
+        </p>
+        <p>
+          These Terms apply to all visitors, clients, and users of our website and services. For
+          formal consulting engagements, a separate Consulting Agreement may also be executed, which
+          shall take precedence over these Terms in the event of any conflict.
+        </p>
+      </section>
+
+      <section id="services">
+        <h2>2. Services</h2>
+        <p>
+          Global Formulation provides specialist professional services including, but not limited to:
+        </p>
+        <ul>
+          <li>Chemical formulation development and optimisation across coatings, lubricants, cleaners, aerosols, personal care, polymers, and agrochemicals.</li>
+          <li>Chemical process engineering, including reactor design, scale-up, thermal safety analysis, and plant commissioning support.</li>
+          <li>Raw-material intelligence, cost engineering, and supply chain advisory.</li>
+          <li>Regulatory and compliance guidance for chemical products.</li>
+          <li>Technical content, knowledge resources, and educational materials published on our website.</li>
+        </ul>
+        <p>
+          We reserve the right to modify, suspend, or discontinue any service or website feature
+          at any time without prior notice. We will not be liable to you or any third party for
+          any modification, suspension, or discontinuation of services.
+        </p>
+        <p>
+          Our services are provided for legitimate commercial and professional purposes only. We
+          do not provide formulation services for illegal, hazardous (outside regulatory norms),
+          or environmentally harmful applications.
+        </p>
+      </section>
+
+      <section id="engagements">
+        <h2>3. Consulting Engagements</h2>
+        <h3>3.1 Scope of Work</h3>
+        <p>
+          All formal consulting engagements will be governed by a written Scope of Work ("SOW") or
+          Consulting Agreement that defines deliverables, timelines, fees, and specific terms. Where
+          no formal SOW is executed, these Terms and any written correspondence confirming the
+          engagement shall apply.
+        </p>
+        <h3>3.2 Client Responsibilities</h3>
+        <p>Clients are responsible for:</p>
+        <ul>
+          <li>Providing accurate, complete, and timely information relevant to the project, including raw material specifications, equipment details, regulatory requirements, and performance targets.</li>
+          <li>Ensuring that the project objectives and applications described to us are lawful and accurate.</li>
+          <li>Making timely decisions and providing feedback to enable delivery within agreed timelines.</li>
+          <li>Obtaining all necessary permissions, licences, or regulatory approvals required to act on our recommendations.</li>
+        </ul>
+        <h3>3.3 Independent Contractor</h3>
+        <p>
+          Global Formulation operates as an independent contractor. Nothing in these Terms or any
+          consulting engagement creates a partnership, joint venture, employment, or agency
+          relationship between you and us.
+        </p>
+        <h3>3.4 Technical Recommendations</h3>
+        <p>
+          Our formulation and process engineering recommendations are based on best available
+          technical knowledge and the information provided by the client. Implementation outcomes
+          depend on factors outside our control — including equipment conditions, raw material
+          quality, and operator practices. Clients are solely responsible for conducting their own
+          validation and testing prior to commercial production.
+        </p>
+      </section>
+
+      <section id="ip">
+        <h2>4. Intellectual Property</h2>
+        <h3>4.1 Our Intellectual Property</h3>
+        <p>
+          All content on this website — including text, graphics, logos, formulation data, process
+          descriptions, technical articles, and educational resources — is the intellectual property
+          of Global Formulation or its licensors and is protected by applicable copyright, trademark,
+          and intellectual property laws.
+        </p>
+        <p>
+          You may view and download website content for personal, non-commercial reference only.
+          Reproduction, redistribution, commercial use, or modification of any content without our
+          prior written consent is strictly prohibited.
+        </p>
+        <h3>4.2 Consulting Deliverables</h3>
+        <p>
+          Unless otherwise agreed in writing, the following ownership arrangements apply:
+        </p>
+        <ul>
+          <li><strong>Client data and background IP</strong> — any information, materials, or intellectual property you provide to us remains your property.</li>
+          <li><strong>Project deliverables</strong> — upon full payment, we assign to you the rights to use the specific formulations, reports, and technical documents created exclusively for your project. We retain the right to use underlying know-how, methods, and non-confidential learnings derived from the engagement to improve our services.</li>
+          <li><strong>Pre-existing IP and tools</strong> — any proprietary methodologies, templates, data models, or tools we bring to an engagement remain our property and are licensed (not assigned) to you for use in connection with the delivered project.</li>
+        </ul>
+        <h3>4.3 Feedback</h3>
+        <p>
+          If you provide suggestions, ideas, or feedback about our services, you grant us a
+          perpetual, royalty-free licence to use that feedback without restriction or obligation to you.
+        </p>
+      </section>
+
+      <section id="confidentiality">
+        <h2>5. Confidentiality</h2>
+        <p>
+          Both parties acknowledge that they may share confidential information in connection
+          with consulting engagements. Each party agrees to:
+        </p>
+        <ul>
+          <li>Hold confidential information in strict confidence and not disclose it to third parties without prior written consent.</li>
+          <li>Use confidential information solely for the purposes of the consulting engagement.</li>
+          <li>Limit access to confidential information to those who need it to fulfil the engagement.</li>
+        </ul>
+        <p>
+          Confidentiality obligations do not apply to information that: (a) is or becomes publicly
+          available through no fault of the receiving party; (b) was already known to the receiving
+          party; (c) is independently developed; or (d) must be disclosed by law or regulatory order.
+        </p>
+        <p>
+          For projects requiring a formal Non-Disclosure Agreement (NDA), we are willing to execute
+          a mutual NDA prior to the exchange of sensitive information. Please contact us to arrange this.
+        </p>
+      </section>
+
+      <section id="payment">
+        <h2>6. Fees &amp; Payment</h2>
+        <h3>6.1 Fees</h3>
+        <p>
+          Consulting fees are agreed upon before work commences, as set out in the relevant
+          Consulting Agreement or written quotation. Fees may be structured as fixed-project fees,
+          day rates, retainers, or milestone-based payments.
+        </p>
+        <h3>6.2 Invoicing and Payment Terms</h3>
+        <ul>
+          <li>Invoices are due within <strong>14 days</strong> of issue unless otherwise agreed in writing.</li>
+          <li>For new clients or project work above a threshold value, we reserve the right to request a deposit (typically 30–50% of total fees) before commencing work.</li>
+          <li>Payments must be made by bank transfer, unless an alternative method is agreed in advance.</li>
+        </ul>
+        <h3>6.3 Late Payment</h3>
+        <p>
+          Invoices not settled within the agreed payment period may attract interest at a rate of
+          2% per month on the outstanding balance. We reserve the right to suspend ongoing work
+          until overdue invoices are settled.
+        </p>
+        <h3>6.4 Expenses</h3>
+        <p>
+          Reasonable out-of-pocket expenses incurred with prior written approval (e.g. travel,
+          laboratory costs, sample materials) will be invoiced separately at cost with supporting
+          documentation.
+        </p>
+        <h3>6.5 Taxes</h3>
+        <p>
+          All fees are exclusive of applicable taxes (including GST where applicable in India).
+          Taxes will be added to invoices as required by law.
+        </p>
+      </section>
+
+      <section id="warranties">
+        <h2>7. Disclaimer of Warranties</h2>
+        <p>
+          <strong>To the fullest extent permitted by applicable law</strong>, our website and its
+          content are provided on an <strong>"as is" and "as available"</strong> basis without any
+          warranties of any kind, express or implied, including but not limited to:
+        </p>
+        <ul>
+          <li>Warranties of merchantability or fitness for a particular purpose.</li>
+          <li>Warranties that the website will be uninterrupted, error-free, or free of viruses.</li>
+          <li>Warranties that the accuracy, completeness, or currency of website content.</li>
+        </ul>
+        <p>
+          Technical articles, formulation data, and process information published on our website
+          are provided for general educational and reference purposes only. They do not constitute
+          professional advice specific to your circumstances. Always consult a qualified specialist
+          before implementing any formulation or process change.
+        </p>
+      </section>
+
+      <section id="liability">
+        <h2>8. Limitation of Liability</h2>
+        <p>
+          To the fullest extent permitted by applicable law, Global Formulation's total liability
+          to you for any claim arising from or related to our website or consulting services —
+          whether in contract, tort (including negligence), breach of statutory duty, or otherwise
+          — shall not exceed the <strong>total fees paid by you to us</strong> in the <strong>3 months
+          preceding the event giving rise to the claim</strong>.
+        </p>
+        <p>In no event shall we be liable for:</p>
+        <ul>
+          <li>Loss of profits, revenue, sales, business, contracts, or opportunities.</li>
+          <li>Loss of data or goodwill.</li>
+          <li>Production losses, plant downtime, or manufacturing failures.</li>
+          <li>Indirect, consequential, special, or punitive damages.</li>
+          <li>Losses arising from your reliance on general website content rather than tailored professional advice.</li>
+        </ul>
+        <p>
+          Nothing in these Terms limits or excludes liability for death or personal injury caused
+          by negligence, fraud or fraudulent misrepresentation, or any other liability that cannot
+          be excluded by law.
+        </p>
+      </section>
+
+      <section id="indemnification">
+        <h2>9. Indemnification</h2>
+        <p>
+          You agree to indemnify, defend, and hold harmless Global Formulation, its principals,
+          employees, and associates from and against any claims, damages, losses, penalties, and
+          expenses (including reasonable legal fees) arising from:
+        </p>
+        <ul>
+          <li>Your breach of these Terms or any Consulting Agreement.</li>
+          <li>Your use of our website or services in a manner not authorised by these Terms.</li>
+          <li>Your violation of any applicable law or third-party rights.</li>
+          <li>Inaccurate or incomplete information provided to us in connection with a consulting project.</li>
+          <li>Your implementation of recommendations without adequate independent validation and testing.</li>
+        </ul>
+      </section>
+
+      <section id="termination">
+        <h2>10. Termination</h2>
+        <h3>10.1 Termination by Either Party</h3>
+        <p>
+          Either party may terminate a consulting engagement by providing written notice in accordance
+          with the terms set out in the applicable Consulting Agreement. In the absence of a specific
+          agreement, either party may terminate with <strong>14 days' written notice</strong>.
+        </p>
+        <h3>10.2 Fees on Termination</h3>
+        <p>
+          Upon termination, you remain liable for all fees for work completed up to the effective
+          termination date, plus any non-cancellable costs already committed. Where a deposit was
+          paid, it will be applied against these amounts; any surplus will be refunded.
+        </p>
+        <h3>10.3 Effect of Termination</h3>
+        <p>
+          Upon termination, each party shall return or destroy the other's confidential information
+          (subject to legal retention obligations). Provisions that by their nature should survive
+          termination — including intellectual property, confidentiality, payment, limitation of
+          liability, and dispute resolution — shall continue to apply.
+        </p>
+        <h3>10.4 Termination of Website Access</h3>
+        <p>
+          We reserve the right to restrict or terminate your access to our website at any time
+          and without notice if we believe you are using the site in breach of these Terms.
+        </p>
+      </section>
+
+      <section id="conduct">
+        <h2>11. Acceptable Use</h2>
+        <p>When using our website, you agree not to:</p>
+        <ul>
+          <li>Scrape, harvest, or systematically copy website content without written permission.</li>
+          <li>Attempt to gain unauthorised access to our systems or disrupt our website's operation.</li>
+          <li>Transmit spam, malware, or harmful code.</li>
+          <li>Use our website or services for any unlawful, fraudulent, or harmful purpose.</li>
+          <li>Misrepresent your identity or affiliation when contacting us.</li>
+          <li>Reproduce or distribute our formulation data, technical content, or publications without explicit permission.</li>
+        </ul>
+      </section>
+
+      <section id="third-party">
+        <h2>12. Third-Party Links</h2>
+        <p>
+          Our website may contain links to third-party websites or resources for informational
+          purposes. These links do not constitute an endorsement of the linked site's content,
+          products, or services. We have no control over and accept no responsibility for the
+          content, privacy practices, or availability of third-party sites.
+        </p>
+        <p>
+          Accessing any third-party website linked from our site is done entirely at your own risk.
+        </p>
+      </section>
+
+      <section id="governing-law">
+        <h2>13. Governing Law</h2>
+        <p>
+          These Terms and any consulting engagement governed by them shall be construed in accordance
+          with the laws of <strong>India</strong>, without regard to its conflict of law principles.
+        </p>
+        <p>
+          For clients based in the European Union or United Kingdom, mandatory consumer protection
+          provisions of the applicable local law shall continue to apply where required.
+        </p>
+      </section>
+
+      <section id="disputes">
+        <h2>14. Dispute Resolution</h2>
+        <h3>14.1 Amicable Resolution</h3>
+        <p>
+          In the event of any dispute arising out of or relating to these Terms or a consulting
+          engagement, the parties agree to first attempt to resolve the dispute amicably through
+          good-faith negotiation. Either party may initiate this process by giving written notice
+          describing the dispute in reasonable detail.
+        </p>
+        <h3>14.2 Mediation</h3>
+        <p>
+          If the dispute is not resolved within <strong>30 days</strong> of written notice, the
+          parties agree to attempt resolution through mediation before a mutually agreed mediator.
+        </p>
+        <h3>14.3 Jurisdiction</h3>
+        <p>
+          If mediation fails, disputes shall be subject to the exclusive jurisdiction of the courts
+          of <strong>Mumbai, Maharashtra, India</strong>. For clients in the EU or UK, you may also
+          be entitled to bring proceedings in your local courts.
+        </p>
+      </section>
+
+      <section id="changes">
+        <h2>15. Changes to Terms</h2>
+        <p>
+          We reserve the right to update or modify these Terms at any time. Updated Terms will be
+          posted on this page with a revised "Effective date". Your continued use of our website or
+          services after such changes constitutes your acceptance of the updated Terms.
+        </p>
+        <p>
+          For material changes affecting ongoing consulting engagements, we will provide reasonable
+          advance written notice.
+        </p>
+      </section>
+
+      <section id="contact">
+        <h2>16. Contact Us</h2>
+        <p>
+          If you have any questions about these Terms and Conditions, wish to report a breach, or
+          require a formal Consulting Agreement or NDA, please contact us:
+        </p>
+        <div class="legal-contact-block">
+          <p><strong>Global Formulation</strong></p>
+          <p>Lead Consultant: Absar Khan</p>
+          <p>Email: <a href="mailto:consulting@globalformulation.com">consulting@globalformulation.com</a></p>
+          <p>Phone: <a href="tel:+919819548320">+91 98195 48320</a></p>
+          <p>Website: <a href="https://globalformulation.com">globalformulation.com</a></p>
+        </div>
+        <p>
+          We aim to respond to all legal enquiries within <strong>5 business days</strong>.
+        </p>
+        <p>
+          You may also find our <a href="/privacy-policy">Privacy Policy</a> relevant for
+          questions about how your personal data is handled.
+        </p>
+      </section>
+
+      <div class="legal-footer-note">
+        <p>These Terms were last reviewed and updated on <strong>{lastUpdated}</strong>. © {new Date().getFullYear()} Global Formulation. All rights reserved.</p>
+      </div>
+
+    </article>
+  </div>
+
+</Layout>
+
+<style>
+  /* ── Hero ── */
+  .legal-hero {
+    background: radial-gradient(ellipse 80% 60% at 50% 30%, rgba(9, 104, 229,0.13) 0%, transparent 60%), #060a14;
+    padding: 130px max(6%, env(safe-area-inset-left)) 60px;
+    box-sizing: border-box;
+    border-bottom: 1px solid rgba(255,255,255,0.06);
+  }
+  .legal-hero-inner { max-width: 800px; }
+  .legal-eyebrow {
+    display: block;
+    font-size: 0.72rem;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 4px;
+    color: #4f9dff;
+    margin-bottom: 16px;
+  }
+  .legal-title {
+    font-size: clamp(2.4rem, 5vw, 3.8rem);
+    font-weight: 800;
+    color: #ffffff;
+    margin: 0 0 14px 0;
+    letter-spacing: -0.025em;
+    font-family: 'Outfit', sans-serif;
+    line-height: 1.1;
+  }
+  .legal-meta { font-size: 0.88rem; color: #64748b; margin: 0 0 20px 0; }
+  .legal-meta strong { color: #94a3b8; }
+  .legal-summary {
+    font-size: 1.05rem;
+    color: #94a3b8;
+    line-height: 1.7;
+    max-width: 680px;
+    margin: 0;
+  }
+
+  /* ── Layout: sidebar + document ── */
+  .legal-body {
+    max-width: 1240px;
+    margin: 0 auto;
+    padding: 60px max(4%, 24px) 100px;
+    display: grid;
+    grid-template-columns: 260px 1fr;
+    gap: 64px;
+    align-items: start;
+    box-sizing: border-box;
+    background: #ffffff;
+  }
+
+  /* ── Sticky ToC Sidebar ── */
+  .legal-toc {
+    position: sticky;
+    top: 80px;
+    background: #f8fafc;
+    border: 1px solid #e2e8f0;
+    border-radius: 14px;
+    padding: 28px 24px;
+  }
+  .toc-head {
+    font-size: 0.72rem;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 3px;
+    color: #0968e5;
+    margin: 0 0 16px 0;
+  }
+  .toc-list {
+    list-style: none;
+    padding: 0; margin: 0;
+    display: flex;
+    flex-direction: column;
+    gap: 4px;
+  }
+  .toc-list li a {
+    display: block;
+    font-size: 0.83rem;
+    color: #475569;
+    text-decoration: none;
+    padding: 6px 10px;
+    border-radius: 7px;
+    line-height: 1.35;
+    transition: background 0.2s ease, color 0.2s ease;
+  }
+  .toc-list li a:hover { background: #e0effe; color: #0968e5; }
+
+  /* ── Document content ── */
+  .legal-doc section {
+    margin-bottom: 52px;
+    padding-bottom: 52px;
+    border-bottom: 1px solid #f1f5f9;
+  }
+  .legal-doc section:last-of-type { border-bottom: none; }
+
+  .legal-doc h2 {
+    font-size: 1.45rem;
+    font-weight: 800;
+    color: #0f172a;
+    margin: 0 0 18px 0;
+    letter-spacing: -0.015em;
+    font-family: 'Outfit', sans-serif;
+    scroll-margin-top: 90px;
+  }
+  .legal-doc h3 {
+    font-size: 1.05rem;
+    font-weight: 700;
+    color: #1e293b;
+    margin: 28px 0 10px 0;
+    font-family: 'Outfit', sans-serif;
+  }
+  .legal-doc p {
+    font-size: 0.97rem;
+    color: #475569;
+    line-height: 1.8;
+    margin: 0 0 14px 0;
+  }
+  .legal-doc p:last-child { margin-bottom: 0; }
+  .legal-doc ul {
+    padding-left: 0;
+    margin: 14px 0 14px 0;
+    list-style: none;
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+  }
+  .legal-doc ul li {
+    font-size: 0.97rem;
+    color: #475569;
+    line-height: 1.65;
+    padding-left: 20px;
+    position: relative;
+  }
+  .legal-doc ul li::before {
+    content: '—';
+    position: absolute;
+    left: 0;
+    color: #0968e5;
+    font-weight: 700;
+  }
+  .legal-doc a { color: #0968e5; text-decoration: underline; text-underline-offset: 3px; }
+  .legal-doc a:hover { color: #3b82f6; }
+  .legal-doc strong { color: #1e293b; font-weight: 600; }
+
+  .legal-contact-block {
+    background: #f8fafc;
+    border: 1px solid #e2e8f0;
+    border-left: 3px solid #0968e5;
+    border-radius: 10px;
+    padding: 20px 24px;
+    margin: 18px 0;
+    display: flex;
+    flex-direction: column;
+    gap: 4px;
+  }
+  .legal-contact-block p { margin: 0; font-size: 0.95rem; }
+
+  .legal-footer-note {
+    margin-top: 48px;
+    padding-top: 28px;
+    border-top: 1px solid #e2e8f0;
+  }
+  .legal-footer-note p { font-size: 0.85rem; color: #94a3b8; margin: 0; }
+
+  /* ── Responsive ── */
+  @media (max-width: 900px) {
+    .legal-body {
+      grid-template-columns: 1fr;
+      gap: 40px;
+      padding: 40px 24px 80px;
+    }
+    .legal-toc { position: static; }
+  }
+  @media (max-width: 600px) {
+    .legal-hero { padding: 110px 22px 50px; }
+    .legal-body { padding: 30px 20px 60px; }
+  }
+</style>

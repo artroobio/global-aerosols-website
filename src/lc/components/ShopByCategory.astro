@@ -1,0 +1,516 @@
+---
+const categories = [
+  {
+    title: "Household and Homecare",
+    tags: "Household • Heavy Duty • Homecare",
+    link: "/household-and-industrial-cleaners",
+    image: "/images/household_category.png",
+    pillClass: "bg-blue",
+    pillText: "Explore"
+  },
+  {
+    title: "Paints & Coatings",
+    tags: "Artistic • Industrial • Coatings",
+    link: "/paints-and-coatings",
+    image: "/images/paints_category.png",
+    pillClass: "bg-blue",
+    pillText: "Explore"
+  },
+  {
+    title: "Arts and crafts",
+    tags: "Creative • Hobbies • Design",
+    link: "/adhesives-and-sealants",
+    image: "/images/artscrafts_category.png",
+    pillClass: "bg-blue",
+    pillText: "Explore"
+  },
+  {
+    title: "Automotive",
+    tags: "Car Care • Engine • Performance",
+    link: "/lubricants",
+    image: "/images/automotive_category.png",
+    pillClass: "bg-blue",
+    pillText: "Explore"
+  },
+  {
+    title: "Industrial",
+    tags: "Heavy Duty • R&D • Process",
+    link: "/construction-chemicals",
+    image: "/images/industrial_category.png",
+    pillClass: "bg-blue",
+    pillText: "Explore"
+  },
+  {
+    title: "Adhesives and Sealants",
+    tags: "Creative • Industrial • Structural",
+    link: "/adhesives-and-sealants",
+    image: "/images/adhesives_category.png",
+    pillClass: "bg-blue",
+    pillText: "Explore"
+  },
+  {
+    title: "Personal Care",
+    tags: "Daily Care • Hygiene • Wellness",
+    link: "/cosmetics-and-personal-care",
+    image: "/images/personalcare_category.png",
+    pillClass: "bg-blue",
+    pillText: "Explore"
+  },
+  {
+    title: "Cosmetics",
+    tags: "Beauty • Luxury • Makeup",
+    link: "/cosmetics-and-personal-care",
+    image: "/images/cosmetics_category.png",
+    pillClass: "bg-blue",
+    pillText: "Explore"
+  },
+  {
+    title: "Pharmaceuticals",
+    tags: "Medical • Science • Compliance",
+    link: "/pharmaceuticals-and-health-care",
+    image: "/images/pharma_category.png",
+    pillClass: "bg-blue",
+    pillText: "Explore"
+  }
+];
+---
+<section class="portfolio-section">
+    <header class="section-header">
+        <div class="header-left">
+            <h2 class="section-title">
+              {"Industries We Serve".split(' ').map(word => (
+                <span class="word-wrapper">
+                  {word.split('').map(char => (
+                    <span class="blue-char">{char}</span>
+                  ))}
+                </span>
+              ))}
+            </h2>
+            <p class="section-desc">Explore our premium range of high-performance chemical formulations and specialized commercial aerosol solutions.</p>
+        </div>
+        <div class="header-right">
+            <div class="nav-buttons">
+                <a href="#contact" class="btn-cinema bg-blue">Contact</a>
+            </div>
+        </div>
+    </header>
+
+    <div class="project-grid">
+        {categories.map((category) => (
+            <a href={category.link} class="project-card">
+                <div class="image-wrapper-cinema">
+                    <img src={category.image} alt={category.title} loading="lazy">
+                    {category.insetProductImage && (
+                        <div class="category-inset-product">
+                            <img src={category.insetProductImage} alt={`${category.title} Inset`}>
+                        </div>
+                    )}
+                    <div class="category-pill-container">
+                        <span class={`category-pill ${category.pillClass}`}>{category.pillText}</span>
+                    </div>
+                </div>
+                <div class="card-details">
+                    <span class="tags-cinema">{category.tags}</span>
+                    <h3 class="project-title-cinema">{category.title}</h3>
+                </div>
+            </a>
+        ))}
+    </div>
+</section>
+
+<style>
+    .portfolio-section {
+        width: 100%;
+        padding: 100px 8%;
+        background: #f6f6fa;
+        color: #111;
+        overflow: hidden;
+        position: relative;
+        box-sizing: border-box;
+    }
+
+    .section-header {
+        max-width: 1600px;
+        margin: 0 auto 60px auto;
+        display: flex;
+        justify-content: space-between;
+        align-items: flex-end;
+        gap: 40px;
+    }
+
+    .header-left {
+        max-width: 800px;
+    }
+
+    .section-title {
+        white-space: normal;
+        margin-bottom: 24px;
+        line-height: 1.1;
+        color: #0a0a0a;
+        letter-spacing: -0.02em;
+        font-size: clamp(2.2rem, 5vw, 4.2rem);
+        font-weight: 700;
+    }
+
+    .word-wrapper {
+        display: inline-block;
+        white-space: nowrap;
+        margin-right: 0.3em;
+    }
+
+    .blue-char {
+        display: inline-block;
+        opacity: 0;
+        color: #0a0a0a;
+        -webkit-text-fill-color: #0a0a0a;
+    }
+
+    .section-desc {
+        font-size: clamp(1rem, 2vw, 1.15rem);
+        color: #555555;
+        line-height: 1.6;
+        opacity: 0;
+        transform: translateY(20px);
+        transition: all 0.8s ease-out 0.4s;
+    }
+
+    .header-right {
+        display: flex;
+        align-items: center;
+        opacity: 0;
+        transform: translateY(20px);
+        transition: all 0.8s ease-out 0.6s;
+    }
+
+    .section-header.active .section-desc,
+    .section-header.active .header-right {
+        opacity: 1;
+        transform: translateY(0);
+    }
+
+    .nav-buttons {
+        display: flex;
+        gap: 12px;
+    }
+
+    .btn-cinema {
+        display: inline-block;
+        padding: 12px 32px;
+        border-radius: 9999px;
+        font-size: 0.65rem;
+        font-weight: 700;
+        text-transform: uppercase;
+        letter-spacing: 0.15em;
+        text-decoration: none;
+        transition: transform 0.3s ease, background-color 0.3s ease, border-color 0.3s ease;
+    }
+
+    .btn-cinema.bg-blue {
+        background: #0968e5;
+        color: #fff;
+        border: 1px solid #0968e5;
+        margin-left: 24px;
+        box-shadow: 0 4px 16px rgba(9, 104, 229, 0.28);
+    }
+
+    .btn-cinema.bg-blue:hover {
+        transform: scale(1.05);
+        background: #3b82f6;
+        border-color: #3b82f6;
+        box-shadow: 0 6px 22px rgba(9, 104, 229, 0.42);
+    }
+
+    /* 3x4 Grid Layout */
+    .project-grid {
+        max-width: 1600px;
+        margin: 0 auto;
+        display: grid;
+        grid-template-columns: repeat(3, 1fr);
+        column-gap: 32px;
+        row-gap: 48px;
+    }
+
+    .project-card {
+        text-decoration: none;
+        color: inherit;
+        display: block;
+    }
+
+
+    .image-wrapper-cinema {
+        position: relative;
+        aspect-ratio: 16 / 10;
+        overflow: hidden;
+        border-radius: 24px;
+        background: #e4e4e7;
+        margin-bottom: 20px;
+        box-shadow: 0 10px 30px rgba(0, 0, 0, 0.03);
+        border: 1px solid rgba(0, 0, 0, 0.04);
+        transition: box-shadow 0.6s cubic-bezier(0.25, 1, 0.3, 1), border-color 0.6s ease;
+    }
+
+    .project-card:hover .image-wrapper-cinema {
+        box-shadow: 0 20px 45px rgba(9, 104, 229, 0.08), 0 5px 15px rgba(0, 0, 0, 0.05);
+        border-color: rgba(9, 104, 229, 0.25);
+    }
+
+    .image-wrapper-cinema img {
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+        will-change: transform;
+    }
+
+
+    .category-pill-container {
+        position: absolute;
+        inset: 0;
+        display: flex;
+        align-items: flex-end;
+        justify-content: center;
+        z-index: 20;
+        padding-bottom: 20px;
+    }
+
+    .category-pill {
+        padding: 18px 56px;
+        border-radius: 9999px;
+        font-size: 1.1rem;
+        font-weight: 900;
+        text-transform: uppercase;
+        letter-spacing: 0.12em;
+        color: #fff;
+        box-shadow: 0 15px 30px rgba(0, 0, 0, 0.18);
+        transition: transform 0.3s cubic-bezier(0.25, 1, 0.3, 1);
+    }
+
+    .category-pill.bg-blue {
+        background: #2b65ff;
+    }
+
+    .category-pill.bg-red {
+        background: #e11d48;
+    }
+
+    .category-pill.bg-orange {
+        background: #f15a24;
+    }
+
+    .category-pill:hover {
+        transform: scale(1.1);
+    }
+
+    .category-inset-product {
+        position: absolute;
+        right: -10%;
+        bottom: -15%;
+        width: 65%;
+        height: 95%;
+        z-index: 10;
+        pointer-events: none;
+        transform: translateY(32px);
+        transition: transform 1s cubic-bezier(0.25, 1, 0.3, 1);
+    }
+
+    .project-card:hover .category-inset-product {
+        transform: translateY(16px);
+    }
+
+    .category-inset-product img {
+        width: 100%;
+        height: 100%;
+        object-fit: contain;
+        filter: drop-shadow(0 35px 60px rgba(0, 0, 0, 0.7));
+    }
+
+    .card-details {
+        padding: 0 8px;
+    }
+
+    .tags-cinema {
+        display: block;
+        font-size: 0.6rem;
+        font-weight: 700;
+        text-transform: uppercase;
+        letter-spacing: 0.2em;
+        color: #a1a1aa;
+        margin-bottom: 8px;
+    }
+
+    .project-title-cinema {
+        font-size: clamp(1.6rem, 3vw, 2.4rem);
+        font-weight: 300;
+        letter-spacing: -0.02em;
+        margin: 0;
+        line-height: 1.2;
+    }
+
+    /* Target Split-Type characters for card titles */
+    :global(.project-title-cinema .char) {
+        display: inline-block;
+        will-change: transform, opacity;
+    }
+
+    :global(.project-title-cinema .word) {
+        display: inline-block;
+        white-space: nowrap;
+    }
+
+    /* Responsiveness */
+    @media (max-width: 1024px) {
+        .project-grid {
+            grid-template-columns: repeat(2, 1fr);
+            column-gap: 24px;
+            row-gap: 36px;
+        }
+        .project-title-cinema {
+            font-size: clamp(1.6rem, 3.5vw, 2.2rem);
+        }
+    }
+
+    @media (max-width: 768px) {
+        .section-header {
+            flex-direction: column;
+            align-items: flex-start;
+            gap: 24px;
+            margin-bottom: 40px;
+        }
+        .portfolio-section {
+            padding: 80px 24px;
+        }
+        .project-grid {
+            grid-template-columns: 1fr;
+            row-gap: 36px;
+        }
+        .project-title-cinema {
+            font-size: 1.8rem;
+        }
+    }
+</style>
+
+<script>
+    import { gsap } from "gsap";
+    import { ScrollTrigger } from "gsap/ScrollTrigger";
+    import SplitType from "split-type";
+
+    gsap.registerPlugin(ScrollTrigger);
+
+    function initShopByCategory() {
+        const section = document.querySelector('.portfolio-section');
+        if (!section) return;
+
+        const header = section.querySelector('.section-header');
+        
+        const headerTl = gsap.timeline({
+            scrollTrigger: {
+                trigger: section,
+                start: 'top 80%',
+                onEnter: () => {
+                    header?.classList.add('active');
+                }
+            }
+        });
+
+        // Title character-by-character animation matching other homepage sections
+        headerTl.fromTo(".portfolio-section .blue-char", 
+            { opacity: 0, x: -12, color: "#0968e5", webkitTextFillColor: "#0968e5" },
+            {
+                opacity: 1,
+                x: 0,
+                color: "#0968e5",
+                webkitTextFillColor: "#0968e5",
+                duration: 0.45,
+                stagger: 0.015,
+                ease: "power3.out"
+            }
+        )
+        .to(".portfolio-section .blue-char", {
+            color: "#0a0a0a",
+            webkitTextFillColor: "#0a0a0a",
+            duration: 0.45,
+            stagger: 0.015,
+            ease: "power2.inOut"
+        }, "-=0.35");
+
+        // Card Entry Animations
+        const cards = document.querySelectorAll('.project-card');
+        cards.forEach(card => {
+            const wrapper = card.querySelector('.image-wrapper-cinema');
+            const img = card.querySelector('img');
+            const tags = card.querySelector('.tags-cinema');
+            const title = card.querySelector('.project-title-cinema');
+            
+            if (!title) return;
+            const splitCardTitle = new SplitType(title as HTMLElement, { types: 'words,chars' });
+
+            gsap.set(wrapper, { scale: 0.5, opacity: 0 });
+            gsap.set(img, { scale: 1.4 });
+            gsap.set(tags, { opacity: 0, x: -12 });
+            gsap.set(splitCardTitle.chars, { 
+                opacity: 0, 
+                x: -12, 
+                color: "#0968e5", 
+                webkitTextFillColor: "#0968e5" 
+            });
+
+            const tl = gsap.timeline({
+                scrollTrigger: {
+                    trigger: card,
+                    start: "top 95%",
+                    toggleActions: "play none none reverse"
+                }
+            });
+
+            tl.to(wrapper, {
+                scale: 1,
+                opacity: 1,
+                duration: 1.5,
+                ease: "elastic.out(1, 0.6)",
+                force3D: true
+            })
+            .to(img, {
+                scale: 1,
+                duration: 1.5,
+                ease: "power3.out",
+                force3D: true
+            }, "<")
+            .from(card.querySelector('.category-pill'), {
+                opacity: 0,
+                scale: 0.5,
+                y: 20,
+                duration: 0.8,
+                ease: "back.out(1.7)"
+            }, "-=1.0")
+            .to(tags, { opacity: 1, x: 0, duration: 0.6, ease: "power3.out" }, "-=0.6")
+            .to(splitCardTitle.chars, { 
+                opacity: 1, 
+                x: 0, 
+                stagger: 0.015, 
+                duration: 0.45, 
+                ease: "power3.out" 
+            }, "-=0.4")
+            .to(splitCardTitle.chars, {
+                color: "#111111",
+                webkitTextFillColor: "#111111",
+                duration: 0.45,
+                stagger: 0.015,
+                ease: "power2.inOut"
+            }, "-=0.35");
+
+            card.addEventListener('mouseenter', () => {
+                gsap.to(img, { scale: 1.08, duration: 0.8, ease: "power2.out" });
+                gsap.to(title, { opacity: 0.6, duration: 0.5, ease: "power2.out" });
+            });
+            card.addEventListener('mouseleave', () => {
+                gsap.to(img, { scale: 1, duration: 0.8, ease: "power2.out" });
+                gsap.to(title, { opacity: 1, duration: 0.5, ease: "power2.out" });
+            });
+        });
+
+        // Smooth refresh to lock coordinates
+        ScrollTrigger.refresh();
+    }
+
+    window.addEventListener('load', initShopByCategory);
+    document.addEventListener('astro:page-load', initShopByCategory);
+</script>

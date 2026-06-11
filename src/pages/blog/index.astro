@@ -1,0 +1,891 @@
+---
+import Layout from '../../layouts/BlogLayout.astro';
+
+const allPosts = [
+  {
+    title: "Aerosol Manufacturing 101: Technical Guide to Formulation & Safety",
+    description: "Complete technical guide to aerosol manufacturing covering formulation chemistry, propellants, safety systems, regulations, and startup setup for global markets.",
+    url: "/aerosol-manufacturing-101-guide",
+    publishDate: "Nov 27, 2025",
+    category: "Aerosols & Gas Dosing",
+    author: "Absar Khan",
+    coverImage: "https://assets.zyrosite.com/AGBzPMBJDQiwDGny/an_ultra_realistic_high_resolution_image_showing_two_aerosol-Y4LPXp00R6ilJ5jD.jpeg",
+    tags: ["Aerosols", "Propellants", "Safety", "Formulation", "Manufacturing"],
+    readingTime: "18 min"
+  },
+  {
+    title: "Failures in Aerosol Spray Paints & How to Prevent Them",
+    description: "Comprehensive guide to common failures in aerosol spray paints, including metallic, glitter, and zinc-rich sprays, with prevention and troubleshooting measures.",
+    url: "/failures-in-aerosol-spray-paints",
+    publishDate: "Nov 15, 2025",
+    category: "Paints & Coatings",
+    author: "Absar Khan",
+    coverImage: "/images/blog/failures-in-aerosol-spray-paints-hero-globalformulation.png",
+    tags: ["Paints", "Coatings", "Spray Paint", "Failures", "Troubleshooting"],
+    readingTime: "8 min"
+  },
+  {
+    title: "Corrosion in Water-Based Aerosol Cans: Causes & Mechanisms — Part 1",
+    description: "A technical, fact-based overview of corrosion in water-based aerosol cans: causes, mechanisms, accelerating factors, and established industrial control measures for manufacturers.",
+    url: "/aerosol-can-corrosion-1",
+    publishDate: "Nov 7, 2025",
+    category: "Aerosols & Gas Dosing",
+    author: "Absar Khan",
+    coverImage: "https://assets.zyrosite.com/A3QlOV94WLSaL6xE/aerosol-can-corrosion-cutaway-gBpXsKVxtIgRK5hf.jpg",
+    tags: ["Aerosols", "Corrosion", "Packaging", "Water-Based", "Rust"],
+    readingTime: "15 min"
+  },
+  {
+    title: "Corrosion in Water-Based Aerosol Cans — Part 2: Formulations & Coatings",
+    description: "A fact-based technical analysis of formulation-driven corrosion in water-based aerosol cans, including vapor-phase effects, liquid-phase corrosion, and coating failure pathways.",
+    url: "/aerosol-can-corrosion-2",
+    publishDate: "Nov 7, 2025",
+    category: "Aerosols & Gas Dosing",
+    author: "Absar Khan",
+    coverImage: "https://assets.zyrosite.com/A3QlOV94WLSaL6xE/formulation-corrosion-control-infographic-zeCQf7eDige7CGuH.jpg",
+    tags: ["Aerosols", "Corrosion", "Coatings", "Formulation", "Testing"],
+    readingTime: "15 min"
+  },
+  {
+    title: "Cosmetics and Personal Care Aerosols Manufacturing Guide",
+    description: "Complete cosmetics and personal care aerosols manufacturing guide covering deodorants, hair sprays, mousse, quality control, regulations, and contract manufacturing.",
+    url: "/cosmetic-aerosol-manufacturing",
+    publishDate: "Nov 20, 2025",
+    category: "Cosmetics & Personal Care",
+    author: "Absar Khan",
+    coverImage: "https://assets.zyrosite.com/A3QlOV94WLSaL6xE/hero-cosmetic-aerosol-can-collection-TqAhJDyndsulzoxg.png",
+    tags: ["Cosmetics", "Aerosols", "Deodorants", "Hair Care", "Manufacturing"],
+    readingTime: "14 min"
+  },
+  {
+    title: "How Aerosol Cans Work: Propellant, Pressure, Valve & Spray Dynamics Explained",
+    description: "Learn how aerosol cans work with a complete technical guide on propellants, pressure, valves, and spray dynamics. Ideal for startups, students, and manufacturers in India and globally.",
+    url: "/how-aerosol-cans-work",
+    publishDate: "Nov 5, 2025",
+    category: "Aerosols & Gas Dosing",
+    author: "Absar Khan",
+    coverImage: "https://assets.zyrosite.com/AGBzPMBJDQiwDGny/aerosol-can-cross-section-diagram-VPY1N1AooWNWTKYx.jpg",
+    tags: ["Aerosols", "Engineering", "Valves", "Propellants", "Manufacturing"],
+    readingTime: "16 min"
+  },
+  {
+    title: "Aerosol Chemistry 101: Complete Guide to Solvents, Binders, Surfactants & Additives",
+    description: "Technical guide to aerosol chemistry, solvents, binders, surfactants, active concentrates, solubility parameters, and formulation stability calculations.",
+    url: "/aerosol-chemistry-101",
+    publishDate: "Nov 9, 2025",
+    category: "Aerosols & Gas Dosing",
+    author: "Absar Khan",
+    coverImage: "https://assets.zyrosite.com/A3QlOV94WLSaL6xE/aerosol-can-cross-section-diagram-MYf4Y9ARTiNEfLSl.jpg",
+    tags: ["Aerosols", "Chemistry", "Solvents", "Surfactants", "Formulation"],
+    readingTime: "15 min"
+  },
+  {
+    title: "Types of Aerosol Systems Explained: Solution, Emulsion, Suspension & Bag-on-Valve",
+    description: "Technical guide explaining the types of aerosol systems including solution, emulsion, suspension, and bag-on-valve systems for product developers, startups, and manufacturers.",
+    url: "/types-of-aerosol-systems-explained",
+    publishDate: "Nov 10, 2025",
+    category: "Aerosols & Gas Dosing",
+    author: "Absar Khan",
+    coverImage: "https://assets.zyrosite.com/A3QlOV94WLSaL6xE/types-of-aerosol-systems-hero-L6N57rq4MndQwNYS.png",
+    tags: ["Aerosols", "Systems", "Emulsions", "Suspensions", "Bag-on-Valve"],
+    readingTime: "14 min"
+  },
+  {
+    title: "Aerosol Propellants Explained: LPG vs DME vs HFC vs N₂ vs CO₂ for Indian & Global Manufacturers",
+    description: "Deep dive into aerosol propellants: comparing LPG, DME, HFCs, Nitrogen, and Carbon Dioxide for formulations, plant setup, PESO rules, and safety in India and globally.",
+    url: "/aerosol-propellants-explained-lpg-vs-dme-vs-hfc-vs-n2-vs-co2",
+    publishDate: "Nov 12, 2025",
+    category: "Aerosols & Gas Dosing",
+    author: "Absar Khan",
+    coverImage: "https://assets.zyrosite.com/A3QlOV94WLSaL6xE/aerosol-can-cross-section-components.jpg-rgcWcHa1iiQgJsa9.png",
+    tags: ["Aerosols", "Propellants", "LPG", "DME", "Sustainability"],
+    readingTime: "18 min"
+  },
+  {
+    title: "Flash Point Explained: Why It Matters Critically in Aerosol Formulation & Safety",
+    description: "Technical guide explaining flash point in aerosol formulation, safety, testing, regulations, and compliance for manufacturers, startups, and students.",
+    url: "/flash-point-explained",
+    publishDate: "Nov 14, 2025",
+    category: "Aerosols & Gas Dosing",
+    author: "Absar Khan",
+    coverImage: "https://assets.zyrosite.com/A3QlOV94WLSaL6xE/flash-point-closed-cup-test.jpg-y3dDtEWOS1djSQZ2.png",
+    tags: ["Aerosols", "Safety", "Flash Point", "Formulation", "Testing"],
+    readingTime: "15 min"
+  },
+  {
+    title: "Aerosol Can Safety Explained: Pressure Calculations, Burst Tests & Global DOT Compliance",
+    description: "Technical, fact-based guide to aerosol can safety: pressure calculations, burst testing, DOT guidelines, and best practices for startups and manufacturers.",
+    url: "/aerosol-can-safety-explained",
+    publishDate: "Nov 16, 2025",
+    category: "Aerosols & Gas Dosing",
+    author: "Absar Khan",
+    coverImage: "https://assets.zyrosite.com/A3QlOV94WLSaL6xE/aerosol-can-safety-hero.jpg-WrmFk9oWFvFRxxCz.png",
+    tags: ["Aerosols", "Safety", "DOT Compliance", "Testing", "Pressure"],
+    readingTime: "15 min"
+  },
+  {
+    title: "Aerosol Scale-Up: From R&D to Pilot Trials and Commercial Manufacturing",
+    description: "Learn how aerosol products move from R&D to pilot trials and full commercial manufacturing. Covers propellant behavior, valve compatibility, filling-line validation, and stability testing.",
+    url: "/from-lab-to-commercial-launch",
+    publishDate: "Dec 5, 2025",
+    category: "Aerosols & Gas Dosing",
+    author: "Absar Khan",
+    coverImage: "https://assets.zyrosite.com/A3QlOV94WLSaL6xE/rd-to-pilot-to-commercial-manufacturing-process-ja70rdtisjlefsbq-3wicMDl4Dh8OiSym.png",
+    tags: ["Aerosols", "Scale-Up", "R&D", "Manufacturing", "Pilot Trials"],
+    readingTime: "12 min"
+  },
+  {
+    title: "Aerosol Actuators 101: Design, Spray Patterns, and Industrial Applications",
+    description: "Aerosol Actuators 101 – a technical guide covering actuator design, orifice engineering, spray patterns, and industrial applications for aerosol manufacturers, startups, and engineers.",
+    url: "/aerosol-actuators-101",
+    publishDate: "Dec 10, 2025",
+    category: "Aerosols & Gas Dosing",
+    author: "Absar Khan",
+    coverImage: "https://assets.zyrosite.com/A3QlOV94WLSaL6xE/aerosol-system-actuator-diagram-ymMWIatoZDICU7qb.png",
+    tags: ["Aerosols", "Actuators", "Design", "Spray Patterns", "Engineering"],
+    readingTime: "14 min"
+  },
+  {
+    title: "How Contract Aerosol Filling Works | Complete Guide for Startups & Brands",
+    description: "A technically accurate, end-to-end guide explaining how contract aerosol filling works, including processes, costs, compliance, risks, and manufacturing responsibilities for startups and brands.",
+    url: "/how-contract-aerosol-filling-works",
+    publishDate: "Dec 15, 2025",
+    category: "Aerosols & Gas Dosing",
+    author: "Absar Khan",
+    coverImage: "https://assets.zyrosite.com/A3QlOV94WLSaL6xE/contract-aerosol-filling-hero-GmTeiESImDjNdot8.png",
+    tags: ["Aerosols", "Contract Filling", "Startups", "Manufacturing", "Supply Chain"],
+    readingTime: "13 min"
+  },
+  {
+    title: "Aerosol Filling Line Explained: Crimping, Gassing, Weight Check, Leak Detection",
+    description: "A technical guide for manufacturers on aerosol filling lines. Master the 4 stages: crimping, propellant gassing, weight checking, and electronic leak detection.",
+    url: "/aerosol-crimping-gassing-leak-detection-explained",
+    publishDate: "Dec 22, 2024",
+    category: "Aerosols & Gas Dosing",
+    author: "Absar Khan",
+    coverImage: "https://assets.zyrosite.com/A3QlOV94WLSaL6xE/aeorsol-filling-line-fb8suiuS4FZtWP5q.png",
+    tags: ["Aerosols", "Filling Line", "Crimping", "Gassing", "Quality Control"],
+    readingTime: "10 min"
+  },
+  {
+    title: "Aerosol Can Manufacturing Explained: How Aluminium and Tinplate Aerosol Cans Are Made",
+    description: "Discover the detailed manufacturing process of aluminium and tinplate aerosol cans, including impact extrusion, sheet forming, coatings, testing, and filling line integration. Essential guide for product developers and manufacturers.",
+    url: "/how-aerosol-cans-are-manufatured",
+    publishDate: "Dec 27, 2025",
+    category: "Aerosols & Gas Dosing",
+    author: "Absar Khan",
+    coverImage: "https://assets.zyrosite.com/A3QlOV94WLSaL6xE/aluminium-and-tin-plate-can-cut-out-82pM16gKJYuqDIMg.jpg",
+    tags: ["Aerosols", "Can Manufacturing", "Aluminium", "Tinplate", "Metallurgy"],
+    readingTime: "16 min"
+  },
+  {
+    title: "Aerosol Valve Gasket Materials Explained: Chemistry, Compatibility & Failure Prevention",
+    description: "Explore aerosol valve gasket materials: chemistry, compatibility, and failure prevention. Essential guide for startups, students, and developers to ensure reliable aerosol products.",
+    url: "/aerosol-valve-gasket-explained",
+    publishDate: "Jan 1, 2025",
+    category: "Aerosols & Gas Dosing",
+    author: "Absar Khan",
+    coverImage: "https://assets.zyrosite.com/A3QlOV94WLSaL6xE/aerosol-valve-gasket-cross-section-t5Mg7GX97TASNqRU.png",
+    tags: ["Aerosols", "Valves", "Gaskets", "Compatibility", "Elastomers"],
+    readingTime: "15 min"
+  },
+  {
+    title: "Aluminium vs Tinplate Aerosol Cans: Cost, Performance & Manufacturing Comparison",
+    description: "A technical comparison of aluminium vs tinplate aerosol cans covering manufacturing processes, cost structures, pressure ratings, and corrosion resistance for engineers and startups.",
+    url: "/aluminium-vs-tinplate-aerosol-cans",
+    publishDate: "Jan 4, 2026",
+    category: "Aerosols & Gas Dosing",
+    author: "Absar Khan",
+    coverImage: "https://assets.zyrosite.com/A3QlOV94WLSaL6xE/aluminium-vs-tinplate-aerosol-cans-eEMtHFRNf1wXioTs.png",
+    tags: ["Aerosols", "Aluminium", "Tinplate", "Cost Comparison", "Packaging"],
+    readingTime: "16 min"
+  },
+  {
+    title: "Propellant Influence on Aerosol Performance: LPG vs DME vs HFC vs CO₂ vs N₂",
+    description: "Technical guide explaining how LPG, DME, HFC, CO₂, and N₂ propellants influence aerosol performance through vapor pressure, spray force, atomization physics, and solvency behavior.",
+    url: "/propellant-influence-on-aerosol-performance",
+    publishDate: "Jan 10, 2026",
+    category: "Aerosols & Gas Dosing",
+    author: "Absar Khan",
+    coverImage: "/images/blog/propellant-influence-on-aerosol-performance-hero.jpg",
+    tags: ["Aerosols", "Propellants", "LPG", "DME", "Performance"],
+    readingTime: "13 min"
+  },
+  {
+    title: "Why Aerosol Cans Leak – Common Causes, Manufacturing Faults & Proven Fixes",
+    description: "Discover why aerosol cans leak, from propellant pressure profiles and valve failures to crimping defects. Expert technical guide on causes, detection, and prevention strategies for manufacturers.",
+    url: "/why-do-aerosol-cans-leak",
+    publishDate: "Oct 27, 2023",
+    category: "Aerosols & Gas Dosing",
+    author: "Absar Khan",
+    coverImage: "https://assets.zyrosite.com/A3QlOV94WLSaL6xE/aerosol-valve-gasket-crimp-pressure-diagram.-VPaJbf8P5H1HbUxA.png",
+    tags: ["Aerosols", "Leakage", "Quality Control", "Defects", "Crimp Seal"],
+    readingTime: "18 min"
+  },
+  {
+    title: "Cosmetic Aerosol Hair Products Explained: Hair Sprays, Color Sprays, Shampoos & Shine Systems",
+    description: "Technical guide to cosmetic aerosol hair products: formulation chemistry, hair sprays, dry shampoos, and temporary colors. Expert insights on manufacturing and performance.",
+    url: "/cosmetic-aerosol-hair-products",
+    publishDate: "Apr 10, 2026",
+    category: "Cosmetics & Personal Care",
+    author: "Absar Khan",
+    coverImage: "https://assets.zyrosite.com/A3QlOV94WLSaL6xE/aerosol-system-actuator-diagram-ymMWIatoZDICU7qb.png",
+    tags: ["Cosmetics", "Hair Care", "Formulation", "Hair Spray", "Manufacturing"],
+    readingTime: "15 min"
+  },
+  {
+    title: "From Lab to Market: Aerosol R&D vs Pilot Scale vs Commercial Manufacturing",
+    description: "From lab to market explained for aerosols. A technical guide on aerosol R&D, pilot scale filling, and commercial manufacturing differences.",
+    url: "/from-lab-to-market",
+    publishDate: "Apr 18, 2026",
+    category: "Aerosols & Gas Dosing",
+    author: "Absar Khan",
+    coverImage: "https://assets.zyrosite.com/AGBzPMBJDQiwDGny/rd-to-pilot-to-commercial-manufacturing-process-jA70RDTISJlefSbQ.png",
+    tags: ["Scale-Up", "Manufacturing", "R&D", "Pilot trials", "Aerosols"],
+    readingTime: "16 min"
+  },
+  {
+    title: "Personal Care Aerosols Explained: Deodorant & Body Spray Systems",
+    description: "Personal care aerosols—particularly deodorants and body sprays—represent one of the most technically demanding yet commercially scalable product categories in the FMCG sector.",
+    url: "/personal-care-aerosol-deoderant-and-body-sprays",
+    publishDate: "Apr 20, 2026",
+    category: "Cosmetics & Personal Care",
+    author: "Absar Khan",
+    coverImage: "https://assets.zyrosite.com/A3QlOV94WLSaL6xE/aerosol-can-cross-section-diagram-MYf4Y9ARTiNEfLSl.jpg",
+    tags: ["Cosmetics", "Deodorants", "Body Spray", "Personal Care", "FMCG"],
+    readingTime: "18 min"
+  },
+  {
+    title: "Chain Lubricant Aerosols: Science of Chemistry, Adhesion & Wear Protection | Global Aerosols",
+    description: "Technical deep-dive into the chemistry of aerosol chain lubricants. Understand adhesion, wear protection, tackifiers, and industrial formulation science.",
+    url: "/chain-lubricant-aerosols",
+    publishDate: "Apr 2, 2026",
+    category: "Lubricants & Tribology",
+    author: "Absar Khan",
+    coverImage: "https://assets.zyrosite.com/A3QlOV94WLSaL6xE/lubricant_application-s4lu29vZEgdD8Dxv.png",
+    tags: ["Lubricants", "Tribology", "Adhesion", "Wear Protection", "Aerosols"],
+    readingTime: "14 min"
+  },
+  {
+    title: "Disinfectant Aerosols: Engineering for Efficacy, Kill Mechanisms, and Regulatory Compliance | Global Aerosols",
+    description: "A comprehensive technical guide on disinfectant aerosol formulation, kill mechanisms, surface coverage engineering, and global regulatory compliance (EPA & CDSCO). Learn how aerosolized antimicrobials achieve 99.999% efficacy.",
+    url: "/disinfectant-aerosols",
+    publishDate: "Apr 12, 2026",
+    category: "Household & Industrial Cleaners",
+    author: "Absar Khan",
+    coverImage: "https://assets.zyrosite.com/A3QlOV94WLSaL6xE/disinfectant-aerosol-spray-pattern-JsvPViQlXd9NWDrf.png",
+    tags: ["Disinfectants", "Antimicrobials", "Efficacy", "Regulatory", "Cleaners"],
+    readingTime: "15 min"
+  },
+  {
+    title: "The Startup’s Guide to Aerosol Documentation: Understanding SDS, TDS & COA | Global Aerosols",
+    description: "A comprehensive technical guide for startups and entrepreneurs on mastering SDS, TDS, and COA for aerosol products. Ensure safety, quality, and regulatory compliance.",
+    url: "/understanding-sds-tds-and-coa-for-aerosol-products",
+    publishDate: "Apr 25, 2026",
+    category: "Aerosols & Gas Dosing",
+    author: "Absar Khan",
+    coverImage: "https://assets.zyrosite.com/A3QlOV94WLSaL6xE/aerosol-documentation-guide-main-4sQmTfoYN6JxFx58.png",
+    tags: ["Documentation", "SDS", "TDS", "COA", "Compliance"],
+    readingTime: "13 min"
+  },
+  {
+    title: "The Science of Scent: Understanding Aerosol Air Freshener Dispersion & Odour Control | Global Aerosols",
+    description: "A technical guide to aerosol air freshener dispersion science, odour control technology, and manufacturing best practices. Learn how atomization and molecular neutralization drive performance.",
+    url: "/aerosol-air-freshener-dispersion-and-odour-control",
+    publishDate: "May 1, 2026",
+    category: "Household & Industrial Cleaners",
+    author: "Absar Khan",
+    coverImage: "https://assets.zyrosite.com/A3QlOV94WLSaL6xE/hero-aerosol-air-freshener-dispersion-AJKOZaVRrJrylyQl.png",
+    tags: ["Household", "Air Care", "Dispersion", "Odour Control", "Aerosols"],
+    readingTime: "12 min"
+  },
+  {
+    title: "Aerosol Contact Cleaners: The Ultimate Guide to Dielectric Strength & Safety | Global Aerosols",
+    description: "Master the science of Aerosol Contact Cleaners. A deep dive into dielectric strength, evaporation kinetics, and safety for startups and industrial engineers.",
+    url: "/aerosol-contact-cleaners",
+    publishDate: "May 4, 2026",
+    category: "Household & Industrial Cleaners",
+    author: "Absar Khan",
+    coverImage: "https://assets.zyrosite.com/A3QlOV94WLSaL6xE/aerosol-contact-cleaner-circuit-board-7XuiFr1DrnJUV37C.png",
+    tags: ["Cleaners", "Electronics", "Dielectric", "Solvents", "Aerosols"],
+    readingTime: "13 min"
+  },
+  {
+    title: "The Ultimate Guide to Automotive Aerosol Products: Manufacturing, Science, and Market Strategy | Global Aerosols",
+    description: "A comprehensive technical and business guide to automotive aerosol products. Explore manufacturing processes, formulation science, and market opportunities for startups and entrepreneurs.",
+    url: "/automotive-aerosol-products",
+    publishDate: "May 8, 2026",
+    category: "Household & Industrial Cleaners",
+    author: "Absar Khan",
+    coverImage: "https://assets.zyrosite.com/A3QlOV94WLSaL6xE/automotive-aerosol-products-guide-hero-HbNEiLmnJ5HBWWYW.png",
+    tags: ["Automotive", "Lubricants", "Cleaners", "Manufacturing", "Aerosols"],
+    readingTime: "15 min"
+  },
+  {
+    title: "Aerosol vs Pump vs Trigger Spray: A Technical Guide for Product Founders | Global Aerosols",
+    description: "A comprehensive technical comparison of aerosol, pump spray, and trigger spray systems for product founders and startups. Learn about atomization, manufacturing costs, and sustainability.",
+    url: "/aerosol-vs-pump-spray-vs-trigger-spray-technical-comparison",
+    publishDate: "May 10, 2026",
+    category: "Aerosols & Gas Dosing",
+    author: "Absar Khan",
+    coverImage: "https://assets.zyrosite.com/A3QlOV94WLSaL6xE/aerosol-valve-technical-mechanism-pQrl5t4PjtCojFas.png",
+    tags: ["Engineering", "Packaging", "Atomization", "Cost Analysis", "Aerosols"],
+    readingTime: "14 min"
+  },
+  {
+    title: "Aerosol Sunscreen Production: A Complete Step-by-Step Technical Guide for Product Founders | Global Aerosols",
+    description: "A comprehensive technical guide to aerosol sunscreen manufacturing for startups and product founders. Explore formulation considerations, propellant dynamics, bag-on-valve (BoV) technology, and scale-up strategies.",
+    url: "/aerosol-sunscreen-spray",
+    publishDate: "May 15, 2026",
+    category: "Cosmetics & Personal Care",
+    author: "Absar Khan",
+    coverImage: "https://assets.zyrosite.com/A3QlOV94WLSaL6xE/bag-on-valve-sunscreen-technology-PeigpnIo3ClRNakW.webp",
+    tags: ["Cosmetics", "Sunscreen", "Bag-on-Valve", "Formulation", "Scale-Up"],
+    readingTime: "16 min"
+  }
+];
+
+const categories = ["All", "Paints & Coatings", "Lubricants & Tribology", "Lubricants", "Household & Industrial Cleaners", "Industrial Cleaners", "Household", "Cosmetics & Personal Care", "Adhesives & Sealants", "Adhesives & Polymer Care", "Pharmaceuticals & Healthcare", "Aerosols & Gas Dosing", "Construction Chemicals", "Agrochemicals", "Green Chemistry", "MaaS & Strategy", "Formulation Chemistry"];
+
+const listPageSchema = {
+  "@context": "https://schema.org",
+  "@type": "WebPage",
+  "name": "Global Formulation Insights & Articles",
+  "url": "https://www.globalformulation.com/blog",
+  "description": "Insights, technical guides, formulations, and advanced research in industrial cleaners, aerosols, and green chemical engineering."
+};
+---
+
+<Layout
+  title="Industrial Chemical Formulations & Technology Blog | Global Formulation"
+  description="Explore technical insights, chemical formulation guides, aerosol technologies, and sustainable chemical engineering articles from specialist consultant Absar Khan."
+  canonical="https://www.globalformulation.com/blog/"
+  ogImage="https://assets.zyrosite.com/AGBzPMBJDQiwDGny/industrial-cleaners-product-range-3WfzvDb7jHzmb5rd.jpg"
+  schemaJson={listPageSchema}
+>
+
+  <!-- ── Hero ── -->
+  <section class="blog-hero">
+    <div class="blog-hero-inner">
+      <span class="blog-eyebrow">Research &amp; Insights Hub</span>
+      <h1 class="blog-title">
+        Chemical Formulation<br class="br-desk" /> &amp; Technology Insights
+      </h1>
+      <p class="blog-subtitle">
+        Deep-dives into surfactant science, industrial process engineering, aerosol gas dosing,
+        and GHS-compliant green formulation techniques — written by practising specialists.
+      </p>
+      <div class="blog-stats">
+        <div class="stat"><span class="stat-n">{allPosts.length}+</span><span class="stat-l">Articles</span></div>
+        <div class="stat-div"></div>
+        <div class="stat"><span class="stat-n">15+</span><span class="stat-l">Industries</span></div>
+        <div class="stat-div"></div>
+        <div class="stat"><span class="stat-n">Expert</span><span class="stat-l">Authors</span></div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ── Body: sidebar + grid ── -->
+  <div class="blog-body">
+    <div class="blog-body-inner">
+
+      <!-- ── Left sidebar ── -->
+      <aside class="blog-sidebar">
+
+        <!-- Search -->
+        <div class="sidebar-search-wrap">
+          <svg class="search-ico" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5">
+            <path stroke-linecap="round" stroke-linejoin="round" d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z"/>
+          </svg>
+          <input
+            type="text"
+            id="blog-search-input"
+            placeholder="Search articles…"
+            autocomplete="off"
+          />
+        </div>
+
+        <p class="sidebar-label">Categories</p>
+
+        <!-- Category filters — vertically stacked -->
+        <div id="category-filter-container">
+          {categories.map((cat) => (
+            <button
+              class={`fpill${cat === 'All' ? ' fpill-active' : ''}`}
+              data-category={cat}
+            >{cat}</button>
+          ))}
+        </div>
+
+      </aside>
+
+      <!-- ── Main grid ── -->
+      <main class="blog-main">
+
+        <p class="results-count" id="results-count">{allPosts.length} articles</p>
+
+        <div id="no-results-message" style="display:none;" class="no-results">
+          No articles matched your search. Try a different keyword or reset the filter.
+        </div>
+
+        <div id="blogs-grid" class="blog-grid">
+          {allPosts.map((post, idx) => (
+            <a
+              href={post.url}
+              class="bcard"
+              data-category={post.category}
+              data-tags={post.tags.join(',')}
+              data-title={post.title.toLowerCase()}
+              data-description={post.description.toLowerCase()}
+            >
+              <!-- Image -->
+              <div class="bcard-img-wrap">
+                <img
+                  src={post.coverImage}
+                  alt={post.title}
+                  loading={idx < 6 ? "eager" : "lazy"}
+                  decoding="async"
+                />
+                <span class="bcard-cat">{post.category}</span>
+              </div>
+
+              <!-- Body -->
+              <div class="bcard-body">
+                <div class="bcard-meta">
+                  <span>{post.publishDate}</span>
+                  <span class="meta-dot"></span>
+                  <span>{post.readingTime} read</span>
+                </div>
+                <h2 class="bcard-title">{post.title}</h2>
+                <p class="bcard-desc">{post.description}</p>
+                <div class="bcard-footer">
+                  <div class="bcard-tags">
+                    {post.tags.slice(0, 3).map(tag => (
+                      <span class="btag">#{tag}</span>
+                    ))}
+                  </div>
+                  <span class="bcard-read">
+                    Read
+                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" width="13" height="13">
+                      <path stroke-linecap="round" stroke-linejoin="round" d="M9 5l7 7-7 7"/>
+                    </svg>
+                  </span>
+                </div>
+              </div>
+            </a>
+          ))}
+        </div>
+
+      </main>
+
+    </div>
+  </div>
+
+</Layout>
+
+<style>
+  /* ── HERO ── */
+  .blog-hero {
+    background:
+      radial-gradient(ellipse 80% 60% at 50% 0%, rgba(9, 104, 229,0.07) 0%, transparent 65%),
+      #f8fafc;
+    padding: 130px max(6%, env(safe-area-inset-left)) 80px;
+    box-sizing: border-box;
+    border-bottom: 1px solid #e2e8f0;
+  }
+  .blog-hero-inner {
+    max-width: 800px;
+    margin: 0 auto;
+    text-align: center;
+  }
+  .blog-eyebrow {
+    display: inline-block;
+    font-size: 0.72rem;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 4px;
+    color: #0968e5;
+    margin-bottom: 20px;
+  }
+  .blog-title {
+    font-size: clamp(2.4rem, 5.5vw, 4.2rem);
+    font-weight: 800;
+    color: #0f172a;
+    line-height: 1.1;
+    letter-spacing: -0.025em;
+    margin: 0 0 20px 0;
+    font-family: 'Outfit', sans-serif;
+  }
+  .br-desk { display: none; }
+  @media (min-width: 640px) { .br-desk { display: inline; } }
+  .blog-subtitle {
+    font-size: clamp(1rem, 1.4vw, 1.1rem);
+    color: #64748b;
+    line-height: 1.7;
+    max-width: 640px;
+    margin: 0 auto 36px;
+  }
+  .blog-stats {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 28px;
+  }
+  .stat { display: flex; flex-direction: column; align-items: center; gap: 2px; }
+  .stat-n { font-size: 1.6rem; font-weight: 800; color: #0f172a; font-family: 'Outfit', sans-serif; line-height: 1; }
+  .stat-l { font-size: 0.72rem; color: #94a3b8; text-transform: uppercase; letter-spacing: 2px; font-weight: 600; }
+  .stat-div { width: 1px; height: 32px; background: #e2e8f0; }
+
+  /* ── BODY LAYOUT ── */
+  .blog-body {
+    background: #f1f5f9;
+    padding: 48px max(5%, env(safe-area-inset-right)) 100px;
+    box-sizing: border-box;
+  }
+  .blog-body-inner {
+    max-width: 1440px;
+    margin: 0 auto;
+    display: grid;
+    grid-template-columns: 224px 1fr;
+    gap: 36px;
+    align-items: start;
+  }
+
+  /* ── SIDEBAR ── */
+  .blog-sidebar {
+    position: sticky;
+    top: 84px;
+    background: #ffffff;
+    border: 1px solid #e2e8f0;
+    border-radius: 16px;
+    padding: 20px 16px 24px;
+    display: flex;
+    flex-direction: column;
+    gap: 2px;
+  }
+
+  /* Search inside sidebar */
+  .sidebar-search-wrap {
+    position: relative;
+    margin-bottom: 16px;
+  }
+  .search-ico {
+    position: absolute;
+    left: 11px;
+    top: 50%;
+    transform: translateY(-50%);
+    width: 14px; height: 14px;
+    color: #94a3b8;
+    pointer-events: none;
+  }
+  #blog-search-input {
+    width: 100%;
+    box-sizing: border-box;
+    padding: 9px 12px 9px 34px;
+    border-radius: 10px;
+    border: 1px solid #e2e8f0;
+    background: #f8fafc;
+    color: #0f172a;
+    font-size: 0.85rem;
+    outline: none;
+    font-family: inherit;
+    transition: border-color 0.2s ease, box-shadow 0.2s ease;
+  }
+  #blog-search-input::placeholder { color: #94a3b8; }
+  #blog-search-input:focus {
+    border-color: #0968e5;
+    box-shadow: 0 0 0 3px rgba(9, 104, 229,0.1);
+    background: #fff;
+  }
+
+  /* Sidebar section label */
+  .sidebar-label {
+    font-size: 0.68rem;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 3px;
+    color: #94a3b8;
+    margin: 6px 0 8px 4px;
+    padding: 0;
+  }
+
+  /* Category filter buttons */
+  .fpill {
+    display: block;
+    width: 100%;
+    text-align: left;
+    padding: 8px 10px;
+    border-radius: 8px;
+    border: none;
+    background: transparent;
+    color: #475569;
+    font-size: 0.85rem;
+    font-weight: 500;
+    cursor: pointer;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    transition: background 0.15s ease, color 0.15s ease;
+    font-family: inherit;
+    line-height: 1.4;
+  }
+  .fpill:hover { background: #eff6ff; color: #0968e5; }
+  .fpill-active {
+    background: #eff6ff;
+    color: #0968e5;
+    font-weight: 700;
+    border-left: 3px solid #0968e5;
+    padding-left: 7px;
+  }
+
+  /* ── MAIN ── */
+  .blog-main {
+    min-height: 60vh;
+  }
+  .results-count {
+    font-size: 0.82rem;
+    color: #94a3b8;
+    font-weight: 600;
+    letter-spacing: 0.5px;
+    text-transform: uppercase;
+    margin: 0 0 24px 0;
+  }
+  .no-results {
+    text-align: center;
+    padding: 80px 24px;
+    border: 1px dashed #cbd5e1;
+    border-radius: 16px;
+    color: #94a3b8;
+    font-size: 1rem;
+    background: #fff;
+  }
+
+  /* ── GRID ── */
+  .blog-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 22px;
+  }
+  @media (max-width: 1280px) { .blog-grid { grid-template-columns: repeat(2, 1fr); } }
+  @media (max-width: 640px)  { .blog-grid { grid-template-columns: 1fr; gap: 16px; } }
+
+  /* ── CARD ── */
+  .bcard {
+    display: flex;
+    flex-direction: column;
+    background: #ffffff;
+    border: 1px solid #e2e8f0;
+    border-radius: 16px;
+    overflow: hidden;
+    text-decoration: none;
+    color: inherit;
+    transition: border-color 0.3s ease, transform 0.3s ease, box-shadow 0.3s ease;
+    box-shadow: 0 1px 4px rgba(0,0,0,0.05);
+  }
+  .bcard:hover {
+    border-color: #93c5fd;
+    transform: translateY(-4px);
+    box-shadow: 0 12px 40px rgba(9, 104, 229,0.12);
+  }
+
+  /* Image */
+  .bcard-img-wrap {
+    position: relative;
+    aspect-ratio: 16 / 9;
+    overflow: hidden;
+    flex-shrink: 0;
+  }
+  .bcard-img-wrap img {
+    width: 100%; height: 100%;
+    object-fit: cover;
+    display: block;
+    transition: transform 0.5s ease;
+  }
+  .bcard:hover .bcard-img-wrap img { transform: scale(1.05); }
+
+  .bcard-cat {
+    position: absolute;
+    top: 12px; left: 12px;
+    background: rgba(255,255,255,0.92);
+    color: #0968e5;
+    font-size: 0.7rem;
+    font-weight: 700;
+    letter-spacing: 0.04em;
+    text-transform: uppercase;
+    padding: 4px 10px;
+    border-radius: 9999px;
+    border: 1px solid rgba(9, 104, 229,0.2);
+    backdrop-filter: blur(6px);
+  }
+
+  /* Body */
+  .bcard-body {
+    padding: 22px 22px 18px;
+    display: flex;
+    flex-direction: column;
+    flex: 1;
+    gap: 10px;
+  }
+  .bcard-meta {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    font-size: 0.77rem;
+    color: #94a3b8;
+    font-weight: 500;
+  }
+  .meta-dot {
+    width: 3px; height: 3px;
+    border-radius: 50%;
+    background: #cbd5e1;
+    flex-shrink: 0;
+  }
+  .bcard-title {
+    font-size: clamp(1rem, 1.4vw, 1.15rem);
+    font-weight: 700;
+    color: #1e293b;
+    line-height: 1.35;
+    margin: 0;
+    font-family: 'Outfit', sans-serif;
+    transition: color 0.2s ease;
+  }
+  .bcard:hover .bcard-title { color: #0968e5; }
+  .bcard-desc {
+    font-size: 0.875rem;
+    color: #64748b;
+    line-height: 1.6;
+    margin: 0;
+    display: -webkit-box;
+    -webkit-line-clamp: 2;
+    -webkit-box-orient: vertical;
+    overflow: hidden;
+  }
+  .bcard-footer {
+    margin-top: auto;
+    padding-top: 14px;
+    border-top: 1px solid #f1f5f9;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 12px;
+  }
+  .bcard-tags { display: flex; gap: 6px; flex-wrap: wrap; }
+  .btag {
+    font-size: 0.7rem;
+    color: #64748b;
+    background: #f1f5f9;
+    border: 1px solid #e2e8f0;
+    padding: 2px 8px;
+    border-radius: 4px;
+    font-weight: 500;
+  }
+  .bcard-read {
+    display: flex;
+    align-items: center;
+    gap: 4px;
+    font-size: 0.8rem;
+    font-weight: 700;
+    color: #0968e5;
+    white-space: nowrap;
+    flex-shrink: 0;
+    transition: gap 0.2s ease;
+  }
+  .bcard:hover .bcard-read { gap: 7px; }
+
+  /* ── Responsive ── */
+  @media (max-width: 900px) {
+    .blog-body-inner {
+      grid-template-columns: 1fr;
+    }
+    .blog-sidebar {
+      position: static;
+      /* On mobile: hide vertical list, show as horizontal scroll */
+      padding: 16px;
+    }
+    #category-filter-container {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 6px;
+    }
+    .fpill {
+      display: inline-block;
+      width: auto;
+      white-space: nowrap;
+      padding: 6px 14px;
+      border-radius: 9999px;
+      border: 1px solid #e2e8f0;
+      background: #f8fafc;
+      overflow: visible;
+      text-overflow: unset;
+      border-left: none;
+    }
+    .fpill-active {
+      background: #0968e5;
+      color: #fff;
+      border-color: #0968e5;
+      border-left: none;
+      padding-left: 14px;
+    }
+    .blog-hero { padding: 110px 22px 60px; }
+    .blog-body { padding: 28px 20px 72px; }
+  }
+</style>
+
+<script>
+  document.addEventListener('DOMContentLoaded', () => {
+    const searchInput   = document.getElementById('blog-search-input') as HTMLInputElement;
+    const filterButtons = document.querySelectorAll('.fpill');
+    const blogCards     = document.querySelectorAll('.bcard');
+    const noResults     = document.getElementById('no-results-message');
+    const blogsGrid     = document.getElementById('blogs-grid');
+    const countEl       = document.getElementById('results-count');
+
+    let activeCategory = 'All';
+    let searchQuery    = '';
+
+    function applyFilter() {
+      blogsGrid && (blogsGrid.style.opacity = '0.5');
+      setTimeout(() => {
+        let visible = 0;
+        blogCards.forEach((node) => {
+          const card = node as HTMLElement;
+          const cat   = card.dataset.category ?? '';
+          const title = card.dataset.title ?? '';
+          const desc  = card.dataset.description ?? '';
+          const tags  = card.dataset.tags ?? '';
+          const catOk = activeCategory === 'All' || cat === activeCategory;
+          const srchOk = !searchQuery || title.includes(searchQuery) || desc.includes(searchQuery) || tags.toLowerCase().includes(searchQuery);
+          const show = catOk && srchOk;
+          (card as HTMLElement).style.display = show ? 'flex' : 'none';
+          if (show) visible++;
+        });
+
+        if (noResults && blogsGrid) {
+          if (visible === 0) {
+            noResults.style.display = 'block';
+            blogsGrid.style.display = 'none';
+          } else {
+            noResults.style.display = 'none';
+            blogsGrid.style.display = 'grid';
+          }
+        }
+        if (countEl) countEl.textContent = `${visible} article${visible !== 1 ? 's' : ''}`;
+        blogsGrid && (blogsGrid.style.opacity = '1');
+      }, 120);
+    }
+
+    filterButtons.forEach((btn) => {
+      btn.addEventListener('click', () => {
+        filterButtons.forEach(b => b.classList.remove('fpill-active'));
+        btn.classList.add('fpill-active');
+        activeCategory = (btn as HTMLElement).dataset.category ?? 'All';
+        applyFilter();
+      });
+    });
+
+    searchInput?.addEventListener('input', (e) => {
+      searchQuery = (e.target as HTMLInputElement).value.trim().toLowerCase();
+      applyFilter();
+    });
+  });
+</script>

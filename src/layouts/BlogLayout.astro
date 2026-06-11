@@ -1,0 +1,193 @@
+---
+import '../styles/global.css';
+import Navbar from '../lc/components/Navbar.astro';
+import Footer from '../lc/components/Footer.astro';
+import SmoothScroll from '../lc/components/SmoothScroll.astro';
+
+interface Props {
+  title?: string;
+  description?: string;
+  canonical?: string;
+  ogImage?: string;
+  ogType?: string;
+  schemaJson?: any;
+}
+
+const {
+  title = 'Global Formulation - Industrial & Chemical Product R&D Specialists',
+  description = 'Get expert R&D, chemical formulations, aerosol consulting, and turnkey manufacturing engineering from industrial specialist Absar Khan and the Global Formulation team.',
+  canonical = Astro.url.href,
+  ogImage = 'https://www.globalformulation.com/og-default.jpg',
+  ogType = 'website',
+  schemaJson,
+} = Astro.props;
+
+const rawCanonical = canonical.startsWith('http') ? canonical : `https://www.globalformulation.com${canonical}`;
+const cleanCanonical = (() => {
+  try {
+    const u = new URL(rawCanonical);
+    if (!u.pathname.endsWith('/') && !u.pathname.split('/').pop()?.includes('.')) {
+      u.pathname += '/';
+    }
+    return u.toString();
+  } catch {
+    return rawCanonical;
+  }
+})();
+---
+
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="icon" type="image/svg+xml" href="/favicon.svg?v=2" />
+    <meta name="generator" content={Astro.generator} />
+
+    <title>{title}</title>
+    <meta name="title" content={title} />
+    <meta name="description" content={description} />
+    <link rel="canonical" href={cleanCanonical} />
+
+    <meta name="robots" content="index, follow" />
+    <meta http-equiv="X-Content-Type-Options" content="nosniff" />
+    <meta name="referrer" content="strict-origin-when-cross-origin" />
+
+    <link rel="alternate" hreflang="en" href={cleanCanonical} />
+    <link rel="alternate" hreflang="x-default" href={cleanCanonical} />
+
+    <meta property="og:type" content={ogType} />
+    <meta property="og:url" content={cleanCanonical} />
+    <meta property="og:title" content={title} />
+    <meta property="og:description" content={description} />
+    <meta property="og:image" content={ogImage} />
+    <meta property="og:site_name" content="Global Formulation" />
+
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta name="twitter:url" content={cleanCanonical} />
+    <meta name="twitter:title" content={title} />
+    <meta name="twitter:description" content={description} />
+    <meta name="twitter:image" content={ogImage} />
+
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+
+    {schemaJson && (
+      <script type="application/ld+json" set:html={JSON.stringify(schemaJson)} />
+    )}
+  </head>
+  <body>
+    <SmoothScroll />
+    <Navbar />
+
+    <div class="content-wrapper">
+      <slot />
+    </div>
+
+    <Footer />
+
+    <script is:inline>
+      (function() {
+        const CDN_PREFIX = 'https://cdn.globalformulation.com/';
+        const STATIC_CATEGORIES = ['home', 'industrial', 'auto', 'cosmetics', 'paints', 'arts', 'nav'];
+
+        function getFallbackSrc(src) {
+          if (!src || !src.startsWith(CDN_PREFIX)) return src;
+          const cleanPath = src.substring(CDN_PREFIX.length);
+          const segments = cleanPath.split('/');
+          if (segments.length === 3) {
+            const category = segments[1];
+            const filename = segments[2];
+            if (STATIC_CATEGORIES.indexOf(category) !== -1) {
+              return '/' + cleanPath;
+            } else {
+              return '/images/blog/' + filename;
+            }
+          }
+          return '/' + cleanPath;
+        }
+
+        // Check if CDN has failed in this or previous sessions
+        let cdnFailed = false;
+        try {
+          cdnFailed = localStorage.getItem('r2_cdn_failed') === 'true';
+        } catch (e) {}
+
+        function handleImageError(img) {
+          if (img.src && img.src.startsWith(CDN_PREFIX)) {
+            const fallback = getFallbackSrc(img.src);
+            if (fallback !== img.src) {
+              img.src = fallback;
+              if (!cdnFailed) {
+                cdnFailed = true;
+                try {
+                  localStorage.setItem('r2_cdn_failed', 'true');
+                } catch (e) {}
+              }
+            }
+          }
+        }
+
+        // Listen for image load errors globally (using capture phase)
+        window.addEventListener('error', function(e) {
+          if (e && e.target && e.target.tagName === 'IMG') {
+            handleImageError(e.target);
+          }
+        }, true);
+
+        // Scan and rewrite images and background styles
+        function scanAndRewrite() {
+          // 1. Rewrite <img> tags
+          document.querySelectorAll('img').forEach(function(img) {
+            if (img.src && img.src.startsWith(CDN_PREFIX)) {
+              img.src = getFallbackSrc(img.src);
+            }
+          });
+
+          // 2. Rewrite background images
+          document.querySelectorAll('[style*="' + CDN_PREFIX + '"]').forEach(function(el) {
+            const style = el.getAttribute('style') || '';
+            if (style.indexOf(CDN_PREFIX) !== -1) {
+              const match = style.match(/url\(['"]?(https:\/\/cdn\.globalformulation\.com\/[^'")]+)['"]?\)/);
+              if (match && match[1]) {
+                const originalUrl = match[1];
+                const fallbackUrl = getFallbackSrc(originalUrl);
+                if (fallbackUrl !== originalUrl) {
+                  el.style.backgroundImage = 'url("' + fallbackUrl + '")';
+                }
+              }
+            }
+          });
+        }
+
+        // If CDN already marked as failed, rewrite immediately to prevent flash/delay
+        if (cdnFailed) {
+          scanAndRewrite();
+        }
+
+        // Set up periodic scanning and DOM-ready triggers
+        document.addEventListener('DOMContentLoaded', scanAndRewrite);
+        window.addEventListener('load', scanAndRewrite);
+        
+        // Use MutationObserver for high-performance reactive scanning
+        if (window.MutationObserver) {
+          const observer = new MutationObserver(scanAndRewrite);
+          observer.observe(document.documentElement, {
+            childList: true,
+            subtree: true,
+            attributes: true,
+            attributeFilter: ['style', 'src']
+          });
+        } else {
+          setInterval(scanAndRewrite, 300);
+        }
+      })();
+    </script>
+  </body>
+</html>
+
+<style>
+  :global(.content-wrapper) {
+    padding-top: 88px;
+  }
+</style>

@@ -1,0 +1,298 @@
+---
+const images = [
+  "https://cdn.globalformulation.com/images/parallax-1.webp",
+  "https://cdn.globalformulation.com/images/portfolio-1.webp",
+  "https://cdn.globalformulation.com/images/gallery-2.webp",
+  "https://cdn.globalformulation.com/images/portfolio-3.webp",
+  "https://cdn.globalformulation.com/images/gallery-4.webp",
+  "https://cdn.globalformulation.com/images/portfolio-5.webp",
+  "https://cdn.globalformulation.com/images/hospitality-bar.webp",
+  "https://cdn.globalformulation.com/images/portfolio-2.webp",
+  "https://cdn.globalformulation.com/images/gallery-1.webp",
+  "https://cdn.globalformulation.com/images/portfolio-4.webp"
+];
+---
+
+<section class="horizontal-parallax-section">
+  <div class="parallax-header">
+    <h2 class="section-title">
+      {"Motion Perspective".split(' ').map(word => (
+        <span class="word-wrapper">
+          {word.split('').map(char => (
+            <span class="blue-char">{char}</span>
+          ))}
+        </span>
+      ))}
+    </h2>
+  </div>
+
+  <div class="parallax-container">
+    <div class="scrollsection">
+      {images.map((img, index) => {
+        const types = ["-normal", "-big", "-small"];
+        const orientations = ["", "-horizontal"];
+        const type = types[index % types.length];
+        const orientation = orientations[index % orientations.length];
+        const speed = (index % 4) + 1;
+        
+        return (
+          <div class={`item ${type} ${orientation}`} data-speed={speed}>
+            <img class="image" src={img} alt={`Gallery Image ${index + 1}`} loading="lazy" />
+          </div>
+        )
+      })}
+    </div>
+  </div>
+</section>
+
+<style>
+  .horizontal-parallax-section {
+    background: #ffffff;
+    overflow: hidden;
+    padding: 80px 0;
+    position: relative;
+    width: 100%;
+  }
+
+  .parallax-header {
+    max-width: 1400px;
+    margin: 0 auto 30px;
+    padding: 0 5%;
+  }
+
+  .word-wrapper {
+    display: inline-block;
+    white-space: nowrap;
+    margin-right: 0.3em;
+  }
+
+  .blue-char {
+    display: inline-block;
+    opacity: 0;
+    color: #0a0a0a;
+    -webkit-text-fill-color: #0a0a0a;
+  }
+
+  h2 {
+    font-size: clamp(2rem, 5vw, 4.5rem);
+    font-weight: 700;
+    margin-bottom: 24px;
+    line-height: 1.1;
+    color: #0a0a0a;
+    letter-spacing: -0.02em;
+  }
+
+  .parallax-container {
+    width: 100%;
+    overflow: hidden;
+    cursor: grab;
+  }
+
+  .parallax-container:active {
+    cursor: grabbing;
+  }
+
+  .scrollsection {
+    padding: 8vh 5vw;
+    display: flex;
+    align-items: center;
+    width: max-content;
+    gap: 4vw;
+  }
+
+  .item {
+    display: inline-block;
+    position: relative;
+    flex-shrink: 0;
+    will-change: transform;
+  }
+
+  .item.-big {
+    height: 65vh;
+    width: 50vh;
+  }
+
+  .item.-big.-horizontal {
+    height: 55vh;
+    width: 70vh;
+  }
+
+  .item.-normal {
+    height: 50vh;
+    width: 38vh;
+    z-index: 1;
+  }
+
+  .item.-normal.-horizontal {
+    height: 38vh;
+    width: 50vh;
+  }
+
+  .item.-small {
+    height: 35vh;
+    width: 28vh;
+    z-index: 2;
+  }
+
+  .item.-small.-horizontal {
+    height: 28vh;
+    width: 35vh;
+  }
+
+  .image {
+    height: 100%;
+    width: 100%;
+    object-fit: cover;
+    border-radius: 12px;
+    filter: grayscale(1);
+    opacity: 0;
+    transform: scale(0.9);
+    transition: filter 0.6s ease, opacity 0.8s ease, transform 0.8s ease;
+    box-shadow: 0 20px 40px rgba(0,0,0,0.1);
+  }
+
+  .image.revealed {
+    opacity: 1;
+    transform: scale(1);
+    filter: grayscale(0.6);
+  }
+
+  .image:hover {
+    filter: grayscale(0);
+    opacity: 1;
+    cursor: pointer;
+    transform: scale(1.02);
+  }
+
+  .item:nth-of-type(4n) { transform: translateY(5vh); }
+  .item:nth-of-type(4n-1) { transform: translateY(-5vh); }
+
+  @media (max-width: 768px) {
+    .horizontal-parallax-section {
+      padding: 60px 0;
+      /* Allow child to scroll horizontally on mobile */
+      overflow-x: hidden;
+      overflow-y: visible;
+    }
+    .parallax-header h2 {
+      font-size: 2.2rem;
+      letter-spacing: 0;
+    }
+    .scrollsection {
+      padding: 20px 20px;
+      gap: 16px;
+      overflow-x: auto;
+      width: max-content;
+      display: flex;
+      flex-wrap: nowrap;
+      -webkit-overflow-scrolling: touch;
+      scrollbar-width: none;
+    }
+    .scrollsection::-webkit-scrollbar {
+      display: none;
+    }
+    .item {
+      /* Use vw-based widths so landscape phones don't get tiny cards */
+      height: 52vw !important;
+      width: 38vw !important;
+      transform: none !important;
+      min-width: 150px;
+      min-height: 180px;
+    }
+    .item.-horizontal {
+      width: 55vw !important;
+      min-width: 200px;
+    }
+    .image {
+      opacity: 1;
+      transform: scale(1);
+      filter: grayscale(0.2);
+    }
+  }
+</style>
+
+<script>
+  import { gsap } from "gsap";
+  import { ScrollTrigger } from "gsap/ScrollTrigger";
+
+  gsap.registerPlugin(ScrollTrigger);
+
+  function initParallax() {
+    // Animate Title - Works on all devices
+    gsap.timeline({
+      scrollTrigger: {
+        trigger: ".horizontal-parallax-section",
+        start: "top 80%",
+      }
+    })
+    .fromTo(".horizontal-parallax-section .blue-char", 
+      { opacity: 0, x: -15, color: "#0968e5", webkitTextFillColor: "#0968e5" },
+      {
+        opacity: 1,
+        x: 0,
+        color: "#0968e5",
+        webkitTextFillColor: "#0968e5",
+        duration: 0.8,
+        stagger: 0.03,
+        ease: "power3.out"
+      }
+    )
+    .to(".horizontal-parallax-section .blue-char", {
+      color: "#0a0a0a",
+      webkitTextFillColor: "#0a0a0a",
+      duration: 0.8,
+      stagger: 0.03,
+      ease: "power2.inOut"
+    }, 0.5);
+
+    if (window.innerWidth < 769) return; // Disable pinning/complex logic on mobile
+    
+    const section = document.querySelector('.horizontal-parallax-section');
+    const scrollSection = document.querySelector('.scrollsection');
+    if (!section || !scrollSection) return;
+
+    // Horizontal Scroll
+    const totalWidth = scrollSection.scrollWidth - window.innerWidth;
+    
+    const horizontalTween = gsap.to(scrollSection, {
+      x: () => -totalWidth,
+      ease: "none",
+      scrollTrigger: {
+        trigger: ".horizontal-parallax-section",
+        start: "top top",
+        end: () => `+=${totalWidth}`,
+        scrub: 1,
+        pin: true,
+        invalidateOnRefresh: true,
+      }
+    });
+
+    // Reveal Images on Scroll
+    const images = document.querySelectorAll('.image');
+    images.forEach((img, i) => {
+      ScrollTrigger.create({
+        trigger: img,
+        containerAnimation: horizontalTween, 
+        start: "left 90%",
+        onEnter: () => img.classList.add('revealed'),
+      });
+    });
+
+    // Parallax Items
+    const items = document.querySelectorAll('.item');
+    items.forEach((item) => {
+      const speed = parseFloat(item.getAttribute('data-speed') || '1');
+      gsap.to(item, {
+        x: () => (speed - 2) * 100, // Different speeds for parallax
+        ease: "none",
+        scrollTrigger: {
+          trigger: item,
+          containerAnimation: horizontalTween,
+          scrub: true
+        }
+      });
+    });
+  }
+
+  window.addEventListener('load', initParallax);
+</script>

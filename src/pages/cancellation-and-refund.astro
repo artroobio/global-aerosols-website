@@ -1,0 +1,399 @@
+---
+import Layout from '../lc/layouts/Layout.astro';
+const lastUpdated = 'June 4, 2025';
+const sections = [
+  { id: 'overview',       title: '1. Overview' },
+  { id: 'digital',        title: '2. Digital Product Refunds' },
+  { id: 'eligibility',    title: '3. Eligibility for Refund or Store Credit' },
+  { id: 'resolution',     title: '4. Resolution Process & Timeline' },
+  { id: 'processing',     title: '5. Refund Processing' },
+  { id: 'chargebacks',    title: '6. Chargebacks & Disputes' },
+  { id: 'contact',        title: '7. Contact Us' },
+];
+---
+
+<Layout title="Cancellation & Refund Policy | Global Formulation" description="Understand Global Formulation's cancellation and refund policy for digital products and consulting services — eligibility, timelines, and how to request a refund.">
+
+  <!-- ── Page Header ── -->
+  <section class="legal-hero">
+    <div class="legal-hero-inner">
+      <span class="legal-eyebrow">Legal &amp; Compliance</span>
+      <h1 class="legal-title">Cancellation &amp; Refund Policy</h1>
+      <p class="legal-meta">Effective date: <strong>{lastUpdated}</strong> &nbsp;|&nbsp; Global Formulation</p>
+      <p class="legal-summary">
+        Customer satisfaction is our top priority. Please read the following terms carefully before making a purchase.
+        If you have any questions, contact us before buying — we are happy to help.
+      </p>
+    </div>
+  </section>
+
+  <!-- ── Document Body ── -->
+  <div class="legal-body">
+
+    <!-- Sidebar ToC -->
+    <aside class="legal-toc">
+      <p class="toc-head">Contents</p>
+      <nav>
+        <ol class="toc-list">
+          {sections.map(s => (
+            <li><a href={`#${s.id}`}>{s.title}</a></li>
+          ))}
+        </ol>
+      </nav>
+    </aside>
+
+    <!-- Main document -->
+    <article class="legal-doc">
+
+      <section id="overview">
+        <h2>1. Overview</h2>
+        <p>
+          Global Formulation sells technical e-books and digital reference guides through our online store.
+          Because our products are delivered digitally and are immediately accessible upon purchase, our refund
+          policy is necessarily limited — but we are committed to resolving genuine issues fairly and promptly.
+        </p>
+        <p>
+          This policy applies to all purchases made through <strong>globalformulation.com/store</strong>.
+          By completing a purchase, you acknowledge that you have read and agreed to these terms.
+        </p>
+      </section>
+
+      <section id="digital">
+        <h2>2. Digital Product Refunds</h2>
+        <p>
+          Due to the nature of digital content, we do not offer refunds once a product has been delivered or
+          downloaded. Digital files, once accessed, cannot be "returned" in the same way as physical goods.
+        </p>
+        <p>
+          We make an exception — and will consider a refund or store credit — in the following circumstances:
+        </p>
+        <ul>
+          <li><strong>Corrupted or unreadable file</strong> — the PDF file you received cannot be opened or is otherwise technically defective.</li>
+          <li><strong>Material misdescription</strong> — the content of the product materially differs from what is described on the product page (e.g. a different subject, missing chapters, or significantly fewer pages than stated).</li>
+        </ul>
+        <p>
+          Dissatisfaction with the depth of content, a change of mind, or purchasing the wrong product do not
+          qualify for a refund. We encourage you to read the product description, table of contents, and any
+          free sample excerpt available before purchasing.
+        </p>
+      </section>
+
+      <section id="eligibility">
+        <h2>3. Eligibility for Refund or Store Credit</h2>
+        <p>
+          Where your issue qualifies under Section 2, you may choose one of the following resolutions:
+        </p>
+        <table class="legal-table">
+          <thead>
+            <tr><th>Resolution Option</th><th>What It Means</th></tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td>Full Refund</td>
+              <td>The full purchase amount is returned to your original payment method. Refunds are processed within 2–3 working days of approval (see Section 5).</td>
+            </tr>
+            <tr>
+              <td>Store Credit</td>
+              <td>An equivalent credit is applied to your account and can be used toward any other e-book in our store. Credits do not expire.</td>
+            </tr>
+          </tbody>
+        </table>
+        <p>
+          To be eligible, you must report the issue to us within <strong>7 days of purchase</strong>.
+          Reports received after this window will not be considered unless exceptional circumstances apply.
+        </p>
+      </section>
+
+      <section id="resolution">
+        <h2>4. Resolution Process &amp; Timeline</h2>
+        <p>To raise a refund or store credit request, email us at
+          <a href="mailto:consulting@globalformulation.com">consulting@globalformulation.com</a> with:
+        </p>
+        <ul>
+          <li>Your full name and the email address used at checkout.</li>
+          <li>The title of the e-book purchased.</li>
+          <li>A clear description of the issue (and, where applicable, a screenshot or error message).</li>
+          <li>Your preferred resolution — refund or store credit.</li>
+        </ul>
+        <p>Once we receive your request:</p>
+        <ul>
+          <li>We will <strong>acknowledge your request within 2 business days</strong>.</li>
+          <li>We aim to <strong>fully resolve the matter within 5 business days</strong> of acknowledgement.</li>
+          <li>If we need additional information from you, the resolution timeline will restart from the date we receive your response.</li>
+        </ul>
+      </section>
+
+      <section id="processing">
+        <h2>5. Refund Processing</h2>
+        <p>
+          Approved refunds will be credited back to the original payment method used at the time of purchase.
+          Please allow <strong>2–3 working days</strong> from the date of approval for the refund to appear
+          in your account. Processing times may vary depending on your bank or card issuer and are beyond
+          our control once the refund has been initiated on our end.
+        </p>
+        <p>
+          Store credit is applied immediately upon approval and will be visible in your account within
+          1 business day.
+        </p>
+      </section>
+
+      <section id="chargebacks">
+        <h2>6. Chargebacks &amp; Disputes</h2>
+        <p>
+          We strongly encourage you to contact us directly at
+          <a href="mailto:consulting@globalformulation.com">consulting@globalformulation.com</a> before
+          initiating a chargeback or payment dispute with your bank or card issuer. We are committed to
+          resolving genuine issues quickly and fairly — most cases are resolved within 5 business days.
+        </p>
+        <p>
+          Initiating a chargeback without first attempting resolution through our support process may be
+          treated as a breach of these terms. In such cases, we reserve the right to:
+        </p>
+        <ul>
+          <li>Suspend or permanently close the associated account.</li>
+          <li>Revoke access to any purchased digital content.</li>
+          <li>Provide relevant transaction records to the payment processor to contest the chargeback.</li>
+        </ul>
+        <p>
+          We take fraudulent chargebacks seriously and will pursue all available remedies where a
+          chargeback is found to be unsubstantiated.
+        </p>
+      </section>
+
+      <section id="contact">
+        <h2>7. Contact Us</h2>
+        <p>
+          For all refund, cancellation, or product-related queries, please contact us via the details below.
+          We aim to respond to every request promptly and resolve it fairly.
+        </p>
+        <div class="legal-contact-block">
+          <p><strong>Global Formulation</strong></p>
+          <p>Email: <a href="mailto:consulting@globalformulation.com">consulting@globalformulation.com</a></p>
+          <p>Phone: <a href="tel:+919819548320">+91 98195 48320</a></p>
+          <p>Website: <a href="https://globalformulation.com">globalformulation.com</a></p>
+        </div>
+        <p>
+          Please include your order details in any correspondence to help us resolve your query as quickly as possible.
+        </p>
+      </section>
+
+      <div class="legal-footer-note">
+        <p>This policy was last reviewed and updated on <strong>{lastUpdated}</strong>. © {new Date().getFullYear()} Global Formulation. All rights reserved.</p>
+      </div>
+
+    </article>
+  </div>
+
+</Layout>
+
+<style>
+  /* ── Hero ── */
+  .legal-hero {
+    background: radial-gradient(ellipse 80% 60% at 50% 30%, rgba(9, 104, 229,0.13) 0%, transparent 60%), #060a14;
+    padding: 130px max(6%, env(safe-area-inset-left)) 60px;
+    box-sizing: border-box;
+    border-bottom: 1px solid rgba(255,255,255,0.06);
+  }
+  .legal-hero-inner { max-width: 800px; }
+  .legal-eyebrow {
+    display: block;
+    font-size: 0.72rem;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 4px;
+    color: #4f9dff;
+    margin-bottom: 16px;
+  }
+  .legal-title {
+    font-size: clamp(2.4rem, 5vw, 3.8rem);
+    font-weight: 800;
+    color: #ffffff;
+    margin: 0 0 14px 0;
+    letter-spacing: -0.025em;
+    font-family: 'Outfit', sans-serif;
+    line-height: 1.1;
+  }
+  .legal-meta { font-size: 0.88rem; color: #64748b; margin: 0 0 20px 0; }
+  .legal-meta strong { color: #94a3b8; }
+  .legal-summary {
+    font-size: 1.05rem;
+    color: #94a3b8;
+    line-height: 1.7;
+    max-width: 640px;
+    margin: 0;
+  }
+
+  /* ── Layout: sidebar + document ── */
+  .legal-body {
+    max-width: 1240px;
+    margin: 0 auto;
+    padding: 60px max(4%, 24px) 100px;
+    display: grid;
+    grid-template-columns: 260px 1fr;
+    gap: 64px;
+    align-items: start;
+    box-sizing: border-box;
+    background: #ffffff;
+  }
+
+  /* ── Sticky ToC Sidebar ── */
+  .legal-toc {
+    position: sticky;
+    top: 80px;
+    background: #f8fafc;
+    border: 1px solid #e2e8f0;
+    border-radius: 14px;
+    padding: 28px 24px;
+  }
+  .toc-head {
+    font-size: 0.72rem;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 3px;
+    color: #0968e5;
+    margin: 0 0 16px 0;
+  }
+  .toc-list {
+    list-style: none;
+    padding: 0; margin: 0;
+    display: flex;
+    flex-direction: column;
+    gap: 4px;
+  }
+  .toc-list li a {
+    display: block;
+    font-size: 0.83rem;
+    color: #475569;
+    text-decoration: none;
+    padding: 6px 10px;
+    border-radius: 7px;
+    line-height: 1.35;
+    transition: background 0.2s ease, color 0.2s ease;
+  }
+  .toc-list li a:hover { background: #e0effe; color: #0968e5; }
+
+  /* ── Document content ── */
+  .legal-doc section {
+    margin-bottom: 52px;
+    padding-bottom: 52px;
+    border-bottom: 1px solid #f1f5f9;
+  }
+  .legal-doc section:last-of-type { border-bottom: none; }
+
+  .legal-doc h2 {
+    font-size: 1.45rem;
+    font-weight: 800;
+    color: #0f172a;
+    margin: 0 0 18px 0;
+    letter-spacing: -0.015em;
+    font-family: 'Outfit', sans-serif;
+    scroll-margin-top: 90px;
+  }
+  .legal-doc h3 {
+    font-size: 1.05rem;
+    font-weight: 700;
+    color: #1e293b;
+    margin: 28px 0 10px 0;
+    font-family: 'Outfit', sans-serif;
+  }
+  .legal-doc p {
+    font-size: 0.97rem;
+    color: #475569;
+    line-height: 1.8;
+    margin: 0 0 14px 0;
+  }
+  .legal-doc p:last-child { margin-bottom: 0; }
+  .legal-doc ul {
+    padding-left: 0;
+    margin: 14px 0 14px 0;
+    list-style: none;
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+  }
+  .legal-doc ul li {
+    font-size: 0.97rem;
+    color: #475569;
+    line-height: 1.65;
+    padding-left: 20px;
+    position: relative;
+  }
+  .legal-doc ul li::before {
+    content: '—';
+    position: absolute;
+    left: 0;
+    color: #0968e5;
+    font-weight: 700;
+  }
+  .legal-doc a { color: #0968e5; text-decoration: underline; text-underline-offset: 3px; }
+  .legal-doc a:hover { color: #3b82f6; }
+  .legal-doc strong { color: #1e293b; font-weight: 600; }
+
+  .legal-table {
+    width: 100%;
+    border-collapse: collapse;
+    font-size: 0.92rem;
+    margin: 18px 0;
+    border-radius: 10px;
+    overflow: hidden;
+    border: 1px solid #e2e8f0;
+  }
+  .legal-table th {
+    background: #f1f5f9;
+    color: #0f172a;
+    font-weight: 700;
+    text-align: left;
+    padding: 12px 16px;
+    border-bottom: 1px solid #e2e8f0;
+    font-family: 'Outfit', sans-serif;
+    font-size: 0.85rem;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+  }
+  .legal-table td {
+    padding: 12px 16px;
+    color: #475569;
+    border-bottom: 1px solid #f1f5f9;
+    line-height: 1.55;
+    vertical-align: top;
+  }
+  .legal-table tr:last-child td { border-bottom: none; }
+  .legal-table tr:hover td { background: #f8fafc; }
+  .legal-table td:first-child { font-weight: 600; color: #1e293b; white-space: nowrap; }
+
+  .legal-contact-block {
+    background: #f8fafc;
+    border: 1px solid #e2e8f0;
+    border-left: 3px solid #0968e5;
+    border-radius: 10px;
+    padding: 20px 24px;
+    margin: 18px 0;
+    display: flex;
+    flex-direction: column;
+    gap: 4px;
+  }
+  .legal-contact-block p { margin: 0; font-size: 0.95rem; }
+
+  .legal-footer-note {
+    margin-top: 48px;
+    padding-top: 28px;
+    border-top: 1px solid #e2e8f0;
+  }
+  .legal-footer-note p { font-size: 0.85rem; color: #94a3b8; margin: 0; }
+
+  /* ── Responsive ── */
+  @media (max-width: 900px) {
+    .legal-body {
+      grid-template-columns: 1fr;
+      gap: 40px;
+      padding: 40px 24px 80px;
+    }
+    .legal-toc { position: static; }
+  }
+  @media (max-width: 600px) {
+    .legal-hero { padding: 110px 22px 50px; }
+    .legal-body { padding: 30px 20px 60px; }
+    .legal-table { font-size: 0.85rem; }
+    .legal-table td:first-child { white-space: normal; }
+  }
+</style>

@@ -1,0 +1,719 @@
+---
+import Layout from '../lc/layouts/Layout.astro';
+import ContactFormVideo from '../lc/components/ContactFormVideo.astro';
+
+/* ───────── Radial capability hub: positions computed at build time ───────── */
+const hubModules = [
+  { label: 'Coatings & Paints',   icon: '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><path d="M12 3a9 9 0 1 0 0 18 3 3 0 0 0 0-6 1.5 1.5 0 0 1 0-3h2a4 4 0 0 0 4-4c0-3-3.6-5-8-5Z"/></svg>' },
+  { label: 'Aerosols',            icon: '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><rect x="9" y="8" width="7" height="13" rx="2"/><path d="M11 8V5h4v3M6 5h2M6 8h1"/></svg>' },
+  { label: 'Lubricants',          icon: '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><path d="M12 3c3 4.5 5 7.4 5 10a5 5 0 0 1-10 0c0-2.6 2-5.5 5-10Z"/></svg>' },
+  { label: 'Cleaners & FMCG',     icon: '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><circle cx="12" cy="13" r="7"/><path d="M12 6V3M9 3h6"/></svg>' },
+  { label: 'Personal Care',       icon: '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><path d="M12 21s-7-4.5-7-10a4 4 0 0 1 7-2.6A4 4 0 0 1 19 11c0 5.5-7 10-7 10Z"/></svg>' },
+  { label: 'Polymers & Resins',   icon: '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><circle cx="7" cy="8" r="3"/><circle cx="17" cy="8" r="3"/><circle cx="12" cy="16" r="3"/><path d="M9.5 9.5 10.5 14M14.5 9.5 13.5 14M9.5 8h5"/></svg>' },
+  { label: 'Agrochemicals',       icon: '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><path d="M12 21V9M12 9c0-3 2-5 6-5 0 4-2 6-6 5ZM12 13c0-3-2-5-6-5 0 4 2 6 6 5Z"/></svg>' },
+  { label: 'Specialty Chemicals', icon: '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><path d="M12 4 4 19h16L12 4Z"/><path d="M8.5 12.5h7"/></svg>' },
+];
+const R = 232, cx = 300, cy = 300;
+const hubPositioned = hubModules.map((m, i) => {
+  const a = (-90 + i * 45) * Math.PI / 180;
+  return { ...m, x: cx + R * Math.cos(a), y: cy + R * Math.sin(a) };
+});
+
+/* ───────── Feature blocks ───────── */
+const features = [
+  {
+    eyebrow: 'Formulation Science',
+    title: 'Get from lab to production fast',
+    body: 'Our application-driven approach identifies the right chemistry, raw materials, and performance targets early — so you move from concept to a validated, ready-to-produce formulation without guesswork.',
+    points: [
+      'Ready-to-produce and custom formulations across coatings, cleaners, lubricants, personal care, and specialty chemicals.',
+      'Reverse engineering and benchmarking to match or beat existing market products.',
+      'Stability, performance, and regulatory validation grounded in industrial reality.',
+    ],
+    cta: 'Contact Us',
+    href: '#contact',
+    img: '/images/about/formulation_science.png',
+    reverse: false,
+  },
+  {
+    eyebrow: 'Process Engineering',
+    title: 'A single source of truth for scale-up',
+    body: 'We design, analyse, and optimise end-to-end manufacturing workflows so laboratory performance is consistently and safely replicated at industrial throughput.',
+    points: [
+      'Reactor design, mixing hydrodynamics, and material & energy balances for every unit operation.',
+      'Thermal runaway and safety analysis — TMRad/MTSR, HAZOP, and relief sizing.',
+      'Solvent recovery, mass-transfer operations, and plant automation readiness.',
+    ],
+    cta: 'Learn more about our process',
+    href: '/consulting',
+    img: '/images/about/process_engineering.png',
+    reverse: true,
+  },
+  {
+    eyebrow: 'End-to-End Support',
+    title: 'Pioneering industrial chemistry',
+    body: 'From raw-material intelligence and cost engineering to regulatory compliance and production transfer, we stay engaged from concept through commercial launch.',
+    points: [
+      'Raw-material sourcing and cost engineering to protect your margins.',
+      'Regulatory and compliance guidance across multiple sectors and regions.',
+      'Production transfer, plant setup, and long-term technical partnership.',
+    ],
+    cta: 'Explore consulting services',
+    href: '/consulting',
+    img: '/images/about/launch_support.png',
+    reverse: false,
+  },
+];
+
+const steps = [
+  { n: '01', t: 'Discovery & Feasibility', d: 'A free initial assessment of your product goals, target performance, and constraints. We map the technical and commercial landscape before any lab work begins.' },
+  { n: '02', t: 'Formulation Development', d: 'We develop and validate ready-to-produce formulations against your performance, cost, and regulatory targets — with full benchmarking and stability testing.' },
+  { n: '03', t: 'Process Engineering & Scale-Up', d: 'We engineer the manufacturing workflow — reactor design, mixing, thermal safety, and mass balances — so lab performance is replicated at industrial scale.' },
+  { n: '04', t: 'Production & Ongoing Support', d: 'We support production transfer and plant commissioning, then stay on as a long-term technical partner to sustain and optimise performance.' },
+];
+
+const gfWins = [
+  'Independent and application-driven — no raw-material sales bias',
+  'Formulation science and process engineering under one roof',
+  'Plant-level feasibility built into every recommendation',
+  'Long-term technical partnership, concept to commercial launch',
+  'Transparent, validated, ready-to-produce deliverables',
+];
+const altLimits = [
+  'Raw-material suppliers steer you toward their own products',
+  'Lab-only consultants hand off before scale-up',
+  'Generic formulations that ignore your equipment reality',
+  'One-off engagements with no ongoing support',
+  'Opaque “black-box” formulations you can’t reproduce',
+];
+
+/* Split a string into animated word/char spans markup data */
+const splitWords = (s: string) => s.split(' ');
+---
+
+<Layout title="About Us | Global Formulation" description="Independent chemical formulation and process engineering consultancy — lab-ready formulations across paints, lubricants, cosmetics, and specialty chemicals, through to full scale-up and plant commissioning.">
+
+  <!-- ════════════ HERO ════════════ -->
+  <section class="ab-hero">
+    <div class="ab-hero-inner">
+      <span class="ab-eyebrow-center reveal">About Global Formulation</span>
+      <h1 class="ab-hero-title">
+        {splitWords('Global Formulation has the science, tech and expertise').map(word => (
+          <span class="aw">{word.split('').map(c => <span class="ac">{c}</span>)}</span>
+        ))}
+        <br class="hide-sm" />
+        {splitWords('to take your chemistry to commercial production').map(word => (
+          <span class="aw">{word.split('').map(c => <span class="ac">{c}</span>)}</span>
+        ))}
+      </h1>
+      <p class="ab-hero-sub reveal">
+        No more guesswork. No more failed scale-ups. Independent, application-driven
+        formulation science and chemical engineering that moves with the realities of
+        your plant, your market, and your margins.
+      </p>
+    </div>
+  </section>
+
+  <!-- ════════════ FEATURE BLOCKS ════════════ -->
+  {features.map((f, i) => (
+    <section class={`ab-feature feat-${i} ${f.reverse ? 'is-reverse' : ''}`}>
+      <div class="ab-feature-inner">
+        <div class="ab-feature-text">
+          <span class="ab-eyebrow reveal">{f.eyebrow}</span>
+          <h2 class="ab-feature-title">
+            {splitWords(f.title).map(word => (
+              <span class="aw">{word.split('').map(c => <span class="ac">{c}</span>)}</span>
+            ))}
+          </h2>
+          <p class="ab-feature-body reveal">{f.body}</p>
+          <ul class="ab-points">
+            {f.points.map(p => (
+              <li class="ab-point reveal">
+                <span class="ab-point-ico">
+                  <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="5 12 10 17 19 7"/></svg>
+                </span>
+                <span>{p}</span>
+              </li>
+            ))}
+          </ul>
+          <a href={f.href} class="ab-btn reveal">{f.cta}</a>
+        </div>
+        <div class="ab-feature-media reveal">
+          <img src={f.img} alt={f.title} loading="lazy" width="1000" height="760" />
+        </div>
+      </div>
+    </section>
+  ))}
+
+  <!-- ════════════ CAPABILITY HUB ════════════ -->
+  <section class="ab-hub">
+    <div class="ab-hub-head">
+      <span class="ab-eyebrow-center reveal">Formulation Platform</span>
+      <h2 class="ab-hub-title">
+        {splitWords('Formulate across every industry, from one partner.').map(word => (
+          <span class="aw">{word.split('').map(c => <span class="ac">{c}</span>)}</span>
+        ))}
+      </h2>
+      <p class="ab-hub-sub reveal">
+        Global Formulation works across a connected ecosystem of chemical sectors —
+        from a single mission-critical formulation to full plant commissioning.
+      </p>
+    </div>
+
+    <div class="ab-hub-stage reveal">
+      <div class="hub-orbit"></div>
+      <div class="hub-orbit hub-orbit-2"></div>
+      <div class="hub-core">
+        <span class="hub-core-mark">GF</span>
+        <span class="hub-core-label">Global<br />Formulation</span>
+      </div>
+      {hubPositioned.map(m => (
+        <div class="hub-node" style={`left:${(m.x / 600) * 100}%; top:${(m.y / 600) * 100}%;`}>
+          <span class="hub-node-ico" set:html={m.icon}></span>
+          <span class="hub-node-label">{m.label}</span>
+        </div>
+      ))}
+    </div>
+  </section>
+
+  <!-- ════════════ CONSULTATION CTA ════════════ -->
+  <section class="ab-tour">
+    <div class="ab-tour-card reveal">
+      <img class="ab-tour-bg" src="/images/about/consultation_banner.png" alt="" loading="lazy" aria-hidden="true" />
+      <div class="ab-tour-content">
+        <h2 class="ab-tour-title">
+          {splitWords('Get a personalised consultation').map(word => (
+            <span class="aw">{word.split('').map(c => <span class="ac">{c}</span>)}</span>
+          ))}
+        </h2>
+        <p class="ab-tour-sub reveal">
+          Tell us about your project and we’ll connect you with the right formulation
+          specialist — with minimal fuss and maximum technical depth.
+        </p>
+        <form class="ab-tour-form reveal" action="#contact" method="get">
+          <input type="email" placeholder="Enter your email to get started…" aria-label="Email address" required />
+          <button type="submit">Request Consultation</button>
+        </form>
+      </div>
+    </div>
+  </section>
+
+  <!-- ════════════ 4-STEP PROCESS ════════════ -->
+  <section class="ab-process">
+    <div class="ab-process-head">
+      <span class="ab-eyebrow-center reveal">Phased Process</span>
+      <h2 class="ab-process-title">
+        {splitWords('Our 4-step process').map(word => (
+          <span class="aw">{word.split('').map(c => <span class="ac">{c}</span>)}</span>
+        ))}
+      </h2>
+      <p class="ab-process-sub reveal">
+        Find your best starting point based on a process we’ve refined and proven
+        across more than 20 years of industrial formulation work.
+      </p>
+    </div>
+
+    <div class="ab-steps">
+      {steps.map(s => (
+        <div class="ab-step reveal">
+          <span class="ab-step-num">{s.n}</span>
+          <span class="ab-step-rule"></span>
+          <h3 class="ab-step-title">{s.t}</h3>
+          <p class="ab-step-desc">{s.d}</p>
+        </div>
+      ))}
+    </div>
+  </section>
+
+  <!-- ════════════ WHY / COMPARISON ════════════ -->
+  <section class="ab-why">
+    <div class="ab-why-head">
+      <span class="ab-eyebrow-center reveal">Global Formulation vs. Alternatives</span>
+      <h2 class="ab-why-title">
+        {splitWords('Why Global Formulation?').map(word => (
+          <span class="aw">{word.split('').map(c => <span class="ac">{c}</span>)}</span>
+        ))}
+      </h2>
+      <p class="ab-why-sub reveal">
+        There’s nothing that compares in scope — but here are some pointers on the
+        nearest partial alternatives.
+      </p>
+    </div>
+
+    <div class="ab-why-grid">
+      <div class="ab-col ab-col-gf reveal">
+        <div class="ab-col-head">
+          <span class="ab-col-mark">GF</span>
+          <span class="ab-col-name">Global Formulation</span>
+        </div>
+        <ul class="ab-col-list">
+          {gfWins.map(w => (
+            <li>
+              <span class="ab-li-ico ab-li-yes">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="5 12 10 17 19 7"/></svg>
+              </span>
+              <span>{w}</span>
+            </li>
+          ))}
+        </ul>
+      </div>
+
+      <div class="ab-col ab-col-alt reveal">
+        <div class="ab-col-head">
+          <span class="ab-col-mark ab-col-mark-muted">A</span>
+          <span class="ab-col-name">Alternatives</span>
+        </div>
+        <ul class="ab-col-list">
+          {altLimits.map(w => (
+            <li>
+              <span class="ab-li-ico ab-li-no">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><line x1="6" y1="6" x2="18" y2="18"/><line x1="18" y1="6" x2="6" y2="18"/></svg>
+              </span>
+              <span>{w}</span>
+            </li>
+          ))}
+        </ul>
+      </div>
+    </div>
+  </section>
+
+  <ContactFormVideo />
+
+</Layout>
+
+<style>
+  /* ════════ GLOBAL DARK THEME ════════ */
+  .ab-hero, .ab-feature, .ab-hub, .ab-tour, .ab-process, .ab-why {
+    background: #060a14;
+    color: #e2e8f0;
+    box-sizing: border-box;
+  }
+
+  /* Reusable reveal initial state */
+  .reveal { opacity: 0; transform: translateY(24px); }
+
+  /* Animated heading char spans */
+  .aw { display: inline-block; white-space: nowrap; margin-right: 0.24em; }
+  .ac { display: inline-block; opacity: 0; color: #ffffff; -webkit-text-fill-color: #ffffff; }
+
+  /* Shared eyebrows */
+  .ab-eyebrow, .ab-eyebrow-center {
+    display: block;
+    font-size: 0.72rem;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 4px;
+    color: #4f9dff;
+  }
+  .ab-eyebrow-center { text-align: center; }
+
+  /* ════════ HERO ════════ */
+  .ab-hero {
+    position: relative;
+    min-height: 92vh;
+    min-height: 92svh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 140px max(6%, env(safe-area-inset-left)) 100px;
+    background:
+      radial-gradient(ellipse 80% 60% at 50% 30%, rgba(9, 104, 229,0.14) 0%, transparent 60%),
+      #060a14;
+  }
+  .ab-hero-inner { max-width: 980px; text-align: center; }
+  .ab-hero .ab-eyebrow-center { margin-bottom: 30px; }
+  .ab-hero-title {
+    font-size: clamp(2.3rem, 5vw, 4.4rem);
+    font-weight: 800;
+    line-height: 1.08;
+    letter-spacing: -0.025em;
+    margin: 0 0 32px 0;
+    color: #ffffff;
+    font-family: 'Outfit', sans-serif;
+  }
+  .hide-sm { display: none; }
+  @media (min-width: 760px) { .hide-sm { display: inline; } }
+  .ab-hero-sub {
+    font-size: clamp(1rem, 1.5vw, 1.2rem);
+    color: #94a3b8;
+    line-height: 1.7;
+    max-width: 680px;
+    margin: 0 auto;
+  }
+
+  /* ════════ FEATURE BLOCKS ════════ */
+  .ab-feature {
+    padding: 64px max(6%, env(safe-area-inset-left));
+    border-top: 1px solid rgba(255,255,255,0.05);
+  }
+  .ab-feature-inner {
+    max-width: 1240px;
+    margin: 0 auto;
+    display: grid;
+    grid-template-columns: 1fr 1.1fr;
+    gap: clamp(40px, 6vw, 90px);
+    align-items: center;
+  }
+  .ab-feature.is-reverse .ab-feature-text { order: 2; }
+  .ab-feature.is-reverse .ab-feature-media { order: 1; }
+
+  .ab-feature .ab-eyebrow { margin-bottom: 18px; }
+  .ab-feature-title {
+    font-size: clamp(1.7rem, 3vw, 2.5rem);
+    font-weight: 800;
+    line-height: 1.15;
+    letter-spacing: -0.02em;
+    margin: 0 0 22px 0;
+    color: #ffffff;
+    font-family: 'Outfit', sans-serif;
+  }
+  .ab-feature-body {
+    font-size: clamp(0.95rem, 1.3vw, 1.05rem);
+    color: #94a3b8;
+    line-height: 1.7;
+    margin: 0 0 28px 0;
+  }
+  .ab-points { list-style: none; margin: 0 0 32px 0; padding: 0; display: flex; flex-direction: column; gap: 18px; }
+  .ab-point { display: flex; gap: 14px; align-items: flex-start; }
+  .ab-point-ico {
+    flex-shrink: 0;
+    width: 30px; height: 30px;
+    border-radius: 8px;
+    background: rgba(9, 104, 229,0.14);
+    border: 1px solid rgba(79,157,255,0.3);
+    display: flex; align-items: center; justify-content: center;
+    color: #4f9dff;
+  }
+  .ab-point-ico svg { width: 15px; height: 15px; }
+  .ab-point span:last-child { font-size: 0.92rem; color: #b4c2d6; line-height: 1.55; }
+
+  .ab-btn {
+    display: inline-block;
+    padding: 13px 30px;
+    background: #0968e5;
+    color: #ffffff;
+    font-weight: 700;
+    font-size: 0.9rem;
+    letter-spacing: 0.2px;
+    border-radius: 9px;
+    text-decoration: none;
+    transition: background 0.25s ease, transform 0.25s ease, box-shadow 0.25s ease;
+    box-shadow: 0 6px 20px rgba(9, 104, 229,0.3);
+  }
+  .ab-btn:hover { background: #3b82f6; transform: translateY(-2px); box-shadow: 0 10px 28px rgba(9, 104, 229,0.4); }
+
+  .ab-feature-media img {
+    width: 100%;
+    height: auto;
+    display: block;
+    border-radius: 16px;
+    border: 1px solid rgba(255,255,255,0.08);
+    box-shadow: 0 30px 70px rgba(0,0,0,0.5);
+  }
+
+  /* ════════ CAPABILITY HUB ════════ */
+  .ab-hub {
+    padding: 100px max(6%, env(safe-area-inset-left));
+    border-top: 1px solid rgba(255,255,255,0.05);
+    background:
+      radial-gradient(ellipse 70% 50% at 50% 70%, rgba(9, 104, 229,0.12) 0%, transparent 60%),
+      #060a14;
+  }
+  .ab-hub-head { max-width: 760px; margin: 0 auto 56px; text-align: center; }
+  .ab-hub .ab-eyebrow-center { margin-bottom: 18px; }
+  .ab-hub-title {
+    font-size: clamp(1.9rem, 3.6vw, 3rem);
+    font-weight: 800;
+    color: #ffffff;
+    line-height: 1.15;
+    letter-spacing: -0.02em;
+    margin: 0 0 18px 0;
+    font-family: 'Outfit', sans-serif;
+  }
+  .ab-hub-sub { font-size: clamp(0.95rem, 1.3vw, 1.05rem); color: #94a3b8; line-height: 1.7; margin: 0; }
+
+  .ab-hub-stage {
+    position: relative;
+    width: min(600px, 92vw);
+    aspect-ratio: 1;
+    margin: 0 auto;
+  }
+  .hub-orbit {
+    position: absolute; inset: 11%;
+    border-radius: 50%;
+    border: 1px dashed rgba(255,255,255,0.08);
+  }
+  .hub-orbit-2 { inset: 26%; border-style: solid; border-color: rgba(255,255,255,0.05); }
+
+  .hub-core {
+    position: absolute; left: 50%; top: 50%;
+    transform: translate(-50%, -50%);
+    width: 30%; aspect-ratio: 1;
+    border-radius: 50%;
+    background: radial-gradient(circle at 50% 40%, #2b7fff 0%, #0968e5 55%, #064bb0 100%);
+    display: flex; flex-direction: column; align-items: center; justify-content: center;
+    box-shadow: 0 0 0 12px rgba(9, 104, 229,0.12), 0 0 60px rgba(9, 104, 229,0.55);
+    text-align: center;
+  }
+  .hub-core-mark { font-size: clamp(1.6rem, 4vw, 2.4rem); font-weight: 800; color: #fff; font-family: 'Outfit', sans-serif; line-height: 1; }
+  .hub-core-label { font-size: 0.6rem; font-weight: 600; letter-spacing: 1px; color: rgba(255,255,255,0.85); margin-top: 6px; text-transform: uppercase; }
+
+  .hub-node {
+    position: absolute;
+    transform: translate(-50%, -50%);
+    display: flex; flex-direction: column; align-items: center; gap: 8px;
+    width: 120px;
+  }
+  .hub-node-ico {
+    width: 56px; height: 56px;
+    border-radius: 14px;
+    background: rgba(255,255,255,0.04);
+    border: 1px solid rgba(255,255,255,0.1);
+    display: flex; align-items: center; justify-content: center;
+    color: #cbd5e1;
+    backdrop-filter: blur(6px);
+    transition: border-color 0.3s ease, color 0.3s ease, background 0.3s ease, transform 0.3s ease;
+  }
+  .hub-node-ico :global(svg) { width: 26px; height: 26px; }
+  .hub-node:hover .hub-node-ico {
+    border-color: rgba(79,157,255,0.5);
+    color: #4f9dff;
+    background: rgba(9, 104, 229,0.1);
+    transform: translateY(-3px);
+  }
+  .hub-node-label { font-size: 0.72rem; font-weight: 600; color: #94a3b8; text-align: center; line-height: 1.25; }
+
+  /* ════════ CONSULTATION CTA ════════ */
+  .ab-tour { padding: 40px max(6%, env(safe-area-inset-left)) 80px; }
+  .ab-tour-card {
+    position: relative;
+    max-width: 1240px;
+    margin: 0 auto;
+    border-radius: 20px;
+    overflow: hidden;
+    border: 1px solid rgba(255,255,255,0.08);
+    isolation: isolate;
+  }
+  .ab-tour-bg {
+    position: absolute; inset: 0;
+    width: 100%; height: 100%;
+    object-fit: cover;
+    z-index: -2;
+    opacity: 0.35;
+  }
+  .ab-tour-card::after {
+    content: '';
+    position: absolute; inset: 0;
+    background: linear-gradient(120deg, rgba(6,10,20,0.96) 0%, rgba(6,10,20,0.78) 55%, rgba(9,75,176,0.55) 100%);
+    z-index: -1;
+  }
+  .ab-tour-content { padding: clamp(40px, 6vw, 72px); max-width: 640px; }
+  .ab-tour-title {
+    font-size: clamp(1.7rem, 3vw, 2.6rem);
+    font-weight: 800;
+    color: #ffffff;
+    line-height: 1.15;
+    margin: 0 0 18px 0;
+    letter-spacing: -0.02em;
+    font-family: 'Outfit', sans-serif;
+  }
+  .ab-tour-sub { font-size: clamp(0.95rem, 1.3vw, 1.05rem); color: #cbd5e1; line-height: 1.65; margin: 0 0 30px 0; }
+  .ab-tour-form { display: flex; gap: 12px; flex-wrap: wrap; }
+  .ab-tour-form input {
+    flex: 1; min-width: 240px;
+    padding: 14px 18px;
+    border-radius: 9px;
+    border: 1px solid rgba(255,255,255,0.16);
+    background: rgba(255,255,255,0.06);
+    color: #fff;
+    font-size: 0.92rem;
+    outline: none;
+    transition: border-color 0.25s ease;
+  }
+  .ab-tour-form input::placeholder { color: rgba(255,255,255,0.5); }
+  .ab-tour-form input:focus { border-color: #4f9dff; }
+  .ab-tour-form button {
+    padding: 14px 30px;
+    border: none;
+    border-radius: 9px;
+    background: #0968e5;
+    color: #fff;
+    font-weight: 700;
+    font-size: 0.9rem;
+    cursor: pointer;
+    white-space: nowrap;
+    transition: background 0.25s ease, transform 0.25s ease;
+  }
+  .ab-tour-form button:hover { background: #3b82f6; transform: translateY(-2px); }
+
+  /* ════════ 4-STEP PROCESS ════════ */
+  .ab-process {
+    padding: 100px max(6%, env(safe-area-inset-left));
+    border-top: 1px solid rgba(255,255,255,0.05);
+  }
+  .ab-process-head { max-width: 720px; margin: 0 auto 64px; text-align: center; }
+  .ab-process .ab-eyebrow-center { margin-bottom: 18px; }
+  .ab-process-title {
+    font-size: clamp(1.9rem, 3.4vw, 2.9rem);
+    font-weight: 800;
+    color: #ffffff;
+    margin: 0 0 16px 0;
+    letter-spacing: -0.02em;
+    font-family: 'Outfit', sans-serif;
+  }
+  .ab-process-sub { font-size: clamp(0.95rem, 1.3vw, 1.05rem); color: #94a3b8; line-height: 1.65; margin: 0; }
+
+  .ab-steps {
+    max-width: 1240px;
+    margin: 0 auto;
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 32px;
+  }
+  .ab-step-num {
+    font-size: 2.4rem;
+    font-weight: 800;
+    color: #ffffff;
+    font-family: 'Outfit', sans-serif;
+    line-height: 1;
+    display: block;
+  }
+  .ab-step-rule { display: block; width: 100%; height: 1px; background: rgba(255,255,255,0.1); margin: 20px 0; }
+  .ab-step-title { font-size: 1.05rem; font-weight: 700; color: #e2e8f0; margin: 0 0 12px 0; font-family: 'Outfit', sans-serif; }
+  .ab-step-desc { font-size: 0.88rem; color: #94a3b8; line-height: 1.65; margin: 0; }
+
+  /* ════════ WHY / COMPARISON ════════ */
+  .ab-why {
+    padding: 100px max(6%, env(safe-area-inset-left)) 110px;
+    border-top: 1px solid rgba(255,255,255,0.05);
+  }
+  .ab-why-head { max-width: 720px; margin: 0 auto 56px; text-align: center; }
+  .ab-why .ab-eyebrow-center { margin-bottom: 18px; }
+  .ab-why-title {
+    font-size: clamp(1.9rem, 3.4vw, 2.9rem);
+    font-weight: 800;
+    color: #ffffff;
+    margin: 0 0 16px 0;
+    letter-spacing: -0.02em;
+    font-family: 'Outfit', sans-serif;
+  }
+  .ab-why-sub { font-size: clamp(0.95rem, 1.3vw, 1.05rem); color: #94a3b8; line-height: 1.65; margin: 0; }
+
+  .ab-why-grid {
+    max-width: 980px;
+    margin: 0 auto;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 24px;
+  }
+  .ab-col {
+    border-radius: 18px;
+    padding: 36px 32px;
+    border: 1px solid rgba(255,255,255,0.08);
+  }
+  .ab-col-gf {
+    background: linear-gradient(160deg, rgba(9, 104, 229,0.16) 0%, rgba(9, 104, 229,0.04) 100%);
+    border-color: rgba(79,157,255,0.35);
+    box-shadow: 0 0 50px rgba(9, 104, 229,0.12);
+  }
+  .ab-col-alt { background: rgba(255,255,255,0.02); }
+  .ab-col-head { display: flex; align-items: center; gap: 14px; margin-bottom: 28px; padding-bottom: 20px; border-bottom: 1px solid rgba(255,255,255,0.08); }
+  .ab-col-mark {
+    width: 40px; height: 40px;
+    border-radius: 10px;
+    background: #0968e5;
+    color: #fff;
+    font-weight: 800;
+    font-size: 0.95rem;
+    display: flex; align-items: center; justify-content: center;
+    font-family: 'Outfit', sans-serif;
+  }
+  .ab-col-mark-muted { background: rgba(255,255,255,0.1); color: #94a3b8; }
+  .ab-col-name { font-size: 1.15rem; font-weight: 700; color: #ffffff; font-family: 'Outfit', sans-serif; }
+  .ab-col-list { list-style: none; margin: 0; padding: 0; display: flex; flex-direction: column; gap: 16px; }
+  .ab-col-list li { display: flex; gap: 12px; align-items: flex-start; font-size: 0.92rem; color: #b4c2d6; line-height: 1.5; }
+  .ab-li-ico { flex-shrink: 0; width: 22px; height: 22px; border-radius: 6px; display: flex; align-items: center; justify-content: center; }
+  .ab-li-ico svg { width: 13px; height: 13px; }
+  .ab-li-yes { background: rgba(34,197,94,0.16); color: #4ade80; }
+  .ab-li-no  { background: rgba(248,113,113,0.14); color: #f87171; }
+
+  /* ════════ RESPONSIVE ════════ */
+  @media (max-width: 980px) {
+    .ab-feature-inner { grid-template-columns: 1fr; gap: 40px; }
+    .ab-feature.is-reverse .ab-feature-text { order: 1; }
+    .ab-feature.is-reverse .ab-feature-media { order: 2; }
+    .ab-steps { grid-template-columns: 1fr 1fr; gap: 36px; }
+    .hub-node { width: 96px; }
+    .hub-node-ico { width: 48px; height: 48px; }
+  }
+
+  @media (max-width: 600px) {
+    .ab-hero { padding: 120px 22px 80px; }
+    .ab-feature, .ab-hub, .ab-process, .ab-why { padding-left: 22px; padding-right: 22px; }
+    .ab-steps { grid-template-columns: 1fr; }
+    .ab-why-grid { grid-template-columns: 1fr; }
+    .hub-node-label { display: none; }
+    .hub-node-ico { width: 42px; height: 42px; }
+    .hub-node-ico :global(svg) { width: 20px; height: 20px; }
+  }
+</style>
+
+<script>
+  import { gsap } from "gsap";
+  import { ScrollTrigger } from "gsap/ScrollTrigger";
+  gsap.registerPlugin(ScrollTrigger);
+
+  /* blue → white char reveal */
+  const charReveal = (selector: string, delay = 0) => {
+    gsap.fromTo(selector,
+      { opacity: 0, x: -8, color: '#0968e5', webkitTextFillColor: '#0968e5' },
+      {
+        opacity: 1, x: 0, color: '#0968e5', webkitTextFillColor: '#0968e5',
+        duration: 0.45, stagger: 0.01, delay, ease: 'power3.out',
+        onComplete: () => {
+          gsap.to(selector, { color: '#ffffff', webkitTextFillColor: '#ffffff', duration: 0.4, stagger: 0.01, ease: 'power2.inOut' });
+        }
+      }
+    );
+  };
+
+  const fadeUp = (targets: gsap.TweenTarget, delay = 0, stagger = 0) =>
+    gsap.to(targets, { opacity: 1, y: 0, duration: 0.6, stagger, delay, ease: 'power2.out' });
+
+  /* ── HERO (on load) ── */
+  const startHero = () => {
+    const tl = gsap.timeline();
+    tl.to('.ab-hero .ab-eyebrow-center', { opacity: 1, y: 0, duration: 0.6, ease: 'power3.out' });
+    tl.fromTo('.ab-hero .ac',
+      { opacity: 0, x: -8, color: '#0968e5', webkitTextFillColor: '#0968e5' },
+      { opacity: 1, x: 0, color: '#0968e5', webkitTextFillColor: '#0968e5', duration: 0.5, stagger: 0.012, ease: 'power3.out' },
+      '-=0.2'
+    ).to('.ab-hero .ac', { color: '#ffffff', webkitTextFillColor: '#ffffff', duration: 0.45, stagger: 0.012, ease: 'power2.inOut' }, '-=0.45');
+    tl.to('.ab-hero-sub', { opacity: 1, y: 0, duration: 0.7, ease: 'power2.out' }, '-=0.4');
+  };
+  // Run animation instantly
+  startHero();
+
+  /* ── Generic per-section reveal ── */
+  const section = (sel: string, opts: { charDelay?: number; bodyDelay?: number; stagger?: number } = {}) => {
+    const el = document.querySelector(sel);
+    if (!el) return;
+    ScrollTrigger.create({
+      trigger: sel,
+      start: 'top 75%',
+      once: true,
+      onEnter: () => {
+        charReveal(`${sel} .ac`, opts.charDelay ?? 0.1);
+        fadeUp(`${sel} .reveal`, opts.bodyDelay ?? 0.35, opts.stagger ?? 0.08);
+      }
+    });
+  };
+
+  section('.feat-0');
+  section('.feat-1');
+  section('.feat-2');
+  section('.ab-hub', { stagger: 0 });
+  section('.ab-tour', { stagger: 0.06 });
+  section('.ab-process', { stagger: 0.1 });
+  section('.ab-why', { stagger: 0.12 });
+</script>

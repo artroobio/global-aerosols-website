@@ -1,0 +1,450 @@
+---
+import Layout from '../layouts/Layout.astro';
+
+// ==========================================
+// 7 HIGH-FIDELITY JSON-LD SCHEMAS
+// ==========================================
+
+// 1. Organization Schema
+const orgSchema = {
+  "@context": "https://schema.org",
+  "@type": "Organization",
+  "name": "Global Formulation",
+  "url": "https://www.globalformulation.com",
+  "logo": "https://www.globalformulation.com/logo.png",
+  "contactPoint": [{
+    "@type": "ContactPoint",
+    "telephone": "+91 9819548320",
+    "contactType": "customer service"
+  }]
+};
+
+// 2. Website Search Schema
+const websiteSchema = {
+  "@context": "https://schema.org",
+  "@type": "WebSite",
+  "url": "https://www.globalformulation.com",
+  "potentialAction": {
+    "@type": "SearchAction",
+    "target": "https://www.globalformulation.com/blog?search={search_term_string}",
+    "query-input": "required name=search_term_string"
+  }
+};
+
+// 3. Author Person Schema
+const authorSchema = {
+  "@context": "https://schema.org",
+  "@type": "Person",
+  "name": "Global Formulation team",
+  "url": "https://www.globalformulation.com",
+  "affiliation": {
+    "@type": "Organization",
+    "name": "Global Formulation",
+    "url": "https://www.globalformulation.com"
+  }
+};
+
+// 4. BreadcrumbList Schema (3-level path)
+const breadcrumbSchema = {
+  "@context": "https://schema.org",
+  "@type": "BreadcrumbList",
+  "itemListElement": [
+    {
+      "@type": "ListItem",
+      "position": 1,
+      "name": "Home",
+      "item": "https://www.globalformulation.com"
+    },
+    {
+      "@type": "ListItem",
+      "position": 2,
+      "name": "Blog",
+      "item": "https://www.globalformulation.com/blog"
+    },
+    {
+      "@type": "ListItem",
+      "position": 3,
+      "name": "How Cosmetic Formulations Are Developed",
+      "item": "https://www.globalformulation.com/how-cosmetic-formulations-are-developed"
+    }
+  ]
+};
+
+// 5. BlogPosting Schema
+const blogPostingSchema = {
+  "@context": "https://schema.org",
+  "@type": "BlogPosting",
+  "headline": "How Cosmetic Formulations Are Developed: From Concept to Commercial Production",
+  "description": "Technical guide explaining how cosmetic formulations are developed from concept to commercial production, covering R&D, stability, regulatory compliance, and manufacturing for startups and manufacturers.",
+  "image": "https://assets.zyrosite.com/AGBzPMBJDQiwDGny/how-cosmetic-formulations-are-developed-featured.jpg-QFjlHGjuruQNw4Eh.jpeg",
+  "author": {
+    "@type": "Person",
+    "name": "Global Formulation team"
+  },
+  "publisher": {
+    "@type": "Organization",
+    "name": "Global Formulation",
+    "logo": {
+      "@type": "ImageObject",
+      "url": "https://www.globalformulation.com/logo.png"
+    }
+  },
+  "datePublished": "2026-05-19",
+  "dateModified": "2026-05-19",
+  "mainEntityOfPage": {
+    "@type": "WebPage",
+    "@id": "https://www.globalformulation.com/how-cosmetic-formulations-are-developed"
+  },
+  "articleSection": "Cosmetics & Personal Care",
+  "keywords": "cosmetic formulation development, cosmetic R&D, stability testing, regulatory compliance, pilot scale-up, cosmetic manufacturing",
+  "wordCount": "3850"
+};
+
+// 6. FAQ Schema
+const faqSchema = {
+  "@context": "https://schema.org",
+  "@type": "FAQPage",
+  "mainEntity": [
+    {
+      "@type": "Question",
+      "name": "Can cosmetic products be developed without a laboratory?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "No. Professional formulation development requires controlled laboratory infrastructure for testing, stability assessment, and contamination control."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "Are natural cosmetics easier to formulate than synthetic ones?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "No. Natural formulations are often more challenging due to limited preservation options, higher microbial vulnerability, and raw material inconsistency."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "Is regulatory approval required before selling cosmetics in India?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Yes. Compliance with CDSCO rules, BIS standards, and labeling requirements is mandatory before commercial sale."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "How is shelf life determined for cosmetic products?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Shelf life is determined through accelerated and real-time stability testing under defined thermal and humidity conditions."
+      }
+    }
+  ]
+};
+
+// 7. WebPage Schema
+const webpageSchema = {
+  "@context": "https://schema.org",
+  "@type": "WebPage",
+  "name": "How Cosmetic Formulations Are Developed: Concept to Production | Global Formulation",
+  "url": "https://www.globalformulation.com/how-cosmetic-formulations-are-developed",
+  "description": "Technical guide explaining how cosmetic formulations are developed from concept to commercial production, covering R&D, stability, regulatory compliance, and manufacturing for startups and manufacturers."
+};
+
+const schemas = [orgSchema, websiteSchema, authorSchema, breadcrumbSchema, blogPostingSchema, faqSchema, webpageSchema];
+---
+
+<Layout
+  title="How Cosmetic Formulations Are Developed: Concept to Production | Global Formulation"
+  description="Technical guide explaining how cosmetic formulations are developed from concept to commercial production, covering R&D, stability, regulatory compliance, and manufacturing for startups and manufacturers."
+  canonical="https://www.globalformulation.com/how-cosmetic-formulations-are-developed"
+  ogImage="https://assets.zyrosite.com/AGBzPMBJDQiwDGny/how-cosmetic-formulations-are-developed-featured.jpg-QFjlHGjuruQNw4Eh.jpeg"
+  ogType="article"
+  schemaJson={schemas}
+>
+  <main class="section-container" style="max-width: 100%; padding-left: 48px; padding-right: 48px; padding-top: 40px; padding-bottom: 80px;">
+    
+    <!-- HTML5 Compliant Breadcrumbs (target="_top") -->
+    <nav aria-label="Breadcrumb" style="display: flex; gap: 8px; font-size: 0.85rem; color: var(--text-muted); margin-bottom: 24px; font-family: 'Inter', sans-serif;">
+      <a href="/" target="_top" style="color: var(--text-muted); text-decoration: none;">Home</a>
+      <span>&gt;</span>
+      <a href="/blog" target="_top" style="color: var(--text-muted); text-decoration: none;">Blog</a>
+      <span>&gt;</span>
+      <span style="color: var(--text-primary); font-weight: 500;">Cosmetics &amp; Personal Care</span>
+    </nav>
+
+    <!-- Main article container -->
+    <article class="blog-prose">
+      <header class="post-header">
+        <h1 class="gradient-text" style="font-size: 2.75rem; line-height: 1.2; font-weight: 900; margin-bottom: 20px;">
+          How Cosmetic Formulations Are Developed: From Concept to Commercial Production
+        </h1>
+        
+        <!-- Post meta details -->
+        <div style="display: flex; align-items: center; gap: 16px; font-size: 0.9rem; color: var(--text-muted); margin-bottom: 30px; font-family: 'Inter', sans-serif; font-weight: 500; border-bottom: 1px solid var(--border); padding-bottom: 20px;">
+          <div style="display: flex; align-items: center; gap: 8px;">
+            <span style="width: 28px; height: 28px; background: var(--primary); color: white; display: flex; align-items: center; justify-content: center; border-radius: 50%; font-weight: 700; font-size: 0.75rem;">GF</span>
+            <span>By <strong>Global Formulation team</strong></span>
+          </div>
+          <span style="width: 4px; height: 4px; border-radius: 50%; background-color: var(--border);"></span>
+          <span>Published: <strong>May 19, 2026</strong></span>
+          <span style="width: 4px; height: 4px; border-radius: 50%; background-color: var(--border);"></span>
+          <span>Reading Time: <strong>15 min read</strong></span>
+          <span style="width: 4px; height: 4px; border-radius: 50%; background-color: var(--border);"></span>
+          <span style="background: #e2fbf0; color: #0f7a5c; padding: 2px 10px; border-radius: 50px; font-size: 0.75rem; font-weight: 700; text-transform: uppercase;">Cosmetics &amp; Personal Care</span>
+        </div>
+      </header>
+
+      <!-- Primary Featured Image -->
+      <div class="image-slot">
+        <img 
+          src="https://assets.zyrosite.com/AGBzPMBJDQiwDGny/how-cosmetic-formulations-are-developed-featured.jpg-QFjlHGjuruQNw4Eh.jpeg" 
+          alt="Cosmetic formulation development process from laboratory research to commercial manufacturing" 
+          width="1200" 
+          height="800" 
+          loading="eager" 
+        />
+      </div>
+
+      <!-- Lead paragraph -->
+      <div class="lead">
+        <p>
+          Cosmetic formulation development is a meticulously controlled scientific and engineering process that converts a product idea into a safe, thermodynamically stable, regulatory-compliant, and commercially viable product. It seamlessly integrates synthetic chemistry, microbiology, colloidal material science, and industrial-scale manufacturing. Contrary to common misconception, cosmetic product development is not driven merely by subjective creativity; it is rigidly governed by measurable chemical performance, biologically validated safety, and highly reproducible manufacturing tolerances.
+        </p>
+      </div>
+
+      <!-- SECTION 1 -->
+      <section class="section" id="understanding-role">
+        <h2>What Is Cosmetic Formulation Development?</h2>
+        <p>
+          At a fundamental level, cosmetic formulation development is the structured process of designing, evaluating, validating, and scaling a multiphase chemical composition intended for external application to the human biological envelope. This process ensures that the final chemical matrix achieves its intended functional purpose while remaining physically stable against phase separation, microbiologically safe against pathogen proliferation, and fully regulatory-compliant throughout its entire defined shelf life.
+        </p>
+        <p>
+          A true cosmetic formula is far more than a simple mixture of aromatic ingredients. It is an engineered colloidal system where every single raw material acts as a precise functional building block, selected explicitly for its solubility parameters, pH tolerance, toxicological profile, and kinetic stability. Key technical objectives include:
+        </p>
+        <ul style="padding-left: 20px;">
+          <li><strong>Targeted Product Performance</strong>: Ensuring the chemical delivery system effectively imparts the intended cleansing, active hydration, barrier protection, or targeted conditioning benefit.</li>
+          <li><strong>Long-Term Kinetic Stability</strong>: Maintaining the uniform physical matrix, chemical integrity, and robust microbial preservation throughout the extreme thermal conditions of global supply chains.</li>
+          <li><strong>Biological Consumer Safety</strong>: Rigorously confirming that individual raw materials and their combined synergistic matrix are absolutely safe under repeated dermal application.</li>
+          <li><strong>Scalable Industrial Manufacturing</strong>: Engineering a robust rheological profile and processing methodology that enables reproducible large-scale shear processing with zero batch-to-batch variation.</li>
+        </ul>
+      </section>
+
+      <!-- Image: Cosmetic R&D lab -->
+      <div class="image-slot">
+        <img 
+          src="https://assets.zyrosite.com/AGBzPMBJDQiwDGny/cosmetic-rd-laboratory-formulation-scientists-Pk5UqyOhwwlwaGl3.jpg" 
+          alt="Modern cosmetic R&D laboratory with scientists formulating new products" 
+          loading="lazy" 
+        />
+      </div>
+
+      <!-- SECTION 2 -->
+      <section class="section" id="step-by-step">
+        <h2>Step-by-Step Cosmetic Formulation Development Process</h2>
+        <p>
+          Professional cosmetic product development follows a rigidly defined technical sequence progressing linearly from initial concept validation through to finalized commercial production. Each individual technical stage must be successfully completed, documented, and empirically validated before advancing, effectively mitigating the immense risk of formulation failure at a massive industrial scale. This methodology strictly integrates R&amp;D experimentation, precision analytical testing, regulatory verification, and thermodynamic process engineering.
+        </p>
+        
+        <h3>Step 1 – Market Research &amp; Product Positioning</h3>
+        <p>
+          The development cycle initiates with a comprehensive technical-commercial evaluation of global market demand, competitive chemical benchmarks, targeted consumer sensory expectations, and absolute regulatory feasibility. This crucial stage structurally defines what the product must physically achieve, sensorially deliver, and commercially cost. Product positioning definitively dictates the selection of active ingredient classes, chemical preservation strategy, regional regulatory compliance pathway, and functional packaging constraints.
+        </p>
+
+        <h3>Step 2 – Ingredient Selection &amp; Raw Material Compatibility</h3>
+        <p>
+          Selection is strictly governed by proven chemical functionality, certified toxicology profiles, target market regulatory acceptance, and complex molecular compatibility. Every raw material must be legally permitted for specific cosmetic use in the target jurisdiction and must demonstrate absolute chemical compatibility with all other dispersed components within the colloidal system. Formulators critically evaluate parameters such as relative solubility limits, pH stability windows, surfactant ionic charge, oxidative vulnerability, and potential destructive interaction with plastic packaging.
+        </p>
+
+        <h3>Step 3 – Prototype Formulation in R&amp;D Lab</h3>
+        <p>
+          Following theoretical formulation design, initial physical prototype batches are synthesized under highly controlled laboratory conditions utilizing precision shear mixing equipment. These early-stage experimental formulations are not yet optimized for absolute cost or industrial scale—they are focused entirely on establishing fundamental technical feasibility. Multiple structural variants are typically synthesized to evaluate performance across varying emulsifier ratios, active concentrations, and polymeric architectures.
+        </p>
+      </section>
+
+      <!-- Image: Cosmetic Chemist -->
+      <div class="image-slot">
+        <img 
+          src="https://assets.zyrosite.com/AGBzPMBJDQiwDGny/cosmetic-chemist-preparing-lab-scale-batch-W0TAxQbBAaAFc7iV.jpg" 
+          alt="Cosmetic chemist preparing a lab-scale batch during early formulation development" 
+          loading="lazy" 
+        />
+      </div>
+
+      <!-- SECTION 3 -->
+      <section class="section" id="performance-stability">
+        <h2>Performance Optimization and Stability Validation</h2>
+        <p>
+          Before a cosmetic formulation can even be considered for mass production, its functional performance must be empirically validated against defined chemical benchmarks, and its thermodynamic stability must be rigorously challenged under accelerated environmental stress. This phase separates viable commercial products from unstable laboratory experiments.
+        </p>
+
+        <h3>Step 4 – Performance Testing &amp; Sensory Optimization</h3>
+        <p>
+          Upon confirming initial prototype stability, the chemical formulation undergoes strict functional performance testing aligned with its specific product category. This involves quantifying metrics such as absolute cleansing efficiency, trans-epidermal water loss (TEWL) reduction for moisturizers, in-vitro SPF attenuation, or targeted antimicrobial activity. Concurrently, sensory optimization is meticulously carried out to refine the rheological application feel—balancing spreadability, absorption kinetics, and residual tackiness without compromising the foundational chemical stability of the emulsion.
+        </p>
+
+        <h3>Step 5 – Stability Testing (Accelerated &amp; Real-Time)</h3>
+        <p>
+          Comprehensive stability testing acts as the ultimate validation that the product will remain physically homogenous, chemically active, and microbiologically secure throughout its declared shelf life. Accelerated stability testing aggressively simulates long-term aging by subjecting the formula to elevated thermal loads (often 40°C to 45°C), severe humidity cycling, freeze-thaw extremes, and intense physical centrifugation. This data confirms the integrity of the emulsion phase, the stability of the pH drift, the prevention of active ingredient degradation, and the sustained efficacy of the chemical preservative network.
+        </p>
+      </section>
+
+      <!-- Image: Packaging compatibility -->
+      <div class="image-slot">
+        <img 
+          src="https://assets.zyrosite.com/AGBzPMBJDQiwDGny/cosmetic-packaging-compatibility-testing-setup-Emo4VAbM00S6eD9e.jpg" 
+          alt="Laboratory setup for cosmetic packaging compatibility and stability testing" 
+          loading="lazy" 
+        />
+      </div>
+
+      <!-- SECTION 4 -->
+      <section class="section" id="packaging-compliance">
+        <h2>Packaging Compatibility and Regulatory Compliance</h2>
+        <p>
+          A perfect formulation can easily be destroyed by interacting negatively with its final container. Furthermore, global distribution legally requires exhaustive, documented proof of biological safety. These two late-stage hurdles are mandatory checkpoints before physical scale-up.
+        </p>
+
+        <h3>Step 6 – Packaging Compatibility Testing</h3>
+        <p>
+          The primary packaging is considered an active structural component of the entire formulation system. Countless cosmetic products fail commercially not due to internal chemical instability, but resulting from aggressive chemical interaction with packaging materials—such as the leaching of plasticizers, the softening of elastomer pump seals, or the structural deformation of the container walls. Robust compatibility validation ensures zero migration of toxic extractables into the product and guarantees the mechanical integrity of the dispensing valve over the product's entire lifespan.
+        </p>
+
+        <h3>Step 7 – Regulatory &amp; Safety Documentation</h3>
+        <p>
+          Every cosmetic product introduced into commerce must be rigorously supported by legally mandated safety and compliance documentation. These massive technical dossiers definitively prove that the chemical matrix has been comprehensively evaluated for human toxicological safety under intended real-world usage conditions. Mandatory documentation includes exhaustive Product Safety Assessment Reports, toxicological ingredient reviews, globally standardized INCI declarations, absolute label compliance verification, and certified microbial challenge testing (PET) data.
+        </p>
+      </section>
+
+      <!-- Image: Industrial scale-up -->
+      <div class="image-slot">
+        <img 
+          src="https://assets.zyrosite.com/AGBzPMBJDQiwDGny/industrial-cosmetic-manufacturing-production-line-FmyPkaPU6ewOjA2f.jpg" 
+          alt="Industrial cosmetic manufacturing line with stainless steel mixing tanks and automated filling machines" 
+          loading="lazy" 
+        />
+      </div>
+
+      <!-- SECTION 5 -->
+      <section class="section" id="scale-up">
+        <h2>Step 8 – Pilot Batch &amp; Manufacturing Scale-Up</h2>
+        <p>
+          Scale-up is the highly complex engineering transition that translates a validated 1-liter laboratory formula into a manufacturing-ready, multi-ton industrial process. The paramount challenge lies in accurately replicating laboratory thermodynamics and fluid shear dynamics at massive production volumes without irreversibly altering the product's sensory performance or structural stability. Process engineering parameters—including turbine mixing speed, precise thermal heating and cooling rates, localized shear force, phase addition sequence, and holding duration—are meticulously recalibrated and validated during highly monitored pilot production runs to ensure absolute batch-to-batch reproducibility.
+        </p>
+      </section>
+
+      <!-- SECTION 6: FAQ -->
+      <section class="section" id="faq" style="border-top: 2px solid var(--border); padding-top: 40px; margin-top: 40px;">
+        <h2>Frequently Asked Questions (FAQ)</h2>
+        <div style="display: flex; flex-direction: column; gap: 20px;">
+          
+          <div class="box" style="margin: 0;">
+            <h3 style="color: var(--primary); font-size: 1.15rem; margin-bottom: 8px;">1. Can cosmetic products be developed without a laboratory?</h3>
+            <p style="margin: 0; line-height: 1.6;">
+              Absolutely not. Professional, legally compliant formulation development strictly requires controlled laboratory infrastructure for precision weighing, intensive physical stability assessment, high-shear emulsification, and rigorous microbiological contamination control.
+            </p>
+          </div>
+
+          <div class="box" style="margin: 0;">
+            <h3 style="color: var(--primary); font-size: 1.15rem; margin-bottom: 8px;">2. Are natural cosmetics easier to formulate than synthetic ones?</h3>
+            <p style="margin: 0; line-height: 1.6;">
+              No. In fact, "natural" formulations are exponentially more difficult to stabilize. They suffer from inherent raw material inconsistency, extremely limited broad-spectrum preservation options, and much higher vulnerability to rapid microbial degradation and oxidative rancidity.
+            </p>
+          </div>
+
+          <div class="box" style="margin: 0;">
+            <h3 style="color: var(--primary); font-size: 1.15rem; margin-bottom: 8px;">3. Is regulatory approval required before selling cosmetics in India?</h3>
+            <p style="margin: 0; line-height: 1.6;">
+              Yes. Strict compliance with CDSCO (Central Drugs Standard Control Organization) rules, adherence to specific BIS manufacturing standards, and legally precise labeling requirements are mandatory before any commercial sale or distribution.
+            </p>
+          </div>
+
+        </div>
+      </section>
+
+      <!-- Call to Action Box (target="_top") -->
+      <div class="cta" style="background: linear-gradient(135deg, var(--primary) 0%, var(--secondary) 100%); color: #ffffff; padding: 30px; border-radius: var(--radius-lg); margin-top: 40px; display: flex; flex-direction: column; justify-content: space-between; align-items: flex-start; gap: 20px; md-flex-direction: row; md-align-items: center;">
+        <div class="left">
+          <p style="margin:0 0 8px 0; font-size:1.25rem; font-weight:800; font-family: 'Outfit', sans-serif;">Need Expert R&amp;D for Your Next Cosmetic Formulation?</p>
+          <p style="margin:0 0 16px 0; font-size:0.95rem; line-height:1.6; opacity:0.95;">
+            Leverage Global Formulation to translate your concept into a physically stable, microbiologically safe, and regulatory-compliant product ready for large-scale industrial manufacturing.
+          </p>
+          <p style="margin:0; font-size:0.9rem; line-height:1.6; font-family: monospace;">
+            Email: <strong>consulting@globalformulation.com</strong><br />
+            Phone: <strong>+91 9819548320 &nbsp;&nbsp; +91 8169102990</strong>
+          </p>
+        </div>
+        <a href="mailto:consulting@globalformulation.com" class="btn" style="background:#ffffff; color:var(--primary); font-weight:700; padding:12px 24px; border-radius:var(--radius-sm); border:none; text-decoration:none; transition: all var(--transition-fast);">
+          Start Formulation Development
+        </a>
+      </div>
+
+      <!-- ABOUT THE AUTHOR -->
+      <section class="section" id="about-author" style="margin-top: 50px; background: #f8fafc; border: 1px solid var(--border); padding: 30px; border-radius: var(--radius-lg); display: flex; flex-direction: column; gap: 20px; md-flex-direction: row;">
+        <div style="flex-shrink: 0; width: 60px; height: 60px; background: linear-gradient(135deg, var(--primary) 0%, var(--secondary) 100%); color: white; display: flex; align-items: center; justify-content: center; border-radius: 50%; font-size: 1.5rem; font-weight: 800; font-family: 'Outfit', sans-serif; box-shadow: var(--shadow-md);">
+          GF
+        </div>
+        <div>
+          <h3 style="margin-top: 0; margin-bottom: 8px; font-family: 'Outfit', sans-serif; font-size: 1.3rem; font-weight: 700; color: var(--text-primary);">About the Specialist</h3>
+          <p style="margin-top: 0; margin-bottom: 12px; font-size: 0.95rem; line-height: 1.6; color: var(--text-muted);">
+            The <strong>Global Formulation team</strong> consists of senior industrial consultants with cross-disciplinary expertise spanning advanced cosmetic R&amp;D, colloidal chemistry, scale-up process engineering, and regulatory compliance. Our technical architects lead scientific advisory and formulation teams supporting cosmetics brands and manufacturers globally in technology selection, GMP layouts, validation frameworks, and product commercialization.
+          </p>
+          <p style="margin: 0; font-size: 0.9rem;">
+            <strong>LinkedIn Portfolio:</strong> 
+            <a 
+              href="https://www.linkedin.com/in/absar-khan-aerosol-consultant-and-formulator-78359b162" 
+              target="_blank" 
+              style="font-weight: 700; color: var(--primary); text-decoration: underline;"
+            >
+              Connect with Global Formulation on LinkedIn
+            </a>
+          </p>
+        </div>
+      </section>
+
+      <!-- Footer copyright -->
+      <footer style="text-align: center; margin-top: 50px; color: var(--text-muted); font-size: 0.85rem; font-family: 'Inter', sans-serif;">
+        &copy; {new Date().getFullYear()} Global Formulation. All rights reserved. 
+        <br />
+        <span style="font-size: 0.75rem; opacity: 0.8;">Specialized Chemical Engineering &amp; Cosmetic Product Development.</span>
+      </footer>
+
+    </article>
+  </main>
+</Layout>
+
+<style>
+
+  
+  .blog-prose h1, 
+  .blog-prose h2, 
+  .blog-prose h3 {
+    font-family: 'Playfair Display', 'Outfit', serif !important;
+  }
+  
+  .blog-prose h2 {
+    color: #ffffff !important;
+    background-color: var(--secondary) !important;
+    padding: 12px 20px;
+    border-radius: var(--radius-md);
+    border-bottom: none !important;
+    font-weight: 700;
+  }
+
+  /* Widescreen constraints */
+  .blog-prose p, 
+  .blog-prose ul, 
+  .blog-prose ol,
+  .blog-prose h3,
+  .blog-prose .lead,
+  .blog-prose .image-slot,
+  .blog-prose .box,
+  .blog-prose .cta,
+  .blog-prose .table-container,
+  .blog-prose #faq {
+    max-width: 100%;
+    width: 100%;
+  }
+
+  .blog-prose .lead {
+    margin: 2rem 0;
+  }
+</style>

@@ -1,0 +1,401 @@
+---
+const team = [
+  {
+    name: "Aerosol Formulators & Chemists",
+    role: "Aerosol Chemistry Specialists",
+    desc: "Expert chemists specialized in active concentrate formulations, emulsion stability, and compatibility with various propellants for clean and consistent spray delivery.",
+    specialty: "Aerosol Formulations & Emulsions",
+    image: "/images/service-laboratory.webp"
+  },
+  {
+    name: "PhDs & Research Scientists",
+    role: "Research & Development",
+    desc: "Doctorate-level scientists driving innovation in gas kinetics, propellant science, safety modeling, and valve engineering to achieve precise dosing profiles.",
+    specialty: "Aerosol Dosing & Gas Engineering",
+    image: "/images/service-engineering.webp"
+  },
+  {
+    name: "Aerosol Process Engineers",
+    role: "Scale-Up & Plant Design",
+    desc: "Specialists who translate lab formulations to high-speed commercial filling lines, designing propellant charging processes and ensuring strict safety compliance.",
+    specialty: "Canister Filling & Scale-up",
+    image: "/images/service-scaleup.webp"
+  }
+];
+---
+
+<section class="studio-section" id="studio">
+  <div class="container">
+    <div class="studio-box">
+      <div class="studio-header">
+        <span class="eyebrow">Ventures & Advisory</span>
+        <h2 class="section-title">
+          {"Startups and New ventures".split(' ').map(word => (
+            <span class="word-wrapper">
+              {word.split('').map(char => (
+                <span class="blue-char">{char}</span>
+              ))}
+            </span>
+          ))}
+        </h2>
+        <p class="studio-desc">
+          For brands launching new products, we provide end-to-end aerosol engineering guidance to reduce formulation costs and accelerate production — giving you the confidence to launch aerosol products successfully.
+        </p>
+        <div class="header-actions">
+          <a href="#contact" class="gf-button">
+            <span class="button-text">Speak With Our Experts</span>
+            <span class="arrow">➤</span>
+          </a>
+        </div>
+      </div>
+
+      <div class="team-grid">
+        {team.map((member, index) => (
+          <div class="team-card" data-index={index}>
+            <div class="card-inner">
+              <div class="image-container">
+                <img src={member.image} alt={member.name} loading="lazy" />
+                <div class="card-overlay">
+                  <span class="specialty">{member.specialty}</span>
+                </div>
+              </div>
+              <div class="card-info">
+                <h3>{member.name}</h3>
+                <p class="card-role">{member.role}</p>
+                <p class="card-desc">{member.desc}</p>
+              </div>
+            </div>
+          </div>
+        ))}
+      </div>
+    </div>
+  </div>
+</section>
+
+<style>
+  .studio-section {
+    padding: 80px 2%;
+    background-color: #ffffff;
+    overflow: hidden;
+  }
+
+  .container {
+    max-width: 1700px;
+    margin: 0 auto;
+  }
+
+  .studio-box {
+    background-color: #0a0a0a;
+    border-radius: 40px;
+    padding: 60px 40px;
+    position: relative;
+    overflow: hidden;
+    box-shadow: 0 40px 100px rgba(0, 0, 0, 0.1);
+    width: 100%;
+  }
+
+  .studio-header {
+    max-width: 800px;
+    margin-bottom: 50px;
+  }
+
+  .eyebrow {
+    display: block;
+    font-size: 0.8rem;
+    text-transform: uppercase;
+    letter-spacing: 4px;
+    color: #0968e5;
+    margin-bottom: 16px;
+    opacity: 1;
+  }
+
+  .section-title {
+    font-size: clamp(2rem, 5vw, 4.5rem);
+    font-weight: 700;
+    line-height: 1.1;
+    margin-bottom: 24px;
+    letter-spacing: -0.02em;
+    color: #fff;
+  }
+
+  .word-wrapper {
+    display: inline-block;
+    white-space: nowrap;
+    margin-right: 0.3em;
+  }
+
+  .blue-char {
+    display: inline-block;
+    opacity: 0;
+    color: #fff;
+    -webkit-text-fill-color: #fff;
+  }
+
+  .studio-desc {
+    font-size: 1.1rem;
+    color: #888;
+    line-height: 1.6;
+    max-width: 600px;
+    opacity: 1; /* Make plainly visible */
+  }
+
+  .header-actions {
+    margin-top: 32px;
+  }
+
+  .gf-button {
+    display: inline-block;
+    padding: 14px 32px;
+    border-radius: 12px;
+    background: #0968e5;
+    color: #fff;
+    font-weight: 700;
+    font-size: 0.95rem;
+    text-decoration: none;
+    position: relative;
+    overflow: hidden;
+    cursor: pointer;
+    letter-spacing: 0.5px;
+    border: 1px solid rgba(255, 255, 255, 0.2);
+    box-shadow:
+      0 10px 20px rgba(9, 104, 229, 0.2),
+      0 4px 8px rgba(0, 0, 0, 0.1);
+    transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+  }
+
+  .gf-button:hover {
+    transform: translateY(-2px) scale(1.05);
+    box-shadow: 0 15px 30px rgba(9, 104, 229, 0.4);
+    color: #fff;
+  }
+
+  .gf-button::before {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: -180%;
+    width: 50%;
+    height: 100%;
+    background: linear-gradient(
+      90deg,
+      transparent,
+      rgba(0, 255, 204, 0.8),
+      rgba(255, 255, 255, 0.9),
+      rgba(0, 255, 204, 0.8),
+      transparent
+    );
+    transform: skewX(-25deg);
+    transition: left 0.8s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+    pointer-events: none;
+    opacity: 0;
+  }
+
+  .gf-button:hover::before {
+    left: 180%;
+    opacity: 1;
+  }
+
+  .gf-button .arrow {
+    display: inline-block;
+    margin-left: 8px;
+    transition: all 0.3s ease;
+    font-size: 0.95rem;
+  }
+
+  .gf-button:hover .arrow {
+    transform: translateX(6px);
+  }
+
+  .gf-button .button-text {
+    position: relative;
+    z-index: 2;
+  }
+
+  .team-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 30px;
+  }
+
+  .team-card {
+    opacity: 1;
+  }
+
+  .card-inner {
+    position: relative;
+    border-radius: 32px;
+    overflow: hidden;
+    background: rgba(255, 255, 255, 0.03);
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    transition: all 0.5s cubic-bezier(0.2, 0, 0.2, 1);
+    height: 100%;
+  }
+
+  .card-inner:hover {
+    background: rgba(255, 255, 255, 0.07);
+    border-color: rgba(9, 104, 229, 0.4);
+    transform: translateY(-10px);
+    box-shadow: 0 30px 60px rgba(0, 0, 0, 0.5);
+  }
+
+  .image-container {
+    position: relative;
+    aspect-ratio: 3/2;
+    overflow: hidden;
+  }
+
+  .image-container img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    filter: grayscale(0); /* Plainly visible */
+    transition: transform 0.7s cubic-bezier(0.2, 0, 0.2, 1);
+  }
+
+  .card-inner:hover img {
+    filter: grayscale(0%);
+    transform: scale(1.05);
+  }
+
+  .card-overlay {
+    position: absolute;
+    inset: 0;
+    background: linear-gradient(to top, rgba(9, 104, 229, 0.4) 0%, transparent 60%);
+    opacity: 0;
+    transition: opacity 0.5s ease;
+    display: flex;
+    align-items: flex-end;
+    padding: 30px;
+  }
+
+  .card-inner:hover .card-overlay {
+    opacity: 1;
+  }
+
+  .specialty {
+    font-size: 0.8rem;
+    text-transform: uppercase;
+    letter-spacing: 2px;
+    font-weight: 600;
+    color: #fff;
+  }
+
+  .card-info {
+    padding: 24px 24px 28px;
+  }
+
+  .card-info h3 {
+    font-size: 1.35rem;
+    margin-bottom: 6px;
+    font-weight: 700;
+    line-height: 1.2;
+  }
+
+  .card-role {
+    font-size: 0.75rem;
+    color: #0968e5;
+    text-transform: uppercase;
+    letter-spacing: 1.5px;
+    font-weight: 700;
+    margin-bottom: 10px;
+  }
+
+  .card-desc {
+    font-size: 0.88rem;
+    color: #888;
+    line-height: 1.55;
+    letter-spacing: 0;
+    text-transform: none;
+    margin: 0;
+  }
+
+  /* Mobile Responsiveness */
+  @media (max-width: 1024px) {
+    .section-title { font-size: 3.5rem; }
+    .team-grid { gap: 24px; }
+    .studio-box { padding: 80px 40px; }
+  }
+
+  @media (max-width: 768px) {
+    .studio-section { padding: 24px 16px 40px; }
+    .studio-box {
+      padding: 48px 20px;
+      border-radius: 24px;
+    }
+    .section-title { font-size: 2.2rem; letter-spacing: 0; }
+    .team-grid { grid-template-columns: 1fr; gap: 20px; }
+    .studio-header { margin-bottom: 36px; }
+    /* Card overlay always visible on touch devices */
+    .card-overlay {
+      opacity: 1;
+      background: linear-gradient(to top, rgba(9, 104, 229, 0.3) 0%, transparent 60%);
+    }
+    .card-overlay .specialty { font-size: 0.75rem; }
+    /* Reduce card overlay padding */
+    .card-overlay { padding: 20px; }
+  }
+
+  @media (max-width: 480px) {
+    .studio-section { padding: 16px 12px 32px; }
+    .studio-box {
+      padding: 36px 16px;
+      border-radius: 20px;
+    }
+  }
+</style>
+
+<script>
+  import { gsap } from "gsap";
+  import { ScrollTrigger } from "gsap/ScrollTrigger";
+
+  gsap.registerPlugin(ScrollTrigger);
+
+  const studioSection = document.querySelector('.studio-section');
+  if (studioSection) {
+    const tl = gsap.timeline({
+      scrollTrigger: {
+        trigger: studioSection,
+        start: "top 90%",
+      }
+    });
+
+    tl.fromTo(".studio-section .blue-char", 
+      { opacity: 0, x: -15, color: "#0968e5", webkitTextFillColor: "#0968e5" },
+      {
+        opacity: 1,
+        x: 0,
+        color: "#0968e5",
+        webkitTextFillColor: "#0968e5",
+        duration: 0.6,
+        stagger: 0.02,
+        ease: "power3.out"
+      }
+    )
+    .to(".studio-section .blue-char", {
+      color: "white",
+      webkitTextFillColor: "white",
+      duration: 0.6,
+      stagger: 0.02,
+      ease: "power2.inOut"
+    }, 0.3)
+    .from(".studio-desc", {
+      opacity: 0,
+      y: 10,
+      duration: 0.6,
+      ease: "power2.out"
+    }, "-=0.4")
+    .from(".header-actions", {
+      opacity: 0,
+      y: 10,
+      duration: 0.6,
+      ease: "power2.out"
+    }, "-=0.4")
+    .from(".team-card", {
+      opacity: 0,
+      y: 20,
+      duration: 0.8,
+      stagger: 0.1,
+      ease: "power2.out"
+    }, "-=0.4");
+  }
+</script>

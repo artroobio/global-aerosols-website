@@ -1,0 +1,456 @@
+---
+import Layout from '../layouts/Layout.astro';
+
+// ==========================================
+// 7 HIGH-FIDELITY JSON-LD SCHEMAS
+// ==========================================
+
+// 1. Organization Schema
+const orgSchema = {
+  "@context": "https://schema.org",
+  "@type": "Organization",
+  "name": "Global Formulation",
+  "url": "https://www.globalformulation.com",
+  "logo": "https://www.globalformulation.com/logo.png",
+  "contactPoint": [{
+    "@type": "ContactPoint",
+    "telephone": "+91 9819548320",
+    "contactType": "customer service"
+  }]
+};
+
+// 2. Website Search Schema
+const websiteSchema = {
+  "@context": "https://schema.org",
+  "@type": "WebSite",
+  "url": "https://www.globalformulation.com",
+  "potentialAction": {
+    "@type": "SearchAction",
+    "target": "https://www.globalformulation.com/blog?search={search_term_string}",
+    "query-input": "required name=search_term_string"
+  }
+};
+
+// 3. Author Person Schema
+const authorSchema = {
+  "@context": "https://schema.org",
+  "@type": "Person",
+  "name": "Global Formulation team",
+  "url": "https://www.globalformulation.com",
+  "affiliation": {
+    "@type": "Organization",
+    "name": "Global Formulation",
+    "url": "https://www.globalformulation.com"
+  }
+};
+
+// 4. BreadcrumbList Schema (3-level path)
+const breadcrumbSchema = {
+  "@context": "https://schema.org",
+  "@type": "BreadcrumbList",
+  "itemListElement": [
+    {
+      "@type": "ListItem",
+      "position": 1,
+      "name": "Home",
+      "item": "https://www.globalformulation.com"
+    },
+    {
+      "@type": "ListItem",
+      "position": 2,
+      "name": "Blog",
+      "item": "https://www.globalformulation.com/blog"
+    },
+    {
+      "@type": "ListItem",
+      "position": 3,
+      "name": "Liquid Detergent Formulation Explained",
+      "item": "https://www.globalformulation.com/how-to-formulate-liquid-detergents"
+    }
+  ]
+};
+
+// 5. BlogPosting Schema
+const blogPostingSchema = {
+  "@context": "https://schema.org",
+  "@type": "BlogPosting",
+  "headline": "Liquid Detergent Formulation Explained: Chemistry, Process & Scale-Up",
+  "description": "Learn how liquid detergents are formulated using surfactant chemistry, builders, pH control, and process engineering. A technical, industry-grade guide for startups, students, and entrepreneurs.",
+  "image": "https://assets.zyrosite.com/AGBzPMBJDQiwDGny/liquid-detergent-molecular-cleaning-mechanism-f007xmYzL7XMdvrX.png",
+  "author": {
+    "@type": "Person",
+    "name": "Global Formulation team"
+  },
+  "publisher": {
+    "@type": "Organization",
+    "name": "Global Formulation",
+    "logo": {
+      "@type": "ImageObject",
+      "url": "https://www.globalformulation.com/logo.png"
+    }
+  },
+  "datePublished": "2026-05-19",
+  "dateModified": "2026-05-19",
+  "mainEntityOfPage": {
+    "@type": "WebPage",
+    "@id": "https://www.globalformulation.com/how-to-formulate-liquid-detergents"
+  },
+  "articleSection": "Household",
+  "keywords": "liquid detergent formulation, surfactant chemistry, micelle formation, liquid detergent manufacturing, chemical scale-up",
+  "wordCount": "3450"
+};
+
+// 6. FAQ Schema
+const faqSchema = {
+  "@context": "https://schema.org",
+  "@type": "FAQPage",
+  "mainEntity": [
+    {
+      "@type": "Question",
+      "name": "Is liquid detergent formulation the same for all applications?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "No. Hand wash, machine wash, and institutional detergents require drastically different foam behavior, alkalinity levels, and rheological stability profiles."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "Can a lab formulation be scaled directly?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Direct scaling usually fails due to differences in mixing energy (shear), heat transfer efficiency, and localized concentration gradients in massive industrial tanks."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "Why do liquid detergents separate over time?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Phase separation typically results from surfactant incompatibility (such as mixing anionic and cationic species improperly), electrolyte imbalance, fragrance solubility limits, or severe pH drift."
+      }
+    }
+  ]
+};
+
+// 7. WebPage Schema
+const webpageSchema = {
+  "@context": "https://schema.org",
+  "@type": "WebPage",
+  "name": "Liquid Detergent Formulation Explained: Chemistry, Process & Scale-Up | Global Formulation",
+  "url": "https://www.globalformulation.com/how-to-formulate-liquid-detergents",
+  "description": "Learn how liquid detergents are formulated using surfactant chemistry, builders, pH control, and process engineering. A technical, industry-grade guide for startups, students, and entrepreneurs."
+};
+
+const schemas = [orgSchema, websiteSchema, authorSchema, breadcrumbSchema, blogPostingSchema, faqSchema, webpageSchema];
+---
+
+<Layout
+  title="Liquid Detergent Formulation Explained: Chemistry, Process & Scale-Up | Global Formulation"
+  description="Learn how liquid detergents are formulated using surfactant chemistry, builders, pH control, and process engineering. A technical, industry-grade guide for startups, students, and entrepreneurs."
+  canonical="https://www.globalformulation.com/how-to-formulate-liquid-detergents"
+  ogImage="https://assets.zyrosite.com/AGBzPMBJDQiwDGny/liquid-detergent-molecular-cleaning-mechanism-f007xmYzL7XMdvrX.png"
+  ogType="article"
+  schemaJson={schemas}
+>
+  <main class="section-container" style="max-width: 100%; padding-left: 48px; padding-right: 48px; padding-top: 40px; padding-bottom: 80px;">
+    
+    <!-- HTML5 Compliant Breadcrumbs (target="_top") -->
+    <nav aria-label="Breadcrumb" style="display: flex; gap: 8px; font-size: 0.85rem; color: var(--text-muted); margin-bottom: 24px; font-family: 'Inter', sans-serif;">
+      <a href="/" target="_top" style="color: var(--text-muted); text-decoration: none;">Home</a>
+      <span>&gt;</span>
+      <a href="/blog" target="_top" style="color: var(--text-muted); text-decoration: none;">Blog</a>
+      <span>&gt;</span>
+      <span style="color: var(--text-primary); font-weight: 500;">Household</span>
+    </nav>
+
+    <!-- Main article container -->
+    <article class="blog-prose">
+      <header class="post-header">
+        <h1 class="gradient-text" style="font-size: 2.75rem; line-height: 1.2; font-weight: 900; margin-bottom: 20px;">
+          Liquid Detergent Formulation Explained: From Raw Materials to Market-Ready Products
+        </h1>
+        
+        <!-- Post meta details -->
+        <div style="display: flex; align-items: center; gap: 16px; font-size: 0.9rem; color: var(--text-muted); margin-bottom: 30px; font-family: 'Inter', sans-serif; font-weight: 500; border-bottom: 1px solid var(--border); padding-bottom: 20px;">
+          <div style="display: flex; align-items: center; gap: 8px;">
+            <span style="width: 28px; height: 28px; background: var(--primary); color: white; display: flex; align-items: center; justify-content: center; border-radius: 50%; font-weight: 700; font-size: 0.75rem;">GF</span>
+            <span>By <strong>Global Formulation team</strong></span>
+          </div>
+          <span style="width: 4px; height: 4px; border-radius: 50%; background-color: var(--border);"></span>
+          <span>Published: <strong>May 19, 2026</strong></span>
+          <span style="width: 4px; height: 4px; border-radius: 50%; background-color: var(--border);"></span>
+          <span>Reading Time: <strong>14 min read</strong></span>
+          <span style="width: 4px; height: 4px; border-radius: 50%; background-color: var(--border);"></span>
+          <span style="background: #e2fbf0; color: #0f7a5c; padding: 2px 10px; border-radius: 50px; font-size: 0.75rem; font-weight: 700; text-transform: uppercase;">Household</span>
+        </div>
+      </header>
+
+      <!-- Primary Featured Image -->
+      <div class="image-slot">
+        <img 
+          src="https://assets.zyrosite.com/AGBzPMBJDQiwDGny/liquid-detergent-molecular-cleaning-mechanism-f007xmYzL7XMdvrX.png" 
+          alt="Molecular illustration showing surfactant molecules removing oily soil from a surface through micelle formation in liquid detergent" 
+          width="1200" 
+          height="800" 
+          loading="eager" 
+        />
+      </div>
+
+      <!-- Lead paragraph -->
+      <div class="lead">
+        <p>
+          Liquid detergents are highly engineered chemical systems designed to remove complex soils through controlled surface chemistry, strict alkalinity buffering, and long-term physicochemical stability. Unlike dry powdered solid detergents, liquid formulations face a constant thermodynamic struggle; they must remain perfectly homogeneous, visually crystal clear (or uniformly opaque), microbiologically sterile, and functionally potent throughout an extended shelf life involving extreme thermal transport conditions. These stringent requirements transform modern liquid detergent formulation into an advanced discipline heavily grounded in colloid science, micellar phase chemistry, and industrial chemical engineering, rather than simple bucket-mixing of generic ingredients.
+        </p>
+      </div>
+
+      <!-- SECTION 1 -->
+      <section class="section" id="not-just-mixing">
+        <h2>Why Liquid Detergent Formulation Is Not "Just Mixing Chemicals"</h2>
+        <p>
+          At a fundamental molecular level, liquid detergents are densely packed multi-component colloidal systems wherein synthetic surfactants, dissolved electrolytes, organic solvents, and functional active additives coexist in a remarkably delicate thermodynamic equilibrium. Every single raw material introduced into the aqueous matrix instantly alters the physical micelle geometry, shifts the overall charge density, and modifies the ionic strength of the bulk fluid. These cascading chemical changes directly dictate the product's true detergency, its physical rheology (viscosity), and its long-term resistance to catastrophic phase separation.
+        </p>
+        <p>
+          Unlike many forgiving industrial liquids, detergent systems are notoriously sensitive to microscopic concentration gradients and strict chronological order of addition. Introducing an electrolyte too quickly can locally exceed solubility limits, triggering an irreversible "salting-out" effect that completely crashes the surfactant network. The following are the most commonly overlooked factors that cause spontaneous formulation failure:
+        </p>
+        <ul style="padding-left: 20px;">
+          <li><strong>Surfactant Incompatibility</strong>: Blending opposing ionic charges (e.g., anionic and cationic species) or severely mismatched Hydrophilic-Lipophilic Balance (HLB) values guarantees micelle collapse and rapid phase separation.</li>
+          <li><strong>Electrolyte Overdose</strong>: Excessive salt addition meant to boost viscosity instead overwhelms the ionic double layer, reducing surfactant solubility and completely collapsing the fluid's viscosity to that of water.</li>
+          <li><strong>Improper pH Control</strong>: Failing to tightly buffer the pH leads to the spontaneous precipitation of active additives, heightened risk of fabric tensile damage, and severe dermal irritation for the end-consumer.</li>
+          <li><strong>Temperature Exposure</strong>: Crossing the formulation's critical cloud point during hot summer transport causes nonionic surfactants to drop out of solution, permanently destabilizing solubilized fragrances.</li>
+        </ul>
+      </section>
+
+      <!-- SECTION 2 -->
+      <section class="section" id="chemistry-behind">
+        <h2>Understanding the Chemistry Behind Liquid Detergents</h2>
+        <p>
+          The functional cleaning action of a liquid detergent is not driven by mechanical abrasion, but entirely governed by advanced interfacial surface chemistry. Surfactants physically wedge themselves between water and hydrophobic oily soils, aggressively reducing the interfacial tension and allowing the insoluble grease to detach from the substrate. Once detached, the soil is suspended safely in the bulk aqueous wash liquor, a process driven completely by spontaneous molecular self-assembly and thermodynamic entropy gain.
+        </p>
+        <p>
+          Surfactant molecules are distinctly amphiphilic; they possess a long, oil-loving hydrophobic hydrocarbon tail and a highly polar, water-loving hydrophilic head group. When their concentration within the fluid breaches the specific Critical Micelle Concentration (CMC) threshold, they spontaneously cluster to form spherical (or rod-like) micelles. The hydrophobic tails point inward to encapsulate oily soils, while the charged hydrophilic heads point outward to maintain stable dispersion in the wash water.
+        </p>
+        <div class="table-container">
+          <table>
+            <thead>
+              <tr>
+                <th>Chemical Principle</th>
+                <th>Functional Role in Detergency</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td>Hydrophilic–Lipophilic Balance (HLB)</td>
+                <td>Determines the surfactant's absolute affinity for solubilizing oily soils versus remaining partitioned in the aqueous phase.</td>
+              </tr>
+              <tr>
+                <td>Electrostatic Repulsion</td>
+                <td>Provides a negative charge barrier that physically prevents the redeposition of suspended soils back onto clean fabrics.</td>
+              </tr>
+              <tr>
+                <td>Van der Waals Interactions</td>
+                <td>Provides the weak intermolecular attractive forces necessary to facilitate robust surfactant–soil association.</td>
+              </tr>
+              <tr>
+                <td>Entropy-Driven Micellization</td>
+                <td>Enables the spontaneous self-assembly of cleaning structures without requiring external mechanical or thermal energy input.</td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+      </section>
+
+      <!-- Image: Micelle formation -->
+      <div class="image-slot">
+        <img 
+          src="https://assets.zyrosite.com/AGBzPMBJDQiwDGny/surfactant-micelle-formation-diagram-qK4NEaDBK6NXOUog.png" 
+          alt="Diagram showing amphiphilic surfactant molecules forming micelles and encapsulating oily soil in an aqueous detergent system" 
+          loading="lazy" 
+        />
+      </div>
+
+      <!-- SECTION 3 -->
+      <section class="section" id="core-ingredients">
+        <h2>Core Ingredients Used in Liquid Detergent Formulation</h2>
+        <p>
+          The selection of raw materials in modern liquid detergents is strictly dictated by targeted chemical functionality and absolute system compatibility. A successful formulator must ensure that every component remains fully soluble, chemically active, and thermodynamically stable across the product's entire intended pH range and thermal storage window. Furthermore, these ingredients must not competitively interact to neutralize each other's efficacy.
+        </p>
+        <p>
+          The core surfactant network establishes the foundational structural backbone and primary cleaning power of the formulation. To maximize this efficacy, builders, hydrotropic solvents, and specialized functional additives are precisely incorporated to modify the surrounding chemical environment and maintain pristine fluid stability:
+        </p>
+        <ul style="padding-left: 20px;">
+          <li><strong>Anionic Surfactants</strong>: (e.g., LABSA, SLES) Provide the heavy-duty primary soil removal power via aggressive electrostatic interactions and robust foam generation.</li>
+          <li><strong>Nonionic Surfactants</strong>: (e.g., Fatty Alcohol Ethoxylates) Excel at penetrating tough particulate grease and maintain their detergency across extreme temperature fluctuations without being deactivated by hard water.</li>
+          <li><strong>Amphoteric Surfactants</strong>: (e.g., CAPB) Exhibit zwitterionic behavior, buffering the harshness of anionics to dramatically improve skin mildness and enhance overall foam structural stability.</li>
+          <li><strong>Chelating Builders</strong>: Aggressively bind with destructive Calcium and Magnesium hard water ions, preventing them from precipitating and deactivating the primary surfactant molecules.</li>
+        </ul>
+      </section>
+
+      <!-- Image: Mixing Tank -->
+      <div class="image-slot">
+        <img 
+          src="https://assets.zyrosite.com/AGBzPMBJDQiwDGny/liquid-detergent-manufacturing-mixing-tank-1NP5JgpbIjj2KFZ6.png" 
+          alt="Industrial stainless steel mixing tank with agitator used for liquid detergent manufacturing and formulation" 
+          loading="lazy" 
+        />
+      </div>
+
+      <!-- SECTION 4 -->
+      <section class="section" id="manufacturing-process">
+        <h2>Liquid Detergent Manufacturing Process – Step by Step</h2>
+        <p>
+          At an industrial scale, manufacturing a liquid detergent is an active, kinetically controlled chemical process, absolutely not a passive fluid transfer operation. The intensity of mechanical mixing shear, the precise chronological sequence of raw material addition, and the strict control of exothermic heat directly dictate the success of micelle formation and the ultimate physical stability of the finished product.
+        </p>
+        <p>
+          Inadequate mechanical agitation during the addition of highly viscous active surfactants results in localized zones of extreme concentration, leading to "fisheyes" and un-dissolved gel lumps. Conversely, applying excessive high-shear mixing can irreparably rupture the fragile rod-like micellar structures responsible for the product's thick, luxurious viscosity. Consequently, commercial manufacturing demands rigorously engineered standard operating procedures:
+        </p>
+        <ul style="padding-left: 20px;">
+          <li><strong>Water Conditioning</strong>: The bulk deionized water phase must be properly charged and treated with chelating agents to establish a controlled, mineral-free dilution environment.</li>
+          <li><strong>Sequential Surfactant Addition</strong>: Active ingredients must be introduced in a specific sequence (typically anionic, then nonionic, then amphoteric) to prevent localized over-concentration and catastrophic gel blocking.</li>
+          <li><strong>Exothermic Neutralization</strong>: Strong acid precursors (like LABSA) must be neutralized with alkaline agents (like Caustic Soda) under carefully monitored cooling to prevent thermal degradation of the polymer network.</li>
+          <li><strong>Electrolyte Viscosity Tuning</strong>: Precise, fractional additions of sodium chloride are utilized to manipulate the electrical double layer of the micelles, forcing them to elongate and dynamically build fluid viscosity.</li>
+        </ul>
+      </section>
+
+      <!-- Image: Phase Separation -->
+      <div class="image-slot">
+        <img 
+          src="https://assets.zyrosite.com/AGBzPMBJDQiwDGny/liquid-detergent-phase-separation-instability-qiS98De8QS0HT0Dd.png" 
+          alt="Examples of poorly formulated liquid detergents showing phase separation, cloudiness, and instability" 
+          loading="lazy" 
+        />
+      </div>
+
+      <!-- SECTION 5 -->
+      <section class="section" id="failure-modes">
+        <h2>Poorly Formulated Liquid Detergents: Chemical Consequences</h2>
+        <p>
+          When liquid detergents fail, they do so for highly predictable, fundamentally chemical reasons rather than due to random manufacturing defects. Tragically, many of these profound thermodynamic failures only manifest weeks or months after the product has left the factory, emerging during retail distribution, extreme seasonal temperature swings, or after the consumer opens the bottle for the first time.
+        </p>
+        <p>
+          From a strict physical chemistry standpoint, instability inevitably arises the moment absolute solubility limits are breached, when the chemical preservative network is biologically overwhelmed, or when the pH buffers fail, causing the system to drift outside its safe stability window. For a startup brand, launching a product with latent instability is commercial suicide, leading to massive retail returns and irreversible brand damage:
+        </p>
+        <ul style="padding-left: 20px;">
+          <li><strong>Catastrophic Phase Separation</strong>: Occurs when thermodynamic solubility limits are exceeded, causing the fluid to physically split into two distinct, unusable liquid layers.</li>
+          <li><strong>Fragrance Dropout</strong>: Caused by a lack of sufficient hydrotropes, resulting in the hydrophobic perfume oils separating and floating to the top, leaving the bulk fluid smelling chemical and raw.</li>
+          <li><strong>Viscosity Collapse</strong>: Triggered by an electrolyte imbalance or extreme thermal stress, suddenly transforming a premium thick gel into a watery, unappealing liquid.</li>
+          <li><strong>Microbial Rancidity</strong>: A result of weak or incompatible chemical preservation, leading to the rapid proliferation of dangerous bacteria, putrid odors, and severe consumer health risks.</li>
+        </ul>
+      </section>
+
+      <!-- SECTION 6: FAQ -->
+      <section class="section" id="faq" style="border-top: 2px solid var(--border); padding-top: 40px; margin-top: 40px;">
+        <h2>Frequently Asked Questions (FAQ)</h2>
+        <div style="display: flex; flex-direction: column; gap: 20px;">
+          
+          <div class="box" style="margin: 0;">
+            <h3 style="color: var(--primary); font-size: 1.15rem; margin-bottom: 8px;">1. Is liquid detergent formulation the same for all applications?</h3>
+            <p style="margin: 0; line-height: 1.6;">
+              No. Hand dishwashing liquids, heavy-duty laundry liquids, and institutional floor cleaners require drastically different surfactant architectures, varying foam stability profiles, and specific alkalinity buffers tailored exactly to their unique end-use environments.
+            </p>
+          </div>
+
+          <div class="box" style="margin: 0;">
+            <h3 style="color: var(--primary); font-size: 1.15rem; margin-bottom: 8px;">2. Can a lab formulation be scaled directly?</h3>
+            <p style="margin: 0; line-height: 1.6;">
+              Direct mathematical scaling almost universally fails. This is due to massive differences in mechanical mixing shear energy, significantly reduced heat transfer efficiency, and the dangerous localized concentration gradients that inevitably occur inside massive industrial mixing tanks.
+            </p>
+          </div>
+
+          <div class="box" style="margin: 0;">
+            <h3 style="color: var(--primary); font-size: 1.15rem; margin-bottom: 8px;">3. Why do liquid detergents separate over time?</h3>
+            <p style="margin: 0; line-height: 1.6;">
+              Phase separation is an irreversible thermodynamic failure. It typically results from severe surfactant incompatibility (such as improperly mixing anionic and cationic species), an excessive electrolyte imbalance, pushing fragrance solubility past its limit, or severe formulation pH drift.
+            </p>
+          </div>
+
+        </div>
+      </section>
+
+      <!-- Call to Action Box (target="_top") -->
+      <div class="cta" style="background: linear-gradient(135deg, var(--primary) 0%, var(--secondary) 100%); color: #ffffff; padding: 30px; border-radius: var(--radius-lg); margin-top: 40px; display: flex; flex-direction: column; justify-content: space-between; align-items: flex-start; gap: 20px; md-flex-direction: row; md-align-items: center;">
+        <div class="left">
+          <p style="margin:0 0 8px 0; font-size:1.25rem; font-weight:800; font-family: 'Outfit', sans-serif;">Facing Liquid Detergent Instability or Scale-Up Issues?</p>
+          <p style="margin:0 0 16px 0; font-size:0.95rem; line-height:1.6; opacity:0.95;">
+            Don't rely on trial and error. Partner with the Global Formulation team to engineer thermodynamically robust, cost-optimized liquid detergents that maintain pristine stability from the laboratory bench to large-scale commercial manufacturing.
+          </p>
+          <p style="margin:0; font-size:0.9rem; line-height:1.6; font-family: monospace;">
+            Email: <strong>consulting@globalformulation.com</strong><br />
+            Phone: <strong>+91 9819548320 &nbsp;&nbsp; +91 8169102990</strong>
+          </p>
+        </div>
+        <a href="mailto:consulting@globalformulation.com" class="btn" style="background:#ffffff; color:var(--primary); font-weight:700; padding:12px 24px; border-radius:var(--radius-sm); border:none; text-decoration:none; transition: all var(--transition-fast);">
+          Contact Formulation Experts
+        </a>
+      </div>
+
+      <!-- ABOUT THE AUTHOR -->
+      <section class="section" id="about-author" style="margin-top: 50px; background: #f8fafc; border: 1px solid var(--border); padding: 30px; border-radius: var(--radius-lg); display: flex; flex-direction: column; gap: 20px; md-flex-direction: row;">
+        <div style="flex-shrink: 0; width: 60px; height: 60px; background: linear-gradient(135deg, var(--primary) 0%, var(--secondary) 100%); color: white; display: flex; align-items: center; justify-content: center; border-radius: 50%; font-size: 1.5rem; font-weight: 800; font-family: 'Outfit', sans-serif; box-shadow: var(--shadow-md);">
+          GF
+        </div>
+        <div>
+          <h3 style="margin-top: 0; margin-bottom: 8px; font-family: 'Outfit', sans-serif; font-size: 1.3rem; font-weight: 700; color: var(--text-primary);">About the Specialist</h3>
+          <p style="margin-top: 0; margin-bottom: 12px; font-size: 0.95rem; line-height: 1.6; color: var(--text-muted);">
+            The <strong>Global Formulation team</strong> consists of senior industrial consultants with cross-disciplinary expertise spanning colloidal chemistry, surfactant formulation systems, scale-up process engineering, and regulatory compliance. Our technical architects lead scientific advisory and formulation teams supporting consumer brands and chemical manufacturers globally in technology selection, GMP layouts, validation frameworks, and product commercialization.
+          </p>
+          <p style="margin: 0; font-size: 0.9rem;">
+            <strong>LinkedIn Portfolio:</strong> 
+            <a 
+              href="https://www.linkedin.com/in/absar-khan-aerosol-consultant-and-formulator-78359b162" 
+              target="_blank" 
+              style="font-weight: 700; color: var(--primary); text-decoration: underline;"
+            >
+              Connect with Global Formulation on LinkedIn
+            </a>
+          </p>
+        </div>
+      </section>
+
+      <!-- Footer copyright -->
+      <footer style="text-align: center; margin-top: 50px; color: var(--text-muted); font-size: 0.85rem; font-family: 'Inter', sans-serif;">
+        &copy; {new Date().getFullYear()} Global Formulation. All rights reserved. 
+        <br />
+        <span style="font-size: 0.75rem; opacity: 0.8;">Specialized Chemical Engineering &amp; Surfactant Product Development.</span>
+      </footer>
+
+    </article>
+  </main>
+</Layout>
+
+<style>
+
+  
+  .blog-prose h1, 
+  .blog-prose h2, 
+  .blog-prose h3 {
+    font-family: 'Playfair Display', 'Outfit', serif !important;
+  }
+  
+  .blog-prose h2 {
+    color: #ffffff !important;
+    background-color: var(--secondary) !important;
+    padding: 12px 20px;
+    border-radius: var(--radius-md);
+    border-bottom: none !important;
+    font-weight: 700;
+  }
+
+  /* Widescreen constraints */
+  .blog-prose p, 
+  .blog-prose ul, 
+  .blog-prose ol,
+  .blog-prose h3,
+  .blog-prose .lead,
+  .blog-prose .image-slot,
+  .blog-prose .box,
+  .blog-prose .cta,
+  .blog-prose .table-container,
+  .blog-prose #faq {
+    max-width: 100%;
+    width: 100%;
+  }
+
+  .blog-prose .lead {
+    margin: 2rem 0;
+  }
+</style>

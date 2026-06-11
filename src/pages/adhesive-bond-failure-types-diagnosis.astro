@@ -1,0 +1,759 @@
+---
+import Layout from '../layouts/Layout.astro';
+
+const slug = 'adhesive-bond-failure-types-diagnosis';
+const title = 'Why Adhesive Bonds Fail: Adhesive, Cohesive & Substrate';
+const description = 'Adhesive bond failure types — adhesive, cohesive, and substrate — how to identify each by fracture surface, root cause analysis, and corrective strategy.';
+const heroCdn  = `https://cdn.globalformulation.com/images/${slug}/${slug}-hero-globalformulation.webp`;
+const diagramCdn = `https://cdn.globalformulation.com/images/${slug}/${slug}-diagram-globalformulation.webp`;
+const infoCdn  = `https://cdn.globalformulation.com/images/${slug}/${slug}-infographic-globalformulation.webp`;
+
+const orgSchema = {
+  "@context": "https://schema.org", "@type": "Organization",
+  "name": "Global Formulation", "url": "https://www.globalformulation.com",
+  "logo": "https://www.globalformulation.com/logo.png",
+  "contactPoint": [{ "@type": "ContactPoint", "telephone": "+91 9819548320", "contactType": "customer service" }]
+};
+const websiteSchema = {
+  "@context": "https://schema.org", "@type": "WebSite",
+  "url": "https://www.globalformulation.com",
+  "potentialAction": { "@type": "SearchAction", "target": "https://www.globalformulation.com/blog?search={search_term_string}", "query-input": "required name=search_term_string" }
+};
+const authorSchema = {
+  "@context": "https://schema.org", "@type": "Person",
+  "name": "Absar Khan", "jobTitle": "Lead Consultant",
+  "url": "https://www.linkedin.com/in/absar-khan-aerosol-consultant-and-formulator-78359b162",
+  "affiliation": { "@type": "Organization", "name": "Global Formulation", "url": "https://www.globalformulation.com" },
+  "sameAs": ["https://www.linkedin.com/in/absar-khan-aerosol-consultant-and-formulator-78359b162"]
+};
+const breadcrumbSchema = {
+  "@context": "https://schema.org", "@type": "BreadcrumbList",
+  "itemListElement": [
+    { "@type": "ListItem", "position": 1, "name": "Home", "item": "https://www.globalformulation.com" },
+    { "@type": "ListItem", "position": 2, "name": "Blog", "item": "https://www.globalformulation.com/blog" },
+    { "@type": "ListItem", "position": 3, "name": "Why Adhesive Bonds Fail: Adhesive, Cohesive & Substrate", "item": `https://www.globalformulation.com/${slug}` }
+  ]
+};
+const blogPostingSchema = {
+  "@context": "https://schema.org", "@type": "BlogPosting",
+  "headline": "Why Adhesive Bonds Fail: Adhesive, Cohesive & Substrate",
+  "description": "Adhesive bond failure types — adhesive, cohesive, and substrate — how to identify each by fracture surface, root cause analysis, and corrective strategy.",
+  "image": heroCdn,
+  "author": { "@type": "Person", "name": "Absar Khan" },
+  "publisher": { "@type": "Organization", "name": "Global Formulation", "logo": { "@type": "ImageObject", "url": "https://www.globalformulation.com/logo.png" } },
+  "datePublished": "2026-06-09", "dateModified": "2026-06-09",
+  "mainEntityOfPage": { "@type": "WebPage", "@id": `https://www.globalformulation.com/${slug}` },
+  "articleSection": "Adhesives & Sealants",
+  "keywords": "adhesive bond failure types, cohesive failure adhesive, adhesive failure substrate, bond failure analysis, adhesive peel strength failure, adhesive joint failure diagnosis",
+  "wordCount": "1900"
+};
+const faqSchema = {
+  "@context": "https://schema.org", "@type": "FAQPage",
+  "mainEntity": [
+    {
+      "@type": "Question",
+      "name": "What is the difference between adhesive failure and cohesive failure in an adhesive bond?",
+      "acceptedAnswer": { "@type": "Answer", "text": "Adhesive failure occurs at the interface between the adhesive and one of the bonded substrates — the fracture plane runs along the adhesive-substrate boundary, leaving one substrate surface clean and the other coated with adhesive. Cohesive failure occurs through the body of the adhesive itself — the fracture plane runs through the adhesive mass, leaving adhesive residue on both fractured surfaces. The distinction matters for root cause analysis: adhesive failure points to a surface preparation, adhesion promoter, or adhesive-substrate compatibility problem, while cohesive failure points to insufficient adhesive strength, undercure, or thermal or chemical degradation of the adhesive after joint formation." }
+    },
+    {
+      "@type": "Question",
+      "name": "How do I identify adhesive bond failure type from fractured surfaces?",
+      "acceptedAnswer": { "@type": "Answer", "text": "After separating a bonded joint, examine both fracture surfaces. If one surface is completely clean — substrate material visible, no adhesive residue — and the opposing surface carries the entire adhesive film, the failure is adhesive (interfacial). If both fracture surfaces carry adhesive residue and the fracture plane runs through the adhesive body, the failure is cohesive. If the fracture propagates into the substrate material itself — fibres, laminate plies, or coating layers tearing away — the failure is classified as substrate failure. In practice, mixed-mode failure is common: a peel test might show 70% cohesive and 30% adhesive failure, which still points toward an interfacial weakness but indicates the adhesive strength is adequate." }
+    },
+    {
+      "@type": "Question",
+      "name": "What causes adhesive failure at the substrate interface?",
+      "acceptedAnswer": { "@type": "Answer", "text": "Adhesive failure at the interface typically results from one of four root causes: surface contamination (oil, release agent, moisture, oxide layers, or airborne particulates preventing adhesive wetting); insufficient surface energy on the substrate (particularly on low-energy plastics such as polyolefins where the adhesive cannot achieve adequate molecular contact without surface treatment); wrong adhesive chemistry for the substrate (mismatched polarity or functional group chemistry preventing interfacial bonding); or inadequate primer or adhesion promoter application where one is required. Environmental conditions at the time of bonding — temperature below the adhesive's minimum application temperature, or high relative humidity on moisture-sensitive systems — are also common adhesive-failure root causes in production environments." }
+    },
+    {
+      "@type": "Question",
+      "name": "Why does cohesive failure occur even when the adhesive looks well-cured?",
+      "acceptedAnswer": { "@type": "Answer", "text": "Cohesive failure despite apparent cure is most commonly caused by one of three mechanisms: undercure that is not visible on the surface (particularly in thick bond lines or in shadowed areas of UV-cured systems where light penetration is insufficient); additive migration or plasticiser extraction that has softened the adhesive body after cure; or thermal or chemical degradation in service that has reduced the crosslink density. In two-component adhesive systems, off-ratio mixing is a particularly common root cause — an adhesive that appears to have set may have insufficient crosslink density to develop full cohesive strength, a failure that becomes apparent only under mechanical load or after thermal cycling. Solvents, cleaning agents, and fuels that swell the adhesive network can also precipitate cohesive failure in joints that passed initial inspection." }
+    },
+    {
+      "@type": "Question",
+      "name": "Is substrate failure in an adhesive test always a sign of failure?",
+      "acceptedAnswer": { "@type": "Answer", "text": "Not always. In adhesive peel or lap-shear testing, substrate failure — where the bonded material fractures before the adhesive joint — indicates that the adhesive bond strength exceeds the substrate's own strength. This is often the design intent for structural adhesives applied to composite laminates or fibre-reinforced panels: the joint is stronger than the component, so the component fails first. However, substrate failure becomes a problem when it occurs unexpectedly — indicating the substrate has been weakened by the adhesive, its curing chemistry, or by service conditions — or when the joint load case in service is different from the test load case, masking an underlying adhesive or cohesive weakness that would manifest under different stress modes (e.g., peel rather than shear)." }
+    },
+    {
+      "@type": "Question",
+      "name": "How do peel tests and lap-shear tests differ in diagnosing bond failure type?",
+      "acceptedAnswer": { "@type": "Answer", "text": "Peel tests (T-peel, 90-degree peel, 180-degree peel) concentrate stress at a moving peel front at the edge of the joint, making them sensitive to interfacial weaknesses and adhesive failure modes — particularly relevant for flexible substrates, tapes, and labels. Lap-shear tests distribute stress across the entire bond area, testing the cohesive strength of the adhesive under shear loading and the adhesive-substrate interface under a combination of shear and tensile stress. A joint that passes lap-shear testing but fails peel testing indicates good cohesive strength but a susceptibility to edge-initiated adhesive failure — relevant for joints exposed to peel-type stresses in service. Using both test geometries gives a more complete picture of the failure mode across different stress states, and is standard practice in adhesive qualification according to ISO 4587 and ISO 11339." }
+    },
+    {
+      "@type": "Question",
+      "name": "When should an adhesive bond failure investigation be escalated to a specialist?",
+      "acceptedAnswer": { "@type": "Answer", "text": "Escalation is appropriate when the failure mode is mixed or inconsistent across a production batch — some joints failing adhesively and others cohesively — which points to a process variability issue that requires systematic investigation rather than a single corrective action. Safety-critical applications where bond failure carries structural or life-safety consequences should always involve specialist failure analysis, including scanning electron microscopy of fracture surfaces, EDX analysis for contamination identification, and FTIR examination of adhesive chemistry. Escalation is also warranted where repeated process corrections (surface preparation, primer application, adhesive storage) have failed to resolve the failure mode, where failure is occurring in service rather than in acceptance testing, and where the adhesive-substrate combination is novel or outside the adhesive manufacturer's tested application range." }
+    }
+  ]
+};
+const webpageSchema = {
+  "@context": "https://schema.org", "@type": "WebPage",
+  "name": "Why Adhesive Bonds Fail: Adhesive, Cohesive & Substrate | Global Formulation",
+  "url": `https://www.globalformulation.com/${slug}`,
+  "description": "Adhesive bond failure types — adhesive, cohesive, and substrate — how to identify each by fracture surface, root cause analysis, and corrective strategy."
+};
+
+const schemas = [orgSchema, websiteSchema, authorSchema, breadcrumbSchema, blogPostingSchema, faqSchema, webpageSchema];
+---
+
+<Layout
+  title={title}
+  description={description}
+  canonical={`https://www.globalformulation.com/${slug}`}
+  ogImage={heroCdn}
+  ogType="article"
+  schemaJson={schemas}
+>
+
+  <!-- POST HERO BAND -->
+  <div class="post-hero">
+    <div class="post-hero-inner">
+      <nav class="pg-breadcrumb" aria-label="Breadcrumb">
+        <a href="/" target="_top">Home</a><span>›</span>
+        <a href="/blog" target="_top">Blog</a><span>›</span>
+        <span>Adhesive Bond Failure Types</span>
+      </nav>
+      <span class="category-badge">Adhesives &amp; Sealants</span>
+      <h1>Why Adhesive Bonds Fail: Adhesive, Cohesive &amp; Substrate Failure Explained</h1>
+      <div class="post-meta">
+        <span>By Global Formulation Team</span>
+        <span>Jun 9, 2026</span>
+        <span>13 min read</span>
+      </div>
+
+      <!--
+        IMAGE PLACEHOLDER — HERO (1200×630px)
+        File: adhesive-bond-failure-types-diagnosis-hero-globalformulation.webp
+        Alt: adhesive bond failure types — three-panel image showing adhesive, cohesive, and substrate failure fracture surfaces | Global Formulation
+        IMG PROMPT (1200×630px): Photorealistic premium industrial/laboratory photography. A three-panel composite image arranged horizontally on a dark navy laboratory bench showing the three adhesive bond failure modes side by side. Left panel: adhesive failure — a peel test in progress showing a completely clean metal substrate surface with the adhesive layer remaining entirely on the opposing substrate, the interface exposure clearly visible under warm gold light. Centre panel: cohesive failure — a fractured adhesive layer split through its middle body, with adhesive residue visible and textured on both fracture faces, highlighted by cool steel-blue reflections. Right panel: substrate failure — a fibre composite coupon torn through its thickness layers below the adhesive, leaving the adhesive intact on the tear surface with fibrous substrate damage clearly visible. Volumetric lighting with warm gold highlights and cool steel-blue shadows. Rich depth of field, shallow focus on fracture surfaces. Corporate colour palette: deep navy background, warm gold accent lighting, clean white highlights. Ultra high detail, 4K quality, professional editorial photography style. No text, no watermarks, no logos. Cinematic composition, bokeh background, professionally lit, no people. FILE: adhesive-bond-failure-types-diagnosis-hero-globalformulation.webp
+      -->
+      <div class="hero-img-wrap">
+        <img
+          src={heroCdn}
+          alt="adhesive bond failure types — three-panel image showing adhesive, cohesive, and substrate failure fracture surfaces | Global Formulation"
+          width="1200"
+          height="630"
+          loading="eager"
+        />
+      </div>
+    </div>
+  </div>
+
+  <!-- TWO-COLUMN BODY -->
+  <div class="page-body">
+
+    <aside class="toc-sidebar">
+      <nav aria-label="Table of Contents">
+        <div class="toc-heading">In This Article</div>
+        <ol>
+          <li><a href="#problem-overview" target="_top">Understanding the Three Failure Types</a></li>
+          <li><a href="#root-causes" target="_top">Root Causes</a></li>
+          <li><a href="#diagnosis" target="_top">Diagnosis Methods</a></li>
+          <li><a href="#solution-strategies" target="_top">Solution Strategies</a></li>
+          <li><a href="#prevention" target="_top">Prevention</a></li>
+          <li><a href="#when-to-escalate" target="_top">When to Escalate</a></li>
+          <li><a href="#faq" target="_top">Frequently Asked Questions</a></li>
+        </ol>
+      </nav>
+    </aside>
+
+    <div class="article-col">
+
+      <p>
+        Adhesive bond failure types are the starting point for any bond failure root cause
+        investigation — yet they are among the most commonly misread results in adhesive
+        quality testing. When a bonded joint fails, whether during a peel test, a lap-shear
+        assessment, or an in-service failure investigation, the location and appearance of the
+        fracture plane carries more diagnostic information than any single parameter in the
+        adhesive's technical data sheet. Correctly classifying whether a failure is adhesive
+        (at the interface), cohesive (through the adhesive body), or substrate (in the bonded
+        material itself) is not merely academic: each failure type points to a different root
+        cause, requires a different corrective strategy, and reflects a different aspect of
+        the joint's manufacture and design. This guide explains how to identify each adhesive
+        bond failure type, understand its mechanism, and apply the right corrective and
+        preventive approach.
+      </p>
+
+      <!-- SECTION 1 -->
+      <section id="problem-overview">
+        <h2>Understanding the Three Adhesive Bond Failure Types</h2>
+        <p>
+          The three recognised adhesive bond failure types — adhesive failure, cohesive
+          failure, and substrate failure — describe where a joint fractures, not how
+          much force it took to separate it. A joint can fracture cohesively at a low
+          load if the adhesive is undercured, or adhesively at a very high load if a
+          strongly bonded but inherently low-surface-energy plastic was used without
+          primer. Understanding the type is therefore the first step; quantifying the
+          load at failure is the second. Both together define whether the joint is
+          performing as designed.
+        </p>
+
+        <h3>Adhesive Failure (Interfacial Failure)</h3>
+        <p>
+          Adhesive failure — also called interfacial failure — occurs when the fracture
+          plane runs along the boundary between the adhesive and one of the bonded
+          substrates. After separation, one substrate surface is completely clean: no
+          adhesive residue is visible, and the substrate material itself is intact and
+          undamaged. The opposing substrate carries the entire adhesive film. This fracture
+          pattern indicates that the bond between adhesive and substrate was weaker than
+          either the cohesive strength of the adhesive or the tensile strength of the
+          substrates. In practice, adhesive failure is almost always a surface preparation
+          or adhesive selection problem — the adhesive could not form adequate molecular
+          contact with or chemical adhesion to the substrate surface under the conditions
+          in which the joint was made.
+        </p>
+
+        <h3>Cohesive Failure (Bulk Adhesive Failure)</h3>
+        <p>
+          Cohesive failure occurs when the fracture plane runs through the body of the
+          adhesive layer itself. Both fracture surfaces carry adhesive residue — the film
+          is split through its thickness, leaving a rough or textured adhesive surface on
+          both sides of the separation. Cohesive failure indicates that the adhesive-substrate
+          interface was stronger than the adhesive's own internal strength. This can mean
+          the adhesive is performing as expected (if the cohesive strength meets the design
+          requirement) or that the adhesive is underperforming (if the measured cohesive
+          failure load is below specification). Causes range from undercure in thermoset
+          systems, off-ratio mixing in two-component adhesives, and additive migration to
+          in-service thermal or chemical degradation of the cured adhesive network.
+        </p>
+
+        <h3>Substrate Failure (Material Failure)</h3>
+        <p>
+          Substrate failure — sometimes called fibre-tear in composite and paper bonding —
+          occurs when the fracture propagates into the substrate material rather than through
+          the adhesive or its interface. The adhesive and its bond to both substrates remain
+          intact; the substrate itself is what fails. In tensile or peel testing this is
+          often the desired outcome for structural adhesive applications on composite laminates
+          or fibre boards, because it demonstrates that the adhesive joint is stronger than
+          the bonded component. However, substrate failure can also indicate that the adhesive
+          chemistry has degraded or embrittled the substrate surface, or that the joint geometry
+          is concentrating stress into the substrate in a way that is unrepresentative of the
+          actual service load case.
+        </p>
+
+        <div class="table-wrap">
+          <table class="data-table">
+            <thead>
+              <tr>
+                <th>Failure Type</th>
+                <th>Fracture Location</th>
+                <th>Appearance After Separation</th>
+                <th>Primary Implication</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td>Adhesive (Interfacial)</td>
+                <td>Adhesive–substrate boundary</td>
+                <td>One surface clean; other carries full adhesive film</td>
+                <td>Surface preparation or adhesive selection issue</td>
+              </tr>
+              <tr>
+                <td>Cohesive (Bulk)</td>
+                <td>Through adhesive body</td>
+                <td>Adhesive residue on both fracture surfaces</td>
+                <td>Adhesive strength or cure issue</td>
+              </tr>
+              <tr>
+                <td>Substrate</td>
+                <td>Within substrate material</td>
+                <td>Adhesive intact; substrate material torn or delaminated</td>
+                <td>Adhesive stronger than substrate (may be intentional)</td>
+              </tr>
+              <tr>
+                <td>Mixed Mode</td>
+                <td>Transitions between two modes</td>
+                <td>Partial adhesive + partial cohesive residue pattern</td>
+                <td>Multiple weaknesses; requires systematic investigation</td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+      </section>
+
+      <!-- SECTION 2 -->
+      <section id="root-causes">
+        <h2>Root Causes: The Mechanisms Behind Each Adhesive Bond Failure Type</h2>
+        <p>
+          Each adhesive bond failure type has a distinct set of root causes that operate
+          at the chemistry and process level. Correctly mapping from observed failure type
+          to underlying mechanism is the essential step that separates a corrective action
+          that resolves the problem from one that simply masks it. The root cause framework
+          below covers the most common mechanisms for each failure type, with particular
+          emphasis on the process variables that formulators and manufacturing engineers
+          can control.
+        </p>
+
+        <h3>Root Causes of Adhesive (Interfacial) Failure</h3>
+        <p>
+          The most common root cause of adhesive failure is surface contamination that
+          prevents the adhesive from wetting and bonding to the substrate. Thin hydrocarbon
+          films from machining lubricants, release agents, or finger-contact oils are
+          sufficient to cause adhesive failure even in small concentrations — because
+          adhesive wetting is a surface phenomenon, a monomolecular contamination layer
+          is enough to displace the adhesive from direct substrate contact. On metallic
+          substrates, oxide layers that have grown beyond the thin, adherent native oxide
+          into thick, loosely bound oxide scales represent a second major mechanism: the
+          adhesive bonds to the oxide, but the oxide subsequently delaminates from the
+          underlying metal, yielding what appears to be cohesive failure of the oxide but
+          functionally is interfacial adhesive failure of the joint system. Low-energy
+          polymer substrates — polyolefins, polytetrafluoroethylene, polypropylene —
+          present a fundamental wetting challenge: without surface activation by corona
+          treatment, flame treatment, or chemical etching, the adhesive's surface tension
+          exceeds the substrate's critical surface energy, and adhesion is governed purely
+          by weak van der Waals forces rather than chemical bonds or strong dipole
+          interactions.
+        </p>
+
+        <h3>Root Causes of Cohesive Failure</h3>
+        <p>
+          Cohesive failure is fundamentally a material strength problem within the
+          adhesive. In thermosetting adhesive systems — epoxies, polyurethanes, acrylics —
+          the cohesive strength is directly related to crosslink density, which is controlled
+          by cure schedule completeness and mix ratio accuracy. An undercured epoxy may appear
+          tack-free and hard, but its glass transition temperature and ultimate tensile strength
+          will be well below specification, and cohesive failure will occur at loads far below
+          the designed joint strength. In single-component moisture-cure systems such as
+          polyurethane and MS polymer sealants, insufficient moisture exposure during the cure
+          period — for example in thick bond lines where moisture diffusion distance limits
+          through-cure — creates a partially cured adhesive core that fails cohesively under
+          load. Post-cure degradation is an equally important cohesive failure driver: thermal
+          ageing above the adhesive's service temperature limit, swelling by incompatible
+          fluids or solvents, or UV-driven chain scission in non-stabilised adhesive systems
+          can progressively reduce the adhesive's cohesive strength until joint performance
+          falls below the load requirement. As detailed in our
+          <a href="/polyurethane-sealants-chemistry-cure-weatherproofing" target="_top">guide to polyurethane sealant cure chemistry</a>,
+          moisture availability, bond line geometry, and ambient temperature are the three
+          variables that most influence through-cure completion in one-component systems.
+        </p>
+
+        <h3>Root Causes of Substrate Failure</h3>
+        <p>
+          Substrate failure most commonly occurs when the adhesive bond strength exceeds
+          the substrate's interlaminar, tensile, or peel strength — this is expected and
+          acceptable in applications where the joint is designed to be the strongest element.
+          Unintended substrate failure, however, can indicate that the adhesive cure
+          chemistry has attacked or embrittled the substrate surface. Solvent-containing
+          adhesives on certain thermoplastic substrates, for example, can cause stress
+          cracking or surface layer dissolution that effectively reduces the substrate's
+          usable strength at the bond interface to below its bulk value. Similarly, the
+          exothermic cure of high-mass castings of rigid two-component epoxies can generate
+          sufficient local heat to degrade thermoplastic substrates directly beneath the
+          bond line, producing substrate failure at loads that are low relative to the
+          adhesive's rated performance.
+        </p>
+      </section>
+
+      <!-- DIAGRAM IMAGE -->
+      <!--
+        IMAGE PLACEHOLDER — DIAGRAM (900×500px)
+        File: adhesive-bond-failure-types-diagnosis-diagram-globalformulation.webp
+        Alt: adhesive bond failure types root cause diagram — cross-section classification of adhesive, cohesive, and substrate failure fracture planes | Global Formulation
+        IMG PROMPT (900×500px): Premium 3D scientific visualization. Failure mode classification diagram — three side-by-side engineering cross-section schematics on a dark navy (#0a1628) background. Left section: adhesive failure — exploded 3D cross-section of a bonded joint with a glowing cyan fracture line running precisely along the lower adhesive-substrate interface, one substrate surface shown clean and reflective, the opposing surface carrying an intact adhesive film. Centre section: cohesive failure — cross-section showing a jagged gold fracture plane through the middle of the adhesive bulk layer, adhesive residue visible on both fracture surfaces with rough textured finish. Right section: substrate failure — cross-section with the fracture plane running through the substrate material below the adhesive, substrate fibres or layers visible as torn elements, adhesive layer intact and undamaged. Glowing cyan and gold accent lines indicating fracture planes. Clean engineering annotation style with glowing boundary indicators. Dark navy background with cool steel-blue shadows. Futuristic technical dashboard aesthetic. No text, no watermarks. Ultra clean composition, high contrast against dark background, glowing accent details, professional technical illustration style. FILE: adhesive-bond-failure-types-diagnosis-diagram-globalformulation.webp
+      -->
+      <img class="article-img"
+        src={diagramCdn}
+        alt="adhesive bond failure types root cause diagram — cross-section classification of adhesive, cohesive, and substrate failure fracture planes | Global Formulation"
+        width="900" height="500" loading="lazy"
+      />
+      <p class="img-caption">Cross-section comparison of the three adhesive bond failure types: adhesive (interfacial) failure on the left, cohesive (bulk adhesive) failure in the centre, and substrate failure on the right — each defined by the position of the fracture plane relative to the joint layers.</p>
+
+      <!-- SECTION 3 -->
+      <section id="diagnosis">
+        <h2>Diagnosis: How to Identify the Failure Type from Fracture Surfaces</h2>
+        <p>
+          Diagnosing adhesive bond failure type begins with a systematic examination of
+          both fracture surfaces immediately after joint separation. The key diagnostic
+          question is straightforward: where is the adhesive? The answer locates the
+          fracture plane and identifies the failure mode. What makes diagnosis challenging
+          in practice is that mixed-mode failures are common, fracture surfaces can be
+          small or visually complex, and the fracture appearance changes depending on the
+          failure test geometry — a peel test and a tensile butt joint will produce
+          different fracture surface textures even for the same failure mode.
+        </p>
+
+        <h3>Visual Examination of Fracture Surfaces</h3>
+        <p>
+          Under normal light, adhesive failure produces a clean substrate surface with no
+          adhesive residue — the substrate's original colour, texture, and finish remain
+          visible. Cohesive failure produces a dull, matted, or fibrous fracture surface
+          on both sides of the separation — the colour is that of the adhesive, and the
+          texture reflects how the adhesive fractured (smooth for brittle systems, rough
+          and torn for toughened or flexible systems). Substrate failure is most clearly
+          identified by the presence of substrate material — fibres, coating layers,
+          paper plies, or laminate skins — adhering to the fracture surface alongside
+          or in place of adhesive. In pigmented adhesives, matching the colour of residues
+          on both surfaces helps confirm cohesive mode. In transparent adhesives on dark
+          substrates, oblique lighting is useful to distinguish a thin adhesive film
+          (cohesive failure) from a clean surface (adhesive failure).
+        </p>
+
+        <h3>Quantifying Mixed-Mode Failure</h3>
+        <p>
+          Most practical adhesive bond failures are not pure modes — they show a combination
+          of adhesive and cohesive areas across the fracture surface. Standard practice in
+          adhesive testing is to estimate the percentage of each failure mode across the
+          total fracture area, using visual assessment for production quality control and
+          digital image analysis or grid overlay methods for precision failure investigations.
+          A result of "80% cohesive / 20% adhesive" indicates that the adhesive-substrate
+          interface has a minor weakness at approximately one-fifth of the bond area, which
+          may be tolerable depending on the application's strength requirement and the
+          observed failure load. Specifications for structural adhesive joints often define
+          a minimum cohesive failure percentage — for example, 80% cohesive failure minimum
+          at the acceptance load — to ensure adequate interfacial quality across the joint.
+          The standard test methods covering these assessments include
+          <a href="https://www.iso.org/standard/67222.html" target="_blank" rel="noopener noreferrer">ISO 10365</a>
+          (designation of main failure patterns) and the complementary lap-shear test
+          standard ISO 4587.
+        </p>
+
+        <h3>Field Diagnosis Without Laboratory Equipment</h3>
+        <p>
+          In a production or field environment without access to microscopy, the following
+          simple diagnostic approach covers most cases. Perform a standard peel or lap-shear
+          test on a representative joint. After separation, run a finger across each fracture
+          surface: adhesive failure produces a smooth, clean substrate surface (metal, glass,
+          or plastic finish clearly visible); cohesive failure produces a tacky or rough
+          film residue on both surfaces; substrate failure produces a fibrous, torn, or
+          laminate-delaminated texture. For adhesive bond failures occurring in service,
+          photograph both fracture surfaces before any cleaning or handling, because contact
+          and environmental exposure can obscure the fracture evidence quickly, particularly
+          on porous or absorbent substrates.
+        </p>
+      </section>
+
+      <!-- SECTION 4 -->
+      <section id="solution-strategies">
+        <h2>Solution Strategies: Corrective Approaches for Each Failure Mode</h2>
+        <p>
+          The corrective strategy for an adhesive bond failure must address the failure
+          mode's specific root cause — not just the symptom. Increasing adhesive application
+          weight will not fix an adhesive failure caused by surface contamination; switching
+          to a stronger adhesive grade will not fix a cohesive failure caused by off-ratio
+          two-component mixing. The framework below maps failure type to its most common
+          corrective strategies, focusing on mechanism-based interventions rather than
+          trial-and-error adjustments.
+        </p>
+
+        <h3>Correcting Adhesive (Interfacial) Failure</h3>
+        <p>
+          The first corrective step for adhesive failure is always an audit of the surface
+          preparation process. Solvent wipe cleaning with an appropriate solvent for the
+          contamination present — isopropanol for general organic contamination, specialised
+          degreasing solvents for heavy machining lubricants — must be validated to remove
+          the specific contaminant, not just assumed to be effective. Wiping technique
+          matters: a two-wipe method using a clean cloth for the first pass and a second
+          clean cloth for the final pass prevents redeposition of contamination from a
+          saturated first cloth. Where adhesive failure persists after contamination control,
+          adhesion promoters or primers specific to the adhesive chemistry and substrate
+          type should be introduced. For low-energy polymer substrates, surface activation
+          by corona, plasma, or flame treatment is typically necessary to achieve durable
+          adhesion — mechanical abrasion alone raises surface roughness but does not
+          adequately increase surface energy on polyolefins.
+        </p>
+
+        <h3>Correcting Cohesive Failure</h3>
+        <p>
+          Cohesive failure investigation begins with verifying cure schedule compliance.
+          For thermoset adhesives, confirm that temperature and time at temperature meet
+          the manufacturer's specification for the bond line thickness and substrate
+          thermal mass in the specific assembly. For two-component systems, calibrate
+          and verify mixing ratios using weight or volumetric checks, and confirm
+          dispenser calibration is within specification across the full operating range
+          of the dispensing equipment. If cure conditions are confirmed correct and
+          cohesive failure persists, the focus shifts to the adhesive's in-service
+          condition: chemical exposure logs, service temperature records, and evidence
+          of fluid ingress into the bond line should be reviewed. Where in-service
+          chemical degradation is confirmed, switching to an adhesive grade with
+          better resistance to the specific service environment — or improving joint
+          sealing to prevent fluid ingress — is the appropriate design-level response.
+        </p>
+
+        <div class="callout">
+          <strong>Key Diagnostic Principle</strong>
+          The fracture surface tells you where the joint was weakest — not why it was
+          weak. The surface examination identifies the failure type and locates the root
+          cause category; root cause confirmation requires investigating the process
+          conditions, material specifications, and service environment that apply to that
+          specific failure type.
+        </div>
+
+        <h3>Managing Substrate Failure</h3>
+        <p>
+          When substrate failure is unexpected or at an unacceptably low load, the
+          investigation should determine whether the substrate has been compromised by
+          the adhesive application process. Solvent content, exothermic heat, cure
+          shrinkage stress, and surface etchants in adhesion promoters are the most
+          common mechanisms by which an adhesive system degrades the substrate immediately
+          adjacent to the bond line. The corrective approach depends on the mechanism:
+          switching to a solvent-free adhesive, reducing bond mass to limit exothermic
+          peak temperature, or using a lower-modulus flexible adhesive to reduce cure
+          shrinkage stress on fragile substrates. Our broader guide to
+          <a href="/adhesives-and-sealants" target="_top">adhesive and sealant chemistry</a>
+          covers the key chemistry families and their compatibility with common industrial
+          substrate types.
+        </p>
+      </section>
+
+      <!-- INFOGRAPHIC IMAGE -->
+      <!--
+        IMAGE PLACEHOLDER — INFOGRAPHIC (900×500px)
+        File: adhesive-bond-failure-types-diagnosis-infographic-globalformulation.webp
+        Alt: adhesive bond failure types diagnostic flowchart — decision tree from fracture surface appearance to failure type identification and corrective action | Global Formulation
+        IMG PROMPT (900×500px): Premium corporate data visualization dashboard. Bond failure diagnostic flowchart — a clean decision tree starting from a single glowing node at the top labelled with a peel test icon, branching downward through two illuminated diamond diagnostic decision nodes asking 'Where is adhesive residue?' and 'Is substrate torn?', leading to three glowing terminal panels: left panel in cyan for Adhesive Failure with a clean substrate icon, centre panel in gold for Cohesive Failure with an adhesive split icon, right panel in white-silver for Substrate Failure with a torn laminate icon. Each terminal panel feeds into a downstream corrective action node below it. Clean dark navy background with gold grid lines and glowing cyan branch lines. Modern analytics interface aesthetic — think Bloomberg Terminal meets precision engineering. Decision nodes as illuminated diamond shapes with soft glow. Balanced grid layout, premium corporate aesthetic, high information density, clean modern design. No real data numbers — visual style only. No text, no watermarks. FILE: adhesive-bond-failure-types-diagnosis-infographic-globalformulation.webp
+      -->
+      <img class="article-img"
+        src={infoCdn}
+        alt="adhesive bond failure types diagnostic flowchart — decision tree from fracture surface appearance to failure type identification and corrective action | Global Formulation"
+        width="900" height="500" loading="lazy"
+      />
+      <p class="img-caption">Bond failure diagnostic flowchart: starting from fracture surface examination, the decision tree maps adhesive residue location and substrate condition to failure type identification, then routes each failure type to its primary corrective action pathway.</p>
+
+      <!-- SECTION 5 -->
+      <section id="prevention">
+        <h2>Prevention: Process Controls and Joint Design Strategies</h2>
+        <p>
+          Preventing adhesive bond failures at the process level requires control of the
+          variables that most strongly influence each failure mode. Surface preparation
+          consistency is the single most impactful preventive measure for adhesive failure:
+          a documented and validated cleaning and activation protocol, with in-process
+          checks such as water break testing or contact angle measurement to confirm surface
+          energy before adhesive application, eliminates the majority of interfacial failure
+          causes. For cohesive failure prevention, the priority is cure process control —
+          adhesive and assembly temperature, mixing ratio verification for two-component
+          systems, and bond line thickness within the adhesive's specified range — because
+          deviations in any of these parameters can prevent full cohesive strength development
+          regardless of the adhesive's formulated performance.
+        </p>
+        <p>
+          At the joint design level, preventing failure requires matching the joint
+          geometry to the adhesive's strength characteristics. Adhesives are strong in
+          shear and compression, and weaker in peel and cleavage. Joint geometries that
+          concentrate stress at the joint edge — such as simple butt joints under tensile
+          load — maximise peel and cleavage stress components and are inherently more
+          susceptible to adhesive failure initiation at the edge. Lap joints, scarf joints,
+          and joggle joints distribute stress more uniformly and use the adhesive's shear
+          strength more efficiently. For applications where the joint will see peel-type
+          loads in service, specifying a toughened or flexible adhesive grade that can
+          absorb peel energy by plastic deformation before fracture significantly improves
+          joint durability. As outlined in our overview of
+          <a href="/pressure-sensitive-adhesives-acrylics-rubber" target="_top">pressure-sensitive adhesive chemistry</a>,
+          even in flexible adhesive systems the balance between peel, tack, and shear
+          strength is a fundamental design trade-off that must be addressed at the
+          formulation stage.
+        </p>
+
+        <h3>Raw Material and Incoming Quality Controls</h3>
+        <p>
+          Batch-to-batch variation in adhesive chemistry — viscosity, mix ratio tolerance,
+          pot life, and surface tack — directly influences which failure mode a joint
+          system tends toward in production. Incoming quality checks that verify adhesive
+          viscosity, gel time, and a representative lap-shear sample from each batch provide
+          early warning of formulation drift before a production run generates failed joints.
+          Substrate quality checks should verify surface energy (using dyne test pens or
+          contact angle measurement), confirm surface cleanliness meets the cleaning process
+          specification, and check substrate thickness and laminate integrity for composite
+          materials to avoid substrate failure from pre-existing delamination.
+        </p>
+      </section>
+
+      <!-- SECTION 6 -->
+      <section id="when-to-escalate">
+        <h2>When to Escalate to a Specialist</h2>
+        <p>
+          Escalation from in-house investigation to specialist failure analysis is
+          warranted when the failure mode is inconsistent across a production run — some
+          joints showing adhesive failure, others cohesive — because this inconsistency
+          points to a process variability source that a single corrective action will not
+          resolve. It also applies whenever repeated process corrections to surface
+          preparation, cure schedule, and mixing procedures have failed to shift the failure
+          mode toward the desired cohesive-dominant pattern.
+        </p>
+        <p>
+          Safety-critical bonded joints — structural aerospace, automotive, medical device,
+          and load-bearing construction applications — require forensic-level failure analysis
+          whenever unexpected failure modes are observed, including scanning electron
+          microscopy of fracture surfaces to map failure mode distribution at micron
+          resolution, EDX elemental analysis to identify surface contamination species,
+          and differential scanning calorimetry to confirm adhesive cure state. Novel
+          adhesive-substrate combinations outside the adhesive manufacturer's documented
+          application experience, joints exhibiting different failure modes under accelerated
+          ageing conditions versus ambient testing, and failures in service that cannot be
+          replicated in laboratory testing all represent cases where specialist material
+          and process expertise is necessary to resolve the root cause with confidence.
+        </p>
+      </section>
+
+      <!-- FAQ -->
+      <section class="faq-section" id="faq">
+        <h2>Frequently Asked Questions</h2>
+
+        <details class="faq-item">
+          <summary>What is the difference between adhesive failure and cohesive failure in an adhesive bond?</summary>
+          <div class="faq-answer">Adhesive failure occurs at the interface between the adhesive and one of the bonded substrates — the fracture plane runs along the adhesive-substrate boundary, leaving one substrate surface clean and the other coated with adhesive. Cohesive failure occurs through the body of the adhesive itself — the fracture plane runs through the adhesive mass, leaving adhesive residue on both fractured surfaces. The distinction matters for root cause analysis: adhesive failure points to a surface preparation, adhesion promoter, or adhesive-substrate compatibility problem, while cohesive failure points to insufficient adhesive strength, undercure, or in-service degradation of the adhesive after joint formation.</div>
+        </details>
+
+        <details class="faq-item">
+          <summary>How do I identify adhesive bond failure type from fractured surfaces?</summary>
+          <div class="faq-answer">After separating a bonded joint, examine both fracture surfaces. If one surface is completely clean — substrate material visible, no adhesive residue — and the opposing surface carries the entire adhesive film, the failure is adhesive (interfacial). If both fracture surfaces carry adhesive residue and the fracture plane ran through the adhesive body, the failure is cohesive. If the fracture propagated into the substrate material itself — fibres, laminate plies, or coating layers tearing away — the failure is classified as substrate failure. In practice, mixed-mode failure is common: a peel test might show 70% cohesive and 30% adhesive failure, which still points toward an interfacial weakness but indicates the adhesive strength is adequate at the tested load.</div>
+        </details>
+
+        <details class="faq-item">
+          <summary>What causes adhesive failure at the substrate interface?</summary>
+          <div class="faq-answer">Adhesive failure at the interface typically results from one of four root causes: surface contamination preventing adhesive wetting (oils, release agents, moisture, or oxide layers); insufficient surface energy on the substrate (particularly on low-energy plastics where the adhesive cannot achieve adequate molecular contact without surface treatment); wrong adhesive chemistry for the substrate (mismatched polarity or functional group chemistry preventing interfacial bonding); or inadequate primer or adhesion promoter where one is required by the substrate-adhesive combination. Environmental conditions at the time of bonding — temperature below the adhesive's minimum application temperature, or high relative humidity on moisture-sensitive systems — are also common adhesive failure root causes in production environments.</div>
+        </details>
+
+        <details class="faq-item">
+          <summary>Why does cohesive failure occur even when the adhesive looks well-cured?</summary>
+          <div class="faq-answer">Cohesive failure despite apparent cure is most commonly caused by one of three mechanisms: undercure that is not visible on the surface — particularly in thick bond lines or in shadowed areas of UV-cured systems where light penetration is insufficient; additive migration or plasticiser extraction that has softened the adhesive body after cure; or thermal or chemical degradation in service that has reduced the crosslink density. In two-component adhesive systems, off-ratio mixing is a particularly common root cause — an adhesive that appears to have set may have insufficient crosslink density to develop full cohesive strength, a failure that becomes apparent only under mechanical load or after thermal cycling.</div>
+        </details>
+
+        <details class="faq-item">
+          <summary>Is substrate failure in an adhesive test always a sign of a problem?</summary>
+          <div class="faq-answer">Not always. In adhesive peel or lap-shear testing, substrate failure — where the bonded material fractures before the adhesive joint — indicates that the adhesive bond strength exceeds the substrate's own strength. This is often the design intent for structural adhesives applied to composite laminates or fibre boards: the joint is stronger than the component, so the component fails first. However, substrate failure becomes a problem when it occurs unexpectedly — indicating the substrate has been weakened by the adhesive or its curing chemistry — or when the joint load case in service is different from the test load case, potentially masking an underlying adhesive or cohesive weakness that would manifest under different stress modes such as peel rather than shear.</div>
+        </details>
+
+        <details class="faq-item">
+          <summary>How do peel tests and lap-shear tests differ in diagnosing bond failure type?</summary>
+          <div class="faq-answer">Peel tests concentrate stress at a moving peel front at the edge of the joint, making them sensitive to interfacial weaknesses and adhesive failure modes — particularly relevant for flexible substrates, tapes, and labels. Lap-shear tests distribute stress across the entire bond area, testing the cohesive strength of the adhesive under shear loading. A joint that passes lap-shear testing but fails peel testing indicates good cohesive strength but susceptibility to edge-initiated adhesive failure — relevant for joints exposed to peel-type stresses in service. Using both test geometries gives a more complete picture of failure mode across different stress states, and is standard practice in adhesive qualification per ISO 4587 and ISO 11339.</div>
+        </details>
+
+        <details class="faq-item">
+          <summary>When should an adhesive bond failure investigation be escalated to a specialist?</summary>
+          <div class="faq-answer">Escalation is appropriate when the failure mode is mixed or inconsistent across a production batch — some joints failing adhesively and others cohesively — which points to a process variability issue requiring systematic investigation. Safety-critical applications where bond failure carries structural or life-safety consequences should always involve specialist failure analysis, including scanning electron microscopy of fracture surfaces, EDX analysis for contamination identification, and FTIR examination of adhesive chemistry. Escalation is also warranted where repeated process corrections have failed to resolve the failure mode, where failure is occurring in service rather than in acceptance testing, and where the adhesive-substrate combination is outside the adhesive manufacturer's tested application range.</div>
+        </details>
+      </section>
+
+      <!-- CTA -->
+      <div class="cta-block">
+        <h2>Facing Adhesive Bond Failures in Your Production?</h2>
+        <p>Our team provides root cause analysis and corrective formulation strategy — from fracture surface interpretation through to validated joint design and process control recommendations.</p>
+        <a href="/contact" target="_top" class="cta-btn">Get a Free Consultation</a>
+      </div>
+
+      <!-- RELATED POSTS -->
+      <section class="related-section">
+        <h2>Related Articles</h2>
+        <ul class="related-grid">
+          <li><a href="/polyurethane-sealants-chemistry-cure-weatherproofing" target="_top">Polyurethane Sealants: Chemistry, Cure &amp; Weatherproofing</a></li>
+          <li><a href="/pressure-sensitive-adhesives-acrylics-rubber" target="_top">Pressure-Sensitive Adhesives: Acrylics vs Rubber Chemistry</a></li>
+          <li><a href="/adhesives-and-sealants" target="_top">Adhesives &amp; Sealants: Technology Overview</a></li>
+          <li><a href="/future-of-eco-friendly-chemical-products" target="_top">Green Chemistry Revolution: Eco-Friendly Industrial Products</a></li>
+          <li><a href="/volatile-organic-compounds-and-pollution" target="_top">Pollution Caused by VOCs: What Manufacturers Need to Know</a></li>
+          <li><a href="/manufacturing-without-a-factory-guide" target="_top">Manufacturing Without a Factory: The MaaS Ecosystem</a></li>
+        </ul>
+      </section>
+
+      <!-- AUTHOR BIO -->
+      <div class="author-bio">
+        <div class="author-avatar">AK</div>
+        <div class="author-info">
+          <h3>Absar Khan</h3>
+          <div class="author-role">Founder &amp; Lead Consultant, Global Formulation</div>
+          <p>Absar Khan is a senior industrial consultant with cross-disciplinary expertise spanning pharmaceutical manufacturing, cosmetics and personal care, home and institutional care chemicals, aerosols, lubricants, and advanced process engineering. His work integrates formulation chemistry, GMP facility design, validation science, quality systems, regulatory compliance, and large-scale manufacturing optimisation.</p>
+          <p style="margin-top:10px;">
+            <a href="https://www.linkedin.com/in/absar-khan-aerosol-consultant-and-formulator-78359b162" target="_blank" rel="noopener noreferrer">Connect on LinkedIn →</a>
+          </p>
+        </div>
+      </div>
+
+    </div><!-- /.article-col -->
+  </div><!-- /.page-body -->
+
+
+</Layout>
+
+<style>
+  @import url('https://fonts.googleapis.com/css2?family=Source+Serif+4:ital,opsz,wght@0,8..60,300;0,8..60,400;0,8..60,600;0,8..60,700;1,8..60,300;1,8..60,400&display=swap');
+  :root { --co-bg:#ffffff; --co-surface:#f8f9fa; --co-border:#e2e8f0; --co-text:#1a202c; --co-muted:#718096; --co-accent:#2563eb; --co-green:#16a34a; --co-amber:#d97706; --co-radius:8px; --co-serif:'Source Serif 4',Georgia,serif; --co-display:'Source Serif 4',Georgia,serif; }
+  .post-hero { background:var(--co-surface); border-bottom:1px solid var(--co-border); padding:2.5rem 0 0; }
+  .post-hero-inner { max-width:1180px; margin:0 auto; padding:0 1.5rem; }
+  .pg-breadcrumb { font-size:0.8rem; color:var(--co-muted); margin-bottom:1rem; display:flex; align-items:center; gap:0.35rem; flex-wrap:wrap; }
+  .pg-breadcrumb a { color:var(--co-accent); text-decoration:none; }
+  .pg-breadcrumb a:hover { text-decoration:underline; }
+  .category-badge { display:inline-block; background:var(--co-accent); color:#fff; font-size:0.72rem; font-weight:600; letter-spacing:0.05em; text-transform:uppercase; padding:0.2rem 0.7rem; border-radius:999px; margin-bottom:0.85rem; }
+  .post-hero h1 { font-family:var(--co-display); font-size:clamp(1.75rem,3.5vw,2.6rem); font-weight:700; line-height:1.2; color:var(--co-text); margin:0 0 1rem; max-width:820px; }
+  .post-meta { display:flex; gap:1.2rem; font-size:0.82rem; color:var(--co-muted); margin-bottom:1.5rem; flex-wrap:wrap; }
+  .hero-img-wrap { margin-top:1.5rem; border-radius:var(--co-radius) var(--co-radius) 0 0; overflow:hidden; max-height:420px; }
+  .hero-img-wrap img { width:100%; height:100%; object-fit:cover; display:block; }
+  .page-body { max-width:1180px; margin:0 auto; padding:2.5rem 1.5rem; display:grid; grid-template-columns:260px 1fr; gap:3rem; align-items:start; }
+  .toc-sidebar { position:sticky; top:84px; background:var(--co-surface); border:1px solid var(--co-border); border-radius:var(--co-radius); padding:1.25rem 1.5rem; }
+  .toc-heading { font-size:0.72rem; font-weight:700; letter-spacing:0.1em; text-transform:uppercase; color:var(--co-muted); margin-bottom:0.75rem; }
+  .toc-sidebar ol { list-style:decimal; padding-left:1.2rem; margin:0; }
+  .toc-sidebar ol li { margin-bottom:0.45rem; }
+  .toc-sidebar ol li a { font-size:0.83rem; color:var(--co-text); text-decoration:none; line-height:1.4; display:block; transition:color 0.15s; }
+  .toc-sidebar ol li a:hover,.toc-sidebar ol li a.toc-active { color:var(--co-accent); font-weight:600; }
+  .article-col { min-width:0; font-family:var(--co-serif); font-size:1.05rem; line-height:1.8; color:var(--co-text); }
+  .article-col h2 { font-family:var(--co-display); font-size:clamp(1.3rem,2.2vw,1.65rem); font-weight:700; margin:2.2rem 0 0.75rem; color:var(--co-text); border-top:2px solid var(--co-border); padding-top:1.5rem; }
+  .article-col h2:first-child { border-top:none; padding-top:0; margin-top:0; }
+  .article-col h3 { font-size:1.1rem; font-weight:700; margin:1.5rem 0 0.5rem; color:var(--co-text); }
+  .article-col p { margin:0 0 1.1rem; }
+  .article-col a { color:var(--co-accent); }
+  .article-col a:hover { text-decoration:underline; }
+  .article-img { width:100%; border-radius:var(--co-radius); display:block; margin:1.5rem 0 0.5rem; }
+  .img-caption { font-size:0.85rem; color:var(--co-muted); font-style:italic; margin-bottom:2em; }
+  .table-wrap { overflow-x:auto; margin:1.5rem 0; }
+  .data-table { width:100%; border-collapse:collapse; font-size:0.9rem; }
+  .data-table th { background:var(--co-surface); border:1px solid var(--co-border); padding:0.6rem 0.9rem; text-align:left; font-weight:700; font-size:0.82rem; color:var(--co-muted); text-transform:uppercase; letter-spacing:0.04em; }
+  .data-table td { border:1px solid var(--co-border); padding:0.6rem 0.9rem; vertical-align:top; }
+  .data-table tr:nth-child(even) td { background:var(--co-surface); }
+  .callout { background:#f0fdf4; border-left:4px solid var(--co-green); padding:1rem 1.25rem; border-radius:0 var(--co-radius) var(--co-radius) 0; margin:1.5rem 0; font-size:0.95rem; }
+  .callout-amber { background:#fffbeb; border-left-color:var(--co-amber); }
+  .faq-section { margin-top:2.5rem; }
+  details.faq-item { border:1px solid var(--co-border); border-radius:var(--co-radius); margin-bottom:0.75rem; overflow:hidden; }
+  details.faq-item summary { padding:1rem 1.25rem; font-weight:600; font-size:0.95rem; cursor:pointer; list-style:none; display:flex; justify-content:space-between; align-items:center; gap:0.75rem; }
+  details.faq-item summary::-webkit-details-marker { display:none; }
+  details.faq-item summary::after { content:'+'; font-size:1.2rem; color:var(--co-muted); flex-shrink:0; }
+  details.faq-item[open] summary::after { content:'−'; }
+  .faq-answer { padding:0 1.25rem 1rem; font-size:0.95rem; color:var(--co-muted); line-height:1.7; }
+  .cta-block { background:linear-gradient(135deg,#1e3a5f 0%,#2563eb 100%); color:#fff; padding:2rem 2.5rem; border-radius:var(--co-radius); margin:2.5rem 0; text-align:center; }
+  .cta-block h2 { color:#fff; border:none; padding:0; margin:0 0 0.5rem; font-size:1.4rem; }
+  .cta-block p { color:rgba(255,255,255,0.85); margin:0 0 1.25rem; }
+  .cta-btn { display:inline-block; background:#fff; color:#1e3a5f; font-weight:700; padding:0.7rem 1.75rem; border-radius:999px; text-decoration:none; font-size:0.95rem; transition:opacity 0.15s; }
+  .cta-btn:hover { opacity:0.9; text-decoration:none; }
+  .related-section { margin-top:2.5rem; }
+  .related-section h2 { font-size:1.1rem; margin-bottom:1rem; border-top:2px solid var(--co-border); padding-top:1.5rem; }
+  .related-grid { display:grid; grid-template-columns:repeat(auto-fill,minmax(220px,1fr)); gap:0.75rem; list-style:none; padding:0; margin:0; }
+  .related-grid li a { display:block; background:var(--co-surface); border:1px solid var(--co-border); border-radius:var(--co-radius); padding:0.75rem 1rem; font-size:0.875rem; color:var(--co-text); text-decoration:none; line-height:1.4; transition:border-color 0.15s; }
+  .related-grid li a:hover { border-color:var(--co-accent); color:var(--co-accent); }
+  .author-bio { display:flex; gap:1.25rem; align-items:flex-start; padding:1.5rem; background:var(--co-surface); border-radius:var(--co-radius); margin-top:2.5rem; border:1px solid var(--co-border); }
+  .author-avatar { width:52px; height:52px; border-radius:50%; background:var(--co-accent); color:#fff; font-weight:700; font-size:1rem; display:flex; align-items:center; justify-content:center; flex-shrink:0; }
+  .author-info h3 { margin:0 0 0.15rem; font-size:1rem; }
+  .author-role { font-size:0.82rem; color:var(--co-muted); margin-bottom:0.5rem; }
+  .author-info p { font-size:0.875rem; margin:0; line-height:1.6; }
+  @media (max-width:900px) {
+    .page-body { grid-template-columns:1fr; gap:1.5rem; }
+    .toc-sidebar { position:static; overflow-x:auto; white-space:nowrap; }
+    .toc-sidebar ol { display:flex; gap:0.5rem; padding-left:0; flex-wrap:wrap; }
+    .toc-sidebar ol li { margin-bottom:0; }
+    .toc-sidebar ol li a { white-space:nowrap; }
+  }
+  @media (max-width:600px) {
+    .post-hero-inner { padding:0 1rem; }
+    .page-body { padding:1.5rem 1rem; }
+    .cta-block { padding:1.5rem 1.25rem; }
+  }
+</style>
+
+<script is:inline>
+  (function () {
+    var links = document.querySelectorAll('.toc-sidebar ol li a');
+    var sections = [];
+    links.forEach(function (a) {
+      var el = document.querySelector(a.getAttribute('href'));
+      if (el) sections.push(el);
+    });
+    if (!sections.length) return;
+    var observer = new IntersectionObserver(function (entries) {
+      entries.forEach(function (entry) {
+        if (entry.isIntersecting) {
+          links.forEach(function (a) { a.classList.remove('toc-active'); });
+          var active = document.querySelector('.toc-sidebar ol li a[href="#' + entry.target.id + '"]');
+          if (active) active.classList.add('toc-active');
+        }
+      });
+    }, { rootMargin: '-20% 0px -70% 0px', threshold: 0 });
+    sections.forEach(function (s) { observer.observe(s); });
+  })();
+</script>

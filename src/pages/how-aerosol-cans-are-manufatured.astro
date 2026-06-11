@@ -1,0 +1,508 @@
+---
+import Layout from '../layouts/Layout.astro';
+
+const blogSchema = {
+  "@context": "https://schema.org",
+  "@type": "WebSite",
+  "name": "Global Aerosols",
+  "url": "https://www.globalformulation.com"
+};
+const breadcrumbSchema = {
+  "@context": "https://schema.org",
+  "@type": "Organization",
+  "name": "Global Aerosols",
+  "url": "https://www.globalformulation.com",
+  "logo": "https://www.globalformulation.com/logo.png"
+};
+const schemas = [blogSchema, breadcrumbSchema];
+---
+
+<Layout
+  title="Aerosol Can Manufacturing Explained: How Aluminium and Tinplate Aerosol Cans Are Made | Global Formulation"
+  description="Discover the detailed manufacturing process of aluminium and tinplate aerosol cans, including impact extrusion, sheet forming, coatings, testing, and filling line integration. Essential guide for product developers and manufacturers."
+  canonical="https://www.globalformulation.com/how-aerosol-cans-are-manufatured"
+  ogImage="https://assets.zyrosite.com/A3QlOV94WLSaL6xE/aluminium-and-tin-plate-can-cut-out-82pM16gKJYuqDIMg.jpg"
+  ogType="article"
+  schemaJson={schemas}
+>
+  <main class="section-container" style="max-width: 100%; padding-left: 48px; padding-right: 48px; padding-top: 40px; padding-bottom: 80px;">
+    
+    <!-- HTML5 Compliant Breadcrumbs -->
+    <nav aria-label="Breadcrumb" style="display: flex; gap: 8px; font-size: 0.85rem; color: var(--text-muted); margin-bottom: 24px; font-family: 'Inter', sans-serif;">
+      <a href="/" style="color: var(--text-muted);">Home</a>
+      <span>&gt;</span>
+      <a href="/blog" style="color: var(--text-muted);">Blog</a>
+      <span>&gt;</span>
+      <span style="color: var(--text-primary); font-weight: 500;">Aerosols & Gas Dosing</span>
+    </nav>
+
+    <!-- Main article container -->
+    <article class="blog-prose">
+      <header class="post-header">
+        <h1 class="gradient-text" style="font-size: 3rem; line-height: 1.15; font-weight: 900; margin-bottom: 20px;">
+          Aerosol Can Manufacturing Explained: How Aluminium and Tinplate Aerosol Cans Are Made
+        </h1>
+        
+        <!-- Post meta details -->
+        <div style="display: flex; align-items: center; gap: 16px; font-size: 0.9rem; color: var(--text-muted); margin-bottom: 30px; font-family: 'Inter', sans-serif; font-weight: 500; border-bottom: 1px solid var(--border); padding-bottom: 20px;">
+          <div style="display: flex; align-items: center; gap: 8px;">
+            <span style="width: 28px; height: 28px; background: var(--primary); color: white; display: flex; align-items: center; justify-content: center; border-radius: 50%; font-weight: 700; font-size: 0.75rem;">AK</span>
+            <span>By <strong>Absar Khan</strong></span>
+          </div>
+          <span style="width: 4px; height: 4px; border-radius: 50%; background-color: var(--border);"></span>
+          <span>Published: <strong>Dec 27, 2025</strong></span>
+          <span style="width: 4px; height: 4px; border-radius: 50%; background-color: var(--border);"></span>
+          <span>Reading Time: <strong>16 min read</strong></span>
+          <span style="width: 4px; height: 4px; border-radius: 50%; background-color: var(--border);"></span>
+          <span style="background: #e0f2fe; color: #0369a1; padding: 2px 10px; border-radius: 50px; font-size: 0.75rem; font-weight: 700; text-transform: uppercase;">Aerosols & Gas Dosing</span>
+        </div>
+      </header>
+
+      <!-- Primary Featured Image -->
+      <div class="image-slot">
+        <img 
+          src="https://assets.zyrosite.com/A3QlOV94WLSaL6xE/aluminium-and-tin-plate-can-cut-out-82pM16gKJYuqDIMg.jpg" 
+          alt="Overview diagram of aluminium two-piece can versus tinplate two- and three-piece cans with labelled parts" 
+          width="1200" 
+          height="800" 
+          loading="eager" 
+        />
+      </div>
+
+      <!-- Table of Contents -->
+      <div class="box" style="background: #f8fafc; border: 1px solid var(--border); border-radius: var(--radius-lg); padding: 24px; margin: 30px 0;">
+        <h3 style="margin-top: 0; font-family: 'Outfit', sans-serif; color: var(--text-primary); font-size: 1.25rem; font-weight: 700; border-bottom: 2px solid var(--border); padding-bottom: 8px;">Guide Contents</h3>
+        <ul style="display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 10px; list-style-type: none; padding-left: 0; margin-bottom: 0;">
+          <li><a href="#introduction" style="font-weight: 600; color: var(--primary);">1. Introduction</a></li>
+          <li><a href="#aluminium-vs-tinplate-quick-orientation-paragraph-34-lines" style="font-weight: 600; color: var(--primary);">2. Aluminium vs Tinplate — quick orientation paragraph (3–4 lines)</a></li>
+          <li><a href="#materials-and-core-requirements" style="font-weight: 600; color: var(--primary);">3. Materials and core requirements</a></li>
+          <li><a href="#how-aluminium-aerosol-cans-are-made" style="font-weight: 600; color: var(--primary);">4. How aluminium aerosol cans are made</a></li>
+          <li><a href="#how-tinplate-aerosol-cans-are-made" style="font-weight: 600; color: var(--primary);">5. How tinplate aerosol cans are made</a></li>
+          <li><a href="#how-cans-arrive-and-integrate-with-the-filling-line" style="font-weight: 600; color: var(--primary);">6. How cans arrive and integrate with the filling line</a></li>
+          <li><a href="#regulatory-and-safety-test-requirements" style="font-weight: 600; color: var(--primary);">7. Regulatory and safety test requirements</a></li>
+          <li><a href="#common-manufacturing-problems-and-how-they-are-solved" style="font-weight: 600; color: var(--primary);">8. Common manufacturing problems and how they are solved</a></li>
+          <li><a href="#choosing-aluminium-or-tinplate-for-your-product" style="font-weight: 600; color: var(--primary);">9. Choosing aluminium or tinplate for your product</a></li>
+          <li><a href="#conclusion" style="font-weight: 600; color: var(--primary);">10. Conclusion</a></li>
+          <li><a href="#external-links" style="font-weight: 600; color: var(--primary);">11. External links</a></li>
+        </ul>
+      </div>
+
+      <div class="lead"><nav aria-label="breadcrumb" class="breadcrumb">
+        <ol>
+            <li><a href="https://www.globalformulation.com">Home</a></li>
+            <li><a href="/blog">Blog</a></li>
+            <li>Aerosol Can Manufacturing Explained</li>
+        </ol>
+    </nav>
+
+    <article>
+        
+        <meta itemprop="article:section" content="Aerosol Manufacturing">
+
+        <nav class="toc" aria-label="Table of Contents">
+            <h3>Table of Contents</h3>
+            <ul>
+                <li><a href="#introduction">Introduction</a></li>
+                <li><a href="#aluminium-vs-tinplate">Aluminium vs Tinplate</a></li>
+                <li><a href="#materials">Materials and Core Requirements</a></li>
+                <li><a href="#aluminium-making">How Aluminium Aerosol Cans Are Made</a></li>
+                <li><a href="#tinplate-making">How Tinplate Aerosol Cans Are Made</a></li>
+                <li><a href="#filling-line">How Cans Arrive and Integrate with the Filling Line</a></li>
+                <li><a href="#regulatory">Regulatory and Safety Test Requirements</a></li>
+                <li><a href="#problems">Common Manufacturing Problems and How They Are Solved</a></li>
+                <li><a href="#choosing">Choosing Aluminium or Tinplate for Your Product</a></li>
+                <li><a href="#conclusion">Conclusion</a></li>
+                <li><a href="#faq">Frequently Asked Questions</a></li>
+            </ul>
+        </nav>
+
+        <section id="introduction"></div>
+
+<!-- INTRODUCTION -->
+<section class="section" id="introduction">
+  <h2>Introduction</h2>
+  <p>Aerosol cans are engineered pressure vessels designed to contain product, propellant and a dispensing
+                valve while withstanding internal pressure, handling and transport. The two dominant metal substrates in
+                the aerosol industry are impact-extruded aluminium (typically two-piece) and tinplate steel (two- or
+                three-piece constructions). Understanding how each is made, finished and tested is essential for product
+                compatibility, safety and reliable filling-line operation.</p>
+            <figure>
+                
+                <figcaption>Overview of aluminium and tinplate aerosol can structures</figcaption>
+            </figure>
+        </section>
+
+        <section id="aluminium-vs-tinplate">
+</section>
+
+<!-- ALUMINIUM VS TINPLATE — QUICK ORIENTATION PARAGRAPH (3–4 LINES) -->
+<section class="section" id="aluminium-vs-tinplate-quick-orientation-paragraph-34-lines">
+  <h2>Aluminium vs Tinplate — quick orientation paragraph (3–4 lines)</h2>
+  <table>
+                <thead>
+                    <tr>
+                        <th>Aspect</th>
+                        <th>Aluminium</th>
+                        <th>Tinplate</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td>Raw Material</td>
+                        <td>Aluminium alloys</td>
+                        <td>Electrolytically-tin-plated mild steel sheet</td>
+                    </tr>
+                    <tr>
+                        <td>Forming Method</td>
+                        <td>Impact extrusion from a slug into a seamless two-piece body</td>
+                        <td>Sheet forming, welded/three-piece or drawn-and-ironed two-piece bodies</td>
+                    </tr>
+                    <tr>
+                        <td>Mechanical Properties</td>
+                        <td>Light weight, good dent resistance</td>
+                        <td>Different strength characteristics based on format</td>
+                    </tr>
+                    <tr>
+                        <td>Surface Treatment</td>
+                        <td>Specific corrosion protection and barrier coatings</td>
+                        <td>Robust internal coatings for corrosion control</td>
+                    </tr>
+                </tbody>
+            </table>
+            <p>Aluminium and tinplate differ in raw material, forming method, mechanical properties and surface
+                treatment requirements. Aluminium is most commonly formed by impact extrusion from a slug into a
+                seamless two-piece body; tinplate cans are formed from sheet steel and may be manufactured as
+                welded/three-piece or drawn-and-ironed two-piece bodies. These differences drive decisions on tooling
+                cost, corrosion protection, barrier coatings and filling-line handling.</p>
+
+            <h3>Key takeaway: aluminium → impact extrusion, seamless two-piece; tinplate → sheet forming, two- or
+                three-piece options.</h3>
+            <h3>Key takeaway: material choice affects weight, dent resistance, corrosion control and cost.</h3>
+        </section>
+
+        <section id="materials">
+</section>
+
+<!-- MATERIALS AND CORE REQUIREMENTS -->
+<section class="section" id="materials-and-core-requirements">
+  <h2>Materials and core requirements</h2>
+  <p>Metal aerosol cans must meet mechanical strength and chemical-compatibility requirements: yield/ductility
+                for drawing/necking, consistent wall thickness, and substrate cleanliness for coatings to adhere.
+                Internal coatings (lacquers/epoxy/polymer layers) are applied to prevent metal–product interactions and
+                corrosion, and external inks/varnishes provide decoration and abrasion resistance.</p>
+
+            <p>Typical aluminium feedstock: punched slugs of aluminium alloys selected for impact extrusion.</p>
+            <p>Typical tinplate feedstock: electrolytically-tin-plated mild steel sheet for forming and seaming.</p>
+            <p>Coatings: internal lacquers (epoxy/phenolic/polyester chemistries) and external primers/inks are standard
+                to prevent corrosion and migration.</p>
+            <figure>
+                
+      <div class="image-slot">
+        <img 
+          src="https://assets.zyrosite.com/A3QlOV94WLSaL6xE/aerosol-can-internal-lacquer-cross-section-c2X2cKBveIg4kxOs.jpg" 
+          alt="Cross-section of aerosol can interior showing lacquer layer" 
+          width="1200" 
+          height="800" 
+          loading="lazy" 
+        />
+      </div>
+      
+                <figcaption>Coated can interior cross-section</figcaption>
+            </figure>
+        </section>
+
+        <section id="aluminium-making">
+</section>
+
+<!-- HOW ALUMINIUM AEROSOL CANS ARE MADE -->
+<section class="section" id="how-aluminium-aerosol-cans-are-made">
+  <h2>How aluminium aerosol cans are made</h2>
+  <p>Aluminium aerosol cans are usually produced by impact extrusion from a circular slug. Impact extrusion
+                forms a seamless body with good strength and no longitudinal seam; subsequent operations include
+                trimming, washing, internal coating curing, necking (if required), printing/varnishing and end (dome)
+                application. Each stage is controlled to tight dimensional and surface-quality tolerances because
+                defects reduce burst strength and increase leak risk.</p>
+
+            <p>Slug preparation: discs are blanked from coil or cast and cleaned prior to extrusion.</p>
+            <p>Impact extrusion: a die forces the slug to flow and form a seamless can body and shoulder in one stroke.
+            </p>
+            <p>Trimming & washing: the formed cup is trimmed to length and washed to remove oils/particles before
+                coatings.</p>
+            <p>Internal lacquer application and cure: protective polymer coatings are applied and polymerized/cured at
+                controlled temperatures to ensure adhesion and chemical resistance.</p>
+            <p>Necking, doming and final dimensional checks: the can mouth is formed to accept standard valve sizes;
+                dome and base geometry are verified for pressure performance.</p>
+            <p>Quality control: wall thickness, ovality, burst/burst-pressure sampling, visual inspection and leak
+                testing (water bath/pressure decay) are applied.</p>
+            <figure>
+                
+      <div class="image-slot">
+        <img 
+          src="https://assets.zyrosite.com/A3QlOV94WLSaL6xE/aluminium-aerosol-can-impact-extrusion-process-cjFpfI2542U75sdi.jpg" 
+          alt="Sequence of aluminium aerosol can manufacturing: slug to impact extrusion, trim, lacquer, necking, finished can" 
+          width="1200" 
+          height="800" 
+          loading="lazy" 
+        />
+      </div>
+      
+                <figcaption>Aluminium can production sequence</figcaption>
+            </figure>
+        </section>
+
+        <section id="tinplate-making">
+</section>
+
+<!-- HOW TINPLATE AEROSOL CANS ARE MADE -->
+<section class="section" id="how-tinplate-aerosol-cans-are-made">
+  <h2>How tinplate aerosol cans are made</h2>
+  <p>Tinplate aerosol cans originate from sheet steel that is tin-plated (electrolytic). Two major
+                construction methods exist: two-piece (drawn-and-ironed or deep-drawn; seamless body + end) and
+                three-piece (body formed by rolling and seam-welding, with separate top and bottom ends). After forming,
+                cans are cleaned, internally coated, printed and seamed or fitted with ends; welded or mechanically
+                seamed joints are inspected for hermeticity.</p>
+
+            <p>Sheet cutting and body forming: sheets or coils are cut, blanked and formed by drawing or bending+welding
+                depending on design.</p>
+            <p>Welding / seaming (three-piece): longitudinal seams are welded or lap-seamed and finished; end seams are
+                double-seamed.</p>
+            <p>Internal coating: an internal lacquer is applied and cured to isolate the product from the steel
+                substrate and tin layer.</p>
+            <p>Printing, varnish and external finishing: inks and protective varnishes provide brand appearance and
+                abrasion resistance.</p>
+            <p>Inspection and leak tests: dimensional checks, seam integrity tests and pressure/leak testing are
+                performed before shipment to fillers.</p>
+            <figure>
+                
+      <div class="image-slot">
+        <img 
+          src="https://assets.zyrosite.com/A3QlOV94WLSaL6xE/tinplate-three-piece-aerosol-can-seam-detail-6cYiKr5OHt9i0cF1.jpg" 
+          alt="Detail of three-piece tinplate aerosol can seam and double seam at end" 
+          width="1200" 
+          height="800" 
+          loading="lazy" 
+        />
+      </div>
+      
+                <figcaption>Tinplate can seam details</figcaption>
+            </figure>
+        </section>
+
+        <section id="filling-line">
+</section>
+
+<!-- HOW CANS ARRIVE AND INTEGRATE WITH THE FILLING LINE -->
+<section class="section" id="how-cans-arrive-and-integrate-with-the-filling-line">
+  <h2>How cans arrive and integrate with the filling line</h2>
+  <p>Finished aerosol cans are delivered to filling plants either as packed bulk (packed in trays/pallets) or
+                on drums/rolls for specialized lines. On a filling line, cans are de-palletized, oriented, washed/dried
+                as needed, weighed or flow-filled, gassed/pressurized or fitted with liquid charge, then valves are
+                crimped and final inspections (leak, weight, visual) are performed. Proper can geometry and valve
+                compatibility are essential to avoid crimp failure or leakage during filling and transport.</p>
+
+            <p>Can feeding & orientation systems present cans to the filling turret reliably.</p>
+            <p>Filling: volumetric or mass filling systems (for product charge) followed by propellant gassing or
+                combined dosing depending on system.</p>
+            <p>Valve crimping: standard crimp sizes require correct flange dimensions and crimp tooling to form the
+                hermetic seal.</p>
+            <p>Final checks: weight checks, pressure tests, water bath leak tests and visual inspections before packing.
+            </p>
+            <figure>
+                
+      <div class="image-slot">
+        <img 
+          src="https://assets.zyrosite.com/A3QlOV94WLSaL6xE/industrial-aerosol-filling-line-consultancy-3Y4xkTeHD23LZ2jp.png" 
+          alt="Flowchart of aerosol filling line steps: feed, fill, valve crimp, leak check, pack" 
+          width="1200" 
+          height="800" 
+          loading="lazy" 
+        />
+      </div>
+      
+                <figcaption>Aerosol filling line flowchart</figcaption>
+            </figure>
+        </section>
+
+        <section id="regulatory">
+</section>
+
+<!-- REGULATORY AND SAFETY TEST REQUIREMENTS -->
+<section class="section" id="regulatory-and-safety-test-requirements">
+  <h2>Regulatory and safety test requirements</h2>
+  <p>Aerosol containers are regulated as non-refillable pressure vessels in many jurisdictions; in the U.S.
+                common specifications are DOT 2P and 2Q which prescribe construction and performance tests. Industry
+                guidance (FEA, national regulators) requires routine burst/pressure testing, leak testing and safe
+                handling of flammable ingredients. Fillers and can manufacturers perform bench and destructive testing
+                to confirm containers meet rated working pressure and burst thresholds.</p>
+
+            <p>DOT specifications: 2P/2Q classifications define materials and test pressure ranges for disposable
+                aerosol containers.</p>
+            <p>Typical tests: normal-temperature pressure test, high-temperature pressure test, burst test, seam
+                integrity and leak detection (water bath/pressure decay).</p>
+            <p>Industry guidance: FEA’s safety guidelines and national transport regulations govern flammable propellant
+                handling, facility design and emergency planning.</p>
+        </section>
+
+        <section id="problems">
+</section>
+
+<!-- COMMON MANUFACTURING PROBLEMS AND HOW THEY ARE SOLVED -->
+<section class="section" id="common-manufacturing-problems-and-how-they-are-solved">
+  <h2>Common manufacturing problems and how they are solved</h2>
+  <p>Manufacturing and filling lines can experience defects that affect safety and shelf life — examples
+                include coating adhesion failure, can paneling (buckling), crimp leakage, and seam defects. Each issue
+                has specific root causes (material quality, forming speeds, coating cure, crimp tooling mismatch) and
+                standard corrective actions such as process parameter adjustments, tooling maintenance, and enhanced
+                inspection plans.</p>
+
+            <p>Coating adhesion failures → check substrate cleanliness, bake profiles and coating chemistry.</p>
+            <p>Paneling / buckling → ensure correct wall thickness, dome geometry and filling pressures are within rated
+                limits.</p>
+            <p>Crimp leakage → verify valve flange dimensions, crimp tooling condition and crimp height/roll pressure.
+            </p>
+            <p>Seam defects (tinplate) → non-destructive seam inspection and destructive seam testing to root-cause
+                welding/rolling issues.</p>
+        </section>
+
+        <section id="choosing">
+</section>
+
+<!-- CHOOSING ALUMINIUM OR TINPLATE FOR YOUR PRODUCT -->
+<section class="section" id="choosing-aluminium-or-tinplate-for-your-product">
+  <h2>Choosing aluminium or tinplate for your product</h2>
+  <p>Selecting the right can depends on product chemistry, pressure requirements, cost and branding. Aluminium
+                offers lighter weight and seamless bodies (good for higher finish and certain product compatibilities);
+                tinplate provides established supply chains and cost advantages for some formats but requires robust
+                internal coatings for corrosive products. Choose based on compatibility testing (chemical resistance),
+                mechanical performance and total landed cost including coating and filling adjustments.</p>
+
+            <p>Aluminium is often preferred where weight reduction, corrosion resistance with correct coatings, or
+                premium appearance is desired.</p>
+            <p>Tinplate is commonly used where two- or three-piece formats, different seam/forming options or specific
+                price points make sense.</p>
+            <p>Always run compatibility tests (coating × product), pressure lifecycle tests and accelerated aging for
+                your specific formulation.</p>
+        </section>
+
+        <section id="conclusion">
+</section>
+
+<!-- CONCLUSION -->
+<section class="section" id="conclusion">
+  <h2>Conclusion</h2>
+  <p>Aluminium and tinplate aerosol cans are produced by distinct, well-established industrial processes
+                (impact extrusion vs sheet forming/seaming) and require specific finishing, coating and testing regimes
+                to ensure safety and product compatibility. For filling-line operators and product developers, close
+                coordination between can choice, valve specification and filling process parameters is essential to
+                safe, reliable, and cost-effective aerosol production.</p>
+
+            <p>Final checklist: verify substrate and coating compatibility, test crimp and pressure performance, and
+                follow applicable regulatory testing before commercial runs.</p>
+        </section>
+
+        <section id="external-links">
+</section>
+
+<!-- EXTERNAL LINKS -->
+<section class="section" id="external-links">
+  <h2>External links</h2>
+  <ul>
+                <li>Ball — Aluminium aerosol cans / impact extrusion overview. <a
+                        href="https://www.ball.com/packaging/aerosol-cans/aluminum-aerosol-cans">ball.com</a></li>
+                <li>Crown — history and tinplate / steel can technologies (overview of tinplate can formats). <a
+                        href="https://www.crowncork.com/">Crown</a></li>
+                <li>U.S. DOT / PHMSA aerosol transportation & safety (regulatory context and risk assessment). <a
+                        href="https://www.phmsa.dot.gov">PHMSA</a></li>
+            </ul>
+        </section>
+
+        <section id="more-articles">
+</section>
+
+
+
+      <!-- Contact Box -->
+      <div class="cta" style="background: linear-gradient(135deg, var(--primary) 0%, var(--secondary) 100%); color: #ffffff; padding: 30px; border-radius: var(--radius-lg); margin-top: 40px; display: flex; flex-direction: column; justify-content: space-between; align-items: flex-start; gap: 20px; md-flex-direction: row; md-align-items: center;">
+        <div class="left">
+          <p style="margin:0 0 8px 0; font-size:1.25rem; font-weight:800; font-family: 'Outfit', sans-serif;">Need Technical Support for Aerosol Formulations?</p>
+          <p style="margin:0 0 16px 0; font-size:0.95rem; line-height:1.6; opacity:0.95;">
+            Partner with Global Formulation to audit, scale up, and troubleshoot your aerosol chemistry, canister pressure calculations, filling lines, and safety systems.
+          </p>
+          <p style="margin:0; font-size:0.9rem; line-height:1.6; font-family: monospace;">
+            Email: <strong>consulting@globalformulation.com</strong><br />
+            Website: <a href="/" style="color: #ffffff; font-weight: 600; text-decoration: underline;">https://www.globalformulation.com</a><br />
+            Phone: <strong>+91 9819548320 &nbsp;&nbsp; +91 8169102990</strong>
+          </p>
+        </div>
+        <a href="mailto:consulting@globalformulation.com" class="btn" style="background:#ffffff; color:var(--primary); font-weight:700; padding:12px 24px; border-radius:var(--radius-sm); border:none; text-decoration:none; transition: all var(--transition-fast);">
+          Request Consultation
+        </a>
+      </div>
+
+      <!-- ABOUT THE AUTHOR -->
+      <section class="section" id="about-author" style="margin-top: 50px; background: #f8fafc; border: 1px solid var(--border); padding: 30px; border-radius: var(--radius-lg); display: flex; flex-direction: column; gap: 20px; md-flex-direction: row;">
+        <div style="flex-shrink: 0; width: 60px; height: 60px; background: linear-gradient(135deg, var(--primary) 0%, var(--secondary) 100%); color: white; display: flex; align-items: center; justify-content: center; border-radius: 50%; font-size: 1.5rem; font-weight: 800; font-family: 'Outfit', sans-serif; box-shadow: var(--shadow-md);">
+          AK
+        </div>
+        <div>
+          <h3 style="margin-top: 0; margin-bottom: 8px; font-family: 'Outfit', sans-serif; font-size: 1.3rem; font-weight: 700; color: var(--text-primary);">About the Specialist</h3>
+          <p style="margin-top: 0; margin-bottom: 12px; font-size: 0.95rem; line-height: 1.6; color: var(--text-muted);">
+            <strong>Absar Khan</strong> is the principal consultant and chemical formulation architect at <strong>Global Formulation</strong>. He possesses cross-disciplinary engineering expertise spanning aerosol gassing systems, pharmaceutical manufacturing, sterile injectables, cosmetics, and green chemical plant setups. Absar leads scientific and engineering advisory teams supporting manufacturers globally in technology selection, GMP layouts, validation frameworks, and regulatory strategies.
+          </p>
+          <p style="margin: 0; font-size: 0.9rem;">
+            <strong>LinkedIn Portfolio:</strong> 
+            <a 
+              href="https://www.linkedin.com/in/absar-khan-aerosol-consultant-and-formulator-78359b162" 
+              style="font-weight: 700; color: var(--primary); text-decoration: underline;"
+            >
+              Connect with Absar Khan on LinkedIn
+            </a>
+          </p>
+        </div>
+      </section>
+
+      <!-- Footer copyright -->
+      <footer style="text-align: center; margin-top: 50px; color: var(--text-muted); font-size: 0.85rem; font-family: 'Inter', sans-serif;">
+        &copy; {new Date().getFullYear()} Global Formulation. All rights reserved. 
+        <br />
+        <span style="font-size: 0.75rem; opacity: 0.8;">Centralised Aerosol Dosing &amp; Chemical Scale-Up Engineering.</span>
+      </footer>
+
+    </article>
+  </main>
+</Layout>
+
+<style>
+  .blog-prose h1, 
+  .blog-prose h2, 
+  .blog-prose h3 {
+    font-family: 'Playfair Display', 'Outfit', serif !important;
+  }
+  
+  .blog-prose h2 {
+    color: #ffffff !important;
+    background-color: var(--secondary) !important;
+    padding: 12px 20px;
+    border-radius: var(--radius-md);
+    border-bottom: none !important;
+    font-weight: 700;
+  }
+
+  .blog-prose p, 
+  .blog-prose ul, 
+  .blog-prose ol,
+  .blog-prose h3,
+  .blog-prose .lead,
+  .blog-prose .image-slot,
+  .blog-prose .box,
+  .blog-prose .cta,
+  .blog-prose .table-container,
+  .blog-prose #faq {
+    max-width: 100%;
+    width: 100%;
+  }
+
+  .blog-prose .lead {
+    margin: 2rem 0;
+  }
+</style>

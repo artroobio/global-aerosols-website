@@ -1,0 +1,576 @@
+---
+// src/lc/components/Hero.astro
+// Landing hero section - Global Aerosols
+---
+
+<!-- Fonts -->
+<link rel="preconnect" href="https://fonts.googleapis.com" />
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+<link href="https://fonts.googleapis.com/css2?family=Michroma&family=Montserrat:wght@200;300;400;700;800;900&family=Poppins:wght@300;400;600&display=swap" rel="stylesheet" />
+
+<section id="ga-main-wrapper">
+    <!-- Ambient Backgrounds locked to hero viewport -->
+    <div id="hero-bg-container">
+        <div id="star-canvas-container"></div>
+        <!-- Hero image: static visible fallback while WebGL ripple loads -->
+        <img id="hero-image" src="/global aerosols 2.png" alt="Global Aerosols" />
+        <canvas id="ripple-canvas"></canvas>
+    </div>
+
+    <div id="ui-layer">
+        <div id="hero-sequence">
+            <!-- Mid-screen horizontal divider line with labels -->
+            <div class="hero-mid-divider">
+                <span class="mid-label left-label">SYSTEMS &amp; TECHNOLOGY</span>
+                <span class="mid-label center-label">FORMULATIONS</span>
+                <span class="mid-label right-label">AEROSOL ENGINEERING</span>
+            </div>
+
+            <!-- Massive Bottom Container -->
+            <div class="hero-bottom-container">
+                <h2 class="hero-massive-title" id="hero-massive-title">GLOBAL AEROSOLS</h2>
+            </div>
+
+            <!-- CTA Button -->
+            <a href="#portfolio-grid-section" class="hero-cta-btn">EXPLORE SERVICES +</a>
+        </div>
+    </div>
+</section>
+
+<style is:global>
+    #ga-main-wrapper {
+        position: relative;
+        width: 100%;
+        height: 100vh;
+        min-height: 600px;
+        overflow: hidden;
+        background: #010a0a;
+    }
+
+    #hero-bg-container {
+        position: absolute;
+        top: 0; left: 0; width: 100%; height: 100%;
+        background-color: #010a0a;
+        /* NO external background-image — only the local hero image + ripple */
+        z-index: 1;
+    }
+
+    #hero-bg-container::after {
+        content: '';
+        position: absolute;
+        top: 0; left: 0; width: 100%; height: 100%;
+        background: radial-gradient(circle, rgba(0,0,0,0.05) 0%, rgba(1,10,10,0.55) 100%);
+        z-index: 6;
+        pointer-events: none;
+    }
+
+    #star-canvas-container, #ui-layer {
+        position: absolute; top: 0; left: 0; width: 100%; height: 100%;
+    }
+
+    #star-canvas-container { z-index: 2; pointer-events: none; }
+
+    /* Hero image: static fallback — always visible until WebGL ripple fades in */
+    #hero-image {
+        position: absolute;
+        top: 0; left: 0;
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+        opacity: 1;
+        z-index: 3;
+        pointer-events: none;
+        transition: opacity 0.8s ease;
+    }
+
+    /* Ripple canvas: hidden until WebGL texture is loaded and rendering */
+    #ripple-canvas {
+        position: absolute;
+        top: 0; left: 0;
+        width: 100%; height: 100%;
+        z-index: 4;
+        opacity: 0;
+        pointer-events: none;
+        transition: opacity 0.8s ease;
+    }
+
+    #ui-layer {
+        position: absolute;
+        top: 0; left: 0; width: 100%; height: 100%;
+        z-index: 10;
+        pointer-events: none;
+    }
+
+    #hero-sequence {
+        position: absolute;
+        top: 0; left: 0;
+        width: 100%;
+        height: 100%;
+        opacity: 1;
+        pointer-events: auto;
+        box-sizing: border-box;
+    }
+
+    .hero-mid-divider {
+        position: absolute;
+        top: 40%;
+        left: 0;
+        width: 100%;
+        height: 1px;
+        border-bottom: 1px dashed rgba(255, 255, 255, 0.65);
+        transform: translateY(-50%);
+        z-index: 5;
+    }
+
+    .mid-label {
+        position: absolute;
+        font-family: 'Poppins', sans-serif;
+        font-size: clamp(0.65rem, 1.1vw, 0.82rem);
+        font-weight: 700;
+        text-transform: uppercase;
+        letter-spacing: 5px;
+        color: #ffffff;
+        transform: translateY(calc(-100% - 10px));
+        text-shadow: 0 1px 8px rgba(0, 0, 0, 0.7);
+        padding: 0 6px;
+    }
+
+    .left-label  { left: 5%; }
+    .center-label { left: 50%; transform: translate(-50%, calc(-100% - 10px)); }
+    .right-label  { right: 5%; }
+
+    .hero-bottom-container {
+        position: absolute;
+        bottom: 18%;
+        left: 0;
+        width: 100%;
+        display: flex;
+        justify-content: center;
+        align-items: flex-end;
+        z-index: 10;
+        pointer-events: none;
+        padding-top: 0.5em;
+        padding-bottom: 0.4em;
+        overflow: hidden;
+    }
+
+    .hero-massive-title {
+        font-family: 'Montserrat', sans-serif;
+        font-weight: 300;
+        font-size: clamp(2rem, 9vw, 10rem);
+        white-space: nowrap;
+        color: #ffffff;
+        text-transform: uppercase;
+        letter-spacing: 4px;
+        margin: 0;
+        line-height: 1;
+        text-align: center;
+        width: 100%;
+        text-shadow: 0 2px 40px rgba(0, 0, 0, 0.6);
+    }
+
+    .hero-massive-title .char {
+        display: inline-block;
+        will-change: transform, opacity;
+    }
+    .hero-massive-title .char-space {
+        display: inline-block;
+        width: 0.22em;
+    }
+
+    .hero-cta-btn {
+        position: absolute;
+        bottom: 8%;
+        right: 5%;
+        text-decoration: none;
+        padding: 11px 22px;
+        background: #000000;
+        border: none;
+        border-radius: 0;
+        font-family: 'Poppins', sans-serif;
+        font-size: 0.8rem;
+        font-weight: 700;
+        color: #00ffcc;
+        cursor: pointer;
+        transition: background 0.25s ease, color 0.25s ease;
+        z-index: 15;
+        letter-spacing: 2px;
+        text-transform: uppercase;
+        pointer-events: auto;
+    }
+
+    .hero-cta-btn:hover {
+        background: #00ffcc;
+        color: #000000;
+    }
+
+    @media (max-width: 899px) {
+        /* Hide all WebGL/canvas elements — static image only on mobile */
+        #star-canvas-container,
+        #ripple-canvas,
+        #hero-image { display: none !important; }
+
+        #hero-sequence {
+            opacity: 1 !important;
+            transform: none !important;
+        }
+
+        /* Full-height dark background with the hero image as CSS bg on mobile */
+        #ga-main-wrapper {
+            background-color: #010a0a;
+            background-image: url('/global aerosols 2.png');
+            background-size: cover;
+            background-position: center center;
+        }
+
+        /* Darken bg for text legibility */
+        #hero-bg-container::after {
+            background: rgba(1, 10, 10, 0.55) !important;
+            z-index: 1 !important;
+        }
+
+        #ui-layer { z-index: 5; }
+
+        .hero-bottom-container { bottom: 14%; }
+        .hero-massive-title    { font-size: clamp(1.8rem, 8vw, 3.5rem); letter-spacing: 2px; }
+        .mid-label             { font-size: 0.5rem; letter-spacing: 2px; }
+        .hero-cta-btn          { right: 5%; bottom: 6%; font-size: 0.7rem; padding: 10px 18px; }
+        .hero-mid-divider      { top: 42%; }
+    }
+
+    @media (min-width: 900px) {
+        .mid-label { font-size: 0.72rem; letter-spacing: 5px; }
+    }
+
+    @media (min-width: 1200px) {
+        .mid-label { font-size: 0.82rem; }
+    }
+</style>
+
+<script is:inline>
+(function () {
+    // ── Utility: load a script and call onload when done ──────────────────
+    function loadScript(src, onload) {
+        var s = document.createElement('script');
+        s.src = src;
+        s.onload = onload;
+        s.onerror = function () { console.warn('Failed to load:', src); onload && onload(); };
+        document.head.appendChild(s);
+    }
+
+    // ── Mobile guard: skip ALL heavy JS/WebGL on mobile screens ─────────
+    // This prevents Three.js (~600KB) and WebGL from ever loading on phones.
+    // The mobile CSS media query shows the hero image as a CSS background instead.
+    var isMobile = window.matchMedia('(max-width: 899px)').matches ||
+                   /Mobi|Android|iPhone|iPad/i.test(navigator.userAgent);
+
+    // ── Boot sequence: load Three.js → GSAP → run app ────────────────────
+    function boot() {
+        if (isMobile) {
+            // On mobile: just run the lightweight parts (no CDN scripts, no WebGL)
+            initApp();
+            return;
+        }
+        loadScript('https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js', function () {
+            loadScript('https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/gsap.min.js', function () {
+                initApp();
+            });
+        });
+    }
+
+    if (document.readyState === 'loading') {
+        document.addEventListener('DOMContentLoaded', boot);
+    } else {
+        boot();
+    }
+
+    // ────────────────────────────────────────────────────────────────────
+    function initApp() {
+        var heroGroup    = document.getElementById('hero-sequence');
+        var rippleCanvas = document.getElementById('ripple-canvas');
+        var heroImage    = document.getElementById('hero-image');
+        var starContainer= document.getElementById('star-canvas-container');
+        var wrapper      = document.getElementById('ga-main-wrapper');
+
+        if (!heroGroup) return;
+
+        // ── On mobile: only run GSAP title animation (no WebGL, no Three.js) ──
+        if (isMobile) {
+            // Title is already visible via CSS opacity:1; no animation needed on mobile
+            return;
+        }
+
+        if (!rippleCanvas || !heroImage || !starContainer || !wrapper) {
+            console.warn('Hero: one or more elements missing.');
+            return;
+        }
+
+        // ── 1. Star field (Three.js) — desktop only ───────────────────────
+        if (typeof THREE !== 'undefined') {
+            var isPaused = false;
+            var scene    = new THREE.Scene();
+            var camera   = new THREE.PerspectiveCamera(60, window.innerWidth / window.innerHeight, 0.1, 5000);
+            var renderer = new THREE.WebGLRenderer({ antialias: false, alpha: true });
+            renderer.setPixelRatio(Math.min(window.devicePixelRatio, 1.5));
+            renderer.setSize(window.innerWidth, window.innerHeight);
+            starContainer.appendChild(renderer.domElement);
+
+            var starCount = 800;
+            var geo   = new THREE.BoxGeometry(0.5, 0.5, 1);
+            var mat   = new THREE.MeshBasicMaterial({ color: 0xffffff });
+            var mesh  = new THREE.InstancedMesh(geo, mat, starCount);
+            var dummy = new THREE.Object3D();
+            var stars = [];
+            for (var i = 0; i < starCount; i++) {
+                var sx = (Math.random() - 0.5) * 1600;
+                var sy = (Math.random() - 0.5) * 1600;
+                var sz = (Math.random() - 0.5) * 4000;
+                stars.push({ x: sx, y: sy, z: sz });
+                dummy.position.set(sx, sy, sz);
+                dummy.updateMatrix();
+                mesh.setMatrixAt(i, dummy.matrix);
+            }
+            scene.add(mesh);
+
+            var speed = 0.2;
+            function animateStars() {
+                if (isPaused) return;
+                requestAnimationFrame(animateStars);
+                for (var j = 0; j < starCount; j++) {
+                    var s = stars[j];
+                    s.z += speed;
+                    if (s.z > 500) s.z -= 4000;
+                    dummy.position.set(s.x, s.y, s.z);
+                    dummy.scale.set(1, 1, 1);
+                    dummy.updateMatrix();
+                    mesh.setMatrixAt(j, dummy.matrix);
+                }
+                mesh.instanceMatrix.needsUpdate = true;
+                renderer.render(scene, camera);
+            }
+            window.addEventListener('resize', function () {
+                camera.aspect = window.innerWidth / window.innerHeight;
+                camera.updateProjectionMatrix();
+                renderer.setSize(window.innerWidth, window.innerHeight);
+            });
+            new IntersectionObserver(function (entries) {
+                entries.forEach(function (entry) {
+                    if (!entry.isIntersecting) { isPaused = true; }
+                    else if (isPaused) { isPaused = false; animateStars(); }
+                });
+            }, { threshold: 0 }).observe(wrapper);
+            animateStars();
+        }
+
+        // ── 2. Ripple WebGL engine — desktop only ─────────────────────────
+        buildRipple(rippleCanvas, heroImage);
+
+        // ── 3. GSAP title reveal — desktop only ───────────────────────────
+        if (typeof gsap !== 'undefined') {
+            var titleEl = document.getElementById('hero-massive-title');
+            if (titleEl) {
+                var raw = titleEl.textContent;
+                titleEl.innerHTML = raw.split('').map(function (ch) {
+                    return ch === ' '
+                        ? '<span class="char char-space">&nbsp;</span>'
+                        : '<span class="char">' + ch + '</span>';
+                }).join('');
+                var chars = Array.from(titleEl.querySelectorAll('.char'));
+                gsap.set(chars, { y: 130, opacity: 0 });
+                gsap.to(chars, { y: 0, opacity: 1, duration: 1.4, stagger: 0.038, ease: 'power4.out', delay: 0.2 });
+            }
+        }
+    }
+
+    // ── Ripple engine (self-contained, no GSAP / THREE dependency) ────────
+    function buildRipple(canvas, fallbackImg) {
+        var gl = canvas.getContext('webgl', { alpha: false });
+        if (!gl) {
+            console.warn('WebGL not supported — static image remains visible.');
+            return;
+        }
+
+        var vs = [
+            'attribute vec2 a;',
+            'varying vec2 v;',
+            'void main(){',
+            '  v = a * .5 + .5;',
+            '  v.y = 1. - v.y;',
+            '  gl_Position = vec4(a, 0., 1.);',
+            '}'
+        ].join('\n');
+
+        var fs = [
+            'precision mediump float;',
+            'uniform float u_t, u_mt;',
+            'uniform int u_go;',
+            'uniform sampler2D u_img;',
+            'uniform vec2 u_res;',
+            'uniform vec3 u_w[32];',
+            'uniform vec2 u_scale;',
+            'uniform vec2 u_offset;',
+            'varying vec2 v;',
+            'void main(){',
+            '  vec2 uv = v;',
+            '  vec2 asp = vec2(u_res.x / u_res.y, 1.);',
+            '  vec2 d = vec2(0.);',
+            '  for(int i=0;i<32;i++){',
+            '    vec3 w = u_w[i];',
+            '    if(w.z > 0.){',
+            '      float lf = u_t - w.z;',
+            '      if(lf < 5.){',
+            '        float r  = lf * .25;',
+            '        float di = distance(uv*asp, vec2(w.x,w.y)*asp);',
+            '        float mk = max(0., 1.-smoothstep(0.,.05,abs(di-r)));',
+            '        float rr = sin((di-r)*70.);',
+            '        float fd = 1.-smoothstep(0.,5.,lf);',
+            '        vec2 dr  = normalize((uv*asp)-(vec2(w.x,w.y)*asp));',
+            '        d += dr*(rr*mk*fd*.03);',
+            '      }',
+            '    }',
+            '  }',
+            '  if(u_go==1){',
+            '    float mt=u_t-u_mt;',
+            '    if(mt>0.&&mt<5.){',
+            '      float cd=distance(uv*asp,vec2(.5)*asp);',
+            '      float bw=sin((cd-mt*.4)*40.);',
+            '      float bm=max(0.,1.-smoothstep(0.,.3,abs(cd-mt*.4)));',
+            '      float bf=1.-smoothstep(0.,5.,mt);',
+            '      d+=(uv-.5)*(.1*bm*bw*bf);',
+            '    }',
+            '  }',
+            '  gl_FragColor = vec4(',
+            '    texture2D(u_img,(uv+d)*u_scale+u_offset).r,',
+            '    texture2D(u_img,(uv+d*1.025)*u_scale+u_offset).g,',
+            '    texture2D(u_img,(uv+d*1.05)*u_scale+u_offset).b,',
+            '    1.);',
+            '}'
+        ].join('\n');
+
+        function mkShader(type, src) {
+            var sh = gl.createShader(type);
+            gl.shaderSource(sh, src);
+            gl.compileShader(sh);
+            if (!gl.getShaderParameter(sh, gl.COMPILE_STATUS)) {
+                console.error('Shader error:', gl.getShaderInfoLog(sh));
+            }
+            return sh;
+        }
+
+        var prog = gl.createProgram();
+        gl.attachShader(prog, mkShader(gl.VERTEX_SHADER, vs));
+        gl.attachShader(prog, mkShader(gl.FRAGMENT_SHADER, fs));
+        gl.linkProgram(prog);
+        if (!gl.getProgramParameter(prog, gl.LINK_STATUS)) {
+            console.error('Program link error:', gl.getProgramInfoLog(prog));
+            return;
+        }
+
+        var buf = gl.createBuffer();
+        gl.bindBuffer(gl.ARRAY_BUFFER, buf);
+        gl.bufferData(gl.ARRAY_BUFFER, new Float32Array([-1,-1, 1,-1, -1,1, -1,1, 1,-1, 1,1]), gl.STATIC_DRAW);
+        var loc = gl.getAttribLocation(prog, 'a');
+        gl.enableVertexAttribArray(loc);
+        gl.vertexAttribPointer(loc, 2, gl.FLOAT, false, 0, 0);
+
+        var MAX   = 32;
+        var waves = new Float32Array(MAX * 3);
+        var wIdx  = 0;
+        var t0    = performance.now();
+        var mainT = 0;
+        var hasMain = false;
+        var lastMT  = 0;
+        var imgW = 1, imgH = 1;
+        var uvScale = [1, 1], uvOffset = [0, 0];
+
+        var locs = {
+            t:      gl.getUniformLocation(prog, 'u_t'),
+            mt:     gl.getUniformLocation(prog, 'u_mt'),
+            go:     gl.getUniformLocation(prog, 'u_go'),
+            res:    gl.getUniformLocation(prog, 'u_res'),
+            w:      gl.getUniformLocation(prog, 'u_w'),
+            scale:  gl.getUniformLocation(prog, 'u_scale'),
+            offset: gl.getUniformLocation(prog, 'u_offset')
+        };
+
+        function resize() {
+            canvas.width  = canvas.parentElement ? canvas.parentElement.offsetWidth  : window.innerWidth;
+            canvas.height = canvas.parentElement ? canvas.parentElement.offsetHeight : window.innerHeight;
+            gl.viewport(0, 0, canvas.width, canvas.height);
+            var rs = canvas.width / canvas.height;
+            var ri = imgW / imgH;
+            if (rs < ri) {
+                uvScale  = [rs / ri, 1.0];
+            } else {
+                uvScale  = [1.0, ri / rs];
+            }
+            uvOffset = [(1 - uvScale[0]) / 2, (1 - uvScale[1]) / 2];
+        }
+
+        function tick() {
+            requestAnimationFrame(tick);
+            var t = (performance.now() - t0) / 1000;
+            gl.useProgram(prog);
+            gl.uniform1f(locs.t, t);
+            gl.uniform1f(locs.mt, mainT);
+            gl.uniform1i(locs.go, hasMain ? 1 : 0);
+            gl.uniform2f(locs.res, canvas.width, canvas.height);
+            gl.uniform2f(locs.scale,  uvScale[0],  uvScale[1]);
+            gl.uniform2f(locs.offset, uvOffset[0], uvOffset[1]);
+            gl.uniform3fv(locs.w, waves);
+            gl.drawArrays(gl.TRIANGLES, 0, 6);
+        }
+
+        window.addEventListener('mousemove', function (e) {
+            var now = performance.now();
+            if (now - lastMT < 30) return;
+            var r = canvas.getBoundingClientRect();
+            waves[wIdx * 3]     = (e.clientX - r.left) / r.width;
+            waves[wIdx * 3 + 1] = (e.clientY - r.top)  / r.height;
+            waves[wIdx * 3 + 2] = (now - t0) / 1000;
+            wIdx = (wIdx + 1) % MAX;
+            lastMT = now;
+        });
+
+        window.addEventListener('resize', resize);
+
+        // Load the texture from the same <img> element already on the page
+        // This avoids all CORS issues — same-origin, no crossOrigin flag needed
+        var img = new Image();
+        img.onload = function () {
+            imgW = img.width;
+            imgH = img.height;
+
+            var tex = gl.createTexture();
+            gl.bindTexture(gl.TEXTURE_2D, tex);
+            gl.texParameteri(gl.TEXTURE_2D, gl.TEXTURE_WRAP_S, gl.CLAMP_TO_EDGE);
+            gl.texParameteri(gl.TEXTURE_2D, gl.TEXTURE_WRAP_T, gl.CLAMP_TO_EDGE);
+            gl.texParameteri(gl.TEXTURE_2D, gl.TEXTURE_MIN_FILTER, gl.LINEAR);
+            gl.texImage2D(gl.TEXTURE_2D, 0, gl.RGBA, gl.RGBA, gl.UNSIGNED_BYTE, img);
+
+            resize();
+
+            // Trigger opening ripple immediately
+            hasMain = true;
+            mainT   = (performance.now() - t0) / 1000;
+
+            // Start render loop
+            tick();
+
+            // Swap: fade in canvas, fade out static img fallback
+            canvas.style.opacity = '1';
+            fallbackImg.style.opacity = '0';
+
+            console.log('Ripple engine: texture loaded, rendering started.');
+        };
+
+        img.onerror = function () {
+            console.error('Ripple: failed to load image from', img.src);
+        };
+
+        // Use the page-rendered img src — always same-origin, always loaded already
+        img.src = fallbackImg.src;
+    }
+
+})();
+</script>

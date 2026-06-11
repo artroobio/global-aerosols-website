@@ -1,0 +1,901 @@
+---
+import Layout from '../layouts/Layout.astro';
+
+const slug = 'polyurethane-sealants-chemistry-cure-weatherproofing';
+const title = 'Polyurethane Sealants: Chemistry, Cure & Weatherproofing';
+const description = 'Explore polyurethane sealant formulation — one-component moisture cure, two-component chemistry, joint movement, weathering, and construction use cases.';
+const heroCdn = `https://cdn.globalformulation.com/images/${slug}/${slug}-hero-globalformulation.webp`;
+
+// 1. Organization Schema
+const orgSchema = {
+  "@context": "https://schema.org",
+  "@type": "Organization",
+  "name": "Global Formulation",
+  "url": "https://www.globalformulation.com",
+  "logo": "https://www.globalformulation.com/logo.png",
+  "contactPoint": [{ "@type": "ContactPoint", "telephone": "+91 9819548320", "contactType": "customer service" }]
+};
+
+// 2. Website Search Schema
+const websiteSchema = {
+  "@context": "https://schema.org",
+  "@type": "WebSite",
+  "url": "https://www.globalformulation.com",
+  "potentialAction": {
+    "@type": "SearchAction",
+    "target": "https://www.globalformulation.com/blog?search={search_term_string}",
+    "query-input": "required name=search_term_string"
+  }
+};
+
+// 3. Author Person Schema
+const authorSchema = {
+  "@context": "https://schema.org",
+  "@type": "Person",
+  "name": "Absar Khan",
+  "jobTitle": "Lead Consultant",
+  "url": "https://www.linkedin.com/in/absar-khan-aerosol-consultant-and-formulator-78359b162",
+  "affiliation": { "@type": "Organization", "name": "Global Formulation", "url": "https://www.globalformulation.com" },
+  "sameAs": ["https://www.linkedin.com/in/absar-khan-aerosol-consultant-and-formulator-78359b162"]
+};
+
+// 4. BreadcrumbList Schema
+const breadcrumbSchema = {
+  "@context": "https://schema.org",
+  "@type": "BreadcrumbList",
+  "itemListElement": [
+    { "@type": "ListItem", "position": 1, "name": "Home", "item": "https://www.globalformulation.com" },
+    { "@type": "ListItem", "position": 2, "name": "Blog", "item": "https://www.globalformulation.com/blog" },
+    { "@type": "ListItem", "position": 3, "name": "Polyurethane Sealants: Chemistry, Cure & Weatherproofing", "item": `https://www.globalformulation.com/${slug}` }
+  ]
+};
+
+// 5. BlogPosting Schema
+const blogPostingSchema = {
+  "@context": "https://schema.org",
+  "@type": "BlogPosting",
+  "headline": "Polyurethane Sealants: Chemistry, Cure & Weatherproofing",
+  "description": "Explore polyurethane sealant formulation — one-component moisture cure, two-component chemistry, joint movement, weathering, and construction use cases.",
+  "image": heroCdn,
+  "author": { "@type": "Person", "name": "Absar Khan" },
+  "publisher": {
+    "@type": "Organization",
+    "name": "Global Formulation",
+    "logo": { "@type": "ImageObject", "url": "https://www.globalformulation.com/logo.png" }
+  },
+  "datePublished": "2026-05-29",
+  "dateModified": "2026-05-29",
+  "mainEntityOfPage": { "@type": "WebPage", "@id": `https://www.globalformulation.com/${slug}` },
+  "articleSection": "Adhesives & Sealants",
+  "keywords": "polyurethane sealant formulation, one component PU sealant, two component polyurethane sealant, moisture cure PU, construction joint sealant, polyurethane sealant movement",
+  "wordCount": "1960"
+};
+
+// 6. FAQPage Schema
+const faqSchema = {
+  "@context": "https://schema.org",
+  "@type": "FAQPage",
+  "mainEntity": [
+    {
+      "@type": "Question",
+      "name": "What is the key difference between a one-component and two-component polyurethane sealant?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Both 1K and 2K polyurethane sealants are based on isocyanate-terminated prepolymers, but their crosslinking mechanisms differ fundamentally. In a 1K system, the prepolymer is packaged in a sealed, moisture-free cartridge and cures after application through reaction with atmospheric water vapour. Water reacts with terminal isocyanate groups (–NCO) in two steps: first generating an unstable carbamic acid that decomposes to an amine and CO₂, then the amine reacts with a second –NCO group to form a urea crosslink. The CO₂ is released through the sealant surface during cure. A 2K system eliminates moisture dependency entirely: Part A contains the NCO prepolymer and Part B contains a curative package of polyol, amine, or both, plus catalyst. When mixed, Parts A and B react directly to form urethane and urea crosslinks without gas evolution. This gives 2K systems faster, more predictable cure and makes them suitable for environments where atmospheric humidity is too low for reliable 1K cure."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "What does the ASTM C920 classification mean for polyurethane sealants?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "ASTM C920 is the primary US standard for elastomeric joint sealants. Its classification code describes four performance parameters: Type (S for single-component, M for multicomponent), Grade (P for self-levelling/pourable, NS for non-sag gun-grade), Class (movement accommodation factor: ±12.5%, ±20%, ±25%, ±50% of joint width), and Use (G for glazing, A for non-traffic, T for traffic-bearing, I for immersion, O for other surfaces). A designation of M-NS-25 describes a two-component, non-sag sealant rated for ±25% movement. These ratings are verified by cyclic movement testing over a specified number of extension and compression cycles — they are not theoretical estimates from modulus data alone. Joint designers should select the class based on calculated movement demand plus a safety factor of 1.3–1.5."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "Why do polyurethane sealants turn yellow or chalky when exposed to sunlight?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Standard polyurethane sealants use aromatic isocyanates — most commonly MDI (4,4'-diphenylmethane diisocyanate) or TDI (toluene diisocyanate) — in their prepolymer base. The aromatic ring adjacent to the urethane linkage absorbs UV radiation and undergoes photooxidation, forming highly coloured quinone-imine and azomethine structures that produce the characteristic yellowing. With continued UV exposure, the surface oxidises further, loses polymer chain integrity, and chalks. This process does not immediately destroy the sealant's elastic performance — the bulk joint may remain functional for years — but the surface becomes unacceptable for visible facade applications. Aliphatic isocyanate systems (IPDI or HDI-based prepolymers) lack this UV-absorbing aromatic structure and retain colour and surface integrity under long-term outdoor exposure. They carry a cost premium of 25–50% over aromatic equivalents but are essential for permanently exposed joints."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "What primer should be used with a polyurethane sealant on concrete?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Most polyurethane sealants require a dedicated primer on porous substrates such as concrete, masonry, and natural stone to achieve adequate adhesion under cyclic movement. Isocyanate-based primers are most common for cementitious substrates: they react with silanol groups on the concrete surface and with surface moisture to form a urethane-type bond, creating a chemical bridge between substrate and sealant. Primer selection must be confirmed by the sealant manufacturer — a mismatched primer can act as a release agent rather than an adhesion promoter. On dense, non-porous substrates (glass, aluminium, polished concrete), a solvent wipe followed by the manufacturer's adhesion promoter is typically required. Primer compatibility testing should always be performed before committing to a sealant system for critical facade or structural joint applications."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "How does a polyurethane sealant differ from a silicone sealant?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Polyurethane and silicone are the two dominant elastomeric sealant chemistries in construction, with distinct performance profiles. Polyurethane offers better abrasion resistance, is paintable after cure (silicone repels most paints), and achieves stronger adhesion to porous substrates like concrete. However, aromatic PU systems yellow under UV, and most PU sealants have a service temperature range of roughly –20°C to +90°C — compared to silicone's –50°C to +200°C. Silicone is inherently UV stable, delivers outstanding high-temperature performance, and is the preferred choice for structural glazing applications. Polyurethane is generally favoured for paintable construction joints, floor joints, and applications where abrasion or traffic exposure is a factor. For sanitary joints, the choice depends on whether paintability or fungal resistance is the priority."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "What is the maximum joint movement a polyurethane sealant can accommodate?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Under ASTM C920 Class ±50 (the highest standard classification), a polyurethane sealant is qualified to accommodate joint movement equal to ±50% of the original joint width across repeated cycles. Most construction-grade PU sealants are rated ±25%. This means a 20 mm wide joint can cycle between 15 mm (25% compression) and 25 mm (25% extension) without adhesive or cohesive failure. Achieving this rating in service depends critically on joint geometry: the width:depth ratio must be maintained at 2:1 to 3:1, and the sealant must bond on two faces only — a backing rod prevents adhesion to the back wall of the joint. Three-face bonded joints dramatically reduce effective elongation at each adhesion face and fail at a fraction of the stated ±25% rating. Joint sizing should be calculated from the substrate's thermal expansion coefficient, the expected service temperature range, and a safety factor of 1.3–1.5."
+      }
+    }
+  ]
+};
+
+// 7. WebPage Schema
+const webpageSchema = {
+  "@context": "https://schema.org",
+  "@type": "WebPage",
+  "name": "Polyurethane Sealants: Chemistry, Cure & Weatherproofing | Global Formulation",
+  "url": `https://www.globalformulation.com/${slug}`,
+  "description": "Explore polyurethane sealant formulation — one-component moisture cure, two-component chemistry, joint movement, weathering, and construction use cases."
+};
+
+const schemas = [orgSchema, websiteSchema, authorSchema, breadcrumbSchema, blogPostingSchema, faqSchema, webpageSchema];
+---
+
+<Layout
+  title={title}
+  description={description}
+  canonical={`https://www.globalformulation.com/${slug}`}
+  ogImage={heroCdn}
+  ogType="article"
+  schemaJson={schemas}
+>
+
+  <!-- ══════════════════════════════════════════════════════
+       POST HERO BAND — full-width, white background
+  ══════════════════════════════════════════════════════ -->
+  <div class="post-hero">
+    <div class="post-hero-inner">
+
+      <nav class="pg-breadcrumb" aria-label="Breadcrumb">
+        <a href="/" target="_top">Home</a>
+        <span>›</span>
+        <a href="/blog" target="_top">Blog</a>
+        <span>›</span>
+        <span>Polyurethane Sealants</span>
+      </nav>
+
+      <span class="category-badge">Adhesives &amp; Sealants</span>
+
+      <h1>Polyurethane Sealants: Chemistry, Cure &amp; Weatherproofing</h1>
+
+      <div class="post-meta">
+        <span>By Global Formulation Team</span>
+        <span>May 29, 2026</span>
+        <span>11 min read</span>
+      </div>
+
+      <!-- Hero Image -->
+      <div class="hero-img-wrap">
+        <img 
+          src={heroCdn}
+          alt="polyurethane sealant formulation — professional application of PU sealant into a concrete expansion joint | Global Formulation"
+          width="1200"
+          height="630"
+          loading="eager"
+        />
+      </div>
+
+    </div>
+  </div>
+
+  <!-- ══════════════════════════════════════════════════════
+       TWO-COLUMN BODY
+  ══════════════════════════════════════════════════════ -->
+  <div class="page-body">
+
+    <!-- LEFT — Sticky TOC Sidebar -->
+    <aside class="toc-sidebar">
+      <nav aria-label="Table of Contents">
+        <div class="toc-heading">In This Article</div>
+        <ol>
+          <li><a href="#why-pu" target="_top">Why PU Dominates Joint Sealing</a></li>
+          <li><a href="#moisture-cure" target="_top">One-Component Moisture-Cure Chemistry</a></li>
+          <li><a href="#two-component" target="_top">Two-Component System Formulation</a></li>
+          <li><a href="#joint-design" target="_top">Joint Design and Adhesion</a></li>
+          <li><a href="#weathering" target="_top">Weathering, UV Stability &amp; Failure</a></li>
+          <li><a href="#applications" target="_top">Construction &amp; Industrial Applications</a></li>
+          <li><a href="#faq" target="_top">Frequently Asked Questions</a></li>
+        </ol>
+      </nav>
+    </aside>
+
+    <!-- RIGHT — Scrolling Article Content -->
+    <div class="article-col">
+
+      <!-- Intro -->
+      <p>
+        Polyurethane sealant formulation represents one of the most technically demanding segments of the adhesives and sealants industry — a class of materials that must simultaneously bond to dissimilar substrates, elongate under cyclic stress, recover elastically, and survive decades of temperature cycling, UV radiation, and chemical exposure in some of the most demanding joint environments in construction and manufacturing. Unlike rigid sealants or mastics, polyurethane sealants are true elastomers: they accommodate joint movement, absorb mechanical energy without transmitting load, and return to their original dimensions when stress is released. This profile makes them the primary choice for expansion joints in building facades, concrete floors, precast panels, and industrial structures worldwide.
+      </p>
+
+      <!-- ─── SECTION 1 ─── -->
+      <section id="why-pu">
+        <h2>Why Polyurethane Dominates Construction Joint Sealing</h2>
+
+        <p>
+          The case for polyurethane in joint sealing rests on a combination of mechanical properties unavailable in any single competing chemistry. Silicone sealants offer superior UV stability and high-temperature performance, but they are unpaintable and exhibit relatively poor abrasion resistance. Acrylic sealants are economical but are limited to low-movement joints and degrade under sustained water immersion. Polysulphide sealants have largely been displaced from new construction. Polyurethane addresses the majority of movement joint requirements — paintability, abrasion resistance, good adhesion to porous substrates, and movement accommodation up to ±50% — in a single chemistry platform.
+        </p>
+
+        <p>
+          The chemistry foundation is the urethane linkage, formed when an isocyanate group (–N=C=O) reacts with a hydroxyl group (–OH) to yield –NH–CO–O–. As described in the <a href="https://en.wikipedia.org/wiki/Polyurethane" target="_blank" rel="noopener noreferrer">Wikipedia article on polyurethane</a>, this reaction is exothermic and proceeds readily at room temperature, particularly when catalysed by organotin or tertiary amine catalysts. In sealant practice, the isocyanate and polyol are not combined in one shot — instead, the manufacturing process first produces an isocyanate-terminated prepolymer: a controlled intermediate created by reacting a polyol (typically polypropylene glycol, molecular weight 2000–6000 Da) with a stoichiometric excess of isocyanate to yield a chain-extended molecule capped with terminal –NCO groups. It is this prepolymer architecture that controls the final sealant's modulus, elongation, and elastic recovery — far more precisely than any one-step formulation approach.
+        </p>
+
+        <p>
+          For the wider context of adhesive and bonding technologies across polymer chemistries, our <a href="/adhesives-and-sealants" target="_top">adhesives and sealants</a> technical resource provides a comprehensive overview of the full spectrum of structural and elastic bonding systems used in modern construction and manufacturing.
+        </p>
+      </section>
+
+      <!-- ─── SECTION 2 ─── -->
+      <section id="moisture-cure">
+        <h2>One-Component Moisture-Cure PU Sealant Chemistry</h2>
+
+        <p>
+          In a one-component polyurethane sealant, the curing reaction is driven entirely by water vapour present in the surrounding atmosphere. The prepolymer is packaged in a sealed, dry cartridge — any contact with moisture during storage would prematurely crosslink the product. Once applied to the joint and exposed to air, atmospheric humidity initiates curing through a two-step mechanism at the isocyanate-terminated chain ends.
+        </p>
+
+        <p>
+          In the first step, a terminal isocyanate group (–NCO) reacts with a water molecule (H₂O) to form an unstable carbamic acid intermediate (R–NH–COOH). This decomposes spontaneously, releasing carbon dioxide (CO₂) gas and generating a primary amine (R–NH₂). In the second step, the free amine reacts rapidly with another –NCO group from the prepolymer chain to form a urea crosslink (–NH–CO–NH–). These urea bridges between prepolymer chains constitute the primary crosslinked network of the cured sealant, responsible for the elastic modulus, elongation, and recovery properties measured in service.
+        </p>
+
+        <p>
+          The CO₂ generated in the first step must diffuse out through the forming sealant skin before gel point is reached. If the surface skins prematurely — particularly at high temperature and high relative humidity — CO₂ becomes trapped, causing internal blistering and voids that significantly reduce mechanical performance and adhesion. Formulators manage this risk through careful selection of plasticiser (diisononyl phthalate, DINP, or dioctyl terephthalate, DOTP), filler particle size (calcium carbonate, carbon black, precipitated silica), and catalyst level. Cure depth advances from the exposed surface inward at approximately 3–4 mm per day at 23°C and 50% relative humidity; full mechanical properties are reached at 7 days under standard conditions. Below 5°C or below 20% relative humidity, cure rate drops substantially, which can make 2K systems the more practical choice. For a full treatment of adhesive and sealant technologies, see our <a href="/adhesives-and-sealants-formulations-and-technology" target="_top">adhesives and sealants formulations guide</a>.
+        </p>
+      </section>
+
+      <!-- Diagram -->
+      <div class="article-img-wrap" style="margin: 2em 0 0.6em; border-radius: var(--pu-radius); overflow: hidden; border: 1px solid var(--pu-border);">
+        <img 
+          src={`https://cdn.globalformulation.com/images/${slug}/${slug}-diagram-globalformulation.webp`}
+          alt="moisture cure PU sealant mechanism — polyurethane prepolymer reacting with water forming urea crosslinks inside glass beaker | Global Formulation diagram"
+          width="900"
+          height="500"
+          loading="lazy"
+          class="article-img"
+        />
+      </div>
+      <p class="img-caption">The 1K moisture-cure reaction: atmospheric humidity drives NCO–water–urea crosslinking from the exposed sealant surface inward.</p>
+
+      <!-- ─── SECTION 3 ─── -->
+      <section id="two-component">
+        <h2>Two-Component Polyurethane Sealant Formulation</h2>
+
+        <p>
+          Where the 1K moisture-cure mechanism imposes humidity-dependent cure rates and CO₂ blistering risks, two-component polyurethane systems resolve these constraints by separating the curing chemistry into two shelf-stable components that react only when mixed. Part A contains the NCO-terminated prepolymer formulated with plasticisers, stabilisers, and fillers. Part B contains the curative package: a blend of polyol and/or amine crosslinker, organotin or tertiary amine catalyst, pigment paste, and filler. When combined at the specified mix ratio (typically 3:1 to 5:1 Part A:Part B by volume), Part A isocyanate groups react with Part B hydroxyl and amine groups directly — without moisture involvement — to form urethane and urea crosslinks rapidly and predictably.
+        </p>
+
+        <p>
+          Pot life — the working time after mixing — is a critical 2K formulation parameter, governing how much time the applicator has to fill, tool, and finish the joint before gelation begins. Construction-grade 2K PU sealants are typically formulated for 30–90 minutes pot life. Full surface cure (tack-free) is reached in 2–8 hours at 23°C; full mechanical properties develop within 24–72 hours, considerably faster than the 7-day cure of 1K systems. This makes 2K systems the preferred choice for production environments and for winter construction work where low humidity or cold temperatures would make 1K cure unreliable. A detailed comparison with the competing silicone sealant chemistry — which offers superior UV stability but cannot be overpainted — is available in our guide to <a href="/silicone-sealants-types-grades-applications" target="_top">silicone sealant types, grades, and applications</a>.
+        </p>
+
+        <div class="table-wrap">
+          <table class="data-table">
+            <thead>
+              <tr>
+                <th>Property</th>
+                <th>1K Moisture-Cure PU</th>
+                <th>2K Chemical-Cure PU</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr><td>Cure mechanism</td><td>Atmospheric moisture (H₂O)</td><td>Direct NCO + OH/amine reaction</td></tr>
+              <tr><td>Packaging</td><td>Single sealed cartridge</td><td>Two-part kit, mixed before use</td></tr>
+              <tr><td>Pot life after application</td><td>Not applicable</td><td>30–90 minutes</td></tr>
+              <tr><td>Cure rate</td><td>~3–4 mm/day at 23°C / 50% RH; slow in cold/dry</td><td>2–8 h surface cure; predictable</td></tr>
+              <tr><td>CO₂ evolution / blistering risk</td><td>Yes — risk in high-humidity/high-temperature</td><td>None</td></tr>
+              <tr><td>Suitable for low humidity (&lt;20% RH)?</td><td>No</td><td>Yes</td></tr>
+              <tr><td>Typical Shore A hardness range</td><td>15–40</td><td>20–60</td></tr>
+              <tr><td>Typical movement class (ASTM C920)</td><td>±25%</td><td>±25–50%</td></tr>
+              <tr><td>Site application method</td><td>Cartridge gun</td><td>Manual or powered mixing equipment</td></tr>
+              <tr><td>Relative material cost</td><td>Lower</td><td>Higher</td></tr>
+            </tbody>
+          </table>
+        </div>
+      </section>
+
+      <!-- ─── SECTION 4 ─── -->
+      <section id="joint-design">
+        <h2>Construction Joint Sealant Design and Adhesion</h2>
+
+        <p>
+          Joint design is the engineering discipline that translates a sealant's rated performance into a serviceable, durable joint — and it is where most sealant failures in practice originate, independent of the sealant's own formulation quality. The key US standard governing elastomeric joint sealant classification and performance is <a href="https://www.astm.org/c0920-22.html" target="_blank" rel="noopener noreferrer">ASTM C920</a>, which defines movement accommodation classes as ±12.5%, ±20%, ±25%, and ±50% of the original joint width. A sealant designated Class ±25, applied to a 20 mm wide joint, must survive cyclic movement between 15 mm (25% compression) and 25 mm (25% extension) without adhesive or cohesive failure over the specified test cycle count.
+        </p>
+
+        <p>
+          Two joint geometry rules are fundamental. First, joint width must be sized to accommodate the anticipated movement: width equals the maximum movement divided by the movement class factor, multiplied by a safety factor of 1.3–1.5. For thermal expansion joints in concrete or masonry facades, this calculation uses the substrate's coefficient of thermal expansion, the anticipated service temperature range, and the panel length. Second, joint depth must be controlled using a backing rod (closed-cell polyethylene foam backer) to achieve the recommended width:depth ratio of 2:1. The backing rod also prevents the sealant from bonding to the back wall of the joint. Three-face bonding — where the sealant adheres to both faces and the back wall — severely restricts the sealant's ability to deform uniformly as the joint opens, concentrating all strain at the adhesion interfaces and causing adhesive failure at a fraction of the rated movement class.
+        </p>
+
+        <p>
+          Surface preparation determines adhesion quality. On concrete and masonry, substrates must be free from form release agents, curing compounds, dust, and efflorescence before primer application. Most PU sealants require an isocyanate-based primer on cementitious surfaces to achieve the adhesion values specified under ASTM C794. On metal and glass, solvent wiping to remove contamination followed by the sealant manufacturer's adhesion promoter is standard practice.
+        </p>
+
+        <div class="callout">
+          <strong>Key Insight</strong>
+          Joint sizing and backing rod placement determine whether a correctly formulated sealant succeeds or fails in service. An undersized joint forces the sealant beyond its rated movement capacity; a three-face bonded joint concentrates all strain at the adhesion interfaces regardless of sealant quality or primer use.
+        </div>
+      </section>
+
+      <!-- Infographic -->
+      <div class="article-img-wrap" style="margin: 2em 0 0.6em; border-radius: var(--pu-radius); overflow: hidden; border: 1px solid var(--pu-border);">
+        <img 
+          src={`https://cdn.globalformulation.com/images/${slug}/${slug}-infographic-globalformulation.webp`}
+          alt="construction joint sealant comparison — test tubes containing PU sealant samples of varying grades and hardness | Global Formulation infographic"
+          width="900"
+          height="500"
+          loading="lazy"
+          class="article-img"
+        />
+      </div>
+      <p class="img-caption">Polyurethane sealant formulations span a wide hardness and colour range from soft, pale-coloured structural grades to hard, pigmented traffic-bearing types.</p>
+
+      <!-- ─── SECTION 5 ─── -->
+      <section id="weathering">
+        <h2>Weathering, UV Stability, and Failure Modes</h2>
+
+        <p>
+          The most significant weathering limitation of standard polyurethane sealants is UV-induced photooxidative degradation. Aromatic PU systems — based on MDI (4,4'-methylene diphenyl diisocyanate) or TDI (toluene diisocyanate) prepolymers — undergo a well-documented degradation pathway under UV exposure: the aromatic methylene and aromatic ring structures adjacent to the urethane linkage absorb UV photons and form highly coloured quinone-imine and azomethine intermediates, producing the characteristic progressive yellowing. As photooxidation continues, the surface loses polymer chain integrity, generating a friable chalk layer. This degradation is primarily superficial in the short term — the bulk elastomer may retain useful mechanical properties while the surface oxidises — but long-term UV exposure progressively reduces elongation at break and adhesion strength across the entire cross-section.
+        </p>
+
+        <p>
+          Aliphatic polyurethane systems — based on IPDI (isophorone diisocyanate) or HDI (hexamethylene diisocyanate) prepolymers — lack the UV-absorbing aromatic ring structure and retain colour and surface integrity under prolonged outdoor UV exposure. Aliphatic prepolymers carry a significant cost premium over aromatic equivalents and are the specified chemistry for visible facade joints, curtain wall perimeter sealants, and any application where colour stability is a performance requirement without paint coverage. The environmental considerations associated with isocyanate-containing sealants — including VOC content of solvent-based formulations and MDI vapour control — connect to the broader regulatory framework covered in our article on <a href="/volatile-organic-compounds-and-pollution" target="_top">VOCs and industrial pollution</a>.
+        </p>
+
+        <div class="callout callout-amber">
+          <strong>Rule of Thumb</strong>
+          Standard aromatic polyurethane sealants (MDI or TDI-based) will yellow and chalk on permanently exposed facades, regardless of product quality. Specify aliphatic PU (IPDI or HDI prepolymer base) for any joint that will remain unpainted or subject to direct UV exposure over its service life.
+        </div>
+
+        <p>Common failure modes in polyurethane sealant installations:</p>
+        <ul>
+          <li><strong>Adhesive failure</strong> — debonding at the sealant–substrate interface; caused by inadequate surface preparation, primer omission, incompatible substrates, or movement beyond the rated class</li>
+          <li><strong>Cohesive failure</strong> — tearing within the sealant body; indicates joint undersizing, wrong movement class selection, or aged sealant with reduced elongation capacity</li>
+          <li><strong>Compression set</strong> — failure to recover original dimensions after sustained compression; indicates plasticiser migration to the joint interface or thermal degradation of the polymer network</li>
+          <li><strong>Surface cracking</strong> — network of fine surface cracks without through-failure; typically indicates UV degradation in aromatic systems or inadequate modulus for the movement demand</li>
+        </ul>
+      </section>
+
+      <!-- ─── SECTION 6 ─── -->
+      <section id="applications">
+        <h2>Construction and Industrial Applications</h2>
+
+        <p>
+          Polyurethane sealants serve as the primary joint sealing material across a wide range of construction and industrial sectors, each with specific performance requirements that the 1K/2K chemistries address in different ways. In building facades, they fill the expansion joints between cladding panels, precast concrete elements, and curtain wall frames — joints sized to absorb the thermal expansion of large structures without transmitting load to adjacent components. Floor joints in industrial facilities, warehouses, logistics centres, and car parks require traffic-rated sealants (ASTM C920, Use T) that resist wheel load abrasion, fork-lift traffic, and chemical contamination from cleaning agents and fuels, demanding the higher hardness and abrasion resistance achievable with 2K formulations.
+        </p>
+
+        <p>
+          Precast concrete construction relies on PU sealants to seal perimeter joints between individual panels, providing weather resistance while accommodating inter-panel movement from wind loading, differential settlement, and thermal cycling. Sanitary applications — commercial kitchens, food processing facilities, pharmaceutical cleanrooms — use low-modulus PU formulations where substrate movement from wet/dry cycling is continuous. Here, polyurethane competes with neutral-cure silicone; the decision typically hinges on paintability (where PU is preferred) versus fungal resistance and high-temperature performance (where silicone is preferred). Automotive body seam sealing represents another substantial application, though this segment increasingly uses MS polymer (modified silicone polymer) hybrid systems that combine PU adhesion with silicone UV stability. Our comprehensive <a href="/adhesives-and-sealants-formulations-and-technology" target="_top">adhesives and sealants formulations and technology</a> resource covers MS polymer systems and the full range of bonding and sealing technologies in detail.
+        </p>
+      </section>
+
+      <!-- ─── FAQ ─── -->
+      <section class="faq-section" id="faq">
+        <h2>Frequently Asked Questions</h2>
+
+        <details class="faq-item">
+          <summary>What is the key difference between a one-component and two-component polyurethane sealant?</summary>
+          <div class="faq-answer">Both 1K and 2K polyurethane sealants are based on isocyanate-terminated prepolymers, but their crosslinking mechanisms differ fundamentally. In a 1K system, the prepolymer is packaged in a sealed, moisture-free cartridge and cures after application through reaction with atmospheric water vapour. Water reacts with terminal isocyanate groups (–NCO) in two steps: first generating an unstable carbamic acid that decomposes to an amine and CO₂, then the amine reacts with a second –NCO group to form a urea crosslink. The CO₂ is released through the sealant surface during cure. A 2K system eliminates moisture dependency: Part A contains the NCO prepolymer and Part B contains a curative package of polyol, amine, or both, plus catalyst. When mixed, Parts A and B react directly to form urethane and urea crosslinks without gas evolution, giving faster, more predictable cure and enabling use in low-humidity environments.</div>
+        </details>
+
+        <details class="faq-item">
+          <summary>What does the ASTM C920 classification mean for polyurethane sealants?</summary>
+          <div class="faq-answer">ASTM C920 is the primary US standard for elastomeric joint sealants. Its code describes four parameters: Type (S = single-component, M = multicomponent), Grade (P = pourable/self-levelling, NS = non-sag), Class (movement accommodation: ±12.5%, ±20%, ±25%, or ±50% of joint width), and Use (G = glazing, A = non-traffic, T = traffic, I = immersion, O = other). A designation of M-NS-25 describes a two-component, non-sag sealant rated for ±25% cyclic movement. These ratings are verified by cyclic movement testing — not estimated from modulus data. Joint designers should select the class based on calculated movement demand plus a safety factor of 1.3–1.5.</div>
+        </details>
+
+        <details class="faq-item">
+          <summary>Why do polyurethane sealants turn yellow or chalky when exposed to sunlight?</summary>
+          <div class="faq-answer">Standard polyurethane sealants use aromatic isocyanates — MDI or TDI — in their prepolymer base. The aromatic ring adjacent to the urethane linkage absorbs UV radiation and undergoes photooxidation, forming coloured quinone-imine and azomethine structures that produce progressive yellowing, followed by surface chalking as polymer chain integrity is lost. This is primarily a surface phenomenon initially; the bulk joint may remain mechanically functional for years. Aliphatic isocyanate systems (IPDI or HDI-based prepolymers) lack this UV-absorbing aromatic structure and retain colour and surface integrity under long-term outdoor exposure, making them essential for permanently exposed, unpainted facade joints.</div>
+        </details>
+
+        <details class="faq-item">
+          <summary>What primer should be used with a polyurethane sealant on concrete?</summary>
+          <div class="faq-answer">Most polyurethane sealants require a dedicated primer on porous substrates such as concrete, masonry, and natural stone to achieve adequate adhesion under cyclic movement. Isocyanate-based primers are most common for cementitious substrates — they react with silanol groups on the concrete surface and with surface moisture to form a urethane-type bond. Primer selection must be confirmed by the sealant manufacturer: a mismatched primer can act as a release agent rather than an adhesion promoter. On dense, non-porous substrates (glass, aluminium, polished concrete), a solvent wipe and the manufacturer's adhesion promoter are typically required. Compatibility testing should always be performed before committing to a sealant system for critical facade or structural joints.</div>
+        </details>
+
+        <details class="faq-item">
+          <summary>How does a polyurethane sealant differ from a silicone sealant?</summary>
+          <div class="faq-answer">Polyurethane and silicone are the two dominant elastomeric sealant chemistries in construction with distinct profiles. Polyurethane offers better abrasion resistance, is paintable after cure (silicone repels most paints), and achieves strong adhesion to porous substrates without specialist primers. However, aromatic PU systems yellow under UV, and most PU sealants have a service temperature ceiling of approximately +90°C versus silicone's +200°C. Silicone is inherently UV stable, delivers outstanding high-temperature performance, and is preferred for structural glazing applications. Polyurethane is favoured for paintable construction joints, floor joints, and traffic-bearing applications. For sanitary joints, the choice depends on whether paintability or fungal resistance is the primary criterion.</div>
+        </details>
+
+        <details class="faq-item">
+          <summary>What is the maximum joint movement a polyurethane sealant can accommodate?</summary>
+          <div class="faq-answer">Under ASTM C920 Class ±50 (the highest standard classification), a polyurethane sealant accommodates movement equal to ±50% of the original joint width in repeated cycles. Most construction-grade PU sealants are rated ±25%. A 20 mm wide joint rated at ±25% can cycle between 15 mm (compression) and 25 mm (extension) without failure. Achieving this rating in service requires the width:depth ratio to be maintained at 2:1 to 3:1 and the sealant to bond on two faces only — a backing rod prevents three-face bonding that would concentrate all strain at the adhesion lines. Joint width should be calculated from the substrate's thermal expansion coefficient, the service temperature range, and a safety factor of 1.3–1.5.</div>
+        </details>
+      </section>
+
+      <!-- ─── CTA ─── -->
+      <div class="cta-block">
+        <h2>Need Expert Formulation Support?</h2>
+        <p>Our team provides end-to-end technical consultancy — from adhesive and sealant chemistry development and scale-up to plant design and regulatory strategy.</p>
+        <a href="/contact" target="_top" class="cta-btn">Get a Free Consultation</a>
+      </div>
+
+      <!-- ─── RELATED ARTICLES ─── -->
+      <section class="related-section">
+        <h2>Related Articles</h2>
+        <ul class="related-grid">
+          <li><a href="/silicone-sealants-types-grades-applications" target="_top">Silicone Sealants: Types, Grades &amp; Applications Guide</a></li>
+          <li><a href="/hot-melt-adhesives-chemistry-industrial-applications" target="_top">Hot Melt Adhesives: Chemistry &amp; Industrial Applications</a></li>
+          <li><a href="/future-of-eco-friendly-chemical-products" target="_top">Green Chemistry Revolution: Eco-Friendly Industrial Products</a></li>
+          <li><a href="/volatile-organic-compounds-and-pollution" target="_top">Pollution Caused by VOCs: What Manufacturers Need to Know</a></li>
+          <li><a href="/manufacturing-without-a-factory-guide" target="_top">Manufacturing Without a Factory: The MaaS Ecosystem</a></li>
+          <li><a href="/choosing-the-right-product-consultant" target="_top">How to Choose the Right Product Consultant</a></li>
+        </ul>
+      </section>
+
+      <!-- ─── AUTHOR BIO ─── -->
+      <div class="author-bio">
+        <div class="author-avatar">AK</div>
+        <div class="author-info">
+          <h3>Absar Khan</h3>
+          <div class="author-role">Founder &amp; Lead Consultant, Global Formulation</div>
+          <p>Absar Khan is a senior industrial consultant with cross-disciplinary expertise spanning pharmaceutical manufacturing, cosmetics and personal care, home and institutional care chemicals, aerosols, lubricants, and advanced process engineering. His work integrates formulation chemistry, GMP facility design, validation science, quality systems, regulatory compliance, and large-scale manufacturing optimisation. As Founder and Lead Consultant at Global Formulation, Absar leads multi-disciplinary scientific, engineering, and regulatory teams delivering end-to-end solutions from technology selection and formulation development to plant setup, scale-up, and regulatory strategy.</p>
+          <p style="margin-top: 10px;">
+            <a href="https://www.linkedin.com/in/absar-khan-aerosol-consultant-and-formulator-78359b162" target="_blank" rel="noopener noreferrer">Connect on LinkedIn →</a>
+          </p>
+        </div>
+      </div>
+
+    </div><!-- /.article-col -->
+  </div><!-- /.page-body -->
+
+  <!-- Scrollspy -->
+  <script is:inline>
+    (function () {
+      var links = document.querySelectorAll('.toc-sidebar ol li a');
+      var sections = [];
+      links.forEach(function (a) {
+        var el = document.querySelector(a.getAttribute('href'));
+        if (el) sections.push(el);
+      });
+      if (!sections.length) return;
+      var observer = new IntersectionObserver(function (entries) {
+        entries.forEach(function (entry) {
+          if (entry.isIntersecting) {
+            links.forEach(function (a) { a.classList.remove('toc-active'); });
+            var active = document.querySelector('.toc-sidebar ol li a[href="#' + entry.target.id + '"]');
+            if (active) active.classList.add('toc-active');
+          }
+        });
+      }, { rootMargin: '-20% 0px -70% 0px', threshold: 0 });
+      sections.forEach(function (s) { observer.observe(s); });
+    })();
+  </script>
+
+</Layout>
+
+<style>
+  @import url('https://fonts.googleapis.com/css2?family=Source+Serif+4:ital,wght@0,300;0,400;0,600;1,400&display=swap');
+
+  /* ─── TOKENS ─────────────────────────────────────── */
+  :root {
+    --pu-bg:      #F9F9F7;
+    --pu-surface: #FFFFFF;
+    --pu-border:  #E4E4E0;
+    --pu-text:    #0A0A0A;
+    --pu-muted:   #6B7280;
+    --pu-accent:  #0968e5;
+    --pu-green:   #16A34A;
+    --pu-amber:   #D97706;
+    --pu-radius:  6px;
+    --pu-serif:   'Source Serif 4', Georgia, 'Times New Roman', serif;
+    --pu-display: 'Playfair Display', Georgia, serif;
+  }
+
+  /* ─── POST HERO BAND ──────────────────────────────── */
+  .post-hero {
+    background: var(--pu-surface);
+    border-bottom: 1px solid var(--pu-border);
+  }
+  .post-hero-inner {
+    max-width: 1140px;
+    margin: 0 auto;
+    padding: 36px 32px 0;
+  }
+
+  /* ─── BREADCRUMB ──────────────────────────────────── */
+  .pg-breadcrumb {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 6px;
+    align-items: center;
+    font-size: 0.8rem;
+    color: var(--pu-muted);
+    margin-bottom: 18px;
+    font-family: var(--pu-serif);
+  }
+  .pg-breadcrumb a { color: var(--pu-muted); text-decoration: none; }
+  .pg-breadcrumb a:hover { color: var(--pu-accent); }
+  .pg-breadcrumb span { color: var(--pu-muted); }
+
+  /* ─── CATEGORY BADGE ──────────────────────────────── */
+  .category-badge {
+    display: inline-block;
+    font-size: 0.7rem;
+    font-weight: 700;
+    letter-spacing: 0.07em;
+    text-transform: uppercase;
+    color: var(--pu-accent);
+    border: 1px solid var(--pu-accent);
+    border-radius: 3px;
+    padding: 3px 10px;
+    margin-bottom: 18px;
+    font-family: var(--pu-serif);
+  }
+
+  /* ─── H1 ──────────────────────────────────────────── */
+  .post-hero h1 {
+    font-family: var(--pu-display);
+    font-size: clamp(1.75rem, 4vw, 2.6rem);
+    font-weight: 700;
+    line-height: 1.2;
+    letter-spacing: -0.02em;
+    color: var(--pu-text);
+    max-width: 780px;
+    margin-bottom: 18px;
+  }
+
+  /* ─── POST META ───────────────────────────────────── */
+  .post-meta {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 20px;
+    font-size: 0.82rem;
+    color: var(--pu-muted);
+    margin-bottom: 32px;
+    font-family: var(--pu-serif);
+  }
+
+  /* ─── HERO IMAGE WRAP ─────────────────────────────── */
+  .hero-img-wrap {
+    border-radius: 10px 10px 0 0;
+    overflow: hidden;
+  }
+  .hero-img-wrap img {
+    width: 100%;
+    height: auto;
+    display: block;
+    max-height: 480px;
+    object-fit: cover;
+  }
+
+  /* ─── TWO-COLUMN BODY ─────────────────────────────── */
+  .page-body {
+    max-width: 1140px;
+    margin: 0 auto;
+    padding: 48px 32px 80px;
+    display: grid;
+    grid-template-columns: 260px 1fr;
+    gap: 48px;
+    align-items: start;
+    background: var(--pu-bg);
+  }
+
+  /* ─── TOC SIDEBAR ─────────────────────────────────── */
+  .toc-sidebar {
+    position: sticky;
+    top: 84px;
+    max-height: calc(100vh - 104px);
+    overflow-y: auto;
+  }
+  .toc-sidebar nav {
+    background: var(--pu-surface);
+    border: 1px solid var(--pu-border);
+    border-radius: var(--pu-radius);
+    padding: 20px;
+  }
+  .toc-heading {
+    font-size: 0.68rem;
+    font-weight: 700;
+    letter-spacing: 0.09em;
+    text-transform: uppercase;
+    color: var(--pu-muted);
+    margin-bottom: 14px;
+    font-family: var(--pu-serif);
+  }
+  .toc-sidebar ol {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+    display: flex;
+    flex-direction: column;
+    gap: 2px;
+  }
+  .toc-sidebar ol li a {
+    display: block;
+    font-size: 0.82rem;
+    line-height: 1.45;
+    color: var(--pu-muted);
+    padding: 5px 8px 5px 10px;
+    border-left: 2px solid transparent;
+    border-radius: 0 3px 3px 0;
+    text-decoration: none;
+    transition: color 0.15s, border-color 0.15s, background 0.15s;
+    font-family: var(--pu-serif);
+  }
+  .toc-sidebar ol li a:hover,
+  .toc-sidebar ol li a.toc-active {
+    color: var(--pu-accent);
+    border-left-color: var(--pu-accent);
+    background: #EEF4FD;
+  }
+
+  /* ─── ARTICLE COLUMN ──────────────────────────────── */
+  .article-col {
+    min-width: 0;
+    max-width: 720px;
+    font-family: var(--pu-serif);
+    font-size: 17px;
+    line-height: 1.72;
+    color: var(--pu-text);
+  }
+  .article-col p { margin-bottom: 1.4em; }
+  .article-col h2 {
+    font-family: var(--pu-display);
+    font-size: clamp(1.25rem, 2.5vw, 1.6rem);
+    font-weight: 700;
+    letter-spacing: -0.01em;
+    color: var(--pu-text);
+    margin: 2.4em 0 0.6em;
+    padding-top: 0.2em;
+  }
+  .article-col h3 {
+    font-family: var(--pu-display);
+    font-size: 1.15rem;
+    font-weight: 600;
+    color: var(--pu-text);
+    margin: 1.8em 0 0.5em;
+  }
+  .article-col ul, .article-col ol {
+    padding-left: 1.5em;
+    margin-bottom: 1.4em;
+  }
+  .article-col li { margin-bottom: 0.45em; }
+  .article-col a { color: var(--pu-accent); }
+  .article-col a:hover { text-decoration: underline; }
+
+  /* ─── IMAGE CAPTION ───────────────────────────────── */
+  .img-caption {
+    font-size: 0.8rem;
+    color: var(--pu-muted);
+    font-style: italic;
+    margin-bottom: 2em;
+    font-family: var(--pu-serif);
+  }
+
+  /* ─── DATA TABLE ──────────────────────────────────── */
+  .table-wrap { overflow-x: auto; margin: 1.6em 0 2em; }
+  .data-table {
+    width: 100%;
+    border-collapse: collapse;
+    font-size: 0.87rem;
+    font-family: var(--pu-serif);
+  }
+  .data-table thead tr {
+    background: var(--pu-text);
+    color: #FFFFFF;
+  }
+  .data-table th {
+    padding: 10px 14px;
+    text-align: left;
+    font-weight: 600;
+    font-size: 0.79rem;
+    letter-spacing: 0.03em;
+  }
+  .data-table td {
+    padding: 9px 14px;
+    border-bottom: 1px solid var(--pu-border);
+    vertical-align: top;
+  }
+  .data-table tbody tr:nth-child(even) { background: #F4F4F2; }
+
+  /* ─── CALLOUTS ────────────────────────────────────── */
+  .callout {
+    border-left: 3px solid var(--pu-green);
+    background: #F0FDF4;
+    padding: 14px 18px;
+    border-radius: 0 var(--pu-radius) var(--pu-radius) 0;
+    margin: 1.8em 0;
+    font-size: 0.93rem;
+    font-family: var(--pu-serif);
+    line-height: 1.6;
+  }
+  .callout strong { color: var(--pu-green); display: block; margin-bottom: 5px; }
+  .callout-amber {
+    border-left-color: var(--pu-amber);
+    background: #FFFBEB;
+  }
+  .callout-amber strong { color: var(--pu-amber); }
+
+  /* ─── FAQ ─────────────────────────────────────────── */
+  .faq-section { margin: 3em 0 2em; }
+  .faq-section > h2 {
+    font-family: var(--pu-display);
+    font-size: 1.5rem;
+    font-weight: 700;
+    margin-bottom: 1.2em;
+    color: var(--pu-text);
+  }
+  details.faq-item {
+    border: 1px solid var(--pu-border);
+    border-radius: var(--pu-radius);
+    margin-bottom: 10px;
+    background: var(--pu-surface);
+  }
+  details.faq-item summary {
+    font-weight: 600;
+    font-size: 0.95rem;
+    padding: 14px 18px;
+    cursor: pointer;
+    list-style: none;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    font-family: var(--pu-serif);
+    color: var(--pu-text);
+  }
+  details.faq-item summary::-webkit-details-marker { display: none; }
+  details.faq-item summary::after {
+    content: '+';
+    font-size: 1.2rem;
+    font-weight: 400;
+    color: var(--pu-muted);
+    flex-shrink: 0;
+    margin-left: 12px;
+  }
+  details.faq-item[open] summary::after { content: '−'; }
+  .faq-answer {
+    padding: 0 18px 16px;
+    font-size: 0.92rem;
+    color: #374151;
+    line-height: 1.65;
+    font-family: var(--pu-serif);
+  }
+
+  /* ─── CTA ─────────────────────────────────────────── */
+  .cta-block {
+    background: var(--pu-text);
+    color: #FFFFFF;
+    border-radius: var(--pu-radius);
+    padding: 40px 36px;
+    margin: 3em 0;
+    text-align: center;
+  }
+  .cta-block h2 {
+    font-family: var(--pu-display);
+    font-size: 1.5rem;
+    font-weight: 700;
+    color: #FFFFFF;
+    margin: 0 0 10px;
+  }
+  .cta-block p {
+    font-size: 0.95rem;
+    color: #D1D5DB;
+    margin: 0 0 24px;
+    max-width: 480px;
+    margin-left: auto;
+    margin-right: auto;
+    font-family: var(--pu-serif);
+  }
+  .cta-btn {
+    display: inline-block;
+    background: #FFFFFF;
+    color: var(--pu-text);
+    font-weight: 700;
+    font-size: 0.9rem;
+    letter-spacing: 0.03em;
+    padding: 12px 28px;
+    border-radius: 4px;
+    text-decoration: none;
+    font-family: var(--pu-serif);
+    transition: opacity 0.15s;
+  }
+  .cta-btn:hover { opacity: 0.88; text-decoration: none; }
+
+  /* ─── RELATED ARTICLES ────────────────────────────── */
+  .related-section { margin: 2.5em 0; }
+  .related-section > h2 {
+    font-family: var(--pu-display);
+    font-size: 1.3rem;
+    font-weight: 700;
+    margin-bottom: 1em;
+    color: var(--pu-text);
+  }
+  .related-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 12px;
+    list-style: none;
+    padding: 0;
+    margin: 0;
+  }
+  .related-grid li a {
+    display: block;
+    background: var(--pu-surface);
+    border: 1px solid var(--pu-border);
+    border-radius: var(--pu-radius);
+    padding: 14px 16px;
+    font-size: 0.87rem;
+    font-weight: 600;
+    color: var(--pu-text);
+    text-decoration: none;
+    line-height: 1.4;
+    transition: border-color 0.15s, color 0.15s;
+    font-family: var(--pu-serif);
+  }
+  .related-grid li a:hover {
+    border-color: var(--pu-accent);
+    color: var(--pu-accent);
+  }
+
+  /* ─── AUTHOR BIO ──────────────────────────────────── */
+  .author-bio {
+    display: flex;
+    gap: 18px;
+    align-items: flex-start;
+    background: var(--pu-surface);
+    border: 1px solid var(--pu-border);
+    border-radius: var(--pu-radius);
+    padding: 24px;
+    margin: 2.5em 0;
+  }
+  .author-avatar {
+    width: 52px; height: 52px;
+    background: var(--pu-text);
+    color: #FFFFFF;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-weight: 700;
+    font-size: 1rem;
+    flex-shrink: 0;
+    font-family: var(--pu-serif);
+  }
+  .author-info h3 {
+    font-family: var(--pu-display);
+    font-size: 1rem;
+    font-weight: 700;
+    margin: 0 0 3px;
+    color: var(--pu-text);
+  }
+  .author-role {
+    font-size: 0.78rem;
+    color: var(--pu-muted);
+    margin-bottom: 10px;
+    font-family: var(--pu-serif);
+  }
+  .author-info p {
+    font-size: 0.87rem;
+    line-height: 1.6;
+    color: #374151;
+    font-family: var(--pu-serif);
+  }
+
+  /* ─── RESPONSIVE ──────────────────────────────────── */
+  @media (max-width: 900px) {
+    .page-body {
+      grid-template-columns: 1fr;
+      gap: 0;
+      padding: 32px 20px 60px;
+    }
+    .toc-sidebar {
+      position: static;
+      max-height: none;
+      margin-bottom: 32px;
+    }
+    .article-col { max-width: 100%; }
+    .post-hero-inner { padding: 28px 20px 0; }
+  }
+  @media (max-width: 600px) {
+    .related-grid { grid-template-columns: 1fr; }
+    .cta-block { padding: 28px 20px; }
+    .author-bio { flex-direction: column; }
+    .post-meta { gap: 12px; }
+  }
+</style>

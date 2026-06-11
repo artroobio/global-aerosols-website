@@ -1,0 +1,481 @@
+---
+interface Props {
+  // Optional custom classes or props
+  class?: string;
+}
+
+const { class: className = "" } = Astro.props;
+const currentYear = new Date().getFullYear();
+---
+
+<footer class={`site-footer ${className}`}>
+  <div class="footer-container">
+    {/* Grid Columns */}
+    <div class="footer-grid">
+      {/* Column 1: Brand Info */}
+      <div class="footer-col brand-col">
+        <a href="/" class="footer-logo">
+          <span class="logo-icon">G</span>
+          <span class="logo-text">Global Formulation</span>
+        </a>
+        <p class="brand-desc">
+          World-class chemical R&D, advanced formulations, aerosol technology consultancy, and turnkey manufacturing engineering services. Pioneering industrial chemistry with premium, sustainable solutions.
+        </p>
+        <div class="social-links">
+          <a href="https://www.linkedin.com/in/absar-khan-aerosol-consultant-and-formulator-78359b162" target="_blank" rel="noopener noreferrer" class="social-icon" aria-label="LinkedIn Profile">
+            <svg viewBox="0 0 24 24" width="20" height="20" stroke="currentColor" stroke-width="2" fill="none" stroke-linecap="round" stroke-linejoin="round">
+              <path d="M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-2-2 2 2 0 0 0-2 2v7h-4v-7a6 6 0 0 1 6-6z"></path>
+              <rect x="2" y="9" width="4" height="12"></rect>
+              <circle cx="4" cy="4" r="2"></circle>
+            </svg>
+          </a>
+          <a href="mailto:consulting@globalformulation.com" class="social-icon" aria-label="Email Consultant">
+            <svg viewBox="0 0 24 24" width="20" height="20" stroke="currentColor" stroke-width="2" fill="none" stroke-linecap="round" stroke-linejoin="round">
+              <path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"></path>
+              <polyline points="22,6 12,13 2,6"></polyline>
+            </svg>
+          </a>
+          <a href="https://wa.me/919819548320" target="_blank" rel="noopener noreferrer" class="social-icon" aria-label="WhatsApp Direct">
+            <svg viewBox="0 0 24 24" width="20" height="20" stroke="currentColor" stroke-width="2" fill="none" stroke-linecap="round" stroke-linejoin="round">
+              <path d="M21 11.5a8.38 8.38 0 0 1-.9 3.8 8.5 8.5 0 0 1-7.6 4.7 8.38 8.38 0 0 1-3.8-.9L3 21l1.9-5.7a8.38 8.38 0 0 1-.9-3.8 8.5 8.5 0 0 1 4.7-7.6 8.38 8.38 0 0 1 3.8-.9h.5a8.48 8.48 0 0 1 8 8v.5z"></path>
+            </svg>
+          </a>
+        </div>
+      </div>
+
+      {/* Column 2: Expertise */}
+      <div class="footer-col">
+        <h3 class="col-title">Expertise</h3>
+        <ul class="col-links">
+          <li><a href="/#services">Industrial & Alkaline Cleaners</a></li>
+          <li><a href="/#services">Household Products Formulation</a></li>
+          <li><a href="/#services">Aerosol Engineering & Gas Dosing</a></li>
+          <li><a href="/#services">Plant Setup & Turnkey Production</a></li>
+          <li><a href="/#services">Cosmetics & Personal Care</a></li>
+        </ul>
+      </div>
+
+      {/* Column 3: Resources */}
+      <div class="footer-col">
+        <h3 class="col-title">Resources</h3>
+        <ul class="col-links">
+          <li><a href="/">Home Workspace</a></li>
+          <li><a href="/blog/">Insights & Publications</a></li>
+          <li><a href="/msds-tds-coa-guide/">MSDS, TDS, & COA Guide</a></li>
+          <li><a href="/choosing-the-right-product-consultant/">Formulation Consultant Guide</a></li>
+          <li><a href="/from-lab-to-market/">Lab-to-Market Blueprint</a></li>
+        </ul>
+      </div>
+
+      {/* Column 4: Consultant & Direct Audit */}
+      <div class="footer-col consultant-col">
+        <h3 class="col-title">R&D Consulting</h3>
+        <div class="consultant-card">
+          <div class="consultant-info">
+            <span class="consultant-name">Absar Khan</span>
+            <span class="consultant-badge">Lead Specialist</span>
+          </div>
+          <p class="consultant-pitch">Get a custom formulation audit, plant setup review, or process troubleshooting consultation.</p>
+          <div class="contact-details">
+            <a href="tel:+919819548320" class="contact-item">
+              <svg viewBox="0 0 24 24" width="16" height="16" stroke="currentColor" stroke-width="2" fill="none" stroke-linecap="round" stroke-linejoin="round"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"></path></svg>
+              <span>+91 9819548320</span>
+            </a>
+            <a href="tel:+918169102990" class="contact-item">
+              <svg viewBox="0 0 24 24" width="16" height="16" stroke="currentColor" stroke-width="2" fill="none" stroke-linecap="round" stroke-linejoin="round"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"></path></svg>
+              <span>+91 8169102990</span>
+            </a>
+          </div>
+          <a href="/#contact" class="audit-btn">
+            <span>Get a Formulation Audit</span>
+            <svg viewBox="0 0 24 24" width="16" height="16" stroke="currentColor" stroke-width="2.5" fill="none" stroke-linecap="round" stroke-linejoin="round"><line x1="5" y1="12" x2="19" y2="12"></line><polyline points="12 5 19 12 12 19"></polyline></svg>
+          </a>
+        </div>
+      </div>
+    </div>
+
+    {/* Bottom Bar */}
+    <div class="footer-bottom">
+      <div class="bottom-left">
+        <p class="copyright">&copy; {currentYear} Global Formulation. All rights reserved.</p>
+        <span class="bottom-separator">|</span>
+        <p class="tagline">Specialist Formulation R&D Consultancy - Absar Khan</p>
+        <p class="credit">Designed &amp; Maintained by <a href="https://www.atelierevo.com" target="_blank" rel="noopener noreferrer" class="credit-link">Atelierevo</a></p>
+      </div>
+      <div class="bottom-links">
+        <a href="/privacy-policy/" class="bottom-link">Privacy Policy</a>
+        <a href="/terms-and-conditions/" class="bottom-link">Terms &amp; Conditions</a>
+        <a href="/#contact" class="bottom-link">Consulting Agreement</a>
+      </div>
+    </div>
+  </div>
+</footer>
+
+<style>
+  /* Encapsulated, Premium Vanilla CSS styling */
+  .site-footer {
+    background-color: hsl(224, 71%, 4%); /* Sleek dark theme base */
+    background-image: 
+      radial-gradient(circle at 10% 20%, rgba(0, 102, 204, 0.05) 0%, transparent 40%),
+      radial-gradient(circle at 90% 80%, rgba(138, 43, 226, 0.04) 0%, transparent 40%);
+    color: #94a3b8;
+    padding: 80px 24px 40px;
+    font-family: 'Inter', sans-serif;
+    border-top: 1px solid rgba(255, 255, 255, 0.06);
+    position: relative;
+    overflow: hidden;
+  }
+
+  .footer-container {
+    max-width: 1200px;
+    margin: 0 auto;
+    position: relative;
+    z-index: 2;
+  }
+
+  .footer-grid {
+    display: grid;
+    grid-template-columns: 1.5fr 1fr 1fr 1.3fr;
+    gap: 48px;
+    margin-bottom: 60px;
+  }
+
+  @media (max-width: 1024px) {
+    .footer-grid {
+      grid-template-columns: 1fr 1fr;
+      gap: 40px;
+    }
+  }
+
+  @media (max-width: 640px) {
+    .footer-grid {
+      grid-template-columns: 1fr;
+      gap: 36px;
+    }
+    .site-footer {
+      padding: 60px 16px 30px;
+    }
+  }
+
+  /* Logo & Brand Column */
+  .brand-col {
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+  }
+
+  .footer-logo {
+    display: inline-flex;
+    align-items: center;
+    gap: 12px;
+    text-decoration: none;
+  }
+
+  .logo-icon {
+    width: 38px;
+    height: 38px;
+    border-radius: 10px;
+    background: linear-gradient(135deg, #0968e5 0%, #074bb5 100%);
+    color: #ffffff;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-family: 'Outfit', sans-serif;
+    font-weight: 800;
+    font-size: 1.3rem;
+    box-shadow: 0 4px 12px rgba(0, 102, 204, 0.3);
+  }
+
+  .logo-text {
+    font-family: 'Outfit', sans-serif;
+    font-weight: 800;
+    font-size: 1.35rem;
+    background: linear-gradient(135deg, #ffffff 0%, #cbd5e1 100%);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+  }
+
+  .brand-desc {
+    font-size: 0.92rem;
+    line-height: 1.65;
+    color: #94a3b8;
+    margin: 0;
+  }
+
+  /* Social Icons */
+  .social-links {
+    display: flex;
+    gap: 12px;
+  }
+
+  .social-icon {
+    width: 38px;
+    height: 38px;
+    border-radius: 50%;
+    background: rgba(255, 255, 255, 0.03);
+    border: 1px solid rgba(255, 255, 255, 0.08);
+    color: #cbd5e1;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: all 0.25s cubic-bezier(0.4, 0, 0.2, 1);
+  }
+
+  .social-icon:hover {
+    color: #ffffff;
+    background: rgba(0, 102, 204, 0.15);
+    border-color: rgba(0, 102, 204, 0.4);
+    box-shadow: 0 0 12px rgba(0, 102, 204, 0.25);
+    transform: translateY(-2px);
+  }
+
+  /* Footer Links columns */
+  .col-title {
+    font-family: 'Outfit', sans-serif;
+    font-size: 1.05rem;
+    font-weight: 600;
+    color: #ffffff;
+    margin-bottom: 24px;
+    letter-spacing: 0.03em;
+    text-transform: uppercase;
+    font-size: 0.85rem;
+    border-left: 2px solid var(--primary, #0066cc);
+    padding-left: 10px;
+  }
+
+  .col-links {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+  }
+
+  .col-links a {
+    color: #94a3b8;
+    font-size: 0.95rem;
+    text-decoration: none;
+    transition: color 0.2s ease, padding-left 0.2s ease;
+    display: inline-block;
+    position: relative;
+  }
+
+  .col-links a::after {
+    content: '';
+    position: absolute;
+    bottom: -2px;
+    left: 0;
+    width: 0;
+    height: 1px;
+    background-color: var(--primary, #0066cc);
+    transition: width 0.2s ease;
+  }
+
+  .col-links a:hover {
+    color: #ffffff;
+    padding-left: 4px;
+  }
+
+  .col-links a:hover::after {
+    width: 100%;
+  }
+
+  /* Consultant Card Column */
+  .consultant-col {
+    display: flex;
+    flex-direction: column;
+  }
+
+  .consultant-card {
+    background: rgba(255, 255, 255, 0.02);
+    border: 1px solid rgba(255, 255, 255, 0.05);
+    border-radius: var(--radius-md, 12px);
+    padding: 20px;
+    display: flex;
+    flex-direction: column;
+    gap: 14px;
+    position: relative;
+    backdrop-filter: blur(8px);
+    -webkit-backdrop-filter: blur(8px);
+    box-shadow: 0 4px 20px rgba(0,0,0,0.15);
+  }
+
+  .consultant-info {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 12px;
+  }
+
+  .consultant-name {
+    font-family: 'Outfit', sans-serif;
+    font-weight: 700;
+    color: #ffffff;
+    font-size: 1.05rem;
+  }
+
+  .consultant-badge {
+    font-size: 0.72rem;
+    font-weight: 600;
+    color: #60a5fa;
+    background: rgba(96, 165, 250, 0.1);
+    border: 1px solid rgba(96, 165, 250, 0.2);
+    padding: 2px 8px;
+    border-radius: 99px;
+    text-transform: uppercase;
+    letter-spacing: 0.03em;
+  }
+
+  .consultant-pitch {
+    font-size: 0.88rem;
+    line-height: 1.5;
+    color: #cbd5e1;
+    margin: 0;
+  }
+
+  .contact-details {
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+    border-top: 1px solid rgba(255, 255, 255, 0.05);
+    padding-top: 12px;
+  }
+
+  .contact-item {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    color: #94a3b8;
+    font-size: 0.88rem;
+    text-decoration: none;
+    transition: color 0.25s ease;
+  }
+
+  .contact-item:hover {
+    color: #ffffff;
+  }
+
+  .contact-item svg {
+    color: var(--primary, #0066cc);
+    flex-shrink: 0;
+  }
+
+  .audit-btn {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    gap: 8px;
+    background: var(--primary, #0066cc);
+    color: #ffffff;
+    font-family: 'Outfit', sans-serif;
+    font-weight: 600;
+    font-size: 0.88rem;
+    padding: 10px 16px;
+    border-radius: var(--radius-sm, 6px);
+    text-decoration: none;
+    transition: all 0.25s cubic-bezier(0.4, 0, 0.2, 1);
+    border: none;
+    box-shadow: 0 4px 10px rgba(0, 102, 204, 0.15);
+    margin-top: 4px;
+  }
+
+  .audit-btn:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 6px 14px rgba(0, 102, 204, 0.25);
+    background: var(--primary-hover, #0052a3);
+  }
+
+  .audit-btn svg {
+    transition: transform 0.2s ease;
+  }
+
+  .audit-btn:hover svg {
+    transform: translateX(3px);
+  }
+
+  /* Footer Bottom Bar */
+  .footer-bottom {
+    border-top: 1px solid rgba(255, 255, 255, 0.06);
+    padding-top: 30px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    gap: 24px;
+  }
+
+  .bottom-left {
+    display: flex;
+    align-items: center;
+    gap: 16px;
+    flex-wrap: wrap;
+  }
+
+  .copyright, .tagline {
+    font-size: 0.85rem;
+    color: #64748b;
+    margin: 0;
+  }
+
+  .bottom-separator {
+    color: rgba(255, 255, 255, 0.08);
+    font-size: 0.85rem;
+  }
+
+  .credit {
+    font-size: 0.82rem;
+    color: #475569;
+    margin: 0;
+    width: 100%;
+  }
+
+  .credit-link {
+    color: #0968e5;
+    text-decoration: none;
+    font-weight: 600;
+    background: linear-gradient(135deg, #0968e5, #38bdf8);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+    transition: opacity 0.2s ease;
+  }
+
+  .credit-link:hover {
+    opacity: 0.8;
+  }
+
+  .bottom-links {
+    display: flex;
+    gap: 24px;
+    flex-wrap: wrap;
+  }
+
+  .bottom-link {
+    font-size: 0.85rem;
+    color: #64748b;
+    text-decoration: none;
+    transition: color 0.2s ease;
+  }
+
+  .bottom-link:hover {
+    color: #94a3b8;
+  }
+
+  @media (max-width: 900px) {
+    .footer-bottom {
+      flex-direction: column;
+      align-items: flex-start;
+      gap: 16px;
+    }
+    .bottom-left {
+      gap: 8px;
+    }
+    .bottom-separator {
+      display: none;
+    }
+    .tagline {
+      width: 100%;
+    }
+  }
+</style>

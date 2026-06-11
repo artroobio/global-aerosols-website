@@ -1,0 +1,556 @@
+<!DOCTYPE html>
+<html lang="LANGUAGE-CODE">
+
+<head>
+
+<!-- ================================= -->
+<!-- BASIC META -->
+<!-- ================================= -->
+<meta charset="UTF-8">
+<title>PAGE TITLE | SITE NAME</title>
+<!-- Title: 50–60 characters. Include primary keyword near the front. No clickbait. -->
+
+<meta name="description" content="PAGE META DESCRIPTION">
+<!-- Description: 150–160 characters. Include primary keyword naturally. End with a mild CTA. -->
+
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="author" content="AUTHOR NAME">
+<meta name="keywords" content="primary keyword, secondary keyword, related term">
+<!-- Keywords: still read by some crawlers. Keep under 10 terms. No keyword stuffing. -->
+
+<meta name="robots" content="index, follow">
+<meta http-equiv="X-Content-Type-Options" content="nosniff">
+<meta name="referrer" content="strict-origin-when-cross-origin">
+<meta name="format-detection" content="telephone=no">
+<!-- Prevents mobile browsers from auto-linking phone numbers in body text. -->
+
+<meta name="theme-color" content="#HEX-COLOR">
+<!-- Sets browser toolbar colour on mobile Chrome / PWAs. -->
+
+<!-- ================================= -->
+<!-- CANONICAL -->
+<!-- ================================= -->
+<link rel="canonical" href="FULL PAGE URL">
+<!-- Always use the exact production URL including https:// and trailing-slash consistency. -->
+
+<!-- ================================= -->
+<!-- HREFLANG (MULTI-LANGUAGE SUPPORT) -->
+<!-- ================================= -->
+<link rel="alternate" hreflang="LANGUAGE-CODE" href="PAGE URL">
+<link rel="alternate" hreflang="x-default" href="DEFAULT PAGE URL">
+
+<!-- ================================= -->
+<!-- OPEN GRAPH (Facebook / LinkedIn / WhatsApp) -->
+<!-- ================================= -->
+<meta property="og:title" content="PAGE TITLE">
+<meta property="og:description" content="PAGE META DESCRIPTION">
+<meta property="og:image" content="FEATURED IMAGE URL">
+<!-- OG image: exactly 1200×630 px, JPEG or PNG, < 8 MB. -->
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
+<meta property="og:image:alt" content="DESCRIPTIVE IMAGE ALT TEXT">
+<meta property="og:url" content="PAGE URL">
+<meta property="og:type" content="article">
+<meta property="og:site_name" content="SITE NAME">
+<meta property="og:locale" content="en_US">
+<!-- og:locale: use BCP 47 format, e.g. en_US, en_GB, ar_AE. -->
+
+<!-- Article-specific OG (required when og:type = "article") -->
+<meta property="article:published_time" content="YYYY-MM-DDT00:00:00+00:00">
+<meta property="article:modified_time" content="YYYY-MM-DDT00:00:00+00:00">
+<meta property="article:author" content="AUTHOR NAME or AUTHOR PROFILE URL">
+<meta property="article:section" content="ARTICLE CATEGORY">
+<!-- article:section: e.g. "Aerosol Technology", "Formulation", "Safety & Compliance" -->
+<meta property="article:tag" content="TAG 1">
+<meta property="article:tag" content="TAG 2">
+<meta property="article:tag" content="TAG 3">
+
+<!-- ================================= -->
+<!-- TWITTER CARD -->
+<!-- ================================= -->
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="PAGE TITLE">
+<meta name="twitter:description" content="PAGE META DESCRIPTION">
+<meta name="twitter:image" content="FEATURED IMAGE URL">
+<meta name="twitter:image:alt" content="DESCRIPTIVE IMAGE ALT TEXT">
+<meta name="twitter:site" content="@SITE_TWITTER_HANDLE">
+<meta name="twitter:creator" content="@AUTHOR_TWITTER_HANDLE">
+
+<!-- ================================= -->
+<!-- PERFORMANCE OPTIMIZATION -->
+<!-- ================================= -->
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="dns-prefetch" href="//EXTERNAL-ASSET-DOMAIN">
+
+<!-- Preload critical above-the-fold resources (LCP element, primary font) -->
+<link rel="preload" href="HERO IMAGE FILE" as="image">
+<link rel="preload" href="CRITICAL FONT FILE" as="font" type="font/woff2" crossorigin>
+<!-- WARNING: Only preload what is truly above the fold. Over-preloading hurts performance. -->
+
+<!-- ================================= -->
+<!-- CORE WEB VITALS CHECKLIST -->
+<!-- ================================= -->
+<!--
+  LCP (Largest Contentful Paint) – Target: < 2.5 s
+    - Preload the hero/H1 image using <link rel="preload" as="image">
+    - Serve images in WebP or AVIF format
+    - Use a CDN for static assets
+    - Avoid render-blocking CSS/JS above the fold
+
+  FID / INP (Interaction to Next Paint) – Target: < 200 ms
+    - Defer or async non-critical JavaScript
+    - Break up long JavaScript tasks (> 50 ms)
+    - Avoid third-party scripts loading synchronously
+
+  CLS (Cumulative Layout Shift) – Target: < 0.1
+    - Always set explicit width and height on <img> and <video> elements
+    - Reserve space for ads, embeds, and dynamically injected content
+    - Do not insert content above existing content on load
+-->
+
+<!-- ================================= -->
+<!-- FAVICON & APP ICONS -->
+<!-- ================================= -->
+<link rel="icon" type="image/svg+xml" href="/favicon.svg">
+<link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
+<link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png">
+<link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png">
+<link rel="manifest" href="/site.webmanifest">
+<!-- site.webmanifest enables "Add to Home Screen" and PWA features. -->
+
+<!-- ================================= -->
+<!-- RSS FEED -->
+<!-- ================================= -->
+<link rel="alternate" type="application/rss+xml" title="SITE BLOG TITLE" href="RSS FEED URL">
+
+<!-- ================================= -->
+<!-- SEARCH ENGINE VERIFICATION -->
+<!-- ================================= -->
+<meta name="google-site-verification" content="GOOGLE VERIFICATION CODE">
+<meta name="msvalidate.01" content="BING VERIFICATION CODE">
+
+<!-- ================================= -->
+<!-- STRUCTURED DATA (JSON-LD) -->
+<!-- ================================= -->
+
+<!-- ORGANIZATION -->
+<script type="application/ld+json">
+{
+ "@context":"https://schema.org",
+ "@type":"Organization",
+ "name":"SITE NAME",
+ "url":"SITE URL",
+ "logo":{
+  "@type":"ImageObject",
+  "url":"LOGO URL",
+  "width":200,
+  "height":60
+ },
+ "contactPoint":{
+  "@type":"ContactPoint",
+  "telephone":"PHONE",
+  "contactType":"customer service",
+  "email":"EMAIL"
+ },
+ "sameAs":[
+  "SOCIAL PROFILE URL",
+  "SOCIAL PROFILE URL",
+  "SOCIAL PROFILE URL"
+ ]
+}
+</script>
+
+<!-- WEBSITE SEARCH -->
+<script type="application/ld+json">
+{
+ "@context":"https://schema.org",
+ "@type":"WebSite",
+ "url":"SITE URL",
+ "name":"SITE NAME",
+ "potentialAction":{
+  "@type":"SearchAction",
+  "target":"SEARCH PAGE URL?q={search_term_string}",
+  "query-input":"required name=search_term_string"
+ }
+}
+</script>
+
+<!-- AUTHOR (Person) -->
+<script type="application/ld+json">
+{
+ "@context":"https://schema.org",
+ "@type":"Person",
+ "name":"AUTHOR NAME",
+ "jobTitle":"AUTHOR TITLE",
+ "url":"AUTHOR PROFILE PAGE",
+ "image":"AUTHOR PHOTO URL",
+ "sameAs":[
+  "LINKEDIN URL",
+  "TWITTER URL"
+ ],
+ "affiliation":{
+  "@type":"Organization",
+  "name":"SITE NAME"
+ }
+}
+</script>
+
+<!-- BLOG POST (BlogPosting) — use this type, NOT Article, for blog content -->
+<script type="application/ld+json">
+{
+ "@context":"https://schema.org",
+ "@type":"BlogPosting",
+ "headline":"PAGE TITLE",
+ "description":"PAGE META DESCRIPTION",
+ "image":{
+  "@type":"ImageObject",
+  "url":"FEATURED IMAGE URL",
+  "width":1200,
+  "height":630
+ },
+ "author":{
+  "@type":"Person",
+  "name":"AUTHOR NAME",
+  "url":"AUTHOR PROFILE PAGE"
+ },
+ "publisher":{
+  "@type":"Organization",
+  "name":"SITE NAME",
+  "logo":{
+   "@type":"ImageObject",
+   "url":"LOGO URL",
+   "width":200,
+   "height":60
+  }
+ },
+ "datePublished":"YYYY-MM-DD",
+ "dateModified":"YYYY-MM-DD",
+ "mainEntityOfPage":{
+  "@type":"WebPage",
+  "@id":"PAGE URL"
+ },
+ "articleSection":"ARTICLE CATEGORY",
+ "keywords":"KEYWORDS COMMA SEPARATED",
+ "wordCount":"ARTICLE WORD COUNT",
+ "inLanguage":"en",
+ "url":"PAGE URL",
+ "isPartOf":{
+  "@type":"Blog",
+  "name":"SITE BLOG NAME",
+  "url":"BLOG INDEX URL"
+ }
+}
+</script>
+
+<!-- BREADCRUMB -->
+<script type="application/ld+json">
+{
+ "@context":"https://schema.org",
+ "@type":"BreadcrumbList",
+ "itemListElement":[
+  {
+   "@type":"ListItem",
+   "position":1,
+   "name":"Home",
+   "item":"HOMEPAGE URL"
+  },
+  {
+   "@type":"ListItem",
+   "position":2,
+   "name":"CATEGORY NAME",
+   "item":"CATEGORY URL"
+  },
+  {
+   "@type":"ListItem",
+   "position":3,
+   "name":"PAGE TITLE",
+   "item":"PAGE URL"
+  }
+ ]
+}
+</script>
+
+<!-- FAQ SCHEMA (use when page contains a genuine Q&A section) -->
+<script type="application/ld+json">
+{
+ "@context":"https://schema.org",
+ "@type":"FAQPage",
+ "mainEntity":[
+  {
+   "@type":"Question",
+   "name":"QUESTION HERE",
+   "acceptedAnswer":{
+    "@type":"Answer",
+    "text":"ANSWER HERE (plain text, no HTML)"
+   }
+  }
+ ]
+}
+</script>
+
+<!-- HOW-TO SCHEMA (use when article contains step-by-step instructions) -->
+<script type="application/ld+json">
+{
+ "@context":"https://schema.org",
+ "@type":"HowTo",
+ "name":"HOW TO TITLE",
+ "description":"DESCRIPTION OF THE PROCESS",
+ "step":[
+  {
+   "@type":"HowToStep",
+   "position":1,
+   "name":"STEP NAME",
+   "text":"STEP DESCRIPTION",
+   "image":"STEP IMAGE URL (optional)"
+  },
+  {
+   "@type":"HowToStep",
+   "position":2,
+   "name":"STEP NAME",
+   "text":"STEP DESCRIPTION"
+  }
+ ]
+}
+</script>
+
+<!-- ITEM LIST SCHEMA (use for listicle-style posts or comparison pages) -->
+<script type="application/ld+json">
+{
+ "@context":"https://schema.org",
+ "@type":"ItemList",
+ "name":"LIST TITLE",
+ "description":"LIST DESCRIPTION",
+ "itemListElement":[
+  {
+   "@type":"ListItem",
+   "position":1,
+   "name":"ITEM NAME",
+   "description":"ITEM DESCRIPTION",
+   "url":"ITEM URL (optional)"
+  }
+ ]
+}
+</script>
+
+<!-- VIDEO SCHEMA (use when page contains an embedded video) -->
+<script type="application/ld+json">
+{
+ "@context":"https://schema.org",
+ "@type":"VideoObject",
+ "name":"VIDEO TITLE",
+ "description":"VIDEO DESCRIPTION",
+ "thumbnailUrl":"THUMBNAIL URL",
+ "uploadDate":"YYYY-MM-DD",
+ "duration":"PT#M#S",
+ "contentUrl":"VIDEO FILE URL or EMBED URL",
+ "embedUrl":"IFRAME EMBED URL"
+}
+</script>
+
+<!-- ================================= -->
+<!-- ANALYTICS -->
+<!-- ================================= -->
+
+<!-- Google Analytics GA4 – place before </head> -->
+<!-- Insert GA4 <script> tag here -->
+
+<!-- Google Tag Manager – paste immediately after <body> opening tag -->
+<!-- Insert GTM <noscript> fallback here -->
+
+</head>
+
+
+<!-- ====================================================== -->
+<!-- BODY STRUCTURE RULES -->
+<!-- ====================================================== -->
+<body>
+
+<!-- Skip Navigation (accessibility + crawlability) -->
+<a href="#main-content" class="skip-link">Skip to main content</a>
+
+<header role="banner">
+ <nav role="navigation" aria-label="Main navigation">
+  <!-- Main navigation links -->
+ </nav>
+</header>
+
+<main id="main-content" role="main">
+
+ <article itemscope itemtype="https://schema.org/BlogPosting">
+
+  <h1 itemprop="headline">Primary Page Heading (must match title tag closely)</h1>
+  <!-- H1: one per page, must contain primary keyword, 40–70 chars -->
+
+  <!-- Visible Breadcrumb Navigation (schema breadcrumb alone is not enough) -->
+  <nav aria-label="Breadcrumb">
+   <ol>
+    <li><a href="/">Home</a></li>
+    <li><a href="/CATEGORY-URL">Category Name</a></li>
+    <li aria-current="page">Page Title</li>
+   </ol>
+  </nav>
+
+  <!-- Article Meta (date + author for E-E-A-T signals) -->
+  <p>
+   <time datetime="YYYY-MM-DD" itemprop="datePublished">Published: Month DD, YYYY</time>
+   &nbsp;|&nbsp;
+   <span itemprop="author" itemscope itemtype="https://schema.org/Person">
+    By <a href="AUTHOR PROFILE URL" itemprop="url"><span itemprop="name">AUTHOR NAME</span></a>
+   </span>
+  </p>
+
+  <!-- Featured Hero Image (must be above the fold, preloaded) -->
+  <figure>
+   <img
+    src="IMAGE URL"
+    alt="DESCRIPTIVE IMAGE TEXT (20–100 chars, describes the image specifically)"
+    width="1200"
+    height="630"
+    loading="eager"
+    fetchpriority="high"
+    srcset="
+     IMAGE-400.jpg 400w,
+     IMAGE-800.jpg 800w,
+     IMAGE-1200.jpg 1200w"
+    sizes="(max-width: 768px) 100vw, 1200px"
+    itemprop="image">
+   <figcaption>Figure caption describing what is shown in the image.</figcaption>
+  </figure>
+  <!-- NOTE: Hero image must also have a matching <link rel="preload"> in <head> -->
+  <!-- Subsequent images should use loading="lazy" and NOT have fetchpriority="high" -->
+
+  <!-- Table of Contents (use <nav> with <ol> and in-page anchor links) -->
+  <nav aria-label="Table of contents">
+   <h2>Table of Contents</h2>
+   <ol>
+    <li><a href="#section1">Section 1 Title</a></li>
+    <li><a href="#section2">Section 2 Title</a></li>
+    <li><a href="#faq">Frequently Asked Questions</a></li>
+   </ol>
+  </nav>
+  <!-- TOC RULE: every <a href="#id"> must have a matching id="..." on the target heading -->
+
+  <section id="section1">
+   <h2>Section Heading (should contain secondary keyword or topic term)</h2>
+   <!-- RULE: Start every major section with a 3–4 sentence explanatory paragraph -->
+   <p>Introductory paragraph that explains the section topic before any bullet points or tables.</p>
+   <!-- Bullet points, tables, or subsections follow here -->
+  </section>
+
+  <section id="section2">
+   <h2>Section Heading</h2>
+   <p>Content</p>
+  </section>
+
+  <!-- Internal Links Rule: use descriptive anchor text, not "click here" or "read more" -->
+  <!-- External Links Rule: add rel="noopener noreferrer" to all target="_blank" links -->
+
+  <!-- FAQ Section (should match FAQPage schema above) -->
+  <section id="faq">
+   <h2>Frequently Asked Questions</h2>
+   <dl>
+    <dt><strong>Question text here?</strong></dt>
+    <dd>Answer text here.</dd>
+   </dl>
+  </section>
+
+  <!-- Contact / CTA Section -->
+  <section id="contact">
+   <h2>Contact or CTA Heading</h2>
+   <p>CTA content.</p>
+  </section>
+
+  <!-- About the Author (E-E-A-T signal — required for YMYL-adjacent technical content) -->
+  <aside aria-label="About the author" itemprop="author" itemscope itemtype="https://schema.org/Person">
+   <h2>About the Author</h2>
+   <img src="AUTHOR PHOTO" alt="Photo of AUTHOR NAME" width="80" height="80" loading="lazy">
+   <p itemprop="description">Author bio covering qualifications, experience, and expertise relevant to the topic.</p>
+   <p><a href="LINKEDIN URL" rel="noopener noreferrer" itemprop="sameAs">Connect on LinkedIn</a></p>
+  </aside>
+
+ </article>
+
+</main>
+
+<footer role="contentinfo">
+ <p>&copy; YEAR SITE NAME. All rights reserved.</p>
+ <nav aria-label="Footer navigation">
+  <!-- Footer links -->
+ </nav>
+</footer>
+
+<!-- ====================================================== -->
+<!-- PREMIUM CONTENT & E-E-A-T RULES -->
+<!-- ====================================================== -->
+<!--
+ E-E-A-T (Experience, Expertise, Authoritativeness, Trustworthiness):
+ 1. AUTHOR BIO: Every post must have a visible author bio with credentials and a link to a LinkedIn or author profile.
+ 2. DATES: Show both published and modified dates; update dateModified in schema whenever content changes.
+ 3. CITATIONS: Link to authoritative external sources (standards bodies, government agencies, peer-reviewed data).
+ 4. ACCURACY: Content must be factually correct and technically specific. No speculation or vague claims.
+ 5. CREDENTIALS: Mention specific qualifications in the author box (years of experience, certifications, industry bodies).
+
+ INTERNAL LINKS:
+ 1. Use descriptive anchor text that names the destination topic (not "click here").
+ 2. Aim for 3–5 contextual internal links per article to related service or guide pages.
+ 3. Use standard relative paths (e.g., /aerosol-technology-and-formulations) for same-domain links.
+ 4. Do not over-optimise anchor text — vary phrasing naturally.
+
+ EXTERNAL LINKS:
+ 1. Use absolute URLs.
+ 2. Add rel="noopener noreferrer" to all target="_blank" links.
+ 3. Only link to authoritative, relevant sources (ISO, UNEP, industry bodies).
+ 4. Keep external link count reasonable (3–5 per article for reference sources).
+
+ CONTENT STRUCTURE:
+ 1. Every major section must begin with a 3–4 sentence explanatory paragraph before any bullet points.
+ 2. Use bullet points to list discrete items; use prose for explanation and analysis.
+ 3. Tables must have a <thead> and <th> elements with column headers.
+ 4. Every image must have a descriptive <figcaption> and valid alt text.
+ 5. Technical specifications (temperatures, pressures, percentages) must cite a source or note they are typical ranges.
+
+ IMAGES:
+ 1. Every [IMAGE: ] placeholder must be replaced with an <img> inside a <figure> with a <figcaption>.
+ 2. Use descriptive alt text (20–100 chars) that describes the actual image content, not the topic.
+ 3. Provide width and height attributes on every image to prevent CLS.
+ 4. Use loading="lazy" on all images except the hero/LCP image.
+ 5. Use srcset for responsive images at 400w, 800w, and 1200w.
+ 6. Prefer WebP or AVIF format. Provide JPEG fallback.
+
+ RESPONSIVENESS & LAYOUT:
+ 1. max-width should be 1200px–1400px for content columns; use 1520px only for very wide layouts.
+ 2. Test at 375px (mobile), 768px (tablet), and 1440px (desktop).
+ 3. Font size: body minimum 16px; headings scale down proportionally on mobile.
+ 4. Tables: use overflow-x: auto on a wrapper div for horizontal scrolling on mobile.
+
+ TECHNICAL SEO — XML SITEMAP & ROBOTS:
+ 1. All published pages must be listed in /sitemap.xml.
+ 2. /robots.txt must allow indexing of all public content and reference the sitemap URL.
+ 3. Ensure no noindex directive appears on production pages unintentionally.
+
+ HTTPS & SECURITY:
+ 1. All canonical and og:url values must use https://.
+ 2. HTTP responses must include: X-Content-Type-Options: nosniff, Referrer-Policy: strict-origin-when-cross-origin,
+    X-Frame-Options: SAMEORIGIN, Content-Security-Policy (CSP) header.
+ 3. Never mix HTTP and HTTPS resources on the same page.
+
+ ACCESSIBILITY (also boosts SEO):
+ 1. html lang attribute must be set (e.g., lang="en").
+ 2. Use ARIA landmarks: role="banner" (header), role="main" (main), role="contentinfo" (footer),
+    role="navigation" + aria-label (nav elements).
+ 3. Add a "Skip to main content" link as the first child of <body>.
+ 4. All interactive elements must be keyboard-accessible and have visible focus styles.
+ 5. Color contrast: text on background must meet WCAG AA (4.5:1 for normal text, 3:1 for large text).
+ 6. All form inputs must have associated <label> elements.
+
+ PAGE SPEED BUDGET:
+ 1. Total page weight (desktop): < 2 MB recommended, < 5 MB maximum.
+ 2. Number of HTTP requests: < 50 recommended.
+ 3. Inline critical above-the-fold CSS; defer the rest.
+ 4. All scripts: add defer or async unless render-blocking is intentional.
+ 5. Use a CDN for images and static assets.
+-->
+
+</body>
+</html>

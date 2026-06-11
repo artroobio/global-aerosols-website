@@ -1,0 +1,616 @@
+---
+import Layout from '../layouts/Layout.astro';
+
+const blogSchema = {
+  "@context": "https://schema.org",
+  "@type": "Organization",
+  "name": "Global Aerosols",
+  "url": "https://www.globalformulation.com/",
+  "logo": ""
+};
+const breadcrumbSchema = {
+  "@context": "https://schema.org",
+  "@type": "Article",
+  "mainEntityOfPage": {
+    "@type": "WebPage",
+    "@id": "https://www.globalformulation.com/from-lab-to-commercial-launch"
+  },
+  "headline": "From Lab to Commercial Launch: Scaling Aerosol Formulations from R&D to Manufacturing",
+  "description": "A detailed aerosol industry guide explaining the transition from lab-scale formulation to pilot trials and commercial manufacturing.",
+  "articleSection": "Aerosol Manufacturing Scale-Up",
+  "author": {
+    "@type": "Person",
+    "name": "Absar Khan"
+  },
+  "publisher": {
+    "@type": "Organization",
+    "name": "Global Formulation",
+    "logo": {
+      "@type": "ImageObject",
+      "url": "https://www.globalformulation.com/logo.png"
+    }
+  },
+  "image": {
+    "@type": "ImageObject",
+    "url": "https://assets.zyrosite.com/A3QlOV94WLSaL6xE/rd-to-pilot-to-commercial-manufacturing-process-ja70rdtisjlefsbq-3wicMDl4Dh8OiSym.png"
+  },
+  "datePublished": "2025-12-05",
+  "dateModified": "2025-12-05"
+};
+const schemas = [blogSchema, breadcrumbSchema];
+---
+
+<Layout
+  title="Aerosol Scale-Up: From R&D to Pilot Trials and Commercial Manufacturing | Global Formulation"
+  description="Learn how aerosol products move from R&D to pilot trials and full commercial manufacturing. Covers propellant behavior, valve compatibility, filling-line validation, and stability testing."
+  canonical="https://www.globalformulation.com/from-lab-to-commercial-launch"
+  ogImage="https://assets.zyrosite.com/A3QlOV94WLSaL6xE/rd-to-pilot-to-commercial-manufacturing-process-ja70rdtisjlefsbq-3wicMDl4Dh8OiSym.png"
+  ogType="article"
+  schemaJson={schemas}
+>
+  <main class="section-container" style="max-width: 100%; padding-left: 48px; padding-right: 48px; padding-top: 40px; padding-bottom: 80px;">
+    
+    <!-- HTML5 Compliant Breadcrumbs -->
+    <nav aria-label="Breadcrumb" style="display: flex; gap: 8px; font-size: 0.85rem; color: var(--text-muted); margin-bottom: 24px; font-family: 'Inter', sans-serif;">
+      <a href="/" style="color: var(--text-muted);">Home</a>
+      <span>&gt;</span>
+      <a href="/blog" style="color: var(--text-muted);">Blog</a>
+      <span>&gt;</span>
+      <span style="color: var(--text-primary); font-weight: 500;">Aerosols & Gas Dosing</span>
+    </nav>
+
+    <!-- Main article container -->
+    <article class="blog-prose">
+      <header class="post-header">
+        <h1 class="gradient-text" style="font-size: 3rem; line-height: 1.15; font-weight: 900; margin-bottom: 20px;">
+          Aerosol Scale-Up: From R&D to Pilot Trials and Commercial Manufacturing
+        </h1>
+        
+        <!-- Post meta details -->
+        <div style="display: flex; align-items: center; gap: 16px; font-size: 0.9rem; color: var(--text-muted); margin-bottom: 30px; font-family: 'Inter', sans-serif; font-weight: 500; border-bottom: 1px solid var(--border); padding-bottom: 20px;">
+          <div style="display: flex; align-items: center; gap: 8px;">
+            <span style="width: 28px; height: 28px; background: var(--primary); color: white; display: flex; align-items: center; justify-content: center; border-radius: 50%; font-weight: 700; font-size: 0.75rem;">AK</span>
+            <span>By <strong>Absar Khan</strong></span>
+          </div>
+          <span style="width: 4px; height: 4px; border-radius: 50%; background-color: var(--border);"></span>
+          <span>Published: <strong>Dec 5, 2025</strong></span>
+          <span style="width: 4px; height: 4px; border-radius: 50%; background-color: var(--border);"></span>
+          <span>Reading Time: <strong>12 min read</strong></span>
+          <span style="width: 4px; height: 4px; border-radius: 50%; background-color: var(--border);"></span>
+          <span style="background: #e0f2fe; color: #0369a1; padding: 2px 10px; border-radius: 50px; font-size: 0.75rem; font-weight: 700; text-transform: uppercase;">Aerosols & Gas Dosing</span>
+        </div>
+      </header>
+
+      <!-- Primary Featured Image -->
+      <div class="image-slot">
+        <img 
+          src="https://assets.zyrosite.com/A3QlOV94WLSaL6xE/rd-to-pilot-to-commercial-manufacturing-process-ja70rdtisjlefsbq-3wicMDl4Dh8OiSym.png" 
+          alt="Aerosol scale-up process flow from R&D to pilot to commercial manufacturing" 
+          width="1200" 
+          height="800" 
+          loading="eager" 
+        />
+      </div>
+
+      <!-- Table of Contents -->
+      <div class="box" style="background: #f8fafc; border: 1px solid var(--border); border-radius: var(--radius-lg); padding: 24px; margin: 30px 0;">
+        <h3 style="margin-top: 0; font-family: 'Outfit', sans-serif; color: var(--text-primary); font-size: 1.25rem; font-weight: 700; border-bottom: 2px solid var(--border); padding-bottom: 8px;">Guide Contents</h3>
+        <ul style="display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 10px; list-style-type: none; padding-left: 0; margin-bottom: 0;">
+          <li><a href="#why-scale-up-stages-matter-in-aerosols" style="font-weight: 600; color: var(--primary);">1. Why Scale-Up Stages Matter in Aerosols</a></li>
+          <li><a href="#rd-formulation-for-aerosol-products" style="font-weight: 600; color: var(--primary);">2. R&D Formulation for Aerosol Products</a></li>
+          <li><a href="#pilot-scale-aerosol-manufacturing" style="font-weight: 600; color: var(--primary);">3. Pilot Scale Aerosol Manufacturing</a></li>
+          <li><a href="#commercial-aerosol-production" style="font-weight: 600; color: var(--primary);">4. Commercial Aerosol Production</a></li>
+          <li><a href="#key-differences-between-rd-pilot-commercial-scale" style="font-weight: 600; color: var(--primary);">5. Key Differences Between R&D, Pilot & Commercial Scale</a></li>
+          <li><a href="#how-aerosol-products-move-from-rd-to-commercial-production" style="font-weight: 600; color: var(--primary);">6. How Aerosol Products Move from R&D to Commercial Production</a></li>
+          <li><a href="#real-world-aerosol-example-industrial-degreaser-spray" style="font-weight: 600; color: var(--primary);">7. Real-World Aerosol Example: Industrial Degreaser Spray</a></li>
+          <li><a href="#which-stage-should-you-be-at" style="font-weight: 600; color: var(--primary);">8. Which Stage Should You Be At?</a></li>
+          <li><a href="#regulatory-quality-compliance-requirements" style="font-weight: 600; color: var(--primary);">9. Regulatory, Quality & Compliance Requirements</a></li>
+          <li><a href="#work-with-global-aerosols" style="font-weight: 600; color: var(--primary);">10. Work With Global Aerosols</a></li>
+          <li><a href="#faqs" style="font-weight: 600; color: var(--primary);">11. FAQs</a></li>
+          <li><a href="#further-reading-on-aerosol-science" style="font-weight: 600; color: var(--primary);">12. Further Reading on Aerosol Science</a></li>
+          <li><a href="#about-the-author" style="font-weight: 600; color: var(--primary);">13. About the Author</a></li>
+        </ul>
+      </div>
+
+      <div class="lead">
+            <div class="toc-title">On this page</div>
+            <ul>
+                <li>Why Scale-Up Stages Matter in Aerosols</li>
+                <li>R&D Formulation for Aerosol Products</li>
+                <li>Pilot Scale Aerosol Manufacturing</li>
+                <li>Commercial Aerosol Production</li>
+                <li>Key Differences Table</li>
+                <li>How Aerosol Products Move from R&D to Commercial</li>
+                <li>Real-World Aerosol Example</li>
+                <li>Which Stage You Should Be At</li>
+                <li>Regulatory, Quality & Compliance</li>
+                <li>Work With Global Aerosols</li>
+                <li>FAQs</li>
+            </ul>
+        </div>
+
+        <figure>
+            
+            <figcaption>Aerosol scale-up process: R&D → pilot scale → commercial production.</figcaption>
+        </figure></div>
+
+<!-- <STRONG>WHY SCALE-UP STAGES MATTER IN AEROSOLS</STRONG> -->
+<section class="section" id="why-scale-up-stages-matter-in-aerosols">
+  <h2><strong>Why Scale-Up Stages Matter in Aerosols</strong></h2>
+  <p>Aerosol products require a structured and controlled scale-up process because propellant behavior, valve
+            mechanics, pressure stability, and formulation–hardware interaction change significantly with batch size.
+            The transition from lab to pilot scale reduces technical uncertainty, while moving from pilot to commercial
+            reduces operational and financial risk. Companies that treat all stages as identical often face spray
+            failures, leakage, foaming issues, and inconsistent discharge rates during commercial production.</p>
+        <ul>
+            <li>Prevents unexpected pressure deviation during filling</li>
+            <li>Ensures proper valve–formulation compatibility</li>
+            <li>Identifies propellant solubility and dispersion issues</li>
+            <li>Allows stability validation under real storage conditions</li>
+        </ul>
+</section>
+
+<!-- <STRONG>R&D FORMULATION FOR AEROSOL PRODUCTS</STRONG> -->
+<section class="section" id="rd-formulation-for-aerosol-products">
+  <h2><strong>R&D Formulation for Aerosol Products</strong></h2>
+  <p>The R&D stage establishes the chemical and physical foundation of an aerosol product. At this level, small
+            batches are used to identify the correct solvent system, emulsifier system (if applicable), propellant
+            class, corrosion inhibition chemistry, and spray-performance targets. The objective is not production
+            readiness but scientific feasibility and functional performance verification.</p>
+        <ul>
+            <li>Small-scale screening of solvents, surfactants, and additives</li>
+            <li>Preliminary propellant selection (LPG, DME as liquefied propellants; CO₂ and N₂ as compressed gases for
+                pressure adjustment)</li>
+            <li>Early spray testing using hand-filled cans</li>
+            <li>Short-term stability checks for phase separation</li>
+        </ul>
+
+        <h3><strong>Typical Batch Sizes</strong></h3>
+        <ul>
+            <li>250 mL – 5 L liquid concentrate</li>
+            <li>10–50 aerosol cans (hand-filled)</li>
+        </ul>
+
+        <h3><strong>Equipment Used</strong></h3>
+        <ul>
+            <li>Laboratory stirrers</li>
+            <li>Homogenizers</li>
+            <li>pH meters and viscometers</li>
+            <li>Bench-top crimpers and gassing heads</li>
+        </ul>
+
+        <figure>
+            
+      <div class="image-slot">
+        <img 
+          src="https://assets.zyrosite.com/A3QlOV94WLSaL6xE/rd-formulation-laboratory-equipment-setup-afmwczp7sggxeoi8-S1yExmJQ5SL3VZbJ.webp" 
+          alt="Aerosol R&D lab equipment for formulation development" 
+          width="1200" 
+          height="800" 
+          loading="lazy" 
+        />
+      </div>
+      
+            <figcaption>Typical aerosol R&D laboratory setup.</figcaption>
+        </figure>
+</section>
+
+<!-- <STRONG>PILOT SCALE AEROSOL MANUFACTURING</STRONG> -->
+<section class="section" id="pilot-scale-aerosol-manufacturing">
+  <h2><strong>Pilot Scale Aerosol Manufacturing</strong></h2>
+  <p>Pilot scale is the bridge between laboratory success and commercial feasibility. At this stage, the
+            formulation is produced using semi-industrial equipment to validate heat transfer, mixing energy, propellant
+            dissolution, pressure behavior, and filling parameters. Pilot trials also reveal real-world issues that are
+            not visible during laboratory work, such as foaming during filling or delayed phase separation.</p>
+        <ul>
+            <li>Validation of concentrate mixing at higher volumes</li>
+            <li>Testing propellant loading through pilot gassing lines</li>
+            <li>Valve, actuator, stem-bore, and orifice-size compatibility assessment</li>
+            <li>Short-term and accelerated storage behavior evaluation</li>
+        </ul>
+
+        <h3><strong>Typical Batch Sizes</strong></h3>
+        <ul>
+            <li>20–200 kg bulk concentrate</li>
+            <li>500–5,000 filled aerosol cans</li>
+        </ul>
+
+        <h3><strong>Pilot Equipment</strong></h3>
+        <ul>
+            <li>Jacketed SS mixing vessels</li>
+            <li>Pilot-scale homogenizers</li>
+            <li>Semi-automatic crimpers</li>
+            <li>Single-head or double-head gassing machines</li>
+        </ul>
+
+        <figure>
+            
+      <div class="image-slot">
+        <img 
+          src="https://assets.zyrosite.com/A3QlOV94WLSaL6xE/pilot-scale-vs-commercial-manufacturing-equipment-dohpjm1hg7uz295c-O25tqZZpwdBViYgC.png" 
+          alt="Pilot and commercial aerosol manufacturing equipment comparison" 
+          width="1200" 
+          height="800" 
+          loading="lazy" 
+        />
+      </div>
+      
+            <figcaption>Pilot vs. commercial aerosol equipment.</figcaption>
+        </figure>
+</section>
+
+<!-- <STRONG>COMMERCIAL AEROSOL PRODUCTION</STRONG> -->
+<section class="section" id="commercial-aerosol-production">
+  <h2><strong>Commercial Aerosol Production</strong></h2>
+  <p>Commercial production focuses on consistent large-scale manufacturing while maintaining cost efficiency,
+            quality standards, and regulatory compliance. In standard aerosol production lines, valves are inserted and
+            crimped before propellant filling, except in specific under-the-cup gassing systems. This operational
+            sequence is critical for ensuring filling accuracy and hardware compatibility.</p>
+        <ul>
+            <li>Automated filling and gassing lines</li>
+            <li>High-speed valve insertion and crimping</li>
+            <li>Pressure testing and leakage verification</li>
+            <li>Vendor-approved raw materials and hardware</li>
+        </ul>
+
+        <h3><strong>Typical Commercial Scale Batch Sizes</strong></h3>
+        <ul>
+            <li>1–10 tons concentrate</li>
+            <li>10,000–200,000 cans per shift depending on line speed</li>
+        </ul>
+
+        <h3><strong>Regulatory Load</strong></h3>
+        <ul>
+            <li>Full QA/QC protocols for every batch</li>
+            <li>BIS/ISO requirements; GMP applies only to pharmaceutical or regulated cosmetic aerosols</li>
+            <li>Pressure and leakage testing compliance</li>
+            <li>Propellant safety and hazardous-area certification</li>
+        </ul>
+</section>
+
+<!-- <STRONG>KEY DIFFERENCES BETWEEN R&D, PILOT & COMMERCIAL SCALE</STRONG> -->
+<section class="section" id="key-differences-between-rd-pilot-commercial-scale">
+  <h2><strong>Key Differences Between R&D, Pilot & Commercial Scale</strong></h2>
+  <div class="table-wrapper">
+            <table>
+                <thead>
+                    <tr>
+                        <th>Parameter</th>
+                        <th>R&D</th>
+                        <th>Pilot Scale</th>
+                        <th>Commercial</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td>Batch Size</td>
+                        <td>mL–L</td>
+                        <td>20–200 kg / 500–5,000 cans</td>
+                        <td>1–10 tons / up to 200,000 cans</td>
+                    </tr>
+                    <tr>
+                        <td>Objective</td>
+                        <td>Feasibility</td>
+                        <td>Process Validation</td>
+                        <td>Market Supply</td>
+                    </tr>
+                    <tr>
+                        <td>Propellant Testing</td>
+                        <td>Basic selection</td>
+                        <td>Solubility & pressure behavior</td>
+                        <td>Full performance verification</td>
+                    </tr>
+                    <tr>
+                        <td>Equipment</td>
+                        <td>Lab tools</td>
+                        <td>Semi-industrial</td>
+                        <td>High-speed filling lines</td>
+                    </tr>
+                    <tr>
+                        <td>Documentation</td>
+                        <td>Minimal</td>
+                        <td>Moderate</td>
+                        <td>Full regulatory</td>
+                    </tr>
+                    <tr>
+                        <td>Risk Level</td>
+                        <td>Technical</td>
+                        <td>Process risk</td>
+                        <td>Financial & compliance</td>
+                    </tr>
+                </tbody>
+            </table>
+        
+</section>
+
+<!-- <STRONG>HOW AEROSOL PRODUCTS MOVE FROM R&D TO COMMERCIAL PRODUCTION</STRONG> -->
+<section class="section" id="how-aerosol-products-move-from-rd-to-commercial-production">
+  <h2><strong>How Aerosol Products Move from R&D to Commercial Production</strong></h2>
+  <p>The scale-up pathway in the aerosol industry follows a structured sequence to ensure hardware compatibility,
+            formulation stability, and safe propellant management. Technology transfer from R&D to pilot is followed by
+            pilot-to-commercial validation, ensuring that each step eliminates a specific category of risk before
+            advancing.</p>
+        <ul>
+            <li>R&D formulation finalization</li>
+            <li>Pilot batch selection and equipment alignment</li>
+            <li>Multiple pilot batches for parameter locking</li>
+            <li>Propellant behavior assessment across storage temperatures</li>
+            <li>Valve and actuator optimization</li>
+            <li>Commercial trial batch execution</li>
+            <li>Full-scale production validation</li>
+        </ul>
+</section>
+
+<!-- <STRONG>REAL-WORLD AEROSOL EXAMPLE: INDUSTRIAL DEGREASER SPRAY</STRONG> -->
+<section class="section" id="real-world-aerosol-example-industrial-degreaser-spray">
+  <h2><strong>Real-World Aerosol Example: Industrial Degreaser Spray</strong></h2>
+  <p>This example demonstrates how a common industrial aerosol transitions through scale-up stages. Each phase
+            reveals different technical challenges—particularly around solvent balance, propellant loading, spray
+            pattern, and can stability. The example below is based on standard industry practices used for
+            hydrocarbon-based degreasers.</p>
+
+        <h3><strong>R&D Stage</strong></h3>
+        <ul>
+            <li>2-liter concentrate prepared in lab beaker</li>
+            <li>Initial LPG/DME propellant ratio screened</li>
+            <li>Spray pattern tested with hand-filled cans</li>
+            <li>Short-term separation check conducted</li>
+        </ul>
+
+        <h3><strong>Pilot Scale</strong></h3>
+        <ul>
+            <li>100–150 kg batch prepared in jacketed SS vessel</li>
+            <li>Propellant solubility verified in 50–200 can pilot run</li>
+            <li>Valve leakage and crimp integrity monitored</li>
+            <li>Accelerated storage testing for corrosion and pressure drift</li>
+        </ul>
+
+        <h3><strong>Commercial Scale</strong></h3>
+        <ul>
+            <li>Multi-ton concentrate batch prepared</li>
+            <li>High-speed automated filling and gassing</li>
+            <li>Pressure and leakage testing for every production pallet</li>
+            <li>Vendor-qualified raw materials and hardware standardized</li>
+        </ul>
+</section>
+
+<!-- <STRONG>WHICH STAGE SHOULD YOU BE AT?</STRONG> -->
+<section class="section" id="which-stage-should-you-be-at">
+  <h2><strong>Which Stage Should You Be At?</strong></h2>
+  <p>Companies often misunderstand their current stage, leading to premature scaling or unnecessary delays.
+            Identifying the correct stage ensures efficient use of resources and reduces failure probability during
+            commercial runs. The following indicators help classify your current level.</p>
+
+        <h3><strong>You Are at R&D If:</strong></h3>
+        <ul>
+            <li>You have only tested small lab batches</li>
+            <li>You are still adjusting solvents, propellant levels, or additives</li>
+            <li>No real-world storage testing has been performed</li>
+        </ul>
+
+        <h3><strong>You Are at Pilot If:</strong></h3>
+        <ul>
+            <li>Your formulation is stable in lab conditions</li>
+            <li>You need samples for buyer or distributor evaluation</li>
+            <li>Valve and actuator performance needs verification</li>
+        </ul>
+
+        <h3><strong>You Are at Commercial If:</strong></h3>
+        <ul>
+            <li>You have confirmed orders and ongoing demand</li>
+            <li>Your formulation and hardware are locked</li>
+            <li>Regulatory and QA systems are in place</li>
+        </ul>
+</section>
+
+<!-- <STRONG>REGULATORY, QUALITY & COMPLIANCE REQUIREMENTS</STRONG> -->
+<section class="section" id="regulatory-quality-compliance-requirements">
+  <h2><strong>Regulatory, Quality & Compliance Requirements</strong></h2>
+  <p>Aerosol manufacturing includes additional safety and regulatory requirements due to flammable propellants,
+            pressurized cans, and hardware-specific performance parameters. Quality systems become progressively more
+            detailed as production scales from lab to commercial.</p>
+
+        <div class="table-wrapper">
+            <table>
+                <thead>
+                    <tr>
+                        <th>Aspect</th>
+                        <th>R&D</th>
+                        <th>Pilot</th>
+                        <th>Commercial</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td>MSDS Requirement</td>
+                        <td>Optional</td>
+                        <td>Required</td>
+                        <td>Mandatory</td>
+                    </tr>
+                    <tr>
+                        <td>COA Requirement</td>
+                        <td>Optional</td>
+                        <td>Required</td>
+                        <td>Mandatory</td>
+                    </tr>
+                    <tr>
+                        <td>Stability Testing</td>
+                        <td>Screening only</td>
+                        <td>Accelerated tests</td>
+                        <td>Full storage validation</td>
+                    </tr>
+                    <tr>
+                        <td>QA/QC</td>
+                        <td>Visual tests</td>
+                        <td>Instrumental tests</td>
+                        <td>Full QC lab with documentation</td>
+                    </tr>
+                    <tr>
+                        <td>Propellant Safety Systems</td>
+                        <td>None</td>
+                        <td>Basic ventilation</td>
+                        <td>Explosion-proof systems</td>
+                    </tr>
+                </tbody>
+            </table>
+        
+</section>
+
+<!-- <STRONG>WORK WITH GLOBAL AEROSOLS</STRONG> -->
+<section class="section" id="work-with-global-aerosols">
+  <h2><strong>Work With Global Aerosols</strong></h2>
+  <p>Global Aerosols provides end-to-end support for companies entering or expanding within the aerosol industry.
+            Our expertise covers formulation development, pilot-scale validation, hardware compatibility, raw material
+            optimization, commercial manufacturing strategy, and safety engineering. Each project is executed using
+            established industrial practices with a strict focus on reliability and compliance.</p>
+        <ul>
+            <li>Formulation & technology development</li>
+            <li>Pilot trials & scale-up validation</li>
+            <li>Valve, actuator, and propellant optimization</li>
+            <li>Commercial plant setup guidance</li>
+            <li>Regulatory & QA framework design</li>
+        </ul>
+</section>
+
+<!-- <STRONG>FAQS</STRONG> -->
+<section class="section" id="faqs">
+  <h2><strong>FAQs</strong></h2>
+  <h3>Can aerosol production start without pilot trials?</h3>
+        <p>No. Aerosol products must undergo pilot validation to check propellant stability, valve performance, filling
+            behavior, and spray characteristics. Skipping this step leads to high failure rates during commercial
+            manufacturing.</p>
+
+        <h3>How long does it take to go from R&D to commercial launch?</h3>
+        <p>Depending on the product category, the timeline ranges from 3 months for simple aerosols to 18 months for
+            high-performance or industrial aerosols requiring extended testing.</p>
+
+        <h3>Do formulations change during scale-up?</h3>
+        <p>Yes. Most aerosol products undergo controlled adjustments in propellant ratios, solvent balance, inhibitor
+            levels, or valve selection to optimize performance at commercial scale.</p>
+</section>
+
+<!-- <STRONG>FURTHER READING ON AEROSOL SCIENCE</STRONG> -->
+<section class="section" id="further-reading-on-aerosol-science">
+  <h2><strong>Further Reading on Aerosol Science</strong></h2>
+  <p>To deepen your understanding of aerosol technology, the following guides provide essential technical
+            explanations useful during formulation, scale-up, and manufacturing.</p>
+        <p><a href="https://www.globalformulation.com/types-of-aerosol-systems-explained">Types of Aerosol
+                Systems Explained</a></p>
+        <p>This guide explains different aerosol system architectures and how they influence spray patterns, stability,
+            and overall product performance.</p>
+        <p><a href="https://www.globalformulation.com/aerosol-propellants-explained-lpg-vs-dme-vs-hfc-vs-n2-vs-co2">Aerosol Propellants Explained: LPG vs DME vs HFC vs N2 vs CO2</a></p>
+        <p>A comprehensive breakdown of propellant classes, covering solubility, vapor pressure profiles, safety
+            behaviour, and ideal application areas.</p>
+        <p><a href="https://www.globalformulation.com/how-aerosol-cans-work">How Aerosol Cans Work</a></p>
+        <p>An engineering-oriented overview of can mechanics, internal pressure dynamics, valves, actuators, and
+            atomization behaviour.</p>
+        <p><a href="https://www.globalformulation.com/aerosol-manufacturing-101">Aerosol Manufacturing
+                101</a></p>
+        <p>An introductory guide to industrial aerosol production lines, propellant-handling systems, safety protocols,
+            and quality control procedures.</p>
+</section>
+
+<!-- <STRONG>ABOUT THE AUTHOR</STRONG> -->
+<section class="section" id="about-the-author">
+  <h2><strong>About the Author</strong></h2>
+  <p><strong>Absar Khan</strong> is a senior industrial consultant with cross-disciplinary expertise spanning
+            pharmaceutical manufacturing, cosmetics and personal care, home and institutional care chemicals, aerosols,
+            lubricants, and advanced process engineering. His work integrates multiple scientific and engineering
+            domains, including formulation chemistry, GMP facility design, validation science, quality systems,
+            regulatory compliance, and large-scale manufacturing optimization.</p>
+        <p>As the Founder and Lead Consultant at <strong>Global Aerosols</strong>, Absar leads multi-disciplinary
+            scientific, engineering, and regulatory teams supporting industries across pharmaceuticals, healthcare,
+            FMCG, and specialty chemicals, delivering end-to-end solutions from technology selection and formulation
+            development to plant setup, scale-up, validation, and regulatory strategy.</p>
+        <p><strong>LinkedIn:</strong> <a
+                href="https://www.linkedin.com/in/absar-khan-aerosol-consultant-and-formulator-78359b162">https://www.linkedin.com/in/absar-khan-aerosol-consultant-and-formulator-78359b162</a>
+        </p>
+</section>
+
+
+
+      <!-- Contact Box -->
+      <div class="cta" style="background: linear-gradient(135deg, var(--primary) 0%, var(--secondary) 100%); color: #ffffff; padding: 30px; border-radius: var(--radius-lg); margin-top: 40px; display: flex; flex-direction: column; justify-content: space-between; align-items: flex-start; gap: 20px; md-flex-direction: row; md-align-items: center;">
+        <div class="left">
+          <p style="margin:0 0 8px 0; font-size:1.25rem; font-weight:800; font-family: 'Outfit', sans-serif;">Need Technical Support for Aerosol Formulations?</p>
+          <p style="margin:0 0 16px 0; font-size:0.95rem; line-height:1.6; opacity:0.95;">
+            Partner with Global Formulation to audit, scale up, and troubleshoot your aerosol chemistry, canister pressure calculations, filling lines, and safety systems.
+          </p>
+          <p style="margin:0; font-size:0.9rem; line-height:1.6; font-family: monospace;">
+            Email: <strong>consulting@globalformulation.com</strong><br />
+            Website: <a href="/" style="color: #ffffff; font-weight: 600; text-decoration: underline;">https://www.globalformulation.com</a><br />
+            Phone: <strong>+91 9819548320 &nbsp;&nbsp; +91 8169102990</strong>
+          </p>
+        </div>
+        <a href="mailto:consulting@globalformulation.com" class="btn" style="background:#ffffff; color:var(--primary); font-weight:700; padding:12px 24px; border-radius:var(--radius-sm); border:none; text-decoration:none; transition: all var(--transition-fast);">
+          Request Consultation
+        </a>
+      </div>
+
+      <!-- ABOUT THE AUTHOR -->
+      <section class="section" id="about-author" style="margin-top: 50px; background: #f8fafc; border: 1px solid var(--border); padding: 30px; border-radius: var(--radius-lg); display: flex; flex-direction: column; gap: 20px; md-flex-direction: row;">
+        <div style="flex-shrink: 0; width: 60px; height: 60px; background: linear-gradient(135deg, var(--primary) 0%, var(--secondary) 100%); color: white; display: flex; align-items: center; justify-content: center; border-radius: 50%; font-size: 1.5rem; font-weight: 800; font-family: 'Outfit', sans-serif; box-shadow: var(--shadow-md);">
+          AK
+        </div>
+        <div>
+          <h3 style="margin-top: 0; margin-bottom: 8px; font-family: 'Outfit', sans-serif; font-size: 1.3rem; font-weight: 700; color: var(--text-primary);">About the Specialist</h3>
+          <p style="margin-top: 0; margin-bottom: 12px; font-size: 0.95rem; line-height: 1.6; color: var(--text-muted);">
+            <strong>Absar Khan</strong> is the principal consultant and chemical formulation architect at <strong>Global Formulation</strong>. He possesses cross-disciplinary engineering expertise spanning aerosol gassing systems, pharmaceutical manufacturing, sterile injectables, cosmetics, and green chemical plant setups. Absar leads scientific and engineering advisory teams supporting manufacturers globally in technology selection, GMP layouts, validation frameworks, and regulatory strategies.
+          </p>
+          <p style="margin: 0; font-size: 0.9rem;">
+            <strong>LinkedIn Portfolio:</strong> 
+            <a 
+              href="https://www.linkedin.com/in/absar-khan-aerosol-consultant-and-formulator-78359b162" 
+              style="font-weight: 700; color: var(--primary); text-decoration: underline;"
+            >
+              Connect with Absar Khan on LinkedIn
+            </a>
+          </p>
+        </div>
+      </section>
+
+      <!-- Footer copyright -->
+      <footer style="text-align: center; margin-top: 50px; color: var(--text-muted); font-size: 0.85rem; font-family: 'Inter', sans-serif;">
+        &copy; {new Date().getFullYear()} Global Formulation. All rights reserved. 
+        <br />
+        <span style="font-size: 0.75rem; opacity: 0.8;">Centralised Aerosol Dosing &amp; Chemical Scale-Up Engineering.</span>
+      </footer>
+
+    </article>
+  </main>
+</Layout>
+
+<style>
+  .blog-prose h1, 
+  .blog-prose h2, 
+  .blog-prose h3 {
+    font-family: 'Playfair Display', 'Outfit', serif !important;
+  }
+  
+  .blog-prose h2 {
+    color: #ffffff !important;
+    background-color: var(--secondary) !important;
+    padding: 12px 20px;
+    border-radius: var(--radius-md);
+    border-bottom: none !important;
+    font-weight: 700;
+  }
+
+  .blog-prose p, 
+  .blog-prose ul, 
+  .blog-prose ol,
+  .blog-prose h3,
+  .blog-prose .lead,
+  .blog-prose .image-slot,
+  .blog-prose .box,
+  .blog-prose .cta,
+  .blog-prose .table-container,
+  .blog-prose #faq {
+    max-width: 100%;
+    width: 100%;
+  }
+
+  .blog-prose .lead {
+    margin: 2rem 0;
+  }
+</style>

@@ -1,0 +1,571 @@
+---
+---
+<section class="contact-video-section" id="contact">
+  <div class="container">
+    <div class="video-frame-box">
+      <!-- Background Video Overlay -->
+      <div class="video-underlay">
+        <video 
+          src="/contact-form-video.mp4" 
+          autoplay 
+          muted 
+          loop 
+          playsinline 
+          class="bg-video"
+        ></video>
+        <div class="video-overlay-gradient"></div>
+      </div>
+
+      <!-- Glassmorphic Form Content Overlay -->
+      <div class="contact-content-wrapper">
+        <div class="header-content">
+          <span class="eyebrow-video">Contact Form</span>
+          <h2 class="form-title">
+            Receive the latest <span class="brand-italic">Synthesis</span> insights.
+          </h2>
+          <p class="form-desc">
+            Partner with our laboratory to scale, optimize, and launch premium consumer chemical formulations.
+          </p>
+        </div>
+
+        <form class="glass-contact-form" id="contact-synthesis-form">
+          <div class="form-grid">
+            <!-- Name Input Field -->
+            <div class="input-group">
+              <input 
+                type="text" 
+                id="name" 
+                name="name" 
+                required 
+                placeholder=" "
+                class="form-input"
+              />
+              <label for="name" class="form-label">Your name</label>
+              <span class="input-border"></span>
+            </div>
+
+            <!-- Email Input Field -->
+            <div class="input-group">
+              <input 
+                type="email" 
+                id="email" 
+                name="email" 
+                required 
+                placeholder=" "
+                class="form-input"
+              />
+              <label for="email" class="form-label">Your email address</label>
+              <span class="input-border"></span>
+            </div>
+
+            <!-- Message Input Field -->
+            <div class="input-group full-width">
+              <textarea 
+                id="message" 
+                name="message" 
+                required 
+                placeholder=" "
+                class="form-textarea"
+                rows="3"
+              ></textarea>
+              <label for="message" class="form-label">How can we collaborate?</label>
+              <span class="input-border"></span>
+            </div>
+          </div>
+
+          <!-- Interactive Submit Container -->
+          <div class="submit-container">
+            <button type="submit" class="btn-submit">
+              <span>Submit Inquiry</span>
+              <div class="btn-arrow">
+                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" class="arrow-svg">
+                  <line x1="7" y1="17" x2="17" y2="7"></line>
+                  <polyline points="7 7 17 7 17 17"></polyline>
+                </svg>
+              </div>
+            </button>
+          </div>
+          
+          <div class="form-status" id="form-status-msg"></div>
+        </form>
+      </div>
+    </div>
+  </div>
+</section>
+
+<style>
+  .contact-video-section {
+    padding: 0 2% 80px 2%;
+    background-color: #ffffff;
+    margin: 0;
+    overflow: hidden;
+  }
+
+  .container {
+    max-width: 1700px;
+    margin: 0 auto;
+  }
+
+  .video-frame-box {
+    position: relative;
+    border-radius: 40px;
+    min-height: 520px;
+    padding: 60px 8%;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    overflow: hidden;
+    box-shadow: 0 40px 100px rgba(0, 0, 0, 0.08);
+    width: 100%;
+    box-sizing: border-box;
+    gap: 40px;
+    background-color: hsl(224, 71%, 4%);
+  }
+
+  /* Widescreen Background Video Underlay */
+  .video-underlay {
+    position: absolute;
+    inset: 0;
+    z-index: 1;
+    overflow: hidden;
+    border-radius: 40px;
+    background-color: hsl(224, 71%, 4%);
+  }
+
+  .bg-video {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    pointer-events: none;
+    transform: scale(1.02);
+  }
+
+  .video-overlay-gradient {
+    position: absolute;
+    inset: 0;
+    background: linear-gradient(
+      to right,
+      rgba(10, 10, 15, 0.22) 0%,
+      rgba(15, 23, 42, 0.08) 55%,
+      rgba(255, 255, 255, 0) 100%
+    );
+    z-index: 2;
+  }
+
+  /* Form Content Layout */
+  .contact-content-wrapper {
+    position: relative;
+    z-index: 10;
+    display: grid;
+    grid-template-columns: 0.9fr 1.1fr;
+    width: 100%;
+    align-items: center;
+    gap: 60px;
+  }
+
+  .header-content {
+    color: #ffffff;
+  }
+
+  .eyebrow-video {
+    display: block;
+    font-size: 0.75rem;
+    text-transform: uppercase;
+    letter-spacing: 4px;
+    color: #0968e5;
+    margin-bottom: 20px;
+    font-weight: 700;
+  }
+
+  .form-title {
+    font-size: clamp(2rem, 3.5vw, 3.2rem);
+    font-weight: 300;
+    line-height: 1.2;
+    margin-bottom: 24px;
+    letter-spacing: -0.02em;
+    text-shadow: 0 2px 10px rgba(0, 0, 0, 0.2);
+  }
+
+  .brand-italic {
+    font-style: italic;
+    font-weight: 400;
+  }
+
+  .form-desc {
+    font-size: clamp(0.95rem, 1.5vw, 1.1rem);
+    color: rgba(255, 255, 255, 0.7);
+    line-height: 1.6;
+    max-width: 480px;
+    text-shadow: 0 1px 5px rgba(0, 0, 0, 0.2);
+  }
+
+  /* Glassmorphic Form Elements */
+  .glass-contact-form {
+    background: rgba(255, 255, 255, 0.04);
+    backdrop-filter: blur(20px);
+    -webkit-backdrop-filter: blur(20px);
+    border: 1px solid rgba(255, 255, 255, 0.08);
+    border-radius: 32px;
+    padding: 40px;
+    box-shadow: 0 30px 60px rgba(0, 0, 0, 0.2);
+    box-sizing: border-box;
+  }
+
+  .form-grid {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    column-gap: 24px;
+    row-gap: 32px;
+  }
+
+  .full-width {
+    grid-column: span 2;
+  }
+
+  /* Custom Floating Inputs */
+  .input-group {
+    position: relative;
+    display: flex;
+    flex-direction: column;
+  }
+
+  .form-input, .form-textarea {
+    background: transparent;
+    border: none;
+    border-bottom: 1px solid rgba(9, 104, 229, 0.4);
+    color: #0968e5;
+    font-size: 1rem;
+    font-weight: 500;
+    padding: 12px 0;
+    outline: none;
+    font-family: inherit;
+    transition: border-color 0.4s ease;
+    width: 100%;
+    box-sizing: border-box;
+  }
+
+  .form-input::placeholder, .form-textarea::placeholder {
+    color: rgba(9, 104, 229, 0.5);
+  }
+
+  .form-textarea {
+    resize: none;
+  }
+
+  .form-label {
+    position: absolute;
+    left: 0;
+    top: 14px;
+    color: rgba(9, 104, 229, 0.75);
+    font-size: 0.95rem;
+    font-weight: 500;
+    pointer-events: none;
+    transition: transform 0.3s cubic-bezier(0.25, 1, 0.5, 1), color 0.3s ease;
+    transform-origin: left top;
+  }
+
+  /* Custom border sliding animation */
+  .input-border {
+    position: absolute;
+    left: 0;
+    bottom: 0;
+    width: 100%;
+    height: 1.5px;
+    background: #0968e5;
+    transform: scaleX(0);
+    transform-origin: left;
+    transition: transform 0.4s cubic-bezier(0.25, 1, 0.5, 1);
+  }
+
+  /* Floating label active and focus states */
+  .form-input:focus ~ .form-label,
+  .form-input:not(:placeholder-shown) ~ .form-label,
+  .form-textarea:focus ~ .form-label,
+  .form-textarea:not(:placeholder-shown) ~ .form-label {
+    transform: translateY(-24px) scale(0.8);
+    color: #0968e5;
+  }
+
+  .form-input:focus ~ .input-border,
+  .form-textarea:focus ~ .input-border {
+    transform: scaleX(1);
+  }
+
+  .form-input:focus, .form-textarea:focus {
+    border-color: transparent;
+  }
+
+  /* Interactive Submit Button matching user's circular mockup design style */
+  .submit-container {
+    margin-top: 36px;
+    display: flex;
+    justify-content: flex-end;
+  }
+
+  .btn-submit {
+    display: flex;
+    align-items: center;
+    gap: 16px;
+    background: transparent;
+    border: none;
+    color: #ffffff;
+    font-size: 0.95rem;
+    font-weight: 700;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    cursor: pointer;
+    padding: 0;
+    outline: none;
+    transition: color 0.3s ease;
+  }
+
+  .btn-arrow {
+    width: 48px;
+    height: 48px;
+    border-radius: 50%;
+    background: #ffffff;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: #0a0a0a;
+    transition: transform 0.4s cubic-bezier(0.25, 1, 0.3, 1), background-color 0.3s ease, color 0.3s ease;
+  }
+
+  .arrow-svg {
+    width: 20px;
+    height: 20px;
+    transform: rotate(0deg);
+    transition: transform 0.4s cubic-bezier(0.25, 1, 0.3, 1);
+  }
+
+  .btn-submit:hover .btn-arrow {
+    background: #0968e5;
+    color: #ffffff;
+    transform: scale(1.08);
+  }
+
+  .btn-submit:hover .arrow-svg {
+    transform: rotate(45deg);
+  }
+
+  .btn-submit:hover {
+    color: #0968e5;
+  }
+
+  /* Form Submission Status */
+  .form-status {
+    margin-top: 20px;
+    font-size: 0.9rem;
+    text-align: right;
+    transition: all 0.4s ease;
+    opacity: 0;
+  }
+
+  .form-status.success {
+    color: #22c55e;
+    opacity: 1;
+  }
+
+  .form-status.error {
+    color: #ef4444;
+    opacity: 1;
+  }
+
+  /* Responsiveness */
+  @media (max-width: 1200px) {
+    .video-frame-box {
+      padding: 50px 6%;
+    }
+    .contact-content-wrapper {
+      gap: 40px;
+    }
+  }
+
+  @media (max-width: 1024px) {
+    .contact-content-wrapper {
+      grid-template-columns: 1fr;
+      gap: 48px;
+    }
+    .video-frame-box {
+      min-height: auto;
+    }
+    .form-desc {
+      max-width: 100%;
+    }
+  }
+
+  @media (max-width: 768px) {
+    .contact-video-section {
+      padding: 0px 16px 40px 16px;
+    }
+    .video-frame-box {
+      border-radius: 32px;
+      padding: 40px 24px;
+    }
+    .video-underlay {
+      border-radius: 32px;
+    }
+    .glass-contact-form {
+      padding: 30px 20px;
+      border-radius: 24px;
+    }
+    .form-grid {
+      grid-template-columns: 1fr;
+      row-gap: 28px;
+    }
+    .full-width {
+      grid-column: span 1;
+    }
+    .form-title {
+      font-size: 2.2rem;
+    }
+    .btn-arrow {
+      width: 42px;
+      height: 42px;
+    }
+  }
+
+  @media (max-width: 480px) {
+    .video-frame-box {
+      padding: 36px 16px;
+      border-radius: 24px;
+    }
+    .video-underlay {
+      border-radius: 24px;
+    }
+    .form-title {
+      font-size: 1.8rem;
+    }
+  }
+</style>
+
+<script>
+  import { gsap } from "gsap";
+  import { ScrollTrigger } from "gsap/ScrollTrigger";
+
+  gsap.registerPlugin(ScrollTrigger);
+
+  window.addEventListener('load', () => {
+    const section = document.querySelector('.contact-video-section');
+    const container = document.querySelector('.video-frame-box');
+    const formItems = document.querySelectorAll('.input-group');
+    const btnSubmit = document.querySelector('.btn-submit');
+    const bgVideo = document.querySelector('.bg-video');
+
+    if (!section || !container) return;
+
+    // Entry Animations
+    const tl = gsap.timeline({
+      scrollTrigger: {
+        trigger: section,
+        start: "top 85%",
+        toggleActions: "play none none reverse"
+      }
+    });
+
+    tl.fromTo(container, 
+      { opacity: 0, y: 40, scale: 0.96 },
+      { opacity: 1, y: 0, scale: 1, duration: 1.2, ease: "power3.out" }
+    )
+    .fromTo(".contact-video-section .eyebrow-video", 
+      { opacity: 0, x: -20 },
+      { opacity: 1, x: 0, duration: 0.6, ease: "power2.out" },
+      "-=0.8"
+    )
+    .fromTo(".contact-video-section .form-title", 
+      { opacity: 0, y: 20 },
+      { opacity: 1, y: 0, duration: 0.8, ease: "power3.out" },
+      "-=0.6"
+    )
+    .fromTo(".contact-video-section .form-desc", 
+      { opacity: 0, y: 15 },
+      { opacity: 1, y: 0, duration: 0.8, ease: "power2.out" },
+      "-=0.6"
+    )
+    .fromTo(".glass-contact-form", 
+      { opacity: 0, x: 30 },
+      { opacity: 1, x: 0, duration: 1.0, ease: "power3.out" },
+      "-=0.8"
+    )
+    .fromTo(formItems, 
+      { opacity: 0, y: 15 },
+      { opacity: 1, y: 0, duration: 0.6, stagger: 0.1, ease: "power2.out" },
+      "-=0.6"
+    )
+    .fromTo(btnSubmit, 
+      { opacity: 0, scale: 0.8 },
+      { opacity: 1, scale: 1, duration: 0.5, ease: "back.out(1.7)" },
+      "-=0.3"
+    );
+
+    // Subtle video parallax scrolling within its rounded frame
+    if (bgVideo) {
+      gsap.fromTo(bgVideo, 
+        { yPercent: -6, scale: 1.15 },
+        {
+          yPercent: 6,
+          scale: 1.15,
+          ease: "none",
+          force3D: true,
+          scrollTrigger: {
+            trigger: container,
+            start: "top bottom",
+            end: "bottom top",
+            scrub: true
+          }
+        }
+      );
+    }
+
+    // Dynamic Form Submission Logic
+    const form = document.getElementById('contact-synthesis-form') as HTMLFormElement;
+    const statusMsg = document.getElementById('form-status-msg');
+    const submitBtn = form?.querySelector('.btn-submit') as HTMLButtonElement | null;
+    const submitLabel = submitBtn?.querySelector('span');
+
+    if (form && statusMsg) {
+      form.addEventListener('submit', async (e) => {
+        e.preventDefault();
+
+        // Lock button during submission
+        if (submitBtn) submitBtn.disabled = true;
+        if (submitLabel) submitLabel.textContent = 'Sending…';
+        statusMsg.textContent = '';
+        statusMsg.className = 'form-status';
+
+        try {
+          const res = await fetch('/api/contact', {
+            method: 'POST',
+            headers: { 'Content-Type': 'application/json' },
+            body: JSON.stringify({
+              name:    (form.querySelector('#name') as HTMLInputElement).value,
+              email:   (form.querySelector('#email') as HTMLInputElement).value,
+              message: (form.querySelector('#message') as HTMLTextAreaElement).value,
+            }),
+          });
+
+          const json = await res.json() as { success?: boolean; error?: string };
+
+          if (res.ok && json.success) {
+            statusMsg.textContent = '✓ Message sent. We\'ll be in touch shortly.';
+            statusMsg.className = 'form-status success';
+            form.reset();
+          } else {
+            statusMsg.textContent = json.error ?? 'Something went wrong. Please try again.';
+            statusMsg.className = 'form-status error';
+          }
+        } catch {
+          statusMsg.textContent = 'Network error. Please check your connection and try again.';
+          statusMsg.className = 'form-status error';
+        } finally {
+          if (submitBtn) submitBtn.disabled = false;
+          if (submitLabel) submitLabel.textContent = 'Submit Inquiry';
+          // Fade status after 6 seconds
+          setTimeout(() => {
+            gsap.to(statusMsg, { opacity: 0, duration: 0.8 });
+          }, 6000);
+        }
+      });
+    }
+  });
+</script>

@@ -1,0 +1,79 @@
+---
+// src/lc/components/SmoothScroll.astro
+// Sitewide Lenis smooth scroll. Desktop-only (matches the 768px breakpoint used
+// by every parallax component), synced with GSAP ScrollTrigger so all scrub/pin
+// animations stay frame-accurate. Mobile is left on native scroll, untouched.
+---
+
+<script>
+  import Lenis from 'lenis';
+  import 'lenis/dist/lenis.css';
+  import { gsap } from 'gsap';
+  import { ScrollTrigger } from 'gsap/ScrollTrigger';
+
+  gsap.registerPlugin(ScrollTrigger);
+
+  const prefersReduced = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+  // Match the exact breakpoint the rest of the site uses to gate heavy scroll work.
+  const isDesktop = window.innerWidth > 768;
+
+  if (isDesktop && !prefersReduced) {
+    // Native CSS smooth scroll fights Lenis's programmatic scrollTo — disable it
+    // on desktop only. Mobile keeps the CSS `scroll-behavior: smooth`.
+    document.documentElement.style.scrollBehavior = 'auto';
+
+    const lenis = new Lenis({
+      duration: 1.1,
+      easing: (t: number) => Math.min(1, 1.001 - Math.pow(2, -10 * t)),
+      smoothWheel: true,
+    });
+
+    // Keep ScrollTrigger's cached scroll position in sync with Lenis.
+    lenis.on('scroll', ScrollTrigger.update);
+
+    // Drive Lenis from GSAP's ticker so scrubbed/pinned timelines stay in lockstep.
+    gsap.ticker.add((time: number) => {
+      lenis.raf(time * 1000);
+    });
+    gsap.ticker.lagSmoothing(0);
+
+    // Smooth in-page anchor navigation (e.g. href="#contact").
+    document.querySelectorAll('a[href^="#"]').forEach((link) => {
+      link.addEventListener('click', (e) => {
+        const id = link.getAttribute('href');
+        if (!id || id === '#') return;
+        const target = document.querySelector(id);
+        if (!target) return;
+        e.preventDefault();
+        lenis.scrollTo(target as HTMLElement, { offset: -70 });
+      });
+    });
+  }
+
+  /* ── Keep ScrollTrigger positions accurate after async layout shifts ──────
+     Each section's scroll animation measures its start/end positions when it
+     inits on `window load`. But the Outfit/Inter webfonts swap in *after* load
+     (preloaded in Layout.astro) and the `loading="lazy"` images below the fold
+     decode only as they are approached — both reflow the page and leave the
+     lower sections (the 2nd and 3rd animated blocks) with stale trigger
+     positions, so they fail to fire (or fire only partially) on the first
+     scroll. Re-measuring once the layout truly settles fixes it. refresh() is a
+     cheap no-op when nothing moved, and because GSAP is a shared singleton this
+     updates every component's triggers at once. Runs on all viewports — the
+     triggers exist on mobile too, independent of Lenis. */
+  let refreshTimer: ReturnType<typeof setTimeout> | undefined;
+  const scheduleRefresh = () => {
+    clearTimeout(refreshTimer);
+    refreshTimer = setTimeout(() => ScrollTrigger.refresh(), 200);
+  };
+
+  // After the initial load — component triggers have just been created.
+  window.addEventListener('load', scheduleRefresh);
+  // After the webfonts finish loading and reflow the text.
+  document.fonts?.ready.then(scheduleRefresh);
+  // As each below-the-fold lazy image decodes and shifts layout.
+  // `load` does not bubble, so it must be captured on the document.
+  document.addEventListener('load', (e) => {
+    if (e.target instanceof HTMLImageElement) scheduleRefresh();
+  }, true);
+</script>

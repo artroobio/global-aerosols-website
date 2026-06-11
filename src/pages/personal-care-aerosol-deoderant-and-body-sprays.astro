@@ -1,0 +1,573 @@
+---
+import Layout from '../layouts/Layout.astro';
+
+const blogSchema = {
+  "@type": "Article",
+  "@id": "https://www.globalformulation.com/personal-care-aerosol-deoderant-and-body-sprays/#article",
+  "isPartOf": {
+    "@id": "https://www.globalformulation.com/personal-care-aerosol-deoderant-and-body-sprays"
+  },
+  "author": {
+    "@type": "Person",
+    "name": "Absar Khan",
+    "url": "https://www.linkedin.com/in/absar-khan-aerosol-consultant-and-formulator-78359b162"
+  },
+  "headline": "Personal Care Aerosols Explained: Deodorant & Body Spray Systems",
+  "datePublished": "2026-04-20",
+  "dateModified": "2026-04-20",
+  "mainEntityOfPage": {
+    "@type": "WebPage",
+    "@id": "https://www.globalformulation.com/personal-care-aerosol-deoderant-and-body-sprays"
+  },
+  "publisher": {
+    "@type": "Organization",
+    "name": "Global Formulation",
+    "logo": {
+      "@type": "ImageObject",
+      "url": "https://www.globalformulation.com/logo.png"
+    }
+  },
+  "image": {
+    "@type": "ImageObject",
+    "url": "https://placehold.co/1200x630",
+    "width": 1200,
+    "height": 630
+  },
+  "description": "Personal care aerosols—particularly deodorants and body sprays—represent one of the most technically demanding yet commercially scalable product categories in the FMCG sector."
+};
+const breadcrumbSchema = {
+  "@type": "BreadcrumbList",
+  "@id": "https://www.globalformulation.com/personal-care-aerosol-deoderant-and-body-sprays/#breadcrumb",
+  "itemListElement": [
+    {
+      "@type": "ListItem",
+      "position": 1,
+      "name": "Home",
+      "item": "https://www.globalformulation.com/"
+    },
+    {
+      "@type": "ListItem",
+      "position": 2,
+      "name": "Blog",
+      "item": "https://www.globalformulation.com/blog"
+    },
+    {
+      "@type": "ListItem",
+      "position": 3,
+      "name": "Personal Care Aerosols Explained",
+      "item": "https://www.globalformulation.com/personal-care-aerosol-deoderant-and-body-sprays"
+    }
+  ]
+};
+const schemas = [blogSchema, breadcrumbSchema];
+---
+
+<Layout
+  title="Personal Care Aerosols Explained: Deodorant & Body Spray Systems | Global Formulation"
+  description="Personal care aerosols—particularly deodorants and body sprays—represent one of the most technically demanding yet commercially scalable product categories in the FMCG sector."
+  canonical="https://www.globalformulation.com/personal-care-aerosol-deoderant-and-body-sprays"
+  ogImage="https://assets.zyrosite.com/A3QlOV94WLSaL6xE/aerosol-can-cross-section-diagram-MYf4Y9ARTiNEfLSl.jpg"
+  ogType="article"
+  schemaJson={schemas}
+>
+  <main class="section-container" style="max-width: 100%; padding-left: 48px; padding-right: 48px; padding-top: 40px; padding-bottom: 80px;">
+    
+    <!-- HTML5 Compliant Breadcrumbs -->
+    <nav aria-label="Breadcrumb" style="display: flex; gap: 8px; font-size: 0.85rem; color: var(--text-muted); margin-bottom: 24px; font-family: 'Inter', sans-serif;">
+      <a href="/" style="color: var(--text-muted);">Home</a>
+      <span>&gt;</span>
+      <a href="/blog" style="color: var(--text-muted);">Blog</a>
+      <span>&gt;</span>
+      <span style="color: var(--text-primary); font-weight: 500;">Cosmetics & Personal Care</span>
+    </nav>
+
+    <!-- Main article container -->
+    <article class="blog-prose">
+      <header class="post-header">
+        <h1 class="gradient-text" style="font-size: 3rem; line-height: 1.15; font-weight: 900; margin-bottom: 20px;">
+          Personal Care Aerosols Explained: Deodorant & Body Spray Systems
+        </h1>
+        
+        <!-- Post meta details -->
+        <div style="display: flex; align-items: center; gap: 16px; font-size: 0.9rem; color: var(--text-muted); margin-bottom: 30px; font-family: 'Inter', sans-serif; font-weight: 500; border-bottom: 1px solid var(--border); padding-bottom: 20px;">
+          <div style="display: flex; align-items: center; gap: 8px;">
+            <span style="width: 28px; height: 28px; background: var(--primary); color: white; display: flex; align-items: center; justify-content: center; border-radius: 50%; font-weight: 700; font-size: 0.75rem;">AK</span>
+            <span>By <strong>Absar Khan</strong></span>
+          </div>
+          <span style="width: 4px; height: 4px; border-radius: 50%; background-color: var(--border);"></span>
+          <span>Published: <strong>Apr 20, 2026</strong></span>
+          <span style="width: 4px; height: 4px; border-radius: 50%; background-color: var(--border);"></span>
+          <span>Reading Time: <strong>18 min read</strong></span>
+          <span style="width: 4px; height: 4px; border-radius: 50%; background-color: var(--border);"></span>
+          <span style="background: #e0f2fe; color: #0369a1; padding: 2px 10px; border-radius: 50px; font-size: 0.75rem; font-weight: 700; text-transform: uppercase;">Cosmetics & Personal Care</span>
+        </div>
+      </header>
+
+      <!-- Primary Featured Image -->
+      <div class="image-slot">
+        <img 
+          src="https://assets.zyrosite.com/A3QlOV94WLSaL6xE/aerosol-can-cross-section-diagram-MYf4Y9ARTiNEfLSl.jpg" 
+          alt="Diagram showing aerosol can cross-section with valve, dip tube, propellant, and liquid phases" 
+          width="1200" 
+          height="800" 
+          loading="eager" 
+        />
+      </div>
+
+      <!-- Table of Contents -->
+      <div class="box" style="background: #f8fafc; border: 1px solid var(--border); border-radius: var(--radius-lg); padding: 24px; margin: 30px 0;">
+        <h3 style="margin-top: 0; font-family: 'Outfit', sans-serif; color: var(--text-primary); font-size: 1.25rem; font-weight: 700; border-bottom: 2px solid var(--border); padding-bottom: 8px;">Guide Contents</h3>
+        <ul style="display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 10px; list-style-type: none; padding-left: 0; margin-bottom: 0;">
+          
+        </ul>
+      </div>
+
+      <div class="lead"><!-- Breadcrumb -->
+        <nav class="breadcrumb" aria-label="Breadcrumb">
+            <a href="https://www.globalformulation.com/">Home</a> <span>/</span>
+            <a href="/blog">Blog</a> <span>/</span>
+            <span aria-current="page">Personal Care Aerosols</span>
+        </nav>
+
+        
+            
+
+            <!-- Static In-Body Table of Contents -->
+            
+
+            <p class="intro-text">Personal care aerosols—particularly deodorants and body sprays—represent one of the
+                most technically demanding yet commercially scalable product categories in the FMCG sector. While they
+                appear simple to consumers, these products are complex engineered systems where chemistry, packaging,
+                fluid dynamics, safety, and regulation intersect. For students, startups, and entrepreneurs,
+                understanding the system-level architecture is essential before attempting product development or
+                commercialization.</p>
+
+            <p>This article explains deodorant and body spray aerosols from a technical and manufacturing perspective,
+                focusing on how these systems function, how they are produced, and what challenges govern their
+                performance—without disclosing formulations or actionable recipes.</p>
+
+            <h2 id="introduction">Introduction to Personal Care Aerosols</h2>
+
+            <p>Personal care aerosols are pressurized dispensing systems designed to deliver functional cosmetic
+                products in a controlled spray form. Unlike creams or roll-ons, aerosols rely on a sealed package
+                containing a liquid concentrate and a propellant, which together create atomization upon actuation. This
+                delivery method offers hygiene, ease of application, and consistent coverage, which explains its global
+                adoption.</p>
+
+            <p>From an industrial standpoint, deodorant and body spray aerosols are not just cosmetic products; they are
+                regulated pressure vessels with chemical, mechanical, and safety constraints. Their development
+                therefore requires cross-disciplinary understanding rather than isolated formulation knowledge.</p>
+
+            <h3>Key characteristics of personal care aerosol systems include:</h3>
+            <table>
+                <tbody>
+                    <tr>
+                        <td>Pressurized dispensing using liquefied or compressed propellants</td>
+                    </tr>
+                    <tr>
+                        <td>Engineered spray patterns controlled by valve–actuator design</td>
+                    </tr>
+                    <tr>
+                        <td>Strict safety and regulatory oversight due to flammability and pressure</td>
+                    </tr>
+                </tbody>
+            </table>
+
+            <h2 id="deodorant-vs-body-spray">Deodorant vs Body Spray – System-Level Differences</h2>
+
+            <p>Although deodorants and body sprays often share similar packaging formats, they are designed to meet
+                fundamentally different functional objectives. These differences influence system design, testing
+                protocols, and regulatory classification. Treating them as interchangeable products is a common beginner
+                mistake that leads to performance or compliance issues.</p>
+
+            <p>At the system level, deodorants prioritize odor control mechanisms, while body sprays focus on fragrance
+                delivery and sensorial experience. This distinction affects everything from spray rate to consumer usage
+                frequency.</p>
+
+            <h3>System-level differences typically involve:</h3>
+            <table>
+                <tbody>
+                    <tr>
+                        <td>Functional intent: odor suppression vs fragrance projection</td>
+                    </tr>
+                    <tr>
+                        <td>Application zones: underarm vs full body</td>
+                    </tr>
+                    <tr>
+                        <td>Usage frequency and dose per actuation</td>
+                    </tr>
+                </tbody>
+            </table>
+
+            <h2 id="core-components">Core Components of a Deodorant & Body Spray Aerosol System</h2>
+
+            <p>An aerosol product is best understood as an integrated system rather than a chemical mixture. Each
+                component—liquid phase, propellant, container, valve, and actuator—must be compatible with all others
+                across the product’s shelf life. Failure in any one component can compromise safety or performance.</p>
+
+            <p>This systems approach is why aerosol development cannot be reduced to formulations alone. Packaging
+                selection and mechanical design are equally critical to success.</p>
+
+            <h3>Active System (Functional Concept)</h3>
+            <p>The active system defines what the product is intended to do, such as controlling odor or delivering
+                fragrance. This function determines the overall product architecture, including solubility requirements,
+                delivery rate, and exposure pattern. Importantly, actives must remain stable and evenly delivered
+                throughout the product’s life.</p>
+
+            <h3>Solvent and Carrier Architecture</h3>
+            <p>The carrier system enables actives and fragrances to be delivered through the spray mechanism. Carrier
+                choice directly affects evaporation rate, skin feel, spray visibility, and compatibility with packaging
+                materials. Improper carrier architecture is a leading cause of clogging, inconsistent spray, and residue
+                complaints.</p>
+
+            <h3>Propellant Selection and Spray Behavior</h3>
+            <p>Propellants provide the energy required for dispensing and atomization. Their physical properties
+                influence spray pressure, droplet size, and discharge consistency. Propellant selection also determines
+                flammability classification and transportation constraints.</p>
+
+            <h3>Valve, Actuator, and Spray Pattern Engineering</h3>
+            <p>The valve–actuator assembly controls how the product is released. Spray angle, flow rate, and droplet
+                distribution are mechanical outcomes of this design. Even minor mismatches between formulation rheology
+                and valve design can result in poor consumer experience.</p>
+
+            <h3>Key system components include:</h3>
+            <table>
+                <tbody>
+                    <tr>
+                        <td>Liquid concentrate (functional phase)</td>
+                    </tr>
+                    <tr>
+                        <td>Propellant (energy source)</td>
+                    </tr>
+                    <tr>
+                        <td>Valve assembly (flow control)</td>
+                    </tr>
+                    <tr>
+                        <td>Actuator (spray shaping)</td>
+                    </tr>
+                    <tr>
+                        <td>Aerosol can (pressure containment)</td>
+                    </tr>
+                </tbody>
+            </table>
+
+            <div class="image-figure">
+                
+                <p>[IMAGE NOTE 1: Diagram showing aerosol can cross-section with valve, dip tube, propellant, and liquid
+                    phases]</p>
+            </div>
+
+            <h2 id="manufacturing-process">Manufacturing Process Overview (End-to-End)</h2>
+
+            <p>Manufacturing personal care aerosols is a controlled industrial process governed by safety standards and
+                quality systems. Unlike non-pressurized cosmetics, aerosol manufacturing introduces risks related to
+                pressure, flammability, and gas handling, requiring specialized infrastructure.</p>
+
+            <p>From bulk compounding to final packing, each step must be validated to ensure consistency and compliance.
+            </p>
+
+            <h3>Bulk Compounding Philosophy</h3>
+            <p>Bulk preparation focuses on achieving homogeneity, stability, and compatibility—not just mixing
+                ingredients. Temperature control, agitation method, and contamination prevention are critical,
+                particularly for fragrance-containing systems.</p>
+
+            <h3>Aerosol Filling Line Configuration</h3>
+            <p>Aerosol filling lines are purpose-built systems designed to handle liquids and propellants safely. Line
+                configuration depends on can size, propellant type, and target production volume. Automation level
+                directly impacts consistency and labor safety.</p>
+
+            <h3>Crimping, Gassing, and Leak Testing</h3>
+            <p>Crimping secures the valve to the can, while gassing introduces the propellant under controlled
+                conditions. Leak testing is mandatory to ensure container integrity and prevent hazardous failures
+                during storage or transport.</p>
+
+            <h3>Stability, Compatibility, and Shelf-Life Considerations</h3>
+            <p>Finished products undergo stability and compatibility testing to verify that pressure, spray performance,
+                and chemical integrity remain within specifications over time.</p>
+
+            <h3>Manufacturing stages typically include:</h3>
+            <table>
+                <tbody>
+                    <tr>
+                        <td>Bulk liquid preparation</td>
+                    </tr>
+                    <tr>
+                        <td>Can filling and valve crimping</td>
+                    </tr>
+                    <tr>
+                        <td>Propellant charging</td>
+                    </tr>
+                    <tr>
+                        <td>Water bath or pressure-based leak testing</td>
+                    </tr>
+                    <tr>
+                        <td>Final inspection and packing</td>
+                    </tr>
+                </tbody>
+            </table>
+
+            <div class="image-figure">
+                
+      <div class="image-slot">
+        <img 
+          src="https://assets.zyrosite.com/A3QlOV94WLSaL6xE/aeorsol-machine-m7VD5XvbV3HXVxnk.jpg" 
+          alt="Industrial aerosol filling line with crimping and gassing stations" 
+          width="1200" 
+          height="800" 
+          loading="lazy" 
+        />
+      </div>
+      
+                <p>[IMAGE NOTE 2: Industrial aerosol filling line with crimping and gassing stations]</p>
+            </div>
+
+            <h2 id="safety-compliance">Safety, Compliance, and Regulatory Landscape</h2>
+
+            <p>Personal care aerosols are regulated as both cosmetic products and pressurized containers. Compliance
+                failures can lead to product recalls, transport bans, or legal penalties. Regulations vary by region,
+                but core safety principles are globally aligned.</p>
+
+            <p>Manufacturers must address labeling, flammability warnings, pressure limits, and ingredient compliance
+                simultaneously.</p>
+
+            <h3>Indian Regulatory Framework</h3>
+            <p>In India, aerosol products fall under cosmetic regulations, legal metrology requirements, and transport
+                safety rules. Label declarations, net content accuracy, and hazard warnings are mandatory.</p>
+
+            <h3>Global Compliance Considerations</h3>
+            <p>International markets introduce additional requirements such as VOC limits, environmental reporting, and
+                region-specific cosmetic standards. Export-oriented brands must design products to meet the strictest
+                applicable framework.</p>
+
+            <h3>IFRA, VOC, and Flammability Considerations</h3>
+            <p>Fragrance use is governed by IFRA standards, while VOC regulations influence solvent and propellant
+                selection. Flammability classification affects packaging, labeling, and logistics.</p>
+
+            <h3>Core compliance areas include:</h3>
+            <table>
+                <tbody>
+                    <tr>
+                        <td>Cosmetic regulations and labeling laws</td>
+                    </tr>
+                    <tr>
+                        <td>Transport and storage safety standards</td>
+                    </tr>
+                    <tr>
+                        <td>Environmental and VOC restrictions</td>
+                    </tr>
+                </tbody>
+            </table>
+
+            <h2 id="cost-structure">Cost Structure and Commercial Viability</h2>
+
+            <p>Cost competitiveness in deodorant and body spray aerosols is driven more by packaging and operations than
+                by the liquid concentrate itself. Entrepreneurs often underestimate the capital and compliance costs
+                involved.</p>
+
+            <p>Understanding cost structure early helps avoid unviable pricing strategies.</p>
+
+            <h3>Raw Material Cost Buckets</h3>
+            <p>Costs are distributed across liquids, propellants, cans, valves, actuators, and secondary packaging.
+                Packaging components typically dominate total cost.</p>
+
+            <h3>Contract Filling vs In-House Manufacturing</h3>
+            <p>Contract filling allows market entry with lower capital investment, while in-house manufacturing offers
+                long-term control and margin optimization.</p>
+
+            <h3>Cost drivers generally include:</h3>
+            <table>
+                <tbody>
+                    <tr>
+                        <td>Aerosol can and valve cost</td>
+                    </tr>
+                    <tr>
+                        <td>Propellant logistics and storage</td>
+                    </tr>
+                    <tr>
+                        <td>Filling line efficiency and yields</td>
+                    </tr>
+                </tbody>
+            </table>
+
+            <h2 id="challenges">Common Technical and Commercial Challenges</h2>
+
+            <p>Many aerosol failures are not due to formulation errors but system mismatches or process oversights.
+                These issues often appear only after scale-up or during real-world usage.</p>
+
+            <p>Understanding common failure modes is critical for risk mitigation.</p>
+
+            <h3>Typical challenges include:</h3>
+            <table>
+                <tbody>
+                    <tr>
+                        <td>Inconsistent spray performance</td>
+                    </tr>
+                    <tr>
+                        <td>Valve clogging or leakage</td>
+                    </tr>
+                    <tr>
+                        <td>Fragrance instability over time</td>
+                    </tr>
+                    <tr>
+                        <td>Regulatory non-compliance during export</td>
+                    </tr>
+                </tbody>
+            </table>
+
+            <div class="image-figure">
+                
+      <div class="image-slot">
+        <img 
+          src="https://assets.zyrosite.com/A3QlOV94WLSaL6xE/aerosol-spray-pattern-atomization-DGjT1cuXiQZFImc2.png" 
+          alt="Spray pattern comparison showing uniform vs defective aerosol discharge" 
+          width="1200" 
+          height="800" 
+          loading="lazy" 
+        />
+      </div>
+      
+                <p>[IMAGE NOTE 3: Spray pattern comparison showing uniform vs defective aerosol discharge]</p>
+            </div>
+
+            <h2 id="market-trends">Market Trends and Innovation in Personal Care Aerosols</h2>
+
+            <p>Innovation in personal care aerosols is driven by regulatory pressure, sustainability goals, and changing
+                consumer expectations. While the fundamental aerosol system remains unchanged, design priorities
+                continue to evolve.</p>
+
+            <p>Current trends focus on safety perception, environmental impact, and sensorial differentiation rather
+                than radical technology shifts.</p>
+
+            <h3>Key trend areas include:</h3>
+            <table>
+                <tbody>
+                    <tr>
+                        <td>Low-VOC and eco-focused positioning</td>
+                    </tr>
+                    <tr>
+                        <td>Sensitive-skin and minimalist claims</td>
+                    </tr>
+                    <tr>
+                        <td>Improved spray feel and coverage control</td>
+                    </tr>
+                </tbody>
+            </table>
+
+            <h2 id="startups">How Startups Can Enter the Deodorant & Body Spray Market</h2>
+
+            <p>Market entry requires strategic decisions beyond product design. Business model, manufacturing strategy,
+                and regulatory readiness must align from day one.</p>
+
+            <p>Startups benefit most from phased entry approaches that reduce technical and financial risk.</p>
+
+            <h3>Common entry pathways include:</h3>
+            <table>
+                <tbody>
+                    <tr>
+                        <td>White-label sourcing for market testing</td>
+                    </tr>
+                    <tr>
+                        <td>Contract manufacturing for early scale</td>
+                    </tr>
+                    <tr>
+                        <td>Custom system development for differentiation</td>
+                    </tr>
+                </tbody>
+            </table>
+
+            <h2 id="conclusion">Conclusion – Building a Scalable Personal Care Aerosol Brand</h2>
+
+            <p>Deodorant and body spray aerosols are sophisticated engineered systems that demand multidisciplinary
+                understanding. Success in this category depends not on isolated formulation knowledge, but on integrated
+                system design, compliant manufacturing, and disciplined scale-up.</p>
+
+            <p>For students and entrepreneurs, mastering the aerosol ecosystem is the foundation for safe, scalable, and
+                commercially viable products.</p></div>
+
+
+
+      <!-- Contact Box -->
+      <div class="cta" style="background: linear-gradient(135deg, var(--primary) 0%, var(--secondary) 100%); color: #ffffff; padding: 30px; border-radius: var(--radius-lg); margin-top: 40px; display: flex; flex-direction: column; justify-content: space-between; align-items: flex-start; gap: 20px; md-flex-direction: row; md-align-items: center;">
+        <div class="left">
+          <p style="margin:0 0 8px 0; font-size:1.25rem; font-weight:800; font-family: 'Outfit', sans-serif;">Need Technical Support for Aerosol Formulations?</p>
+          <p style="margin:0 0 16px 0; font-size:0.95rem; line-height:1.6; opacity:0.95;">
+            Partner with Global Formulation to audit, scale up, and troubleshoot your aerosol chemistry, canister pressure calculations, filling lines, and safety systems.
+          </p>
+          <p style="margin:0; font-size:0.9rem; line-height:1.6; font-family: monospace;">
+            Email: <strong>consulting@globalformulation.com</strong><br />
+            Website: <a href="/" style="color: #ffffff; font-weight: 600; text-decoration: underline;">https://www.globalformulation.com</a><br />
+            Phone: <strong>+91 9819548320 &nbsp;&nbsp; +91 8169102990</strong>
+          </p>
+        </div>
+        <a href="mailto:consulting@globalformulation.com" class="btn" style="background:#ffffff; color:var(--primary); font-weight:700; padding:12px 24px; border-radius:var(--radius-sm); border:none; text-decoration:none; transition: all var(--transition-fast);">
+          Request Consultation
+        </a>
+      </div>
+
+      <!-- ABOUT THE AUTHOR -->
+      <section class="section" id="about-author" style="margin-top: 50px; background: #f8fafc; border: 1px solid var(--border); padding: 30px; border-radius: var(--radius-lg); display: flex; flex-direction: column; gap: 20px; md-flex-direction: row;">
+        <div style="flex-shrink: 0; width: 60px; height: 60px; background: linear-gradient(135deg, var(--primary) 0%, var(--secondary) 100%); color: white; display: flex; align-items: center; justify-content: center; border-radius: 50%; font-size: 1.5rem; font-weight: 800; font-family: 'Outfit', sans-serif; box-shadow: var(--shadow-md);">
+          AK
+        </div>
+        <div>
+          <h3 style="margin-top: 0; margin-bottom: 8px; font-family: 'Outfit', sans-serif; font-size: 1.3rem; font-weight: 700; color: var(--text-primary);">About the Specialist</h3>
+          <p style="margin-top: 0; margin-bottom: 12px; font-size: 0.95rem; line-height: 1.6; color: var(--text-muted);">
+            <strong>Absar Khan</strong> is the principal consultant and chemical formulation architect at <strong>Global Formulation</strong>. He possesses cross-disciplinary engineering expertise spanning aerosol gassing systems, pharmaceutical manufacturing, sterile injectables, cosmetics, and green chemical plant setups. Absar leads scientific and engineering advisory teams supporting manufacturers globally in technology selection, GMP layouts, validation frameworks, and regulatory strategies.
+          </p>
+          <p style="margin: 0; font-size: 0.9rem;">
+            <strong>LinkedIn Portfolio:</strong> 
+            <a 
+              href="https://www.linkedin.com/in/absar-khan-aerosol-consultant-and-formulator-78359b162" 
+              style="font-weight: 700; color: var(--primary); text-decoration: underline;"
+            >
+              Connect with Absar Khan on LinkedIn
+            </a>
+          </p>
+        </div>
+      </section>
+
+      <!-- Footer copyright -->
+      <footer style="text-align: center; margin-top: 50px; color: var(--text-muted); font-size: 0.85rem; font-family: 'Inter', sans-serif;">
+        &copy; {new Date().getFullYear()} Global Formulation. All rights reserved. 
+        <br />
+        <span style="font-size: 0.75rem; opacity: 0.8;">Centralised Aerosol Dosing &amp; Chemical Scale-Up Engineering.</span>
+      </footer>
+
+    </article>
+  </main>
+</Layout>
+
+<style>
+  .blog-prose h1, 
+  .blog-prose h2, 
+  .blog-prose h3 {
+    font-family: 'Playfair Display', 'Outfit', serif !important;
+  }
+  
+  .blog-prose h2 {
+    color: #ffffff !important;
+    background-color: var(--secondary) !important;
+    padding: 12px 20px;
+    border-radius: var(--radius-md);
+    border-bottom: none !important;
+    font-weight: 700;
+  }
+
+  .blog-prose p, 
+  .blog-prose ul, 
+  .blog-prose ol,
+  .blog-prose h3,
+  .blog-prose .lead,
+  .blog-prose .image-slot,
+  .blog-prose .box,
+  .blog-prose .cta,
+  .blog-prose .table-container,
+  .blog-prose #faq {
+    max-width: 100%;
+    width: 100%;
+  }
+
+  .blog-prose .lead {
+    margin: 2rem 0;
+  }
+</style>

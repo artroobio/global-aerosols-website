@@ -1,0 +1,847 @@
+---
+import Layout from '../lc/layouts/Layout.astro';
+import ServicePageAnimations from '../lc/components/ServicePageAnimations.astro';
+
+const capabilities = [
+  'Lab-to-pilot and pilot-to-commercial scale-up methodology and planning',
+  'Mixing hydrodynamics — impeller selection, tip speed, and power number scaling',
+  'Heat transfer coefficient recalculation across vessel geometries and jacket types',
+  'Reaction time and residence time adjustment for production-scale kinetics',
+  'Raw material handling — bulk storage, transfer, and dosing system design',
+  'Yield and conversion discrepancy diagnosis between lab and production',
+  'Equipment selection and vendor specification for new plant build',
+  'Batch record and manufacturing SOP development for production teams',
+  'First production run support and in-plant troubleshooting',
+  'Ongoing optimisation once commercial production is established',
+];
+
+const steps = [
+  {
+    n: '01',
+    t: 'Scale-Up Assessment',
+    d: 'Review the lab process, identify every parameter that will behave differently at scale — mixing, heat transfer, raw material addition rate, hold times — and build a risk-ranked scale-up plan before a single production batch runs.',
+  },
+  {
+    n: '02',
+    t: 'Pilot Scale Trial',
+    d: 'Where required, run intermediate pilot scale trials to validate critical parameters and catch discrepancies early. Pilot data de-risks the commercial scale-up and provides the evidence base for batch record development.',
+  },
+  {
+    n: '03',
+    t: 'Production Engineering',
+    d: 'Define the production-scale operating parameters: mixing conditions, temperature profiles, addition sequences, hold times, and QC sampling points — calibrated to your specific plant equipment.',
+  },
+  {
+    n: '04',
+    t: 'First Run & Handover',
+    d: 'We support the first commercial production run on-site or remotely, resolve any in-plant issues in real time, and complete the knowledge transfer to your production team.',
+  },
+];
+
+const challenges = [
+  {
+    icon: '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><path d="M12 3c3 4.5 5 7.4 5 10a5 5 0 0 1-10 0c0-2.6 2-5.5 5-10Z"/><path d="M9 13h6"/></svg>',
+    name: 'Yield Drop at Scale',
+    desc: 'Lab conversion of 94% becomes 78% in the production vessel. We trace the cause — mixing dead zones, longer addition times, thermal gradients — and correct it.',
+  },
+  {
+    icon: '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><circle cx="12" cy="12" r="9"/><path d="M12 8v4l3 2"/></svg>',
+    name: 'Wrong Viscosity Profile',
+    desc: 'Emulsions, polymers, and rheology-modified products routinely behave differently at production scale. We diagnose the shear history mismatch and correct the process.',
+  },
+  {
+    icon: '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><path d="M12 2v4M12 18v4M4.93 4.93l2.83 2.83M16.24 16.24l2.83 2.83M2 12h4M18 12h4M4.93 19.07l2.83-2.83M16.24 7.76l2.83-2.83"/></svg>',
+    name: 'Exotherm Management',
+    desc: 'A reaction that is trivially controlled in a 5 L lab flask can exceed the cooling capacity of a 5,000 L jacketed vessel. We calculate, design for, and test the heat removal requirement.',
+  },
+  {
+    icon: '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><path d="M3 6h18M3 12h18M3 18h18"/></svg>',
+    name: 'Phase Separation on Cooling',
+    desc: 'Products stable in the lab separate on cooling in the production tank due to stratification and extended hold times. We redesign the cooling protocol and agitation strategy.',
+  },
+  {
+    icon: '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><rect x="2" y="7" width="20" height="14" rx="2"/><path d="M16 7V5a2 2 0 0 0-2-2h-4a2 2 0 0 0-2 2v2"/></svg>',
+    name: 'Batch-to-Batch Variability',
+    desc: 'Inconsistent product across batches from the same formulation and process. We identify the uncontrolled variable — raw material addition order, temperature profile, mixing time — and lock it down.',
+  },
+  {
+    icon: '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><path d="M21 16V8a2 2 0 0 0-1-1.73l-7-4a2 2 0 0 0-2 0l-7 4A2 2 0 0 0 3 8v8a2 2 0 0 0 1 1.73l7 4a2 2 0 0 0 2 0l7-4A2 2 0 0 0 21 16Z"/></svg>',
+    name: 'New Plant, No Process',
+    desc: 'Building a new production facility around a validated lab formulation. We engineer the full process — equipment selection, layout, utilities, operating procedures — from the chemistry up.',
+  },
+  {
+    icon: '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><path d="M12 20h9"/><path d="M16.5 3.5a2.121 2.121 0 0 1 3 3L7 19l-4 1 1-4L16.5 3.5Z"/></svg>',
+    name: 'Contract Manufacture Transfer',
+    desc: 'Moving production to a contract manufacturer with different equipment. We map the process to the CMO\'s vessel specifications and validate performance before commercial handover.',
+  },
+  {
+    icon: '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><polyline points="22 7 13.5 15.5 8.5 10.5 2 17"/><polyline points="16 7 22 7 22 13"/></svg>',
+    name: 'Capacity Expansion',
+    desc: 'Scaling from one production vessel to a larger one, or from a single batch to continuous production. We recalculate every process parameter for the new operating conditions.',
+  },
+  {
+    icon: '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><path d="M9 12l2 2 4-4"/><circle cx="12" cy="12" r="9"/></svg>',
+    name: 'Regulatory Scale-Up Evidence',
+    desc: 'Building the scale-up evidence package for a regulatory submission — comparative batch data, parameter ranges, and critical process parameter justification.',
+  },
+];
+
+const deliverables = [
+  'Scale-up risk assessment — parameter-by-parameter analysis of what changes at production scale',
+  'Production-scale operating parameters: mixing conditions, temperature profiles, addition sequences',
+  'Equipment specification for new plant or adaptation notes for existing plant',
+  'Batch record template and manufacturing SOP written for production operators',
+  'Pilot trial report with comparative data against lab reference batches',
+  'In-plant troubleshooting log and corrective action report from first production runs',
+  'Knowledge transfer documentation for handover to your production team',
+];
+
+const splitWords = (s: string) => s.split(' ');
+---
+
+<Layout
+  title="Scale-Up Support | Global Formulation"
+  description="Lab to commercial scale-up support — mixing hydrodynamics, heat transfer, yield discrepancy diagnosis, equipment selection, batch record development, and first-run support."
+  canonical="/scale-up-support"
+>
+
+  <!-- ══════════ S1 HERO [DARK] ══════════ -->
+  <section class="su-hero" id="su-s1">
+    <div class="su-hero-inner">
+      <span class="su-eyebrow-c reveal">Scale-Up Support</span>
+      <h1 class="su-hero-h1">
+        {splitWords('What works in the lab').map(w => (
+          <span class="aw">{w.split('').map(c => <span class="ac">{c}</span>)}</span>
+        ))}
+        <br class="br-d" />
+        {splitWords('should work in production').map(w => (
+          <span class="aw">{w.split('').map(c => <span class="ac">{c}</span>)}</span>
+        ))}
+      </h1>
+      <p class="su-hero-sub reveal">
+        We bridge the gap between laboratory performance and commercial manufacturing —
+        diagnosing scale-up failures before they happen, engineering the process for
+        your specific plant, and staying on-site through the first production run.
+      </p>
+      <div class="su-hero-ctas reveal">
+        <a href="/contact" class="su-btn-primary">Discuss Your Scale-Up</a>
+        <a href="#su-process" class="su-btn-ghost">See the approach</a>
+      </div>
+    </div>
+  </section>
+
+  <!-- ══════════ S2 OVERVIEW [LIGHT] ══════════ -->
+  <section class="su-section su-light su-split" id="su-s2">
+    <div class="su-split-inner">
+      <div class="su-split-text">
+        <span class="su-eyebrow-l reveal">The Problem</span>
+        <h2 class="su-h2-l">
+          {splitWords('Scale-up fails for').map(w => (
+            <span class="aw">{w.split('').map(c => <span class="ac ac-l">{c}</span>)}</span>
+          ))}
+          <br class="br-d" />
+          {splitWords('specific, knowable reasons').map(w => (
+            <span class="aw">{w.split('').map(c => <span class="ac ac-l">{c}</span>)}</span>
+          ))}
+        </h2>
+        <p class="su-body-l reveal">
+          A formulation that performs perfectly at lab scale can fail at production
+          scale for reasons that have nothing to do with the chemistry itself.
+          Mixing time in a 5,000 L vessel is orders of magnitude longer than in a
+          250 mL beaker — concentration gradients form during addition, localised
+          overheating occurs near the heating jacket, and shear-sensitive emulsions
+          are exposed to vastly different flow conditions than those in the lab. These
+          are engineering problems, not formulation problems, and they require
+          engineering solutions.
+        </p>
+        <p class="su-body-l reveal">
+          Our scale-up support starts with a structured assessment of every parameter
+          that will change at production scale — before a batch runs. Where pilot
+          trials are warranted, we design and run them. We then define the
+          production-scale operating window for your specific equipment, write the
+          batch record, and support your team through the first commercial production
+          run to ensure the transfer is complete.
+        </p>
+        <ul class="su-points">
+          {[
+            'Pre-scale risk assessment — identify failure modes before the first production batch',
+            'Process parameters calibrated to your specific plant equipment and vessel geometry',
+            'Pilot trial design and execution where intermediate validation is required',
+            'On-site or remote first-run support and real-time troubleshooting',
+          ].map(p => (
+            <li class="su-point reveal">
+              <span class="su-point-ico">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="5 12 10 17 19 7"/></svg>
+              </span>
+              <span>{p}</span>
+            </li>
+          ))}
+        </ul>
+      </div>
+
+      <div class="su-split-media reveal">
+        <!-- IMAGE 1 PLACEHOLDER -->
+        <img 
+          src="https://cdn.globalformulation.com/images/services/scale-up-support-vessel-comparison.webp" 
+          alt="Side-by-side of a small laboratory glass beaker next to a large industrial stainless-steel mixing vessel — the scale contrast dramatic and clearly readable. Clean industrial setting, directional lighting highlighting the size difference. No people, no text, no labels." 
+          width="900" 
+          height="700" 
+          class="su-img"
+          style="width: 100%; border-radius: var(--su-radius, 16px); object-fit: cover; aspect-ratio: 900/700;"
+        />
+        <p class="img-caption">Vessel Comparison: Laboratory glass beaker (250 mL) next to a pilot-scale reactor (50 L), illustrating the critical fluid dynamics scale-up ratio.</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- ══════════ S3 CAPABILITIES [DARK] ══════════ -->
+  <section class="su-section su-dark su-split su-split-rev" id="su-s3">
+    <div class="su-split-inner">
+      <div class="su-split-media reveal">
+        <!-- IMAGE 2 PLACEHOLDER -->
+        <img 
+          src="https://cdn.globalformulation.com/images/services/scale-up-support-production-floor.webp" 
+          alt="Wide-angle view of a chemical production floor — multiple large reactor               vessels with pipework, catwalks, and process instrumentation visible.               Industrial editorial photography, strong perspective lines, warm               overhead lighting. No people, no text, no labels on equipment." 
+          width="900" 
+          height="700" 
+          class="su-img"
+          style="width: 100%; border-radius: var(--su-radius, 16px); object-fit: cover; aspect-ratio: 900/700;"
+        />
+        <p class="img-caption">Production Floor: Multi-reactor commercial chemical plant configured for continuous flow and scale-up validation.</p>
+      </div>
+
+      <div class="su-split-text">
+        <span class="su-eyebrow-d reveal">Technical Scope</span>
+        <h2 class="su-h2-d">
+          {splitWords('Scale-up with').map(w => (
+            <span class="aw">{w.split('').map(c => <span class="ac">{c}</span>)}</span>
+          ))}
+          <br class="br-d" />
+          {splitWords('precision and control').map(w => (
+            <span class="aw">{w.split('').map(c => <span class="ac">{c}</span>)}</span>
+          ))}
+        </h2>
+        <p class="su-body-d reveal">
+          Our scale-up support bridging the gap between laboratory success and robust commercial production. We analyze heat transfer rates, mixing dynamics, and shear parameters to ensure that your formulation performs identically in a 10,000-liter reactor as it did in a 1-liter laboratory beaker.
+        </p>
+        <ul class="su-cap-grid reveal">
+          {capabilities.map(c => (
+            <li>
+              <span class="su-cap-dot"></span>
+              <span>{c}</span>
+            </li>
+          ))}
+        </ul>
+      </div>
+    </div>
+  </section>
+
+  <!-- ══════════ S4 PROCESS [LIGHT] ══════════ -->
+  <section class="su-section su-light su-process" id="su-process">
+    <div class="su-process-head">
+      <span class="su-eyebrow-l reveal">How We Work</span>
+      <h2 class="su-h2-l su-centered">
+        {splitWords('Our scale-up methodology').map(w => (
+          <span class="aw">{w.split('').map(c => <span class="ac ac-l">{c}</span>)}</span>
+        ))}
+      </h2>
+      <p class="su-process-sub reveal">
+        Four phases that analyze scale risks, design the manufacturing window, supervise test trials, and establish full batch records to make production transition seamless.
+      </p>
+    </div>
+    <div class="su-steps">
+      {steps.map(s => (
+        <div class="su-step reveal">
+          <span class="su-step-n">{s.n}</span>
+          <span class="su-step-rule"></span>
+          <h3 class="su-step-t">{s.t}</h3>
+          <p class="su-step-d">{s.d}</p>
+        </div>
+      ))}
+    </div>
+  </section>
+
+  <!-- ══════════ S5 SPECIALIZATION [DARK] ══════════ -->
+  <section class="su-section su-dark su-challenges" id="su-s5">
+    <div class="su-tech-head">
+      <span class="su-eyebrow-c reveal">Scale-Up Challenges</span>
+      <h2 class="su-h2-d su-centered">
+        {splitWords('De-risking the').map(w => (
+          <span class="aw">{w.split('').map(c => <span class="ac">{c}</span>)}</span>
+        ))}
+        <br class="br-d" />
+        {splitWords('scale transition').map(w => (
+          <span class="aw">{w.split('').map(c => <span class="ac">{c}</span>)}</span>
+        ))}
+      </h2>
+      <p class="su-tech-sub reveal">
+        Addressing the physical, thermodynamic, and mechanical discrepancies that arise during production scale-up.
+      </p>
+    </div>
+    <div class="su-tech-grid">
+      {challenges.map((t, idx) => (
+        <div class="su-tech-tile reveal" style={`--d:${idx * 0.055}s`}>
+          <span class="su-tech-ico" set:html={t.icon}></span>
+          <h3 class="su-tech-name">{t.name}</h3>
+          <p class="su-tech-desc">{t.desc}</p>
+        </div>
+      ))}
+    </div>
+  </section>
+
+  <!-- ══════════ S6 DELIVERABLES [LIGHT] ══════════ -->
+  <section class="su-section su-light su-split" id="su-s6">
+    <div class="su-split-inner su-split-inner-rev">
+      <div class="su-split-text">
+        <span class="su-eyebrow-l reveal">Deliverables</span>
+        <h2 class="su-h2-l">
+          {splitWords('Clean production &').map(w => (
+            <span class="aw">{w.split('').map(c => <span class="ac ac-l">{c}</span>)}</span>
+          ))}
+          <br class="br-d" />
+          {splitWords('foolproof execution').map(w => (
+            <span class="aw">{w.split('').map(c => <span class="ac ac-l">{c}</span>)}</span>
+          ))}
+        </h2>
+        <p class="su-body-l reveal">
+          A successful scale-up means zero-batch failures. We deliver complete batch manufacturing records, standard operating procedures (SOPs), heat and mass balance validations, raw material safety checklists, and automated loop control specifications to ensure total process reliability in the plant.
+        </p>
+        <ul class="su-points">
+          {deliverables.map(d => (
+            <li class="su-point reveal">
+              <span class="su-point-ico">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="5 12 10 17 19 7"/></svg>
+              </span>
+              <span>{d}</span>
+            </li>
+          ))}
+        </ul>
+      </div>
+
+      <div class="su-split-media reveal">
+        <!-- IMAGE 3 PLACEHOLDER -->
+        <img 
+          src="https://cdn.globalformulation.com/images/services/scale-up-support-batch-record.webp" 
+          alt="A printed batch record or manufacturing SOP document open on a               clean production desk, alongside a clipboard with process data               sheet and a quality control sample jar. Muted industrial tones,               overhead angle. No people, no legible text visible on document." 
+          width="900" 
+          height="700" 
+          class="su-img"
+          style="width: 100%; border-radius: var(--su-radius, 16px); object-fit: cover; aspect-ratio: 900/700;"
+        />
+        <p class="img-caption">Batch Record & SOP: Standard operating procedures and quality control sample tracking on the production floor.</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- ══════════ S7 CTA [DARK] ══════════ -->
+  <section class="su-section su-dark su-cta" id="su-s7">
+    <div class="su-cta-card reveal">
+      <span class="su-eyebrow-c" style="margin-bottom: 20px; display: block;">Get Started</span>
+      <h2 class="su-cta-h2">
+        {splitWords('Scale your production').map(w => (
+          <span class="aw">{w.split('').map(c => <span class="ac">{c}</span>)}</span>
+        ))}
+        <br class="br-d" />
+        {splitWords('without risk.').map(w => (
+          <span class="aw">{w.split('').map(c => <span class="ac">{c}</span>)}</span>
+        ))}
+      </h2>
+      <p class="su-cta-sub reveal">
+        Whether you're designing a process from scratch, troubleshooting a scale-up
+        failure, or preparing a safety analysis for a regulatory submission — we can help.
+      </p>
+      <form class="su-cta-form reveal" action="/contact" method="get">
+        <input type="email" name="email" placeholder="Enter your email to get started…" aria-label="Email address" required />
+        <button type="submit">Discuss Your Process</button>
+      </form>
+      <p class="su-cta-alt reveal">
+        Need a call first?&nbsp;
+        <a href="/contact">Book a consultation →</a>
+      </p>
+    </div>
+  </section>
+
+  <ServicePageAnimations />
+</Layout>
+
+<style>
+  /* --- HERO SECTION --- */
+  .su-hero {
+    background: linear-gradient(135deg, #0b0f19 0%, #111827 100%);
+    padding: 140px 24px 100px;
+    text-align: center;
+    position: relative;
+    overflow: hidden;
+  }
+  .su-hero-inner {
+    max-width: 880px;
+    margin: 0 auto;
+    position: relative;
+    z-index: 10;
+  }
+  .su-eyebrow-c {
+    font-size: 0.85rem;
+    font-weight: 700;
+    letter-spacing: 0.15em;
+    text-transform: uppercase;
+    color: #3b82f6;
+    margin-bottom: 24px;
+    display: inline-block;
+  }
+  .su-hero-h1 {
+    font-size: clamp(2.5rem, 5vw, 4rem);
+    font-weight: 900;
+    line-height: 1.1;
+    color: #ffffff;
+    margin-bottom: 24px;
+    font-family: 'Outfit', sans-serif;
+  }
+  .su-hero-sub {
+    font-size: 1.2rem;
+    color: #9ca3af;
+    line-height: 1.6;
+    margin-bottom: 40px;
+    max-width: 720px;
+    margin-left: auto;
+    margin-right: auto;
+  }
+  .su-hero-ctas {
+    display: flex;
+    gap: 16px;
+    justify-content: center;
+    flex-wrap: wrap;
+  }
+  .su-btn-primary {
+    background: #2563eb;
+    color: #ffffff;
+    padding: 14px 32px;
+    border-radius: 8px;
+    font-weight: 700;
+    font-size: 0.95rem;
+    text-decoration: none;
+    transition: all 0.2s ease;
+  }
+  .su-btn-primary:hover {
+    background: #1d4ed8;
+    transform: translateY(-1px);
+  }
+  .su-btn-ghost {
+    background: transparent;
+    color: #ffffff;
+    padding: 14px 32px;
+    border-radius: 8px;
+    font-weight: 600;
+    font-size: 0.95rem;
+    text-decoration: none;
+    border: 1px solid rgba(255, 255, 255, 0.2);
+    transition: all 0.2s ease;
+  }
+  .su-btn-ghost:hover {
+    background: rgba(255, 255, 255, 0.05);
+    border-color: rgba(255, 255, 255, 0.4);
+  }
+
+  /* --- SECTION BASE --- */
+  .su-section {
+    padding: 100px 24px;
+    position: relative;
+  }
+  .su-light {
+    background: #ffffff;
+    color: #1f2937;
+  }
+  .su-dark {
+    background: #0b0f19;
+    color: #f3f4f6;
+  }
+
+  /* --- SPLIT LAYOUT --- */
+  .su-split-inner {
+    max-width: 1200px;
+    margin: 0 auto;
+    display: grid;
+    grid-template-columns: 1.2fr 1fr;
+    gap: 64px;
+    align-items: center;
+  }
+  .su-split-inner-rev {
+    grid-template-columns: 1fr 1.2fr;
+  }
+  @media (max-width: 1024px) {
+    .su-split-inner, .su-split-inner-rev {
+      grid-template-columns: 1fr;
+      gap: 48px;
+    }
+  }
+  .su-split-text {
+    display: flex;
+    flex-direction: column;
+  }
+  .su-split-media {
+    position: relative;
+    width: 100%;
+  }
+  .su-eyebrow-l {
+    font-size: 0.85rem;
+    font-weight: 700;
+    letter-spacing: 0.15em;
+    text-transform: uppercase;
+    color: #2563eb;
+    margin-bottom: 20px;
+    display: inline-block;
+  }
+  .su-eyebrow-d {
+    font-size: 0.85rem;
+    font-weight: 700;
+    letter-spacing: 0.15em;
+    text-transform: uppercase;
+    color: #60a5fa;
+    margin-bottom: 20px;
+    display: inline-block;
+  }
+  .su-h2-l {
+    font-size: 2.5rem;
+    font-weight: 800;
+    line-height: 1.2;
+    color: #111827;
+    margin-bottom: 24px;
+    font-family: 'Outfit', sans-serif;
+  }
+  .su-h2-d {
+    font-size: 2.5rem;
+    font-weight: 800;
+    line-height: 1.2;
+    color: #ffffff;
+    margin-bottom: 24px;
+    font-family: 'Outfit', sans-serif;
+  }
+  .su-body-l {
+    font-size: 1.05rem;
+    color: #4b5563;
+    line-height: 1.7;
+    margin-bottom: 24px;
+  }
+  .su-body-d {
+    font-size: 1.05rem;
+    color: #9ca3af;
+    line-height: 1.7;
+    margin-bottom: 24px;
+  }
+
+  /* --- POINTS LIST --- */
+  .su-points {
+    list-style: none;
+    padding: 0;
+    margin: 32px 0 0 0;
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+  }
+  .su-point {
+    display: flex;
+    gap: 16px;
+    align-items: flex-start;
+  }
+  .su-point-ico {
+    flex-shrink: 0;
+    width: 24px;
+    height: 24px;
+    border-radius: 50%;
+    background: rgba(37, 99, 235, 0.1);
+    color: #2563eb;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+  .su-point-ico svg {
+    width: 14px;
+    height: 14px;
+  }
+  .su-point span {
+    font-size: 1rem;
+    color: #374151;
+    line-height: 1.5;
+  }
+
+  /* --- CAPABILITIES GRID --- */
+  .su-cap-grid {
+    list-style: none;
+    padding: 0;
+    margin: 32px 0 0 0;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 20px 32px;
+  }
+  @media (max-width: 640px) {
+    .su-cap-grid {
+      grid-template-columns: 1fr;
+    }
+  }
+  .su-cap-grid li {
+    display: flex;
+    gap: 12px;
+    align-items: flex-start;
+  }
+  .su-cap-dot {
+    flex-shrink: 0;
+    width: 6px;
+    height: 6px;
+    border-radius: 50%;
+    background: #60a5fa;
+    margin-top: 8px;
+  }
+  .su-cap-grid span {
+    font-size: 0.95rem;
+    color: #d1d5db;
+    line-height: 1.5;
+  }
+
+  /* --- IMAGE PLATFORM --- */
+  .su-img {
+    width: 100%;
+    height: auto;
+    display: block;
+    box-shadow: 0 20px 40px rgba(0, 0, 0, 0.3);
+  }
+  .img-caption {
+    font-size: 0.825rem;
+    color: #4b5563;
+    font-style: italic;
+    margin-top: 12px;
+    line-height: 1.5;
+    text-align: left;
+    max-width: 900px;
+  }
+  .su-dark .img-caption {
+    color: #9ca3af;
+  }
+
+  /* --- PROCESS STEPS --- */
+  .su-process {
+    background: #f9fafb;
+    border-top: 1px solid #e5e7eb;
+    border-bottom: 1px solid #e5e7eb;
+  }
+  .su-process-head {
+    max-width: 800px;
+    margin: 0 auto 64px auto;
+    text-align: center;
+  }
+  .su-process-sub {
+    font-size: 1.15rem;
+    color: #4b5563;
+    line-height: 1.6;
+    margin-top: 16px;
+  }
+  .su-steps {
+    max-width: 1200px;
+    margin: 0 auto;
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 32px;
+  }
+  @media (max-width: 1024px) {
+    .su-steps {
+      grid-template-columns: 1fr 1fr;
+      gap: 40px;
+    }
+  }
+  @media (max-width: 640px) {
+    .su-steps {
+      grid-template-columns: 1fr;
+    }
+  }
+  .su-step {
+    position: relative;
+  }
+  .su-step-n {
+    font-size: 2.5rem;
+    font-weight: 800;
+    color: #e5e7eb;
+    display: block;
+    line-height: 1;
+    margin-bottom: 16px;
+    font-family: 'Outfit', sans-serif;
+  }
+  .su-step-rule {
+    display: block;
+    height: 2px;
+    background: #e5e7eb;
+    margin-bottom: 20px;
+  }
+  .su-step-t {
+    font-size: 1.25rem;
+    font-weight: 700;
+    color: #111827;
+    margin-bottom: 12px;
+  }
+  .su-step-d {
+    font-size: 0.95rem;
+    color: #4b5563;
+    line-height: 1.6;
+  }
+
+  /* --- TECHNOLOGIES GRID --- */
+  .su-technologies, .su-industries, .su-scenarios, .su-challenges, .su-tests, .su-problems {
+    background: #0b0f19;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.05);
+  }
+  .su-tech-head {
+    max-width: 800px;
+    margin: 0 auto 64px auto;
+    text-align: center;
+  }
+  .su-tech-sub {
+    font-size: 1.15rem;
+    color: #9ca3af;
+    line-height: 1.6;
+    margin-top: 16px;
+  }
+  .su-tech-grid {
+    max-width: 1200px;
+    margin: 0 auto;
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 32px;
+  }
+  @media (max-width: 1024px) {
+    .su-tech-grid {
+      grid-template-columns: 1fr 1fr;
+    }
+  }
+  @media (max-width: 640px) {
+    .su-tech-grid {
+      grid-template-columns: 1fr;
+    }
+  }
+  .su-tech-tile {
+    background: rgba(255, 255, 255, 0.03);
+    border: 1px solid rgba(255, 255, 255, 0.08);
+    border-radius: 12px;
+    padding: 32px;
+    transition: all 0.3s ease;
+  }
+  .su-tech-tile:hover {
+    background: rgba(255, 255, 255, 0.05);
+    border-color: rgba(255, 255, 255, 0.15);
+    transform: translateY(-2px);
+  }
+  .su-tech-ico {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    width: 48px;
+    height: 48px;
+    border-radius: 10px;
+    background: rgba(59, 130, 246, 0.1);
+    color: #60a5fa;
+    margin-bottom: 24px;
+  }
+  .su-tech-ico svg {
+    width: 24px;
+    height: 24px;
+  }
+  .su-tech-name {
+    font-size: 1.2rem;
+    font-weight: 700;
+    color: #ffffff;
+    margin-bottom: 12px;
+  }
+  .su-tech-desc {
+    font-size: 0.95rem;
+    color: #9ca3af;
+    line-height: 1.6;
+  }
+
+  /* --- CTA SECTION --- */
+  .su-cta {
+    background: linear-gradient(135deg, #0b0f19 0%, #111827 100%);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+  .su-cta-card {
+    background: rgba(255, 255, 255, 0.02);
+    border: 1px solid rgba(255, 255, 255, 0.06);
+    border-radius: 20px;
+    padding: 64px;
+    width: 100%;
+    max-width: 900px;
+    text-align: center;
+    box-shadow: 0 20px 50px rgba(0, 0, 0, 0.3);
+  }
+  @media (max-width: 640px) {
+    .su-cta-card {
+      padding: 40px 24px;
+    }
+  }
+  .su-cta-h2 {
+    font-size: 2.75rem;
+    font-weight: 900;
+    line-height: 1.15;
+    color: #ffffff;
+    margin-bottom: 20px;
+    font-family: 'Outfit', sans-serif;
+  }
+  .su-cta-sub {
+    font-size: 1.15rem;
+    color: #9ca3af;
+    line-height: 1.6;
+    margin-bottom: 40px;
+    max-width: 600px;
+    margin-left: auto;
+    margin-right: auto;
+  }
+  .su-cta-form {
+    display: flex;
+    gap: 12px;
+    max-width: 500px;
+    margin: 0 auto 24px auto;
+  }
+  @media (max-width: 640px) {
+    .su-cta-form {
+      flex-direction: column;
+    }
+  }
+  .su-cta-form input {
+    flex: 1;
+    background: rgba(255, 255, 255, 0.05);
+    border: 1px solid rgba(255, 255, 255, 0.15);
+    border-radius: 8px;
+    padding: 14px 18px;
+    color: #ffffff;
+    font-size: 0.95rem;
+    outline: none;
+    transition: all 0.2s ease;
+  }
+  .su-cta-form input:focus {
+    border-color: #2563eb;
+    background: rgba(255, 255, 255, 0.08);
+  }
+  .su-cta-form button {
+    background: #2563eb;
+    color: #ffffff;
+    border: none;
+    border-radius: 8px;
+    padding: 14px 28px;
+    font-weight: 700;
+    font-size: 0.95rem;
+    cursor: pointer;
+    transition: all 0.2s ease;
+  }
+  .su-cta-form button:hover {
+    background: #1d4ed8;
+  }
+  .su-cta-alt {
+    font-size: 0.95rem;
+    color: #9ca3af;
+  }
+  .su-cta-alt a {
+    color: #60a5fa;
+    text-decoration: none;
+    font-weight: 600;
+  }
+  .su-cta-alt a:hover {
+    text-decoration: underline;
+  }
+</style>

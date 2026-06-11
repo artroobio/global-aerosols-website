@@ -1,0 +1,598 @@
+---
+import Layout from '../layouts/Layout.astro';
+
+const SLUG   = "marine-saltwater-environments-coatings-lubricants-sealants-cleaning";
+const CDN    = `https://cdn.globalformulation.com/images/${SLUG}`;
+const HERO   = `${CDN}/${SLUG}-hero-globalformulation.webp`;
+const DIAG   = `${CDN}/${SLUG}-diagram-globalformulation.webp`;
+const INFO   = `${CDN}/${SLUG}-infographic-globalformulation.webp`;
+const CANON  = `https://www.globalformulation.com/${SLUG}`;
+const TITLE  = "Marine Environments: Coatings, Lubricants & Sealants";
+const DESCR  = "Coatings, lubricants, sealants, and cleaners for marine environments — how to select chemistry that resists saltwater corrosion and chloride attack.";
+const DATE   = "2026-06-09";
+
+// 1. Organization
+const orgSchema = {
+  "@context": "https://schema.org",
+  "@type": "Organization",
+  "name": "Global Formulation",
+  "url": "https://www.globalformulation.com",
+  "logo": "https://www.globalformulation.com/logo.png",
+  "contactPoint": [{ "@type": "ContactPoint", "telephone": "+91 9819548320", "contactType": "customer service" }]
+};
+
+// 2. WebSite
+const websiteSchema = {
+  "@context": "https://schema.org",
+  "@type": "WebSite",
+  "url": "https://www.globalformulation.com",
+  "potentialAction": { "@type": "SearchAction", "target": "https://www.globalformulation.com/blog?search={search_term_string}", "query-input": "required name=search_term_string" }
+};
+
+// 3. Author
+const authorSchema = {
+  "@context": "https://schema.org",
+  "@type": "Person",
+  "name": "Absar Khan",
+  "jobTitle": "Lead Consultant",
+  "url": "https://www.linkedin.com/in/absar-khan-aerosol-consultant-and-formulator-78359b162",
+  "affiliation": { "@type": "Organization", "name": "Global Formulation", "url": "https://www.globalformulation.com" },
+  "sameAs": ["https://www.linkedin.com/in/absar-khan-aerosol-consultant-and-formulator-78359b162"]
+};
+
+// 4. Breadcrumb
+const breadcrumbSchema = {
+  "@context": "https://schema.org",
+  "@type": "BreadcrumbList",
+  "itemListElement": [
+    { "@type": "ListItem", "position": 1, "name": "Home", "item": "https://www.globalformulation.com" },
+    { "@type": "ListItem", "position": 2, "name": "Blog", "item": "https://www.globalformulation.com/blog" },
+    { "@type": "ListItem", "position": 3, "name": "Marine Saltwater Environments", "item": CANON }
+  ]
+};
+
+// 5. BlogPosting
+const blogPostingSchema = {
+  "@context": "https://schema.org",
+  "@type": "BlogPosting",
+  "headline": "Marine and Saltwater Environments: Coatings, Lubricants, Sealants, and Cleaning Chemistry",
+  "description": DESCR,
+  "image": HERO,
+  "author": { "@type": "Person", "name": "Absar Khan" },
+  "publisher": { "@type": "Organization", "name": "Global Formulation", "logo": { "@type": "ImageObject", "url": "https://www.globalformulation.com/logo.png" } },
+  "datePublished": DATE,
+  "dateModified": DATE,
+  "mainEntityOfPage": { "@type": "WebPage", "@id": CANON },
+  "articleSection": "Environment-Specific Performance",
+  "keywords": "marine saltwater environment coatings lubricants sealants, offshore corrosion protection, marine lubricant selection, saltwater sealant selection, marine cleaning chemistry, seawater corrosion industrial chemistry",
+  "wordCount": "1950"
+};
+
+// 6. FAQPage
+const faqSchema = {
+  "@context": "https://schema.org",
+  "@type": "FAQPage",
+  "mainEntity": [
+    {
+      "@type": "Question",
+      "name": "What type of coating is most effective for offshore steel structures in saltwater?",
+      "acceptedAnswer": { "@type": "Answer", "text": "For offshore steel structures subjected to continuous saltwater immersion and splash-zone exposure, high-build zinc-rich epoxy primers combined with glass-flake-reinforced epoxy intermediate coats and polyurethane or fluoropolymer topcoats represent the established standard system. The zinc-rich primer provides galvanic (sacrificial) protection to the steel, while the glass flake intermediate coat creates an extended permeation path that dramatically slows chloride and oxygen ingress. The topcoat provides UV and weathering resistance. This multi-layer system is specified against standards including ISO 12944 corrosion category C5-M (marine) and NORSOK M-501 for offshore applications." }
+    },
+    {
+      "@type": "Question",
+      "name": "Why are environmentally acceptable lubricants (EALs) required in marine applications?",
+      "acceptedAnswer": { "@type": "Answer", "text": "Under the US Environmental Protection Agency's 2013 Vessel General Permit (VGP) and analogous requirements in EU and international maritime legislation, vessels operating in US waters and many other jurisdictions are required to use environmentally acceptable lubricants (EALs) in applications where incidental discharge to water is possible — including stern tube seals, propeller shaft bearings, thruster systems, and wire rope lubricants. EALs must meet biodegradability (typically >60% in OECD 301 tests), minimal bioaccumulation potential, and low aquatic toxicity criteria. Synthetic esters and vegetable oil-based lubricants are the dominant EAL chemistries used to meet these requirements." }
+    },
+    {
+      "@type": "Question",
+      "name": "Which sealant type performs best for marine joints and deck penetrations?",
+      "acceptedAnswer": { "@type": "Answer", "text": "For marine deck penetrations, window glazing, and structural joints exposed to saltwater, UV, and significant thermal and mechanical movement, neutral-cure silicone sealants and MS polymer sealants are the preferred options. Silicone offers excellent UV and temperature resistance and remains flexible from -50°C to +200°C, making it suitable for deck fittings and superstructure glazing. MS polymer sealants are paintable — critical for hull and topsides applications — and avoid the tin-based catalyst concerns associated with some conventional silicones. Acetoxy silicone should be avoided on metal substrates due to its acetic acid cure, which can promote corrosion." }
+    },
+    {
+      "@type": "Question",
+      "name": "How does chloride ion attack differ from ordinary corrosion and why does it matter for coating selection?",
+      "acceptedAnswer": { "@type": "Answer", "text": "Chloride ions are uniquely aggressive to steel corrosion because they are small enough to penetrate through micro-discontinuities in coating films and displace the passive oxide layer on steel surfaces through competitive adsorption — a mechanism that initiates pitting corrosion. Unlike general corrosion driven by dissolved oxygen alone, chloride-initiated pitting creates localised anodic sites that propagate rapidly under the coating, causing undercutting and blistering that is disproportionate to the visible surface damage. This demands coatings with low chloride permeability — achieved through glass flake pigments, high epoxy film thickness, and barrier resins — rather than simply thicker films of conventional coatings." }
+    },
+    {
+      "@type": "Question",
+      "name": "Can standard lubricants be used in marine gearboxes and deck machinery?",
+      "acceptedAnswer": { "@type": "Answer", "text": "Standard industrial gear oils and greases can be used in enclosed, sealed marine gearboxes where water ingress is minimal and there is no regulatory requirement for EAL compliance. However, deck machinery, anchor winches, mooring equipment, and any bearing or seal systems where water splash, condensation, or immersion is possible require lubricants formulated specifically with enhanced water-separation properties, rust-inhibitor packages effective in saline environments, and resistance to emulsification. Marine-specific gear oils meeting requirements such as DIN 51517 Part 3 CLP-HC are available, and many operators additionally specify rust-preventive greases for deck fittings that conform to NLGI mechanical grades appropriate for the operating conditions." }
+    },
+    {
+      "@type": "Question",
+      "name": "What cleaning chemistries are safe for use on marine aluminium superstructures?",
+      "acceptedAnswer": { "@type": "Answer", "text": "Aluminium superstructures are attacked by strongly alkaline cleaners — pH above approximately 11 initiates amphoteric dissolution, converting aluminium oxide to aluminate ions and etching the surface. Safe cleaning for marine aluminium requires neutral to mildly acidic products (pH 5–9) based on nonionic or amphoteric surfactants, or specifically formulated aluminium-safe alkaline cleaners buffered below the attack threshold and incorporating aluminium-compatible corrosion inhibitors such as silicates. Hydrofluoric acid-based brighteners, strong caustic degreasers, and chlorine-containing products should all be avoided. After cleaning, the aluminium surface should be rinsed thoroughly with fresh water to remove any salt residue before re-exposure." }
+    },
+    {
+      "@type": "Question",
+      "name": "How does anti-fouling coating differ from corrosion protection coating and can both be applied in the same system?",
+      "acceptedAnswer": { "@type": "Answer", "text": "Corrosion protection coatings function by creating a barrier between the steel substrate and the seawater electrolyte — their primary mechanism is physical and electrochemical isolation of the metal surface. Anti-fouling coatings function by releasing biocides at the hull surface at a controlled rate that prevents settlement of barnacles, algae, and other marine organisms, or by self-polishing to continually present a fresh biocide-depleted surface. In a complete below-waterline coating system, both functions are normally present: a corrosion protection primer system (zinc-rich or epoxy tie coat) is applied first, followed by the anti-fouling topcoat. The two layers must be chemically compatible, and some solvent-aggressive anti-fouling systems require compatible primer tie coats to prevent blistering at the interface." }
+    }
+  ]
+};
+
+// 7. WebPage
+const webpageSchema = {
+  "@context": "https://schema.org",
+  "@type": "WebPage",
+  "name": "Marine and Saltwater Environments: Coatings, Lubricants, Sealants, and Cleaning Chemistry",
+  "url": CANON,
+  "description": DESCR
+};
+
+const schemas = [orgSchema, websiteSchema, authorSchema, breadcrumbSchema, blogPostingSchema, faqSchema, webpageSchema];
+---
+
+<Layout
+  title={TITLE}
+  description={DESCR}
+  canonical={CANON}
+  ogImage={HERO}
+  ogType="article"
+  schemaJson={schemas}
+>
+
+  <!-- POST HERO BAND -->
+  <div class="post-hero">
+    <div class="post-hero-inner">
+      <nav class="pg-breadcrumb" aria-label="Breadcrumb">
+        <a href="/" target="_top">Home</a><span>›</span>
+        <a href="/blog" target="_top">Blog</a><span>›</span>
+        <span>Marine Environments</span>
+      </nav>
+      <span class="category-badge">Environment-Specific Performance</span>
+      <h1>Marine and Saltwater Environments: Coatings, Lubricants, Sealants, and Cleaning Chemistry</h1>
+      <div class="post-meta">
+        <span>By Global Formulation Team</span>
+        <span>Jun 9, 2026</span>
+        <span>13 min read</span>
+      </div>
+      <div class="hero-img-wrap">
+        <img
+          src={HERO}
+          alt="marine saltwater environment coatings lubricants sealants — offshore platform corrosion protection and chemistry selection | Global Formulation"
+          width="1200" height="630" loading="eager"
+        />
+      </div>
+    </div>
+  </div>
+
+  <!-- TWO-COLUMN BODY -->
+  <div class="page-body">
+
+    <aside class="toc-sidebar">
+      <nav aria-label="Table of Contents">
+        <div class="toc-heading">In This Article</div>
+        <ol>
+          <li><a href="#introduction" target="_top">Why Marine Chemistry Differs</a></li>
+          <li><a href="#coatings" target="_top">Marine Coatings</a></li>
+          <li><a href="#lubricants" target="_top">Marine Lubricants &amp; EALs</a></li>
+          <li><a href="#sealants" target="_top">Marine Sealants</a></li>
+          <li><a href="#head-to-head" target="_top">Performance Comparison</a></li>
+          <li><a href="#selection-criteria" target="_top">Selection by Marine Zone</a></li>
+          <li><a href="#industry-applications" target="_top">Industry Applications</a></li>
+          <li><a href="#cost-practical" target="_top">Cost &amp; Practical Tips</a></li>
+          <li><a href="#faq" target="_top">Frequently Asked Questions</a></li>
+        </ol>
+      </nav>
+    </aside>
+
+    <div class="article-col">
+
+      <p>
+        Selecting the right chemistry for marine saltwater environments demands a level of technical rigour that most inland industrial applications do not require. Chloride ions penetrate coating films and initiate pitting corrosion beneath surfaces that look intact; lubricants emulsify in the presence of seawater, stripping bearing surfaces of protection; sealants must withstand continuous UV, thermal cycling, mechanical movement, and chemical attack simultaneously. Every chemistry category — <a href="/marine-anti-fouling-coatings-explained" target="_top">marine coatings</a>, lubricants, sealants, and cleaning products — has a distinct set of marine-specific performance requirements that diverge significantly from general industrial practice. This guide provides the technical framework for specifying each chemistry category for marine and offshore saltwater service.
+      </p>
+
+      <!-- SECTION 1 -->
+      <section id="introduction">
+        <h2>1. Why Marine Environments Demand Specialised Chemistry</h2>
+        <p>
+          Seawater is a complex electrolyte — a solution of approximately 3.5% sodium chloride alongside magnesium, sulphate, calcium, potassium, and bicarbonate ions — and its chemical aggression toward conventional industrial chemistry is qualitatively different from freshwater or atmospheric exposure. Chloride ions, present at roughly 19,000 ppm in open ocean water, are the primary drivers of accelerated corrosion: they penetrate coating film discontinuities, displace passive oxide layers on steel, and initiate localised pitting corrosion that propagates rapidly beneath surfaces that appear visually intact. The marine atmosphere — even at distances of several kilometres from the shoreline — carries aerosolised salt particles that deposit on exposed surfaces, creating electrolytic bridges that accelerate galvanic and crevice corrosion mechanisms unavailable in inland environments.
+        </p>
+        <p>
+          Beyond corrosion, marine service introduces biofouling — the progressive colonisation of submerged surfaces by marine organisms including barnacles, tube worms, algae, and biofilm-forming bacteria. Biofouling has no equivalent in terrestrial industrial chemistry and demands a dedicated response in coating system design. Simultaneously, the combination of continuous UV exposure, salt spray, thermal cycling, and mechanical movement from wave action creates a multi-stress environment that degrades organic materials — coatings, sealants, and lubricants alike — at rates many times faster than comparable inland exposures. Understanding these mechanisms, as documented in standards including <a href="https://www.ampp.org/home" target="_blank" rel="noopener noreferrer">AMPP (Association for Materials Protection and Performance)</a> guidance for offshore corrosion engineering, is the foundation for effective marine chemistry specification.
+        </p>
+      </section>
+
+      <!-- SECTION 2 -->
+      <section id="coatings">
+        <h2>2. Marine Coatings: Corrosion Protection and Anti-Fouling</h2>
+        <p>
+          Marine coating systems are typically multi-layer architectures designed to address corrosion protection and, below the waterline, biofouling prevention as separate but related functions. For offshore structural steel, the corrosion protection system — specified against ISO 12944 corrosion category C5-M (very high corrosion load, marine) or the more demanding NORSOK M-501 standard for North Sea offshore structures — typically comprises a zinc-rich epoxy primer, a high-build glass-flake-reinforced epoxy intermediate coat, and a polyurethane or fluoropolymer topcoat. The zinc-rich primer functions through galvanic (sacrificial) protection: zinc metal is anodic to steel in the electrochemical series and will corrode preferentially, protecting the substrate even at minor coating defects. The glass-flake intermediate coat creates a tortuous diffusion path for chloride ions and water, extending the service life of the system beyond what film thickness alone would predict.
+        </p>
+        <p>
+          Below the waterline on commercial vessels, the coating system must additionally address biofouling through anti-fouling topcoats. Self-polishing co-polymer (SPC) anti-fouling systems — based on triorganotin-free acrylate polymers that hydrolyse at a controlled rate in seawater — are the current industry standard, releasing biocides such as cuprous oxide, zinc pyrithione, or organic booster biocides at the hull surface as the binder ablates. The ablation rate is engineered to match vessel speed and operating profile; a vessel with a long port lay-up period requires a different anti-fouling specification than one in continuous service. For vessels with intermittent operation or those in environmentally sensitive waters, copper-free or low-copper anti-fouling systems using DCOIT or sea-nine-based biocides are increasingly specified in response to port authority restrictions on copper discharge, as regulated under <a href="https://www.imo.org/en/OurWork/Environment/Pages/Anti-fouling.aspx" target="_blank" rel="noopener noreferrer">IMO anti-fouling system regulations</a>.
+        </p>
+        <div class="callout">
+          <strong>Key Insight</strong>
+          A marine coating system's longevity is determined as much by surface preparation quality as by paint specification. ISO 8501-1 Sa 2.5 blast-cleaned steel — near-white metal — is the minimum acceptable standard for offshore C5-M systems; any deviation is directly reflected in premature underfilm corrosion.
+        </div>
+      </section>
+
+      <!-- SECTION 3 -->
+      <section id="lubricants">
+        <h2>3. Marine Lubricants: Seawater Resistance and EAL Requirements</h2>
+        <p>
+          Marine lubricants face three challenges that are either absent or minor in general industrial lubrication: water contamination by seawater ingress, biodegradability and aquatic toxicity regulatory requirements for open-water discharge applications, and the corrosive effect of salt and dissolved oxygen on lubricated metal surfaces. In enclosed, sealed machinery such as main engine crankshafts, crosshead cylinders, and propulsion gearboxes, seawater contamination is primarily managed through seal integrity — but when seawater does enter a lubricant sump, the consequences are severe: emulsification of mineral-oil-based lubricants, severe additive depletion, and rapid onset of corrosion on bearing surfaces. Marine engine lubricants are therefore formulated with strong demulsibility characteristics (rapid separation from water, measured per ASTM D1401) and robust rust and corrosion inhibitor packages effective in the presence of saline water.
+        </p>
+        <p>
+          For deck machinery, stern tube systems, propeller shaft bearings, thruster units, and wire rope applications where there is a realistic pathway for lubricant discharge to the sea, environmentally acceptable lubricants (EALs) are required under the US EPA Vessel General Permit (VGP 2013) and similar regulations in many other jurisdictions. EALs are defined by three criteria: readily biodegradable (typically &gt;60% in OECD 301B), minimally bioaccumulative (log K<sub>ow</sub> &lt;3 for base stocks), and minimally toxic to aquatic organisms (EC50 &gt;1000 mg/L in acute aquatic toxicity tests). Synthetic esters — polyol esters and complex esters derived from dicarboxylic acids and branched alcohols — are the dominant EAL base stocks because they combine the required environmental profile with lubricity and oxidation stability comparable to conventional mineral oils. Vegetable oil-based lubricants are also used for lower-severity applications where the oxidative stability limitations of natural esters are acceptable. For <a href="/lubricants" target="_top">specialist lubricant formulation</a> in marine contexts, the balance between environmental compliance and mechanical performance is the central design challenge.
+        </p>
+      </section>
+
+      <!-- Diagram image -->
+      <img
+        class="article-img"
+        src={DIAG}
+        alt="marine saltwater corrosion mechanism diagram — chloride ion attack and coating protection cross-section | Global Formulation"
+        width="900" height="500" loading="lazy"
+      />
+      <p class="img-caption">Chloride-initiated pitting corrosion propagates beneath intact-looking coating films — an uncoated steel surface in the same seawater exposure shows visible localised attack far in advance of uniform corrosion.</p>
+
+      <!-- SECTION 4 -->
+      <section id="sealants">
+        <h2>4. Marine Sealants: Weathering, Movement, and Chemical Resistance</h2>
+        <p>
+          Marine sealants must perform in one of the most demanding multi-stress environments encountered by any polymer system: continuous UV exposure, salt spray, thermal cycling across wide temperature ranges, mechanical movement from hull flexing and deck vibration, and periodic immersion in seawater. Failure in a marine sealant joint is rarely a single-mechanism event — it is typically the simultaneous outcome of UV-driven oxidative chain scission, plasticiser migration, adhesion loss from hydrolytic displacement at the sealant-substrate interface, and fatigue cracking from repeated movement cycles. Sealant selection for <a href="/silicone-sealants-types-grades-applications" target="_top">marine applications</a> must therefore address all of these mechanisms, not optimise for any single property.
+        </p>
+        <p>
+          Silicone sealants, by virtue of their inorganic siloxane backbone (Si–O–Si), have exceptional resistance to UV degradation, thermal cycling, and water immersion. They remain elastomeric across service temperatures from -50°C to above 200°C and do not support microbiological growth — important for sanitary spaces and areas where biofilm development could compromise seal integrity. However, conventional silicone sealants have two important limitations for marine use: they cannot be painted over (the low surface energy of cured silicone prevents paint adhesion), and neutral-cure systems — while preferred for most metal substrates — must be carefully specified to avoid tin catalyst species restricted under REACH and RoHS regulations. Polysulfide sealants, with their excellent resistance to fuels, hydraulic fluids, and water immersion, remain the standard for below-deck fuel tank sealing, aircraft-type fuel tank equivalents on vessels, and integral deck fuel bays. MS polymer sealants offer an important advantage in topsides applications: they are fully paintable after curing, making them the preferred choice where hull coatings are applied over sealant joints.
+        </p>
+        <div class="callout callout-amber">
+          <strong>Rule of Thumb</strong>
+          Acetoxy-cure silicone sealants release acetic acid during cure — corrosive to copper alloys and some aluminium alloys used extensively in marine fittings and superstructure. Always specify neutral-cure silicone for marine metal substrates.
+        </div>
+      </section>
+
+      <!-- SECTION 5: Head-to-Head -->
+      <section id="head-to-head">
+        <h2>5. Head-to-Head: Marine Performance Requirements by Chemistry Category</h2>
+        <p>
+          Specifying chemistry for marine service is not a single-product decision — each chemistry category addresses a distinct functional requirement, and the selection criteria differ accordingly. Coatings protect and prevent fouling; lubricants reduce friction and prevent corrosive wear; sealants exclude water and maintain structural integrity at joints; cleaning products remove salt, biological fouling, and contamination without damaging the substrates they are applied to. Understanding the specific marine performance requirements for each category enables a coherent system-level specification.
+        </p>
+
+        <div class="table-wrap">
+          <table class="data-table">
+            <thead>
+              <tr>
+                <th>Performance Criterion</th>
+                <th>Marine Coatings</th>
+                <th>Marine Lubricants</th>
+                <th>Marine Sealants</th>
+                <th>Marine Cleaners</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td><strong>Chloride resistance</strong></td>
+                <td>Critical — glass flake epoxy reduces Cl⁻ permeation</td>
+                <td>Rust inhibitors must protect in saline water</td>
+                <td>Silicone and polysulfide have good chloride tolerance</td>
+                <td>Must remove salt deposits without leaving residue</td>
+              </tr>
+              <tr>
+                <td><strong>UV &amp; weathering</strong></td>
+                <td>PU / fluoropolymer topcoat for UV resistance required</td>
+                <td>Not primary — enclosed systems; oxidative stability key</td>
+                <td>Critical — silicone backbone most UV-resistant</td>
+                <td>UV-stable surfactants preferred for deck products</td>
+              </tr>
+              <tr>
+                <td><strong>Biodegradability / EAL compliance</strong></td>
+                <td>Anti-fouling biocide regulation (IMO AFS Convention)</td>
+                <td>Mandatory EAL for open-water discharge applications</td>
+                <td>Tin-free cure systems required (REACH)</td>
+                <td>Biodegradable surfactants required in many port areas</td>
+              </tr>
+              <tr>
+                <td><strong>Movement / flexibility</strong></td>
+                <td>Elastomeric topcoats for hull flexing zones</td>
+                <td>Grease consistency must allow movement of greased parts</td>
+                <td>Critical — high movement class sealants mandatory</td>
+                <td>Not applicable</td>
+              </tr>
+              <tr>
+                <td><strong>Substrate compatibility</strong></td>
+                <td>Adhesion to blast-cleaned steel; tie coats for GRP</td>
+                <td>Compatibility with bronze, Monel, stainless alloys</td>
+                <td>Neutral cure essential for copper alloy fittings</td>
+                <td>pH-neutral for aluminium; chlorine-free for stainless</td>
+              </tr>
+              <tr>
+                <td><strong>Key standard / reference</strong></td>
+                <td>ISO 12944 C5-M; NORSOK M-501</td>
+                <td>US EPA VGP 2013; OECD 301B biodegradability</td>
+                <td>ISO 11600 joint movement class F (facade)</td>
+                <td>MARPOL Annex I (no harmful discharges)</td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+      </section>
+
+      <!-- SECTION 6: Selection Criteria -->
+      <section id="selection-criteria">
+        <h2>6. Selection Criteria: Choosing Chemistry by Marine Zone</h2>
+        <p>
+          A vessel or offshore structure is not a uniform environment — it comprises several distinct zones, each with different exposure conditions and chemistry requirements. The below-waterline hull zone experiences continuous seawater immersion, biofouling pressure, and cathodic protection interaction. The splash zone suffers the most aggressive corrosion of any location on a marine structure because it alternates between wet and dry cycles, oxygenation is high, and biofouling is continuous. The atmospheric zone above the waterline is subject to salt spray, UV, and thermal cycling but not immersion. Below-deck mechanical spaces and machinery require lubrication and sealant chemistry more closely aligned with industrial practice, modified for salt ingress risk. Matching chemistry to zone is the primary selection discipline.
+        </p>
+
+        <div class="table-wrap">
+          <table class="data-table">
+            <thead>
+              <tr>
+                <th>Marine Zone / Application</th>
+                <th>Recommended Chemistry</th>
+                <th>Key Reason</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td>Below-waterline hull</td>
+                <td>Zinc-rich epoxy primer + glass-flake epoxy + SPC anti-fouling</td>
+                <td>Sacrificial galvanic protection + barrier resistance + controlled biocide release</td>
+              </tr>
+              <tr>
+                <td>Splash zone structural steel</td>
+                <td>Thermally sprayed zinc/aluminium alloy + high-build epoxy sealer</td>
+                <td>Thermally sprayed metallising provides cathodic protection at pinholes; epoxy seals porous metal spray</td>
+              </tr>
+              <tr>
+                <td>Topsides and superstructure</td>
+                <td>Epoxy primer + polyurethane or PVDF topcoat</td>
+                <td>UV-resistant topcoat essential; PU offers colour-fast gloss retention; PVDF for premium long-service</td>
+              </tr>
+              <tr>
+                <td>Deck fittings and joints</td>
+                <td>Neutral-cure silicone or MS polymer sealant</td>
+                <td>Silicone for non-painted areas; MS polymer where overcoating with anti-corrosion system is required</td>
+              </tr>
+              <tr>
+                <td>Stern tube and propeller shaft</td>
+                <td>Synthetic ester EAL or vegetable oil-based lubricant</td>
+                <td>VGP / EAL compliance mandatory; ester base provides lubricity and biodegradability</td>
+              </tr>
+              <tr>
+                <td>Deck and hull cleaning</td>
+                <td>Biodegradable, pH-neutral, chlorine-free cleaner</td>
+                <td>MARPOL restrictions on overboard discharge; substrate safety on aluminium and stainless steel</td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+      </section>
+
+      <!-- Infographic image -->
+      <img
+        class="article-img"
+        src={INFO}
+        alt="marine saltwater environment selection decision matrix — chemistry selection by marine zone for coatings lubricants sealants and cleaners | Global Formulation"
+        width="900" height="500" loading="lazy"
+      />
+      <p class="img-caption">Marine zone determines chemistry priority: the below-waterline hull demands anti-fouling coating and EAL lubricants; the splash zone needs the highest corrosion protection; topsides require UV-resistant topcoats and paintable sealants.</p>
+
+      <!-- SECTION 7 -->
+      <section id="industry-applications">
+        <h2>7. Industry-Specific Application Guide</h2>
+        <p>
+          Marine chemistry requirements vary substantially across vessel and structure types, driven by differences in operating profile, regulatory jurisdiction, substrate materials, and the severity of environmental exposure. Commercial shipping, offshore oil and gas platforms, naval vessels, pleasure craft, and port infrastructure each represent distinct specification contexts that require different emphases within the same overall framework of marine saltwater chemistry.
+        </p>
+        <p>
+          <strong>Commercial shipping:</strong> Hull anti-fouling is the dominant chemistry concern because biofouling adds hull resistance and increases fuel consumption — studies cited by the IMO suggest fouled hulls increase fuel use by 10–40% depending on fouling severity. SPC anti-fouling systems are the standard, selected for vessel speed and drydocking interval. Main engine cylinder lubrication uses medium-to-high-TBN marine cylinder oils, while crosshead and crankcase systems are formulated to resist the sulphuric acid condensate produced by combustion of high-sulphur fuels, though this is less critical since the IMO 2020 global sulphur cap reduced fuel sulphur content significantly.
+        </p>
+        <p>
+          <strong>Offshore oil and gas:</strong> The most demanding corrosion protection environment, specified against NORSOK M-501 or equivalent asset-owner standards. Coating systems must resist simultaneous UV, chloride, hydrocarbon splash, and cathodic protection disbondment forces for design service lives of 15–25 years. Fireproofing coatings — intumescent epoxy or cementitious systems — are also specified for structural steel around hydrocarbon process areas. Lubricants must comply with environmental legislation but also function reliably in remote, difficult-to-service locations where unexpected lubricant failure can shut down production at enormous cost.
+        </p>
+        <p>
+          <strong>Pleasure craft and marina infrastructure:</strong> Regulatory compliance is governed by national and port authority rules on anti-fouling biocide discharge. Several jurisdictions have banned copper-based anti-fouling in sensitive water bodies, driving specification toward copper-free alternatives. Cleaning chemistry for GRP (glass-reinforced plastic) hulls — the dominant pleasure craft material — must be compatible with gelcoat resins and avoid solvents that can attack the polyester matrix. Silicone teak deck sealants are widely used but must be specifically formulated for UV stability and movement accommodation given the thermal expansion characteristics of teak over a marine temperature cycle.
+        </p>
+      </section>
+
+      <!-- SECTION 8 -->
+      <section id="cost-practical">
+        <h2>8. Cost, Availability, and Practical Considerations</h2>
+        <p>
+          Marine-grade chemistry carries a material cost premium over equivalent industrial products, reflecting the higher performance requirements, more stringent regulatory compliance, and lower-volume speciality manufacturing involved. However, the more relevant economic metric in marine applications is total cost over the maintenance interval — not material cost per litre. A high-performance marine coating system that achieves a 15-year corrosion protection life before major maintenance represents a fundamentally different economic proposition from a standard industrial system requiring drydocking every five years, even if the initial per-litre cost is three to four times higher. This life-cycle cost framing applies equally to lubricants (lower equipment failure rates justify premium EAL base stocks) and sealants (avoiding water ingress into electrical penetrations and structural joints prevents damage costs orders of magnitude greater than the sealant material cost).
+        </p>
+        <p>
+          Practical considerations in marine chemistry application include the near-universal requirement for surface preparation to ISO 8501-1 standards before coating application — painting over mill scale, rust, or contaminated surfaces is the single most common cause of premature coating failure in marine service. Salt contamination of blast-cleaned steel is particularly destructive: even small residual salt levels beneath a coating system will cause osmotic blistering as water migrates to the high-ionic-strength contamination layer. For <a href="/volatile-organic-compounds-and-pollution" target="_top">VOC compliance</a> in port areas, waterborne and high-solids marine coatings are increasingly specified — major coating manufacturers now offer waterborne equivalents of most standard marine epoxy primers and topcoats that meet EU VOC directives without compromising performance when correctly applied.
+        </p>
+      </section>
+
+      <!-- FAQ -->
+      <section class="faq-section" id="faq">
+        <h2>Frequently Asked Questions</h2>
+
+        <details class="faq-item">
+          <summary>What type of coating is most effective for offshore steel structures in saltwater?</summary>
+          <div class="faq-answer">For offshore steel structures subjected to continuous saltwater immersion and splash-zone exposure, high-build zinc-rich epoxy primers combined with glass-flake-reinforced epoxy intermediate coats and polyurethane or fluoropolymer topcoats represent the established standard system. The zinc-rich primer provides galvanic protection; the glass flake intermediate coat creates an extended permeation path that dramatically slows chloride and oxygen ingress. This multi-layer system is specified against ISO 12944 corrosion category C5-M and NORSOK M-501 for North Sea offshore applications.</div>
+        </details>
+
+        <details class="faq-item">
+          <summary>Why are environmentally acceptable lubricants (EALs) required in marine applications?</summary>
+          <div class="faq-answer">Under the US EPA's Vessel General Permit (VGP 2013) and analogous regulations in the EU and internationally, vessels operating in relevant waters are required to use EALs in applications where incidental discharge to water is possible — including stern tube seals, propeller shaft bearings, thruster systems, and wire rope lubricants. EALs must meet biodegradability (&gt;60% in OECD 301 tests), minimal bioaccumulation, and low aquatic toxicity criteria. Synthetic esters and vegetable oil-based lubricants are the dominant EAL chemistries used to meet these requirements without sacrificing mechanical performance.</div>
+        </details>
+
+        <details class="faq-item">
+          <summary>Which sealant type performs best for marine joints and deck penetrations?</summary>
+          <div class="faq-answer">For marine deck penetrations, window glazing, and structural joints, neutral-cure silicone and MS polymer sealants are the preferred options. Silicone offers exceptional UV and temperature resistance and remains flexible from -50°C to +200°C — ideal for deck fittings and superstructure glazing. MS polymer sealants are paintable, making them critical for hull and topsides applications where anti-corrosion topcoats must be applied over sealant joints. Acetoxy silicone should be avoided on metal substrates as acetic acid release during cure can promote corrosion on copper alloys and some aluminium grades.</div>
+        </details>
+
+        <details class="faq-item">
+          <summary>How does chloride ion attack differ from ordinary corrosion and why does it matter for coating selection?</summary>
+          <div class="faq-answer">Chloride ions are uniquely aggressive because they penetrate through micro-discontinuities in coating films and displace the passive oxide layer on steel through competitive adsorption, initiating pitting corrosion at localised anodic sites. Unlike general atmospheric corrosion, chloride pitting propagates rapidly beneath the coating, causing undercutting and blistering that is disproportionate to visible surface damage. This demands coatings with inherently low chloride permeability — achieved through glass flake pigments, high epoxy film build, and high-density crosslinked barrier resins — rather than simply thicker conventional coatings.</div>
+        </details>
+
+        <details class="faq-item">
+          <summary>Can standard lubricants be used in marine deck machinery and gearboxes?</summary>
+          <div class="faq-answer">Standard industrial gear oils and greases can be used in enclosed, sealed marine gearboxes where water ingress is minimal and there is no EAL regulatory requirement. However, deck machinery, anchor winches, mooring equipment, and any bearing systems where salt water splash or ingress is possible require lubricants formulated with enhanced demulsibility, rust inhibitors effective in saline water, and resistance to emulsification. Marine-grade gear oils meeting DIN 51517 Part 3 CLP-HC are available, and rust-preventive greases conforming to appropriate NLGI grades are widely specified for deck fittings and exposed bearing points.</div>
+        </details>
+
+        <details class="faq-item">
+          <summary>What cleaning chemistries are safe for marine aluminium superstructures?</summary>
+          <div class="faq-answer">Aluminium is attacked by strongly alkaline cleaners at pH above approximately 11, as well as by chlorine-based products that break down the natural aluminium oxide passive layer. Safe cleaning for marine aluminium uses neutral to mildly acidic products (pH 5–9) based on nonionic or amphoteric surfactants, or specifically buffered alkaline formulations that incorporate aluminium-compatible corrosion inhibitors such as silicates. Strong caustic degreasers, HF-based brighteners, and chlorine-containing products must all be avoided. After cleaning, thorough fresh-water rinsing removes residual salt before re-exposure to the marine atmosphere.</div>
+        </details>
+
+        <details class="faq-item">
+          <summary>How does anti-fouling coating differ from corrosion protection coating and can both be applied together?</summary>
+          <div class="faq-answer">Corrosion protection coatings create a barrier isolating the steel substrate from the seawater electrolyte, functioning through physical and electrochemical mechanisms. Anti-fouling coatings function by releasing biocides at the hull surface at a controlled rate — or through self-polishing ablation — to prevent settlement of barnacles, algae, and marine organisms. In a complete below-waterline system, both functions are addressed in sequence: a corrosion protection primer system is applied first, followed by an anti-fouling topcoat. The two layers must be chemically compatible — some solvent-aggressive anti-fouling systems require specific tie coats to prevent blistering at the primer-anti-fouling interface.</div>
+        </details>
+      </section>
+
+      <!-- CTA -->
+      <div class="cta-block">
+        <h2>Not Sure Which Option Is Right for Your Application?</h2>
+        <p>Our independent consultants can evaluate your marine environment requirements and recommend the right chemistry — with no raw material sales bias.</p>
+        <a href="/contact" target="_top" class="cta-btn">Get a Free Consultation</a>
+      </div>
+
+      <!-- RELATED ARTICLES -->
+      <section class="related-section">
+        <h2>Related Articles</h2>
+        <ul class="related-grid">
+          <li><a href="/marine-anti-fouling-coatings-explained" target="_top">Marine Anti-Fouling Coatings Explained</a></li>
+          <li><a href="/zinc-phosphate-primers-chemistry-application" target="_top">Zinc Phosphate Primers: Chemistry &amp; Application</a></li>
+          <li><a href="/future-of-eco-friendly-chemical-products" target="_top">Green Chemistry Revolution: Eco-Friendly Industrial Products</a></li>
+          <li><a href="/volatile-organic-compounds-and-pollution" target="_top">Pollution Caused by VOCs: What Manufacturers Need to Know</a></li>
+          <li><a href="/manufacturing-without-a-factory-guide" target="_top">Manufacturing Without a Factory: The MaaS Ecosystem</a></li>
+          <li><a href="/choosing-the-right-product-consultant" target="_top">How to Choose the Right Product Consultant</a></li>
+        </ul>
+      </section>
+
+      <!-- AUTHOR BIO -->
+      <div class="author-bio">
+        <div class="author-avatar">AK</div>
+        <div class="author-info">
+          <h3>Absar Khan</h3>
+          <div class="author-role">Founder &amp; Lead Consultant, Global Formulation</div>
+          <p>Absar Khan is a senior industrial consultant with cross-disciplinary expertise spanning pharmaceutical manufacturing, cosmetics and personal care, home and institutional care chemicals, aerosols, lubricants, and advanced process engineering. His work integrates formulation chemistry, GMP facility design, validation science, quality systems, regulatory compliance, and large-scale manufacturing optimisation. As Founder and Lead Consultant at Global Formulation, Absar leads multi-disciplinary scientific, engineering, and regulatory teams delivering end-to-end solutions from technology selection and formulation development to plant setup, scale-up, and regulatory strategy.</p>
+          <p style="margin-top: 10px;"><a href="https://www.linkedin.com/in/absar-khan-aerosol-consultant-and-formulator-78359b162" target="_blank" rel="noopener noreferrer">Connect on LinkedIn →</a></p>
+        </div>
+      </div>
+
+    </div>
+  </div>
+
+  <script is:inline>
+    (function () {
+      var links = document.querySelectorAll('.toc-sidebar ol li a');
+      var sections = [];
+      links.forEach(function (a) {
+        var el = document.querySelector(a.getAttribute('href'));
+        if (el) sections.push(el);
+      });
+      if (!sections.length) return;
+      var observer = new IntersectionObserver(function (entries) {
+        entries.forEach(function (entry) {
+          if (entry.isIntersecting) {
+            links.forEach(function (a) { a.classList.remove('toc-active'); });
+            var active = document.querySelector('.toc-sidebar ol li a[href="#' + entry.target.id + '"]');
+            if (active) active.classList.add('toc-active');
+          }
+        });
+      }, { rootMargin: '-20% 0px -70% 0px', threshold: 0 });
+      sections.forEach(function (s) { observer.observe(s); });
+    })();
+  </script>
+
+</Layout>
+
+<style>
+  @import url('https://fonts.googleapis.com/css2?family=Source+Serif+4:ital,wght@0,300;0,400;0,600;1,400&display=swap');
+
+  :root {
+    --co-bg: #F9F9F7; --co-surface: #FFFFFF; --co-border: #E4E4E0;
+    --co-text: #0A0A0A; --co-muted: #6B7280; --co-accent: #0968e5;
+    --co-green: #16A34A; --co-amber: #D97706; --co-radius: 6px;
+    --co-serif: 'Source Serif 4', Georgia, 'Times New Roman', serif;
+    --co-display: 'Playfair Display', Georgia, serif;
+  }
+
+  .post-hero { background: var(--co-surface); border-bottom: 1px solid var(--co-border); }
+  .post-hero-inner { max-width: 1140px; margin: 0 auto; padding: 36px 32px 0; }
+  .pg-breadcrumb { display: flex; flex-wrap: wrap; gap: 6px; align-items: center; font-size: 0.8rem; color: var(--co-muted); margin-bottom: 18px; font-family: var(--co-serif); }
+  .pg-breadcrumb a { color: var(--co-muted); text-decoration: none; }
+  .pg-breadcrumb a:hover { color: var(--co-accent); }
+  .category-badge { display: inline-block; font-size: 0.7rem; font-weight: 700; letter-spacing: 0.07em; text-transform: uppercase; color: var(--co-accent); border: 1px solid var(--co-accent); border-radius: 3px; padding: 3px 10px; margin-bottom: 18px; font-family: var(--co-serif); }
+  .post-hero h1 { font-family: var(--co-display); font-size: clamp(1.75rem, 4vw, 2.6rem); font-weight: 700; line-height: 1.2; letter-spacing: -0.02em; color: var(--co-text); max-width: 780px; margin-bottom: 18px; }
+  .post-meta { display: flex; flex-wrap: wrap; gap: 20px; font-size: 0.82rem; color: var(--co-muted); margin-bottom: 32px; font-family: var(--co-serif); }
+  .hero-img-wrap { border-radius: 10px 10px 0 0; overflow: hidden; }
+  .hero-img-wrap img { width: 100%; height: auto; display: block; max-height: 480px; object-fit: cover; }
+
+  .page-body { max-width: 1140px; margin: 0 auto; padding: 48px 32px 80px; display: grid; grid-template-columns: 260px 1fr; gap: 48px; align-items: start; background: var(--co-bg); }
+
+  .toc-sidebar { position: sticky; top: 84px; max-height: calc(100vh - 104px); overflow-y: auto; }
+  .toc-sidebar nav { background: var(--co-surface); border: 1px solid var(--co-border); border-radius: var(--co-radius); padding: 20px; }
+  .toc-heading { font-size: 0.68rem; font-weight: 700; letter-spacing: 0.09em; text-transform: uppercase; color: var(--co-muted); margin-bottom: 14px; font-family: var(--co-serif); }
+  .toc-sidebar ol { list-style: none; padding: 0; margin: 0; display: flex; flex-direction: column; gap: 2px; }
+  .toc-sidebar ol li a { display: block; font-size: 0.82rem; line-height: 1.45; color: var(--co-muted); padding: 5px 8px 5px 10px; border-left: 2px solid transparent; border-radius: 0 3px 3px 0; text-decoration: none; transition: color 0.15s, border-color 0.15s, background 0.15s; font-family: var(--co-serif); }
+  .toc-sidebar ol li a:hover, .toc-sidebar ol li a.toc-active { color: var(--co-accent); border-left-color: var(--co-accent); background: #EEF4FD; }
+
+  .article-col { min-width: 0; max-width: 720px; font-family: var(--co-serif); font-size: 17px; line-height: 1.72; color: var(--co-text); }
+  .article-col p { margin-bottom: 1.4em; }
+  .article-col h2 { font-family: var(--co-display); font-size: clamp(1.25rem, 2.5vw, 1.6rem); font-weight: 700; letter-spacing: -0.01em; color: var(--co-text); margin: 2.4em 0 0.6em; }
+  .article-col ul, .article-col ol { padding-left: 1.5em; margin-bottom: 1.4em; }
+  .article-col li { margin-bottom: 0.45em; }
+  .article-col a { color: var(--co-accent); }
+  .article-col a:hover { text-decoration: underline; }
+
+  .article-img { width: 100%; height: auto; display: block; border-radius: var(--co-radius); margin: 1.6em 0 0.5em; }
+  .img-caption { font-size: 0.8rem; color: var(--co-muted); font-style: italic; margin-bottom: 2em; font-family: var(--co-serif); }
+
+  .table-wrap { overflow-x: auto; margin: 1.6em 0 2em; }
+  .data-table { width: 100%; border-collapse: collapse; font-size: 0.87rem; font-family: var(--co-serif); }
+  .data-table thead tr { background: var(--co-text); color: #FFFFFF; }
+  .data-table th { padding: 10px 14px; text-align: left; font-weight: 600; font-size: 0.79rem; letter-spacing: 0.03em; }
+  .data-table td { padding: 9px 14px; border-bottom: 1px solid var(--co-border); vertical-align: top; }
+  .data-table tbody tr:nth-child(even) { background: #F4F4F2; }
+
+  .callout { border-left: 3px solid var(--co-green); background: #F0FDF4; padding: 14px 18px; border-radius: 0 var(--co-radius) var(--co-radius) 0; margin: 1.8em 0; font-size: 0.93rem; font-family: var(--co-serif); line-height: 1.6; }
+  .callout strong { color: var(--co-green); display: block; margin-bottom: 5px; }
+  .callout-amber { border-left-color: var(--co-amber); background: #FFFBEB; }
+  .callout-amber strong { color: var(--co-amber); }
+
+  .faq-section { margin: 3em 0 2em; }
+  .faq-section > h2 { font-family: var(--co-display); font-size: 1.5rem; font-weight: 700; margin-bottom: 1.2em; color: var(--co-text); }
+  details.faq-item { border: 1px solid var(--co-border); border-radius: var(--co-radius); margin-bottom: 10px; background: var(--co-surface); }
+  details.faq-item summary { font-weight: 600; font-size: 0.95rem; padding: 14px 18px; cursor: pointer; list-style: none; display: flex; justify-content: space-between; align-items: center; font-family: var(--co-serif); color: var(--co-text); }
+  details.faq-item summary::-webkit-details-marker { display: none; }
+  details.faq-item summary::after { content: '+'; font-size: 1.2rem; font-weight: 400; color: var(--co-muted); flex-shrink: 0; margin-left: 12px; }
+  details.faq-item[open] summary::after { content: '−'; }
+  .faq-answer { padding: 0 18px 16px; font-size: 0.92rem; color: #374151; line-height: 1.65; font-family: var(--co-serif); }
+
+  .cta-block { background: var(--co-text); color: #FFFFFF; border-radius: var(--co-radius); padding: 40px 36px; margin: 3em 0; text-align: center; }
+  .cta-block h2 { font-family: var(--co-display); font-size: 1.5rem; font-weight: 700; color: #FFFFFF; margin: 0 0 10px; }
+  .cta-block p { font-size: 0.95rem; color: #D1D5DB; margin: 0 0 24px; max-width: 480px; margin-left: auto; margin-right: auto; font-family: var(--co-serif); }
+  .cta-btn { display: inline-block; background: #FFFFFF; color: var(--co-text); font-weight: 700; font-size: 0.9rem; letter-spacing: 0.03em; padding: 12px 28px; border-radius: 4px; text-decoration: none; font-family: var(--co-serif); transition: opacity 0.15s; }
+  .cta-btn:hover { opacity: 0.88; text-decoration: none; }
+
+  .related-section { margin: 2.5em 0; }
+  .related-section > h2 { font-family: var(--co-display); font-size: 1.3rem; font-weight: 700; margin-bottom: 1em; color: var(--co-text); }
+  .related-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 12px; list-style: none; padding: 0; margin: 0; }
+  .related-grid li a { display: block; background: var(--co-surface); border: 1px solid var(--co-border); border-radius: var(--co-radius); padding: 14px 16px; font-size: 0.87rem; font-weight: 600; color: var(--co-text); text-decoration: none; line-height: 1.4; transition: border-color 0.15s, color 0.15s; font-family: var(--co-serif); }
+  .related-grid li a:hover { border-color: var(--co-accent); color: var(--co-accent); }
+
+  .author-bio { display: flex; gap: 18px; align-items: flex-start; background: var(--co-surface); border: 1px solid var(--co-border); border-radius: var(--co-radius); padding: 24px; margin: 2.5em 0; }
+  .author-avatar { width: 52px; height: 52px; background: var(--co-text); color: #FFFFFF; border-radius: 50%; display: flex; align-items: center; justify-content: center; font-weight: 700; font-size: 1rem; flex-shrink: 0; font-family: var(--co-serif); }
+  .author-info h3 { font-family: var(--co-display); font-size: 1rem; font-weight: 700; margin: 0 0 3px; color: var(--co-text); }
+  .author-role { font-size: 0.78rem; color: var(--co-muted); margin-bottom: 10px; font-family: var(--co-serif); }
+  .author-info p { font-size: 0.87rem; line-height: 1.6; color: #374151; font-family: var(--co-serif); }
+
+  @media (max-width: 900px) {
+    .page-body { grid-template-columns: 1fr; gap: 0; padding: 0 0 60px; }
+    .toc-sidebar { position: sticky; top: 64px; z-index: 50; max-height: none; background: var(--co-surface); border-bottom: 1px solid var(--co-border); }
+    .toc-sidebar nav { border: none; border-radius: 0; padding: 0 16px; overflow-x: auto; -webkit-overflow-scrolling: touch; scrollbar-width: none; }
+    .toc-sidebar nav::-webkit-scrollbar { display: none; }
+    .toc-heading { display: none; }
+    .toc-sidebar ol { flex-direction: row; gap: 0; white-space: nowrap; }
+    .toc-sidebar ol li a { display: inline-block; padding: 10px 12px; border-left: none; border-bottom: 2px solid transparent; border-radius: 0; font-size: 0.78rem; }
+    .toc-sidebar ol li a:hover, .toc-sidebar ol li a.toc-active { border-left-color: transparent; border-bottom-color: var(--co-accent); background: transparent; color: var(--co-accent); }
+    .article-col { max-width: 100%; padding: 28px 20px 0; }
+    .post-hero-inner { padding: 28px 20px 0; }
+  }
+  @media (max-width: 600px) {
+    .related-grid { grid-template-columns: 1fr; }
+    .cta-block { padding: 28px 20px; }
+    .author-bio { flex-direction: column; }
+  }
+</style>

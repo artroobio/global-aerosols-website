@@ -1,0 +1,117 @@
+---
+// Drop this component at the bottom of any service page to get
+// scroll-triggered fade-up + char-reveal animations matching the About page.
+// Uses a sentinel div so CSS initial states only apply to pages that use this component.
+---
+
+<!-- Sentinel: CSS :has() targets this to hide .reveal/.ac before JS runs -->
+<div class="spa-sentinel" aria-hidden="true"></div>
+
+<style is:global>
+  /* Set animation initial states ONLY on pages that render this component */
+  body:has(.spa-sentinel) .reveal {
+    opacity: 0;
+    transform: translateY(22px);
+  }
+  body:has(.spa-sentinel) .ac {
+    opacity: 0;
+  }
+</style>
+
+<script>
+  import { gsap } from 'gsap';
+  import { ScrollTrigger } from 'gsap/ScrollTrigger';
+  gsap.registerPlugin(ScrollTrigger);
+
+  /* ── helpers ─────────────────────────────────────────────── */
+  const fadeUp = (els: NodeListOf<Element> | Element[], delay = 0) => {
+    if (!els.length) return;
+    gsap.to(els, { opacity: 1, y: 0, duration: 0.65, stagger: 0.08, delay, ease: 'power2.out' });
+  };
+
+  const charReveal = (els: NodeListOf<Element>, endColor: string) => {
+    if (!els.length) return;
+    const blue = '#0968e5';
+    gsap.fromTo(
+      els,
+      { opacity: 0, x: -6, color: blue, webkitTextFillColor: blue },
+      {
+        opacity: 1, x: 0, color: blue, webkitTextFillColor: blue,
+        duration: 0.42, stagger: 0.011, ease: 'power3.out',
+        onComplete() {
+          gsap.to(els, {
+            color: endColor, webkitTextFillColor: endColor,
+            duration: 0.38, stagger: 0.011, ease: 'power2.inOut',
+          });
+        },
+      }
+    );
+  };
+
+  /* ── Hero section (first section, fires on load) ─────────── */
+  const heroSection = document.querySelector<HTMLElement>(
+    'section[class*="-hero"], section:first-of-type'
+  );
+
+  if (heroSection) {
+    const hReveals = heroSection.querySelectorAll('.reveal');
+    const hChars   = heroSection.querySelectorAll<Element>('.ac:not(.ac-l)');
+
+    const tl = gsap.timeline();
+
+    // eyebrow
+    const eyebrow = heroSection.querySelector<Element>('[class*="eyebrow"]');
+    if (eyebrow) {
+      tl.to(eyebrow, { opacity: 1, y: 0, duration: 0.55, ease: 'power3.out' });
+    }
+
+    // heading chars: blue sweep → white
+    if (hChars.length) {
+      const blue = '#0968e5';
+      tl.fromTo(
+        hChars,
+        { opacity: 0, x: -6, color: blue, webkitTextFillColor: blue },
+        { opacity: 1, x: 0, color: blue, webkitTextFillColor: blue, duration: 0.48, stagger: 0.011, ease: 'power3.out' },
+        eyebrow ? '-=0.2' : 0
+      ).to(
+        hChars,
+        { color: '#ffffff', webkitTextFillColor: '#ffffff', duration: 0.42, stagger: 0.011, ease: 'power2.inOut' },
+        '-=0.42'
+      );
+    }
+
+    // subtext, CTAs and other reveals
+    if (hReveals.length) {
+      tl.to(
+        hReveals,
+        { opacity: 1, y: 0, duration: 0.6, stagger: 0.1, ease: 'power2.out' },
+        '-=0.35'
+      );
+    }
+  }
+
+  /* ── All other sections: scroll-triggered ───────────────── */
+  const allSections = document.querySelectorAll<HTMLElement>('section');
+
+  allSections.forEach((section, i) => {
+    // Skip hero (index 0)
+    if (i === 0) return;
+
+    const reveals    = section.querySelectorAll('.reveal');
+    const darkChars  = section.querySelectorAll<Element>('.ac:not(.ac-l)');
+    const lightChars = section.querySelectorAll<Element>('.ac-l');
+
+    if (!reveals.length && !darkChars.length && !lightChars.length) return;
+
+    ScrollTrigger.create({
+      trigger: section,
+      start: 'top 76%',
+      once: true,
+      onEnter: () => {
+        charReveal(darkChars,  '#ffffff');
+        charReveal(lightChars, '#0f172a');
+        fadeUp(reveals, 0.28);
+      },
+    });
+  });
+</script>

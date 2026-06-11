@@ -1,0 +1,690 @@
+---
+import Layout from '../layouts/Layout.astro';
+
+const slug = 'eu-biocidal-products-regulation-disinfectants-sanitisers';
+const title = 'EU Biocidal Products Regulation: Disinfectant Guide';
+const description = 'EU Biocidal Products Regulation for disinfectants — authorisation pathways, product types PT1–PT4, and what manufacturers must do for EU compliance.';
+const heroCdn     = `https://cdn.globalformulation.com/images/${slug}/${slug}-hero-globalformulation.webp`;
+const diagramCdn  = `https://cdn.globalformulation.com/images/${slug}/${slug}-diagram-globalformulation.webp`;
+const infoCdn     = `https://cdn.globalformulation.com/images/${slug}/${slug}-infographic-globalformulation.webp`;
+
+const orgSchema = {
+  "@context": "https://schema.org", "@type": "Organization",
+  "name": "Global Formulation", "url": "https://www.globalformulation.com",
+  "logo": "https://www.globalformulation.com/logo.png",
+  "contactPoint": [{ "@type": "ContactPoint", "telephone": "+91 9819548320", "contactType": "customer service" }]
+};
+const websiteSchema = {
+  "@context": "https://schema.org", "@type": "WebSite",
+  "url": "https://www.globalformulation.com",
+  "potentialAction": { "@type": "SearchAction", "target": "https://www.globalformulation.com/blog?search={search_term_string}", "query-input": "required name=search_term_string" }
+};
+const authorSchema = {
+  "@context": "https://schema.org", "@type": "Person",
+  "name": "Absar Khan", "jobTitle": "Lead Consultant",
+  "url": "https://www.linkedin.com/in/absar-khan-aerosol-consultant-and-formulator-78359b162",
+  "affiliation": { "@type": "Organization", "name": "Global Formulation", "url": "https://www.globalformulation.com" },
+  "sameAs": ["https://www.linkedin.com/in/absar-khan-aerosol-consultant-and-formulator-78359b162"]
+};
+const breadcrumbSchema = {
+  "@context": "https://schema.org", "@type": "BreadcrumbList",
+  "itemListElement": [
+    { "@type": "ListItem", "position": 1, "name": "Home", "item": "https://www.globalformulation.com" },
+    { "@type": "ListItem", "position": 2, "name": "Blog", "item": "https://www.globalformulation.com/blog" },
+    { "@type": "ListItem", "position": 3, "name": "EU Biocidal Products Regulation: Disinfectant Guide", "item": `https://www.globalformulation.com/${slug}` }
+  ]
+};
+const blogPostingSchema = {
+  "@context": "https://schema.org", "@type": "BlogPosting",
+  "headline": "EU Biocidal Products Regulation: Disinfectant Guide",
+  "description": "EU Biocidal Products Regulation for disinfectants — authorisation pathways, product types PT1–PT4, and what manufacturers must do for EU compliance.",
+  "image": heroCdn,
+  "author": { "@type": "Person", "name": "Absar Khan" },
+  "publisher": { "@type": "Organization", "name": "Global Formulation", "logo": { "@type": "ImageObject", "url": "https://www.globalformulation.com/logo.png" } },
+  "datePublished": "2026-06-09", "dateModified": "2026-06-09",
+  "mainEntityOfPage": { "@type": "WebPage", "@id": `https://www.globalformulation.com/${slug}` },
+  "articleSection": "Cleaners & Biocides Regulation",
+  "keywords": "EU biocidal products regulation disinfectants, BPR disinfectant authorisation EU, PT2 biocide regulation, disinfectant active substance EU, BPR Union authorisation disinfectant, sanitiser regulatory compliance EU",
+  "wordCount": "2000"
+};
+const faqSchema = {
+  "@context": "https://schema.org", "@type": "FAQPage",
+  "mainEntity": [
+    {
+      "@type": "Question",
+      "name": "What is the difference between active substance approval and product authorisation under the EU BPR?",
+      "acceptedAnswer": { "@type": "Answer", "text": "The EU Biocidal Products Regulation operates a two-tier system. First, the active substance — the ingredient responsible for the biocidal action, such as a quaternary ammonium compound, hydrogen peroxide, or ethanol above a defined concentration — must be approved at EU level and listed in Annex I of the BPR or in a delegated act. Second, the finished biocidal product formulation (which contains the active substance along with co-formulants) must then obtain its own product authorisation before it can be placed on the EU market. You cannot sell a biocidal product simply because its active substance is approved; the complete product itself must be separately authorised. This two-step structure means that even a reformulation of an existing product — changing co-formulants, concentration, or intended use — typically requires a new or amended product authorisation." }
+    },
+    {
+      "@type": "Question",
+      "name": "Which product type applies to my disinfectant under the EU BPR?",
+      "acceptedAnswer": { "@type": "Answer", "text": "The BPR defines 22 product types (PTs) across four main groups. For disinfectants and sanitisers, the most relevant are: PT1 (human hygiene biocidal products — products applied directly to human skin or scalp for disinfection, such as hand sanitisers and surgical scrubs); PT2 (disinfectants and algaecides not intended for direct application to humans or animals — surface disinfectants, instrument disinfectants, and general area disinfectants); PT3 (veterinary hygiene biocidal products); and PT4 (food and feed area disinfectants used on surfaces in food processing). The classification matters because each PT has different efficacy testing requirements, active substance lists, and authorisation pathways. Misclassifying a product — for example, registering a surface disinfectant as PT1 when it is applied to surfaces rather than skin — is a common error that results in authorisation refusal or post-market enforcement action." }
+    },
+    {
+      "@type": "Question",
+      "name": "Do I need BPR authorisation for a disinfectant I am already selling in Europe?",
+      "acceptedAnswer": { "@type": "Answer", "text": "Whether existing products require immediate full BPR authorisation depends on the active substance review status. Products whose active substances are still under the EU review programme — a transitional period inherited from Directive 98/8/EC — can continue to be placed on the market under national rules while the review is ongoing, provided the product was already marketed before the review commenced. However, once a review programme decision is made and an active substance is approved (or not approved), the transitional period ends and full BPR product authorisation becomes mandatory within defined transition timelines. Products containing active substances that have been approved and for which the transitional period has expired must have valid product authorisation. Checking the active substance status via the ECHA R4BP database and the Review Programme regulation is the essential first step for any manufacturer in this situation." }
+    },
+    {
+      "@type": "Question",
+      "name": "What is Union authorisation and is my disinfectant product eligible?",
+      "acceptedAnswer": { "@type": "Answer", "text": "Union authorisation is a centralised EU-wide authorisation granted by the European Commission following evaluation by ECHA, which allows the authorised biocidal product to be placed on the market in all EU member states under a single authorisation number. It is available for standard biocidal products (Article 42 BPR), low-risk biocidal products (Article 25), and products containing only new active substances. Not all disinfectants are eligible — products with uses that require member state-specific conditions, such as language-specific labelling requirements or national public health restrictions, may not qualify for the standard Union authorisation route and must use national authorisation with mutual recognition instead. For manufacturers seeking EU-wide market access, Union authorisation is the most efficient route where eligibility is met." }
+    },
+    {
+      "@type": "Question",
+      "name": "What efficacy tests are required for a PT2 surface disinfectant?",
+      "acceptedAnswer": { "@type": "Answer", "text": "For PT2 disinfectants intended for surface disinfection, the core efficacy testing framework uses the European Committee for Standardisation (CEN) quantitative suspension test series: EN 13697 for bactericidal and fungicidal activity on non-porous surfaces, EN 16615 for bactericidal and yeasticidal activity under practical conditions on non-porous surfaces (4-field test), and EN 17272 for airborne disinfection. Where virucidal claims are made, EN 14476 (quantitative suspension test) is required. Sporicidal claims require EN 13704. All tests must be conducted at the claimed use concentration, contact time, and temperature, and must meet the standard pass criteria (typically a 5 log reduction for bacteria, 4 log for fungi). Tests must be performed by accredited laboratories and the data submitted as part of the authorisation dossier to the competent authority." }
+    },
+    {
+      "@type": "Question",
+      "name": "How long does BPR product authorisation take and what does it cost?",
+      "acceptedAnswer": { "@type": "Answer", "text": "BPR product authorisation timelines vary by route. National authorisation applications are evaluated within 365 days of acceptance by the competent authority, though the clock pauses during requests for additional information — a common occurrence that extends effective timelines significantly, often to 18–30 months in practice. Union authorisation has a 365-day evaluation period at ECHA level, but pre-submission scientific advice and dossier preparation add significantly to total project timeline. Application fees are set at member state level for national applications and at ECHA level for Union authorisation, and vary considerably between member states. Additional costs include dossier preparation, efficacy testing (typically the largest single cost item), and ongoing annual fees for maintaining the authorisation once granted." }
+    },
+    {
+      "@type": "Question",
+      "name": "Does the EU BPR apply to disinfectants manufactured outside the EU?",
+      "acceptedAnswer": { "@type": "Answer", "text": "Yes. The EU BPR applies to any biocidal product placed on the EU market, regardless of where it was manufactured. A non-EU manufacturer selling into the EU must designate an EU-based Responsible Person — an individual or company established in the EU who accepts legal responsibility for the product's compliance with the BPR. The Responsible Person holds the product authorisation or is named as the authorisation holder's representative, and is the point of contact for EU competent authorities. Without an EU Responsible Person, the product cannot legally be sold in the EU. This is a critical structural requirement that many non-EU manufacturers underestimate when first approaching the EU market." }
+    }
+  ]
+};
+const webpageSchema = {
+  "@context": "https://schema.org", "@type": "WebPage",
+  "name": "EU Biocidal Products Regulation: Disinfectant Guide | Global Formulation",
+  "url": `https://www.globalformulation.com/${slug}`,
+  "description": "EU Biocidal Products Regulation for disinfectants — authorisation pathways, product types PT1–PT4, and what manufacturers must do for EU compliance."
+};
+
+const schemas = [orgSchema, websiteSchema, authorSchema, breadcrumbSchema, blogPostingSchema, faqSchema, webpageSchema];
+---
+
+<Layout
+  title={title}
+  description={description}
+  canonical={`https://www.globalformulation.com/${slug}`}
+  ogImage={heroCdn}
+  ogType="article"
+  schemaJson={schemas}
+>
+
+  <!-- POST HERO BAND -->
+  <div class="post-hero">
+    <div class="post-hero-inner">
+      <nav class="pg-breadcrumb" aria-label="Breadcrumb">
+        <a href="/" target="_top">Home</a><span>›</span>
+        <a href="/blog" target="_top">Blog</a><span>›</span>
+        <span>EU BPR for Disinfectants</span>
+      </nav>
+      <span class="category-badge">Cleaners &amp; Biocides Regulation</span>
+      <h1>EU Biocidal Products Regulation for Disinfectants and Sanitisers: A Manufacturer's Guide</h1>
+      <div class="post-meta">
+        <span>By Global Formulation Team</span>
+        <span>Jun 9, 2026</span>
+        <span>14 min read</span>
+      </div>
+
+      <!--
+        IMAGE PLACEHOLDER — HERO (1200×630px)
+        File: eu-biocidal-products-regulation-disinfectants-sanitisers-hero-globalformulation.webp
+        Alt: EU biocidal products regulation disinfectants — authorisation dossier being prepared for PT2 disinfectant submission to ECHA | Global Formulation
+        IMG PROMPT (1200×630px): Photorealistic premium professional photography. A clean corporate regulatory compliance desk scene: an open ring-binder regulatory dossier labelled with EU compliance paperwork, surrounded by small amber glass dropper bottles representing disinfectant active substances, a laptop open to a regulatory portal, and EU flag pin on a dark navy desk surface. Official, authoritative, trust-building documentary aesthetic. Volumetric lighting with warm gold highlights and cool steel-blue shadows. Corporate colour palette: deep navy background, warm gold accent lighting, clean white highlights on pages. Ultra high detail, 4K quality, professional editorial photography style. No text, no watermarks, no logos. Cinematic composition, professional lighting, no people's faces shown, no text overlay. FILE: eu-biocidal-products-regulation-disinfectants-sanitisers-hero-globalformulation.webp
+      -->
+      <div class="hero-img-wrap">
+        <img
+          src={heroCdn}
+          alt="EU biocidal products regulation disinfectants — authorisation dossier being prepared for PT2 disinfectant submission to ECHA | Global Formulation"
+          width="1200"
+          height="630"
+          loading="eager"
+        />
+      </div>
+    </div>
+  </div>
+
+  <!-- TWO-COLUMN BODY -->
+  <div class="page-body">
+
+    <aside class="toc-sidebar">
+      <nav aria-label="Table of Contents">
+        <div class="toc-heading">In This Article</div>
+        <ol>
+          <li><a href="#regulation-overview" target="_top">What the BPR Is and Why It Exists</a></li>
+          <li><a href="#scope" target="_top">Scope: Who It Applies To</a></li>
+          <li><a href="#key-requirements" target="_top">Key Requirements</a></li>
+          <li><a href="#testing-documentation" target="_top">Testing and Documentation</a></li>
+          <li><a href="#certification-pathway" target="_top">Compliance Pathway</a></li>
+          <li><a href="#timeline-costs" target="_top">Timeline and Cost Expectations</a></li>
+          <li><a href="#common-pitfalls" target="_top">Common Mistakes to Avoid</a></li>
+          <li><a href="#faq" target="_top">Frequently Asked Questions</a></li>
+        </ol>
+      </nav>
+    </aside>
+
+    <div class="article-col">
+
+      <div class="disclaimer-block">
+        <strong>Educational Disclaimer:</strong> This article is for informational purposes only and does not constitute legal or regulatory advice. Regulations change frequently. Always verify current requirements against official sources and consult a qualified regulatory specialist before making compliance decisions. Regulation versions and effective dates are stated where known and were current at time of writing (June 2026).
+      </div>
+
+      <p>
+        The EU Biocidal Products Regulation — Regulation (EU) No 528/2012, commonly known as the BPR —
+        is the primary legislative framework governing the placing on the market and use of biocidal
+        products in the European Union, including disinfectants, sanitisers, and surface biocides.
+        It replaced the earlier Biocidal Products Directive 98/8/EC and introduced a significantly
+        more rigorous two-tier authorisation system that applies to both the active substances used in
+        biocidal products and the finished formulations themselves. For any manufacturer or brand owner
+        seeking to sell disinfectant or sanitiser products in the EU — whether produced domestically or
+        imported — understanding and navigating the EU biocidal products regulation is not optional:
+        without valid authorisation, placing a biocidal product on the EU market is a criminal
+        offence in all member states.
+      </p>
+
+      <!-- SECTION 1 -->
+      <section id="regulation-overview">
+        <h2>What the EU Biocidal Products Regulation Is and Why It Exists</h2>
+        <p>
+          The BPR was adopted on 22 May 2012 and became fully applicable on 1 September 2013,
+          replacing Directive 98/8/EC which had governed biocidal products since its transposition
+          into member state law in the early 2000s. The regulation was driven by three interconnected
+          policy objectives: harmonising the fragmented national authorisation systems that had
+          developed under the Directive; strengthening the scientific evaluation of active substances
+          to ensure only safe, effective, and environmentally acceptable biocides remained on the
+          market; and improving transparency and access for industry by introducing the Union
+          authorisation route, which allows a single EU-wide product approval rather than separate
+          national authorisations in each member state.
+        </p>
+        <p>
+          The BPR operates as a directly applicable EU regulation — unlike a directive, it does not
+          require national transposition and takes effect in identical form across all EU member states.
+          The European Chemicals Agency (ECHA) plays a central role as scientific evaluator and
+          dossier manager, while national competent authorities in each member state are responsible
+          for national product authorisation decisions. The regulation's scope is deliberately broad:
+          it covers any product intended to destroy, deter, render harmless, prevent the action of,
+          or otherwise exert a controlling effect on any harmful organism by chemical or biological
+          means. This captures not only conventional cleaning disinfectants but also treated articles
+          that incorporate biocidal substances to confer a biocidal property on the article itself
+          — a category that is increasingly relevant to antimicrobial coatings and treated textiles.
+        </p>
+      </section>
+
+      <!-- SECTION 2 -->
+      <section id="scope">
+        <h2>Scope: Who It Applies To and Which Products Are Covered</h2>
+        <p>
+          The BPR applies to any person or company that manufactures, imports, or places a biocidal
+          product on the EU market. The regulation defines 22 product types (PTs) across four
+          main groups — disinfectants, preservatives, pest control, and other biocidal products —
+          and each product must be authorised specifically for the product type(s) that match its
+          intended use. For disinfectant and sanitiser manufacturers, the four most relevant product
+          types are set out in the table below.
+        </p>
+
+        <div class="table-wrap">
+          <table class="data-table">
+            <thead>
+              <tr>
+                <th>Product Type</th>
+                <th>Description</th>
+                <th>Typical Examples</th>
+                <th>Key Distinction</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td><strong>PT1</strong> — Human Hygiene</td>
+                <td>Biocidal products applied to human skin or scalp for disinfection purposes</td>
+                <td>Hand sanitisers, surgical hand scrubs, skin antiseptics</td>
+                <td>Direct application to human body; higher safety data requirements</td>
+              </tr>
+              <tr>
+                <td><strong>PT2</strong> — Disinfectants &amp; Algaecides</td>
+                <td>Products used for disinfection of surfaces, materials, equipment, and areas not intended for direct use on humans or animals</td>
+                <td>Surface disinfectants, instrument disinfectants, LTP cleaners, industrial sanitisers</td>
+                <td>Largest single PT category; requires EN test series efficacy data</td>
+              </tr>
+              <tr>
+                <td><strong>PT3</strong> — Veterinary Hygiene</td>
+                <td>Products used for veterinary hygiene including disinfection of areas where animals are housed, transported, or handled</td>
+                <td>Livestock area disinfectants, teat dips, barn sanitisers</td>
+                <td>Requires evidence of safety for target animal species</td>
+              </tr>
+              <tr>
+                <td><strong>PT4</strong> — Food and Feed Area</td>
+                <td>Products used in areas where food or animal feed is manufactured, stored, or consumed — including equipment surfaces and food contact surfaces</td>
+                <td>CIP disinfectants, food plant surface sanitisers, conveyor sanitisers</td>
+                <td>Strictest residue and migration requirements; must demonstrate food safety</td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+
+        <p>
+          Certain products are exempt from the BPR. Pure cleaning products that work by physical or
+          mechanical action rather than biocidal activity — detergents that clean but do not make
+          antimicrobial claims — fall outside the regulation's scope. However, the moment a product
+          label or marketing material makes a disinfection, antimicrobial, or biocidal claim, BPR
+          authorisation obligations are triggered regardless of the actual active substance
+          concentration. This boundary is one of the most commercially significant scope questions
+          for cleaning product manufacturers developing multi-function products.
+        </p>
+      </section>
+
+      <!-- SECTION 3 -->
+      <section id="key-requirements">
+        <h2>Key Requirements: The Two-Tier Authorisation System</h2>
+        <p>
+          The BPR's central compliance mechanism is a mandatory two-tier authorisation system.
+          First, the active substance — the biocidally active ingredient — must be approved at
+          EU level. Second, the finished biocidal product formulation must separately obtain
+          product authorisation before it can legally be placed on the EU market. Both tiers
+          must be satisfied; active substance approval alone does not authorise a finished product
+          for sale. Understanding how these two tiers interact is the foundation of BPR compliance
+          strategy for any disinfectant manufacturer.
+        </p>
+
+        <h3>Tier 1: Active Substance Approval</h3>
+        <p>
+          Active substances used in biocidal products must be evaluated and approved by ECHA and
+          the European Commission. Approved active substances are listed in the Union list (formerly
+          Annex I) — a dynamic list updated as new evaluations are completed and periodic renewals
+          are assessed. Active substances not on this list cannot be used in new biocidal products
+          placed on the EU market. The approval specifies the product type(s) for which the substance
+          is approved, any conditions of use, and the renewal date. For disinfectant formulators,
+          the commonly used actives — quaternary ammonium compounds (quats), hydrogen peroxide,
+          peracetic acid, sodium hypochlorite at defined concentrations, ethanol above threshold
+          concentrations — are generally approved for relevant PTs, but conditions attached to
+          their approvals (concentration limits, excluded uses, environmental restrictions) must
+          be reviewed carefully before formulating.
+        </p>
+
+        <h3>Tier 2: Product Authorisation Routes</h3>
+        <p>
+          Once the active substance is confirmed as approved, the finished product must be authorised
+          through one of three routes: national authorisation (application to a single member state
+          competent authority, with access only to that market); mutual recognition (extending an
+          existing national authorisation to additional member states via a formal mutual recognition
+          procedure); or Union authorisation (a centralised route managed by ECHA giving a single
+          authorisation valid across all EU member states). A fourth simplified route is available
+          for low-risk biocidal products under Article 25, where all active substances are on the
+          approved low-risk list and the formulation meets defined criteria. The choice between
+          these routes depends on target markets, timeline constraints, and product eligibility.
+        </p>
+      </section>
+
+      <!-- DIAGRAM IMAGE -->
+      <!--
+        IMAGE PLACEHOLDER — DIAGRAM (900×500px)
+        File: eu-biocidal-products-regulation-disinfectants-sanitisers-diagram-globalformulation.webp
+        Alt: EU biocidal products regulation authorisation pathway diagram — active substance approval, national authorisation, mutual recognition, and Union authorisation routes | Global Formulation
+        IMG PROMPT (900×500px): Premium 3D scientific visualization. EU BPR authorisation pathway flowchart on a dark navy (#0a1628) background. Two parallel vertical columns flowing downward: left column shows active substance approval pathway — glowing cyan boxes for ECHA dossier submission, member state evaluation, Commission decision, and Union list inclusion; right column shows product authorisation pathway — gold boxes for national authorisation application, competent authority review, authorisation decision, then branching right to mutual recognition pathway and left to Union authorisation centralised route. Glowing cyan connecting arrows between the two columns at the active substance approval box linking to product authorisation entry. Clean sequential compliance pathway boxes with glowing connector lines. Regulatory authority nodes rendered as illuminated authority panels. Dark navy background, futuristic technical dashboard aesthetic. No text, no watermarks. Ultra clean composition, high contrast, glowing accent details. FILE: eu-biocidal-products-regulation-disinfectants-sanitisers-diagram-globalformulation.webp
+      -->
+      <img class="article-img"
+        src={diagramCdn}
+        alt="EU biocidal products regulation authorisation pathway diagram — active substance approval, national authorisation, mutual recognition, and Union authorisation routes | Global Formulation"
+        width="900" height="500" loading="lazy"
+      />
+      <p class="img-caption">The BPR two-tier system: active substance approval (left column) and product authorisation (right column) must both be completed before a biocidal product can legally be placed on the EU market. National authorisation feeds into mutual recognition; Union authorisation bypasses both with a single centralised route.</p>
+
+      <!-- SECTION 4 -->
+      <section id="testing-documentation">
+        <h2>Testing and Documentation Requirements</h2>
+        <p>
+          The BPR product authorisation dossier is a substantial technical submission. For a standard
+          PT2 disinfectant authorisation, the core data requirements cover the active substance
+          (if not already fully characterised in an existing approved dossier), the finished product
+          formulation, efficacy data demonstrating the product meets its claimed biocidal performance,
+          and a complete risk assessment for human health and the environment. The competent authority
+          evaluates all three elements: whether the product works (efficacy), whether it is acceptable
+          from a safety standpoint (risk assessment), and whether the proposed labelling and use
+          conditions adequately control exposure.
+        </p>
+
+        <h3>Efficacy Testing for PT2 Disinfectants</h3>
+        <p>
+          Efficacy data for PT2 surface disinfectants must be generated using the relevant CEN
+          standardised test methods. The minimum testing framework for a general surface disinfectant
+          bactericidal claim covers
+          <a href="https://www.iso.org/committee/54960.html" target="_blank" rel="noopener noreferrer">EN 13697</a>
+          (quantitative non-porous surface test for bactericidal and fungicidal activity) and EN 16615
+          (four-field quantitative test simulating practical surface disinfection conditions). Where
+          virucidal claims are required — increasingly standard for healthcare and food industry
+          products — EN 14476 is mandatory. Sporicidal claims, for products targeting Clostridioides
+          difficile spores or surgical instrument sterilisation, require EN 13704 or EN 17126.
+          All efficacy tests must be conducted at the claimed use concentration, contact time, and
+          temperature — at both clean conditions (without interfering substances) and dirty conditions
+          (with bovine serum albumin and/or yeast extract as organic load), and results must meet
+          the pass threshold for each standard. Testing must be performed by laboratories accredited
+          to ISO/IEC 17025 for the specific test methods.
+        </p>
+
+        <h3>Physical, Chemical, and Toxicological Data</h3>
+        <p>
+          Beyond efficacy, the dossier must include a complete physicochemical characterisation of
+          the product (pH, stability, corrosiveness, flammability), toxicological data covering
+          acute and repeat-dose toxicity, irritation, sensitisation, and genotoxicity for the
+          complete formulation, and ecotoxicological data addressing aquatic toxicity and
+          environmental persistence. For many co-formulants — surfactants, solvents, fragrances,
+          stabilisers — data may be available from existing REACH registration dossiers or from
+          supplier Safety Data Sheets, which can be read-across. Where data gaps exist, additional
+          testing is required. The Summary of Product Characteristics (SPC) — the formal document
+          describing approved use conditions, dosage, and target organisms — is the binding output
+          of the authorisation and governs what the product label must say.
+        </p>
+      </section>
+
+      <!-- SECTION 5 -->
+      <section id="certification-pathway">
+        <h2>Step-by-Step BPR Compliance Pathway for Disinfectant Manufacturers</h2>
+        <p>
+          The compliance pathway for a new disinfectant product entering the EU market under the
+          BPR follows a defined sequence of steps. Each step builds on the previous, and skipping
+          or shortcutting any stage is likely to result in dossier rejection or authorisation refusal.
+          The following sequence applies to the most common route for new products — national
+          authorisation with subsequent mutual recognition.
+        </p>
+
+        <ol class="steps-list">
+          <li><strong>Identify product type(s) and intended use.</strong> Confirm which PT(s) apply to your product's intended use and claims. A product claimed for both skin disinfection (PT1) and surface disinfection (PT2) requires authorisation under both product types, potentially requiring separate dossiers or a combined submission.</li>
+          <li><strong>Verify active substance approval status.</strong> Check the ECHA R4BP database and the EU active substance Union list to confirm each active substance in your formulation is approved for the relevant PT(s). Note any conditions of use, concentration limits, or exclusions attached to the approval. If an active substance is under the review programme but not yet approved, assess the transitional measures timeline.</li>
+          <li><strong>Conduct BPR-compliant efficacy testing.</strong> Commission CEN standardised efficacy tests from an accredited laboratory at your claimed use conditions. Define the scope of claims (bactericidal, fungicidal, virucidal, sporicidal; clean vs dirty conditions; contact time; temperature) before testing, as scope cannot be extended after authorisation without additional tests.</li>
+          <li><strong>Compile the complete technical dossier.</strong> Assemble physicochemical data, toxicological data, ecotoxicological data, and efficacy data into the BPR dossier format. Prepare the Summary of Product Characteristics (SPC) draft, including proposed label text, use instructions, and risk mitigation measures. Use IUCLID 6 software for dossier preparation — the format required by ECHA and all EU competent authorities.</li>
+          <li><strong>Submit to a member state competent authority.</strong> Choose the first member state for national authorisation based on strategic, scientific, or timeline considerations — different member states have different fee structures and evaluation speeds. Submit through the R4BP 3 portal. Pay the applicable fee and respond to completeness check requests within the prescribed period.</li>
+          <li><strong>Manage the evaluation process.</strong> The competent authority has 365 days from acceptance to complete its evaluation, pausing for information requests (clock stops). Respond to all requests for additional information (RAI) promptly and thoroughly. A draft authorisation decision and draft SPC will be shared for comment before finalisation.</li>
+          <li><strong>Extend to additional member states via mutual recognition.</strong> Once national authorisation is granted, submit mutual recognition applications to additional EU member states to extend market access. Existing authorisation holders in those states may raise concerns via the mutual recognition procedure — manage these carefully as they can delay or constrain the extension.</li>
+        </ol>
+
+        <div class="callout callout-amber">
+          <strong>Key Compliance Obligation</strong>
+          The most underestimated requirement in BPR product authorisation is the completeness of
+          the efficacy data package before submission. Competent authorities will request additional
+          efficacy tests during evaluation if the initial data package does not cover all claimed uses —
+          each request stops the evaluation clock and adds months to the timeline. Define the full
+          scope of biocidal claims upfront and complete all required tests before submitting.
+        </div>
+      </section>
+
+      <!-- INFOGRAPHIC IMAGE -->
+      <!--
+        IMAGE PLACEHOLDER — INFOGRAPHIC (900×500px)
+        File: eu-biocidal-products-regulation-disinfectants-sanitisers-infographic-globalformulation.webp
+        Alt: EU BPR product type classification infographic — PT1 human hygiene, PT2 disinfectants, PT3 veterinary hygiene, PT4 food contact biocides with compliance requirements | Global Formulation
+        IMG PROMPT (900×500px): Premium corporate data visualization dashboard. EU BPR product type classification matrix — a four-panel grid layout on dark navy background with gold grid dividers. Each panel represents one product type: top-left PT1 (Human Hygiene) with a hand icon and cyan accent; top-right PT2 (Disinfectants) with a surface spray icon and gold accent; bottom-left PT3 (Veterinary Hygiene) with an animal barn icon and cyan accent; bottom-right PT4 (Food Contact) with a food facility icon and white-gold accent. Each panel contains a compact icon-based compliance checklist showing active substance requirement, efficacy test series, and authorisation route. Clean dark navy background with gold grid lines. Modern Bloomberg Terminal analytics aesthetic. Vibrant status indicator dots in cyan and gold. No real data numbers — visual style only. No text, no watermarks. Balanced grid layout, premium corporate aesthetic, high information density. FILE: eu-biocidal-products-regulation-disinfectants-sanitisers-infographic-globalformulation.webp
+      -->
+      <img class="article-img"
+        src={infoCdn}
+        alt="EU BPR product type classification infographic — PT1 human hygiene, PT2 disinfectants, PT3 veterinary hygiene, PT4 food contact biocides with compliance requirements | Global Formulation"
+        width="900" height="500" loading="lazy"
+      />
+      <p class="img-caption">BPR product type classification for disinfectants: PT1 through PT4 each carry distinct active substance approval conditions, efficacy test requirements, and risk assessment obligations. Correct product type assignment at the outset determines the entire compliance pathway.</p>
+
+      <!-- SECTION 6 -->
+      <section id="timeline-costs">
+        <h2>Realistic Timeline and Cost Expectations</h2>
+        <p>
+          BPR product authorisation is a multi-year undertaking when approached from a standing
+          start. The headline statutory evaluation period is 365 days from dossier acceptance, but
+          this clock pauses for every information request from the competent authority — and for a
+          complex PT2 disinfectant dossier, two or three information request cycles are normal.
+          Effective calendar time from dossier submission to receiving a first national authorisation
+          decision typically runs from 18 months to 36 months, depending on member state, dossier
+          quality, and whether the active substance evaluation is already complete. Union authorisation,
+          while in principle delivering a single EU-wide approval, requires pre-submission scientific
+          advice, ECHA dossier evaluation, and European Commission decision — a total process that
+          routinely takes four or more years end-to-end.
+        </p>
+        <p>
+          Cost drivers fall into three main categories: testing (the most significant single item —
+          a full efficacy data package across bactericidal, fungicidal, and virucidal endpoints for
+          a PT2 product runs to a substantial laboratory investment); dossier preparation and
+          regulatory consultancy; and competent authority fees, which vary between member states
+          from a few thousand euros to tens of thousands depending on application type and national
+          fee schedules. Annual fees for maintaining an authorisation once granted add an ongoing
+          compliance cost. For manufacturers considering EU market entry, accurate budget modelling
+          from pre-submission advice through to authorisation maintenance should be completed before
+          committing to the BPR pathway — total project investment is often significantly higher than
+          initial estimates based on headline fee schedules alone.
+        </p>
+      </section>
+
+      <!-- SECTION 7 -->
+      <section id="common-pitfalls">
+        <h2>Common Mistakes Manufacturers Make — and How to Avoid Them</h2>
+        <p>
+          BPR non-compliance and authorisation delays share a consistent set of root causes that
+          experienced regulatory teams encounter repeatedly. Awareness of these pitfalls before
+          starting the process saves significant time and cost compared to discovering them at
+          the dossier submission or evaluation stage.
+        </p>
+
+        <h3>Misclassifying the Product Type</h3>
+        <p>
+          The most frequent error is applying for the wrong product type — most commonly, registering
+          a surface disinfectant under PT1 (human hygiene) because the company considers its product
+          a "hygiene" product, when the product is applied to surfaces rather than directly to human
+          skin. PT1 and PT2 carry different active substance approval conditions and different efficacy
+          test requirements. A PT1 authorisation does not permit surface disinfection claims; a PT2
+          authorisation does not permit claims for direct skin application. Products that genuinely
+          serve both uses require dual PT authorisation. The product type must be assigned based on
+          the product's use as applied — not its general category or the manufacturer's commercial
+          positioning.
+        </p>
+
+        <h3>Assuming Active Substance Approval Covers the Product</h3>
+        <p>
+          Several manufacturers — particularly those entering the EU market from non-EU jurisdictions —
+          assume that because their active substance is on the EU approved list, their formulated
+          product is automatically authorised. It is not. Active substance approval is a necessary
+          but entirely insufficient condition for product authorisation. The finished formulation,
+          with all its co-formulants, concentrations, intended uses, and proposed label, must be
+          separately assessed and authorised. Trading without a valid product authorisation — even
+          if the active substance is approved — constitutes unlawful placing on the market of a
+          biocidal product and is subject to enforcement action. For further context on how cleaners
+          and disinfectants intersect in practice, our overview of
+          <a href="/household-and-industrial-cleaners" target="_top">household and industrial cleaner formulation</a>
+          covers the boundary between cleaning and biocidal claims in product development.
+        </p>
+
+        <h3>Insufficient Efficacy Data Scope</h3>
+        <p>
+          Submitting a dossier with efficacy data that does not cover the full scope of the product's
+          label claims is the single most common cause of information requests that extend evaluation
+          timelines. If a product label claims bactericidal, fungicidal, and virucidal activity, all
+          three endpoints must be tested to the relevant EN standards before submission. If the label
+          claims efficacy under dirty conditions (the standard for healthcare environments), dirty
+          condition tests must be included — clean condition tests alone are insufficient. Defining
+          the complete claim scope and commissioning all required tests before dossier preparation
+          begins is the essential pre-submission step that most delays are traceable to having skipped.
+          Our guide to
+          <a href="/hospital-grade-disinfectants-formulation" target="_top">hospital-grade disinfectant formulation</a>
+          provides technical background on the efficacy standards that define these test requirements.
+        </p>
+
+        <h3>No EU Responsible Person Established</h3>
+        <p>
+          Non-EU manufacturers routinely overlook the requirement to designate an EU-established
+          Responsible Person before market entry. Without this, no product authorisation application
+          can be filed, and no product can legally enter EU distribution channels. Identifying and
+          contracting with a suitable EU Responsible Person — whether an affiliated EU entity, a
+          distribution partner willing to accept the legal responsibility, or a specialist regulatory
+          service provider — must be the first step in any non-EU manufacturer's EU market entry
+          plan, not a detail addressed after authorisation is sought. The BPR's requirements for
+          labelling, language localisation, and
+          <a href="/ph-and-cleaning-acid-neutral-alkaline-products" target="_top">product formulation compliance</a>
+          also rest on the Responsible Person's obligations and cannot be delegated away.
+        </p>
+      </section>
+
+      <!-- FAQ -->
+      <section class="faq-section" id="faq">
+        <h2>Frequently Asked Questions</h2>
+
+        <details class="faq-item">
+          <summary>What is the difference between active substance approval and product authorisation under the EU BPR?</summary>
+          <div class="faq-answer">The EU Biocidal Products Regulation operates a two-tier system. First, the active substance — the ingredient responsible for the biocidal action, such as a quaternary ammonium compound, hydrogen peroxide, or ethanol above a defined concentration — must be approved at EU level and listed in the Union list. Second, the finished biocidal product formulation must obtain its own product authorisation before it can be placed on the EU market. Active substance approval alone does not authorise a finished product for sale. Even a reformulation of an existing product — changing co-formulants, concentration, or intended use — typically requires a new or amended product authorisation.</div>
+        </details>
+
+        <details class="faq-item">
+          <summary>Which product type applies to my disinfectant under the EU BPR?</summary>
+          <div class="faq-answer">For disinfectants and sanitisers, the most relevant product types are: PT1 (human hygiene — products applied directly to human skin, such as hand sanitisers); PT2 (disinfectants and algaecides not intended for direct use on humans or animals — surface disinfectants, instrument disinfectants, area disinfectants); PT3 (veterinary hygiene); and PT4 (food and feed area disinfectants). The classification is based on the product's actual use as applied, not its general category. Misclassifying a product type — for example, registering a surface disinfectant under PT1 — results in an authorisation that does not cover the product's intended use and constitutes unlawful placement on the market for that use.</div>
+        </details>
+
+        <details class="faq-item">
+          <summary>Do I need BPR authorisation for a disinfectant I am already selling in Europe?</summary>
+          <div class="faq-answer">Whether existing products require immediate full BPR authorisation depends on the active substance review status. Products whose active substances are still under the EU review programme can continue under national transitional rules while the review is ongoing. However, once a review programme decision is made and an active substance is approved and the transitional period has expired, full BPR product authorisation becomes mandatory within defined timelines. Checking the active substance status via the ECHA R4BP database and the Review Programme regulation is the essential first step for any manufacturer assessing obligations for currently marketed products.</div>
+        </details>
+
+        <details class="faq-item">
+          <summary>What is Union authorisation and is my disinfectant product eligible?</summary>
+          <div class="faq-answer">Union authorisation is a centralised EU-wide authorisation granted by the European Commission following ECHA evaluation, giving access to all EU member states under a single authorisation number. It is available for standard biocidal products (Article 42), low-risk biocidal products (Article 25), and products containing only new active substances. Not all disinfectants are eligible — products requiring member state-specific conditions may need national authorisation with mutual recognition instead. For manufacturers seeking EU-wide market access from the outset, Union authorisation is the most efficient route where the product meets eligibility criteria.</div>
+        </details>
+
+        <details class="faq-item">
+          <summary>What efficacy tests are required for a PT2 surface disinfectant?</summary>
+          <div class="faq-answer">For PT2 surface disinfectants, the core CEN test framework includes EN 13697 (quantitative non-porous surface test for bactericidal and fungicidal activity) and EN 16615 (four-field quantitative surface test under practical conditions). Where virucidal claims are made, EN 14476 is required. Sporicidal claims require EN 13704. Tests must be conducted at the claimed use concentration, contact time, and temperature, under both clean and dirty conditions if healthcare or food industry claims are made, and must be performed by ISO/IEC 17025 accredited laboratories. Incomplete efficacy data coverage at the point of submission is the most common cause of timeline-extending information requests.</div>
+        </details>
+
+        <details class="faq-item">
+          <summary>How long does BPR product authorisation take and what should I budget?</summary>
+          <div class="faq-answer">Statutory evaluation time is 365 days from acceptance, but this pauses for information requests — making effective calendar time for a national authorisation typically 18–36 months. Union authorisation including pre-submission steps commonly takes four or more years. Cost drivers are efficacy testing (the largest single item for a new formulation with a full claim scope), dossier preparation and regulatory consultancy, and competent authority fees which vary by member state. Ongoing annual maintenance fees apply after authorisation is granted. Budget modelling based on the specific product scope, target markets, and claim set should be completed with specialist input before project commitment.</div>
+        </details>
+
+        <details class="faq-item">
+          <summary>Does the EU BPR apply to disinfectants manufactured outside the EU?</summary>
+          <div class="faq-answer">Yes. The BPR applies to any biocidal product placed on the EU market, regardless of manufacturing location. A non-EU manufacturer must designate an EU-established Responsible Person — an individual or company established in the EU who holds or is named in the product authorisation and accepts legal responsibility for BPR compliance. Without an EU Responsible Person, no authorisation application can be filed and the product cannot legally enter EU distribution. Identifying and contracting with a suitable EU Responsible Person is the first practical step in any non-EU manufacturer's EU market entry planning.</div>
+        </details>
+      </section>
+
+      <!-- CTA -->
+      <div class="cta-block">
+        <h2>Need Regulatory Guidance for Your Disinfectant Product Launch?</h2>
+        <p>Our team provides end-to-end BPR regulatory strategy — from product type classification and active substance status review through to dossier preparation, authority submissions, and ongoing authorisation maintenance.</p>
+        <a href="/contact" target="_top" class="cta-btn">Get a Free Consultation</a>
+      </div>
+
+      <!-- RELATED POSTS -->
+      <section class="related-section">
+        <h2>Related Articles</h2>
+        <ul class="related-grid">
+          <li><a href="/hospital-grade-disinfectants-formulation" target="_top">Hospital-Grade Disinfectant Formulation: Chemistry and Efficacy</a></li>
+          <li><a href="/household-and-industrial-cleaners" target="_top">Household &amp; Industrial Cleaners: Technology Overview</a></li>
+          <li><a href="/ghs-sds-compliance-lubricant-manufacturers" target="_top">GHS and SDS Compliance for Chemical Manufacturers</a></li>
+          <li><a href="/future-of-eco-friendly-chemical-products" target="_top">Green Chemistry Revolution: Eco-Friendly Industrial Products</a></li>
+          <li><a href="/volatile-organic-compounds-and-pollution" target="_top">Pollution Caused by VOCs: What Manufacturers Need to Know</a></li>
+          <li><a href="/manufacturing-without-a-factory-guide" target="_top">Manufacturing Without a Factory: The MaaS Ecosystem</a></li>
+        </ul>
+      </section>
+
+      <!-- AUTHOR BIO -->
+      <div class="author-bio">
+        <div class="author-avatar">AK</div>
+        <div class="author-info">
+          <h3>Absar Khan</h3>
+          <div class="author-role">Founder &amp; Lead Consultant, Global Formulation</div>
+          <p>Absar Khan is a senior industrial consultant with cross-disciplinary expertise spanning pharmaceutical manufacturing, cosmetics and personal care, home and institutional care chemicals, aerosols, lubricants, and advanced process engineering. His work integrates formulation chemistry, GMP facility design, validation science, quality systems, regulatory compliance, and large-scale manufacturing optimisation.</p>
+          <p style="margin-top:10px;">
+            <a href="https://www.linkedin.com/in/absar-khan-aerosol-consultant-and-formulator-78359b162" target="_blank" rel="noopener noreferrer">Connect on LinkedIn →</a>
+          </p>
+        </div>
+      </div>
+
+    </div><!-- /.article-col -->
+  </div><!-- /.page-body -->
+
+
+</Layout>
+
+<style>
+  @import url('https://fonts.googleapis.com/css2?family=Source+Serif+4:ital,opsz,wght@0,8..60,300;0,8..60,400;0,8..60,600;0,8..60,700;1,8..60,300;1,8..60,400&display=swap');
+  :root { --co-bg:#ffffff; --co-surface:#f8f9fa; --co-border:#e2e8f0; --co-text:#1a202c; --co-muted:#718096; --co-accent:#2563eb; --co-green:#16a34a; --co-amber:#d97706; --co-radius:8px; --co-serif:'Source Serif 4',Georgia,serif; --co-display:'Source Serif 4',Georgia,serif; }
+  .post-hero { background:var(--co-surface); border-bottom:1px solid var(--co-border); padding:2.5rem 0 0; }
+  .post-hero-inner { max-width:1180px; margin:0 auto; padding:0 1.5rem; }
+  .pg-breadcrumb { font-size:0.8rem; color:var(--co-muted); margin-bottom:1rem; display:flex; align-items:center; gap:0.35rem; flex-wrap:wrap; }
+  .pg-breadcrumb a { color:var(--co-accent); text-decoration:none; }
+  .pg-breadcrumb a:hover { text-decoration:underline; }
+  .category-badge { display:inline-block; background:var(--co-accent); color:#fff; font-size:0.72rem; font-weight:600; letter-spacing:0.05em; text-transform:uppercase; padding:0.2rem 0.7rem; border-radius:999px; margin-bottom:0.85rem; }
+  .post-hero h1 { font-family:var(--co-display); font-size:clamp(1.75rem,3.5vw,2.6rem); font-weight:700; line-height:1.2; color:var(--co-text); margin:0 0 1rem; max-width:820px; }
+  .post-meta { display:flex; gap:1.2rem; font-size:0.82rem; color:var(--co-muted); margin-bottom:1.5rem; flex-wrap:wrap; }
+  .hero-img-wrap { margin-top:1.5rem; border-radius:var(--co-radius) var(--co-radius) 0 0; overflow:hidden; max-height:420px; }
+  .hero-img-wrap img { width:100%; height:100%; object-fit:cover; display:block; }
+  .page-body { max-width:1180px; margin:0 auto; padding:2.5rem 1.5rem; display:grid; grid-template-columns:260px 1fr; gap:3rem; align-items:start; }
+  .toc-sidebar { position:sticky; top:84px; background:var(--co-surface); border:1px solid var(--co-border); border-radius:var(--co-radius); padding:1.25rem 1.5rem; }
+  .toc-heading { font-size:0.72rem; font-weight:700; letter-spacing:0.1em; text-transform:uppercase; color:var(--co-muted); margin-bottom:0.75rem; }
+  .toc-sidebar ol { list-style:decimal; padding-left:1.2rem; margin:0; }
+  .toc-sidebar ol li { margin-bottom:0.45rem; }
+  .toc-sidebar ol li a { font-size:0.83rem; color:var(--co-text); text-decoration:none; line-height:1.4; display:block; transition:color 0.15s; }
+  .toc-sidebar ol li a:hover,.toc-sidebar ol li a.toc-active { color:var(--co-accent); font-weight:600; }
+  .article-col { min-width:0; font-family:var(--co-serif); font-size:1.05rem; line-height:1.8; color:var(--co-text); }
+  .article-col h2 { font-family:var(--co-display); font-size:clamp(1.3rem,2.2vw,1.65rem); font-weight:700; margin:2.2rem 0 0.75rem; color:var(--co-text); border-top:2px solid var(--co-border); padding-top:1.5rem; }
+  .article-col h2:first-child { border-top:none; padding-top:0; margin-top:0; }
+  .article-col h3 { font-size:1.1rem; font-weight:700; margin:1.5rem 0 0.5rem; color:var(--co-text); }
+  .article-col p { margin:0 0 1.1rem; }
+  .article-col a { color:var(--co-accent); }
+  .article-col a:hover { text-decoration:underline; }
+  .article-img { width:100%; border-radius:var(--co-radius); display:block; margin:1.5rem 0 0.5rem; }
+  .img-caption { font-size:0.85rem; color:var(--co-muted); font-style:italic; margin-bottom:2em; }
+  .table-wrap { overflow-x:auto; margin:1.5rem 0; }
+  .data-table { width:100%; border-collapse:collapse; font-size:0.9rem; }
+  .data-table th { background:var(--co-surface); border:1px solid var(--co-border); padding:0.6rem 0.9rem; text-align:left; font-weight:700; font-size:0.82rem; color:var(--co-muted); text-transform:uppercase; letter-spacing:0.04em; }
+  .data-table td { border:1px solid var(--co-border); padding:0.6rem 0.9rem; vertical-align:top; }
+  .data-table tr:nth-child(even) td { background:var(--co-surface); }
+  .callout { background:#f0fdf4; border-left:4px solid var(--co-green); padding:1rem 1.25rem; border-radius:0 var(--co-radius) var(--co-radius) 0; margin:1.5rem 0; font-size:0.95rem; }
+  .callout-amber { background:#fffbeb; border-left-color:var(--co-amber); }
+  .faq-section { margin-top:2.5rem; }
+  details.faq-item { border:1px solid var(--co-border); border-radius:var(--co-radius); margin-bottom:0.75rem; overflow:hidden; }
+  details.faq-item summary { padding:1rem 1.25rem; font-weight:600; font-size:0.95rem; cursor:pointer; list-style:none; display:flex; justify-content:space-between; align-items:center; gap:0.75rem; }
+  details.faq-item summary::-webkit-details-marker { display:none; }
+  details.faq-item summary::after { content:'+'; font-size:1.2rem; color:var(--co-muted); flex-shrink:0; }
+  details.faq-item[open] summary::after { content:'−'; }
+  .faq-answer { padding:0 1.25rem 1rem; font-size:0.95rem; color:var(--co-muted); line-height:1.7; }
+  .cta-block { background:linear-gradient(135deg,#1e3a5f 0%,#2563eb 100%); color:#fff; padding:2rem 2.5rem; border-radius:var(--co-radius); margin:2.5rem 0; text-align:center; }
+  .cta-block h2 { color:#fff; border:none; padding:0; margin:0 0 0.5rem; font-size:1.4rem; }
+  .cta-block p { color:rgba(255,255,255,0.85); margin:0 0 1.25rem; }
+  .cta-btn { display:inline-block; background:#fff; color:#1e3a5f; font-weight:700; padding:0.7rem 1.75rem; border-radius:999px; text-decoration:none; font-size:0.95rem; transition:opacity 0.15s; }
+  .cta-btn:hover { opacity:0.9; text-decoration:none; }
+  .related-section { margin-top:2.5rem; }
+  .related-section h2 { font-size:1.1rem; margin-bottom:1rem; border-top:2px solid var(--co-border); padding-top:1.5rem; }
+  .related-grid { display:grid; grid-template-columns:repeat(auto-fill,minmax(220px,1fr)); gap:0.75rem; list-style:none; padding:0; margin:0; }
+  .related-grid li a { display:block; background:var(--co-surface); border:1px solid var(--co-border); border-radius:var(--co-radius); padding:0.75rem 1rem; font-size:0.875rem; color:var(--co-text); text-decoration:none; line-height:1.4; transition:border-color 0.15s; }
+  .related-grid li a:hover { border-color:var(--co-accent); color:var(--co-accent); }
+  .author-bio { display:flex; gap:1.25rem; align-items:flex-start; padding:1.5rem; background:var(--co-surface); border-radius:var(--co-radius); margin-top:2.5rem; border:1px solid var(--co-border); }
+  .author-avatar { width:52px; height:52px; border-radius:50%; background:var(--co-accent); color:#fff; font-weight:700; font-size:1rem; display:flex; align-items:center; justify-content:center; flex-shrink:0; }
+  .author-info h3 { margin:0 0 0.15rem; font-size:1rem; }
+  .author-role { font-size:0.82rem; color:var(--co-muted); margin-bottom:0.5rem; }
+  .author-info p { font-size:0.875rem; margin:0; line-height:1.6; }
+  .disclaimer-block { background:#fffbeb; border-left:4px solid var(--co-amber); padding:0.9rem 1.2rem; border-radius:0 var(--co-radius) var(--co-radius) 0; margin-bottom:1.5rem; font-size:0.88rem; color:var(--co-muted); line-height:1.6; }
+  .steps-list { padding-left:1.5rem; margin:1rem 0 1.5rem; }
+  .steps-list li { margin-bottom:0.85rem; line-height:1.7; font-size:0.95rem; }
+  @media (max-width:900px) {
+    .page-body { grid-template-columns:1fr; gap:1.5rem; }
+    .toc-sidebar { position:static; overflow-x:auto; white-space:nowrap; }
+    .toc-sidebar ol { display:flex; gap:0.5rem; padding-left:0; flex-wrap:wrap; }
+    .toc-sidebar ol li { margin-bottom:0; }
+    .toc-sidebar ol li a { white-space:nowrap; }
+  }
+  @media (max-width:600px) {
+    .post-hero-inner { padding:0 1rem; }
+    .page-body { padding:1.5rem 1rem; }
+    .cta-block { padding:1.5rem 1.25rem; }
+  }
+</style>
+
+<script is:inline>
+  (function () {
+    var links = document.querySelectorAll('.toc-sidebar ol li a');
+    var sections = [];
+    links.forEach(function (a) {
+      var el = document.querySelector(a.getAttribute('href'));
+      if (el) sections.push(el);
+    });
+    if (!sections.length) return;
+    var observer = new IntersectionObserver(function (entries) {
+      entries.forEach(function (entry) {
+        if (entry.isIntersecting) {
+          links.forEach(function (a) { a.classList.remove('toc-active'); });
+          var active = document.querySelector('.toc-sidebar ol li a[href="#' + entry.target.id + '"]');
+          if (active) active.classList.add('toc-active');
+        }
+      });
+    }, { rootMargin: '-20% 0px -70% 0px', threshold: 0 });
+    sections.forEach(function (s) { observer.observe(s); });
+  })();
+</script>

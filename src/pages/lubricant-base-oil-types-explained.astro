@@ -1,0 +1,523 @@
+---
+import Layout from '../layouts/Layout.astro';
+
+// ==========================================
+// 7 HIGH-FIDELITY JSON-LD SCHEMAS
+// ==========================================
+
+// 1. Organization Schema
+const orgSchema = {
+  "@context": "https://schema.org",
+  "@type": "Organization",
+  "name": "Global Formulation",
+  "url": "https://www.globalformulation.com",
+  "logo": "https://www.globalformulation.com/logo.png",
+  "contactPoint": [{
+    "@type": "ContactPoint",
+    "telephone": "+91 9819548320",
+    "contactType": "customer service"
+  }]
+};
+
+// 2. Website Search Schema
+const websiteSchema = {
+  "@context": "https://schema.org",
+  "@type": "WebSite",
+  "url": "https://www.globalformulation.com",
+  "potentialAction": {
+    "@type": "SearchAction",
+    "target": "https://www.globalformulation.com/blog?search={search_term_string}",
+    "query-input": "required name=search_term_string"
+  }
+};
+
+// 3. Author Person Schema
+const authorSchema = {
+  "@context": "https://schema.org",
+  "@type": "Person",
+  "name": "Global Formulation team",
+  "url": "https://www.globalformulation.com",
+  "affiliation": {
+    "@type": "Organization",
+    "name": "Global Formulation",
+    "url": "https://www.globalformulation.com"
+  }
+};
+
+// 4. BreadcrumbList Schema (3-level path)
+const breadcrumbSchema = {
+  "@context": "https://schema.org",
+  "@type": "BreadcrumbList",
+  "itemListElement": [
+    {
+      "@type": "ListItem",
+      "position": 1,
+      "name": "Home",
+      "item": "https://www.globalformulation.com"
+    },
+    {
+      "@type": "ListItem",
+      "position": 2,
+      "name": "Blog",
+      "item": "https://www.globalformulation.com/blog"
+    },
+    {
+      "@type": "ListItem",
+      "position": 3,
+      "name": "Base Oil Types Explained",
+      "item": "https://www.globalformulation.com/lubricant-base-oil-types-explained"
+    }
+  ]
+};
+
+// 5. BlogPosting Schema
+const blogPostingSchema = {
+  "@context": "https://schema.org",
+  "@type": "BlogPosting",
+  "headline": "Base Oil Types Explained: Complete Guide to Group I, II, III, IV & V",
+  "description": "A complete technical guide to API base oil groups for lubricants. Covers mineral vs synthetic, applications, comparison tables, and selection strategy.",
+  "image": "https://assets.zyrosite.com/AGBzPMBJDQiwDGny/api-base-oil-groups-classification-diagram-0l0HumQySXJdOKCV.png",
+  "author": {
+    "@type": "Person",
+    "name": "Global Formulation team"
+  },
+  "publisher": {
+    "@type": "Organization",
+    "name": "Global Formulation",
+    "logo": {
+      "@type": "ImageObject",
+      "url": "https://www.globalformulation.com/logo.png"
+    }
+  },
+  "datePublished": "2026-05-19",
+  "dateModified": "2026-05-19",
+  "mainEntityOfPage": {
+    "@type": "WebPage",
+    "@id": "https://www.globalformulation.com/lubricant-base-oil-types-explained"
+  },
+  "articleSection": "Lubricants & Tribology",
+  "keywords": "API base oil groups, Group I, Group II, Group III, Group IV PAO, Group V esters, synthetic lubricants, hydroprocessing",
+  "wordCount": "3200"
+};
+
+// 6. FAQ Schema
+const faqSchema = {
+  "@context": "https://schema.org",
+  "@type": "FAQPage",
+  "mainEntity": [
+    {
+      "@type": "Question",
+      "name": "What is the main difference between Group I and Group II base oils?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Group I oils are solvent-refined with higher sulfur and aromatics, while Group II oils are hydroprocessed, resulting in lower sulfur, higher saturates, better oxidation stability, and lighter color."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "Is Group III base oil truly synthetic?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Chemically, Group III oils originate from mineral crude but undergo severe hydrocracking and hydroisomerization that changes their molecular structure. They perform identically to many synthetics and are marketed as such in many regions."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "Can different base oil groups be blended together?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Yes, blending is standard industry practice. Group II is often blended with Group III for a cost-performance balance, and small amounts of Group V esters improve additive solubility."
+      }
+    }
+  ]
+};
+
+// 7. WebPage Schema
+const webpageSchema = {
+  "@context": "https://schema.org",
+  "@type": "WebPage",
+  "name": "Base Oil Types Explained: Complete Guide to Group I, II, III, IV & V | Global Formulation",
+  "url": "https://www.globalformulation.com/lubricant-base-oil-types-explained",
+  "description": "A complete technical guide to API base oil groups for lubricants. Covers mineral vs synthetic, applications, comparison tables, and selection strategy."
+};
+
+const schemas = [orgSchema, websiteSchema, authorSchema, breadcrumbSchema, blogPostingSchema, faqSchema, webpageSchema];
+---
+
+<Layout
+  title="Base Oil Types Explained: Complete Guide to Group I, II, III, IV & V | Global Formulation"
+  description="A complete technical guide to API base oil groups for lubricants. Covers mineral vs synthetic, applications, comparison tables, and selection strategy."
+  canonical="https://www.globalformulation.com/lubricant-base-oil-types-explained"
+  ogImage="https://assets.zyrosite.com/AGBzPMBJDQiwDGny/api-base-oil-groups-classification-diagram-0l0HumQySXJdOKCV.png"
+  ogType="article"
+  schemaJson={schemas}
+>
+  <main class="section-container" style="max-width: 100%; padding-left: 48px; padding-right: 48px; padding-top: 40px; padding-bottom: 80px;">
+    
+    <!-- HTML5 Compliant Breadcrumbs (target="_top") -->
+    <nav aria-label="Breadcrumb" style="display: flex; gap: 8px; font-size: 0.85rem; color: var(--text-muted); margin-bottom: 24px; font-family: 'Inter', sans-serif;">
+      <a href="/" target="_top" style="color: var(--text-muted); text-decoration: none;">Home</a>
+      <span>&gt;</span>
+      <a href="/blog" target="_top" style="color: var(--text-muted); text-decoration: none;">Blog</a>
+      <span>&gt;</span>
+      <span style="color: var(--text-primary); font-weight: 500;">Lubricants &amp; Tribology</span>
+    </nav>
+
+    <!-- Main article container -->
+    <article class="blog-prose">
+      <header class="post-header">
+        <h1 class="gradient-text" style="font-size: 2.75rem; line-height: 1.2; font-weight: 900; margin-bottom: 20px;">
+          Base Oil Types Explained: Complete Guide to Group I, II, III, IV &amp; V
+        </h1>
+        
+        <!-- Post meta details -->
+        <div style="display: flex; align-items: center; gap: 16px; font-size: 0.9rem; color: var(--text-muted); margin-bottom: 30px; font-family: 'Inter', sans-serif; font-weight: 500; border-bottom: 1px solid var(--border); padding-bottom: 20px;">
+          <div style="display: flex; align-items: center; gap: 8px;">
+            <span style="width: 28px; height: 28px; background: var(--primary); color: white; display: flex; align-items: center; justify-content: center; border-radius: 50%; font-weight: 700; font-size: 0.75rem;">GF</span>
+            <span>By <strong>Global Formulation team</strong></span>
+          </div>
+          <span style="width: 4px; height: 4px; border-radius: 50%; background-color: var(--border);"></span>
+          <span>Published: <strong>May 19, 2026</strong></span>
+          <span style="width: 4px; height: 4px; border-radius: 50%; background-color: var(--border);"></span>
+          <span>Reading Time: <strong>16 min read</strong></span>
+          <span style="width: 4px; height: 4px; border-radius: 50%; background-color: var(--border);"></span>
+          <span style="background: #e2fbf0; color: #0f7a5c; padding: 2px 10px; border-radius: 50px; font-size: 0.75rem; font-weight: 700; text-transform: uppercase;">Lubricants &amp; Tribology</span>
+        </div>
+      </header>
+
+      <!-- Primary Featured Image -->
+      <div class="image-slot">
+        <img 
+          src="https://assets.zyrosite.com/AGBzPMBJDQiwDGny/api-base-oil-groups-classification-diagram-0l0HumQySXJdOKCV.png" 
+          alt="API base oil classification diagram showing Group I to V" 
+          width="1200" 
+          height="800" 
+          loading="eager" 
+        />
+      </div>
+
+      <!-- Lead paragraph -->
+      <div class="lead">
+        <p>
+          Base oils form the structural foundation of every high-performance lubricant. Whether it is a modern multi-grade engine oil, an industrial hydraulic fluid, a heavy-duty gear oil, or a specialized lubricating grease, approximately <strong>70% to 95% of the total formulation volume</strong> is exclusively base oil. The chemical nature of this fluid critically dictates the final product's durability, oxidation resistance, low-temperature pumpability, and compatibility with advanced additive packages. Without a technically sound understanding of base oil chemistry, successful lubricant formulation is impossible.
+        </p>
+      </div>
+
+      <!-- SECTION 1 -->
+      <section class="section" id="understanding-role">
+        <h2>What Is a Base Oil in Lubricant Manufacturing?</h2>
+        <p>
+          Base oil acts as the primary fluid carrier medium into which chemical additives are meticulously dispersed. These additives impart detergency, extreme-pressure antiwear protection, long-term oxidation stability, active corrosion inhibition, and dynamic friction control. However, these complex additive molecules cannot function independently; they rely entirely on the base oil to solubilize them and transport them to the tribological wear interfaces.
+        </p>
+        <p>
+          The intrinsic physical chemistry and molecular architecture of the selected base oil establish the fundamental boundary limitations of the lubricant. Selecting the appropriate foundation directly governs critical operational parameters:
+        </p>
+        <ul style="padding-left: 20px;">
+          <li><strong>Viscosity Index Behavior</strong>: How severely the fluid thins out at high temperatures and thickens at freezing temperatures.</li>
+          <li><strong>Thermo-Oxidative Stability</strong>: The base fluid's natural resistance to chemical breakdown and sludge formation when exposed to prolonged heat and oxygen.</li>
+          <li><strong>Evaporative Volatility</strong>: The propensity of lighter hydrocarbon molecules to boil off under severe thermal stress, leading to oil consumption.</li>
+          <li><strong>Elastomer Compatibility</strong>: The chemical interaction of the fluid with rubber seals, causing either problematic shrinkage or excessive swelling.</li>
+        </ul>
+      </section>
+
+      <!-- SECTION 2 -->
+      <section class="section" id="api-classification">
+        <h2>How Base Oils Are Classified (API Group I–V System)</h2>
+        <p>
+          To establish a universal standard for base oil performance and interchangeability, the <strong>American Petroleum Institute (API)</strong> devised a classification system based on exact chemical composition and physical response. This system divides all base oils into five distinct groups based on the severity of their refining processes and resulting molecular purity.
+        </p>
+        <p>
+          The classification relies on three precise analytical parameters that directly reflect the base oil's performance capabilities and resistance to degradation:
+        </p>
+        <ul style="padding-left: 20px;">
+          <li><strong>Saturates Content (%)</strong>: Higher saturates indicate a more stable, fully bonded hydrocarbon structure that is highly resistant to oxidation.</li>
+          <li><strong>Sulfur Content (%)</strong>: Lower sulfur levels minimize acidic byproducts, improve additive response, and prevent catalyst poisoning in emission systems.</li>
+          <li><strong>Viscosity Index (VI)</strong>: A higher VI number demonstrates superior film thickness stability across extreme temperature fluctuations.</li>
+        </ul>
+        
+        <div class="table-container">
+          <table>
+            <thead>
+              <tr>
+                <th>Parameter</th>
+                <th>Group I</th>
+                <th>Group II</th>
+                <th>Group III</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td>Saturates</td>
+                <td>&lt; 90%</td>
+                <td>&ge; 90%</td>
+                <td>&ge; 90%</td>
+              </tr>
+              <tr>
+                <td>Sulfur</td>
+                <td>&gt; 0.03%</td>
+                <td>&le; 0.03%</td>
+                <td>&le; 0.03%</td>
+              </tr>
+              <tr>
+                <td>VI</td>
+                <td>80–119</td>
+                <td>80–119</td>
+                <td>&ge; 120</td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+        <p>
+          Groups I, II, and III are refined directly from crude oil, whereas Groups IV and V consist of chemically synthesized and specialty engineered fluids that are not petroleum-refined.
+        </p>
+      </section>
+
+      <!-- Image: Mineral vs Synthetic -->
+      <div class="image-slot">
+        <img 
+          src="https://assets.zyrosite.com/AGBzPMBJDQiwDGny/mineral-vs-synthetic-base-oil-molecular-structure-VDxoxDboFc5TxrGn.png" 
+          alt="Comparison of mineral base oil and synthetic base oil molecular structure" 
+          loading="lazy" 
+        />
+      </div>
+
+      <!-- SECTION 3 -->
+      <section class="section" id="group-1">
+        <h2>Group I Base Oils – Traditional Solvent Refined Oils</h2>
+        <p>
+          Group I base oils represent the legacy generation of mineral oils, manufactured through a traditional solvent refining extraction process. This physical separation technique effectively removes a significant portion of unstable aromatics and waxes from the crude distillate. However, because it is merely a physical separation, the resulting fluid retains moderate levels of sulfur, unsaturated olefins, and aromatic compounds that act as weak links during thermal stress.
+        </p>
+        <p>
+          Despite their chemical limitations, Group I oils still maintain distinct advantages in specific legacy applications, particularly where ultra-high oxidation stability is unnecessary, but excellent solubility is required:
+        </p>
+        <ul style="padding-left: 20px;">
+          <li><strong>Industrial Hydraulics</strong>: Used in high-volume, low-stress applications where frequent fluid replacement is the norm.</li>
+          <li><strong>Marine Lubricants</strong>: The natural solvency of Group I aids in holding severe heavy-fuel combustion byproducts in suspension.</li>
+          <li><strong>Process Oils</strong>: Highly valued in the rubber compounding and textile industries for their physical compatibility.</li>
+        </ul>
+      </section>
+
+      <!-- SECTION 4 -->
+      <section class="section" id="group-2">
+        <h2>Group II Base Oils – Hydroprocessed Mineral Oils</h2>
+        <p>
+          Group II base oils marked a revolutionary leap in lubricant chemistry through the adoption of intensive <strong>hydroprocessing and hydrocracking</strong>. Unlike the physical separation of Group I, hydroprocessing involves reacting the base fluid with hydrogen gas under immense heat and pressure over a catalyst. This chemical process aggressively shatters unstable aromatic rings and eliminates sulfur, converting the fluid into a highly pure, saturated hydrocarbon matrix.
+        </p>
+        <p>
+          Because of their profoundly altered molecular structure, Group II oils deliver a substantially upgraded performance profile, making them the modern baseline for the majority of mainstream lubricants globally:
+        </p>
+        <ul style="padding-left: 20px;">
+          <li><strong>Passenger Car Motor Oils (PCMO)</strong>: Serves as the primary foundation for standard tier automotive engine oils requiring good thermal stability.</li>
+          <li><strong>Heavy-Duty Diesel Oils</strong>: Provides the oxidation resistance needed to endure severe soot loading and high operating temperatures.</li>
+          <li><strong>Premium Hydraulics</strong>: Forms the backbone of long-life industrial fluids that resist sludge and varnish buildup in critical servo valves.</li>
+        </ul>
+      </section>
+
+      <!-- Image: Group II Hydroprocessing -->
+      <div class="image-slot">
+        <img 
+          src="https://assets.zyrosite.com/AGBzPMBJDQiwDGny/group-ii-base-oil-hydroprocessing-unit-schematic-k2SKisM0XGlZONMh.png" 
+          alt="Hydroprocessing unit schematic used for producing Group II base oils" 
+          loading="lazy" 
+        />
+      </div>
+
+      <!-- SECTION 5 -->
+      <section class="section" id="group-3">
+        <h2>Group III Base Oils – Highly Refined "Synthetic-Like" Oils</h2>
+        <p>
+          Group III base oils represent the pinnacle of crude oil refining. They are subjected to severe hydrocracking and advanced catalytic hydroisomerization. These intense chemical processes systematically break down complex wax molecules and restructure them into highly uniform, branched iso-paraffins. The resulting fluid achieves a Viscosity Index exceeding 120 and boasts exceptional resistance to thermal degradation.
+        </p>
+        <p>
+          The molecular transformation is so profound that the performance of Group III oils effectively rivals that of chemically synthesized fluids. Because of this, in numerous global markets, including North America and Europe, Group III base oils are legally marketed and sold as <strong>full synthetic</strong> lubricants. They dominate high-performance applications:
+        </p>
+        <ul style="padding-left: 20px;">
+          <li><strong>Premium Automotive Engine Oils</strong>: Mandatory for modern low-viscosity (e.g., 0W-20) formulations requiring extreme fuel economy and long drain intervals.</li>
+          <li><strong>Automatic Transmission Fluids (ATF)</strong>: Provides the permanent shear stability and precise friction control required by complex transmissions.</li>
+          <li><strong>Motorcycle Oils</strong>: Endures the intense combined thermal and mechanical shearing environments of high-revving engines and integrated wet clutches.</li>
+        </ul>
+      </section>
+
+      <!-- SECTION 6 -->
+      <section class="section" id="group-4">
+        <h2>Group IV Base Oils – PAO (Polyalphaolefins)</h2>
+        <p>
+          Unlike Groups I through III, Group IV Polyalphaolefins (PAO) are entirely synthesized from the ground up rather than refined from crude oil. Through a meticulously controlled chemical polymerization process utilizing ethylene gas, manufacturers build exact, identical, short-chain alpha-olefin molecules. The complete absence of impurities, sulfur, or unwanted aromatics results in a structurally perfect fluid.
+        </p>
+        <p>
+          Because every molecule is identical in size and shape, PAOs exhibit unparalleled physical characteristics that are impossible to achieve with mineral refining, commanding a premium price in demanding industries:
+        </p>
+        <ul style="padding-left: 20px;">
+          <li><strong>Extreme Low-Temperature Flow</strong>: Maintains fluid pumpability at cryogenic temperatures far below the freezing point of conventional oils.</li>
+          <li><strong>Ultra-High Thermal Stability</strong>: Resists catastrophic carbonization and coking when exposed to the extreme temperatures of aviation turbines and superchargers.</li>
+          <li><strong>Zero Evaporative Volatility</strong>: Prevents oil loss and consumption in severely stressed, high-speed applications.</li>
+        </ul>
+      </section>
+
+      <!-- Image: Group IV PAO -->
+      <div class="image-slot">
+        <img 
+          src="https://assets.zyrosite.com/AGBzPMBJDQiwDGny/group-iv-pao-polyalphaolefin-molecular-structure-ljjW4j3MssiUmWmw.png" 
+          alt="Molecular structure of polyalphaolefin PAO Group IV synthetic base oil" 
+          loading="lazy" 
+        />
+      </div>
+
+      <!-- SECTION 7 -->
+      <section class="section" id="group-5">
+        <h2>Group V Base Oils – Specialty &amp; Additive Base Stocks</h2>
+        <p>
+          Group V is the API's broad catch-all category encompassing every other base oil chemistry that does not fit into Groups I through IV. These are highly specialized, chemically diverse synthetic fluids. They are rarely used as the sole base oil in high-volume automotive formulations due to extreme costs or compatibility issues, but are instead strategically blended in low percentages to dramatically enhance specific weaknesses in Group III or PAO systems.
+        </p>
+        <p>
+          The most prominent members of Group V include Esters, Polyalkylene Glycols (PAG), and specialized Naphthenic oils, each utilized for very precise problem-solving tasks:
+        </p>
+        <ul style="padding-left: 20px;">
+          <li><strong>Esters (Diesters and Polyol Esters)</strong>: Impart incredible natural lubricity and possess natural polarity, meaning they magnetically cling to metal surfaces to prevent dry starts. They also forcefully swell elastomer seals to prevent leakage.</li>
+          <li><strong>Polyalkylene Glycols (PAG)</strong>: Famous for burning absolutely clean without leaving carbon deposits, making them mandatory for extreme-temperature compressor and refrigeration systems.</li>
+          <li><strong>Naphthenic Oils</strong>: Highly valued for their incredible solvency and ultra-low pour points, serving as the standard for electrical transformer insulation fluids.</li>
+        </ul>
+      </section>
+
+      <!-- Image: Group V Ester -->
+      <div class="image-slot">
+        <img 
+          src="https://assets.zyrosite.com/AGBzPMBJDQiwDGny/group-v-ester-base-oil-chemical-structure.webp-jdOsiesb4nibqu9i.png" 
+          alt="Chemical structure of ester Group V base oil" 
+          loading="lazy" 
+        />
+      </div>
+
+      <!-- SECTION 8 -->
+      <section class="section" id="comparison">
+        <h2>Comparison: Mineral vs. Synthetic Base Oils</h2>
+        <p>
+          The engineering debate between mineral and synthetic base oils ultimately reduces to molecular uniformity. Mineral oils, even when highly refined (Group II), are a chaotic mixture of varying hydrocarbon chain lengths and structures. Synthetic oils (Group III, IV, and V) are engineered to possess uniform, identical molecular architectures.
+        </p>
+        <p>
+          This uniformity dictates the fluid's physical and thermodynamic response. For heavy-duty operations and modern equipment designs, the performance gap is vast and dictates the lifecycle cost of the machinery:
+        </p>
+        <ul style="padding-left: 20px;">
+          <li><strong>Traction Coefficient</strong>: Uniform synthetic molecules slide past each other with minimal internal fluid friction, noticeably reducing operating temperatures and improving energy efficiency compared to mineral oils.</li>
+          <li><strong>Oxidative Lifespan</strong>: Synthetics resist oxygen attack exponentially better, allowing for significantly extended oil drain intervals and drastically reducing maintenance downtime.</li>
+          <li><strong>High-Temperature Shear</strong>: Synthetics maintain their critical protective film thickness under intense mechanical shear, preventing catastrophic metal-to-metal contact where mineral oils would rapidly thin out and fail.</li>
+        </ul>
+      </section>
+
+      <!-- SECTION 9: FAQ -->
+      <section class="section" id="faq" style="border-top: 2px solid var(--border); padding-top: 40px; margin-top: 40px;">
+        <h2>Frequently Asked Questions (FAQ)</h2>
+        <div style="display: flex; flex-direction: column; gap: 20px;">
+          
+          <div class="box" style="margin: 0;">
+            <h3 style="color: var(--primary); font-size: 1.15rem; margin-bottom: 8px;">1. What is the main difference between Group I and Group II base oils?</h3>
+            <p style="margin: 0; line-height: 1.6;">
+              Group I oils are solvent-refined with higher sulfur and aromatics, resulting in lower oxidation stability. Group II oils undergo intense hydroprocessing, resulting in a saturated molecular structure with lower sulfur, better oxidation stability, and lighter color.
+            </p>
+          </div>
+
+          <div class="box" style="margin: 0;">
+            <h3 style="color: var(--primary); font-size: 1.15rem; margin-bottom: 8px;">2. Is Group III base oil truly synthetic?</h3>
+            <p style="margin: 0; line-height: 1.6;">
+              Chemically, Group III oils originate from crude oil but undergo severe catalytic hydrocracking and hydroisomerization that fundamentally rewrites their molecular structure. Because they perform identically to many chemically synthesized fluids, they are legally marketed as synthetic in many global regions.
+            </p>
+          </div>
+
+          <div class="box" style="margin: 0;">
+            <h3 style="color: var(--primary); font-size: 1.15rem; margin-bottom: 8px;">3. Can different base oil groups be blended together?</h3>
+            <p style="margin: 0; line-height: 1.6;">
+              Yes, cross-blending is standard industry practice. For example, a formulation might use Group III for high-temperature stability, blended with a small percentage of Group V esters to improve additive solubility and prevent seal shrinkage.
+            </p>
+          </div>
+
+        </div>
+      </section>
+
+      <!-- Call to Action Box (target="_top") -->
+      <div class="cta" style="background: linear-gradient(135deg, var(--primary) 0%, var(--secondary) 100%); color: #ffffff; padding: 30px; border-radius: var(--radius-lg); margin-top: 40px; display: flex; flex-direction: column; justify-content: space-between; align-items: flex-start; gap: 20px; md-flex-direction: row; md-align-items: center;">
+        <div class="left">
+          <p style="margin:0 0 8px 0; font-size:1.25rem; font-weight:800; font-family: 'Outfit', sans-serif;">Need Technical Support for Advanced Lubricant Formulation?</p>
+          <p style="margin:0 0 16px 0; font-size:0.95rem; line-height:1.6; opacity:0.95;">
+            Leverage our deep technical expertise in base oil selection, additive package synergy, and pilot-scale testing. Build high-performance synthetic and semi-synthetic lubricants aligned with the latest OEM specifications.
+          </p>
+          <p style="margin:0; font-size:0.9rem; line-height:1.6; font-family: monospace;">
+            Email: <strong>consulting@globalformulation.com</strong><br />
+            Phone: <strong>+91 9819548320 &nbsp;&nbsp; +91 8169102990</strong>
+          </p>
+        </div>
+        <a href="mailto:consulting@globalformulation.com" class="btn" style="background:#ffffff; color:var(--primary); font-weight:700; padding:12px 24px; border-radius:var(--radius-sm); border:none; text-decoration:none; transition: all var(--transition-fast);">
+          Request Formulation Review
+        </a>
+      </div>
+
+      <!-- ABOUT THE AUTHOR -->
+      <section class="section" id="about-author" style="margin-top: 50px; background: #f8fafc; border: 1px solid var(--border); padding: 30px; border-radius: var(--radius-lg); display: flex; flex-direction: column; gap: 20px; md-flex-direction: row;">
+        <div style="flex-shrink: 0; width: 60px; height: 60px; background: linear-gradient(135deg, var(--primary) 0%, var(--secondary) 100%); color: white; display: flex; align-items: center; justify-content: center; border-radius: 50%; font-size: 1.5rem; font-weight: 800; font-family: 'Outfit', sans-serif; box-shadow: var(--shadow-md);">
+          GF
+        </div>
+        <div>
+          <h3 style="margin-top: 0; margin-bottom: 8px; font-family: 'Outfit', sans-serif; font-size: 1.3rem; font-weight: 700; color: var(--text-primary);">About the Specialist</h3>
+          <p style="margin-top: 0; margin-bottom: 12px; font-size: 0.95rem; line-height: 1.6; color: var(--text-muted);">
+            The <strong>Global Formulation team</strong> consists of senior industrial consultants with cross-disciplinary expertise spanning advanced process engineering, specialty chemical formulations, synthetic tribology, and green chemical plant setups. Our technical architects lead scientific advisory and formulation teams supporting manufacturers globally in technology selection, GMP layouts, validation frameworks, and regulatory strategies.
+          </p>
+          <p style="margin: 0; font-size: 0.9rem;">
+            <strong>LinkedIn Portfolio:</strong> 
+            <a 
+              href="https://www.linkedin.com/in/absar-khan-aerosol-consultant-and-formulator-78359b162" 
+              target="_blank" 
+              style="font-weight: 700; color: var(--primary); text-decoration: underline;"
+            >
+              Connect with Global Formulation on LinkedIn
+            </a>
+          </p>
+        </div>
+      </section>
+
+      <!-- Footer copyright -->
+      <footer style="text-align: center; margin-top: 50px; color: var(--text-muted); font-size: 0.85rem; font-family: 'Inter', sans-serif;">
+        &copy; {new Date().getFullYear()} Global Formulation. All rights reserved. 
+        <br />
+        <span style="font-size: 0.75rem; opacity: 0.8;">Specialized Chemical Engineering &amp; Lubricant Product Development.</span>
+      </footer>
+
+    </article>
+  </main>
+</Layout>
+
+<style>
+
+  
+  .blog-prose h1, 
+  .blog-prose h2, 
+  .blog-prose h3 {
+    font-family: 'Playfair Display', 'Outfit', serif !important;
+  }
+  
+  .blog-prose h2 {
+    color: #ffffff !important;
+    background-color: var(--secondary) !important;
+    padding: 12px 20px;
+    border-radius: var(--radius-md);
+    border-bottom: none !important;
+    font-weight: 700;
+  }
+
+  /* Widescreen constraints */
+  .blog-prose p, 
+  .blog-prose ul, 
+  .blog-prose ol,
+  .blog-prose h3,
+  .blog-prose .lead,
+  .blog-prose .image-slot,
+  .blog-prose .box,
+  .blog-prose .cta,
+  .blog-prose .table-container,
+  .blog-prose #faq {
+    max-width: 100%;
+    width: 100%;
+  }
+
+  .blog-prose .lead {
+    margin: 2rem 0;
+  }
+</style>

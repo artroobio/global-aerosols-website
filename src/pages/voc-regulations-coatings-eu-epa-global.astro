@@ -1,0 +1,499 @@
+---
+import Layout from '../layouts/Layout.astro';
+
+const slug = 'voc-regulations-coatings-eu-epa-global';
+const title = 'VOC Regulations in Coatings: EU, EPA & Global Guide';
+const description = 'VOC regulations in coatings explained — EU Directive 2004/42/EC limits, US EPA rules, and a practical compliance pathway for paint and coating manufacturers.';
+const heroCdn = `https://cdn.globalformulation.com/images/${slug}/${slug}-hero-globalformulation.webp`;
+const diagramCdn = `https://cdn.globalformulation.com/images/${slug}/${slug}-diagram-globalformulation.webp`;
+const infographicCdn = `https://cdn.globalformulation.com/images/${slug}/${slug}-infographic-globalformulation.webp`;
+
+const orgSchema = {
+  "@context": "https://schema.org", "@type": "Organization",
+  "name": "Global Formulation", "url": "https://www.globalformulation.com",
+  "logo": "https://www.globalformulation.com/logo.png",
+  "contactPoint": [{ "@type": "ContactPoint", "telephone": "+91 9819548320", "contactType": "customer service" }]
+};
+const websiteSchema = {
+  "@context": "https://schema.org", "@type": "WebSite",
+  "url": "https://www.globalformulation.com",
+  "potentialAction": { "@type": "SearchAction", "target": "https://www.globalformulation.com/blog?search={search_term_string}", "query-input": "required name=search_term_string" }
+};
+const authorSchema = {
+  "@context": "https://schema.org", "@type": "Person",
+  "name": "Absar Khan", "jobTitle": "Lead Consultant",
+  "url": "https://www.linkedin.com/in/absar-khan-aerosol-consultant-and-formulator-78359b162",
+  "affiliation": { "@type": "Organization", "name": "Global Formulation", "url": "https://www.globalformulation.com" },
+  "sameAs": ["https://www.linkedin.com/in/absar-khan-aerosol-consultant-and-formulator-78359b162"]
+};
+const breadcrumbSchema = {
+  "@context": "https://schema.org", "@type": "BreadcrumbList",
+  "itemListElement": [
+    { "@type": "ListItem", "position": 1, "name": "Home", "item": "https://www.globalformulation.com" },
+    { "@type": "ListItem", "position": 2, "name": "Blog", "item": "https://www.globalformulation.com/blog" },
+    { "@type": "ListItem", "position": 3, "name": "VOC Regulations in Coatings: EU, EPA & Global Guide", "item": `https://www.globalformulation.com/${slug}` }
+  ]
+};
+const blogPostingSchema = {
+  "@context": "https://schema.org", "@type": "BlogPosting",
+  "headline": "VOC Regulations in Coatings: EU, EPA & Global Guide",
+  "description": "VOC regulations in coatings explained — EU Directive 2004/42/EC limits, US EPA rules, and a practical compliance pathway for paint and coating manufacturers.",
+  "image": heroCdn,
+  "author": { "@type": "Person", "name": "Absar Khan" },
+  "publisher": { "@type": "Organization", "name": "Global Formulation", "logo": { "@type": "ImageObject", "url": "https://www.globalformulation.com/logo.png" } },
+  "datePublished": "2026-06-01", "dateModified": "2026-06-01",
+  "mainEntityOfPage": { "@type": "WebPage", "@id": `https://www.globalformulation.com/${slug}` },
+  "articleSection": "Paints & Coatings Regulations",
+  "keywords": "VOC regulations coatings, EU VOC directive 2004/42/EC, EPA VOC limits coatings, low VOC coating compliance, volatile organic compound regulation paint, solvent emissions coating regulation",
+  "wordCount": "2200"
+};
+const faqSchema = {
+  "@context": "https://schema.org", "@type": "FAQPage",
+  "mainEntity": [
+    {
+      "@type": "Question",
+      "name": "What is EU Directive 2004/42/EC and which coatings does it cover?",
+      "acceptedAnswer": { "@type": "Answer", "text": "EU Directive 2004/42/EC on the limitation of emissions of volatile organic compounds is a European product regulation that sets maximum VOC content limits for decorative paints and varnishes used in buildings and vehicle refinishing products. It applies to products sold or supplied for use within EU member states and covers decorative architectural coatings (interior and exterior), interior and exterior trim coatings, primers, floor coatings, and vehicle refinishing products. Industrial coating products that are factory-applied and not available to the general public are generally outside its scope, being addressed instead at the installation level by the Industrial Emissions Directive 2010/75/EU for large facilities. The Phase II VOC limits under Directive 2004/42/EC took effect on 1 January 2010 and remain the operative limits as of 2024, with VOC content expressed in grams per litre of product as supplied (inclusive of water in the denominator)." }
+    },
+    {
+      "@type": "Question",
+      "name": "How is VOC content measured for EU Directive 2004/42/EC compliance?",
+      "acceptedAnswer": { "@type": "Answer", "text": "EU Directive 2004/42/EC defines VOC by reference to a boiling point threshold — any organic compound with an initial boiling point of 250°C or less at standard atmospheric pressure (1 bar) is classified as a VOC for the purposes of the Directive. VOC content is measured primarily by the gravimetric methods in ISO 11890-1 (for VOC content above 15%) and ISO 11890-2 (for VOC content below 15%, using GC-based methods). The result is expressed as grams of VOC per litre of product as supplied — importantly, water is included in the denominator but not counted in the numerator. This is a different basis from US EPA and CARB methods, which exclude water (and exempt compounds) from both numerator and denominator to calculate a 'regulatory VOC' value. A single product can have a higher regulatory VOC value under EU methods than under CARB methods if its water content is high, or vice versa, making direct comparison between EU and US compliance values unreliable without converting to a common basis." }
+    },
+    {
+      "@type": "Question",
+      "name": "What is the difference between EPA VOC limits and California CARB VOC limits?",
+      "acceptedAnswer": { "@type": "Answer", "text": "The US EPA sets federal VOC limits for architectural, industrial maintenance, and other coating categories under the AIM (Architectural and Industrial Maintenance) coatings rule and product-specific NESHAP rules. California's Air Resources Board (CARB) has historically set VOC limits significantly below EPA federal levels for the California market — typically 50 to 150 g/L lower depending on product category — under CARB's Architectural Coatings Suggested Control Measure, which California has incorporated into its Air Toxics Control Measures. Because California adopts stricter limits under Clean Air Act authority, manufacturers selling nationally must formulate to CARB limits to access the California market or maintain separate product lines. Several other US states and air quality management districts in the Northeastern US have adopted CARB-aligned limits under the OTC (Ozone Transport Commission) framework, further expanding the geographical reach of CARB-level requirements beyond California." }
+    },
+    {
+      "@type": "Question",
+      "name": "Are there VOC-exempt solvents, and how do they work under different frameworks?",
+      "acceptedAnswer": { "@type": "Answer", "text": "Yes — certain solvents are designated as 'exempt' under specific regulatory frameworks because they have been determined not to contribute meaningfully to photochemical smog formation. Under US EPA and California CARB regulations, exempt compounds include acetone, methyl acetate, t-butyl acetate, parachlorobenzotrifluoride (PCBTF), and a small number of other substances. When a solvent is exempt, its content is excluded from both the numerator and denominator when calculating regulatory VOC — effectively reducing the measured regulatory VOC below the actual organic solvent content. However, these exemptions do not translate to the EU Directive 2004/42/EC framework, which uses a boiling point definition (≤250°C) without a compound-by-compound exemption list. A product formulated with a high proportion of acetone (US-CARB exempt) will show a lower regulatory VOC under CARB but will count acetone fully in its VOC content under EU Directive 2004/42/EC. This distinction is one of the most common sources of compliance error when a product is simultaneously targeting EU and US markets." }
+    },
+    {
+      "@type": "Question",
+      "name": "Does EU VOC Directive compliance automatically mean US CARB compliance?",
+      "acceptedAnswer": { "@type": "Answer", "text": "No — EU Directive 2004/42/EC compliance does not imply CARB compliance, and vice versa. The two frameworks have different product category definitions (a product may fall into different categories under EU and CARB classification systems), different measurement methods (EU includes water in the denominator; CARB excludes water and exempt compounds from both numerator and denominator), different exempt solvent lists (US-specific exemptions including acetone and t-butyl acetate are not recognised under EU Directive 2004/42/EC), and different numeric limits for equivalent product types. A product that meets EU Phase II limits may exceed CARB limits for the same category; alternatively, a product formulated with US-exempt solvents to achieve CARB compliance may exceed EU Directive limits when the same solvents are counted. Manufacturers targeting both markets must perform separate compliance assessments using the applicable calculation method and product category for each jurisdiction." }
+    },
+    {
+      "@type": "Question",
+      "name": "What records must a coating manufacturer keep to demonstrate VOC compliance?",
+      "acceptedAnswer": { "@type": "Answer", "text": "For EU Directive 2004/42/EC compliance, manufacturers must be able to demonstrate the product category classification, the VOC content calculation or test result (using ISO 11890-1 or -2), and the basis for any exclusions claimed. This documentation should be maintained in the product's technical file for the duration of the product's commercial life and a period thereafter — typically a minimum of five years from the last date of supply. For US EPA and CARB compliance, manufacturers must maintain records of product formulation, VOC content calculation methodology (including identification of any exempt compounds and the regulatory basis for the exemption), and product category classification. CARB may request these records during compliance inspections. Good practice is to maintain a documented compliance file for each product that is updated whenever the formulation changes, capturing the pre- and post-change VOC compliance assessment." }
+    }
+  ]
+};
+const webpageSchema = {
+  "@context": "https://schema.org", "@type": "WebPage",
+  "name": "VOC Regulations in Coatings: EU, EPA & Global Guide | Global Formulation",
+  "url": `https://www.globalformulation.com/${slug}`,
+  "description": "VOC regulations in coatings explained — EU Directive 2004/42/EC limits, US EPA rules, and a practical compliance pathway for paint and coating manufacturers."
+};
+
+const schemas = [orgSchema, websiteSchema, authorSchema, breadcrumbSchema, blogPostingSchema, faqSchema, webpageSchema];
+---
+
+<Layout
+  title={title}
+  description={description}
+  canonical={`https://www.globalformulation.com/${slug}`}
+  ogImage={heroCdn}
+  ogType="article"
+  schemaJson={schemas}
+>
+
+  <!-- POST HERO BAND -->
+  <div class="post-hero">
+    <div class="post-hero-inner">
+      <nav class="pg-breadcrumb" aria-label="Breadcrumb">
+        <a href="/" target="_top">Home</a><span>›</span>
+        <a href="/blog" target="_top">Blog</a><span>›</span>
+        <span>Coatings Regulations</span>
+      </nav>
+      <span class="category-badge">Paints &amp; Coatings Regulations</span>
+      <h1>VOC Regulations in Coatings: EU Directive, EPA Rules &amp; Global Alignment</h1>
+      <div class="post-meta">
+        <span>By Global Formulation Team</span>
+        <span>Jun 1, 2026</span>
+        <span>11 min read</span>
+      </div>
+      <div class="hero-img-wrap">
+        <img
+          src={heroCdn}
+          alt="VOC regulations coatings compliance — regulatory officer reviewing EU Directive VOC documentation in industrial coatings laboratory | Global Formulation"
+          width="1200"
+          height="630"
+          loading="eager"
+        />
+      </div>
+    </div>
+  </div>
+
+  <!-- TWO-COLUMN BODY -->
+  <div class="page-body">
+
+    <aside class="toc-sidebar">
+      <nav aria-label="Table of Contents">
+        <div class="toc-heading">In This Article</div>
+        <ol>
+          <li><a href="#regulation-overview" target="_top">What VOC Regulations Are and Why They Exist</a></li>
+          <li><a href="#scope" target="_top">Scope: Who It Applies To</a></li>
+          <li><a href="#key-requirements" target="_top">Key Requirements &amp; VOC Limits</a></li>
+          <li><a href="#testing-documentation" target="_top">Testing &amp; Documentation</a></li>
+          <li><a href="#certification-pathway" target="_top">Step-by-Step Compliance Pathway</a></li>
+          <li><a href="#timeline-costs" target="_top">Timeline &amp; Cost Expectations</a></li>
+          <li><a href="#common-pitfalls" target="_top">Common Mistakes to Avoid</a></li>
+          <li><a href="#faq" target="_top">Frequently Asked Questions</a></li>
+        </ol>
+      </nav>
+    </aside>
+
+    <div class="article-col">
+
+      <!-- MANDATORY DISCLAIMER -->
+      <div class="disclaimer-block">
+        <strong>Educational Disclaimer:</strong> This article is for informational purposes only and does not constitute legal or regulatory advice. Regulations change frequently — the frameworks discussed reflect the position as understood to June 2026. Always verify current requirements against official sources and consult a qualified regulatory specialist before making compliance decisions.
+      </div>
+
+      <p>
+        VOC regulations in coatings — the mandatory limits on volatile organic compound content in paint and coating products — have reshaped industrial coating formulation practice over the past two decades, driving conversion from solvent-borne to waterborne and high-solids chemistries across architectural, vehicle refinishing, and industrial maintenance markets worldwide. This guide covers the principal frameworks governing VOC content in coatings as they stand in 2024 and 2025: EU Directive 2004/42/EC and its Phase II limits, the US EPA federal AIM coating rules and California Air Resources Board limits, and the alignment of similar restrictions in other key markets. It also provides a practical step-by-step compliance pathway for paint formulators and manufacturers navigating these requirements, including the measurement method distinctions that make cross-jurisdiction compliance more complex than it first appears.
+      </p>
+
+      <!-- SECTION 1 -->
+      <section id="regulation-overview">
+        <h2>What VOC Regulations in Coatings Are and Why They Exist</h2>
+        <p>
+          Volatile organic compounds (VOCs) are a chemically diverse group of carbon-containing compounds — solvents, reactive diluents, and other carriers — that evaporate readily at ambient conditions, typically defined as organic compounds with initial boiling points at or below 250°C at standard atmospheric pressure. In coating applications, they originate primarily from the solvent carrier in solvent-borne formulations and, to a lesser extent, from residual reactive monomers in waterborne and UV-cure systems. Once emitted from the coating film during application, flash-off, and cure, VOCs react photochemically with nitrogen oxides (NOₓ) in the lower troposphere under UV radiation to form ground-level ozone — a primary component of photochemical smog with well-documented adverse effects on respiratory health, agricultural yield, and ecosystem function. Secondary particulate matter (PM2.5) formation from VOC-NOₓ photochemistry adds to the air quality burden in urban and suburban environments that are already frequently in exceedance of ambient ozone standards.
+        </p>
+        <p>
+          The regulatory response — product-level limits on the VOC content of coating formulations before point of sale — addresses emissions at the formulation source rather than at the application installation. This makes the coating manufacturer the first point of compliance obligation and places the reformulation burden — the transition from solvent-rich, solvent-borne formulations to lower-VOC waterborne, high-solids, or reactive systems — on the chemical industry. The broader environmental context of VOC emissions and their regulatory trajectory is covered in our resource on <a href="/volatile-organic-compounds-and-pollution" target="_top">VOC pollution and industrial chemistry compliance</a>. For the coating formulation technology response to VOC limits, our comparison of <a href="/waterborne-vs-solvent-borne-paints-comparison" target="_top">waterborne versus solvent-borne coating systems</a> covers the performance trade-offs and reformulation strategies in depth.
+        </p>
+      </section>
+
+      <!-- SECTION 2 -->
+      <section id="scope">
+        <h2>Scope: Who VOC Regulations Apply To and Which Products Are Covered</h2>
+        <p>
+          The scope of VOC regulations differs significantly between the EU Directive 2004/42/EC and the US regulatory frameworks, and a product that appears straightforwardly "in scope" under one framework may be treated differently under the other. Understanding where your product sits within each framework's product category system is the mandatory first step of any compliance assessment — applying the wrong product category means applying the wrong VOC limit, which can produce both false positives (unnecessary reformulation) and false negatives (non-compliant product placed on the market).
+        </p>
+        <p>
+          <strong>EU Directive 2004/42/EC</strong> applies to decorative paints and varnishes intended for building surfaces and furniture, and to vehicle refinishing products placed on the EU market. Its scope covers products intended for DIY and professional decorative use on buildings (interior and exterior surfaces, trim, furniture, and floors) and vehicle refinishing materials used in bodyshop repair applications. Large-scale industrial coating operations — where coatings are applied in a factory environment to manufactured goods, not buildings — are generally outside the scope of Directive 2004/42/EC and are instead regulated at the installation level under the Industrial Emissions Directive 2010/75/EU (IED), which sets emission limit values for solvent emissions from industrial surface treatment installations above defined annual solvent use thresholds. Member states have transposed Directive 2004/42/EC into national law, so the specific enforcement authority varies by country.
+        </p>
+        <p>
+          In the <strong>United States</strong>, EPA's federal AIM (Architectural and Industrial Maintenance) Coatings Rule sets VOC limits at the federal level for architectural, industrial maintenance, and traffic marking coatings across approximately 60 product categories. California's Air Resources Board has historically set stricter limits — typically 50–150 g/L lower than federal EPA — under its Architectural Coatings Suggested Control Measure, which forms the basis of California's enforced regulation. Approximately a dozen additional states in the Northeastern US have adopted California-equivalent limits under the OTC (Ozone Transport Commission) framework, significantly expanding the de facto reach of CARB limits for manufacturers selling nationally. The EPA also regulates VOC emissions from specific industrial coating processes under product-specific NESHAP (National Emission Standards for Hazardous Air Pollutants) rules that target coating operations at larger facilities.
+        </p>
+      </section>
+
+      <!-- SECTION 3 -->
+      <section id="key-requirements">
+        <h2>Key Requirements: VOC Limits by Product Category</h2>
+        <p>
+          The operative compliance obligation under all VOC coating regulations is a simple concept — the VOC content of the product as supplied must not exceed the specified limit for the product's regulatory category — but its practical application is complicated by the significant differences in product category definitions, VOC measurement methods, and the treatment of water and exempt compounds between the EU and US frameworks. These differences mean that a product meeting EU Directive 2004/42/EC limits cannot be assumed to meet CARB limits, and vice versa, without a separate compliance calculation under each framework's specific rules.
+        </p>
+        <p>
+          Under <a href="https://eur-lex.europa.eu/legal-content/EN/TXT/?uri=CELEX:32004L0042" target="_blank" rel="noopener noreferrer">EU Directive 2004/42/EC</a>, VOC content is expressed as grams per litre of product as supplied, with water included in the denominator (but not counted in the numerator as a VOC). The Phase II limits — effective from 1 January 2010 and remaining the operative standard — cover two product families: Category A (decorative coatings for buildings and interior furnishings) and Category B (vehicle refinishing products), each subdivided into product sub-categories. Selected Phase II limits from Category A are shown in the table below; verify all values against the current official Directive text, as the Directive may be amended. Under US EPA AIM rules and CARB regulations, regulatory VOC is calculated by excluding water and all designated exempt compounds from both numerator and denominator — meaning the same product may show a lower regulatory VOC under US methods than under EU methods if formulated with water or CARB-exempt solvents such as acetone or t-butyl acetate.
+        </p>
+        <div class="table-wrap">
+          <table class="data-table">
+            <thead>
+              <tr>
+                <th>EU Directive 2004/42/EC — Category A (Building Decoration)</th>
+                <th>Phase II Limit (g/L as supplied)</th>
+                <th>Typical Coating Type</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr><td>a) Matt walls and ceilings (interior)</td><td>30</td><td>Emulsion wall paint, flat latex</td></tr>
+              <tr><td>b) Gloss walls and ceilings (interior/exterior)</td><td>100</td><td>Gloss emulsion, eggshell finish</td></tr>
+              <tr><td>c) Exterior walls of mineral substrates</td><td>40</td><td>Masonry coating, exterior emulsion</td></tr>
+              <tr><td>d) Interior trim and cladding (primer/undercoat)</td><td>130</td><td>Interior wood primer, undercoat</td></tr>
+              <tr><td>e) Interior trim — final coat (wood/metal)</td><td>130</td><td>Gloss wood trim paint, interior enamel</td></tr>
+              <tr><td>f) Exterior trim — final coat (wood/metal)</td><td>130</td><td>Exterior wood gloss, door paint</td></tr>
+              <tr><td>j) One-component performance coatings</td><td>140</td><td>Floor varnish, parquet seal</td></tr>
+              <tr><td>k) Two-component reactive performance coatings</td><td>140</td><td>2K epoxy floor, 2K PU topcoat</td></tr>
+            </tbody>
+          </table>
+        </div>
+        <p style="font-size: 0.82rem; color: #6B7280; font-style: italic; margin-top: -1em;">Table shows selected Phase II limits only; refer to Directive 2004/42/EC Annex II for the complete category list. Verify current values against the official EUR-Lex text before use in compliance assessments.</p>
+      </section>
+
+      <div class="article-img-wrap" style="margin: 2em 0 0.6em; border-radius: 6px; overflow: hidden; border: 1px solid #e4e4e0;">
+        <img
+          src={diagramCdn}
+          alt="VOC regulations coatings regulatory pathway diagram — EU Directive 2004/42/EC limit comparison flowchart versus EPA limits | Global Formulation"
+          width="900"
+          height="500"
+          loading="lazy"
+          class="article-img"
+        />
+      </div>
+      <p class="img-caption">EU Directive 2004/42/EC and US EPA/CARB frameworks use different product category systems, VOC measurement methods, and exempt compound lists — making direct limit comparison unreliable without a framework-specific compliance calculation for each target market.</p>
+
+      <!-- SECTION 4 -->
+      <section id="testing-documentation">
+        <h2>Testing and Documentation Requirements</h2>
+        <p>
+          VOC content compliance under all major frameworks is established by calculation or analytical testing, with documentation held at the manufacturer level for inspection. There is no pre-market approval or registration authority to submit compliance to under EU Directive 2004/42/EC — it is a self-declaration framework. US EPA and CARB are similarly self-declaration systems without a central registration, but regulatory agencies conduct market surveillance and can request compliance records during inspections or enforcement actions. Accurate documentation is therefore a business-critical requirement, not just good practice.
+        </p>
+        <p>
+          For <strong>EU Directive 2004/42/EC</strong>, VOC content is measured using ISO 11890-1 (gravimetric method for VOC content greater than approximately 15%) or ISO 11890-2 (GC-based method for lower VOC content). Alternatively, calculation from the formulation composition using known or supplier-declared VOC content values for each ingredient is accepted where the analytical measurement is not practical, provided the calculation approach is documented and defensible. The product's technical documentation must include the product category classification rationale, the VOC content value, the measurement or calculation method, and the applicable Phase II limit for the category. Labelling must indicate the VOC content category in the range descriptors specified by the Directive (e.g., "Very Low: <1 g/L", "Low: <30 g/L", etc.) for relevant categories.
+        </p>
+        <p>
+          For <strong>US EPA and CARB compliance</strong>, the regulatory VOC is calculated using EPA Method 24 (for waterborne coatings) or ASTM D2369 (standard test method for VOC content), with water and exempt compounds excluded from both numerator and denominator. Manufacturers must maintain records identifying the product category, the VOC calculation method, the identity and quantity of any exempt compounds claimed, and the regulatory basis for each exemption. CARB's <a href="https://www.epa.gov/stationary-sources-air-pollution/paint-varnish-and-lacquer-coatings" target="_blank" rel="noopener noreferrer">enforcement programme</a> conducts periodic market sampling and product testing, and misclassification or unsupported exempt compound claims are the most frequent sources of enforcement action.
+        </p>
+      </section>
+
+      <!-- SECTION 5 -->
+      <section id="certification-pathway">
+        <h2>Step-by-Step Compliance Pathway for VOC Regulations in Coatings</h2>
+        <p>
+          VOC compliance for coating products follows a logical sequence from product classification through formulation validation to documentation and labelling. The steps below apply to both EU Directive 2004/42/EC and US EPA/CARB compliance, with framework-specific notes where the process diverges. Begin this process at the formulation design stage, not after the product is ready for market — reformulation after a non-compliance finding is expensive and delays market entry.
+        </p>
+        <ol>
+          <li><strong>Classify the product.</strong> Identify which regulatory category your product falls into under each target market framework — EU Directive 2004/42/EC Annex I product type, and the applicable US EPA AIM or CARB product category. Category misclassification is the most common single source of compliance error. When the product could plausibly fit multiple categories, document the rationale for the chosen classification.</li>
+          <li><strong>Determine the applicable VOC limit.</strong> Look up the Phase II limit (EU) or CARB/EPA limit (US) for the classified product category. Note that limits differ between jurisdictions and between product categories — do not assume that the limit for a similar product type in another framework applies.</li>
+          <li><strong>Calculate or measure the VOC content.</strong> For EU: use ISO 11890-1 or -2, or calculate from formulation composition using supplier VOC data. For US: use EPA Method 24 or ASTM D2369 excluding water and documented exempt compounds from both numerator and denominator.</li>
+          <li><strong>Assess compliance and reformulate if required.</strong> If the VOC content exceeds the limit for any target market, reformulate — typical strategies include increasing water content (waterborne systems), replacing regulated solvents with low-VOC or exempt alternatives, increasing resin solids content (high-solids approach), or shifting to a reactive or UV-cure system where the chemistry permits.</li>
+          <li><strong>Re-test and document the compliant formulation.</strong> After reformulation, repeat the VOC measurement or calculation for the final formulation. Document all evidence: formulation composition, VOC calculation, measurement test report, product category, and the applicable regulatory limit. Update the product information file and any Safety Data Sheets affected by the formulation change.</li>
+          <li><strong>Label the product correctly.</strong> Apply VOC content information per the applicable labelling requirements — EU Directive VOC content category descriptor on the label; appropriate VOC statements on US product labels and SDS per GHS/CLP requirements.</li>
+          <li><strong>Monitor for regulatory changes.</strong> VOC limits are updated periodically — CARB has revised its architectural coatings limits multiple times since 2007, and the EU Directive 2004/42/EC is subject to review. Assign ongoing responsibility for regulatory monitoring to a named individual or team so formulation reassessment is triggered promptly when limits change.</li>
+        </ol>
+
+        <div class="callout">
+          <strong>Key Compliance Principle</strong>
+          The measurement method is as important as the numeric limit. Calculating regulatory VOC under EU methods (including water in the denominator) versus US CARB methods (excluding water and exempt compounds from both numerator and denominator) produces different numbers for the same product. Always specify which method and which framework's definition you are applying when recording a VOC compliance value — mixing methods invalidates the compliance assessment entirely.
+        </div>
+      </section>
+
+      <div class="article-img-wrap" style="margin: 2em 0 0.6em; border-radius: 6px; overflow: hidden; border: 1px solid #e4e4e0;">
+        <img
+          src={infographicCdn}
+          alt="VOC regulations coatings compliance matrix infographic — comparing EU, US EPA, California CARB and global VOC standard requirements | Global Formulation"
+          width="900"
+          height="500"
+          loading="lazy"
+          class="article-img"
+        />
+      </div>
+      <p class="img-caption">EU, US EPA, and California CARB VOC frameworks use different product category definitions, measurement methods, and exempt compound lists — manufacturers targeting multiple markets must assess compliance separately under each applicable framework.</p>
+
+      <!-- SECTION 6 -->
+      <section id="timeline-costs">
+        <h2>Realistic Timeline and Cost Expectations for VOC Compliance</h2>
+        <p>
+          VOC compliance for coating products does not involve a central registration fee or approval authority — there are no government filing costs under EU Directive 2004/42/EC or federal EPA AIM rules. The compliance cost is therefore primarily internal (staff time for product classification, documentation, and formulation management) and external (analytical testing, and reformulation costs if the product currently exceeds applicable limits). These costs can range from minimal (for products already within limits, requiring only classification documentation) to significant (for products requiring reformulation and performance re-validation).
+        </p>
+        <p>
+          Analytical VOC testing by an accredited laboratory (ISO 11890-1 or -2 for EU; EPA Method 24 for US) typically takes two to four weeks per sample and carries a moderate per-sample cost. If the initial test result indicates non-compliance, reformulation iterations — each requiring a new test round — can add significantly to both cost and timeline. For solvent-borne products requiring conversion to waterborne or high-solids chemistry, reformulation typically takes three to twelve months depending on the product complexity, the number of performance properties that must be maintained within specification, and the availability of suitable low-VOC raw material alternatives. Products being reformulated in parallel for EU and CARB markets face an additional complexity in optimising the formulation simultaneously against two different measurement methods and two different limit sets — this is where specialist formulation consultancy most frequently generates value. For context on the waterborne versus solvent-borne performance trade-offs that typically arise during VOC-compliance reformulation, our article on <a href="/paints-and-coatings" target="_top">paints and coatings technology</a> provides the relevant formulation chemistry framework.
+        </p>
+      </section>
+
+      <!-- SECTION 7 -->
+      <section id="common-pitfalls">
+        <h2>Common Mistakes Coating Manufacturers Make — and How to Avoid Them</h2>
+        <p>
+          VOC compliance failures in the coating industry tend to follow identifiable patterns. The most commercially damaging are not the straightforward non-compliance cases — where the product simply contains too much solvent — but the classification and methodology errors that result in a manufacturer believing they are compliant when they are not. Enforcement actions based on these errors can result in product recalls, prohibition orders, and significant reputational damage in regulated markets.
+        </p>
+        <p>
+          The most frequent compliance errors are: (1) <strong>Product category misclassification</strong> — mapping a product to a less-restrictive category than it actually belongs to. Exterior trim paints specified for use on wood but also sold for interior use must be classified under the most restrictive applicable limit. (2) <strong>EU versus US VOC calculation confusion</strong> — recording a VOC value calculated under EU methods (water included in denominator) and using it to assess CARB compliance, or vice versa. These produce meaningfully different numbers for the same product. Always specify the calculation method alongside the numeric VOC value. (3) <strong>Uncritical reliance on US-exempt solvents in EU products</strong> — assuming that acetone, t-butyl acetate, or other US-CARB-exempt solvents are VOC-exempt under EU Directive 2004/42/EC, which does not recognise compound-by-compound exemptions but uses a boiling-point threshold definition. Both acetone (bp 56°C) and t-butyl acetate (bp 98°C) qualify as VOCs under EU Directive 2004/42/EC and must be included in the EU VOC calculation. (4) <strong>Failure to update compliance documentation after formulation changes</strong> — a reformulation that increases solvent content, changes solvent grade, or modifies water content may push a previously compliant product above the applicable limit. Compliance documentation must be treated as a live document and reviewed whenever the formulation is modified. (5) <strong>Ignoring non-EU/US market limits</strong> — China's GB 18582 (interior architectural coatings), GB 24408 (exterior), and related standards impose VOC limits that differ from both EU and US frameworks and have been progressively tightened since 2021. Manufacturers targeting the Chinese market require a separate compliance assessment against the applicable GB standard.
+        </p>
+        <div class="callout callout-amber">
+          <strong>Rule of Thumb</strong>
+          If a product has been reformulated since its last VOC compliance assessment — even for reasons unrelated to VOC, such as a raw material substitution — the VOC compliance status must be re-verified before the product is supplied to market. Raw material changes that appear minor (swapping one grade of coalescent for another, changing a resin to an alternative supplier grade) can meaningfully alter the VOC content of the final product.
+        </div>
+      </section>
+
+      <!-- FAQ -->
+      <section class="faq-section" id="faq">
+        <h2>Frequently Asked Questions</h2>
+
+        <details class="faq-item">
+          <summary>What is EU Directive 2004/42/EC and which coatings does it cover?</summary>
+          <div class="faq-answer">EU Directive 2004/42/EC sets maximum VOC content limits for decorative paints and varnishes for building surfaces and furniture, and for vehicle refinishing products placed on the EU market. It covers interior and exterior decorative architectural coatings (wall paints, trim, wood, floor coatings) and bodyshop vehicle refinishing materials. Industrial coatings factory-applied to manufactured goods are generally outside its scope. The Phase II limits took effect 1 January 2010 and remain the operative standard. VOC content is expressed in grams per litre of product as supplied, with water included in the denominator.</div>
+        </details>
+
+        <details class="faq-item">
+          <summary>How is VOC content measured for EU Directive 2004/42/EC compliance?</summary>
+          <div class="faq-answer">EU Directive 2004/42/EC uses a boiling-point-based VOC definition: any organic compound with an initial boiling point of 250°C or less at 1 bar is a VOC. Measurement uses ISO 11890-1 (gravimetric, for VOC content above approximately 15%) or ISO 11890-2 (GC-based, for lower VOC content). The result is expressed in g/L of product as supplied, with water included in the denominator but not in the VOC numerator. This differs from US EPA/CARB methods, which exclude water and designated exempt compounds from both numerator and denominator. A single product can have meaningfully different regulatory VOC values under EU and US calculation methods — cross-jurisdiction comparison requires converting to a common basis.</div>
+        </details>
+
+        <details class="faq-item">
+          <summary>What is the difference between EPA VOC limits and California CARB VOC limits?</summary>
+          <div class="faq-answer">US EPA federal limits under the AIM Coatings Rule apply nationally. California CARB has historically set stricter limits — typically 50–150 g/L lower than federal EPA depending on category — under its Architectural Coatings Suggested Control Measure, enforced as part of California's SIP (State Implementation Plan). Approximately a dozen Northeastern US states and air quality districts have adopted California-equivalent limits under the OTC framework, extending CARB-level requirements beyond California. Manufacturers targeting the full US market must formulate to CARB limits or maintain separate product lines. Regulatory VOC is calculated under US frameworks by excluding water and all designated exempt solvents (acetone, methyl acetate, t-butyl acetate, and others) from both numerator and denominator.</div>
+        </details>
+
+        <details class="faq-item">
+          <summary>Are there VOC-exempt solvents, and do they apply across all jurisdictions?</summary>
+          <div class="faq-answer">Yes — the US EPA and California CARB designate certain solvents as exempt because they are determined not to contribute materially to photochemical smog. Key CARB-exempt compounds include acetone, methyl acetate, t-butyl acetate, and parachlorobenzotrifluoride (PCBTF). Exempt compounds are excluded from both numerator and denominator of the regulatory VOC calculation, reducing the apparent regulatory VOC below the actual total organic solvent content. However, these exemptions do not apply under EU Directive 2004/42/EC, which uses a boiling-point definition with no compound-specific exemption list. Acetone (bp 56°C) and t-butyl acetate (bp 98°C) both fall within the EU VOC definition and are counted fully in the EU calculation. This is the most common source of cross-jurisdiction compliance error for manufacturers targeting both EU and US markets simultaneously.</div>
+        </details>
+
+        <details class="faq-item">
+          <summary>Does EU VOC Directive compliance automatically mean US CARB compliance?</summary>
+          <div class="faq-answer">No. The two frameworks have different product category definitions, different measurement methods (EU includes water in denominator; CARB excludes water and exempt compounds from both), different exempt solvent lists, and different numeric limits for equivalent product types. A product meeting EU Phase II limits may exceed CARB limits for an equivalent category; a product optimised with US-exempt solvents for CARB compliance may exceed EU Directive limits because those solvents count as VOCs under EU methodology. Manufacturers targeting both markets must perform separate compliance calculations under each framework's specific rules and confirm the product meets each limit independently.</div>
+        </details>
+
+        <details class="faq-item">
+          <summary>What records must a coating manufacturer keep to demonstrate VOC compliance?</summary>
+          <div class="faq-answer">For EU Directive 2004/42/EC: maintain the product category classification rationale, VOC calculation or test report (ISO 11890-1/2), formulation basis, and the applicable Phase II limit for the category — typically for a minimum of five years from last supply. For US EPA/CARB: maintain the product category classification, VOC calculation methodology, identity and quantity of any exempt compounds with the regulatory basis for each exemption, and product formulation records. Documentation must be updated whenever the formulation is changed, even for changes not intended to affect VOC content. CARB market surveillance inspections and EU market authority checks can request these records; unsupported exempt compound claims are a frequent source of enforcement action in the US.</div>
+        </details>
+      </section>
+
+      <!-- CTA -->
+      <div class="cta-block">
+        <h2>Need Regulatory Guidance for Your Coating Product Launch?</h2>
+        <p>Our team provides end-to-end regulatory strategy — VOC compliance gap analysis, product category classification, reformulation support, and documentation preparation for EU and global markets.</p>
+        <a href="/contact" target="_top" class="cta-btn">Get a Free Consultation</a>
+      </div>
+
+      <!-- RELATED ARTICLES -->
+      <section class="related-section">
+        <h2>Related Articles</h2>
+        <ul class="related-grid">
+          <li><a href="/waterborne-vs-solvent-borne-paints-comparison" target="_top">Waterborne vs Solvent-Borne Paints: Full Comparison</a></li>
+          <li><a href="/volatile-organic-compounds-and-pollution" target="_top">Pollution Caused by VOCs: What Manufacturers Need to Know</a></li>
+          <li><a href="/future-of-eco-friendly-chemical-products" target="_top">Green Chemistry Revolution: Eco-Friendly Industrial Products</a></li>
+          <li><a href="/paints-and-coatings" target="_top">Paints &amp; Coatings: Formulations &amp; Technology</a></li>
+          <li><a href="/manufacturing-without-a-factory-guide" target="_top">Manufacturing Without a Factory: The MaaS Ecosystem</a></li>
+          <li><a href="/choosing-the-right-product-consultant" target="_top">How to Choose the Right Product Consultant</a></li>
+        </ul>
+      </section>
+
+      <!-- AUTHOR BIO -->
+      <div class="author-bio">
+        <div class="author-avatar">AK</div>
+        <div class="author-info">
+          <h3>Absar Khan</h3>
+          <div class="author-role">Founder &amp; Lead Consultant, Global Formulation</div>
+          <p>Absar Khan is a senior industrial consultant with cross-disciplinary expertise spanning pharmaceutical manufacturing, cosmetics and personal care, home and institutional care chemicals, aerosols, lubricants, and advanced process engineering. His work integrates formulation chemistry, GMP facility design, validation science, quality systems, regulatory compliance, and large-scale manufacturing optimisation. As Founder and Lead Consultant at Global Formulation, Absar leads multi-disciplinary scientific, engineering, and regulatory teams delivering end-to-end solutions from technology selection and formulation development to plant setup, scale-up, and regulatory strategy.</p>
+          <p style="margin-top: 10px;"><a href="https://www.linkedin.com/in/absar-khan-aerosol-consultant-and-formulator-78359b162" target="_blank" rel="noopener noreferrer">Connect on LinkedIn →</a></p>
+        </div>
+      </div>
+
+    </div>
+  </div>
+
+  <script is:inline>
+    (function () {
+      var links = document.querySelectorAll('.toc-sidebar ol li a');
+      var sections = [];
+      links.forEach(function (a) {
+        var el = document.querySelector(a.getAttribute('href'));
+        if (el) sections.push(el);
+      });
+      if (!sections.length) return;
+      var observer = new IntersectionObserver(function (entries) {
+        entries.forEach(function (entry) {
+          if (entry.isIntersecting) {
+            links.forEach(function (a) { a.classList.remove('toc-active'); });
+            var active = document.querySelector('.toc-sidebar ol li a[href="#' + entry.target.id + '"]');
+            if (active) active.classList.add('toc-active');
+          }
+        });
+      }, { rootMargin: '-20% 0px -70% 0px', threshold: 0 });
+      sections.forEach(function (s) { observer.observe(s); });
+    })();
+  </script>
+
+</Layout>
+
+<style>
+  @import url('https://fonts.googleapis.com/css2?family=Source+Serif+4:ital,wght@0,300;0,400;0,600;1,400&display=swap');
+
+  :root {
+    --rs-bg: #F9F9F7; --rs-surface: #FFFFFF; --rs-border: #E4E4E0;
+    --rs-text: #0A0A0A; --rs-muted: #6B7280; --rs-accent: #0968e5;
+    --rs-green: #16A34A; --rs-amber: #D97706; --rs-radius: 6px;
+    --rs-serif: 'Source Serif 4', Georgia, 'Times New Roman', serif;
+    --rs-display: 'Playfair Display', Georgia, serif;
+  }
+
+  .post-hero { background: var(--rs-surface); border-bottom: 1px solid var(--rs-border); }
+  .post-hero-inner { max-width: 1140px; margin: 0 auto; padding: 36px 32px 0; }
+  .pg-breadcrumb { display: flex; flex-wrap: wrap; gap: 6px; align-items: center; font-size: 0.8rem; color: var(--rs-muted); margin-bottom: 18px; font-family: var(--rs-serif); }
+  .pg-breadcrumb a { color: var(--rs-muted); text-decoration: none; }
+  .pg-breadcrumb a:hover { color: var(--rs-accent); }
+  .category-badge { display: inline-block; font-size: 0.7rem; font-weight: 700; letter-spacing: 0.07em; text-transform: uppercase; color: var(--rs-accent); border: 1px solid var(--rs-accent); border-radius: 3px; padding: 3px 10px; margin-bottom: 18px; font-family: var(--rs-serif); }
+  .post-hero h1 { font-family: var(--rs-display); font-size: clamp(1.75rem, 4vw, 2.6rem); font-weight: 700; line-height: 1.2; letter-spacing: -0.02em; color: var(--rs-text); max-width: 820px; margin-bottom: 18px; }
+  .post-meta { display: flex; flex-wrap: wrap; gap: 20px; font-size: 0.82rem; color: var(--rs-muted); margin-bottom: 32px; font-family: var(--rs-serif); }
+  .hero-img-wrap { border-radius: 10px 10px 0 0; overflow: hidden; }
+  .hero-img-wrap img { width: 100%; height: auto; display: block; max-height: 480px; object-fit: cover; }
+
+  .page-body { max-width: 1140px; margin: 0 auto; padding: 48px 32px 80px; display: grid; grid-template-columns: 260px 1fr; gap: 48px; align-items: start; background: var(--rs-bg); }
+
+  .toc-sidebar { position: sticky; top: 84px; max-height: calc(100vh - 104px); overflow-y: auto; }
+  .toc-sidebar nav { background: var(--rs-surface); border: 1px solid var(--rs-border); border-radius: var(--rs-radius); padding: 20px; }
+  .toc-heading { font-size: 0.68rem; font-weight: 700; letter-spacing: 0.09em; text-transform: uppercase; color: var(--rs-muted); margin-bottom: 14px; font-family: var(--rs-serif); }
+  .toc-sidebar ol { list-style: none; padding: 0; margin: 0; display: flex; flex-direction: column; gap: 2px; }
+  .toc-sidebar ol li a { display: block; font-size: 0.82rem; line-height: 1.45; color: var(--rs-muted); padding: 5px 8px 5px 10px; border-left: 2px solid transparent; border-radius: 0 3px 3px 0; text-decoration: none; transition: color 0.15s, border-color 0.15s, background 0.15s; font-family: var(--rs-serif); }
+  .toc-sidebar ol li a:hover, .toc-sidebar ol li a.toc-active { color: var(--rs-accent); border-left-color: var(--rs-accent); background: #EEF4FD; }
+
+  .article-col { min-width: 0; max-width: 720px; font-family: var(--rs-serif); font-size: 17px; line-height: 1.72; color: var(--rs-text); }
+  .article-col p { margin-bottom: 1.4em; }
+  .article-col h2 { font-family: var(--rs-display); font-size: clamp(1.25rem, 2.5vw, 1.6rem); font-weight: 700; letter-spacing: -0.01em; color: var(--rs-text); margin: 2.4em 0 0.6em; }
+  .article-col ol, .article-col ul { padding-left: 1.5em; margin-bottom: 1.4em; }
+  .article-col li { margin-bottom: 0.6em; line-height: 1.6; }
+  .article-col a { color: var(--rs-accent); }
+  .article-col a:hover { text-decoration: underline; }
+  .article-col strong { font-weight: 600; }
+
+  .disclaimer-block { background: #fff8e1; border-left: 4px solid var(--rs-amber); padding: 14px 18px; border-radius: 0 var(--rs-radius) var(--rs-radius) 0; margin: 0 0 2em; font-size: 0.88rem; font-family: var(--rs-serif); line-height: 1.6; color: #4B3B00; }
+  .disclaimer-block strong { color: #92400E; }
+
+  .img-caption { font-size: 0.8rem; color: var(--rs-muted); font-style: italic; margin-bottom: 2em; font-family: var(--rs-serif); }
+
+  .table-wrap { overflow-x: auto; margin: 1.6em 0 2em; }
+  .data-table { width: 100%; border-collapse: collapse; font-size: 0.87rem; font-family: var(--rs-serif); }
+  .data-table thead tr { background: var(--rs-text); color: #FFFFFF; }
+  .data-table th { padding: 10px 14px; text-align: left; font-weight: 600; font-size: 0.79rem; letter-spacing: 0.03em; }
+  .data-table td { padding: 9px 14px; border-bottom: 1px solid var(--rs-border); vertical-align: top; }
+  .data-table tbody tr:nth-child(even) { background: #F4F4F2; }
+
+  .callout { border-left: 3px solid var(--rs-green); background: #F0FDF4; padding: 14px 18px; border-radius: 0 var(--rs-radius) var(--rs-radius) 0; margin: 1.8em 0; font-size: 0.93rem; font-family: var(--rs-serif); line-height: 1.6; }
+  .callout strong { color: var(--rs-green); display: block; margin-bottom: 5px; }
+  .callout-amber { border-left-color: var(--rs-amber); background: #FFFBEB; }
+  .callout-amber strong { color: var(--rs-amber); }
+
+  .faq-section { margin: 3em 0 2em; }
+  .faq-section > h2 { font-family: var(--rs-display); font-size: 1.5rem; font-weight: 700; margin-bottom: 1.2em; color: var(--rs-text); }
+  details.faq-item { border: 1px solid var(--rs-border); border-radius: var(--rs-radius); margin-bottom: 10px; background: var(--rs-surface); }
+  details.faq-item summary { font-weight: 600; font-size: 0.95rem; padding: 14px 18px; cursor: pointer; list-style: none; display: flex; justify-content: space-between; align-items: center; font-family: var(--rs-serif); color: var(--rs-text); }
+  details.faq-item summary::-webkit-details-marker { display: none; }
+  details.faq-item summary::after { content: '+'; font-size: 1.2rem; font-weight: 400; color: var(--rs-muted); flex-shrink: 0; margin-left: 12px; }
+  details.faq-item[open] summary::after { content: '−'; }
+  .faq-answer { padding: 0 18px 16px; font-size: 0.92rem; color: #374151; line-height: 1.65; font-family: var(--rs-serif); }
+
+  .cta-block { background: var(--rs-text); color: #FFFFFF; border-radius: var(--rs-radius); padding: 40px 36px; margin: 3em 0; text-align: center; }
+  .cta-block h2 { font-family: var(--rs-display); font-size: 1.5rem; font-weight: 700; color: #FFFFFF; margin: 0 0 10px; }
+  .cta-block p { font-size: 0.95rem; color: #D1D5DB; margin: 0 0 24px; max-width: 500px; margin-left: auto; margin-right: auto; font-family: var(--rs-serif); }
+  .cta-btn { display: inline-block; background: #FFFFFF; color: var(--rs-text); font-weight: 700; font-size: 0.9rem; letter-spacing: 0.03em; padding: 12px 28px; border-radius: 4px; text-decoration: none; font-family: var(--rs-serif); transition: opacity 0.15s; }
+  .cta-btn:hover { opacity: 0.88; text-decoration: none; }
+
+  .related-section { margin: 2.5em 0; }
+  .related-section > h2 { font-family: var(--rs-display); font-size: 1.3rem; font-weight: 700; margin-bottom: 1em; color: var(--rs-text); }
+  .related-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 12px; list-style: none; padding: 0; margin: 0; }
+  .related-grid li a { display: block; background: var(--rs-surface); border: 1px solid var(--rs-border); border-radius: var(--rs-radius); padding: 14px 16px; font-size: 0.87rem; font-weight: 600; color: var(--rs-text); text-decoration: none; line-height: 1.4; transition: border-color 0.15s, color 0.15s; font-family: var(--rs-serif); }
+  .related-grid li a:hover { border-color: var(--rs-accent); color: var(--rs-accent); }
+
+  .author-bio { display: flex; gap: 18px; align-items: flex-start; background: var(--rs-surface); border: 1px solid var(--rs-border); border-radius: var(--rs-radius); padding: 24px; margin: 2.5em 0; }
+  .author-avatar { width: 52px; height: 52px; background: var(--rs-text); color: #FFFFFF; border-radius: 50%; display: flex; align-items: center; justify-content: center; font-weight: 700; font-size: 1rem; flex-shrink: 0; font-family: var(--rs-serif); }
+  .author-info h3 { font-family: var(--rs-display); font-size: 1rem; font-weight: 700; margin: 0 0 3px; color: var(--rs-text); }
+  .author-role { font-size: 0.78rem; color: var(--rs-muted); margin-bottom: 10px; font-family: var(--rs-serif); }
+  .author-info p { font-size: 0.87rem; line-height: 1.6; color: #374151; font-family: var(--rs-serif); }
+
+  @media (max-width: 900px) {
+    .page-body { grid-template-columns: 1fr; gap: 0; padding: 0 0 60px; }
+    .toc-sidebar { position: sticky; top: 64px; z-index: 50; max-height: none; background: var(--rs-surface); border-bottom: 1px solid var(--rs-border); }
+    .toc-sidebar nav { border: none; border-radius: 0; padding: 0 16px; overflow-x: auto; -webkit-overflow-scrolling: touch; scrollbar-width: none; }
+    .toc-sidebar nav::-webkit-scrollbar { display: none; }
+    .toc-heading { display: none; }
+    .toc-sidebar ol { flex-direction: row; gap: 0; white-space: nowrap; }
+    .toc-sidebar ol li a { display: inline-block; padding: 10px 12px; border-left: none; border-bottom: 2px solid transparent; border-radius: 0; font-size: 0.78rem; }
+    .toc-sidebar ol li a:hover, .toc-sidebar ol li a.toc-active { border-left-color: transparent; border-bottom-color: var(--rs-accent); background: transparent; color: var(--rs-accent); }
+    .article-col { max-width: 100%; padding: 28px 20px 0; }
+    .post-hero-inner { padding: 28px 20px 0; }
+  }
+  @media (max-width: 600px) {
+    .related-grid { grid-template-columns: 1fr; }
+    .cta-block { padding: 28px 20px; }
+    .author-bio { flex-direction: column; }
+  }
+</style>

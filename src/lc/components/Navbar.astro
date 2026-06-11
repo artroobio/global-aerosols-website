@@ -1,0 +1,1193 @@
+---
+const brandName = "GLOBAL";
+const brandSub = "FORMULATION";
+const pathname = Astro.url.pathname;
+const isHome = pathname === '/';
+const user = Astro.locals.user;
+
+
+const formTechItems = [
+  {
+    label: "Household & Homecare",
+    url: "/household-and-industrial-cleaners/",
+    tag: "Cleaners & Detergents",
+    desc: "Surfactant-based cleaning formulations from premium household products to heavy-duty cleaners.",
+    image: "https://cdn.globalformulation.com/images/nav/household-cleaners.webp?v=2",
+  },
+  {
+    label: "Paints & Coatings",
+    url: "/paints-and-coatings/",
+    tag: "Coatings & Resins",
+    desc: "From alkyd to epoxy resins — industrial coatings formulations, pigment dispersion, and full-scale manufacturing.",
+    image: "https://cdn.globalformulation.com/images/nav/paints-coatings.webp?v=2",
+  },
+  {
+    label: "Arts & Crafts",
+    url: "/adhesives-and-sealants/",
+    tag: "Creative & Hobbies",
+    desc: "Specialty adhesives, glues, and binders developed for creative, craft, and hobby applications.",
+    image: "/images/artscrafts_category.png",
+  },
+  {
+    label: "Automotive",
+    url: "/lubricants/",
+    tag: "Car Care & Lubricants",
+    desc: "Engine oils, transmission fluids, and high-performance automotive lubricants engineered to specs.",
+    image: "/images/automotive_category.png",
+  },
+  {
+    label: "Industrial",
+    url: "/construction-chemicals/",
+    tag: "Process & Materials",
+    desc: "Heavy-duty cleaners, construction additives, concrete formulations, and industrial raw materials.",
+    image: "/images/industrial_category.png",
+  },
+  {
+    label: "Adhesives & Sealants",
+    url: "/adhesives-and-sealants/",
+    tag: "Structural Bonding",
+    desc: "Structural adhesives, MS polymers, and reactive sealants formulated for bond strength and durability.",
+    image: "https://cdn.globalformulation.com/images/nav/adhesives-sealants.webp?v=2",
+  },
+  {
+    label: "Personal Care",
+    url: "/cosmetics-and-personal-care/",
+    tag: "Hygiene & Wellness",
+    desc: "Daily care, skin, hair, hygiene formulations, and personal care solutions.",
+    image: "/images/personalcare_category.png",
+  },
+  {
+    label: "Cosmetics",
+    url: "/cosmetics-and-personal-care/",
+    tag: "Beauty & Luxury",
+    desc: "Premium cosmetics emulsions, active delivery systems, and regulatory-compliant makeup formulations.",
+    image: "/images/cosmetics_category.png",
+  },
+  {
+    label: "Pharmaceuticals",
+    url: "/pharmaceuticals-and-health-care/",
+    tag: "Pharma & Healthcare",
+    desc: "API suspensions, topical gels, and OTC product development under WHO GMP and regulatory frameworks.",
+    image: "https://cdn.globalformulation.com/images/nav/pharmaceuticals.webp?v=2",
+  },
+];
+---
+<nav class={`navbar${isHome ? '' : ' is-opaque'}`}>
+  <div class="nav-container">
+    <div class="logo">
+      <a href="/">
+        <svg width="32" height="32" viewBox="0 0 32 32" fill="none" xmlns="http://www.w3.org/2000/svg">
+          <path d="M0 4H12V16L0 28V4Z" fill="white"/>
+          <path d="M14 4H26L32 10L14 28V4Z" fill="white"/>
+        </svg>
+        <div class="logo-text">
+          <span class="brand-name">
+            {brandName.split('').map((char) => (
+              <span class="char">{char === ' ' ? '\u00A0' : char}</span>
+            ))}
+          </span>
+          <span class="brand-sub">
+            {brandSub.split('').map((char) => (
+              <span class="char sub-char">{char === ' ' ? '\u00A0' : char}</span>
+            ))}
+          </span>
+        </div>
+      </a>
+    </div>
+
+    <ul class="nav-links">
+      <li><a href="/" class={pathname === "/" ? "active" : undefined}>Home</a></li>
+      <li class="dropdown mega-dropdown">
+        <button class="dropdown-toggle" aria-haspopup="true" aria-expanded="false">
+          Formulations &amp; Technology <span class="chevron">▼</span>
+        </button>
+
+        <!-- ── Mega Menu ── -->
+        <div class="mega-menu" role="dialog" aria-label="Formulations and Technology">
+          <div class="mega-left">
+            <p class="mega-eyebrow">Formulations &amp; Technology</p>
+            <ul class="mega-links">
+              {formTechItems.map((item, i) => (
+                <li class="mega-item mega-item--grid" data-index={i}>
+                  <a href={item.url}>
+                    <span class="mega-item-label">{item.label}</span>
+                    <svg class="mega-item-arrow" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" width="13" height="13">
+                      <path stroke-linecap="round" stroke-linejoin="round" d="M9 5l7 7-7 7"/>
+                    </svg>
+                  </a>
+                </li>
+              ))}
+            </ul>
+          </div>
+
+          <div class="mega-right">
+            {formTechItems.map((item, i) => (
+              <div class="mega-pane" data-index={i}>
+                <div class="mega-img-wrap">
+                  {item.image.endsWith('.webm') ? (
+                    <video autoplay loop muted playsinline class="mega-video">
+                      <source src={item.image} type="video/webm" />
+                    </video>
+                  ) : (
+                    <img src={item.image} alt={item.label} loading="lazy" decoding="async" />
+                  )}
+                </div>
+                <div class="mega-info">
+                  <span class="mega-tag">{item.tag}</span>
+                  <h3 class="mega-title">{item.label}</h3>
+                  <p class="mega-desc">{item.desc}</p>
+                  <a href={item.url} class="mega-cta">
+                    Explore
+                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" width="13" height="13">
+                      <path stroke-linecap="round" stroke-linejoin="round" d="M9 5l7 7-7 7"/>
+                    </svg>
+                  </a>
+                </div>
+              </div>
+            ))}
+          </div>
+        </div>
+      </li>
+
+      <li><a href="/about/" class={pathname === "/about/" ? "active" : undefined}>About</a></li>
+      <li><a href="/contact/" class={pathname === "/contact/" ? "active" : undefined}>Consulting</a></li>
+      <li class="dropdown">
+        <button class="dropdown-toggle" aria-haspopup="true" aria-expanded="false">
+          Legal <span class="chevron">▼</span>
+        </button>
+        <ul class="dropdown-menu">
+          <li><a href="/privacy-policy/">Privacy Policy</a></li>
+          <li><a href="/terms-and-conditions/">Terms &amp; Conditions</a></li>
+          <li><a href="/cancellation-and-refund/">Cancellation &amp; Refund</a></li>
+        </ul>
+      </li>
+      <li><a href="/blog/" class={pathname.startsWith("/blog") ? "active" : undefined}>Blog</a></li>
+      <li><a href="/store/" class={pathname.startsWith("/store") ? "active" : undefined}>Store</a></li>
+    </ul>
+
+    <div class="nav-actions">
+      <a href="/contact/" class="gf-button hide-mobile" id="contact-button">
+        <span class="button-text">Contact Us</span>
+        <span class="arrow">➤</span>
+      </a>
+      <button class="mobile-toggle" aria-label="Toggle Menu">
+        <span class="line"></span>
+        <span class="line"></span>
+      </button>
+    </div>
+  </div>
+
+  <div class="mobile-menu-overlay">
+    <ul class="mobile-nav-links">
+      <li><a href="/">Home</a></li>
+      <li><a href="/blog/">Blog</a></li>
+      <li class="mobile-dropdown">
+        <button class="mobile-dropdown-toggle">
+          Formulations and Technology <span class="chevron">▼</span>
+        </button>
+        <ul class="mobile-dropdown-menu">
+          <li><a href="/household-and-industrial-cleaners/">Household &amp; Homecare</a></li>
+          <li><a href="/paints-and-coatings/">Paints &amp; Coatings</a></li>
+          <li><a href="/adhesives-and-sealants/">Arts &amp; Crafts</a></li>
+          <li><a href="/lubricants/">Automotive</a></li>
+          <li><a href="/construction-chemicals/">Industrial</a></li>
+          <li><a href="/adhesives-and-sealants/">Adhesives &amp; Sealants</a></li>
+          <li><a href="/cosmetics-and-personal-care/">Personal Care</a></li>
+          <li><a href="/cosmetics-and-personal-care/">Cosmetics</a></li>
+          <li><a href="/pharmaceuticals-and-health-care/">Pharmaceuticals</a></li>
+        </ul>
+      </li>
+
+      <li><a href="/about/">About</a></li>
+      <li><a href="/contact/">Consulting</a></li>
+      <li class="mobile-dropdown">
+        <button class="mobile-dropdown-toggle">
+          Legal <span class="chevron">▼</span>
+        </button>
+        <ul class="mobile-dropdown-menu">
+          <li><a href="/privacy-policy/">Privacy Policy</a></li>
+          <li><a href="/terms-and-conditions/">Terms &amp; Conditions</a></li>
+          <li><a href="/cancellation-and-refund/">Cancellation &amp; Refund</a></li>
+        </ul>
+      </li>
+      <li><a href="/store/">Store</a></li>
+      <li><a href="/contact/" class="mobile-contact-link">Contact Us</a></li>
+    </ul>
+  </div>
+</nav>
+
+<style>
+  /* Self-contained box model: the blog layout's stylesheet has no global
+     box-sizing reset, so without this the navbar's width:100% + padding:5%
+     overflows by 10% and pushes the Contact button off-screen. */
+  .navbar, .navbar *, .navbar *::before, .navbar *::after {
+    box-sizing: border-box;
+  }
+
+  .navbar {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 60px;
+    z-index: 1000;
+    display: flex;
+    align-items: center;
+    padding: 0 5%;
+    /* Safe area inset for notched iPhones/Dynamic Island */
+    padding-left: max(5%, env(safe-area-inset-left));
+    padding-right: max(5%, env(safe-area-inset-right));
+    transition: background 0.4s ease, border-color 0.4s ease, box-shadow 0.4s ease, backdrop-filter 0.4s ease, transform 0.4s cubic-bezier(0.16, 1, 0.3, 1);
+    border-bottom: 1px solid transparent;
+    color: #fff;
+    /* Home page: start fully transparent */
+    background: transparent;
+    backdrop-filter: none;
+    -webkit-backdrop-filter: none;
+    transform: translateY(0);
+  }
+
+  /* Dark state — applied immediately on non-home pages (is-opaque)
+     and on scroll on the home page (scrolled) */
+  .navbar.is-opaque,
+  .navbar.scrolled {
+    background: rgba(8, 10, 18, 0.97);
+    border-bottom-color: rgba(255, 255, 255, 0.07);
+    box-shadow: 0 4px 24px rgba(0, 0, 0, 0.35);
+    backdrop-filter: blur(20px);
+    -webkit-backdrop-filter: blur(20px);
+  }
+
+  /* Disappear on scroll down */
+  .navbar.is-hidden {
+    transform: translateY(-100%);
+  }
+
+  .nav-container {
+    width: 100%;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+  }
+
+  .logo a {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    color: #fff;
+    text-decoration: none;
+  }
+
+  .logo-text {
+    display: flex;
+    flex-direction: column;
+    line-height: 1;
+  }
+
+  .brand-name {
+    font-weight: 700;
+    font-size: 1.2rem;
+    letter-spacing: 1px;
+  }
+
+  .brand-sub {
+    font-size: 0.7rem;
+    font-weight: 300;
+    letter-spacing: 2px;
+    opacity: 0.8;
+  }
+
+  .nav-links {
+    display: flex;
+    list-style: none;
+    gap: 32px;
+  }
+
+  .nav-links a {
+    font-size: 0.95rem;
+    font-weight: 400;
+    opacity: 1;
+    color: #fff;
+    text-decoration: none;
+  }
+
+  .nav-links a:hover, .nav-links a.active {
+    opacity: 1;
+  }
+
+  /* Desktop Dropdown Styles */
+  .dropdown {
+    position: relative;
+    display: flex;
+    align-items: center;
+  }
+
+  .dropdown-toggle {
+    background: none;
+    border: none;
+    padding: 0;
+    font-size: 0.95rem;
+    font-weight: 400;
+    font-family: inherit;
+    color: #fff;
+    opacity: 1;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    gap: 6px;
+    transition: opacity 0.3s ease, color 0.3s ease;
+  }
+
+  .dropdown-toggle:hover,
+  .dropdown.active .dropdown-toggle {
+    opacity: 1;
+  }
+
+  .dropdown-toggle .chevron {
+    font-size: 0.65rem;
+    transition: transform 0.3s ease;
+    display: inline-block;
+  }
+
+  .dropdown.active .dropdown-toggle .chevron {
+    transform: rotate(180deg);
+  }
+
+  .dropdown-menu {
+    position: absolute;
+    top: calc(100% + 15px);
+    left: 50%;
+    transform: translateX(-50%) translateY(10px);
+    width: max-content;
+    min-width: 220px;
+    background: rgba(15, 16, 21, 0.92);
+    backdrop-filter: blur(20px);
+    -webkit-backdrop-filter: blur(20px);
+    border: 1px solid rgba(255, 255, 255, 0.08);
+    border-radius: 12px;
+    padding: 8px 0;
+    list-style: none;
+    opacity: 0;
+    visibility: hidden;
+    box-shadow: 
+      0 10px 30px rgba(0, 0, 0, 0.4),
+      inset 0 1px 0 rgba(255, 255, 255, 0.1);
+    transition: opacity 0.3s cubic-bezier(0.25, 1, 0.3, 1),
+                transform 0.3s cubic-bezier(0.25, 1, 0.3, 1),
+                visibility 0.3s ease;
+    z-index: 1010;
+  }
+
+  .dropdown.active .dropdown-menu {
+    opacity: 1;
+    visibility: visible;
+    transform: translateX(-50%) translateY(0);
+  }
+
+  .dropdown-menu li {
+    width: 100%;
+  }
+
+  .dropdown-menu a {
+    display: block !important;
+    padding: 10px 20px !important;
+    color: rgba(255, 255, 255, 0.75) !important;
+    font-size: 0.9rem !important;
+    font-weight: 400 !important;
+    text-decoration: none !important;
+    transition: all 0.25s ease !important;
+    text-align: left !important;
+    opacity: 1 !important;
+  }
+
+  .dropdown-menu a:hover {
+    background: rgba(9, 104, 229, 0.15) !important;
+    color: #ffffff !important;
+    padding-left: 24px !important;
+  }
+
+  /* ── User menu ── */
+  .signin-link {
+    font-size: 0.88rem;
+    font-weight: 600;
+    color: rgba(255,255,255,0.85);
+    text-decoration: none;
+    padding: 6px 14px;
+    border: 1px solid rgba(255,255,255,0.2);
+    border-radius: 8px;
+    transition: color 0.2s, border-color 0.2s;
+    white-space: nowrap;
+  }
+
+  .signin-link:hover { color: #fff; border-color: rgba(255,255,255,0.5); }
+
+  .user-menu {
+    position: relative;
+  }
+
+  .user-trigger {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    background: none;
+    border: 1px solid rgba(255,255,255,0.2);
+    border-radius: 24px;
+    padding: 5px 12px 5px 6px;
+    color: #fff;
+    cursor: pointer;
+    font-size: 0.88rem;
+    font-family: inherit;
+    font-weight: 600;
+    transition: border-color 0.2s, background 0.2s;
+  }
+
+  .user-trigger:hover { border-color: rgba(255,255,255,0.5); background: rgba(255,255,255,0.06); }
+
+  .user-avatar {
+    width: 26px;
+    height: 26px;
+    border-radius: 50%;
+    object-fit: cover;
+  }
+
+  .user-initial {
+    width: 26px;
+    height: 26px;
+    border-radius: 50%;
+    background: #0968e5;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 0.75rem;
+    font-weight: 700;
+  }
+
+  .user-trigger .chevron {
+    font-size: 0.55rem;
+    opacity: 0.7;
+    transition: transform 0.2s;
+  }
+
+  .user-menu.open .user-trigger .chevron { transform: rotate(180deg); }
+
+  .user-dropdown {
+    position: absolute;
+    top: calc(100% + 10px);
+    right: 0;
+    width: 180px;
+    background: rgba(15, 16, 21, 0.97);
+    border: 1px solid rgba(255,255,255,0.08);
+    border-radius: 12px;
+    padding: 6px 0;
+    list-style: none;
+    opacity: 0;
+    visibility: hidden;
+    transform: translateY(6px);
+    transition: opacity 0.2s, transform 0.2s, visibility 0.2s;
+    backdrop-filter: blur(20px);
+    box-shadow: 0 10px 30px rgba(0,0,0,0.4);
+    z-index: 1010;
+  }
+
+  .user-menu.open .user-dropdown {
+    opacity: 1;
+    visibility: visible;
+    transform: translateY(0);
+  }
+
+  .user-dropdown a,
+  .signout-btn {
+    display: block;
+    width: 100%;
+    padding: 10px 18px;
+    color: rgba(255,255,255,0.75);
+    font-size: 0.88rem;
+    font-weight: 400;
+    text-decoration: none;
+    background: none;
+    border: none;
+    text-align: left;
+    cursor: pointer;
+    font-family: inherit;
+    transition: background 0.15s, color 0.15s;
+    box-sizing: border-box;
+  }
+
+  .user-dropdown a:hover,
+  .signout-btn:hover {
+    background: rgba(255,255,255,0.06);
+    color: #fff;
+  }
+
+  .signout-btn { color: #F87171; }
+  .signout-btn:hover { background: rgba(248,113,113,0.1) !important; color: #F87171 !important; }
+
+  .gf-button {
+    display: inline-block;
+    padding: 9px 28px;
+    border-radius: 10px;
+    background: #0968e5;
+    color: #fff;
+    font-weight: 700;
+    font-size: 0.9rem;
+    text-decoration: none;
+    position: relative;
+    overflow: hidden;
+    cursor: pointer;
+    letter-spacing: 0.5px;
+    border: 1px solid rgba(255, 255, 255, 0.2);
+    box-shadow:
+      0 10px 20px rgba(9, 104, 229, 0.2),
+      0 4px 8px rgba(0, 0, 0, 0.1);
+    transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+  }
+
+  /* Brighter button on the transparent home-page navbar */
+  .navbar:not(.is-opaque):not(.scrolled) .gf-button {
+    background: #1a7cff !important;
+    color: #fff !important;
+    border-color: rgba(255, 255, 255, 0.4) !important;
+    box-shadow:
+      0 0 24px rgba(26, 124, 255, 0.7),
+      0 6px 20px rgba(0, 0, 0, 0.3) !important;
+  }
+
+  .gf-button:hover {
+    transform: translateY(-2px) scale(1.05);
+    box-shadow: 0 15px 30px rgba(9, 104, 229, 0.4);
+    color: #fff;
+  }
+
+  .gf-button::before {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: -180%;
+    width: 50%;
+    height: 100%;
+    background: linear-gradient(
+      90deg,
+      transparent,
+      rgba(0, 255, 204, 0.8),
+      rgba(255, 255, 255, 0.9),
+      rgba(0, 255, 204, 0.8),
+      transparent
+    );
+    transform: skewX(-25deg);
+    transition: left 0.8s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+    pointer-events: none;
+    opacity: 0;
+  }
+
+  .gf-button:hover::before {
+    left: 180%;
+    opacity: 1;
+  }
+
+  .gf-button .arrow {
+    display: inline-block;
+    margin-left: 8px;
+    transition: all 0.3s ease;
+    font-size: 0.9rem;
+  }
+
+  .gf-button:hover .arrow {
+    transform: translateX(6px);
+  }
+
+  .gf-button .button-text {
+    position: relative;
+    z-index: 2;
+  }
+
+  .char {
+    display: inline-block;
+    opacity: 0;
+    transform: translateX(-15px);
+  }
+
+  /* ── MEGA MENU ── */
+  .mega-dropdown {
+    position: static; /* escape relative so mega can go full-width */
+  }
+
+  .mega-menu {
+    position: fixed;
+    top: 60px;
+    left: 0;
+    right: 0;
+    background: #ffffff;
+    display: flex;
+    height: 480px;
+    opacity: 0;
+    visibility: hidden;
+    transform: translateY(-10px);
+    transition: opacity 0.3s cubic-bezier(0.25, 1, 0.3, 1),
+                visibility 0.3s ease,
+                transform 0.3s cubic-bezier(0.25, 1, 0.3, 1);
+    z-index: 1005;
+    box-shadow: 0 32px 80px rgba(0, 0, 0, 0.14), 0 8px 24px rgba(0, 0, 0, 0.07);
+    border-top: 2px solid #0968e5;
+    pointer-events: none;
+  }
+
+  .dropdown.active .mega-menu {
+    opacity: 1;
+    visibility: visible;
+    transform: translateY(0);
+    pointer-events: all;
+  }
+
+  /* Left panel — link list */
+  .mega-left {
+    width: 40%;
+    flex-shrink: 0;
+    padding: 36px 40px 36px 52px;
+    display: flex;
+    flex-direction: column;
+    border-right: 1px solid #f1f5f9;
+    overflow: hidden;
+  }
+
+  .mega-eyebrow {
+    font-size: 0.65rem;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 4px;
+    color: #0968e5;
+    margin: 0 0 22px 0;
+    padding: 0;
+  }
+
+  .mega-intro {
+    font-size: 0.85rem;
+    color: #64748b;
+    line-height: 1.65;
+    margin: 0 0 24px 0;
+    max-width: 340px;
+  }
+
+  .mega-links {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+    display: flex;
+    flex-direction: column;
+    gap: 2px;
+  }
+
+  /* 2-column grid for large link lists (Formulations — 10 items) */
+  .mega-links:has(.mega-item--grid) {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 2px;
+    align-content: start;
+  }
+
+  .mega-item a {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 9px 14px;
+    border-radius: 9px;
+    color: #334155;
+    text-decoration: none;
+    font-size: 0.92rem;
+    font-weight: 500;
+    letter-spacing: 0.01em;
+    transition: background 0.18s ease, color 0.18s ease, padding-left 0.2s ease;
+    opacity: 0; /* animated in via GSAP */
+  }
+
+  .mega-item.is-active a {
+    background: #eff6ff;
+    color: #0968e5;
+    padding-left: 20px;
+    font-weight: 600;
+  }
+
+  .mega-item-arrow {
+    opacity: 0;
+    transform: translateX(-4px);
+    transition: opacity 0.2s ease, transform 0.2s ease;
+    flex-shrink: 0;
+  }
+
+  .mega-item.is-active .mega-item-arrow {
+    opacity: 1;
+    transform: translateX(0);
+  }
+
+  /* Right panel — image + info */
+  .mega-right {
+    flex: 1;
+    position: relative;
+    background: #f8fafc;
+    overflow: hidden;
+  }
+
+  .mega-pane {
+    position: absolute;
+    inset: 0;
+    display: flex;
+    flex-direction: column;
+    opacity: 0;
+    visibility: hidden;
+    transition: opacity 0.4s ease, visibility 0.4s ease;
+  }
+
+  .mega-pane.is-active {
+    opacity: 1;
+    visibility: visible;
+  }
+
+  .mega-img-wrap {
+    flex: 1;
+    overflow: hidden;
+    min-height: 0;
+  }
+
+  .mega-img-wrap img,
+  .mega-img-wrap video {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    display: block;
+    transition: transform 0.7s cubic-bezier(0.25, 1, 0.3, 1);
+    transform: scale(1.04);
+  }
+
+  .mega-pane.is-active .mega-img-wrap img,
+  .mega-pane.is-active .mega-img-wrap video {
+    transform: scale(1);
+  }
+
+  .mega-info {
+    padding: 22px 32px 26px;
+    background: #ffffff;
+    border-top: 1px solid #f1f5f9;
+    flex-shrink: 0;
+  }
+
+  .mega-tag {
+    display: inline-block;
+    font-size: 0.65rem;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 3px;
+    color: #0968e5;
+    margin-bottom: 7px;
+  }
+
+  .mega-title {
+    font-size: 1.1rem;
+    font-weight: 700;
+    color: #0f172a;
+    margin: 0 0 6px;
+    font-family: 'Outfit', sans-serif;
+    letter-spacing: -0.01em;
+  }
+
+  .mega-desc {
+    font-size: 0.82rem;
+    color: #64748b;
+    line-height: 1.65;
+    margin: 0 0 14px;
+  }
+
+  .mega-cta {
+    display: inline-flex;
+    align-items: center;
+    gap: 5px;
+    font-size: 0.82rem;
+    font-weight: 700;
+    color: #0968e5;
+    text-decoration: none;
+    letter-spacing: 0.02em;
+    transition: gap 0.2s ease;
+  }
+
+  .mega-cta:hover { gap: 9px; }
+
+  @media (max-width: 768px) {
+    .nav-links, .hide-mobile, .mega-menu {
+      display: none !important;
+    }
+    
+    .navbar {
+      height: 60px;
+      padding: 0 20px;
+      backdrop-filter: none;
+      -webkit-backdrop-filter: none;
+    }
+
+    /* On mobile, non-home pages and scrolled home page get a solid dark bg */
+    .navbar.is-opaque,
+    .navbar.scrolled {
+      background: rgba(8, 10, 18, 0.97);
+      backdrop-filter: none;
+      -webkit-backdrop-filter: none;
+    }
+
+    .mobile-toggle {
+      display: flex;
+      flex-direction: column;
+      gap: 6px;
+      background: none;
+      border: none;
+      cursor: pointer;
+      z-index: 1001;
+    }
+
+    .mobile-toggle .line {
+      width: 24px;
+      height: 2px;
+      background: #fff;
+      transition: 0.3s;
+    }
+
+    .mobile-toggle.active .line:nth-child(1) {
+      transform: translateY(4px) rotate(45deg);
+    }
+
+    .mobile-toggle.active .line:nth-child(2) {
+      transform: translateY(-4px) rotate(-45deg);
+    }
+
+    .mobile-menu-overlay {
+      position: fixed;
+      inset: 0;
+      background: #0a0a0a;
+      z-index: 999;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: flex-start;
+      overflow-y: auto;
+      -webkit-overflow-scrolling: touch;
+      opacity: 0;
+      visibility: hidden;
+      transition: 0.4s;
+      /* Clear fixed navbar + safe area */
+      padding-top: calc(80px + env(safe-area-inset-top));
+      padding-bottom: calc(40px + env(safe-area-inset-bottom));
+      padding-left: 24px;
+      padding-right: 24px;
+      box-sizing: border-box;
+    }
+
+    .mobile-menu-overlay.active {
+      opacity: 1;
+      visibility: visible;
+    }
+
+    .mobile-nav-links {
+      list-style: none;
+      text-align: center;
+      display: flex;
+      flex-direction: column;
+      gap: 18px;
+      width: 100%;
+    }
+
+    .mobile-nav-links a {
+      font-size: clamp(1.5rem, 6vw, 2rem);
+      font-weight: 700;
+      color: #fff;
+      text-decoration: none;
+    }
+
+    .mobile-contact-link {
+      color: #0968e5 !important;
+    }
+
+    /* Mobile Dropdown Styles */
+    .mobile-dropdown {
+      width: 100%;
+      text-align: center;
+    }
+
+    .mobile-dropdown-toggle {
+      background: none;
+      border: none;
+      font-size: clamp(1.5rem, 6vw, 2rem);
+      font-weight: 700;
+      color: #fff;
+      cursor: pointer;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 10px;
+      width: 100%;
+      font-family: inherit;
+      white-space: nowrap;
+    }
+
+    .mobile-dropdown-toggle .chevron {
+      font-size: 1rem;
+      transition: transform 0.3s ease;
+    }
+
+    .mobile-dropdown.active .mobile-dropdown-toggle .chevron {
+      transform: rotate(180deg);
+    }
+
+    .mobile-dropdown-menu {
+      list-style: none;
+      max-height: 0;
+      overflow: hidden;
+      transition: max-height 0.5s cubic-bezier(0.25, 1, 0.3, 1), opacity 0.3s ease;
+      opacity: 0;
+      display: flex;
+      flex-direction: column;
+      gap: 10px;
+      padding-top: 0;
+      padding-left: 0;
+    }
+
+    .mobile-dropdown.active .mobile-dropdown-menu {
+      max-height: 800px;
+      opacity: 1;
+      padding-top: 12px;
+    }
+
+    .mobile-dropdown-menu a {
+      font-size: 1.5rem !important;
+      font-weight: 500 !important;
+      color: rgba(255, 255, 255, 0.8) !important;
+      text-decoration: none;
+      display: block;
+      transition: color 0.3s ease;
+    }
+
+    .mobile-dropdown-menu a:hover {
+      color: #0968e5 !important;
+    }
+  }
+
+  @media (min-width: 769px) {
+    .mobile-toggle, .mobile-menu-overlay {
+      display: none;
+    }
+  }
+</style>
+
+<script>
+  import { gsap } from "gsap";
+  import { ScrollTrigger } from "gsap/ScrollTrigger";
+
+  gsap.registerPlugin(ScrollTrigger);
+
+  const tl = gsap.timeline({
+    onComplete: () => {
+      (window as any).navbarTitleDone = true;
+      window.dispatchEvent(new CustomEvent('navbarTitleComplete'));
+    }
+  });
+  
+  // Start with signature blue and reveal
+  tl.fromTo(".navbar .char", 
+    { opacity: 0, x: -15, webkitTextFillColor: "#0968e5" },
+    {
+      opacity: 1,
+      x: 0,
+      webkitTextFillColor: "#0968e5",
+      duration: 0.8,
+      stagger: 0.05,
+      ease: "power3.out"
+    }
+  )
+  // Settle in white
+  .to(".navbar .char", {
+    webkitTextFillColor: "white",
+    duration: 0.6,
+    stagger: 0.05,
+    ease: "power2.inOut"
+  }, 0.3); 
+
+  // ── Scroll-triggered opaque & disappearing navbar ──
+  const navbar = document.querySelector('.navbar');
+  const overlay = document.querySelector('.mobile-menu-overlay');
+  const SCROLL_THRESHOLD = 80; // px — trigger just past the navbar itself
+  let lastScrollY = window.scrollY;
+
+  const onScroll = () => {
+    const currentScrollY = window.scrollY;
+    
+    // Scrolled opaque background state
+    if (currentScrollY > SCROLL_THRESHOLD) {
+      navbar?.classList.add('scrolled');
+    } else {
+      navbar?.classList.remove('scrolled');
+    }
+
+    // Disappear on scroll down, appear on scroll up
+    const isMobileMenuOpen = overlay?.classList.contains('active');
+    const isDesktopDropdownOpen = !!document.querySelector('.navbar .dropdown.active');
+    
+    if (!isMobileMenuOpen && !isDesktopDropdownOpen) {
+      if (currentScrollY > lastScrollY && currentScrollY > SCROLL_THRESHOLD) {
+        // Scrolling down & past navbar -> hide
+        navbar?.classList.add('is-hidden');
+      } else if (currentScrollY < lastScrollY) {
+        // Scrolling up -> show
+        navbar?.classList.remove('is-hidden');
+      }
+    }
+
+    // Always show when at the top of the page
+    if (currentScrollY <= 0) {
+      navbar?.classList.remove('is-hidden');
+    }
+
+    lastScrollY = currentScrollY;
+  };
+
+  // Run once on load (handles page refreshes mid-scroll)
+  onScroll();
+  window.addEventListener('scroll', onScroll, { passive: true });
+
+  // Mobile Menu Logic
+  const toggle = document.querySelector('.mobile-toggle');
+  
+  toggle?.addEventListener('click', () => {
+    toggle.classList.toggle('active');
+    overlay?.classList.toggle('active');
+    document.body.style.overflow = overlay?.classList.contains('active') ? 'hidden' : '';
+  });
+
+  // Close menu on link click
+  const mobileLinks = document.querySelectorAll('.mobile-nav-links a');
+  mobileLinks.forEach(link => {
+    link.addEventListener('click', () => {
+      toggle?.classList.remove('active');
+      overlay?.classList.remove('active');
+      document.body.style.overflow = '';
+    });
+  });
+
+  // Desktop Dropdowns click handler
+  const dropdowns = document.querySelectorAll('.navbar .dropdown');
+  
+  dropdowns.forEach(dropdown => {
+    const dropdownToggle = dropdown.querySelector('.dropdown-toggle');
+    dropdownToggle?.addEventListener('click', (e) => {
+      e.stopPropagation();
+      
+      // Close other dropdowns first
+      dropdowns.forEach(other => {
+        if (other !== dropdown) {
+          other.classList.remove('active');
+          other.querySelector('.dropdown-toggle')?.setAttribute('aria-expanded', 'false');
+        }
+      });
+      
+      dropdown.classList.toggle('active');
+      const expanded = dropdown.classList.contains('active');
+      dropdownToggle.setAttribute('aria-expanded', expanded ? 'true' : 'false');
+    });
+  });
+
+  // Close desktop dropdowns on click outside
+  document.addEventListener('click', (e) => {
+    dropdowns.forEach(dropdown => {
+      if (!dropdown.contains(e.target as Node)) {
+        dropdown.classList.remove('active');
+        dropdown.querySelector('.dropdown-toggle')?.setAttribute('aria-expanded', 'false');
+      }
+    });
+  });
+
+  // Mobile Dropdowns click handler
+  const mobileDropdowns = document.querySelectorAll('.mobile-dropdown');
+
+  mobileDropdowns.forEach(mobileDropdown => {
+    const mobileDropdownToggle = mobileDropdown.querySelector('.mobile-dropdown-toggle');
+    mobileDropdownToggle?.addEventListener('click', (e) => {
+      e.stopPropagation();
+
+      // Close other mobile dropdowns first
+      mobileDropdowns.forEach(other => {
+        if (other !== mobileDropdown) {
+          other.classList.remove('active');
+        }
+      });
+
+      mobileDropdown.classList.toggle('active');
+    });
+  });
+
+  // ── User menu dropdown ────────────────────────────────────────
+  const userTrigger = document.getElementById('user-trigger');
+  const userMenu    = userTrigger?.closest('.user-menu');
+
+  userTrigger?.addEventListener('click', (e) => {
+    e.stopPropagation();
+    userMenu?.classList.toggle('open');
+  });
+
+  document.addEventListener('click', (e) => {
+    if (!userMenu?.contains(e.target as Node)) {
+      userMenu?.classList.remove('open');
+    }
+  });
+
+  // ── Mega Menus (generic — works for any .mega-dropdown) ────────
+  document.querySelectorAll('.mega-dropdown').forEach(megaDropdown => {
+    const itemEls  = megaDropdown.querySelectorAll('.mega-item');
+    const paneEls  = megaDropdown.querySelectorAll('.mega-pane');
+    const linkEls  = megaDropdown.querySelectorAll('.mega-item a');
+
+    // Start links invisible; GSAP will reveal them on open
+    gsap.set(linkEls, { opacity: 0, x: -14 });
+
+    const activate = (idx: number) => {
+      itemEls.forEach(el => el.classList.remove('is-active'));
+      paneEls.forEach(el => {
+        el.classList.remove('is-active');
+        const v = el.querySelector('video');
+        if (v) v.pause();
+      });
+      itemEls[idx]?.classList.add('is-active');
+      const activePane = paneEls[idx];
+      if (activePane) {
+        activePane.classList.add('is-active');
+        const activeVideo = activePane.querySelector('video');
+        if (activeVideo) {
+          activeVideo.currentTime = 0; // restart video loop on hover
+          activeVideo.play().catch(err => console.log('Video play blocked:', err));
+        }
+      }
+    };
+
+    const open = () => {
+      activate(0);
+      gsap.fromTo(
+        linkEls,
+        { opacity: 0, x: -14 },
+        { opacity: 1, x: 0, duration: 0.5, stagger: 0.04, ease: 'power3.out', clearProps: 'transform' }
+      );
+    };
+
+    const close = () => {
+      itemEls.forEach(el => el.classList.remove('is-active'));
+      paneEls.forEach(el => {
+        el.classList.remove('is-active');
+        const v = el.querySelector('video');
+        if (v) v.pause();
+      });
+      gsap.killTweensOf(linkEls);
+      gsap.set(linkEls, { opacity: 0, x: -14 });
+    };
+
+    // Hover a link → switch pane
+    itemEls.forEach((item, i) => {
+      item.addEventListener('mouseenter', () => activate(i));
+    });
+
+    // Watch for .active being toggled by the existing dropdown JS
+    new MutationObserver(() => {
+      megaDropdown.classList.contains('active') ? open() : close();
+    }).observe(megaDropdown, { attributes: true, attributeFilter: ['class'] });
+  });
+</script>

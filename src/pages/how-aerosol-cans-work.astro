@@ -1,0 +1,1013 @@
+---
+import Layout from '../layouts/Layout.astro';
+
+const blogSchema = {
+  "@context": "https://schema.org",
+  "@type": "Article",
+  "headline": "How Aerosol Cans Work: Propellant, Pressure, Valve & Spray Dynamics Explained",
+  "author": {
+    "@type": "Person",
+    "name": "Absar Khan",
+    "url": "https://www.linkedin.com/in/absar-khan-aerosol-consultant-and-formulator-78359b162"
+  },
+  "publisher": {
+    "@type": "Organization",
+    "name": "Global Formulation",
+    "logo": {
+      "@type": "ImageObject",
+      "url": "https://www.globalformulation.com/logo.png"
+    }
+  },
+  "mainEntityOfPage": {
+    "@type": "WebPage",
+    "@id": "https://www.globalformulation.com/how-aerosol-cans-work"
+  },
+  "datePublished": "2025-11-05",
+  "dateModified": "2025-11-05"
+};
+const breadcrumbSchema = {
+  "@context": "https://schema.org",
+  "@type": "FAQPage",
+  "mainEntity": [
+    {
+      "@type": "Question",
+      "name": "How much pressure is inside an aerosol can?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Typically 3–8 bar at 20°C depending on propellant type and product category."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "Can aerosol cans explode?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Yes, if exposed to temperatures beyond design limits or if manufacturing defects exist."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "Why do some aerosols spray as foam?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Foaming depends on surfactant formulation combined with actuator air-mixing design."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "What is the safest aerosol propellant?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Compressed gases and BOV systems offer the highest safety performance."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "Is aerosol manufacturing profitable in India?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Yes, when technical design, safety compliance and formulation performance are correctly balanced."
+      }
+    }
+  ]
+};
+const schemas = [blogSchema, breadcrumbSchema];
+---
+
+<Layout
+  title="How Aerosol Cans Work: Propellant, Pressure, Valve & Spray Dynamics Explained | Global Formulation"
+  description="Learn how aerosol cans work with a complete technical guide on propellants, pressure, valves and spray dynamics. Ideal for startups, students and manufacturers in India and globally."
+  canonical="https://www.globalformulation.com/how-aerosol-cans-work"
+  ogImage="https://assets.zyrosite.com/AGBzPMBJDQiwDGny/aerosol-can-cross-section-diagram-VPY1N1AooWNWTKYx.jpg"
+  ogType="article"
+  schemaJson={schemas}
+>
+  <main class="section-container" style="max-width: 100%; padding-left: 48px; padding-right: 48px; padding-top: 40px; padding-bottom: 80px;">
+    
+    <!-- HTML5 Compliant Breadcrumbs -->
+    <nav aria-label="Breadcrumb" style="display: flex; gap: 8px; font-size: 0.85rem; color: var(--text-muted); margin-bottom: 24px; font-family: 'Inter', sans-serif;">
+      <a href="/" style="color: var(--text-muted);">Home</a>
+      <span>&gt;</span>
+      <a href="/blog" style="color: var(--text-muted);">Blog</a>
+      <span>&gt;</span>
+      <span style="color: var(--text-primary); font-weight: 500;">Aerosols & Gas Dosing</span>
+    </nav>
+
+    <!-- Main article container -->
+    <article class="blog-prose">
+      <header class="post-header">
+        <h1 class="gradient-text" style="font-size: 3rem; line-height: 1.15; font-weight: 900; margin-bottom: 20px;">
+          How Aerosol Cans Work: Propellant, Pressure, Valve & Spray Dynamics Explained
+        </h1>
+        
+        <!-- Post meta details -->
+        <div style="display: flex; align-items: center; gap: 16px; font-size: 0.9rem; color: var(--text-muted); margin-bottom: 30px; font-family: 'Inter', sans-serif; font-weight: 500; border-bottom: 1px solid var(--border); padding-bottom: 20px;">
+          <div style="display: flex; align-items: center; gap: 8px;">
+            <span style="width: 28px; height: 28px; background: var(--primary); color: white; display: flex; align-items: center; justify-content: center; border-radius: 50%; font-weight: 700; font-size: 0.75rem;">AK</span>
+            <span>By <strong>Absar Khan</strong></span>
+          </div>
+          <span style="width: 4px; height: 4px; border-radius: 50%; background-color: var(--border);"></span>
+          <span>Published: <strong>Nov 5, 2025</strong></span>
+          <span style="width: 4px; height: 4px; border-radius: 50%; background-color: var(--border);"></span>
+          <span>Reading Time: <strong>16 min read</strong></span>
+          <span style="width: 4px; height: 4px; border-radius: 50%; background-color: var(--border);"></span>
+          <span style="background: #e0f2fe; color: #0369a1; padding: 2px 10px; border-radius: 50px; font-size: 0.75rem; font-weight: 700; text-transform: uppercase;">Aerosols & Gas Dosing</span>
+        </div>
+      </header>
+
+      <!-- Primary Featured Image -->
+      <div class="image-slot">
+        <img 
+          src="https://assets.zyrosite.com/AGBzPMBJDQiwDGny/aerosol-can-cross-section-diagram-VPY1N1AooWNWTKYx.jpg" 
+          alt="Cross sectional diagram showing internal components of an aerosol can including propellant, dip tube, valve and actuator" 
+          width="1200" 
+          height="800" 
+          loading="eager" 
+        />
+      </div>
+
+      <!-- Table of Contents -->
+      <div class="box" style="background: #f8fafc; border: 1px solid var(--border); border-radius: var(--radius-lg); padding: 24px; margin: 30px 0;">
+        <h3 style="margin-top: 0; font-family: 'Outfit', sans-serif; color: var(--text-primary); font-size: 1.25rem; font-weight: 700; border-bottom: 2px solid var(--border); padding-bottom: 8px;">Guide Contents</h3>
+        <ul style="display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 10px; list-style-type: none; padding-left: 0; margin-bottom: 0;">
+          <li><a href="#introduction-to-aerosol-technology" style="font-weight: 600; color: var(--primary);">1. Introduction to Aerosol Technology</a></li>
+          <li><a href="#basic-components-of-an-aerosol-can" style="font-weight: 600; color: var(--primary);">2. Basic Components of an Aerosol Can</a></li>
+          <li><a href="#the-science-behind-aerosol-pressure" style="font-weight: 600; color: var(--primary);">3. The Science Behind Aerosol Pressure</a></li>
+          <li><a href="#types-of-propellants-used-in-aerosol-cans" style="font-weight: 600; color: var(--primary);">4. Types of Propellants Used in Aerosol Cans</a></li>
+          <li><a href="#how-the-aerosol-valve-works" style="font-weight: 600; color: var(--primary);">5. How the Aerosol Valve Works</a></li>
+          <li><a href="#how-spray-is-generated-spray-dynamics-explained" style="font-weight: 600; color: var(--primary);">6. How Spray Is Generated (Spray Dynamics Explained)</a></li>
+          <li><a href="#what-happens-when-you-press-the-spray-button" style="font-weight: 600; color: var(--primary);">7. What Happens When You Press the Spray Button</a></li>
+          <li><a href="#difference-between-bag-on-valve-and-conventional-aerosols" style="font-weight: 600; color: var(--primary);">8. Difference Between Bag-on-Valve and Conventional Aerosols</a></li>
+          <li><a href="#common-engineering-and-manufacturing-problems" style="font-weight: 600; color: var(--primary);">9. Common Engineering and Manufacturing Problems</a></li>
+          <li><a href="#safety-mechanisms-in-aerosol-cans" style="font-weight: 600; color: var(--primary);">10. Safety Mechanisms in Aerosol Cans</a></li>
+          <li><a href="#how-aerosol-working-impacts-product-performance" style="font-weight: 600; color: var(--primary);">11. How Aerosol Working Impacts Product Performance</a></li>
+          <li><a href="#how-startups-can-select-the-right-aerosol-system" style="font-weight: 600; color: var(--primary);">12. How Startups Can Select the Right Aerosol System</a></li>
+          <li><a href="#aerosol-manufacturing-in-india-vs-global-practices" style="font-weight: 600; color: var(--primary);">13. Aerosol Manufacturing in India vs Global Practices</a></li>
+          <li><a href="#authoritative-external-references-for-aerosol-technology" style="font-weight: 600; color: var(--primary);">14. Authoritative External References for Aerosol Technology</a></li>
+          <li><a href="#future-of-aerosol-technology" style="font-weight: 600; color: var(--primary);">15. Future of Aerosol Technology</a></li>
+          <li><a href="#complete-aerosol-manufacturing-guidance" style="font-weight: 600; color: var(--primary);">16. Complete Aerosol Manufacturing Guidance</a></li>
+          <li><a href="#conclusion-key-takeaways-on-how-aerosol-cans-work" style="font-weight: 600; color: var(--primary);">17. Conclusion: Key Takeaways on How Aerosol Cans Work</a></li>
+        </ul>
+      </div>
+
+      <div class="lead"><p>Aerosol technology is one of the most efficient and versatile methods of dispensing liquids, foams, gels, and
+            powders. From pharmaceuticals, cosmetics, and household cleaners to industrial lubricants, paints, and
+            agrochemicals, aerosol cans enable precise, controlled, and hygienic product delivery.</p>
+
+        <p>Despite their everyday use, the internal working of an aerosol can involves carefully engineered interactions
+            between <strong>propellant physics, internal pressure, valve mechanics, and spray dynamics</strong>. For
+            startups, students, and entrepreneurs entering aerosol-based product development, a correct technical
+            understanding is essential for safe design, consistent performance, regulatory compliance, and commercial
+            success.</p>
+
+        <p>This article provides a <strong>fact-based, engineering-level explanation</strong> of how aerosol cans
+            actually work&mdash;without speculation&mdash;covering propellants, pressure behavior, valves, atomization,
+            safety systems, and real manufacturing considerations relevant to <strong>India and global markets</strong>.
+        </p>
+
+        
+
+        <hr /></div>
+
+<!-- INTRODUCTION TO AEROSOL TECHNOLOGY -->
+<section class="section" id="introduction-to-aerosol-technology">
+  <h2>Introduction to Aerosol Technology</h2>
+  <h3>What Is an Aerosol Can?</h3>
+
+        <p>An aerosol can is a <strong>sealed, pressurized container</strong> designed to dispense a formulation in the
+            form of a <strong>spray, mist, jet, foam, or stream</strong> using the energy stored in a compressed or
+            liquefied gas propellant. The formulation and propellant are packaged together in a controlled ratio, with
+            dispensing regulated by a precision valve and actuator system.</p>
+
+        <p>The entire system functions as a self-contained fluid delivery device where pressure energy is converted into controlled kinetic energy at the nozzle. In technical terms, an aerosol system consists of the following key components:</p>
+        <ul>
+            <li>A <strong>product concentrate</strong></li>
+            <li>A <strong>propellant</strong></li>
+            <li>A <strong>valve&ndash;dip tube&ndash;actuator assembly</strong></li>
+            <li>A <strong>pressure-resistant metal container</strong></li>
+        </ul>
+
+        <p>The entire system functions as a <strong>self-contained fluid delivery device</strong> where pressure energy
+            is converted into controlled kinetic energy at the nozzle.</p>
+
+        <h3>Where Aerosol Technology Is Used</h3>
+
+        <p>Aerosols are used in nearly every industrial and consumer sector:</p>
+        <ul>
+            <li>Pharmaceuticals: inhalers, antiseptics, wound sprays</li>
+            <li>Personal care: deodorants, hair sprays, shaving foams</li>
+            <li>Household &amp; institutional care: cleaners, insect sprays, air fresheners</li>
+            <li>Automotive &amp; industrial: lubricants, degreasers, paints, corrosion inhibitors</li>
+            <li>Food &amp; specialty: cooking sprays, release agents</li>
+        </ul>
+
+        <p>Each application requires a different <strong>propellant system, valve design, pressure range, and spray
+                pattern</strong>, making aerosol engineering highly application-specific.</p>
+
+        <h3>Why Understanding Aerosol Working Is Important</h3>
+
+        <p>For startups and manufacturers, incorrect assumptions about aerosol working commonly lead to:</p>
+        <ul>
+            <li>Inconsistent spray output</li>
+            <li>Valve leakage or clogging</li>
+            <li>Can deformation or bursting</li>
+            <li>Regulatory non-compliance</li>
+            <li>Product performance failures in the market</li>
+        </ul>
+
+        <p>A technical understanding allows correct selection of <strong>propellants, valves, can materials, and filling
+                methods</strong> from the very first formulation stage.</p>
+
+        
+</section>
+
+<!-- BASIC COMPONENTS OF AN AEROSOL CAN -->
+<section class="section" id="basic-components-of-an-aerosol-can">
+  <h2>Basic Components of an Aerosol Can</h2>
+  <div class="image-slot">
+        <img 
+          src="https://assets.zyrosite.com/A3QlOV94WLSaL6xE/aerosol-valve-crimping-mechanism.-Nzzf3J5crXDzFcEA.jpg" 
+          alt="Close up cutaway view of aerosol valve and crimping seal showing gasket, stem and valve cup" 
+          width="1200" 
+          height="800" 
+          loading="lazy" 
+        />
+      </div>
+      <p class="image-caption" style="text-align: center; font-size: 0.9rem; color: var(--text-muted); margin-top: -1.5rem; margin-bottom: 2.5rem; font-style: italic;">Aerosol valve assembly and crimping seal showing the valve cup, gasket, stem, and metal dome
+                interface.</p>
+      
+
+        <p>An aerosol can is not a simple container. It is a <strong>pressure-rated dispensing system</strong> built
+            from multiple engineered components.</p>
+
+        <h3>The Can Body (Aluminum vs Tinplate)</h3>
+
+        <p>The can body provides mechanical strength and internal pressure containment.</p>
+
+        <ul>
+            <li><strong>Tinplate steel cans</strong>: Most common for industrial and FMCG aerosols. High strength,
+                economical, and externally lacquered for corrosion resistance.</li>
+            <li><strong>Aluminum cans</strong>: Used mainly in personal care and pharmaceuticals. Seamless construction,
+                better corrosion resistance, lighter weight, and superior surface finish.</li>
+        </ul>
+
+        <p>Typical pressure resistance: <strong>12&ndash;18 bar minimum deformation pressure</strong>, with burst
+            pressures significantly higher as per international standards.</p>
+
+        <h3>The Aerosol Valve Assembly</h3>
+
+        <p>The valve is the <strong>control heart of the aerosol system</strong>. It seals the pressurized contents and
+            releases the product only when actuated.</p>
+
+        <p>It consists of:</p>
+        <ul>
+            <li>Valve cup</li>
+            <li>Internal gasket</li>
+            <li>Stem with side ports</li>
+            <li>Spring-loaded mechanism (in continuous valves)</li>
+            <li>Housing that locks into the can dome via crimping</li>
+        </ul>
+
+        <h3>The Dip Tube</h3>
+
+        <p>The dip tube is a plastic tube attached to the valve stem that reaches the bottom of the can. It allows
+            <strong>liquid product to be drawn upward</strong> when pressure forces the formulation through the valve.
+        </p>
+
+        <p>Dip tube length and internal diameter directly affect:</p>
+        <ul>
+            <li>Flow rate</li>
+            <li>Spray stability</li>
+            <li>Product evacuation efficiency</li>
+        </ul>
+
+        <h3>The Actuator and Spray Button</h3>
+
+        <p>The actuator is the user-facing spray button. Internally, it contains:</p>
+        <ul>
+            <li>Expansion chamber</li>
+            <li>Orifice(s)</li>
+            <li>Swirl inserts (for spray/fog generation)</li>
+        </ul>
+
+        <p>It is the <strong>primary atomization device</strong> that converts pressurized liquid into droplets.</p>
+
+        <p>Different actuator designs create:</p>
+        <ul>
+            <li>Fine mist</li>
+            <li>Jet stream</li>
+            <li>Cone spray</li>
+            <li>Foam output</li>
+        </ul>
+
+        <h3>The Propellant System</h3>
+
+        <p>The propellant provides:</p>
+        <ul>
+            <li>Internal pressure</li>
+            <li>Energy for product discharge</li>
+            <li>Atomization force at the nozzle</li>
+        </ul>
+
+        <p>Propellants are either <strong>liquefied gases</strong> or <strong>compressed gases</strong>, and the
+            selection determines nearly every aspect of aerosol behavior.</p>
+
+        
+</section>
+
+<!-- THE SCIENCE BEHIND AEROSOL PRESSURE -->
+<section class="section" id="the-science-behind-aerosol-pressure">
+  <h2>The Science Behind Aerosol Pressure</h2>
+  <div class="image-slot">
+        <img 
+          src="https://assets.zyrosite.com/A3QlOV94WLSaL6xE/aerosol-propellant-pressure-temperature-graph.webp-LrcS3ZTsnkflXvD6.jpg" 
+          alt="Graph showing relationship between aerosol propellant vapor pressure and temperature" 
+          width="1200" 
+          height="800" 
+          loading="lazy" 
+        />
+      </div>
+      <p class="image-caption" style="text-align: center; font-size: 0.9rem; color: var(--text-muted); margin-top: -1.5rem; margin-bottom: 2.5rem; font-style: italic;">Vapor pressure versus temperature relationship for typical aerosol propellants used in
+                pressurized containers.</p>
+      
+
+        <h3>What Creates Pressure Inside an Aerosol Can?</h3>
+
+        <p>Pressure inside an aerosol can is generated by the <strong>propellant</strong>. It is not created by
+            mechanical compression at the time of spraying. The pressure exists continuously after filling.</p>
+
+        <p>Two physical mechanisms are used:</p>
+        <ul>
+            <li><strong>Vapor pressure from liquefied gas propellants</strong></li>
+            <li><strong>Stored gas pressure from compressed gases</strong></li>
+        </ul>
+
+        <h3>Vapor Pressure vs Compressed Gas Pressure</h3>
+
+        <p><strong>Liquefied Gas Propellants</strong></p>
+        <ul>
+            <li>Exist as both liquid and vapor inside the can</li>
+            <li>Pressure remains nearly constant as long as liquid propellant is present</li>
+            <li>Example: Butane, Propane, Isobutane, HFC-134a</li>
+        </ul>
+
+        <p>The physical behavior of liquefied gas propellants ensures a stable discharge throughout the product life cycle. As the formulation is sprayed, the system follows this chemical equilibrium sequence:</p>
+        <ul>
+            <li>Some liquid propellant evaporates</li>
+            <li>Vapor pressure automatically restores equilibrium pressure</li>
+            <li>This gives <strong>constant spray force over most of the product life</strong></li>
+        </ul>
+
+        <p><strong>Compressed Gas Propellants</strong></p>
+        <ul>
+            <li>Exist only as gas inside the can</li>
+            <li>Pressure decreases gradually with each spray</li>
+            <li>Example: Nitrogen, CO&thinsp;<sub>2</sub>, compressed air</li>
+        </ul>
+
+        <p>These systems show <strong>pressure decay</strong>, leading to changing spray force over time.</p>
+
+        <h3>How Temperature Affects Aerosol Can Pressure</h3>
+
+        <p>Aerosol pressure follows the <strong>gas laws and vapor pressure&ndash;temperature relationships</strong>. As
+            temperature increases, internal pressure increases.</p>
+
+        <p>For typical hydrocarbon propellants:</p>
+        <ul>
+            <li>Pressure rise is approximately <strong>0.6&ndash;0.8 bar per 10&deg;C</strong></li>
+            <li>At elevated temperatures (above 50&deg;C), internal pressure can reach unsafe levels</li>
+        </ul>
+
+        <p>This is why all aerosol cans carry <strong>storage temperature limits</strong> and undergo <strong>thermal
+                stability and hot-water bath testing</strong> during manufacturing.</p>
+
+        <h3>Typical Pressure Ranges in Aerosols</h3>
+
+        <p>Depending on product and propellant:</p>
+        <ul>
+            <li>Low-pressure systems (compressed gas): 2&ndash;5 bar</li>
+            <li>Standard hydrocarbon aerosols: 4&ndash;8 bar at 20&deg;C</li>
+            <li>High-output industrial aerosols: 6&ndash;10 bar</li>
+        </ul>
+
+        <p>Design pressure is always well below the <strong>minimum burst strength of the can</strong> for safety.</p>
+
+        
+</section>
+
+<!-- TYPES OF PROPELLANTS USED IN AEROSOL CANS -->
+<section class="section" id="types-of-propellants-used-in-aerosol-cans">
+  <h2>Types of Propellants Used in Aerosol Cans</h2>
+  <p>Aerosol propellants are the driving force behind the entire dispensing system, dictating not only the internal pressure but also the droplet size and spray pattern. Selecting the correct propellant is a critical design decision that impacts formulation solubility, flammability ratings, and regulatory compliance. Modern manufacturing relies on a variety of liquefied and compressed gases to achieve optimal gassing results.</p>
+  <h3>Liquefied Gas Propellants</h3>
+
+        <p>Common hydrocarbon propellants:</p>
+        <ul>
+            <li>Propane</li>
+            <li>n-Butane</li>
+            <li>Isobutane</li>
+            <li>Propane&ndash;butane blends</li>
+        </ul>
+
+        <p>Hydrocarbon propellants are widely used due to their excellent solubility and pressure stability. Manufacturers choose hydrocarbons based on the following physical and chemical properties:</p>
+        <ul>
+            <li>High vapor pressure</li>
+            <li>Good atomization efficiency</li>
+            <li>Flammable</li>
+            <li>Low cost</li>
+            <li>Widely used in India for FMCG and industrial aerosols</li>
+        </ul>
+
+        <p>Fluorinated propellants (HFCs):</p>
+        <ul>
+            <li>Non-flammable</li>
+            <li>Higher molecular weight</li>
+            <li>More stable pressure profile</li>
+            <li>Higher cost and subjected to environmental regulations</li>
+        </ul>
+
+        <h3>Compressed Gas Propellants</h3>
+
+        <ul>
+            <li>Nitrogen</li>
+            <li>Carbon dioxide</li>
+            <li>Compressed air</li>
+        </ul>
+
+        <p>Compressed gas propellants offer an environmentally friendly and non-flammable alternative to liquefied gases. They are characterized by the following operational parameters:</p>
+        <ul>
+            <li>Non-flammable</li>
+            <li>Pressure decreases during use</li>
+            <li>Used where flammability must be eliminated</li>
+            <li>Common in pharmaceuticals, food aerosols, and bag-on-valve systems</li>
+        </ul>
+
+        <h3>Environmental Regulations and Trends</h3>
+
+        <p>Globally, propellant selection is regulated based on:</p>
+        <ul>
+            <li>Ozone depletion potential (ODP)</li>
+            <li>Global warming potential (GWP)</li>
+            <li>Flammability classification</li>
+        </ul>
+
+        <p>India follows:</p>
+        <ul>
+            <li>BIS pressure vessel standards</li>
+            <li>Petroleum and Explosives Safety Organisation (PESO) norms for hydrocarbon handling</li>
+            <li>Globally accepted transport codes for flammable aerosols</li>
+        </ul>
+
+        
+</section>
+
+<!-- HOW THE AEROSOL VALVE WORKS -->
+<section class="section" id="how-the-aerosol-valve-works">
+  <h2>How the Aerosol Valve Works</h2>
+  <div class="image-slot">
+        <img 
+          src="https://assets.zyrosite.com/A3QlOV94WLSaL6xE/aerosol-valve-cutaway-diagram-DU70muyt2W4iVt2W.webp" 
+          alt="Cutaway diagram of aerosol valve showing valve cup, gasket, stem ports, spring and internal flow path" 
+          width="1200" 
+          height="800" 
+          loading="lazy" 
+        />
+      </div>
+      <p class="image-caption" style="text-align: center; font-size: 0.9rem; color: var(--text-muted); margin-top: -1.5rem; margin-bottom: 2.5rem; font-style: italic;">Cutaway view of an aerosol valve assembly showing the valve cup, elastomer gasket, spring-loaded
+                stem, ports, and internal flow path.</p>
+      
+
+        <h3>Valve Cup, Gasket, and Stem Function</h3>
+
+        <p>The valve cup is crimped onto the can dome and holds the entire valve assembly. The internal gasket creates a
+            <strong>gas-tight seal</strong> between the metallic cup and the moving valve stem.</p>
+
+        <p>The stem contains:</p>
+        <ul>
+            <li>One or more lateral ports</li>
+            <li>A central axial bore</li>
+        </ul>
+
+        <p>When unpressed, the gasket blocks the ports, sealing the pressurized system. When pressed, the ports align
+            below the gasket, opening the flow path.</p>
+
+        <h3>Crimping and Sealing Mechanism</h3>
+
+        <p>During manufacturing, the valve is mechanically <strong>crimped</strong> onto the can with precise radial
+            compression. Proper crimp diameter and compression force are essential to:</p>
+        <ul>
+            <li>Prevent leakage</li>
+            <li>Maintain long-term pressure retention</li>
+            <li>Ensure transport safety</li>
+        </ul>
+
+        <p>Incorrect crimping is a major root cause of aerosol leakage failures.</p>
+
+        <h3>Flow Rate Control</h3>
+
+        <p>Flow rate is governed by:</p>
+        <ul>
+            <li>Valve orifice size</li>
+            <li>Stem port diameter</li>
+            <li>Dip tube internal diameter</li>
+            <li>Internal valve spring strength</li>
+            <li>Actuator orifice design</li>
+        </ul>
+
+        <p>These parameters are selected based on:</p>
+        <ul>
+            <li>Product viscosity</li>
+            <li>Desired discharge rate</li>
+            <li>Spray pattern requirement</li>
+        </ul>
+
+        <h3>Continuous vs Metered Valves</h3>
+
+        <ul>
+            <li><strong>Continuous valves</strong>: Product flows as long as the actuator is pressed. Used in cleaners,
+                sprays, lubricants.</li>
+            <li><strong>Metered-dose valves</strong>: Deliver a fixed volume per actuation. Used in pharmaceutical
+                inhalers and medical sprays.</li>
+        </ul>
+
+        
+</section>
+
+<!-- HOW SPRAY IS GENERATED (SPRAY DYNAMICS EXPLAINED) -->
+<section class="section" id="how-spray-is-generated-spray-dynamics-explained">
+  <h2>How Spray Is Generated (Spray Dynamics Explained)</h2>
+  <div class="image-slot">
+        <img 
+          src="https://assets.zyrosite.com/A3QlOV94WLSaL6xE/aerosol-spray-atomization-process-qCtIW4TbmXQ25q06.webp" 
+          alt="High speed visualization of aerosol spray atomization and micro droplet formation at nozzle" 
+          width="1200" 
+          height="800" 
+          loading="lazy" 
+        />
+      </div>
+      <p class="image-caption" style="text-align: center; font-size: 0.9rem; color: var(--text-muted); margin-top: -1.5rem; margin-bottom: 2.5rem; font-style: italic;">High-speed visualization of aerosol spray atomization and micro-droplet formation at the nozzle.
+            </p>
+      
+
+        <h3>Formula Movement from Dip Tube to Nozzle</h3>
+
+        <p>The activation of the spray button initiates a rapid hydrodynamic sequence driven entirely by the pressure difference between the can interior and the atmosphere. When the actuator is pressed, the system performs the following steps:</p>
+        <ol>
+            <li>The internal valve opens.</li>
+            <li>Internal pressure instantly forces liquid up the dip tube.</li>
+            <li>The liquid mixture of product and propellant enters the actuator chamber.</li>
+        </ol>
+
+        <p>There is <strong>no pumping action</strong>. The system is driven entirely by stored pressure energy.</p>
+
+        <h3>Atomization Inside the Actuator</h3>
+
+        <p>Inside the actuator:</p>
+        <ul>
+            <li>The liquid rapidly expands as it moves from high pressure (inside can) to atmospheric pressure.</li>
+            <li>Dissolved propellant flashes from liquid to vapor.</li>
+            <li>This violent phase change breaks the liquid into tiny droplets.</li>
+        </ul>
+
+        <p>This process is known as <strong>flash atomization</strong>.</p>
+
+        <h3>Role of Orifice Size and Spray Pattern</h3>
+
+        <p>The actuator orifice controls:</p>
+        <ul>
+            <li>Droplet size</li>
+            <li>Spray angle</li>
+            <li>Delivery rate</li>
+        </ul>
+
+        <p>Small orifice:</p>
+        <ul>
+            <li>Fine mist</li>
+            <li>Slower output</li>
+        </ul>
+
+        <p>Large orifice:</p>
+        <ul>
+            <li>Coarse spray or jet</li>
+            <li>Higher discharge rate</li>
+        </ul>
+
+        <p>Swirl chambers and inserts can impart rotational motion to the liquid, producing <strong>conical
+                sprays</strong>.</p>
+
+        <h3>Mist, Jet, and Foam Generation</h3>
+
+        <ul>
+            <li><strong>Mist sprays</strong>: High atomization, small droplets</li>
+            <li><strong>Jet sprays</strong>: Minimal atomization, straight stream</li>
+            <li><strong>Foam sprays</strong>: Air incorporation through mixing chambers, combined with foaming
+                surfactants</li>
+        </ul>
+
+        <p>Foam aerosols rely as much on <strong>formulation rheology</strong> as on mechanical design.</p>
+
+        
+</section>
+
+<!-- WHAT HAPPENS WHEN YOU PRESS THE SPRAY BUTTON -->
+<section class="section" id="what-happens-when-you-press-the-spray-button">
+  <h2>What Happens When You Press the Spray Button</h2>
+  <p>The spray action follows a fixed physical sequence:</p>
+        <ol>
+            <li>External force depresses the actuator.</li>
+            <li>The valve stem moves downward.</li>
+            <li>Stem ports open below the gasket.</li>
+            <li>Internal pressure forces liquid into the stem.</li>
+            <li>Liquid expands in the actuator chamber.</li>
+            <li>Flash evaporation of propellant occurs.</li>
+            <li>The product exits as a spray, jet, or foam.</li>
+        </ol>
+
+        <p>As long as liquid propellant remains in a liquefied system, internal pressure remains nearly constant,
+            ensuring consistent spray until near empty.</p>
+
+        
+</section>
+
+<!-- DIFFERENCE BETWEEN BAG-ON-VALVE AND CONVENTIONAL AEROSOLS -->
+<section class="section" id="difference-between-bag-on-valve-and-conventional-aerosols">
+  <h2>Difference Between Bag-on-Valve and Conventional Aerosols</h2>
+  <div class="image-slot">
+        <img 
+          src="https://assets.zyrosite.com/A3QlOV94WLSaL6xE/bag-on-valve-vs-conventional-aerosol-GvTvECzbxSHCPmOE.jpg" 
+          alt="Comparison of bag on valve aerosol system versus conventional aerosol can internal structure" 
+          width="1200" 
+          height="800" 
+          loading="lazy" 
+        />
+      </div>
+      <p class="image-caption" style="text-align: center; font-size: 0.9rem; color: var(--text-muted); margin-top: -1.5rem; margin-bottom: 2.5rem; font-style: italic;">Internal comparison of a conventional aerosol can versus a bag-on-valve (BOV) aerosol system.
+            </p>
+      
+
+        <h3>How Bag-on-Valve Works</h3>
+
+        <p>Bag-on-valve technology separates the product concentrate from the propellant gas, using physical pressure on an internal laminated bag to expel the fluid. In bag-on-valve systems, operation is defined by the following characteristics:</p>
+        <ul>
+            <li>The product is sealed inside a laminated internal bag.</li>
+            <li>Compressed gas occupies the space between the bag and the can wall.</li>
+            <li>When sprayed, the gas collapses the bag, pushing product out.</li>
+        </ul>
+
+        <p>The propellant <strong>never contacts the product</strong>.</p>
+
+        <h3>Advantages of Bag-on-Valve</h3>
+
+        <ul>
+            <li>360&deg; spraying</li>
+            <li>No propellant contamination</li>
+            <li>Improved product stability</li>
+            <li>Suitable for pharmaceuticals, cosmetics, and food</li>
+            <li>Reduced flammability risks</li>
+        </ul>
+
+        <h3>Cost and Manufacturing Differences</h3>
+
+        <p>BOV systems require:</p>
+        <ul>
+            <li>Specialized valves</li>
+            <li>Internal bag insertion</li>
+            <li>Higher component cost</li>
+        </ul>
+
+        <p>However, they offer superior technical performance for sensitive formulations.</p>
+
+        
+</section>
+
+<!-- COMMON ENGINEERING AND MANUFACTURING PROBLEMS -->
+<section class="section" id="common-engineering-and-manufacturing-problems">
+  <h2>Common Engineering and Manufacturing Problems</h2>
+  <p>Maintaining high quality standards in aerosol manufacturing requires a deep understanding of common engineering and performance failures. From low pressure discharges to valve leakages and spray pattern inconsistencies, each issue can trace its roots back to formulation chemistry, hardware matching, or filling defects. Below, we examine these common problems and their technical causes.</p>
+  <h3>Low Spray Pressure</h3>
+
+        <p>This specific condition is typically caused by several compounding technical factors that compromise the internal pressure, material strength, or chemical stability of the canister:</p>
+        <ul>
+            <li>Insufficient propellant charge</li>
+            <li>Incorrect vapor pressure selection</li>
+            <li>Leakage at crimp or gasket</li>
+        </ul>
+
+        <h3>Valve Leakage Issues</h3>
+
+        <p>Understanding the common causes of these failures is essential for maintaining strict quality control. These issues typically stem from mechanical, metallurgical, or formulation-related factors during production:</p>
+        <ul>
+            <li>Improper crimp dimensions</li>
+            <li>Gasket incompatibility</li>
+            <li>Chemical attack from formulation solvents</li>
+            <li>Particulate contamination during filling</li>
+        </ul>
+
+        <h3>Inconsistent Spray Pattern</h3>
+
+        <p>This performance variation typically results from a combination of fluid dynamics, nozzle configurations, propellant ratios, and formulation viscosity characteristics during discharge:</p>
+        <ul>
+            <li>Actuator orifice blockage</li>
+            <li>Improper formulation viscosity</li>
+            <li>Inconsistent propellant&ndash;product ratio</li>
+            <li>Poor internal mixing</li>
+        </ul>
+
+        <h3>Can Bulging and Burst Failures</h3>
+
+        <p>These critical structural and mechanical failures are directly linked to pressure limitations, material fatigue, assembly errors, and chemical degradation pathways inside the container:</p>
+        <ul>
+            <li>Overfilling</li>
+            <li>Excessive temperature exposure</li>
+            <li>Incorrect can specification</li>
+            <li>Illegal propellant blends with abnormal vapor pressure</li>
+        </ul>
+
+        <h3>Propellant&ndash;Formulation Incompatibility</h3>
+
+        <p>Formulators must monitor a range of compatibility issues that can emerge during long-term storage under pressurized conditions. These chemical and mechanical issues include:</p>
+        <ul>
+            <li>Phase separation</li>
+            <li>Corrosion of can interior</li>
+            <li>Elastomer swelling in gaskets</li>
+            <li>Loss of spray efficiency over shelf life</li>
+        </ul>
+
+        
+</section>
+
+<!-- SAFETY MECHANISMS IN AEROSOL CANS -->
+<section class="section" id="safety-mechanisms-in-aerosol-cans">
+  <h2>Safety Mechanisms in Aerosol Cans</h2>
+  <p>Aerosol cans are pressurized vessels that require rigorous safety engineering and quality control during design and production. Compliance with national and international standards ensures that canisters can withstand extreme temperatures, transport vibrations, and physical impacts without risk of failure. The following safety protocols are industry-standard mechanisms to guarantee consumer and workplace safety.</p>
+  <h3>Pressure Resistance Testing</h3>
+
+        <p>To ensure maximum safety and prevent accidental bursts during transport or consumer use, all pressurized canisters must pass strict structural stress tests. Every aerosol design undergoes the following testing protocols:</p>
+        <ul>
+            <li>Hydraulic deformation testing</li>
+            <li>Burst pressure testing</li>
+            <li>Hot-water bath testing at elevated temperatures</li>
+        </ul>
+
+        <p>These ensure a minimum safety margin above maximum working pressure.</p>
+
+        <h3>Transport and Storage Safety</h3>
+
+        <p>Aerosols are classified as <strong>dangerous goods</strong> under international transport codes. Packaging,
+            labeling, and temperature control are strictly regulated.</p>
+
+        <h3>Indian and Global Standards</h3>
+
+        <p>Aerosol manufacturing follows:</p>
+        <ul>
+            <li>BIS standards for pressure containers</li>
+            <li>PESO licensing for hydrocarbon storage</li>
+            <li>UN transport classification for aerosols</li>
+            <li>ADR, IMDG, and IATA rules for export shipments</li>
+        </ul>
+
+        
+</section>
+
+<!-- HOW AEROSOL WORKING IMPACTS PRODUCT PERFORMANCE -->
+<section class="section" id="how-aerosol-working-impacts-product-performance">
+  <h2>How Aerosol Working Impacts Product Performance</h2>
+  <p>Spray mechanics directly affect:</p>
+        <ul>
+            <li>Particle size distribution</li>
+            <li>Surface coverage and wetting</li>
+            <li>Consumer sensory experience</li>
+            <li>Product depletion efficiency</li>
+            <li>Shelf stability and propellant retention</li>
+        </ul>
+
+        <p>Aerosol performance is therefore an integrated result of:</p>
+        <ul>
+            <li>Formulation chemistry</li>
+            <li>Propellant selection</li>
+            <li>Valve engineering</li>
+            <li>Actuator design</li>
+            <li>Can metallurgy</li>
+        </ul>
+
+        
+</section>
+
+<!-- HOW STARTUPS CAN SELECT THE RIGHT AEROSOL SYSTEM -->
+<section class="section" id="how-startups-can-select-the-right-aerosol-system">
+  <h2>How Startups Can Select the Right Aerosol System</h2>
+  <p>Startups should never treat aerosol packaging as a generic component. Correct system selection requires:</p>
+        <ul>
+            <li>Matching <strong>propellant vapor pressure</strong> to required spray force</li>
+            <li>Selecting <strong>valve flow rate</strong> for formulation viscosity</li>
+            <li>Choosing <strong>actuator geometry</strong> for the target spray pattern</li>
+            <li>Ensuring <strong>chemical compatibility</strong> with all elastomers and can coatings</li>
+            <li>Balancing <strong>cost vs safety vs regulatory acceptance</strong></li>
+        </ul>
+
+        <p>Incorrect selection at this stage leads to costly reformulation and tooling changes later.</p>
+
+        
+</section>
+
+<!-- AEROSOL MANUFACTURING IN INDIA VS GLOBAL PRACTICES -->
+<section class="section" id="aerosol-manufacturing-in-india-vs-global-practices">
+  <h2>Aerosol Manufacturing in India vs Global Practices</h2>
+  <p>India uses globally accepted aerosol filling technologies:</p>
+        <ul>
+            <li>Cold filling</li>
+            <li>Pressure filling</li>
+            <li>Under-the-cup gassing</li>
+            <li>BOV filling systems for special products</li>
+        </ul>
+
+        <p>Indian manufacturers follow international supply chains for:</p>
+        <ul>
+            <li>Valves (including European and Asian suppliers)</li>
+            <li>Actuators</li>
+            <li>Propellants</li>
+            <li>Beverage-grade and pharmaceutical-grade gases</li>
+        </ul>
+
+        <p>Export-oriented units additionally comply with <strong>EU and US pressure vessel and flammability
+                regulations</strong>.</p>
+
+        
+</section>
+
+<!-- AUTHORITATIVE EXTERNAL REFERENCES FOR AEROSOL TECHNOLOGY -->
+<section class="section" id="authoritative-external-references-for-aerosol-technology">
+  <h2>Authoritative External References for Aerosol Technology</h2>
+  <p>For readers who want to explore internationally recognized technical standards and regulatory frameworks
+            related to aerosol technology, the following authoritative external resources provide verified engineering
+            and safety guidance used across the global aerosol industry:</p>
+
+        <p><strong>European Aerosol Federation (FEA):</strong> The FEA publishes official technical standards, safety
+            guides, and best practices followed by aerosol manufacturers worldwide, especially across the EU. These
+            documents form the backbone of many international aerosol safety and performance protocols.<br />
+            <a href="https://www.aerosol.org">https://www.aerosol.org</a>
+        </p>
+
+        <p><strong>United Nations Model Regulations for the Transport of Dangerous Goods:</strong> These regulations
+            define how aerosols are classified, packed, labeled, and transported globally by road, sea, and air. They
+            are the legal foundation for ADR, IMDG, and IATA aerosol transport rules.<br />
+            <a href="https://unece.org/transport/dangerous-goods">https://unece.org/transport/dangerous-goods</a>
+        </p>
+
+        <p><strong>U.S. Food &amp; Drug Administration (FDA) – Aerosol Drug Products:</strong> The FDA provides detailed
+            guidance on aerosol drug delivery systems, valve performance, metered-dose sprays, and pharmaceutical
+            aerosol compliance requirements.<br />
+            <a href="https://www.fda.gov/regulatory-information/search-fda-guidance-documents/metered-dose-inhaler-mdi-and-dry-powder-inhaler-dpi-drug-products-quality-considerations">https://www.fda.gov/regulatory-information/search-fda-guidance-documents/metered-dose-inhaler-mdi-and-dry-powder-inhaler-dpi-drug-products-quality-considerations</a>
+        </p>
+
+        <p><strong>Bureau of Indian Standards (BIS):</strong> BIS publishes the Indian pressure vessel, aerosol
+            container, and flammable goods handling standards that legally govern aerosol manufacturing and storage in
+            India.<br />
+            <a href="https://www.services.bis.gov.in">https://www.services.bis.gov.in</a>
+        </p>
+
+        <p><strong>Petroleum and Explosives Safety Organisation (PESO), India:</strong> PESO regulates the storage,
+            filling, and handling of liquefied petroleum gas (LPG) and other flammable propellants used in aerosol
+            manufacturing across India.<br />
+            <a href="https://peso.gov.in">https://peso.gov.in</a>
+        </p>
+
+        
+</section>
+
+<!-- FUTURE OF AEROSOL TECHNOLOGY -->
+<section class="section" id="future-of-aerosol-technology">
+  <h2>Future of Aerosol Technology</h2>
+  <p>Technological development is focused on:</p>
+        <ul>
+            <li>Ultra-low GWP propellants</li>
+            <li>Improved BOV designs</li>
+            <li>Precision metered sprays</li>
+            <li>Advanced actuator micro-machining</li>
+            <li>Lightweight high-strength aluminum cans</li>
+        </ul>
+
+        <p>Environmental regulation is continuously influencing propellant selection without changing the fundamental
+            physics of aerosol operation.</p>
+
+        
+</section>
+
+<!-- COMPLETE AEROSOL MANUFACTURING GUIDANCE -->
+<section class="section" id="complete-aerosol-manufacturing-guidance">
+  <h2>Complete Aerosol Manufacturing Guidance</h2>
+  <p>For entrepreneurs, formulators, and manufacturers who require step-by-step, plant-level technical
+            guidance&mdash;from product formulation and propellant selection to filling line design, safety compliance,
+            testing protocols, and commercial scale-up&mdash;you can access a complete technical overview here:<br />
+            <a class="link-block" href="https://www.globalformulation.com/aerosol-manufacturing-101">https://www.globalformulation.com/aerosol-manufacturing-101</a>
+        </p>
+
+        <p>This resource covers real industrial practices used in FMCG, pharmaceutical, automotive, and industrial
+            aerosol production.</p>
+
+        
+</section>
+
+<!-- CONCLUSION: KEY TAKEAWAYS ON HOW AEROSOL CANS WORK -->
+<section class="section" id="conclusion-key-takeaways-on-how-aerosol-cans-work">
+  <h2>Conclusion: Key Takeaways on How Aerosol Cans Work</h2>
+  <p>An aerosol can operates through the controlled interaction of:</p>
+        <ul>
+            <li>Stored propellant pressure</li>
+            <li>Precision valve sealing and flow control</li>
+            <li>Flash atomization in the actuator</li>
+            <li>Engineered spray dynamics</li>
+        </ul>
+
+        <p>The system is entirely driven by thermodynamics and fluid mechanics&mdash;not mechanical pumping. Commercial
+            aerosol success depends on correct engineering of all components as a single functional system rather than
+            as individual parts.</p>
+</section>
+
+
+
+      <!-- Contact Box -->
+      <div class="cta" style="background: linear-gradient(135deg, var(--primary) 0%, var(--secondary) 100%); color: #ffffff; padding: 30px; border-radius: var(--radius-lg); margin-top: 40px; display: flex; flex-direction: column; justify-content: space-between; align-items: flex-start; gap: 20px; md-flex-direction: row; md-align-items: center;">
+        <div class="left">
+          <p style="margin:0 0 8px 0; font-size:1.25rem; font-weight:800; font-family: 'Outfit', sans-serif;">Need Technical Support for Aerosol Formulations?</p>
+          <p style="margin:0 0 16px 0; font-size:0.95rem; line-height:1.6; opacity:0.95;">
+            Partner with Global Formulation to audit, scale up, and troubleshoot your aerosol chemistry, canister pressure calculations, filling lines, and safety systems.
+          </p>
+          <p style="margin:0; font-size:0.9rem; line-height:1.6; font-family: monospace;">
+            Email: <strong>consulting@globalformulation.com</strong><br />
+            Website: <a href="/" style="color: #ffffff; font-weight: 600; text-decoration: underline;">https://www.globalformulation.com</a><br />
+            Phone: <strong>+91 9819548320 &nbsp;&nbsp; +91 8169102990</strong>
+          </p>
+        </div>
+        <a href="mailto:consulting@globalformulation.com" class="btn" style="background:#ffffff; color:var(--primary); font-weight:700; padding:12px 24px; border-radius:var(--radius-sm); border:none; text-decoration:none; transition: all var(--transition-fast);">
+          Request Consultation
+        </a>
+      </div>
+
+      <!-- ABOUT THE AUTHOR -->
+      <section class="section" id="about-author" style="margin-top: 50px; background: #f8fafc; border: 1px solid var(--border); padding: 30px; border-radius: var(--radius-lg); display: flex; flex-direction: column; gap: 20px; md-flex-direction: row;">
+        <div style="flex-shrink: 0; width: 60px; height: 60px; background: linear-gradient(135deg, var(--primary) 0%, var(--secondary) 100%); color: white; display: flex; align-items: center; justify-content: center; border-radius: 50%; font-size: 1.5rem; font-weight: 800; font-family: 'Outfit', sans-serif; box-shadow: var(--shadow-md);">
+          AK
+        </div>
+        <div>
+          <h3 style="margin-top: 0; margin-bottom: 8px; font-family: 'Outfit', sans-serif; font-size: 1.3rem; font-weight: 700; color: var(--text-primary);">About the Specialist</h3>
+          <p style="margin-top: 0; margin-bottom: 12px; font-size: 0.95rem; line-height: 1.6; color: var(--text-muted);">
+            <strong>Absar Khan</strong> is the principal consultant and chemical formulation architect at <strong>Global Formulation</strong>. He possesses cross-disciplinary engineering expertise spanning aerosol gassing systems, pharmaceutical manufacturing, sterile injectables, cosmetics, and green chemical plant setups. Absar leads scientific and engineering advisory teams supporting manufacturers globally in technology selection, GMP layouts, validation frameworks, and regulatory strategies.
+          </p>
+          <p style="margin: 0; font-size: 0.9rem;">
+            <strong>LinkedIn Portfolio:</strong> 
+            <a 
+              href="https://www.linkedin.com/in/absar-khan-aerosol-consultant-and-formulator-78359b162" 
+              style="font-weight: 700; color: var(--primary); text-decoration: underline;"
+            >
+              Connect with Absar Khan on LinkedIn
+            </a>
+          </p>
+        </div>
+      </section>
+
+      <!-- Footer copyright -->
+      <footer style="text-align: center; margin-top: 50px; color: var(--text-muted); font-size: 0.85rem; font-family: 'Inter', sans-serif;">
+        &copy; {new Date().getFullYear()} Global Formulation. All rights reserved. 
+        <br />
+        <span style="font-size: 0.75rem; opacity: 0.8;">Centralised Aerosol Dosing &amp; Chemical Scale-Up Engineering.</span>
+      </footer>
+
+    </article>
+  </main>
+</Layout>
+
+<style>
+  .blog-prose h1, 
+  .blog-prose h2, 
+  .blog-prose h3 {
+    font-family: 'Playfair Display', 'Outfit', serif !important;
+  }
+  
+  .blog-prose h2 {
+    color: #ffffff !important;
+    background-color: var(--secondary) !important;
+    padding: 12px 20px;
+    border-radius: var(--radius-md);
+    border-bottom: none !important;
+    font-weight: 700;
+  }
+
+  .blog-prose p, 
+  .blog-prose ul, 
+  .blog-prose ol,
+  .blog-prose h3,
+  .blog-prose .lead,
+  .blog-prose .image-slot,
+  .blog-prose .box,
+  .blog-prose .cta,
+  .blog-prose .table-container,
+  .blog-prose #faq {
+    max-width: 100%;
+    width: 100%;
+  }
+
+  .blog-prose .lead {
+    margin: 2rem 0;
+  }
+</style>

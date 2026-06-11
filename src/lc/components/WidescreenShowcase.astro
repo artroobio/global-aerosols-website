@@ -1,0 +1,164 @@
+---
+// src/lc/components/WidescreenShowcase.astro
+---
+
+<section class="widescreen-showcase-section">
+  <!-- Expanding container matching the "What We Do" bento grid expanding pill animation -->
+  <div class="widescreen-reveal-wrapper">
+    <div class="widescreen-image-container">
+      <img 
+        src="/images/home/team-synergy.jpg" 
+        alt="Multidisciplinary R&D Collaboration" 
+        class="widescreen-parallax-img" 
+        loading="lazy" 
+      />
+      <!-- Fine luxury cinematic vignette overlay -->
+      <div class="widescreen-vignette"></div>
+    </div>
+  </div>
+</section>
+
+<style>
+  .widescreen-showcase-section {
+    width: 100%;
+    background-color: #ffffff;
+    /* Extra spacing above to give expansion room, reduced bottom padding for seamless transition */
+    padding: 80px 0 0px 0;
+    position: relative;
+    overflow: hidden;
+    box-sizing: border-box;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+
+  /* The expanding wrapper, mimicking the PortfolioGrid black pill reveal */
+  .widescreen-reveal-wrapper {
+    width: 100%;
+    height: 80vh;
+    max-height: 900px;
+    background: #ffffff;
+    overflow: hidden;
+    will-change: transform, border-radius;
+    position: relative;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+
+  .widescreen-image-container {
+    width: 100%;
+    height: 100%;
+    position: relative;
+    overflow: hidden;
+  }
+
+  .widescreen-parallax-img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    will-change: transform;
+    /* Soft filter adjustment for premium luxury feel */
+    filter: brightness(1.0) contrast(1.02);
+    transition: filter 0.8s ease;
+  }
+
+  /* Cinematic light edge vignette for deep premium white visual integration */
+  .widescreen-vignette {
+    position: absolute;
+    inset: 0;
+    background: radial-gradient(
+      circle,
+      rgba(255, 255, 255, 0) 50%,
+      rgba(255, 255, 255, 0.15) 100%
+    );
+    z-index: 2;
+    pointer-events: none;
+  }
+
+  /* Responsiveness */
+  @media (max-width: 1024px) {
+    .widescreen-reveal-wrapper {
+      height: 60vh;
+    }
+    .widescreen-showcase-section {
+      padding: 60px 0 0px 0;
+    }
+  }
+
+  @media (max-width: 768px) {
+    .widescreen-showcase-section {
+      padding: 0;
+    }
+    .widescreen-reveal-wrapper {
+      height: 50vh;
+      border-radius: 0 !important;
+      transform: none !important;
+    }
+    .widescreen-parallax-img {
+      transform: none !important;
+      filter: none;
+    }
+  }
+</style>
+
+<script>
+  import { gsap } from "gsap";
+  import { ScrollTrigger } from "gsap/ScrollTrigger";
+
+  gsap.registerPlugin(ScrollTrigger);
+
+  function initWidescreenReveal() {
+    const isDesktop = window.innerWidth > 768;
+    const wrapper = document.querySelector(".widescreen-reveal-wrapper");
+    const img = document.querySelector(".widescreen-parallax-img");
+
+    if (!wrapper || !img) return;
+
+    if (isDesktop) {
+      // 1. Widescreen Pill Expansion Scroll Animation
+      // Mirrors exactly the PortfolioGrid (What We Do) reveal expansion scale
+      gsap.fromTo(wrapper, 
+        {
+          scale: 0.72,
+          borderRadius: "80px",
+        },
+        {
+          scale: 1,
+          borderRadius: "0px",
+          ease: "none",
+          force3D: true,
+          scrollTrigger: {
+            trigger: ".widescreen-showcase-section",
+            start: "top 95%",
+            end: "bottom 90%",
+            scrub: 1.5,
+          }
+        }
+      );
+
+      // 2. Parallax Image Motion Zoom inside the container
+      gsap.fromTo(img,
+        {
+          scale: 1.15,
+          y: "-5%"
+        },
+        {
+          scale: 1.03,
+          y: "0%",
+          ease: "none",
+          force3D: true,
+          scrollTrigger: {
+            trigger: ".widescreen-showcase-section",
+            start: "top 100%",
+            end: "bottom 0%",
+            scrub: true,
+          }
+        }
+      );
+    }
+  }
+
+  // Handle load and resize for robust GSAP updates
+  window.addEventListener('load', initWidescreenReveal);
+</script>

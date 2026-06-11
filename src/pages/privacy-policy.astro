@@ -1,0 +1,499 @@
+---
+import Layout from '../lc/layouts/Layout.astro';
+const lastUpdated = 'May 24, 2025';
+const sections = [
+  { id: 'introduction',        title: '1. Introduction' },
+  { id: 'information',         title: '2. Information We Collect' },
+  { id: 'use',                 title: '3. How We Use Your Information' },
+  { id: 'legal-basis',         title: '4. Legal Basis for Processing' },
+  { id: 'cookies',             title: '5. Cookies & Tracking' },
+  { id: 'sharing',             title: '6. Data Sharing & Disclosure' },
+  { id: 'retention',           title: '7. Data Retention' },
+  { id: 'rights',              title: '8. Your Rights' },
+  { id: 'transfers',           title: '9. International Data Transfers' },
+  { id: 'children',            title: '10. Children\'s Privacy' },
+  { id: 'security',            title: '11. Data Security' },
+  { id: 'changes',             title: '12. Changes to This Policy' },
+  { id: 'contact',             title: '13. Contact Us' },
+];
+---
+
+<Layout title="Privacy Policy | Global Formulation" description="Read Global Formulation's privacy policy — how we collect, use, and protect your personal data in line with applicable data protection laws.">
+
+  <!-- ── Page Header ── -->
+  <section class="legal-hero">
+    <div class="legal-hero-inner">
+      <span class="legal-eyebrow">Legal &amp; Compliance</span>
+      <h1 class="legal-title">Privacy Policy</h1>
+      <p class="legal-meta">Effective date: <strong>{lastUpdated}</strong> &nbsp;|&nbsp; Global Formulation</p>
+      <p class="legal-summary">
+        We respect your privacy and are committed to protecting the personal information you share with us.
+        This policy explains what we collect, why we collect it, and how it is used.
+      </p>
+    </div>
+  </section>
+
+  <!-- ── Document Body ── -->
+  <div class="legal-body">
+
+    <!-- Sidebar ToC -->
+    <aside class="legal-toc">
+      <p class="toc-head">Contents</p>
+      <nav>
+        <ol class="toc-list">
+          {sections.map(s => (
+            <li><a href={`#${s.id}`}>{s.title}</a></li>
+          ))}
+        </ol>
+      </nav>
+    </aside>
+
+    <!-- Main document -->
+    <article class="legal-doc">
+
+      <section id="introduction">
+        <h2>1. Introduction</h2>
+        <p>
+          Global Formulation ("we", "our", or "us") is a specialist chemical formulation and process
+          engineering consultancy. This Privacy Policy applies to all personal data processed through
+          our website at <strong>globalformulation.com</strong> and through any related services,
+          communications, or consulting engagements.
+        </p>
+        <p>
+          By visiting our website or contacting us for services, you agree to the practices described
+          in this policy. If you do not agree, please refrain from using our website or submitting
+          personal information to us.
+        </p>
+        <p>
+          This policy should be read alongside our <a href="/terms-and-conditions">Terms &amp; Conditions</a>
+          and any specific consulting engagement agreement you may have entered into with us.
+        </p>
+      </section>
+
+      <section id="information">
+        <h2>2. Information We Collect</h2>
+        <h3>2.1 Information You Provide Directly</h3>
+        <p>We collect personal information when you:</p>
+        <ul>
+          <li><strong>Submit a contact or enquiry form</strong> — name, email address, company name, phone number, and project description.</li>
+          <li><strong>Request a consultation or audit</strong> — additional technical, commercial, and product details relevant to your formulation or process project.</li>
+          <li><strong>Send us an email</strong> — all content and metadata of that communication.</li>
+          <li><strong>Engage our services</strong> — business contact details and project-relevant information necessary to deliver the consultancy.</li>
+        </ul>
+
+        <h3>2.2 Information Collected Automatically</h3>
+        <p>When you visit our website, we automatically collect:</p>
+        <ul>
+          <li>IP address and approximate geographic location (country / city level).</li>
+          <li>Browser type, version, and operating system.</li>
+          <li>Pages visited, time spent on pages, and navigation paths.</li>
+          <li>Referral URL (the site you came from).</li>
+          <li>Device type and screen resolution.</li>
+        </ul>
+        <p>This data is collected via server logs and analytics tools and is used in aggregate, anonymised form.</p>
+
+        <h3>2.3 Information from Third Parties</h3>
+        <p>
+          We may receive publicly available information about companies or individuals from platforms
+          such as LinkedIn if you connect with us professionally. We do not purchase or obtain data
+          from data brokers.
+        </p>
+      </section>
+
+      <section id="use">
+        <h2>3. How We Use Your Information</h2>
+        <p>We use the personal data we collect for the following purposes:</p>
+        <table class="legal-table">
+          <thead>
+            <tr><th>Purpose</th><th>Examples</th></tr>
+          </thead>
+          <tbody>
+            <tr><td>Responding to enquiries</td><td>Replying to contact form submissions and email queries.</td></tr>
+            <tr><td>Delivering consulting services</td><td>Providing formulation advice, process engineering, and project deliverables.</td></tr>
+            <tr><td>Service improvement</td><td>Analysing website usage patterns to improve content and navigation.</td></tr>
+            <tr><td>Marketing communications</td><td>Sending relevant technical updates or service announcements (with your consent).</td></tr>
+            <tr><td>Legal &amp; compliance</td><td>Complying with applicable laws, regulations, and professional standards.</td></tr>
+            <tr><td>Security</td><td>Detecting and preventing fraudulent or malicious activity on our website.</td></tr>
+          </tbody>
+        </table>
+        <p>We will never sell your personal information to third parties for their own marketing purposes.</p>
+      </section>
+
+      <section id="legal-basis">
+        <h2>4. Legal Basis for Processing</h2>
+        <p>
+          Where applicable (including for individuals in the European Economic Area and United Kingdom),
+          we process your personal data on the following legal bases under GDPR / UK GDPR:
+        </p>
+        <ul>
+          <li><strong>Contractual necessity</strong> — to fulfil a consulting engagement or pre-contractual enquiry.</li>
+          <li><strong>Legitimate interests</strong> — for website analytics, security, and improving our services, where these do not override your fundamental rights.</li>
+          <li><strong>Consent</strong> — for optional marketing communications. You may withdraw consent at any time.</li>
+          <li><strong>Legal obligation</strong> — where required by applicable law.</li>
+        </ul>
+      </section>
+
+      <section id="cookies">
+        <h2>5. Cookies &amp; Tracking</h2>
+        <p>
+          Our website uses cookies and similar tracking technologies to provide functionality and
+          understand usage patterns.
+        </p>
+        <h3>5.1 Types of Cookies We Use</h3>
+        <ul>
+          <li><strong>Strictly necessary cookies</strong> — required for basic website operation (e.g. session management). These cannot be disabled.</li>
+          <li><strong>Analytics cookies</strong> — help us understand how visitors interact with our website (e.g. pages viewed, time on site). We use anonymised analytics data.</li>
+          <li><strong>Preference cookies</strong> — remember your settings or preferences for subsequent visits.</li>
+        </ul>
+        <h3>5.2 Managing Cookies</h3>
+        <p>
+          You can control non-essential cookies through your browser settings. Please note that
+          disabling certain cookies may affect the functionality of our website. Most browsers allow
+          you to refuse cookies or delete existing ones via their settings menus.
+        </p>
+      </section>
+
+      <section id="sharing">
+        <h2>6. Data Sharing &amp; Disclosure</h2>
+        <p>We do not sell or rent your personal data. We may share it in limited circumstances:</p>
+        <ul>
+          <li>
+            <strong>Service providers</strong> — trusted third-party vendors (e.g. email hosting, website hosting, analytics) who process data strictly on our behalf under data processing agreements.
+          </li>
+          <li>
+            <strong>Professional advisers</strong> — lawyers, accountants, or auditors under duties of confidentiality.
+          </li>
+          <li>
+            <strong>Legal requirements</strong> — where disclosure is required by law, court order, or regulatory authority.
+          </li>
+          <li>
+            <strong>Business transfers</strong> — in the event of a merger, acquisition, or sale of assets, your data may be transferred to the successor entity, who will remain bound by this policy.
+          </li>
+        </ul>
+      </section>
+
+      <section id="retention">
+        <h2>7. Data Retention</h2>
+        <p>We retain personal data only for as long as necessary to fulfil the purposes for which it was collected:</p>
+        <ul>
+          <li><strong>Enquiry and contact records</strong> — up to 2 years from last contact, unless an ongoing relationship continues.</li>
+          <li><strong>Consulting engagement records</strong> — 7 years from project completion (to satisfy statutory and professional obligations).</li>
+          <li><strong>Website analytics data</strong> — aggregated data retained for 26 months; raw IP-level data is anonymised within 90 days.</li>
+          <li><strong>Marketing consent records</strong> — retained until you withdraw consent, plus a reasonable administrative period thereafter.</li>
+        </ul>
+        <p>
+          When data is no longer required, it is securely deleted or anonymised in accordance with our
+          internal data retention schedule.
+        </p>
+      </section>
+
+      <section id="rights">
+        <h2>8. Your Rights</h2>
+        <p>Depending on your location, you may have the following rights regarding your personal data:</p>
+        <ul>
+          <li><strong>Access</strong> — request a copy of the personal data we hold about you.</li>
+          <li><strong>Rectification</strong> — request correction of inaccurate or incomplete data.</li>
+          <li><strong>Erasure</strong> — request deletion of your personal data ("right to be forgotten"), subject to legal retention obligations.</li>
+          <li><strong>Restriction</strong> — request that we restrict processing of your data in certain circumstances.</li>
+          <li><strong>Portability</strong> — receive your data in a structured, machine-readable format.</li>
+          <li><strong>Objection</strong> — object to processing based on legitimate interests or direct marketing.</li>
+          <li><strong>Withdraw consent</strong> — at any time, where processing is based on consent.</li>
+        </ul>
+        <p>
+          To exercise any of these rights, contact us at
+          <a href="mailto:consulting@globalformulation.com">consulting@globalformulation.com</a>.
+          We will respond within 30 days. We may need to verify your identity before processing your request.
+        </p>
+        <p>
+          If you are dissatisfied with our handling of your data, you have the right to lodge a complaint
+          with your local data protection authority.
+        </p>
+      </section>
+
+      <section id="transfers">
+        <h2>9. International Data Transfers</h2>
+        <p>
+          Global Formulation is based in India. If you are located outside India, your personal data
+          may be transferred to and processed in India or other countries where our service providers
+          operate. Where such transfers are subject to the GDPR or UK GDPR, we ensure appropriate
+          safeguards are in place (such as Standard Contractual Clauses or adequacy decisions) to
+          protect your data.
+        </p>
+      </section>
+
+      <section id="children">
+        <h2>10. Children's Privacy</h2>
+        <p>
+          Our website and services are directed solely at business and professional users and are not
+          intended for children under the age of 16. We do not knowingly collect personal data from
+          individuals under 16. If we become aware that we have collected data from a child, we will
+          delete it promptly.
+        </p>
+      </section>
+
+      <section id="security">
+        <h2>11. Data Security</h2>
+        <p>
+          We implement appropriate technical and organisational measures to protect your personal data
+          against unauthorised access, loss, destruction, or alteration. These include:
+        </p>
+        <ul>
+          <li>HTTPS encryption for all web traffic.</li>
+          <li>Access controls limiting who can view client and enquiry data.</li>
+          <li>Regular security reviews of our hosting and service provider infrastructure.</li>
+        </ul>
+        <p>
+          No method of data transmission over the internet is 100% secure. While we strive to protect
+          your information, we cannot guarantee absolute security. In the event of a data breach that
+          affects your rights and freedoms, we will notify you and relevant authorities as required by law.
+        </p>
+      </section>
+
+      <section id="changes">
+        <h2>12. Changes to This Policy</h2>
+        <p>
+          We may update this Privacy Policy from time to time to reflect changes in our practices,
+          technologies, or legal obligations. The updated policy will be posted on this page with a
+          revised "Effective date". We encourage you to review this page periodically.
+        </p>
+        <p>
+          If we make material changes that significantly affect how we use your data, we will provide
+          prominent notice on our website or, where we hold your contact details, by email.
+        </p>
+      </section>
+
+      <section id="contact">
+        <h2>13. Contact Us</h2>
+        <p>If you have any questions, concerns, or requests regarding this Privacy Policy or our data practices, please contact us:</p>
+        <div class="legal-contact-block">
+          <p><strong>Global Formulation</strong></p>
+          <p>Email: <a href="mailto:consulting@globalformulation.com">consulting@globalformulation.com</a></p>
+          <p>Phone: <a href="tel:+919819548320">+91 98195 48320</a></p>
+          <p>Website: <a href="https://globalformulation.com">globalformulation.com</a></p>
+        </div>
+        <p>
+          We aim to respond to all privacy-related enquiries within <strong>30 calendar days</strong>.
+        </p>
+      </section>
+
+      <div class="legal-footer-note">
+        <p>This policy was last reviewed and updated on <strong>{lastUpdated}</strong>. © {new Date().getFullYear()} Global Formulation. All rights reserved.</p>
+      </div>
+
+    </article>
+  </div>
+
+</Layout>
+
+<style>
+  /* ── Hero ── */
+  .legal-hero {
+    background: radial-gradient(ellipse 80% 60% at 50% 30%, rgba(9, 104, 229,0.13) 0%, transparent 60%), #060a14;
+    padding: 130px max(6%, env(safe-area-inset-left)) 60px;
+    box-sizing: border-box;
+    border-bottom: 1px solid rgba(255,255,255,0.06);
+  }
+  .legal-hero-inner { max-width: 800px; }
+  .legal-eyebrow {
+    display: block;
+    font-size: 0.72rem;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 4px;
+    color: #4f9dff;
+    margin-bottom: 16px;
+  }
+  .legal-title {
+    font-size: clamp(2.4rem, 5vw, 3.8rem);
+    font-weight: 800;
+    color: #ffffff;
+    margin: 0 0 14px 0;
+    letter-spacing: -0.025em;
+    font-family: 'Outfit', sans-serif;
+    line-height: 1.1;
+  }
+  .legal-meta { font-size: 0.88rem; color: #64748b; margin: 0 0 20px 0; }
+  .legal-meta strong { color: #94a3b8; }
+  .legal-summary {
+    font-size: 1.05rem;
+    color: #94a3b8;
+    line-height: 1.7;
+    max-width: 640px;
+    margin: 0;
+  }
+
+  /* ── Layout: sidebar + document ── */
+  .legal-body {
+    max-width: 1240px;
+    margin: 0 auto;
+    padding: 60px max(4%, 24px) 100px;
+    display: grid;
+    grid-template-columns: 260px 1fr;
+    gap: 64px;
+    align-items: start;
+    box-sizing: border-box;
+    background: #ffffff;
+  }
+
+  /* ── Sticky ToC Sidebar ── */
+  .legal-toc {
+    position: sticky;
+    top: 80px;
+    background: #f8fafc;
+    border: 1px solid #e2e8f0;
+    border-radius: 14px;
+    padding: 28px 24px;
+  }
+  .toc-head {
+    font-size: 0.72rem;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 3px;
+    color: #0968e5;
+    margin: 0 0 16px 0;
+  }
+  .toc-list {
+    list-style: none;
+    padding: 0; margin: 0;
+    display: flex;
+    flex-direction: column;
+    gap: 4px;
+    counter-reset: none;
+  }
+  .toc-list li a {
+    display: block;
+    font-size: 0.83rem;
+    color: #475569;
+    text-decoration: none;
+    padding: 6px 10px;
+    border-radius: 7px;
+    line-height: 1.35;
+    transition: background 0.2s ease, color 0.2s ease;
+  }
+  .toc-list li a:hover { background: #e0effe; color: #0968e5; }
+
+  /* ── Document content ── */
+  .legal-doc section {
+    margin-bottom: 52px;
+    padding-bottom: 52px;
+    border-bottom: 1px solid #f1f5f9;
+  }
+  .legal-doc section:last-of-type { border-bottom: none; }
+
+  .legal-doc h2 {
+    font-size: 1.45rem;
+    font-weight: 800;
+    color: #0f172a;
+    margin: 0 0 18px 0;
+    letter-spacing: -0.015em;
+    font-family: 'Outfit', sans-serif;
+    scroll-margin-top: 90px;
+  }
+  .legal-doc h3 {
+    font-size: 1.05rem;
+    font-weight: 700;
+    color: #1e293b;
+    margin: 28px 0 10px 0;
+    font-family: 'Outfit', sans-serif;
+  }
+  .legal-doc p {
+    font-size: 0.97rem;
+    color: #475569;
+    line-height: 1.8;
+    margin: 0 0 14px 0;
+  }
+  .legal-doc p:last-child { margin-bottom: 0; }
+  .legal-doc ul {
+    padding-left: 0;
+    margin: 14px 0 14px 0;
+    list-style: none;
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+  }
+  .legal-doc ul li {
+    font-size: 0.97rem;
+    color: #475569;
+    line-height: 1.65;
+    padding-left: 20px;
+    position: relative;
+  }
+  .legal-doc ul li::before {
+    content: '—';
+    position: absolute;
+    left: 0;
+    color: #0968e5;
+    font-weight: 700;
+  }
+  .legal-doc a { color: #0968e5; text-decoration: underline; text-underline-offset: 3px; }
+  .legal-doc a:hover { color: #3b82f6; }
+  .legal-doc strong { color: #1e293b; font-weight: 600; }
+
+  .legal-table {
+    width: 100%;
+    border-collapse: collapse;
+    font-size: 0.92rem;
+    margin: 18px 0;
+    border-radius: 10px;
+    overflow: hidden;
+    border: 1px solid #e2e8f0;
+  }
+  .legal-table th {
+    background: #f1f5f9;
+    color: #0f172a;
+    font-weight: 700;
+    text-align: left;
+    padding: 12px 16px;
+    border-bottom: 1px solid #e2e8f0;
+    font-family: 'Outfit', sans-serif;
+    font-size: 0.85rem;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+  }
+  .legal-table td {
+    padding: 12px 16px;
+    color: #475569;
+    border-bottom: 1px solid #f1f5f9;
+    line-height: 1.55;
+    vertical-align: top;
+  }
+  .legal-table tr:last-child td { border-bottom: none; }
+  .legal-table tr:hover td { background: #f8fafc; }
+  .legal-table td:first-child { font-weight: 600; color: #1e293b; white-space: nowrap; }
+
+  .legal-contact-block {
+    background: #f8fafc;
+    border: 1px solid #e2e8f0;
+    border-left: 3px solid #0968e5;
+    border-radius: 10px;
+    padding: 20px 24px;
+    margin: 18px 0;
+    display: flex;
+    flex-direction: column;
+    gap: 4px;
+  }
+  .legal-contact-block p { margin: 0; font-size: 0.95rem; }
+
+  .legal-footer-note {
+    margin-top: 48px;
+    padding-top: 28px;
+    border-top: 1px solid #e2e8f0;
+  }
+  .legal-footer-note p { font-size: 0.85rem; color: #94a3b8; margin: 0; }
+
+  /* ── Responsive ── */
+  @media (max-width: 900px) {
+    .legal-body {
+      grid-template-columns: 1fr;
+      gap: 40px;
+      padding: 40px 24px 80px;
+    }
+    .legal-toc { position: static; }
+  }
+  @media (max-width: 600px) {
+    .legal-hero { padding: 110px 22px 50px; }
+    .legal-body { padding: 30px 20px 60px; }
+    .legal-table { font-size: 0.85rem; }
+    .legal-table td:first-child { white-space: normal; }
+  }
+</style>

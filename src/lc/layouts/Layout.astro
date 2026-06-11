@@ -1,0 +1,114 @@
+---
+import '../styles/global.css';
+import Navbar from '../components/Navbar.astro';
+import Footer from '../components/Footer.astro';
+import SmoothScroll from '../components/SmoothScroll.astro';
+
+interface Props {
+	title?: string;
+	description?: string;
+	canonical?: string;
+	ogImage?: string;
+	ogType?: string;
+}
+
+const {
+	title = 'Global Formulation | Chemical Product R&D & Manufacturing Specialists',
+	description = 'Expert chemical formulations, R&D services, and manufacturing engineering across paints, lubricants, cosmetics, cleaners, aerosols, and specialty chemicals.',
+	canonical,
+	ogImage = 'https://www.globalformulation.com/og-default.jpg',
+	ogType = 'website',
+} = Astro.props;
+
+const rawCanonicalUrl = canonical
+	? (canonical.startsWith('http') ? canonical : `https://www.globalformulation.com${canonical}`)
+	: Astro.url.href;
+const canonicalUrl = (() => {
+	try {
+		const u = new URL(rawCanonicalUrl);
+		if (!u.pathname.endsWith('/') && !u.pathname.split('/').pop()?.includes('.')) {
+			u.pathname += '/';
+		}
+		return u.toString();
+	} catch {
+		return rawCanonicalUrl;
+	}
+})();
+---
+
+<!doctype html>
+<html lang="en">
+	<head>
+		<meta charset="UTF-8" />
+		<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover" />
+		<link rel="icon" type="image/svg+xml" href="/favicon.svg?v=2" />
+		<meta name="generator" content={Astro.generator} />
+		<meta name="theme-color" content="#0a0a0a" />
+
+		<title>{title}</title>
+		<meta name="title" content={title} />
+		<meta name="description" content={description} />
+		<link rel="canonical" href={canonicalUrl} />
+
+		<meta name="robots" content="index, follow" />
+		<link rel="alternate" hreflang="en" href={canonicalUrl} />
+		<link rel="alternate" hreflang="x-default" href={canonicalUrl} />
+
+		<meta property="og:type" content={ogType} />
+		<meta property="og:url" content={canonicalUrl} />
+		<meta property="og:title" content={title} />
+		<meta property="og:description" content={description} />
+		<meta property="og:image" content={ogImage} />
+		<meta property="og:site_name" content="Global Formulation" />
+
+		<meta name="twitter:card" content="summary_large_image" />
+		<meta name="twitter:url" content={canonicalUrl} />
+		<meta name="twitter:title" content={title} />
+		<meta name="twitter:description" content={description} />
+		<meta name="twitter:image" content={ogImage} />
+
+		<!-- Preconnect to image CDN -->
+		<link rel="preconnect" href="https://cdn.globalformulation.com" crossorigin />
+
+		<!-- Fonts async (non-render-blocking) -->
+		<link rel="preconnect" href="https://fonts.googleapis.com" />
+		<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+		<link rel="preload" as="style" href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700;800;900&family=Inter:wght@400;500;600;700&display=swap" onload="this.onload=null;this.rel='stylesheet'" />
+		<noscript><link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700;800;900&family=Inter:wght@400;500;600;700&display=swap" /></noscript>
+	</head>
+	<body>
+		<SmoothScroll />
+		<Navbar />
+		<main>
+			<slot />
+		</main>
+		<Footer />
+	</body>
+</html>
+
+<style is:global>
+	html,
+	body {
+		margin: 0;
+		width: 100%;
+		min-height: 100%;
+		overflow-x: clip;
+	}
+	main {
+		padding-top: 0;
+	}
+	html {
+		scroll-behavior: smooth;
+	}
+
+	/* ── Animated heading word-wrapper (used by About + all service pages) ── */
+	.aw {
+		display: inline-block;
+		white-space: nowrap;
+		margin-right: 0.24em;
+	}
+
+	/* Line-break helper used in service page headings */
+	.br-d { display: none; }
+	@media (min-width: 720px) { .br-d { display: inline; } }
+</style>

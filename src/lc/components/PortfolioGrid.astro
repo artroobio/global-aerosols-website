@@ -1,0 +1,585 @@
+---
+// src/lc/components/PortfolioGrid.astro
+// Replaced with a 4-column vertically stacked reveal grid of premium R&D services
+---
+
+<section class="portfolio-grid-section" id="portfolio-grid-section">
+  <div class="reveal-container">
+    <div class="reveal-grid">
+      
+      <!-- Panel 1: Aerosol Consulting -->
+      <div class="reveal-panel">
+        <img 
+          src="/images/aerosol_consultancy.png" 
+          alt="Aerosol Consulting" 
+          class="reveal-img" 
+          loading="lazy"
+        />
+        <div class="reveal-overlay"></div>
+        <div class="reveal-content">
+          <div class="glass-title-box">
+            <span class="reveal-eyebrow">Phase 01</span>
+            <h3 class="reveal-title">
+              {"AEROSOL CONSULTING".split(' ').map(word => (
+                <span class="word-wrapper">
+                  {word.split('').map(char => (
+                    <span class="blue-char">{char}</span>
+                  ))}
+                </span>
+              ))}
+            </h3>
+          </div>
+          <div class="reveal-cta">
+            <a href="/contact" class="reveal-btn">Book Session</a>
+            <a href="/about" class="reveal-link">Overview</a>
+          </div>
+        </div>
+      </div>
+      
+      <!-- Panel 2: Propellant & R&D -->
+      <div class="reveal-panel">
+        <img 
+          src="/images/aerosol_formulation.png" 
+          alt="Aerosol Chemistry" 
+          class="reveal-img" 
+          loading="lazy"
+        />
+        <div class="reveal-overlay"></div>
+        <div class="reveal-content">
+          <div class="glass-title-box">
+            <span class="reveal-eyebrow">Phase 02</span>
+            <h3 class="reveal-title">
+              {"PROPELLANT & R&D".split(' ').map(word => (
+                <span class="word-wrapper">
+                  {word.split('').map(char => (
+                    <span class="blue-char">{char}</span>
+                  ))}
+                </span>
+              ))}
+            </h3>
+          </div>
+          <div class="reveal-cta">
+            <a href="/contact" class="reveal-btn">Formulate</a>
+            <a href="/formulations-and-technology" class="reveal-link">Science</a>
+          </div>
+        </div>
+      </div>
+      
+      <!-- Panel 3: Contract Filling -->
+      <div class="reveal-panel">
+        <img 
+          src="/images/aerosol_manufacturing.png" 
+          alt="Aerosol Contract Filling" 
+          class="reveal-img" 
+          loading="lazy"
+        />
+        <div class="reveal-overlay"></div>
+        <div class="reveal-content">
+          <div class="glass-title-box">
+            <span class="reveal-eyebrow">Phase 03</span>
+            <h3 class="reveal-title">
+              {"CONTRACT FILLING".split(' ').map(word => (
+                <span class="word-wrapper">
+                  {word.split('').map(char => (
+                    <span class="blue-char">{char}</span>
+                  ))}
+                </span>
+              ))}
+            </h3>
+          </div>
+          <div class="reveal-cta">
+            <a href="/contact" class="reveal-btn">Enquire</a>
+            <a href="/aerosol-manufacturing-101-guide" class="reveal-link">Capacity</a>
+          </div>
+        </div>
+      </div>
+      
+      <!-- Panel 4: Valves & Materials -->
+      <div class="reveal-panel">
+        <img 
+          src="/images/aerosol_raw_materials.png" 
+          alt="Valves and Raw Materials" 
+          class="reveal-img" 
+          loading="lazy"
+        />
+        <div class="reveal-overlay"></div>
+        <div class="reveal-content">
+          <div class="glass-title-box">
+            <span class="reveal-eyebrow">Phase 04</span>
+            <h3 class="reveal-title">
+              {"VALVES & MATERIALS".split(' ').map(word => (
+                <span class="word-wrapper">
+                  {word.split('').map(char => (
+                    <span class="blue-char">{char}</span>
+                  ))}
+                </span>
+              ))}
+            </h3>
+          </div>
+          <div class="reveal-cta">
+            <a href="/contact" class="reveal-btn">Get Help</a>
+            <a href="/contact" class="reveal-link">Quality</a>
+          </div>
+        </div>
+      </div>
+      
+    </div>
+  </div>
+</section>
+
+<style>
+  .portfolio-grid-section {
+    width: 100%;
+    height: 95vh;
+    min-height: 600px;
+    background-color: #010a0a;
+    overflow: hidden;
+    position: relative;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    box-sizing: border-box;
+    padding: 80px 0;
+  }
+
+  .reveal-container {
+    width: 100%;
+    height: 100%;
+    overflow: hidden;
+    position: relative;
+    will-change: transform, border-radius;
+  }
+
+  .reveal-grid {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    width: 100%;
+    height: 100%;
+  }
+
+  .reveal-panel {
+    position: relative;
+    overflow: hidden;
+    height: 100%;
+    border-right: 1px solid rgba(255, 255, 255, 0.08);
+    cursor: pointer;
+  }
+
+  .reveal-panel:last-child {
+    border-right: none;
+  }
+
+  .reveal-img {
+    position: absolute;
+    top: -15%;
+    left: 0;
+    width: 100%;
+    height: 130%;
+    object-fit: cover;
+    will-change: transform;
+    transition: filter 0.8s ease;
+  }
+
+  .reveal-overlay {
+    position: absolute;
+    inset: 0;
+    background: linear-gradient(
+      to top,
+      rgba(1, 10, 10, 0.95) 0%,
+      rgba(1, 10, 10, 0.4) 50%,
+      transparent 100
+    );
+    z-index: 2;
+    pointer-events: none;
+    transition: background 0.7s cubic-bezier(0.25, 1, 0.3, 1);
+  }
+
+  /* R&D theme colors for active panels */
+  .reveal-panel:nth-child(1):hover .reveal-overlay {
+    background: linear-gradient(
+      to top,
+      rgba(0, 255, 204, 0.7) 0%,
+      rgba(1, 10, 10, 0.6) 50%,
+      rgba(0, 255, 204, 0.05) 100%
+    );
+  }
+  .reveal-panel:nth-child(2):hover .reveal-overlay {
+    background: linear-gradient(
+      to top,
+      rgba(168, 85, 247, 0.7) 0%,
+      rgba(1, 10, 10, 0.6) 50%,
+      rgba(168, 85, 247, 0.05) 100%
+    );
+  }
+  .reveal-panel:nth-child(3):hover .reveal-overlay {
+    background: linear-gradient(
+      to top,
+      rgba(245, 158, 11, 0.7) 0%,
+      rgba(1, 10, 10, 0.6) 50%,
+      rgba(245, 158, 11, 0.05) 100%
+    );
+  }
+  .reveal-panel:nth-child(4):hover .reveal-overlay {
+    background: linear-gradient(
+      to top,
+      rgba(236, 72, 153, 0.7) 0%,
+      rgba(1, 10, 10, 0.6) 50%,
+      rgba(236, 72, 153, 0.05) 100%
+    );
+  }
+
+  .reveal-content {
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    padding: clamp(20px, 3vw, 40px);
+    z-index: 10;
+    box-sizing: border-box;
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+  }
+
+  .reveal-eyebrow {
+    font-size: 0.7rem;
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: 4px;
+    color: rgba(255, 255, 255, 0.55);
+    margin-bottom: 8px;
+    display: block;
+    transition: color 0.4s ease;
+  }
+
+  .reveal-panel:nth-child(1):hover .reveal-eyebrow { color: #00ffcc; }
+  .reveal-panel:nth-child(2):hover .reveal-eyebrow { color: #c084fc; }
+  .reveal-panel:nth-child(3):hover .reveal-eyebrow { color: #fbbf24; }
+  .reveal-panel:nth-child(4):hover .reveal-eyebrow { color: #f472b6; }
+
+  .glass-title-box {
+    background: rgba(255, 255, 255, 0.02);
+    backdrop-filter: blur(12px);
+    -webkit-backdrop-filter: blur(12px);
+    border: 1px solid rgba(255, 255, 255, 0.05);
+    border-radius: 12px;
+    padding: 16px 20px;
+    margin-bottom: 16px;
+    width: 100%;
+    height: 125px; /* Uniform height for all glass boxes */
+    display: flex;
+    flex-direction: column;
+    justify-content: center; /* Center content vertically */
+    box-sizing: border-box;
+    box-shadow: 0 8px 32px 0 rgba(0, 0, 0, 0.2);
+    transition: border-color 0.4s ease, background-color 0.4s ease;
+  }
+
+  .reveal-panel:nth-child(1):hover .glass-title-box {
+    border-color: rgba(0, 255, 204, 0.25);
+    background-color: rgba(0, 255, 204, 0.04);
+  }
+  .reveal-panel:nth-child(2):hover .glass-title-box {
+    border-color: rgba(168, 85, 247, 0.25);
+    background-color: rgba(168, 85, 247, 0.04);
+  }
+  .reveal-panel:nth-child(3):hover .glass-title-box {
+    border-color: rgba(245, 158, 11, 0.25);
+    background-color: rgba(245, 158, 11, 0.04);
+  }
+  .reveal-panel:nth-child(4):hover .glass-title-box {
+    border-color: rgba(236, 72, 153, 0.25);
+    background-color: rgba(236, 72, 153, 0.04);
+  }
+
+  .reveal-title {
+    font-family: 'Outfit', sans-serif;
+    font-size: clamp(1.15rem, 2vw, 1.65rem);
+    font-weight: 700;
+    color: #ffffff;
+    line-height: 1.15;
+    margin: 0;
+    letter-spacing: -0.5px;
+    text-transform: uppercase;
+  }
+
+  .word-wrapper {
+    display: inline-block;
+    white-space: nowrap;
+    margin-right: 0.28em;
+  }
+
+  .blue-char {
+    display: inline-block;
+    opacity: 0;
+    color: #ffffff;
+    -webkit-text-fill-color: #ffffff;
+  }
+
+  .reveal-cta {
+    display: flex;
+    align-items: center;
+    gap: 14px;
+  }
+
+  .reveal-btn {
+    background-color: #ffffff;
+    color: #010a0a;
+    padding: 8px 20px;
+    border-radius: 9999px;
+    font-weight: 600;
+    font-size: 0.7rem;
+    text-transform: uppercase;
+    letter-spacing: 1.5px;
+    border: 1px solid #ffffff;
+    cursor: pointer;
+    text-decoration: none;
+    transition: all 0.4s cubic-bezier(0.25, 1, 0.3, 1);
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+  }
+
+  .reveal-btn:hover {
+    transform: translateY(-2px) scale(1.02);
+  }
+
+  .reveal-panel:nth-child(1) .reveal-btn:hover {
+    background-color: #00ffcc;
+    border-color: #00ffcc;
+    color: #010a0a;
+    box-shadow: 0 8px 24px rgba(0, 255, 204, 0.4);
+  }
+  .reveal-panel:nth-child(2) .reveal-btn:hover {
+    background-color: #a855f7;
+    border-color: #a855f7;
+    color: #ffffff;
+    box-shadow: 0 8px 24px rgba(168, 85, 247, 0.4);
+  }
+  .reveal-panel:nth-child(3) .reveal-btn:hover {
+    background-color: #fbbf24;
+    border-color: #fbbf24;
+    color: #ffffff;
+    box-shadow: 0 8px 24px rgba(251, 191, 36, 0.4);
+  }
+  .reveal-panel:nth-child(4) .reveal-btn:hover {
+    background-color: #ec4899;
+    border-color: #ec4899;
+    color: #ffffff;
+    box-shadow: 0 8px 24px rgba(236, 72, 153, 0.4);
+  }
+
+  .reveal-link {
+    color: #ffffff;
+    font-size: 0.7rem;
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: 2px;
+    text-decoration: none;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.3);
+    padding-bottom: 2px;
+    cursor: pointer;
+    transition: all 0.4s cubic-bezier(0.25, 1, 0.3, 1);
+  }
+
+  .reveal-link:hover {
+    border-color: #ffffff;
+    color: #00ffcc;
+    text-shadow: 0 0 8px rgba(0, 255, 204, 0.4);
+  }
+
+  .reveal-panel:hover .reveal-img {
+    filter: brightness(1.05) contrast(1.03);
+  }
+
+  /* Responsive styling */
+  @media (max-width: 1024px) {
+    .reveal-grid {
+      grid-template-columns: repeat(2, 1fr);
+    }
+    .reveal-panel {
+      height: 50%;
+    }
+    .reveal-panel:nth-child(2) {
+      border-right: none;
+    }
+    .reveal-panel:nth-child(3), .reveal-panel:nth-child(4) {
+      border-top: 1px solid rgba(255, 255, 255, 0.08);
+    }
+  }
+
+  @media (max-width: 768px) {
+    .portfolio-grid-section {
+      height: auto;
+      padding: 48px 16px;
+    }
+    .reveal-container {
+      width: 100% !important;
+      height: auto !important;
+      border-radius: 24px !important;
+      transform: none !important;
+      overflow: visible;
+    }
+    .reveal-grid {
+      grid-template-columns: 1fr;
+      gap: 24px;
+      height: auto;
+    }
+    .reveal-panel {
+      height: 380px;
+      border-right: none;
+      border-top: none !important;
+      border-radius: 24px;
+    }
+    .glass-title-box {
+      height: auto;
+      min-height: 90px;
+      padding: 12px 16px;
+    }
+    .reveal-img {
+      top: 0;
+      height: 100%;
+      transform: none !important;
+    }
+  }
+</style>
+
+<script>
+  import { gsap } from "gsap";
+  import { ScrollTrigger } from "gsap/ScrollTrigger";
+
+  gsap.registerPlugin(ScrollTrigger);
+
+  function initPortfolioReveal() {
+    const isDesktop = window.innerWidth > 768;
+    const section = document.querySelector(".portfolio-grid-section");
+    const container = document.querySelector(".reveal-container");
+    const imgs = document.querySelectorAll(".reveal-img");
+    const ctas = document.querySelectorAll(".reveal-cta");
+
+    if (!section || !container) return;
+
+    // Clear any existing triggers on load/refresh to prevent duplicates
+    ScrollTrigger.getAll().forEach((trigger) => {
+      if (
+        trigger.trigger === section ||
+        (trigger.trigger as HTMLElement)?.classList?.contains("portfolio-grid-section")
+      ) {
+        trigger.kill();
+      }
+    });
+
+    if (isDesktop) {
+      // 1. Container Widescreen Capsule Expansion
+      gsap.fromTo(
+        container,
+        {
+          scale: 0.9,
+          borderRadius: "120px",
+          width: "80%",
+          height: "80vh",
+        },
+        {
+          scale: 1,
+          borderRadius: "0px",
+          width: "100%",
+          height: "95vh",
+          ease: "none",
+          force3D: true,
+          scrollTrigger: {
+            trigger: section,
+            start: "top 95%",
+            end: "center center",
+            scrub: true,
+          },
+        }
+      );
+
+      // 2. Parallax Image Motion Zoom inside panels
+      imgs.forEach((img) => {
+        gsap.fromTo(
+          img,
+          {
+            y: "-15%",
+          },
+          {
+            y: "10%",
+            ease: "none",
+            force3D: true,
+            scrollTrigger: {
+              trigger: section,
+              start: "top bottom",
+              end: "bottom top",
+              scrub: true,
+            },
+          }
+        );
+      });
+
+      // 3. Cinematic Left-to-Right character reveal
+      const revealTl = gsap.timeline({
+        scrollTrigger: {
+          trigger: section,
+          start: "top 45%",
+          toggleActions: "play none none reverse"
+        }
+      });
+
+      revealTl.fromTo(".portfolio-grid-section .blue-char", 
+        { opacity: 0, x: -12, color: "#00ffcc", webkitTextFillColor: "#00ffcc" },
+        {
+          opacity: 1,
+          x: 0,
+          color: "#00ffcc",
+          webkitTextFillColor: "#00ffcc",
+          duration: 0.6,
+          stagger: 0.015,
+          ease: "power3.out"
+        }
+      )
+      .to(".portfolio-grid-section .blue-char", {
+        color: "#ffffff",
+        webkitTextFillColor: "#ffffff",
+        duration: 0.6,
+        stagger: 0.015,
+        ease: "power2.inOut"
+      }, 0.3);
+
+      // 4. Premium CTA Blur-to-Focus Fade
+      ctas.forEach((cta, i) => {
+        gsap.fromTo(
+          cta,
+          {
+            opacity: 0,
+            filter: "blur(8px)",
+            y: 16,
+          },
+          {
+            opacity: 1,
+            filter: "blur(0px)",
+            y: 0,
+            duration: 1.2,
+            delay: 0.4 + i * 0.1,
+            ease: "power2.out",
+            scrollTrigger: {
+              trigger: section,
+              start: "top 30%",
+              toggleActions: "play none none reverse",
+            },
+          }
+        );
+      });
+    } else {
+      // Clean states for mobile
+      gsap.set(container, { clearProps: "all" });
+      imgs.forEach((img) => gsap.set(img, { clearProps: "all" }));
+      ctas.forEach((cta) => gsap.set(cta, { clearProps: "all" }));
+    }
+
+    ScrollTrigger.refresh();
+  }
+
+  // Handle initial page load and view transitions
+  window.addEventListener("load", initPortfolioReveal);
+  document.addEventListener("astro:page-load", initPortfolioReveal);
+</script>

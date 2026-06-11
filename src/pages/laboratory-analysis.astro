@@ -1,0 +1,845 @@
+---
+import Layout from '../lc/layouts/Layout.astro';
+import ServicePageAnimations from '../lc/components/ServicePageAnimations.astro';
+
+const capabilities = [
+  'Stability testing — accelerated, real-time, and stress conditions (ICH Q1A-aligned)',
+  'Physical stability: phase separation, sedimentation, creaming, and syneresis assessment',
+  'Chemical stability: active content, oxidation, hydrolysis, and degradant profiling',
+  'Microbiological stability: preservative efficacy testing and total viable count monitoring',
+  'Compatibility testing: packaging materials, closures, and process equipment contact',
+  'Rheological characterisation — viscosity, yield point, thixotropy, and flow curves',
+  'Emulsion characterisation: droplet size distribution, zeta potential, and HLB verification',
+  'Performance testing calibrated to the application — cleaning efficacy, adhesion, gloss, hardness',
+  'Raw material qualification testing against specification and approved supplier standards',
+  'Safety screening: skin irritancy, sensitisation risk assessment, and regulatory flagging',
+];
+
+const steps = [
+  {
+    n: '01',
+    t: 'Test Protocol Design',
+    d: 'We design the testing protocol around the decision it needs to support — not a generic panel. Stability testing for a regulatory submission has different requirements than stability screening to choose between two preservative systems.',
+  },
+  {
+    n: '02',
+    t: 'Sample Preparation',
+    d: 'Samples are prepared under controlled conditions with full traceability — batch identity, preparation date, storage conditions, and chain of custody documented from receipt to final disposal.',
+  },
+  {
+    n: '03',
+    t: 'Testing & Analysis',
+    d: 'Testing is conducted against the agreed protocol with calibrated, maintained equipment. Anomalous results trigger immediate investigation before the test is signed off — we do not report results we cannot explain.',
+  },
+  {
+    n: '04',
+    t: 'Data Reporting',
+    d: 'Results are delivered in a structured report with raw data, method references, pass/fail determinations against acceptance criteria, and a clear interpretation section — what the data means for your product and next decision.',
+  },
+];
+
+const testTypes = [
+  {
+    icon: '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8Z"/><polyline points="14 2 14 8 20 8"/><line x1="16" y1="13" x2="8" y2="13"/><line x1="16" y1="17" x2="8" y2="17"/><polyline points="10 9 9 9 8 9"/></svg>',
+    name: 'Accelerated Stability',
+    desc: 'Stress-condition testing at elevated temperature and humidity to predict shelf life and identify failure modes before real-time data is available.',
+  },
+  {
+    icon: '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><circle cx="12" cy="12" r="9"/><path d="M12 8v4l3 2"/></svg>',
+    name: 'Real-Time Stability',
+    desc: 'Long-term storage under intended conditions — ambient, refrigerated, or frozen — with scheduled interval testing to confirm shelf life claims.',
+  },
+  {
+    icon: '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><path d="M9 3H5a2 2 0 0 0-2 2v4m6-6h10a2 2 0 0 1 2 2v4M9 3v18m0 0h10a2 2 0 0 0 2-2v-4M9 21H5a2 2 0 0 1-2-2v-4m0 0h18"/></svg>',
+    name: 'Compatibility Testing',
+    desc: 'Evaluation of product interaction with primary packaging, secondary materials, and process equipment — migration, sorption, and extractables screening.',
+  },
+  {
+    icon: '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><path d="M3 6h18M3 12h18M3 18h10"/><path d="M17 15l2 2 4-4"/></svg>',
+    name: 'Preservative Efficacy',
+    desc: 'Challenge testing per EP 5.1.3 or CTFA protocol — inoculation with bacterial, yeast, and mould species to confirm adequate antimicrobial protection throughout shelf life.',
+  },
+  {
+    icon: '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><path d="M22 12h-4l-3 9L9 3l-3 9H2"/></svg>',
+    name: 'Rheological Profiling',
+    desc: 'Viscosity at application shear rates, yield stress, thixotropic recovery, and temperature-viscosity profiles — critical for pump selection, filling, and consumer in-use performance.',
+  },
+  {
+    icon: '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><circle cx="11" cy="11" r="8"/><path d="m21 21-4.35-4.35"/></svg>',
+    name: 'Analytical Characterisation',
+    desc: 'Active content quantification, pH, density, refractive index, particle size, and droplet size distribution — full physicochemical profile for batch release and specification setting.',
+  },
+  {
+    icon: '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><polyline points="22 7 13.5 15.5 8.5 10.5 2 17"/></svg>',
+    name: 'Performance Testing',
+    desc: 'Application-specific functional testing — cleaning efficacy, adhesion strength, gloss, film hardness, spreading coefficient, or skin feel — calibrated to your product\'s claimed performance.',
+  },
+  {
+    icon: '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><path d="M10.29 3.86 1.82 18a2 2 0 0 0 1.71 3h16.94a2 2 0 0 0 1.71-3L13.71 3.86a2 2 0 0 0-3.42 0Z"/><line x1="12" y1="9" x2="12" y2="13"/><line x1="12" y1="17" x2="12.01" y2="17"/></svg>',
+    name: 'Safety Screening',
+    desc: 'Ingredient-level regulatory screening, skin sensitisation and irritancy risk assessment, REACH/SDS readiness review, and restricted substance compliance checks.',
+  },
+  {
+    icon: '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><rect x="3" y="3" width="7" height="7"/><rect x="14" y="3" width="7" height="7"/><rect x="14" y="14" width="7" height="7"/><rect x="3" y="14" width="7" height="7"/></svg>',
+    name: 'Raw Material Qualification',
+    desc: 'Incoming QC testing against agreed specification — identity, purity, physical properties, and supplier certificate of analysis verification before materials enter production.',
+  },
+];
+
+const deliverables = [
+  'Test protocol document — methods, acceptance criteria, and sampling schedule agreed before testing begins',
+  'Raw data in a structured, traceable format with full instrument and calibration records',
+  'Stability report with pass/fail determinations, trend analysis, and shelf life recommendation',
+  'Preservative efficacy certificate with organism-specific reduction data and protocol reference',
+  'Rheological profile report with viscosity curves, yield point data, and application commentary',
+  'Analytical characterisation summary with specification comparison and out-of-spec investigation if required',
+  'Safety screening report with regulatory flagging, risk categorisation, and recommended actions',
+];
+
+const splitWords = (s: string) => s.split(' ');
+---
+
+<Layout
+  title="Laboratory Analysis | Global Formulation"
+  description="Comprehensive testing services — stability, compatibility, preservative efficacy, rheological profiling, performance, and safety assessment for chemical and cosmetic formulations."
+  canonical="/laboratory-analysis"
+>
+
+  <!-- ══════════ S1 HERO [DARK] ══════════ -->
+  <section class="la-hero" id="la-s1">
+    <div class="la-hero-inner">
+      <span class="la-eyebrow-c reveal">Laboratory Analysis</span>
+      <h1 class="la-hero-h1">
+        {splitWords('Testing that tells you').map(w => (
+          <span class="aw">{w.split('').map(c => <span class="ac">{c}</span>)}</span>
+        ))}
+        <br class="br-d" />
+        {splitWords('what you need to know').map(w => (
+          <span class="aw">{w.split('').map(c => <span class="ac">{c}</span>)}</span>
+        ))}
+      </h1>
+      <p class="la-hero-sub reveal">
+        Stability, compatibility, performance, and safety testing — each protocol
+        designed around the decision it needs to support, not a generic panel run
+        for the sake of completeness.
+      </p>
+      <div class="la-hero-ctas reveal">
+        <a href="/contact" class="la-btn-primary">Discuss Your Testing Needs</a>
+        <a href="#la-process" class="la-btn-ghost">See how we work</a>
+      </div>
+    </div>
+  </section>
+
+  <!-- ══════════ S2 OVERVIEW [LIGHT] ══════════ -->
+  <section class="la-section la-light la-split" id="la-s2">
+    <div class="la-split-inner">
+      <div class="la-split-text">
+        <span class="la-eyebrow-l reveal">The Service</span>
+        <h2 class="la-h2-l">
+          {splitWords('Data that drives decisions,').map(w => (
+            <span class="aw">{w.split('').map(c => <span class="ac ac-l">{c}</span>)}</span>
+          ))}
+          <br class="br-d" />
+          {splitWords('not just fills reports').map(w => (
+            <span class="aw">{w.split('').map(c => <span class="ac ac-l">{c}</span>)}</span>
+          ))}
+        </h2>
+        <p class="la-body-l reveal">
+          Laboratory testing is only as valuable as its relevance to the question
+          being asked. Stability testing for a regulatory dossier has different
+          requirements — different conditions, timepoints, and acceptance criteria —
+          than stability screening to choose between two candidate preservative systems.
+          Running the same generic panel for both wastes time and produces data that
+          answers the wrong question.
+        </p>
+        <p class="la-body-l reveal">
+          We design every testing protocol around the specific decision it needs to
+          support. We define the acceptance criteria before testing begins, not after
+          we see the results. And we deliver reports structured for use — not just
+          raw instrument output appended with a cover sheet — with clear pass/fail
+          determinations, trend analysis where relevant, and an interpretation section
+          that tells you what the data means for your next decision.
+        </p>
+        <ul class="la-points">
+          {[
+            'Protocol designed before testing begins — acceptance criteria agreed upfront',
+            'Full traceability from sample receipt through to final result and report',
+            'Anomalous results investigated before the test is signed off',
+            'Reports structured for use — interpretation, not just data output',
+          ].map(p => (
+            <li class="la-point reveal">
+              <span class="la-point-ico">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="5 12 10 17 19 7"/></svg>
+              </span>
+              <span>{p}</span>
+            </li>
+          ))}
+        </ul>
+      </div>
+
+      <div class="la-split-media reveal">
+        <!-- IMAGE 1 PLACEHOLDER -->
+        <img 
+          src="https://cdn.globalformulation.com/images/services/laboratory-analysis-stability-chamber.webp" 
+          alt="Interior view of a climate stability chamber — neat rows of product sample bottles on wire shelving, temperature and humidity controls visible on the chamber door. Controlled, clinical atmosphere, cool blue-white lighting. No people, no readable labels on bottles." 
+          width="900" 
+          height="700" 
+          class="la-img"
+          style="width: 100%; border-radius: var(--la-radius, 16px); object-fit: cover; aspect-ratio: 900/700;"
+        />
+        <p class="img-caption">Climate Stability Chamber: Environmental test chamber housing sample vials under accelerated aging conditions (40°C / 75% RH).</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- ══════════ S3 CAPABILITIES [DARK] ══════════ -->
+  <section class="la-section la-dark la-split la-split-rev" id="la-s3">
+    <div class="la-split-inner">
+      <div class="la-split-media reveal">
+        <!-- IMAGE 2 PLACEHOLDER -->
+        <img 
+          src="https://cdn.globalformulation.com/images/services/laboratory-analysis-rheometer.webp" 
+          alt="Close-up of a laboratory rheometer or viscometer — precision instrument               head and spindle above a small sample cup containing white cream or               gel, set on a clean bench with control panel visible. Warm directional               studio lighting. No people, no text or labels visible." 
+          width="900" 
+          height="700" 
+          class="la-img"
+          style="width: 100%; border-radius: var(--la-radius, 16px); object-fit: cover; aspect-ratio: 900/700;"
+        />
+        <p class="img-caption">Analytical Rheometry: Precision high-shear viscometer testing cosmetic emulsion yield stress and flow behavior.</p>
+      </div>
+
+      <div class="la-split-text">
+        <span class="la-eyebrow-d reveal">Technical Scope</span>
+        <h2 class="la-h2-d">
+          {splitWords('Analytical precision').map(w => (
+            <span class="aw">{w.split('').map(c => <span class="ac">{c}</span>)}</span>
+          ))}
+          <br class="br-d" />
+          {splitWords('for every sample').map(w => (
+            <span class="aw">{w.split('').map(c => <span class="ac">{c}</span>)}</span>
+          ))}
+        </h2>
+        <p class="la-body-d reveal">
+          Our laboratory services deliver absolute clarity on product composition, physical properties, long-term stability, and regulatory compliance. Using calibrated, research-grade instrumentation, we provide the empirical data required to validate formulations, diagnose failures, and satisfy global chemical standards.
+        </p>
+        <ul class="la-cap-grid reveal">
+          {capabilities.map(c => (
+            <li>
+              <span class="la-cap-dot"></span>
+              <span>{c}</span>
+            </li>
+          ))}
+        </ul>
+      </div>
+    </div>
+  </section>
+
+  <!-- ══════════ S4 PROCESS [LIGHT] ══════════ -->
+  <section class="la-section la-light la-process" id="la-process">
+    <div class="la-process-head">
+      <span class="la-eyebrow-l reveal">How We Work</span>
+      <h2 class="la-h2-l la-centered">
+        {splitWords('Our laboratory analytical process').map(w => (
+          <span class="aw">{w.split('').map(c => <span class="ac ac-l">{c}</span>)}</span>
+        ))}
+      </h2>
+      <p class="la-process-sub reveal">
+        Four phases that plan the assay, execute precision testing, perform comparative audits, and deliver a comprehensive compliance data package.
+      </p>
+    </div>
+    <div class="la-steps">
+      {steps.map(s => (
+        <div class="la-step reveal">
+          <span class="la-step-n">{s.n}</span>
+          <span class="la-step-rule"></span>
+          <h3 class="la-step-t">{s.t}</h3>
+          <p class="la-step-d">{s.d}</p>
+        </div>
+      ))}
+    </div>
+  </section>
+
+  <!-- ══════════ S5 SPECIALIZATION [DARK] ══════════ -->
+  <section class="la-section la-dark la-tests" id="la-s5">
+    <div class="la-tech-head">
+      <span class="la-eyebrow-c reveal">Analytical Tests</span>
+      <h2 class="la-h2-d la-centered">
+        {splitWords('Diagnostic testing').map(w => (
+          <span class="aw">{w.split('').map(c => <span class="ac">{c}</span>)}</span>
+        ))}
+        <br class="br-d" />
+        {splitWords('capabilities').map(w => (
+          <span class="aw">{w.split('').map(c => <span class="ac">{c}</span>)}</span>
+        ))}
+      </h2>
+      <p class="la-tech-sub reveal">
+        Rigorous analytical testing, stability testing, and performance validation to verify product quality and GHS/REACH compliance.
+      </p>
+    </div>
+    <div class="la-tech-grid">
+      {testTypes.map((t, idx) => (
+        <div class="la-tech-tile reveal" style={`--d:${idx * 0.055}s`}>
+          <span class="la-tech-ico" set:html={t.icon}></span>
+          <h3 class="la-tech-name">{t.name}</h3>
+          <p class="la-tech-desc">{t.desc}</p>
+        </div>
+      ))}
+    </div>
+  </section>
+
+  <!-- ══════════ S6 DELIVERABLES [LIGHT] ══════════ -->
+  <section class="la-section la-light la-split" id="la-s6">
+    <div class="la-split-inner la-split-inner-rev">
+      <div class="la-split-text">
+        <span class="la-eyebrow-l reveal">Deliverables</span>
+        <h2 class="la-h2-l">
+          {splitWords('Actionable testing &').map(w => (
+            <span class="aw">{w.split('').map(c => <span class="ac ac-l">{c}</span>)}</span>
+          ))}
+          <br class="br-d" />
+          {splitWords('certified reporting').map(w => (
+            <span class="aw">{w.split('').map(c => <span class="ac ac-l">{c}</span>)}</span>
+          ))}
+        </h2>
+        <p class="la-body-l reveal">
+          Laboratory data is only as good as its clarity. We deliver complete analytical test reports, certified gas chromatography graphs, rheological viscosity profiles, accelerated stability datasets, and GHS-compliant raw material SDS sheets to satisfy the most demanding regulatory and supply audits.
+        </p>
+        <ul class="la-points">
+          {deliverables.map(d => (
+            <li class="la-point reveal">
+              <span class="la-point-ico">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="5 12 10 17 19 7"/></svg>
+              </span>
+              <span>{d}</span>
+            </li>
+          ))}
+        </ul>
+      </div>
+
+      <div class="la-split-media reveal">
+        <!-- IMAGE 3 PLACEHOLDER -->
+        <img 
+          src="https://cdn.globalformulation.com/images/services/laboratory-analysis-test-report.webp" 
+          alt="Printed laboratory test report document on a clean desk alongside               several small product sample jars and a calibrated pipette. Overhead               or slight angle shot, warm neutral tones, clinical and organised.               No people, no legible text visible on documents or labels." 
+          width="900" 
+          height="700" 
+          class="la-img"
+          style="width: 100%; border-radius: var(--la-radius, 16px); object-fit: cover; aspect-ratio: 900/700;"
+        />
+        <p class="img-caption">Laboratory Test Report: Full physical and chemical properties verification protocol with calibrated volumetric pipetting.</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- ══════════ S7 CTA [DARK] ══════════ -->
+  <section class="la-section la-dark la-cta" id="la-s7">
+    <div class="la-cta-card reveal">
+      <span class="la-eyebrow-c" style="margin-bottom: 20px; display: block;">Get Started</span>
+      <h2 class="la-cta-h2">
+        {splitWords('Get certified analysis').map(w => (
+          <span class="aw">{w.split('').map(c => <span class="ac">{c}</span>)}</span>
+        ))}
+        <br class="br-d" />
+        {splitWords('for your product.').map(w => (
+          <span class="aw">{w.split('').map(c => <span class="ac">{c}</span>)}</span>
+        ))}
+      </h2>
+      <p class="la-cta-sub reveal">
+        Whether you're designing a process from scratch, troubleshooting a scale-up
+        failure, or preparing a safety analysis for a regulatory submission — we can help.
+      </p>
+      <form class="la-cta-form reveal" action="/contact" method="get">
+        <input type="email" name="email" placeholder="Enter your email to get started…" aria-label="Email address" required />
+        <button type="submit">Discuss Your Process</button>
+      </form>
+      <p class="la-cta-alt reveal">
+        Need a call first?&nbsp;
+        <a href="/contact">Book a consultation →</a>
+      </p>
+    </div>
+  </section>
+
+  <ServicePageAnimations />
+</Layout>
+
+<style>
+  /* --- HERO SECTION --- */
+  .la-hero {
+    background: linear-gradient(135deg, #0b0f19 0%, #111827 100%);
+    padding: 140px 24px 100px;
+    text-align: center;
+    position: relative;
+    overflow: hidden;
+  }
+  .la-hero-inner {
+    max-width: 880px;
+    margin: 0 auto;
+    position: relative;
+    z-index: 10;
+  }
+  .la-eyebrow-c {
+    font-size: 0.85rem;
+    font-weight: 700;
+    letter-spacing: 0.15em;
+    text-transform: uppercase;
+    color: #3b82f6;
+    margin-bottom: 24px;
+    display: inline-block;
+  }
+  .la-hero-h1 {
+    font-size: clamp(2.5rem, 5vw, 4rem);
+    font-weight: 900;
+    line-height: 1.1;
+    color: #ffffff;
+    margin-bottom: 24px;
+    font-family: 'Outfit', sans-serif;
+  }
+  .la-hero-sub {
+    font-size: 1.2rem;
+    color: #9ca3af;
+    line-height: 1.6;
+    margin-bottom: 40px;
+    max-width: 720px;
+    margin-left: auto;
+    margin-right: auto;
+  }
+  .la-hero-ctas {
+    display: flex;
+    gap: 16px;
+    justify-content: center;
+    flex-wrap: wrap;
+  }
+  .la-btn-primary {
+    background: #2563eb;
+    color: #ffffff;
+    padding: 14px 32px;
+    border-radius: 8px;
+    font-weight: 700;
+    font-size: 0.95rem;
+    text-decoration: none;
+    transition: all 0.2s ease;
+  }
+  .la-btn-primary:hover {
+    background: #1d4ed8;
+    transform: translateY(-1px);
+  }
+  .la-btn-ghost {
+    background: transparent;
+    color: #ffffff;
+    padding: 14px 32px;
+    border-radius: 8px;
+    font-weight: 600;
+    font-size: 0.95rem;
+    text-decoration: none;
+    border: 1px solid rgba(255, 255, 255, 0.2);
+    transition: all 0.2s ease;
+  }
+  .la-btn-ghost:hover {
+    background: rgba(255, 255, 255, 0.05);
+    border-color: rgba(255, 255, 255, 0.4);
+  }
+
+  /* --- SECTION BASE --- */
+  .la-section {
+    padding: 100px 24px;
+    position: relative;
+  }
+  .la-light {
+    background: #ffffff;
+    color: #1f2937;
+  }
+  .la-dark {
+    background: #0b0f19;
+    color: #f3f4f6;
+  }
+
+  /* --- SPLIT LAYOUT --- */
+  .la-split-inner {
+    max-width: 1200px;
+    margin: 0 auto;
+    display: grid;
+    grid-template-columns: 1.2fr 1fr;
+    gap: 64px;
+    align-items: center;
+  }
+  .la-split-inner-rev {
+    grid-template-columns: 1fr 1.2fr;
+  }
+  @media (max-width: 1024px) {
+    .la-split-inner, .la-split-inner-rev {
+      grid-template-columns: 1fr;
+      gap: 48px;
+    }
+  }
+  .la-split-text {
+    display: flex;
+    flex-direction: column;
+  }
+  .la-split-media {
+    position: relative;
+    width: 100%;
+  }
+  .la-eyebrow-l {
+    font-size: 0.85rem;
+    font-weight: 700;
+    letter-spacing: 0.15em;
+    text-transform: uppercase;
+    color: #2563eb;
+    margin-bottom: 20px;
+    display: inline-block;
+  }
+  .la-eyebrow-d {
+    font-size: 0.85rem;
+    font-weight: 700;
+    letter-spacing: 0.15em;
+    text-transform: uppercase;
+    color: #60a5fa;
+    margin-bottom: 20px;
+    display: inline-block;
+  }
+  .la-h2-l {
+    font-size: 2.5rem;
+    font-weight: 800;
+    line-height: 1.2;
+    color: #111827;
+    margin-bottom: 24px;
+    font-family: 'Outfit', sans-serif;
+  }
+  .la-h2-d {
+    font-size: 2.5rem;
+    font-weight: 800;
+    line-height: 1.2;
+    color: #ffffff;
+    margin-bottom: 24px;
+    font-family: 'Outfit', sans-serif;
+  }
+  .la-body-l {
+    font-size: 1.05rem;
+    color: #4b5563;
+    line-height: 1.7;
+    margin-bottom: 24px;
+  }
+  .la-body-d {
+    font-size: 1.05rem;
+    color: #9ca3af;
+    line-height: 1.7;
+    margin-bottom: 24px;
+  }
+
+  /* --- POINTS LIST --- */
+  .la-points {
+    list-style: none;
+    padding: 0;
+    margin: 32px 0 0 0;
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+  }
+  .la-point {
+    display: flex;
+    gap: 16px;
+    align-items: flex-start;
+  }
+  .la-point-ico {
+    flex-shrink: 0;
+    width: 24px;
+    height: 24px;
+    border-radius: 50%;
+    background: rgba(37, 99, 235, 0.1);
+    color: #2563eb;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+  .la-point-ico svg {
+    width: 14px;
+    height: 14px;
+  }
+  .la-point span {
+    font-size: 1rem;
+    color: #374151;
+    line-height: 1.5;
+  }
+
+  /* --- CAPABILITIES GRID --- */
+  .la-cap-grid {
+    list-style: none;
+    padding: 0;
+    margin: 32px 0 0 0;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 20px 32px;
+  }
+  @media (max-width: 640px) {
+    .la-cap-grid {
+      grid-template-columns: 1fr;
+    }
+  }
+  .la-cap-grid li {
+    display: flex;
+    gap: 12px;
+    align-items: flex-start;
+  }
+  .la-cap-dot {
+    flex-shrink: 0;
+    width: 6px;
+    height: 6px;
+    border-radius: 50%;
+    background: #60a5fa;
+    margin-top: 8px;
+  }
+  .la-cap-grid span {
+    font-size: 0.95rem;
+    color: #d1d5db;
+    line-height: 1.5;
+  }
+
+  /* --- IMAGE PLATFORM --- */
+  .la-img {
+    width: 100%;
+    height: auto;
+    display: block;
+    box-shadow: 0 20px 40px rgba(0, 0, 0, 0.3);
+  }
+  .img-caption {
+    font-size: 0.825rem;
+    color: #4b5563;
+    font-style: italic;
+    margin-top: 12px;
+    line-height: 1.5;
+    text-align: left;
+    max-width: 900px;
+  }
+  .la-dark .img-caption {
+    color: #9ca3af;
+  }
+
+  /* --- PROCESS STEPS --- */
+  .la-process {
+    background: #f9fafb;
+    border-top: 1px solid #e5e7eb;
+    border-bottom: 1px solid #e5e7eb;
+  }
+  .la-process-head {
+    max-width: 800px;
+    margin: 0 auto 64px auto;
+    text-align: center;
+  }
+  .la-process-sub {
+    font-size: 1.15rem;
+    color: #4b5563;
+    line-height: 1.6;
+    margin-top: 16px;
+  }
+  .la-steps {
+    max-width: 1200px;
+    margin: 0 auto;
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 32px;
+  }
+  @media (max-width: 1024px) {
+    .la-steps {
+      grid-template-columns: 1fr 1fr;
+      gap: 40px;
+    }
+  }
+  @media (max-width: 640px) {
+    .la-steps {
+      grid-template-columns: 1fr;
+    }
+  }
+  .la-step {
+    position: relative;
+  }
+  .la-step-n {
+    font-size: 2.5rem;
+    font-weight: 800;
+    color: #e5e7eb;
+    display: block;
+    line-height: 1;
+    margin-bottom: 16px;
+    font-family: 'Outfit', sans-serif;
+  }
+  .la-step-rule {
+    display: block;
+    height: 2px;
+    background: #e5e7eb;
+    margin-bottom: 20px;
+  }
+  .la-step-t {
+    font-size: 1.25rem;
+    font-weight: 700;
+    color: #111827;
+    margin-bottom: 12px;
+  }
+  .la-step-d {
+    font-size: 0.95rem;
+    color: #4b5563;
+    line-height: 1.6;
+  }
+
+  /* --- TECHNOLOGIES GRID --- */
+  .la-technologies, .la-industries, .la-scenarios, .la-challenges, .la-tests, .la-problems {
+    background: #0b0f19;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.05);
+  }
+  .la-tech-head {
+    max-width: 800px;
+    margin: 0 auto 64px auto;
+    text-align: center;
+  }
+  .la-tech-sub {
+    font-size: 1.15rem;
+    color: #9ca3af;
+    line-height: 1.6;
+    margin-top: 16px;
+  }
+  .la-tech-grid {
+    max-width: 1200px;
+    margin: 0 auto;
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 32px;
+  }
+  @media (max-width: 1024px) {
+    .la-tech-grid {
+      grid-template-columns: 1fr 1fr;
+    }
+  }
+  @media (max-width: 640px) {
+    .la-tech-grid {
+      grid-template-columns: 1fr;
+    }
+  }
+  .la-tech-tile {
+    background: rgba(255, 255, 255, 0.03);
+    border: 1px solid rgba(255, 255, 255, 0.08);
+    border-radius: 12px;
+    padding: 32px;
+    transition: all 0.3s ease;
+  }
+  .la-tech-tile:hover {
+    background: rgba(255, 255, 255, 0.05);
+    border-color: rgba(255, 255, 255, 0.15);
+    transform: translateY(-2px);
+  }
+  .la-tech-ico {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    width: 48px;
+    height: 48px;
+    border-radius: 10px;
+    background: rgba(59, 130, 246, 0.1);
+    color: #60a5fa;
+    margin-bottom: 24px;
+  }
+  .la-tech-ico svg {
+    width: 24px;
+    height: 24px;
+  }
+  .la-tech-name {
+    font-size: 1.2rem;
+    font-weight: 700;
+    color: #ffffff;
+    margin-bottom: 12px;
+  }
+  .la-tech-desc {
+    font-size: 0.95rem;
+    color: #9ca3af;
+    line-height: 1.6;
+  }
+
+  /* --- CTA SECTION --- */
+  .la-cta {
+    background: linear-gradient(135deg, #0b0f19 0%, #111827 100%);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+  .la-cta-card {
+    background: rgba(255, 255, 255, 0.02);
+    border: 1px solid rgba(255, 255, 255, 0.06);
+    border-radius: 20px;
+    padding: 64px;
+    width: 100%;
+    max-width: 900px;
+    text-align: center;
+    box-shadow: 0 20px 50px rgba(0, 0, 0, 0.3);
+  }
+  @media (max-width: 640px) {
+    .la-cta-card {
+      padding: 40px 24px;
+    }
+  }
+  .la-cta-h2 {
+    font-size: 2.75rem;
+    font-weight: 900;
+    line-height: 1.15;
+    color: #ffffff;
+    margin-bottom: 20px;
+    font-family: 'Outfit', sans-serif;
+  }
+  .la-cta-sub {
+    font-size: 1.15rem;
+    color: #9ca3af;
+    line-height: 1.6;
+    margin-bottom: 40px;
+    max-width: 600px;
+    margin-left: auto;
+    margin-right: auto;
+  }
+  .la-cta-form {
+    display: flex;
+    gap: 12px;
+    max-width: 500px;
+    margin: 0 auto 24px auto;
+  }
+  @media (max-width: 640px) {
+    .la-cta-form {
+      flex-direction: column;
+    }
+  }
+  .la-cta-form input {
+    flex: 1;
+    background: rgba(255, 255, 255, 0.05);
+    border: 1px solid rgba(255, 255, 255, 0.15);
+    border-radius: 8px;
+    padding: 14px 18px;
+    color: #ffffff;
+    font-size: 0.95rem;
+    outline: none;
+    transition: all 0.2s ease;
+  }
+  .la-cta-form input:focus {
+    border-color: #2563eb;
+    background: rgba(255, 255, 255, 0.08);
+  }
+  .la-cta-form button {
+    background: #2563eb;
+    color: #ffffff;
+    border: none;
+    border-radius: 8px;
+    padding: 14px 28px;
+    font-weight: 700;
+    font-size: 0.95rem;
+    cursor: pointer;
+    transition: all 0.2s ease;
+  }
+  .la-cta-form button:hover {
+    background: #1d4ed8;
+  }
+  .la-cta-alt {
+    font-size: 0.95rem;
+    color: #9ca3af;
+  }
+  .la-cta-alt a {
+    color: #60a5fa;
+    text-decoration: none;
+    font-weight: 600;
+  }
+  .la-cta-alt a:hover {
+    text-decoration: underline;
+  }
+</style>

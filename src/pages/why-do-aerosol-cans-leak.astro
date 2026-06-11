@@ -1,0 +1,596 @@
+---
+import Layout from '../layouts/Layout.astro';
+
+const blogSchema = {
+  "@context": "https://schema.org",
+  "@graph": [
+    {
+      "@type": "Organization",
+      "@id": "https://www.globalformulation.com/#organization",
+      "name": "Global Aerosols",
+      "url": "https://www.globalformulation.com/",
+      "logo": {
+        "@type": "ImageObject",
+        "url": "https://www.globalformulation.com/logo.png"
+      }
+    },
+    {
+      "@type": "WebSite",
+      "@id": "https://www.globalformulation.com/#website",
+      "url": "https://www.globalformulation.com/",
+      "name": "Global Aerosols",
+      "publisher": {
+        "@id": "https://www.globalformulation.com/#organization"
+      },
+      "potentialAction": {
+        "@type": "SearchAction",
+        "target": "https://www.globalformulation.com/?s={search_term_string}",
+        "query-input": "required name=search_term_string"
+      }
+    },
+    {
+      "@type": "BreadcrumbList",
+      "@id": "https://www.globalformulation.com/why-do-aerosol-cans-leak#breadcrumb",
+      "itemListElement": [
+        {
+          "@type": "ListItem",
+          "position": 1,
+          "name": "Home",
+          "item": "https://www.globalformulation.com/"
+        },
+        {
+          "@type": "ListItem",
+          "position": 2,
+          "name": "Technical Articles",
+          "item": "https://www.globalformulation.com/technical-articles"
+        },
+        {
+          "@type": "ListItem",
+          "position": 3,
+          "name": "Why Aerosol Cans Leak"
+        }
+      ]
+    },
+    {
+      "@type": "Article",
+      "@id": "https://www.globalformulation.com/why-do-aerosol-cans-leak#article",
+      "isPartOf": {
+        "@id": "https://www.globalformulation.com/why-do-aerosol-cans-leak"
+      },
+      "author": {
+        "@type": "Person",
+        "name": "Absar Khan",
+        "url": "https://www.linkedin.com/in/absar-khan-aerosol-consultant-and-formulator-78359b162",
+        "jobTitle": "Senior Industrial Consultant",
+        "worksFor": {
+          "@id": "https://www.globalformulation.com/#organization"
+        }
+      },
+      "headline": "Why Aerosol Cans Leak – Common Causes, Manufacturing Faults & Proven Fixes",
+      "description": "Aerosol leakage is often due to complex interactions between propellant, valves, and crimping. Learn the technical causes and fixes.",
+      "datePublished": "2023-10-27T08:00:00+00:00",
+      "dateModified": "2023-10-27T08:00:00+00:00",
+      "mainEntityOfPage": {
+        "@id": "https://www.globalformulation.com/why-do-aerosol-cans-leak"
+      },
+      "publisher": {
+        "@id": "https://www.globalformulation.com/#organization"
+      },
+      "image": {
+        "@type": "ImageObject",
+        "url": "https://assets.zyrosite.com/A3QlOV94WLSaL6xE/aerosol-valve-gasket-crimp-pressure-diagram.-VPaJbf8P5H1HbUxA.png"
+      },
+      "articleSection": "Aerosol Manufacturing"
+    },
+    {
+      "@type": "FAQPage",
+      "mainEntity": [
+        {
+          "@type": "Question",
+          "name": "Why do aerosol cans leak after months of storage?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Because pressure cycling, material relaxation, and temperature exposure can gradually weaken seals even if initial testing passed."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "Are all aerosol leaks visible?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "No. Many leaks are microscopic and only detectable through pressure or weight-loss testing."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "Is propellant choice a major leakage factor?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Yes. Propellant pressure behavior strongly influences seal stress, especially under temperature variation."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "Can good crimping alone prevent leaks?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "No. Crimping must work in combination with correct valve design, pressure control, and material compatibility."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "Why are leakage issues more common in hot climates?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Higher ambient temperatures increase internal pressure, amplifying any existing mechanical or material weaknesses."
+          }
+        }
+      ]
+    }
+  ]
+};
+const breadcrumbSchema = {
+  "@context": "https://schema.org",
+  "@type": "BreadcrumbList",
+  "itemListElement": [
+    {
+      "@type": "ListItem",
+      "position": 1,
+      "name": "Home",
+      "item": "https://www.globalformulation.com"
+    },
+    {
+      "@type": "ListItem",
+      "position": 2,
+      "name": "Blog",
+      "item": "https://www.globalformulation.com/blog"
+    },
+    {
+      "@type": "ListItem",
+      "position": 3,
+      "name": "Why Aerosol Cans Leak – Common Causes, Manufacturing Faults & Proven Fixes",
+      "item": "https://www.globalformulation.com/why-do-aerosol-cans-leak"
+    }
+  ]
+};
+const schemas = [blogSchema, breadcrumbSchema];
+---
+
+<Layout
+  title="Why Aerosol Cans Leak – Common Causes, Manufacturing Faults & Proven Fixes | Global Formulation"
+  description="Discover why aerosol cans leak, from propellant pressure profiles and valve failures to crimping defects. Expert technical guide on causes, detection, and prevention strategies for manufacturers."
+  canonical="https://www.globalformulation.com/why-do-aerosol-cans-leak"
+  ogImage="https://assets.zyrosite.com/A3QlOV94WLSaL6xE/aerosol-valve-gasket-crimp-pressure-diagram.-VPaJbf8P5H1HbUxA.png"
+  ogType="article"
+  schemaJson={schemas}
+>
+  <main class="section-container" style="max-width: 100%; padding-left: 48px; padding-right: 48px; padding-top: 40px; padding-bottom: 80px;">
+    
+    <!-- HTML5 Compliant Breadcrumbs -->
+    <nav aria-label="Breadcrumb" style="display: flex; gap: 8px; font-size: 0.85rem; color: var(--text-muted); margin-bottom: 24px; font-family: 'Inter', sans-serif;">
+      <a href="/" style="color: var(--text-muted);">Home</a>
+      <span>&gt;</span>
+      <a href="/blog" style="color: var(--text-muted);">Blog</a>
+      <span>&gt;</span>
+      <span style="color: var(--text-primary); font-weight: 500;">Aerosols & Gas Dosing</span>
+    </nav>
+
+    <!-- Main article container -->
+    <article class="blog-prose">
+      <header class="post-header">
+        <h1 class="gradient-text" style="font-size: 3rem; line-height: 1.15; font-weight: 900; margin-bottom: 20px;">
+          Why Aerosol Cans Leak – Common Causes, Manufacturing Faults & Proven Fixes
+        </h1>
+        
+        <!-- Post meta details -->
+        <div style="display: flex; align-items: center; gap: 16px; font-size: 0.9rem; color: var(--text-muted); margin-bottom: 30px; font-family: 'Inter', sans-serif; font-weight: 500; border-bottom: 1px solid var(--border); padding-bottom: 20px;">
+          <div style="display: flex; align-items: center; gap: 8px;">
+            <span style="width: 28px; height: 28px; background: var(--primary); color: white; display: flex; align-items: center; justify-content: center; border-radius: 50%; font-weight: 700; font-size: 0.75rem;">AK</span>
+            <span>By <strong>Absar Khan</strong></span>
+          </div>
+          <span style="width: 4px; height: 4px; border-radius: 50%; background-color: var(--border);"></span>
+          <span>Published: <strong>Oct 27, 2023</strong></span>
+          <span style="width: 4px; height: 4px; border-radius: 50%; background-color: var(--border);"></span>
+          <span>Reading Time: <strong>18 min read</strong></span>
+          <span style="width: 4px; height: 4px; border-radius: 50%; background-color: var(--border);"></span>
+          <span style="background: #e0f2fe; color: #0369a1; padding: 2px 10px; border-radius: 50px; font-size: 0.75rem; font-weight: 700; text-transform: uppercase;">Aerosols & Gas Dosing</span>
+        </div>
+      </header>
+
+      <!-- Primary Featured Image -->
+      <div class="image-slot">
+        <img 
+          src="https://assets.zyrosite.com/A3QlOV94WLSaL6xE/aerosol-valve-gasket-crimp-pressure-diagram.-VPaJbf8P5H1HbUxA.png" 
+          alt="Cross-section diagram of aerosol valve showing gasket, valve cup, and crimp interface" 
+          width="1200" 
+          height="800" 
+          loading="eager" 
+        />
+      </div>
+
+      <!-- Table of Contents -->
+      <div class="box" style="background: #f8fafc; border: 1px solid var(--border); border-radius: var(--radius-lg); padding: 24px; margin: 30px 0;">
+        <h3 style="margin-top: 0; font-family: 'Outfit', sans-serif; color: var(--text-primary); font-size: 1.25rem; font-weight: 700; border-bottom: 2px solid var(--border); padding-bottom: 8px;">Guide Contents</h3>
+        <ul style="display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 10px; list-style-type: none; padding-left: 0; margin-bottom: 0;">
+          <li><a href="#how-propellant-pressure-profiles-trigger-leaks" style="font-weight: 600; color: var(--primary);">1. How Propellant Pressure Profiles Trigger Leaks</a></li>
+          <li><a href="#can-body-seam-and-structural-integrity-issues" style="font-weight: 600; color: var(--primary);">2. Can Body, Seam, and Structural Integrity Issues</a></li>
+          <li><a href="#corrosion-mechanisms-and-formulation-incompatibility" style="font-weight: 600; color: var(--primary);">3. Corrosion Mechanisms and Formulation Incompatibility</a></li>
+          <li><a href="#manufacturing-and-handling-factors-that-increase-leak-risk" style="font-weight: 600; color: var(--primary);">4. Manufacturing and Handling Factors That Increase Leak Risk</a></li>
+          <li><a href="#proven-preventive-principles" style="font-weight: 600; color: var(--primary);">5. Proven Preventive Principles</a></li>
+          <li><a href="#why-startups-face-higher-leakage-failure-rates" style="font-weight: 600; color: var(--primary);">6. Why Startups Face Higher Leakage Failure Rates</a></li>
+        </ul>
+      </div>
+
+      <div class="lead"><!-- Visible Breadcrumbs -->
+    <nav aria-label="Breadcrumb" class="breadcrumb">
+        <ol>
+            <li><a href="https://www.globalformulation.com/">Home</a></li>
+            <li><a href="https://www.globalformulation.com/technical-articles">Technical Articles</a></li>
+            <li><span aria-current="page">Why Aerosol Cans Leak</span></li>
+        </ol>
+    </nav>
+
+    
+    
+    <!-- Table of Contents Container -->
+    <div class="toc-container">
+        <div class="toc-title">Table of Contents</div>
+        <ul>
+            <li>Understanding Aerosol Leakage</li>
+            <li>Role of Propellants</li>
+            <li>Valve System Failures</li>
+            <li>Crimping Defects</li>
+            <li>Prevention & Detection</li>
+        </ul>
+    </div>
+
+    <p>Aerosol leakage is one of the most frequent and costly failures faced by aerosol manufacturers, brand owners, and contract fillers. While leaks often appear to be simple packaging defects, they are usually the result of complex interactions between propellant behavior, container integrity, valve mechanics, and manufacturing controls. Understanding these interactions is essential for preventing failures without compromising safety, compliance, or performance.</p>
+
+    <p>This article explains why aerosol cans leak, how propellants influence leakage risk, where manufacturing faults typically occur, and how the industry applies proven preventive strategies—all without disclosing formulations or proprietary solutions.</p>
+
+    <h2 id="understanding-leakage">Understanding Aerosol Leakage in Technical Terms</h2>
+
+    <p>Aerosol leakage refers to the unintended escape of propellant or product from a sealed aerosol system under normal storage, transport, or usage conditions. Even microscopic leaks can cause pressure loss, spray malfunction, regulatory non-compliance, and long-term safety risks. Leakage is not a single-point failure but a system-level problem involving pressure, materials, and process control.</p>
+
+    <p>From a performance standpoint, leakage directly impacts spray consistency, shelf life, and user safety. From a business perspective, it leads to returns, recalls, logistics damage, and brand erosion. Importantly, many leaks manifest weeks or months after filling, making root-cause diagnosis difficult without technical insight.</p>
+
+    <div class="table-responsive">
+        <table class="list-table">
+            <thead>
+                <tr>
+                    <th>Key characteristics of aerosol leakage</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr><td>Gradual pressure decay without visible damage</td></tr>
+                <tr><td>Intermittent leakage triggered by temperature changes</td></tr>
+                <tr><td>Sudden seal failure during transport or stacking</td></tr>
+                <tr><td>Micro-leaks detectable only under testing conditions</td></tr>
+            </tbody>
+        </table>
+    </div>
+
+    <h2 id="role-of-propellants">The Role of Propellants in Aerosol Can Leakage</h2>
+
+    <p>Propellants are not passive pressurizing agents; they actively influence internal pressure, material compatibility, and mechanical stress within the aerosol system. Each propellant type exhibits distinct vapor pressure behavior, density, solvency, and thermal response, all of which affect leak risk. Misalignment between propellant characteristics and container design is a major contributor to failures.</p>
+
+    <p>Pressure inside an aerosol can is not constant—it changes with temperature, fill ratio, and propellant composition. If the pressure profile exceeds the tolerance of any system component, leakage becomes likely. This is why leakage analysis must always consider propellant physics, not just packaging quality.</p>
+
+    <div class="table-responsive">
+        <table class="list-table">
+            <thead>
+                <tr>
+                    <th>Propellant-related leakage influences</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr><td>Vapor pressure variability across temperature ranges</td></tr>
+                <tr><td>Stress on valve seals and crimp zones</td></tr>
+                <tr><td>Long-term effects on elastomers and coatings</td></tr>
+                <tr><td>Pressure cycling during storage and transport</td></tr>
+            </tbody>
+        </table>
+    </div>
+
+<!-- HOW PROPELLANT PRESSURE PROFILES TRIGGER LEAKS -->
+<section class="section" id="how-propellant-pressure-profiles-trigger-leaks">
+  <h2>How Propellant Pressure Profiles Trigger Leaks</h2>
+  <p>Every propellant has a defined vapor pressure curve that governs how internal pressure changes with temperature. If a can is exposed to elevated temperatures during transport or storage, internal pressure can rise significantly. When this pressure exceeds the sealing capacity of the valve crimp or gasket, leakage can occur even if the system passed initial quality checks.</p>
+
+    <p>This phenomenon explains why some aerosol cans remain stable in factories but fail in warehouses, shipping containers, or retail shelves. The failure is not sudden—it is the result of cumulative mechanical stress driven by pressure fluctuations.</p>
+
+    <div class="table-responsive">
+        <table class="list-table">
+            <thead>
+                <tr>
+                    <th>Pressure-related leakage mechanisms</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr><td>Seal relaxation under repeated pressure cycling</td></tr>
+                <tr><td>Micro-deformation of crimped metal interfaces</td></tr>
+                <tr><td>Progressive loss of gasket compression</td></tr>
+                <tr><td>Pressure spikes exceeding design margins</td></tr>
+            </tbody>
+        </table>
+    </div>
+
+    <h2 id="valve-failures">Valve System Failures and Propellant Interaction</h2>
+
+    <p>The aerosol valve is the most common leakage point because it combines metal, elastomer, and mechanical interfaces under constant pressure. Propellants interact directly with valve components, influencing seal integrity over time. Even when valves meet dimensional specifications, incompatibility with pressure behavior or chemical environment can result in leakage.</p>
+
+    <p>Valve failures are rarely due to a single defect. They are usually caused by interaction mismatches between propellant pressure, gasket resilience, and crimping force. These mismatches may only appear after extended storage or repeated temperature cycling.</p>
+
+    <div class="table-responsive">
+        <table class="list-table">
+            <thead>
+                <tr>
+                    <th>Common valve-related leakage contributors</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr><td>Insufficient seal compression retention</td></tr>
+                <tr><td>Elastomer fatigue under sustained pressure</td></tr>
+                <tr><td>Interface distortion at the valve cup</td></tr>
+                <tr><td>Pressure-induced micro-channels at the seal</td></tr>
+            </tbody>
+        </table>
+    </div>
+
+    
+
+    <h2 id="crimping-defects">Crimping Defects as a Structural Weak Point</h2>
+
+    <p>Crimping is a critical mechanical operation that seals the valve to the can. Even minor deviations in crimp diameter, height, or uniformity can compromise the seal. Since propellant pressure constantly loads the crimp area, any imperfection is magnified over time.</p>
+
+    <p>Crimping defects are especially dangerous because they may not be visible or immediately detectable. A can can pass post-fill testing and still develop leaks later due to gradual stress relaxation or pressure cycling.</p>
+
+    <div class="table-responsive">
+        <table class="list-table">
+            <thead>
+                <tr>
+                    <th>Typical crimp-related leakage causes</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr><td>Under-crimping leading to insufficient seal force</td></tr>
+                <tr><td>Over-crimping causing metal fatigue or distortion</td></tr>
+                <tr><td>Non-uniform crimp profiles around the circumference</td></tr>
+                <tr><td>Tool wear or calibration drift</td></tr>
+            </tbody>
+        </table>
+    </div>
+
+    
+      <div class="image-slot">
+        <img 
+          src="https://assets.zyrosite.com/A3QlOV94WLSaL6xE/aerosol-can-crimping-correct-vs-incorrect-sIbUKWhrWVDmykaF.png" 
+          alt="Correct vs incorrect crimp profile comparison" 
+          width="1200" 
+          height="800" 
+          loading="lazy" 
+        />
+      
+</section>
+
+<!-- CAN BODY, SEAM, AND STRUCTURAL INTEGRITY ISSUES -->
+<section class="section" id="can-body-seam-and-structural-integrity-issues">
+  <h2>Can Body, Seam, and Structural Integrity Issues</h2>
+  <p>While less frequent than valve leaks, failures in the can body or seams can occur due to internal pressure stress combined with material weaknesses. Propellant pressure continuously loads the side seam, bottom dome, and internal coating. If any of these elements are compromised, leakage may develop gradually.</p>
+
+    <p>Internal corrosion, coating defects, or metal thinning can weaken structural zones without immediate visible signs. In such cases, leakage may appear as pressure loss rather than liquid escape, making detection more difficult.</p>
+
+    <div class="table-responsive">
+        <table class="list-table">
+            <thead>
+                <tr>
+                    <th>Structural leakage contributors</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr><td>Side seam integrity loss under pressure</td></tr>
+                <tr><td>Bottom dome deformation</td></tr>
+                <tr><td>Internal coating degradation</td></tr>
+                <tr><td>Stress concentration at formed metal zones</td></tr>
+            </tbody>
+        </table>
+    </div>
+
+    
+      <div class="image-slot">
+        <img 
+          src="https://assets.zyrosite.com/A3QlOV94WLSaL6xE/aerosol-can-structure-pressure-stress-zones-YuYV2PZoCdf6F797.png" 
+          alt="Aerosol can seam and dome stress zones" 
+          width="1200" 
+          height="800" 
+          loading="lazy" 
+        />
+      
+</section>
+
+<!-- CORROSION MECHANISMS AND FORMULATION INCOMPATIBILITY -->
+<section class="section" id="corrosion-mechanisms-and-formulation-incompatibility">
+  <h2>Corrosion Mechanisms and Formulation Incompatibility</h2>
+  <p>Internal corrosion is a silent but devastating cause of leakage that stems from chemical reactions between the product formulation and the container material. Unlike mechanical seal failures, corrosion often manifests as microscopic pinholes that develop months after production. This is particularly common in water-based formulations where electrochemical reactions can degrade the internal coating or attack the metal substrate directly. If the pH balance is incorrect or if aggressive solvents penetrate the protective lacquer, the can wall may eventually perforate, leading to slow, undetectable product loss or sudden structural failure.</p>
+</section>
+
+<!-- MANUFACTURING AND HANDLING FACTORS THAT INCREASE LEAK RISK -->
+<section class="section" id="manufacturing-and-handling-factors-that-increase-leak-risk">
+  <h2>Manufacturing and Handling Factors That Increase Leak Risk</h2>
+  <p>Even when design parameters are correct, manufacturing execution plays a decisive role. Filling speed, gassing pressure control, handling damage, and post-fill stabilization all influence long-term seal integrity. Propellants amplify the consequences of small process deviations because of their stored energy.</p>
+
+    <p>Leakage incidents often trace back to process inconsistency rather than material failure. This is why robust quality systems and process discipline are essential in aerosol manufacturing.</p>
+
+    <div class="table-responsive">
+        <table class="list-table">
+            <thead>
+                <tr>
+                    <th>Manufacturing-related leakage risks</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr><td>Excessive gassing pressure</td></tr>
+                <tr><td>Valve damage during insertion</td></tr>
+                <tr><td>Can denting before or after filling</td></tr>
+                <tr><td>Inadequate stabilization time before testing</td></tr>
+            </tbody>
+        </table>
+    </div>
+
+    <h2 id="prevention-detection">How the Industry Detects and Manages Aerosol Leaks</h2>
+
+    <p>Leak detection is an established industrial practice governed by international standards. Because many leaks are microscopic, detection relies on indirect methods rather than visible inspection. These methods aim to identify pressure loss, gas escape, or mass reduction over time.</p>
+
+    <p>Effective leak management focuses on early detection and trend analysis, not just pass/fail testing. This approach reduces downstream failures and improves system reliability.</p>
+
+    <div class="table-responsive">
+        <table class="list-table">
+            <thead>
+                <tr>
+                    <th>Common industrial leak detection methods</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr><td>Water bath testing under controlled temperature</td></tr>
+                <tr><td>Weight-loss monitoring over time</td></tr>
+                <tr><td>Pressure decay analysis</td></tr>
+                <tr><td>Visual inspection as a secondary control</td></tr>
+            </tbody>
+        </table>
+    
+</section>
+
+<!-- PROVEN PREVENTIVE PRINCIPLES -->
+<section class="section" id="proven-preventive-principles">
+  <h2>Proven Preventive Principles</h2>
+  <p>While specific corrective actions are proprietary, the industry relies on well-established engineering principles to prevent leakage. These principles focus on compatibility, control, and consistency rather than reactive fixes.</p>
+
+    <p>Preventing leaks requires a system-level approach that treats the aerosol as an integrated pressure vessel rather than a collection of parts.</p>
+
+    <div class="table-responsive">
+        <table class="list-table">
+            <thead>
+                <tr>
+                    <th>Core preventive principles</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr><td>Matching pressure behavior to container capability</td></tr>
+                <tr><td>Maintaining tight mechanical tolerances</td></tr>
+                <tr><td>Controlling thermal exposure throughout logistics</td></tr>
+                <tr><td>Applying statistically driven quality systems</td></tr>
+            </tbody>
+        </table>
+    
+</section>
+
+<!-- WHY STARTUPS FACE HIGHER LEAKAGE FAILURE RATES -->
+<section class="section" id="why-startups-face-higher-leakage-failure-rates">
+  <h2>Why Startups Face Higher Leakage Failure Rates</h2>
+  <p>Startups often encounter leakage issues not due to lack of effort, but due to incomplete understanding of aerosol system interactions. Cost-driven component selection, limited testing windows, and scale-up assumptions can expose products to risks that only appear in real-world distribution.</p>
+
+    <p>Understanding propellant influence early reduces failure rates, accelerates approvals, and protects brand credibility.</p>
+
+    <div class="table-responsive">
+        <table class="list-table">
+            <thead>
+                <tr>
+                    <th>Common startup challenges</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr><td>Underestimating pressure variability</td></tr>
+                <tr><td>Insufficient aging and transport simulation</td></tr>
+                <tr><td>Over-reliance on supplier specifications</td></tr>
+                <tr><td>Limited system-level validation</td></tr>
+            </tbody>
+        </table>
+</section>
+
+
+
+      <!-- Contact Box -->
+      <div class="cta" style="background: linear-gradient(135deg, var(--primary) 0%, var(--secondary) 100%); color: #ffffff; padding: 30px; border-radius: var(--radius-lg); margin-top: 40px; display: flex; flex-direction: column; justify-content: space-between; align-items: flex-start; gap: 20px; md-flex-direction: row; md-align-items: center;">
+        <div class="left">
+          <p style="margin:0 0 8px 0; font-size:1.25rem; font-weight:800; font-family: 'Outfit', sans-serif;">Need Technical Support for Aerosol Formulations?</p>
+          <p style="margin:0 0 16px 0; font-size:0.95rem; line-height:1.6; opacity:0.95;">
+            Partner with Global Formulation to audit, scale up, and troubleshoot your aerosol chemistry, canister pressure calculations, filling lines, and safety systems.
+          </p>
+          <p style="margin:0; font-size:0.9rem; line-height:1.6; font-family: monospace;">
+            Email: <strong>consulting@globalformulation.com</strong><br />
+            Website: <a href="/" style="color: #ffffff; font-weight: 600; text-decoration: underline;">https://www.globalformulation.com</a><br />
+            Phone: <strong>+91 9819548320 &nbsp;&nbsp; +91 8169102990</strong>
+          </p>
+        </div>
+        <a href="mailto:consulting@globalformulation.com" class="btn" style="background:#ffffff; color:var(--primary); font-weight:700; padding:12px 24px; border-radius:var(--radius-sm); border:none; text-decoration:none; transition: all var(--transition-fast);">
+          Request Consultation
+        </a>
+      </div>
+
+      <!-- ABOUT THE AUTHOR -->
+      <section class="section" id="about-author" style="margin-top: 50px; background: #f8fafc; border: 1px solid var(--border); padding: 30px; border-radius: var(--radius-lg); display: flex; flex-direction: column; gap: 20px; md-flex-direction: row;">
+        <div style="flex-shrink: 0; width: 60px; height: 60px; background: linear-gradient(135deg, var(--primary) 0%, var(--secondary) 100%); color: white; display: flex; align-items: center; justify-content: center; border-radius: 50%; font-size: 1.5rem; font-weight: 800; font-family: 'Outfit', sans-serif; box-shadow: var(--shadow-md);">
+          AK
+        </div>
+        <div>
+          <h3 style="margin-top: 0; margin-bottom: 8px; font-family: 'Outfit', sans-serif; font-size: 1.3rem; font-weight: 700; color: var(--text-primary);">About the Specialist</h3>
+          <p style="margin-top: 0; margin-bottom: 12px; font-size: 0.95rem; line-height: 1.6; color: var(--text-muted);">
+            <strong>Absar Khan</strong> is the principal consultant and chemical formulation architect at <strong>Global Formulation</strong>. He possesses cross-disciplinary engineering expertise spanning aerosol gassing systems, pharmaceutical manufacturing, sterile injectables, cosmetics, and green chemical plant setups. Absar leads scientific and engineering advisory teams supporting manufacturers globally in technology selection, GMP layouts, validation frameworks, and regulatory strategies.
+          </p>
+          <p style="margin: 0; font-size: 0.9rem;">
+            <strong>LinkedIn Portfolio:</strong> 
+            <a 
+              href="https://www.linkedin.com/in/absar-khan-aerosol-consultant-and-formulator-78359b162" 
+              style="font-weight: 700; color: var(--primary); text-decoration: underline;"
+            >
+              Connect with Absar Khan on LinkedIn
+            </a>
+          </p>
+        </div>
+      </section>
+
+      <!-- Footer copyright -->
+      <footer style="text-align: center; margin-top: 50px; color: var(--text-muted); font-size: 0.85rem; font-family: 'Inter', sans-serif;">
+        &copy; {new Date().getFullYear()} Global Formulation. All rights reserved. 
+        <br />
+        <span style="font-size: 0.75rem; opacity: 0.8;">Centralised Aerosol Dosing &amp; Chemical Scale-Up Engineering.</span>
+      </footer>
+
+    </article>
+  </main>
+</Layout>
+
+<style>
+  .blog-prose h1, 
+  .blog-prose h2, 
+  .blog-prose h3 {
+    font-family: 'Playfair Display', 'Outfit', serif !important;
+  }
+  
+  .blog-prose h2 {
+    color: #ffffff !important;
+    background-color: var(--secondary) !important;
+    padding: 12px 20px;
+    border-radius: var(--radius-md);
+    border-bottom: none !important;
+    font-weight: 700;
+  }
+
+  .blog-prose p, 
+  .blog-prose ul, 
+  .blog-prose ol,
+  .blog-prose h3,
+  .blog-prose .lead,
+  .blog-prose .image-slot,
+  .blog-prose .box,
+  .blog-prose .cta,
+  .blog-prose .table-container,
+  .blog-prose #faq {
+    max-width: 100%;
+    width: 100%;
+  }
+
+  .blog-prose .lead {
+    margin: 2rem 0;
+  }
+</style>
