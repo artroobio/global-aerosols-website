@@ -4,16 +4,16 @@ import Layout from '../layouts/Layout.astro';
 const slug = 'emulsion-separation-creaming-sedimentation-coalescence';
 const title = 'Emulsion Separation Cosmetics: Creaming & Coalescence';
 const description = 'Diagnose emulsion separation cosmetics issues — creaming, sedimentation, coalescence, and HLB instability. Apply proven correction and prevention strategies.';
-const heroCdn = `https://cdn.globalformulation.com/images/${slug}/${slug}-hero-globalformulation.webp`;
-const diagramCdn = `https://cdn.globalformulation.com/images/${slug}/${slug}-diagram-globalformulation.webp`;
-const infographicCdn = `https://cdn.globalformulation.com/images/${slug}/${slug}-infographic-globalformulation.webp`;
+const heroCdn = `https://cdn.globalformulation.com/images/${slug}/${slug}-hero.webp`;
+const diagramCdn = `https://cdn.globalformulation.com/images/${slug}/${slug}-diagram.webp`;
+const infographicCdn = `https://cdn.globalformulation.com/images/${slug}/${slug}-infographic.webp`;
 
 const orgSchema = {
   "@context": "https://schema.org",
   "@type": "Organization",
   "name": "Global Formulation",
-  "url": "https://www.globalformulation.com",
-  "logo": "https://www.globalformulation.com/logo.png",
+  "url": "https://www.globalaerosols.com",
+  "logo": "https://www.globalaerosols.com/logo.png",
   "contactPoint": [{
     "@type": "ContactPoint",
     "telephone": "+91 9819548320",
@@ -24,10 +24,10 @@ const orgSchema = {
 const websiteSchema = {
   "@context": "https://schema.org",
   "@type": "WebSite",
-  "url": "https://www.globalformulation.com",
+  "url": "https://www.globalaerosols.com",
   "potentialAction": {
     "@type": "SearchAction",
-    "target": "https://www.globalformulation.com/blog?search={search_term_string}",
+    "target": "https://www.globalaerosols.com/blog?search={search_term_string}",
     "query-input": "required name=search_term_string"
   }
 };
@@ -41,7 +41,7 @@ const authorSchema = {
   "affiliation": {
     "@type": "Organization",
     "name": "Global Formulation",
-    "url": "https://www.globalformulation.com"
+    "url": "https://www.globalaerosols.com"
   },
   "sameAs": ["https://www.linkedin.com/in/absar-khan-aerosol-consultant-and-formulator-78359b162"]
 };
@@ -50,9 +50,9 @@ const breadcrumbSchema = {
   "@context": "https://schema.org",
   "@type": "BreadcrumbList",
   "itemListElement": [
-    { "@type": "ListItem", "position": 1, "name": "Home", "item": "https://www.globalformulation.com" },
-    { "@type": "ListItem", "position": 2, "name": "Blog", "item": "https://www.globalformulation.com/blog" },
-    { "@type": "ListItem", "position": 3, "name": "Emulsion Separation: Creaming, Sedimentation, and Coalescence", "item": `https://www.globalformulation.com/${slug}` }
+    { "@type": "ListItem", "position": 1, "name": "Home", "item": "https://www.globalaerosols.com" },
+    { "@type": "ListItem", "position": 2, "name": "Blog", "item": "https://www.globalaerosols.com/blog" },
+    { "@type": "ListItem", "position": 3, "name": "Emulsion Separation: Creaming, Sedimentation, and Coalescence", "item": `https://www.globalaerosols.com/${slug}` }
   ]
 };
 
@@ -66,13 +66,13 @@ const blogPostingSchema = {
   "publisher": {
     "@type": "Organization",
     "name": "Global Formulation",
-    "logo": { "@type": "ImageObject", "url": "https://www.globalformulation.com/logo.png" }
+    "logo": { "@type": "ImageObject", "url": "https://www.globalaerosols.com/logo.png" }
   },
   "datePublished": "2026-06-11",
   "dateModified": "2026-06-11",
   "mainEntityOfPage": {
     "@type": "WebPage",
-    "@id": `https://www.globalformulation.com/${slug}`
+    "@id": `https://www.globalaerosols.com/${slug}`
   },
   "articleSection": "Cosmetics & Personal Care — Formulation Instability & Skin Issues",
   "keywords": "emulsion separation cosmetics, cream phase separation cosmetics, emulsion instability lotion, creaming sedimentation emulsion, coalescence emulsion failure, HLB emulsifier instability",
@@ -138,7 +138,7 @@ const webpageSchema = {
   "@context": "https://schema.org",
   "@type": "WebPage",
   "name": "Emulsion Separation Cosmetics: Creaming, Sedimentation, and Coalescence | Global Formulation",
-  "url": `https://www.globalformulation.com/${slug}`,
+  "url": `https://www.globalaerosols.com/${slug}`,
   "description": "Diagnose emulsion separation cosmetics issues — creaming, sedimentation, coalescence, and HLB instability. Apply proven correction and prevention strategies."
 };
 
@@ -148,7 +148,7 @@ const schemas = [orgSchema, websiteSchema, authorSchema, breadcrumbSchema, blogP
 <Layout
   title={title}
   description={description}
-  canonical={`https://www.globalformulation.com/${slug}`}
+  canonical={`https://www.globalaerosols.com/${slug}`}
   ogImage={heroCdn}
   ogType="article"
   schemaJson={schemas}

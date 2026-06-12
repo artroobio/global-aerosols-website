@@ -4,36 +4,36 @@ import Layout from '../layouts/Layout.astro';
 const slug = 'complete-guide-industrial-degreaser-formulation';
 const title = 'Industrial Degreaser Formulation: The Complete Guide';
 const description = 'The complete guide to industrial degreaser formulation — solvent vs aqueous chemistry, surfactant selection, metal compatibility, and VOC compliance testing.';
-const heroCdn = `https://cdn.globalformulation.com/images/${slug}/${slug}-hero-globalformulation.webp`;
-const diagramCdn = `https://cdn.globalformulation.com/images/${slug}/${slug}-diagram-globalformulation.webp`;
-const infographicCdn = `https://cdn.globalformulation.com/images/${slug}/${slug}-infographic-globalformulation.webp`;
-const contextual1Cdn = `https://cdn.globalformulation.com/images/${slug}/${slug}-contextual-1-globalformulation.webp`;
-const contextual2Cdn = `https://cdn.globalformulation.com/images/${slug}/${slug}-contextual-2-globalformulation.webp`;
+const heroCdn = `https://cdn.globalformulation.com/images/${slug}/${slug}-hero.webp`;
+const diagramCdn = `https://cdn.globalformulation.com/images/${slug}/${slug}-diagram.webp`;
+const infographicCdn = `https://cdn.globalformulation.com/images/${slug}/${slug}-infographic.webp`;
+const contextual1Cdn = `https://cdn.globalformulation.com/images/${slug}/${slug}-contextual-1.webp`;
+const contextual2Cdn = `https://cdn.globalformulation.com/images/${slug}/${slug}-contextual-2.webp`;
 
 const orgSchema = {
   "@context": "https://schema.org", "@type": "Organization",
-  "name": "Global Formulation", "url": "https://www.globalformulation.com",
-  "logo": "https://www.globalformulation.com/logo.png",
+  "name": "Global Formulation", "url": "https://www.globalaerosols.com",
+  "logo": "https://www.globalaerosols.com/logo.png",
   "contactPoint": [{ "@type": "ContactPoint", "telephone": "+91 9819548320", "contactType": "customer service" }]
 };
 const websiteSchema = {
   "@context": "https://schema.org", "@type": "WebSite",
-  "url": "https://www.globalformulation.com",
-  "potentialAction": { "@type": "SearchAction", "target": "https://www.globalformulation.com/blog?search={search_term_string}", "query-input": "required name=search_term_string" }
+  "url": "https://www.globalaerosols.com",
+  "potentialAction": { "@type": "SearchAction", "target": "https://www.globalaerosols.com/blog?search={search_term_string}", "query-input": "required name=search_term_string" }
 };
 const authorSchema = {
   "@context": "https://schema.org", "@type": "Person",
   "name": "Absar Khan", "jobTitle": "Lead Consultant",
   "url": "https://www.linkedin.com/in/absar-khan-aerosol-consultant-and-formulator-78359b162",
-  "affiliation": { "@type": "Organization", "name": "Global Formulation", "url": "https://www.globalformulation.com" },
+  "affiliation": { "@type": "Organization", "name": "Global Formulation", "url": "https://www.globalaerosols.com" },
   "sameAs": ["https://www.linkedin.com/in/absar-khan-aerosol-consultant-and-formulator-78359b162"]
 };
 const breadcrumbSchema = {
   "@context": "https://schema.org", "@type": "BreadcrumbList",
   "itemListElement": [
-    { "@type": "ListItem", "position": 1, "name": "Home", "item": "https://www.globalformulation.com" },
-    { "@type": "ListItem", "position": 2, "name": "Blog", "item": "https://www.globalformulation.com/blog" },
-    { "@type": "ListItem", "position": 3, "name": "Industrial Degreaser Formulation: The Complete Guide", "item": `https://www.globalformulation.com/${slug}` }
+    { "@type": "ListItem", "position": 1, "name": "Home", "item": "https://www.globalaerosols.com" },
+    { "@type": "ListItem", "position": 2, "name": "Blog", "item": "https://www.globalaerosols.com/blog" },
+    { "@type": "ListItem", "position": 3, "name": "Industrial Degreaser Formulation: The Complete Guide", "item": `https://www.globalaerosols.com/${slug}` }
   ]
 };
 const blogPostingSchema = {
@@ -42,9 +42,9 @@ const blogPostingSchema = {
   "description": "The complete guide to industrial degreaser formulation — solvent vs aqueous chemistry, surfactant selection, metal compatibility, and VOC compliance testing.",
   "image": heroCdn,
   "author": { "@type": "Person", "name": "Absar Khan" },
-  "publisher": { "@type": "Organization", "name": "Global Formulation", "logo": { "@type": "ImageObject", "url": "https://www.globalformulation.com/logo.png" } },
+  "publisher": { "@type": "Organization", "name": "Global Formulation", "logo": { "@type": "ImageObject", "url": "https://www.globalaerosols.com/logo.png" } },
   "datePublished": "2026-06-06", "dateModified": "2026-06-06",
-  "mainEntityOfPage": { "@type": "WebPage", "@id": `https://www.globalformulation.com/${slug}` },
+  "mainEntityOfPage": { "@type": "WebPage", "@id": `https://www.globalaerosols.com/${slug}` },
   "articleSection": "Household & Industrial Cleaners",
   "keywords": "industrial degreaser formulation guide, solvent degreaser versus aqueous, aqueous degreaser formulation, industrial degreaser surfactant selection, metal degreasing chemistry, VOC-free degreaser formulation",
   "wordCount": "2700"
@@ -87,7 +87,7 @@ const faqSchema = {
 const webpageSchema = {
   "@context": "https://schema.org", "@type": "WebPage",
   "name": "Industrial Degreaser Formulation: The Complete Guide | Global Formulation",
-  "url": `https://www.globalformulation.com/${slug}`,
+  "url": `https://www.globalaerosols.com/${slug}`,
   "description": "The complete guide to industrial degreaser formulation — solvent vs aqueous chemistry, surfactant selection, metal compatibility, and VOC compliance testing."
 };
 
@@ -97,7 +97,7 @@ const schemas = [orgSchema, websiteSchema, authorSchema, breadcrumbSchema, blogP
 <Layout
   title={title}
   description={description}
-  canonical={`https://www.globalformulation.com/${slug}`}
+  canonical={`https://www.globalaerosols.com/${slug}`}
   ogImage={heroCdn}
   ogType="article"
   schemaJson={schemas}
@@ -121,7 +121,7 @@ const schemas = [orgSchema, websiteSchema, authorSchema, breadcrumbSchema, blogP
 
       <!--
         IMAGE PLACEHOLDER — HERO
-        File: complete-guide-industrial-degreaser-formulation-hero-globalformulation.webp
+        File: complete-guide-industrial-degreaser-formulation-hero.webp
         Size: 1200×630 px
         Alt: industrial degreaser formulation guide — parts washer immersion bath with metal components being degreased with aqueous alkaline cleaner | Global Formulation
         Generation prompt:
@@ -199,7 +199,7 @@ const schemas = [orgSchema, websiteSchema, authorSchema, breadcrumbSchema, blogP
           market is measured in billions of dollars annually, driven largely by the ongoing
           transition from solvent-based to aqueous degreaser technology as VOC regulations tighten
           across all major markets. Our broader overview of
-          <a href="https://www.globalformulation.com/household-and-industrial-cleaners" target="_top">household and industrial cleaner chemistry</a>
+          <a href="https://www.globalaerosols.com/household-and-industrial-cleaners" target="_top">household and industrial cleaner chemistry</a>
           provides the product landscape context within which degreaser formulation sits.
         </p>
       </section>
@@ -243,7 +243,7 @@ const schemas = [orgSchema, websiteSchema, authorSchema, breadcrumbSchema, blogP
 
       <!--
         IMAGE PLACEHOLDER — DIAGRAM
-        File: complete-guide-industrial-degreaser-formulation-diagram-globalformulation.webp
+        File: complete-guide-industrial-degreaser-formulation-diagram.webp
         Size: 900×500 px
         Alt: industrial degreaser mechanism comparison diagram — solvent dissolution, emulsification, saponification, and displacement cleaning mechanisms | Global Formulation
         Generation prompt:
@@ -436,7 +436,7 @@ const schemas = [orgSchema, websiteSchema, authorSchema, breadcrumbSchema, blogP
           critical technical risk is maintaining the cleaning performance achieved by the
           incumbent solvent system while meeting the new substrate, waste treatment, and
           operational requirements of aqueous chemistry. Our detailed guide to
-          <a href="https://www.globalformulation.com/ph-and-cleaning-acid-neutral-alkaline-products" target="_top">pH and industrial cleaning product chemistry</a>
+          <a href="https://www.globalaerosols.com/ph-and-cleaning-acid-neutral-alkaline-products" target="_top">pH and industrial cleaning product chemistry</a>
           explains the alkaline-to-neutral selection decision and its impact on multi-metal
           compatibility in depth.
         </p>
@@ -444,7 +444,7 @@ const schemas = [orgSchema, websiteSchema, authorSchema, breadcrumbSchema, blogP
 
       <!--
         IMAGE PLACEHOLDER — CONTEXTUAL 1
-        File: complete-guide-industrial-degreaser-formulation-contextual-1-globalformulation.webp
+        File: complete-guide-industrial-degreaser-formulation-contextual-1.webp
         Size: 900×500 px
         Alt: industrial degreaser formulation application guide — aqueous degreaser component chemistry showing alkaline builder, surfactant, chelant, and corrosion inhibitor | Global Formulation
         Generation prompt:
@@ -510,7 +510,7 @@ const schemas = [orgSchema, websiteSchema, authorSchema, breadcrumbSchema, blogP
 
       <!--
         IMAGE PLACEHOLDER — INFOGRAPHIC
-        File: complete-guide-industrial-degreaser-formulation-infographic-globalformulation.webp
+        File: complete-guide-industrial-degreaser-formulation-infographic.webp
         Size: 900×500 px
         Alt: industrial degreaser selection guide infographic — solvent versus aqueous degreaser selection matrix for oil type, substrate, and regulatory constraint | Global Formulation
         Generation prompt:
@@ -587,7 +587,7 @@ const schemas = [orgSchema, websiteSchema, authorSchema, breadcrumbSchema, blogP
           including perchloroethylene and trichloroethylene face similar restriction pressure
           under REACH and remain subject to EPA regulation under NESHAP standards in the US.
           For formulating a broader cleaning product portfolio, our guide to
-          <a href="https://www.globalformulation.com/volatile-organic-compounds-and-pollution" target="_top">VOC emissions and pollution from industrial products</a>
+          <a href="https://www.globalaerosols.com/volatile-organic-compounds-and-pollution" target="_top">VOC emissions and pollution from industrial products</a>
           covers the regulatory and environmental framework comprehensively.
         </p>
         <p>
@@ -599,14 +599,14 @@ const schemas = [orgSchema, websiteSchema, authorSchema, breadcrumbSchema, blogP
           Surfactant selection for readily biodegradable alternatives — linear alkylbenzene
           sulphonate (LAS), fatty alcohol ethoxylates — reduces both compliance costs
           and environmental impact. Our survey of
-          <a href="https://www.globalformulation.com/multi-surface-cleaners-surfactant-synergies" target="_top">surfactant synergies in industrial cleaning formulations</a>
+          <a href="https://www.globalaerosols.com/multi-surface-cleaners-surfactant-synergies" target="_top">surfactant synergies in industrial cleaning formulations</a>
           covers the biodegradability trade-offs relevant to degreaser surfactant selection.
         </p>
       </section>
 
       <!--
         IMAGE PLACEHOLDER — CONTEXTUAL 2
-        File: complete-guide-industrial-degreaser-formulation-contextual-2-globalformulation.webp
+        File: complete-guide-industrial-degreaser-formulation-contextual-2.webp
         Size: 900×500 px
         Alt: industrial degreaser performance comparison — degreaser testing equipment with metal panels undergoing cleanliness evaluation | Global Formulation
         Generation prompt:
@@ -653,7 +653,7 @@ const schemas = [orgSchema, websiteSchema, authorSchema, breadcrumbSchema, blogP
           cleaning is typically caused by the degreaser pH being too high for the alloy grade —
           the corrective action is pH reduction and addition of a chelant or silicate to buffer
           the surface against alkaline attack. Our troubleshooting resource on
-          <a href="https://www.globalformulation.com/cleaning-products-phase-split-separation-storage" target="_top">cleaning product instability and phase separation</a>
+          <a href="https://www.globalaerosols.com/cleaning-products-phase-split-separation-storage" target="_top">cleaning product instability and phase separation</a>
           addresses related formulation stability problems.
         </p>
       </section>
@@ -685,7 +685,7 @@ const schemas = [orgSchema, websiteSchema, authorSchema, breadcrumbSchema, blogP
           oil rejection, and biological stability rather than pure cleaning power — a
           different formulation optimisation target than the incumbent product designs.
           These trends are further explored in our guide to
-          <a href="https://www.globalformulation.com/future-of-eco-friendly-chemical-products" target="_top">the future of eco-friendly industrial chemical products</a>.
+          <a href="https://www.globalaerosols.com/future-of-eco-friendly-chemical-products" target="_top">the future of eco-friendly industrial chemical products</a>.
         </p>
       </section>
 
@@ -740,7 +740,7 @@ const schemas = [orgSchema, websiteSchema, authorSchema, breadcrumbSchema, blogP
       <div class="cta-block">
         <h2>Need Expert Guidance on Industrial Degreaser Formulation?</h2>
         <p>Our team provides end-to-end technical consultancy — from soil and substrate analysis and surfactant selection through to full formulation development, process validation, regulatory compliance, and scale-up support.</p>
-        <a href="https://www.globalformulation.com/contact" target="_top" class="cta-btn">
+        <a href="https://www.globalaerosols.com/contact" target="_top" class="cta-btn">
           Get a Free Consultation
         </a>
       </div>
@@ -749,12 +749,12 @@ const schemas = [orgSchema, websiteSchema, authorSchema, breadcrumbSchema, blogP
       <section class="related-section">
         <h2>Related Articles</h2>
         <ul class="related-grid">
-          <li><a href="https://www.globalformulation.com/household-and-industrial-cleaners" target="_top">Household &amp; Industrial Cleaners: Formulation Overview</a></li>
-          <li><a href="https://www.globalformulation.com/ph-and-cleaning-acid-neutral-alkaline-products" target="_top">pH in Cleaning Products: Acid, Neutral &amp; Alkaline Cleaners</a></li>
-          <li><a href="https://www.globalformulation.com/choosing-the-right-product-consultant" target="_top">How to Choose the Right Product Consultant</a></li>
-          <li><a href="https://www.globalformulation.com/volatile-organic-compounds-and-pollution" target="_top">Pollution Caused by VOCs: What Manufacturers Need to Know</a></li>
-          <li><a href="https://www.globalformulation.com/future-of-eco-friendly-chemical-products" target="_top">Green Chemistry Revolution: Eco-Friendly Industrial Products</a></li>
-          <li><a href="https://www.globalformulation.com/manufacturing-without-a-factory-guide" target="_top">Manufacturing Without a Factory: The MaaS Ecosystem</a></li>
+          <li><a href="https://www.globalaerosols.com/household-and-industrial-cleaners" target="_top">Household &amp; Industrial Cleaners: Formulation Overview</a></li>
+          <li><a href="https://www.globalaerosols.com/ph-and-cleaning-acid-neutral-alkaline-products" target="_top">pH in Cleaning Products: Acid, Neutral &amp; Alkaline Cleaners</a></li>
+          <li><a href="https://www.globalaerosols.com/choosing-the-right-product-consultant" target="_top">How to Choose the Right Product Consultant</a></li>
+          <li><a href="https://www.globalaerosols.com/volatile-organic-compounds-and-pollution" target="_top">Pollution Caused by VOCs: What Manufacturers Need to Know</a></li>
+          <li><a href="https://www.globalaerosols.com/future-of-eco-friendly-chemical-products" target="_top">Green Chemistry Revolution: Eco-Friendly Industrial Products</a></li>
+          <li><a href="https://www.globalaerosols.com/manufacturing-without-a-factory-guide" target="_top">Manufacturing Without a Factory: The MaaS Ecosystem</a></li>
         </ul>
       </section>
 

@@ -1,0 +1,675 @@
+<div id="canwrap-hostinger-embed">
+    
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;800&display=swap" rel="stylesheet">
+
+    <script type="importmap">
+        {
+            "imports": {
+                "three": "https://unpkg.com/three@0.160.0/build/three.module.js",
+                "three/addons/": "https://unpkg.com/three@0.160.0/examples/jsm/"
+            }
+        }
+    </script>
+
+    <div id="cw-weldmax-wrapper">
+        
+        <div id="cw-ui-layer">
+            <h2 class="cw-title">Canwrap3D™</h2>
+            <span class="cw-version-label">Aluminium Monoblock Pro</span>
+
+            <div class="cw-control-group">
+                <div class="cw-label-row"><span>VIEWPORT BACKGROUND</span></div>
+                <div class="cw-btn-row">
+                    <button id="bg-default" class="cw-toggle-btn cw-toggle-left active">Default</button>
+                    <button id="bg-dark" class="cw-toggle-btn cw-toggle-mid">Dark</button>
+                    <button id="bg-white" class="cw-toggle-btn cw-toggle-mid">White</button>
+                    <button id="bg-custom" class="cw-toggle-btn cw-toggle-right">Custom</button>
+                </div>
+                <input type="file" id="bgUpload" accept="image/*" style="display:none">
+            </div>
+
+            <div class="cw-control-group">
+                <div class="cw-label-row"><span>DIMENSIONS</span></div>
+                
+                <div class="cw-label-row" style="margin-top:5px; font-weight:400; color:#666;">
+                    Diameter <span id="diamVal" style="float:right; font-weight:700;">35mm</span>
+                </div>
+                <select id="diameterSelect" class="cw-select">
+                    <option value="35">35mm</option>
+                    <option value="40">40mm</option>
+                    <option value="45">45mm</option>
+                    <option value="50">50mm</option>
+                    <option value="53">53mm</option>
+                    <option value="57">57mm</option>
+                    <option value="66">66mm</option>
+                </select>
+
+                <div class="cw-label-row" style="margin-top:8px; font-weight:400; color:#666;">Shoulder Profile</div>
+                <select id="shoulderSelect" class="cw-select">
+                    <option value="standard">Standard (Round)</option>
+                    <option value="bullet">Bullet (Ogive)</option>
+                    <option value="flat">Industrial (Flat)</option>
+                    <option value="rimless">Rimless (Soft)</option>
+                </select>
+
+                <div class="cw-label-row" style="margin-top:8px; font-weight:400; color:#666;">Body Shape</div>
+                <select id="bodyShapeSelect" class="cw-select">
+                    <option value="straight">Straight (Standard)</option>
+                    <option value="waisted">Waisted (Hourglass)</option>
+                    <option value="tapered">Tapered Base (V-Shape)</option>
+                    <option value="grip">Top Grip (3 Rings)</option>
+                    <option value="bottom_grip">Bottom Grip (3 Rings)</option>
+                    <option value="ringed_neck">Neck Ringed</option>
+                    <option value="barrel">Volume Barrel</option>
+                </select>
+
+                <div class="cw-label-row" style="margin-top:8px; font-weight:400; color:#666;">
+                    Height <span id="heightVal" style="float:right; font-weight:700;">150mm</span>
+                </div>
+                <input type="range" id="heightRange" class="cw-range" min="80" max="300" value="150">
+
+                <div class="cw-label-row" style="margin-top:8px; font-weight:400; color:#666;">
+                    Shoulder Height <span id="shoulderVal" style="float:right; font-weight:700;">15mm</span>
+                </div>
+                <input type="range" id="shoulderRange" class="cw-range" min="2" max="60" value="15">
+            </div>
+
+            <button class="cw-primary-btn" onclick="document.getElementById('artUpload').click()">
+                <span>&#8682;</span> UPLOAD DESIGN
+            </button>
+            <input type="file" id="artUpload" accept="image/*" style="display:none">
+            <div id="cw-loading">Processing Artwork...</div>
+
+            <div class="cw-control-group">
+                <div class="cw-label-row"><span>BRIGHTNESS</span> <span id="brightVal">50%</span></div>
+                <input type="range" id="brightRange" class="cw-range" min="0" max="100" value="50">
+                
+                <div style="height: 8px;"></div>
+
+                <div class="cw-label-row"><span>GLOSS</span> <span id="glossVal">70%</span></div>
+                <input type="range" id="glossRange" class="cw-range" min="0" max="100" value="70">
+            </div>
+
+            <div class="cw-control-group">
+                <div class="cw-btn-row" style="gap:8px">
+                    <button class="cw-btn-small" id="btnFlipH">FLIP HORIZ</button>
+                    <button class="cw-btn-small" id="btnFlipV">FLIP VERT</button>
+                </div>
+            </div>
+            <div style="height: 20px;"></div>
+        </div>
+
+        <div id="cw-canvas-layer"></div>
+
+    </div>
+
+    <style>
+        #canwrap-hostinger-embed {
+            position: relative; width: 100%; height: 100%; 
+            font-family: 'Inter', sans-serif; background: #111;
+            overflow: hidden; border-radius: 8px;
+        }
+
+        #cw-weldmax-wrapper {
+            display: flex; flex-direction: row; 
+            width: 100%; height: 100%; overflow: hidden;    
+            background-size: cover; background-position: center;
+            transition: background 0.3s ease;
+        }
+
+        #cw-canvas-layer { 
+            position: relative; flex-grow: 1; height: 100%;
+            z-index: 1; overflow: hidden;
+        }
+
+        #cw-ui-layer {
+            position: relative; width: 300px; flex-shrink: 0; height: 100%; 
+            z-index: 20; background: rgba(255, 255, 255, 0.90);
+            backdrop-filter: blur(20px); -webkit-backdrop-filter: blur(20px);
+            border-right: 1px solid rgba(0, 0, 0, 0.06);
+            box-shadow: 10px 0 30px rgba(0,0,0,0.05);
+            overflow-y: auto; overflow-x: hidden;
+            display: flex; flex-direction: column; 
+            padding: 15px; box-sizing: border-box;
+        }
+        #cw-ui-layer::-webkit-scrollbar { width: 4px; }
+        #cw-ui-layer::-webkit-scrollbar-track { background: rgba(0,0,0,0.02); }
+        #cw-ui-layer::-webkit-scrollbar-thumb { background: #cbd5e1; border-radius: 3px; }
+
+        .cw-title { 
+            font-size: 1.2rem; margin: 0; text-align: center; font-weight: 800; letter-spacing: -0.5px;
+            background: linear-gradient(135deg, #1e1b4b 0%, #4f46e5 100%);
+            -webkit-background-clip: text; -webkit-text-fill-color: transparent;
+        }
+        .cw-version-label {
+            display: block; text-align: center; font-size: 0.6rem; color: #64748b; 
+            margin-top: 2px; margin-bottom: 12px; 
+            font-weight: 700; text-transform: uppercase; letter-spacing: 1px; opacity: 0.8;
+        }
+
+        .cw-control-group { 
+            background: rgba(0, 0, 0, 0.02); border: 1px solid rgba(0, 0, 0, 0.05);
+            padding: 10px; border-radius: 10px; margin-bottom: 8px; transition: border-color 0.3s;
+        }
+
+        .cw-label-row { 
+            display: flex; justify-content: space-between; font-size: 0.6rem; color: #4f46e5; 
+            margin-bottom: 5px; font-weight: 700; letter-spacing: 1px; 
+        }
+
+        .cw-range { -webkit-appearance: none; width: 100%; background: transparent; cursor: pointer; margin-bottom: 5px; }
+        .cw-range::-webkit-slider-runnable-track { width: 100%; height: 4px; background: #cbd5e1; border-radius: 2px; }
+        .cw-range::-webkit-slider-thumb {
+            -webkit-appearance: none; height: 14px; width: 14px; border-radius: 50%;
+            background: #fff; box-shadow: 0 0 5px rgba(0,0,0,0.1); margin-top: -5px; transition: transform 0.1s;
+            border: 1px solid #e2e8f0;
+        }
+
+        .cw-select {
+            width: 100%; padding: 6px 8px; background: #ffffff; color: #334155; 
+            border: 1px solid #cbd5e1; border-radius: 6px; margin-bottom: 5px; cursor: pointer; 
+            font-size: 0.75rem; outline: none; transition: all 0.2s;
+        }
+
+        button.cw-primary-btn {
+            background: linear-gradient(135deg, #4f46e5 0%, #3b82f6 100%);
+            color: white; border: none; padding: 10px; width: 100%; 
+            border-radius: 8px; font-weight: 600; letter-spacing: 0.5px;
+            cursor: pointer; margin-bottom: 12px; font-size: 0.8rem;
+            display: flex; align-items: center; justify-content: center; gap: 8px;
+            box-shadow: 0 4px 15px rgba(79, 70, 229, 0.25); transition: transform 0.2s, box-shadow 0.2s;
+        }
+
+        .cw-btn-row { display: flex; gap: 0; }
+        .cw-btn-small { 
+            flex: 1; background: #f1f5f9; border: 1px solid #e2e8f0;
+            color: #64748b; padding: 8px; border-radius: 6px; cursor: pointer; 
+            font-size: 0.65rem; font-weight: 600; transition: all 0.2s; margin-right: 5px;
+        }
+        .cw-btn-small:last-child { margin-right: 0; }
+        .cw-btn-small:hover { background: #e2e8f0; color: #0f172a; border-color: #94a3b8; }
+
+        .cw-toggle-btn {
+            flex: 1; padding: 6px 4px; font-size: 0.6rem; font-weight: 700;
+            border: 1px solid #e2e8f0; background: #fff; color: #64748b;
+            cursor: pointer; transition: all 0.2s; text-transform: uppercase;
+        }
+        .cw-toggle-btn.active { background: #4f46e5; color: white; border-color: #4f46e5; }
+        .cw-toggle-left { border-radius: 6px 0 0 6px; border-right: none; }
+        .cw-toggle-mid { border-right: none; }
+        .cw-toggle-right { border-radius: 0 6px 6px 0; }
+
+        #cw-loading { display: none; text-align: center; color: #16a34a; font-weight: 700; font-size: 0.7rem; margin-bottom: 8px;}
+        canvas { width: 100% !important; height: 100% !important; outline: none; display: block; touch-action: pan-y; }
+
+        @media (max-width: 900px) {
+            #cw-weldmax-wrapper { flex-direction: column-reverse; }
+            #cw-ui-layer { 
+                width: 100%; height: 55%; 
+                border-right: none; border-top: 1px solid #e2e8f0; flex: none; padding: 12px;
+            }
+            #cw-canvas-layer { width: 100%; height: 45%; flex: none; }
+        }
+    </style>
+
+    <script type="module">
+        import * as THREE from 'three';
+        import { OrbitControls } from 'three/addons/controls/OrbitControls.js';
+        import { RoomEnvironment } from 'three/addons/environments/RoomEnvironment.js';
+        import { PMREMGenerator } from 'three';
+        import TWEEN from 'https://unpkg.com/@tweenjs/tween.js@23.1.1/dist/tween.esm.js';
+
+        // --- 1. CONFIGURATION ---
+        const NECK_RADIUS = 12.7; 
+        const DEFAULT_BG_URL = "https://assets.zyrosite.com/A3QlOV94WLSaL6xE/4075-N5bE7ZZnjfH0KoOV.webp";
+        const WRAPPER_ID = 'cw-weldmax-wrapper';
+        const CANVAS_ID = 'cw-canvas-layer';
+        
+        const BASE_DIAMETER = 35;
+        const BASE_CAMERA_Z = 850;
+
+        const state = {
+            diameter: 35,
+            height: 150,
+            shoulder: 15,
+            shoulderType: 'standard',
+            bodyShape: 'straight', 
+            flipX: 1,
+            flipY: 1,
+            gloss: 70,     
+            brightness: 50, 
+        };
+
+        // --- 2. SCENE SETUP ---
+        const scene = new THREE.Scene();
+        scene.background = null; 
+
+        const pixelRatio = Math.min(window.devicePixelRatio, 2.0); 
+
+        const renderer = new THREE.WebGLRenderer({ antialias: true, alpha: true });
+        renderer.setPixelRatio(pixelRatio);
+        renderer.toneMapping = THREE.ACESFilmicToneMapping;
+        renderer.toneMappingExposure = 1.1;
+        renderer.shadowMap.enabled = true;
+        renderer.shadowMap.type = THREE.PCFSoftShadowMap; 
+        
+        const canvasContainer = document.getElementById(CANVAS_ID);
+        canvasContainer.appendChild(renderer.domElement);
+
+        // --- TELEPHOTO LENS ---
+        const camera = new THREE.PerspectiveCamera(18, 1, 0.1, 4000); 
+        camera.position.set(0, 100, BASE_CAMERA_Z); 
+
+        function resizeRenderer() {
+            const width = canvasContainer.clientWidth;
+            const height = canvasContainer.clientHeight;
+            if (width === 0 || height === 0) return; 
+            renderer.setSize(width, height);
+            camera.aspect = width / height;
+            camera.updateProjectionMatrix();
+        }
+        
+        window.addEventListener('resize', resizeRenderer);
+        setTimeout(resizeRenderer, 100);
+
+        // ENVIRONMENT
+        const pmremGenerator = new PMREMGenerator(renderer);
+        pmremGenerator.compileEquirectangularShader();
+        const roomEnv = pmremGenerator.fromScene(new RoomEnvironment(), 0.04).texture;
+        scene.environment = roomEnv; 
+        scene.environmentIntensity = 1.2;
+
+        // --- 3. LIGHTING ---
+        const ambientLight = new THREE.AmbientLight(0xffffff, 0.8);
+        scene.add(ambientLight);
+
+        const mainLight = new THREE.DirectionalLight(0xffffff, 1.0);
+        mainLight.position.set(50, 80, 50);
+        mainLight.castShadow = true;
+        mainLight.shadow.mapSize.set(1024, 1024);
+        mainLight.shadow.bias = -0.0001;
+        scene.add(mainLight);
+
+        const frontLight = new THREE.DirectionalLight(0xffffff, 1.5);
+        frontLight.position.set(20, 10, 100); 
+        scene.add(frontLight);
+
+        const rimLight = new THREE.DirectionalLight(0xffffff, 1.5);
+        rimLight.position.set(-50, 50, -80);
+        scene.add(rimLight);
+
+        const planeGeo = new THREE.PlaneGeometry(2000, 2000);
+        const planeMat = new THREE.ShadowMaterial({ opacity: 0.1, color: 0x000000 });
+        const plane = new THREE.Mesh(planeGeo, planeMat);
+        plane.rotation.x = -Math.PI / 2;
+        plane.position.y = -0.1;
+        plane.receiveShadow = true;
+        scene.add(plane);
+
+        const controls = new OrbitControls(camera, renderer.domElement);
+        controls.target.set(0, 75, 0); 
+        controls.enableDamping = true;
+        controls.minDistance = 300; 
+        controls.maxDistance = 2500;
+
+        // --- 4. MATERIALS ---
+        const satinMetalMaterial = new THREE.MeshStandardMaterial({
+            color: 0xeeeeee, metalness: 1.0, roughness: 0.45, envMapIntensity: 1.0, side: THREE.DoubleSide
+        });
+
+        const labelMaterial = new THREE.MeshPhysicalMaterial({
+            color: 0xeeeeee, metalness: 1.0, roughness: 0.45, clearcoat: 0.0, clearcoatRoughness: 0.1, 
+            sheen: 0.5, emissive: 0x000000, side: THREE.FrontSide
+        });
+
+        let currentTexture = null;
+        const canGroup = new THREE.Group();
+        scene.add(canGroup);
+
+        // --- 5. GEOMETRY ENGINE ---
+        function getShoulderPoints(radius, height, type, startY, visualScaleX) {
+            // Apply visual scale to radius only for rendering points
+            const r = radius * visualScaleX;
+            const neckR = NECK_RADIUS * visualScaleX;
+            
+            const points = [];
+            if (type === 'flat') {
+                points.push(new THREE.Vector2(neckR, startY + height));
+            } 
+            else if (type === 'bullet') {
+                const curve = new THREE.CubicBezierCurve(
+                    new THREE.Vector2(r, startY),
+                    new THREE.Vector2(r, startY + height * 0.7), 
+                    new THREE.Vector2(r * 0.8, startY + height * 0.95), 
+                    new THREE.Vector2(neckR, startY + height)
+                );
+                for (let i = 1; i <= 24; i++) points.push(curve.getPoint(i/24));
+            } 
+            else if (type === 'rimless') {
+                const curve = new THREE.QuadraticBezierCurve(
+                    new THREE.Vector2(r, startY),
+                    new THREE.Vector2(r, startY + height * 0.5), 
+                    new THREE.Vector2(neckR, startY + height)
+                );
+                for (let i = 1; i <= 24; i++) points.push(curve.getPoint(i/24));
+            }
+            else {
+                if (height > 5) {
+                    points.push(new THREE.Vector2(r * 0.95, startY + height * 0.3));
+                    points.push(new THREE.Vector2(neckR * 1.2, startY + height * 0.8));
+                    points.push(new THREE.Vector2(neckR, startY + height));
+                } else {
+                    points.push(new THREE.Vector2(neckR, startY + height));
+                }
+            }
+            // Rim
+            points.push(new THREE.Vector2(neckR - (1 * visualScaleX), startY + height));
+            return points;
+        }
+
+        function getBodyPoints(radius, height, type, visualScaleX) {
+            const points = [];
+            const divisions = 128; 
+            const getGrooveOffset = (pct, start, end, depth, frequency) => {
+                if (pct > start && pct < end) {
+                    const zonePct = (pct - start) / (end - start);
+                    const wave = Math.sin(zonePct * Math.PI * 2 * frequency);
+                    if (wave < 0) return wave * depth;
+                }
+                return 0;
+            };
+
+            for (let i = 0; i <= divisions; i++) {
+                const pct = i / divisions;
+                const y = pct * height;
+                let r = radius;
+
+                if (type === 'waisted') {
+                    const curve = new THREE.CubicBezierCurve(
+                        new THREE.Vector2(radius, 0),
+                        new THREE.Vector2(radius, height * 0.2), 
+                        new THREE.Vector2(radius * 0.75, height * 0.5), 
+                        new THREE.Vector2(radius, height)  
+                    );
+                    r = curve.getPoint(pct).x;
+                }
+                else if (type === 'tapered') {
+                    const curve = new THREE.QuadraticBezierCurve(
+                        new THREE.Vector2(radius * 0.8, 0),
+                        new THREE.Vector2(radius, height * 0.15), 
+                        new THREE.Vector2(radius, height)
+                    );
+                    r = curve.getPoint(pct).x;
+                }
+                else if (type === 'barrel') {
+                    const curve = new THREE.QuadraticBezierCurve(
+                        new THREE.Vector2(radius, 0),
+                        new THREE.Vector2(radius * 1.15, height * 0.5),
+                        new THREE.Vector2(radius, height)
+                    );
+                    r = curve.getPoint(pct).x;
+                }
+                else if (type === 'grip') { r += getGrooveOffset(pct, 0.65, 0.85, 1.5, 3); }
+                else if (type === 'bottom_grip') { r += getGrooveOffset(pct, 0.10, 0.30, 1.5, 3); }
+                else if (type === 'ringed_neck') { r += getGrooveOffset(pct, 0.80, 0.95, 1.0, 4); }
+
+                // Apply Visual Damping Scale here
+                points.push(new THREE.Vector2(r * visualScaleX, y));
+            }
+            return points;
+        }
+
+        function updateCanGeometry() {
+            while(canGroup.children.length > 0){ 
+                const mesh = canGroup.children[0];
+                if(mesh.geometry) mesh.geometry.dispose();
+                canGroup.remove(mesh); 
+            }
+
+            const physicalRadius = state.diameter / 2;
+            
+            // --- VISUAL DAMPING LOGIC ---
+            // We dampen the growth of the visual width.
+            // If diameter is 35, visual factor is 1.0
+            // If diameter is 66, we dampen it so it only visually grows by ~35% instead of ~90%
+            const growthFactor = (state.diameter - 35) / 35; // 0.0 to 0.88
+            const dampedGrowth = growthFactor * 0.40; // Dampen to 40% strength
+            const visualScaleX = (1.0 + dampedGrowth) / (1.0 + growthFactor); // Scale down factor
+            
+            // This effectively shrinks the can in 3D space as it gets wider in UI numbers
+            
+            const shoulderH = (state.shoulder > state.height - 2) ? state.height - 2 : state.shoulder;
+            const bodyH = state.height - shoulderH;
+
+            const bodyPoints = getBodyPoints(physicalRadius, bodyH, state.bodyShape, visualScaleX);
+            const bodyTopRadius = bodyPoints[bodyPoints.length - 1].x / visualScaleX; // Normalize back for math
+            const shoulderPoints = getShoulderPoints(bodyTopRadius, shoulderH, state.shoulderType, bodyH, visualScaleX);
+            
+            const fullProfile = [...bodyPoints, ...shoulderPoints];
+            const fullGeo = new THREE.LatheGeometry(fullProfile, 64);
+            const fullMesh = new THREE.Mesh(fullGeo, labelMaterial);
+            fullMesh.castShadow = true;
+            canGroup.add(fullMesh);
+
+            // Bottom Cup
+            const bodyBottomRadius = bodyPoints[0].x; // Already scaled
+            const bottomPoints = [];
+            const domeHeight = 6;
+            const rimWidth = 2;
+
+            bottomPoints.push(new THREE.Vector2(0, domeHeight));
+            const curve = new THREE.QuadraticBezierCurve(
+                new THREE.Vector2(0, domeHeight),
+                new THREE.Vector2(bodyBottomRadius * 0.5, domeHeight), 
+                new THREE.Vector2(bodyBottomRadius * 0.85, 0)       
+            );
+            for (let i = 1; i <= 10; i++) bottomPoints.push(curve.getPoint(i/10));
+            bottomPoints.push(new THREE.Vector2(bodyBottomRadius, rimWidth));
+
+            const bottomGeo = new THREE.LatheGeometry(bottomPoints, 64);
+            const bottomMesh = new THREE.Mesh(bottomGeo, satinMetalMaterial);
+            bottomMesh.position.y = 0;
+            canGroup.add(bottomMesh);
+
+            // Auto-Center Vertical
+            const newCenterY = state.height / 2;
+            new TWEEN.Tween(controls.target)
+                .to({ y: newCenterY }, 500)
+                .easing(TWEEN.Easing.Quadratic.Out)
+                .start();
+
+            // Adjust Camera Zoom slightly for height changes, but not width
+            // This prevents the "zooming out" feeling, but keeps the whole can in view
+            const heightFactor = (state.height - 150) / 150;
+            const targetZ = BASE_CAMERA_Z + (heightFactor * 100);
+            
+             new TWEEN.Tween(camera.position)
+                .to({ z: targetZ }, 600)
+                .easing(TWEEN.Easing.Quadratic.Out)
+                .start();
+        }
+
+        // --- 6. LOGIC ---
+        function updateMaterialProps() {
+            if (currentTexture) {
+                labelMaterial.metalness = 0.1; 
+                labelMaterial.color.setHex(0xffffff); 
+                
+                const g = state.gloss / 100;
+                labelMaterial.roughness = 0.6 - (g * 0.55); 
+                labelMaterial.clearcoat = g; 
+                labelMaterial.clearcoatRoughness = 1.0 - g;
+                
+                const b = state.brightness;
+                if (b < 50) {
+                    const darkenFactor = b / 50; 
+                    labelMaterial.color.setScalar(darkenFactor);
+                    labelMaterial.emissive.setScalar(0);
+                } else {
+                    labelMaterial.color.setScalar(1.0); 
+                    const brightenFactor = ((b - 50) / 50) * 0.2; 
+                    labelMaterial.emissive.setScalar(brightenFactor);
+                }
+            } else {
+                labelMaterial.metalness = 1.0;
+                labelMaterial.roughness = 0.45;
+                labelMaterial.color.setHex(0xeeeeee);
+                labelMaterial.emissive.setScalar(0);
+                labelMaterial.clearcoat = 0;
+            }
+        }
+
+        // --- EVENTS ---
+        document.getElementById('diameterSelect').addEventListener('change', (e) => {
+            state.diameter = parseFloat(e.target.value);
+            document.getElementById('diamVal').innerText = state.diameter + "mm";
+            updateCanGeometry();
+        });
+        document.getElementById('shoulderSelect').addEventListener('change', (e) => {
+            state.shoulderType = e.target.value;
+            updateCanGeometry();
+        });
+        document.getElementById('bodyShapeSelect').addEventListener('change', (e) => {
+            state.bodyShape = e.target.value;
+            updateCanGeometry();
+        });
+        document.getElementById('heightRange').addEventListener('input', (e) => {
+            state.height = parseFloat(e.target.value);
+            document.getElementById('heightVal').innerText = state.height + "mm";
+            updateCanGeometry();
+        });
+        document.getElementById('shoulderRange').addEventListener('input', (e) => {
+            state.shoulder = parseFloat(e.target.value);
+            document.getElementById('shoulderVal').innerText = state.shoulder + "mm";
+            updateCanGeometry();
+        });
+        document.getElementById('glossRange').addEventListener('input', (e) => {
+            state.gloss = parseFloat(e.target.value);
+            document.getElementById('glossVal').innerText = state.gloss + "%";
+            if(currentTexture) updateMaterialProps();
+        });
+        document.getElementById('brightRange').addEventListener('input', (e) => {
+            state.brightness = parseFloat(e.target.value);
+            document.getElementById('brightVal').innerText = state.brightness + "%";
+            if(currentTexture) updateMaterialProps();
+        });
+
+        const wrapper = document.getElementById(WRAPPER_ID);
+        const bgBtns = {
+            default: document.getElementById('bg-default'),
+            dark: document.getElementById('bg-dark'),
+            white: document.getElementById('bg-white'),
+            custom: document.getElementById('bg-custom')
+        };
+        const bgUpload = document.getElementById('bgUpload');
+
+        function setActiveBgBtn(name) {
+            Object.values(bgBtns).forEach(btn => btn.classList.remove('active'));
+            bgBtns[name].classList.add('active');
+        }
+
+        bgBtns.default.addEventListener('click', () => {
+            wrapper.style.backgroundImage = `url(${DEFAULT_BG_URL})`;
+            setActiveBgBtn('default');
+            ambientLight.intensity = 0.8;
+            frontLight.intensity = 1.5;
+            planeMat.opacity = 0.15; 
+        });
+
+        bgBtns.dark.addEventListener('click', () => {
+            wrapper.style.backgroundImage = "radial-gradient(circle at 60% 50%, #1e293b 0%, #0f172a 100%)";
+            setActiveBgBtn('dark');
+            ambientLight.intensity = 0.5;
+            frontLight.intensity = 2.0; 
+            planeMat.opacity = 0.3;
+        });
+
+        bgBtns.white.addEventListener('click', () => {
+            wrapper.style.backgroundImage = "linear-gradient(to bottom, #ffffff, #e6e6e6)";
+            setActiveBgBtn('white');
+            ambientLight.intensity = 0.9;
+            frontLight.intensity = 1.2;
+            planeMat.opacity = 0.05;
+        });
+
+        bgBtns.custom.addEventListener('click', () => {
+            bgUpload.click();
+        });
+
+        bgUpload.addEventListener('change', (e) => {
+            const file = e.target.files[0];
+            if(file) {
+                const reader = new FileReader();
+                reader.onload = (evt) => {
+                    wrapper.style.backgroundImage = `url(${evt.target.result})`;
+                    setActiveBgBtn('custom');
+                    ambientLight.intensity = 0.7;
+                    planeMat.opacity = 0.2;
+                };
+                reader.readAsDataURL(file);
+            }
+        });
+
+        wrapper.style.backgroundImage = `url(${DEFAULT_BG_URL})`;
+
+        function updateTextureTransform() {
+            if (currentTexture) {
+                currentTexture.repeat.set(state.flipX, state.flipY);
+                currentTexture.offset.x = (state.flipX < 0) ? 1 : 0;
+                currentTexture.offset.y = (state.flipY < 0) ? 1 : 0;
+            }
+        }
+
+        document.getElementById('artUpload').addEventListener('change', (e) => {
+            const file = e.target.files[0];
+            if (file) {
+                document.getElementById('cw-loading').style.display = 'block';
+                const reader = new FileReader();
+                reader.onload = function(evt) {
+                    const img = new Image();
+                    img.src = evt.target.result;
+                    img.onload = () => {
+                        if (currentTexture) currentTexture.dispose();
+                        currentTexture = new THREE.Texture(img);
+                        currentTexture.colorSpace = THREE.SRGBColorSpace;
+                        currentTexture.anisotropy = renderer.capabilities.getMaxAnisotropy();
+                        
+                        currentTexture.wrapS = THREE.RepeatWrapping;
+                        currentTexture.wrapT = THREE.ClampToEdgeWrapping;
+                        currentTexture.needsUpdate = true;
+                        
+                        updateTextureTransform();
+                        labelMaterial.map = currentTexture;
+                        labelMaterial.needsUpdate = true;
+                        document.getElementById('cw-loading').style.display = 'none';
+                        updateMaterialProps();
+                    };
+                };
+                reader.readAsDataURL(file);
+            }
+        });
+
+        document.getElementById('btnFlipH').addEventListener('click', () => {
+            state.flipX *= -1;
+            updateTextureTransform();
+        });
+        document.getElementById('btnFlipV').addEventListener('click', () => {
+            state.flipY *= -1;
+            updateTextureTransform();
+        });
+
+        updateCanGeometry();
+        updateMaterialProps(); 
+
+        function animate(time) {
+            requestAnimationFrame(animate);
+            TWEEN.update(time);
+            controls.update();
+            renderer.render(scene, camera);
+        }
+        animate();
+        
+        resizeRenderer();
+
+    </script>
+</div>

@@ -26,21 +26,21 @@ const formTechItems = [
     url: "/arts-and-crafts/",
     tag: "Creative & Hobbies",
     desc: "Specialty adhesives, glues, and binders developed for creative, craft, and hobby applications.",
-    image: "/images/artscrafts_category.png",
+    image: "https://cdn.globalaerosols.com/images/artscrafts_category.webp",
   },
   {
     label: "Automotive",
     url: "/automotive/",
     tag: "Car Care & Aerosols",
     desc: "Brake cleaners, carburetor sprays, penetrating lubricants, and automotive maintenance aerosols engineered to specs.",
-    image: "/images/automotive_category.png",
+    image: "https://cdn.globalaerosols.com/images/automotive_category.webp",
   },
   {
     label: "Industrial",
     url: "/industrial/",
     tag: "Industrial Aerosols",
     desc: "Mold release agents, weld spatter release, cold galvanizing zinc, and heavy-duty industrial aerosols.",
-    image: "/images/industrial_category.png",
+    image: "https://cdn.globalaerosols.com/images/industrial_category.webp",
   },
   {
     label: "Adhesives & Sealants",
@@ -54,14 +54,14 @@ const formTechItems = [
     url: "/cosmetics-and-personal-care/",
     tag: "Hygiene & Wellness",
     desc: "Daily care, skin, hair, hygiene formulations, and personal care solutions.",
-    image: "/images/personalcare_category.png",
+    image: "https://cdn.globalaerosols.com/images/personalcare_category.webp",
   },
   {
     label: "Cosmetics",
     url: "/cosmetics/",
     tag: "Beauty & Luxury",
     desc: "Premium cosmetics emulsions, active delivery systems, and regulatory-compliant makeup formulations.",
-    image: "/images/cosmetics_category.png",
+    image: "https://cdn.globalaerosols.com/images/cosmetics_category.webp",
   },
   {
     label: "Pharmaceuticals",
@@ -157,6 +157,7 @@ const formTechItems = [
         <ul class="dropdown-menu">
           <li><a href="/aerosol-contract-manufacturing-and-filling/">Contract Manufacturing &amp; Filling</a></li>
           <li><a href="/services/product-formulation/">Product Formulation</a></li>
+          <li><a href="/services/consulting-and-technical-support/">Consulting &amp; Technical Support</a></li>
           <li><a href="/services/aerosol-machines-and-equipment/">Aerosol Machines &amp; Equipment</a></li>
           <li><a href="/services/aerosol-cans/">Aerosol Cans</a></li>
           <li><a href="/services/aerosol-valves-caps-and-actuators/">Valves, Caps &amp; Actuators</a></li>
@@ -164,8 +165,19 @@ const formTechItems = [
         </ul>
       </li>
 
+      <!-- Aerosol Software Dropdown -->
+      <li class="dropdown">
+        <button class="dropdown-toggle" aria-haspopup="true" aria-expanded="false">
+          Aerosol Software <span class="chevron">▼</span>
+        </button>
+        <ul class="dropdown-menu">
+          <li><a href="/services/canwrap-3d/">CanWrap 3D</a></li>
+          <li><a href="/services/canwrap-3d-aluminium/">CanWrap 3D Aluminium</a></li>
+        </ul>
+      </li>
+
       <li><a href="/about/" class={pathname === "/about/" ? "active" : undefined}>About</a></li>
-      <li><a href="/contact/" class={pathname === "/contact/" ? "active" : undefined}>Consulting</a></li>
+      <li><a href="/contact/" class={pathname === "/contact/" ? "active" : undefined}>Contact</a></li>
       <li class="dropdown">
         <button class="dropdown-toggle" aria-haspopup="true" aria-expanded="false">
           Legal <span class="chevron">▼</span>
@@ -220,6 +232,7 @@ const formTechItems = [
         <ul class="mobile-dropdown-menu">
           <li><a href="/aerosol-contract-manufacturing-and-filling/">Contract Manufacturing &amp; Filling</a></li>
           <li><a href="/services/product-formulation/">Product Formulation</a></li>
+          <li><a href="/services/consulting-and-technical-support/">Consulting &amp; Technical Support</a></li>
           <li><a href="/services/aerosol-machines-and-equipment/">Aerosol Machines &amp; Equipment</a></li>
           <li><a href="/services/aerosol-cans/">Aerosol Cans</a></li>
           <li><a href="/services/aerosol-valves-caps-and-actuators/">Valves, Caps &amp; Actuators</a></li>
@@ -227,8 +240,18 @@ const formTechItems = [
         </ul>
       </li>
 
+      <li class="mobile-dropdown">
+        <button class="mobile-dropdown-toggle">
+          Aerosol Software <span class="chevron">▼</span>
+        </button>
+        <ul class="mobile-dropdown-menu">
+          <li><a href="/services/canwrap-3d/">CanWrap 3D</a></li>
+          <li><a href="/services/canwrap-3d-aluminium/">CanWrap 3D Aluminium</a></li>
+        </ul>
+      </li>
+
       <li><a href="/about/">About</a></li>
-      <li><a href="/contact/">Consulting</a></li>
+      <li><a href="/contact/">Contact</a></li>
       <li class="mobile-dropdown">
         <button class="mobile-dropdown-toggle">
           Legal <span class="chevron">▼</span>

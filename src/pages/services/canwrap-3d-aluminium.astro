@@ -1,0 +1,719 @@
+---
+import Layout from '../../lc/layouts/Layout.astro';
+---
+
+<Layout
+  title="CanWrap 3D Aluminium Monoblock Design Studio | Global Aerosols"
+  description="Professional parametric 3D configurator for aluminium monoblock aerosol cans. Simulate complex can geometries, flexographic label artwork, gloss, brightness, and custom shoulder profiles in real time."
+  canonical="/services/canwrap-3d-aluminium/"
+>
+
+  <div class="cwa-page">
+
+    <!-- ══════════════════ BREADCRUMBS ══════════════════ -->
+    <div class="cwa-breadcrumbs">
+      <a href="/">Home</a><span>/</span>
+      <span>Aerosol Software</span><span>/</span>
+      <span class="cwa-curr">CanWrap 3D Aluminium</span>
+    </div>
+
+    <!-- ══════════════════ SECTION 1 — INTRO ══════════════════ -->
+    <section class="cwa-intro">
+
+      <header class="cwa-hero">
+        <span class="cwa-badge">Professional Configurator</span>
+        <h1 id="cwa-main-headline">
+          Aerosols Aluminium Monoblock<br>
+          <span class="cwa-accent-text">3D Design</span>
+        </h1>
+        <p class="cwa-subtitle">
+          Experience real-time parametric visualization for industrial packaging.
+          Simulate complex aerosol geometries with studio-grade material controls.
+        </p>
+      </header>
+
+      <div class="cwa-grid-layout">
+
+        <div class="cwa-column">
+          <h3><span class="cwa-icon">✦</span> Core Capabilities</h3>
+          <ul class="cwa-feature-list">
+            <li>
+              <strong>Smart Labeling System</strong>
+              <span>Upload flexographic designs and align perfectly using the <span class="cwa-highlight">Flip Horizontal/Vertical</span> tools.</span>
+            </li>
+            <li>
+              <strong>Advanced Material Studio</strong>
+              <span>Fine-tune surface realism. Adjust <span class="cwa-highlight">Gloss</span> for reflectivity and <span class="cwa-highlight">Brightness</span> for print density.</span>
+            </li>
+            <li>
+              <strong>Environmental Context</strong>
+              <span>Toggle viewport lighting between Default, Dark, or White, or upload your own <span class="cwa-highlight">Custom Background</span>.</span>
+            </li>
+          </ul>
+        </div>
+
+        <div class="cwa-column cwa-guide-col">
+          <h3><span class="cwa-icon">➔</span> Workflow Guide</h3>
+          <div class="cwa-steps">
+            <div class="cwa-step">
+              <span class="cwa-step-num">01</span>
+              <div class="cwa-step-text"><strong>Geometry:</strong> Set your Diameter (35–66 mm) and Height. Select a profile like <em>Waisted</em> or <em>Bullet</em>.</div>
+            </div>
+            <div class="cwa-step">
+              <span class="cwa-step-num">02</span>
+              <div class="cwa-step-text"><strong>Surface:</strong> Use the sliders to dial in the finish. Reduce <em>Gloss</em> for a matte effect.</div>
+            </div>
+            <div class="cwa-step">
+              <span class="cwa-step-num">03</span>
+              <div class="cwa-step-text"><strong>Visualize:</strong> Upload artwork. Use the <em>Viewport Background</em> tabs to check contrast.</div>
+            </div>
+          </div>
+        </div>
+
+      </div>
+
+      <div class="cwa-divider">
+        <span>INTERACTIVE WORKSPACE BELOW</span>
+        <div class="cwa-line"></div>
+      </div>
+
+    </section>
+
+    <!-- ══════════════════ SECTION 2 — ENGINE ══════════════════ -->
+    <section class="cwa-studio-section">
+
+      <div class="cwa-studio-header">
+        <span class="cwa-eyebrow">Aluminium Monoblock Pro Engine</span>
+        <h2 class="cwa-studio-title">3D Aluminium Can Studio</h2>
+        <p class="cwa-studio-subtitle">
+          Configure diameter, height, shoulder profile, and body shape.
+          Upload your flexographic artwork for studio-grade PBR material rendering.
+        </p>
+      </div>
+
+      <!-- Engine wrapper: bounded height so page scrolls normally.
+           data-lenis-prevent stops the sitewide Lenis smooth-scroll from
+           hijacking the wheel here, so scroll-over-canvas zooms instead of scrolling. -->
+      <div id="cwa-engine-wrapper" data-lenis-prevent>
+
+        <!-- Sidebar controls (left) -->
+        <div id="cwa-ui-layer">
+          <h2 class="cwa-tool-heading">Canwrap3D™</h2>
+          <span class="cwa-ver-label">Aluminium Monoblock Pro</span>
+
+          <div class="cwa-ctrl-group">
+            <div class="cwa-label-row"><span>VIEWPORT BACKGROUND</span></div>
+            <div class="cwa-btn-row-toggle">
+              <button id="bg-default" class="cwa-toggle-btn cwa-tgl-left cwa-tgl-active">Default</button>
+              <button id="bg-dark"    class="cwa-toggle-btn cwa-tgl-mid">Dark</button>
+              <button id="bg-white"   class="cwa-toggle-btn cwa-tgl-mid">White</button>
+              <button id="bg-custom"  class="cwa-toggle-btn cwa-tgl-right">Custom</button>
+            </div>
+            <input type="file" id="bgUpload" accept="image/*" style="display:none">
+          </div>
+
+          <div class="cwa-ctrl-group">
+            <div class="cwa-label-row"><span>DIMENSIONS</span></div>
+
+            <div class="cwa-sub-label">Diameter <span id="diamVal">35mm</span></div>
+            <select id="diameterSelect" class="cwa-select">
+              <option value="35">35mm</option>
+              <option value="40">40mm</option>
+              <option value="45">45mm</option>
+              <option value="50">50mm</option>
+              <option value="53">53mm</option>
+              <option value="57">57mm</option>
+              <option value="66">66mm</option>
+            </select>
+
+            <div class="cwa-sub-label" style="margin-top:8px">Shoulder Profile</div>
+            <select id="shoulderSelect" class="cwa-select">
+              <option value="standard">Standard (Round)</option>
+              <option value="bullet">Bullet (Ogive)</option>
+              <option value="flat">Industrial (Flat)</option>
+              <option value="rimless">Rimless (Soft)</option>
+            </select>
+
+            <div class="cwa-sub-label" style="margin-top:8px">Body Shape</div>
+            <select id="bodyShapeSelect" class="cwa-select">
+              <option value="straight">Straight (Standard)</option>
+              <option value="waisted">Waisted (Hourglass)</option>
+              <option value="tapered">Tapered Base (V-Shape)</option>
+              <option value="grip">Top Grip (3 Rings)</option>
+              <option value="bottom_grip">Bottom Grip (3 Rings)</option>
+              <option value="ringed_neck">Neck Ringed</option>
+              <option value="barrel">Volume Barrel</option>
+            </select>
+
+            <div class="cwa-label-row" style="margin-top:8px">
+              <span>HEIGHT</span><span id="heightVal">150mm</span>
+            </div>
+            <input type="range" id="heightRange" class="cwa-range" min="80" max="300" value="150">
+
+            <div class="cwa-label-row" style="margin-top:8px">
+              <span>SHOULDER HEIGHT</span><span id="shoulderVal">15mm</span>
+            </div>
+            <input type="range" id="shoulderRange" class="cwa-range" min="2" max="60" value="15">
+          </div>
+
+          <button id="artUploadBtn" class="cwa-primary-btn">
+            <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4M17 8l-5-5-5 5M12 3v12"/></svg>
+            UPLOAD DESIGN
+          </button>
+          <input type="file" id="artUpload" accept="image/*" style="display:none">
+          <div id="cwa-loading">Processing Artwork…</div>
+
+          <div class="cwa-ctrl-group">
+            <div class="cwa-label-row"><span>BRIGHTNESS</span><span id="brightVal">50%</span></div>
+            <input type="range" id="brightRange" class="cwa-range" min="0" max="100" value="50">
+            <div style="height:8px"></div>
+            <div class="cwa-label-row"><span>GLOSS</span><span id="glossVal">70%</span></div>
+            <input type="range" id="glossRange" class="cwa-range" min="0" max="100" value="70">
+          </div>
+
+          <div class="cwa-ctrl-group">
+            <div class="cwa-btn-row">
+              <button id="btnFlipH" class="cwa-btn-small">FLIP HORIZ</button>
+              <button id="btnFlipV" class="cwa-btn-small">FLIP VERT</button>
+            </div>
+          </div>
+
+          <div style="height:20px"></div>
+        </div>
+
+        <!-- Canvas (right — Three.js appends its own canvas here) -->
+        <div id="cwa-canvas-layer"></div>
+
+      </div>
+
+    </section>
+
+  </div>
+
+</Layout>
+
+<!-- ════════════════════════════ STYLES ════════════════════════════ -->
+<style>
+  .cwa-page, .cwa-page * { box-sizing: border-box; }
+
+  .cwa-page {
+    font-family: 'Inter', 'Roboto', sans-serif;
+    background: #ffffff;
+    min-height: 100vh;
+    color: #1e293b;
+  }
+
+  /* ── Breadcrumbs ── */
+  .cwa-breadcrumbs {
+    max-width: 1200px; margin: 0 auto; padding: 100px 40px 0;
+    font-size: 0.72rem; color: #475569; text-transform: uppercase;
+    font-weight: 700; letter-spacing: 2px;
+  }
+  .cwa-breadcrumbs a { text-decoration: none; color: #475569; transition: color 0.2s; }
+  .cwa-breadcrumbs a:hover { color: #0968e5; }
+  .cwa-breadcrumbs span { color: #94a3b8; margin: 0 8px; }
+  .cwa-breadcrumbs .cwa-curr { color: #0f172a; }
+
+  /* ══════════ INTRO SECTION ══════════ */
+  .cwa-intro {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 50px 40px 20px;
+  }
+
+  .cwa-hero { margin-bottom: 50px; }
+
+  .cwa-badge {
+    display: inline-block; padding: 5px 14px; background: #f1f5f9; color: #475569;
+    font-size: 0.7rem; font-weight: 700; border-radius: 20px;
+    letter-spacing: 0.5px; text-transform: uppercase; margin-bottom: 16px;
+  }
+
+  #cwa-main-headline {
+    font-family: 'Outfit','Montserrat',sans-serif;
+    font-size: clamp(2rem, 3.5vw, 2.8rem);
+    font-weight: 800; margin: 10px 0 20px;
+    letter-spacing: -1.5px; line-height: 1.1; color: #0f172a;
+    opacity: 0; transform: translateY(30px);
+  }
+
+  .cwa-accent-text { color: #0968e5; }
+
+  .cwa-subtitle {
+    font-size: 1.1rem; color: #475569; max-width: 650px;
+    line-height: 1.6; margin-bottom: 50px; font-weight: 300;
+  }
+
+  /* Grid */
+  .cwa-grid-layout {
+    display: grid; grid-template-columns: 1fr 1fr;
+    gap: 60px; margin-bottom: 40px;
+  }
+
+  .cwa-column h3 {
+    font-size: 0.85rem; text-transform: uppercase; letter-spacing: 1.5px;
+    color: #94a3b8; margin-bottom: 25px;
+    display: flex; align-items: center; gap: 10px; font-weight: 700;
+  }
+
+  .cwa-icon { color: #0968e5; }
+
+  .cwa-feature-list { list-style: none; padding: 0; margin: 0; }
+  .cwa-feature-list li {
+    margin-bottom: 25px; border-left: 2px solid #e2e8f0;
+    padding-left: 20px; transition: all 0.3s;
+  }
+  .cwa-feature-list li:hover { border-color: #0968e5; padding-left: 25px; }
+  .cwa-feature-list strong { display: block; color: #0f172a; font-weight: 700; font-size: 1rem; margin-bottom: 6px; }
+  .cwa-feature-list span { font-size: 0.95rem; color: #64748b; line-height: 1.5; }
+  .cwa-highlight { color: #0968e5; font-weight: 600; background: rgba(9,104,229,0.05); padding: 0 4px; border-radius: 4px; }
+
+  /* Steps */
+  .cwa-steps { display: flex; flex-direction: column; gap: 12px; }
+  .cwa-step {
+    display: flex; align-items: center; gap: 15px;
+    background: #fff; padding: 12px 15px; border-radius: 8px;
+    border: 1px solid #e2e8f0; box-shadow: 0 2px 5px rgba(0,0,0,0.02);
+    transition: transform 0.2s;
+  }
+  .cwa-step:hover { border-color: #cbd5e1; transform: translateX(5px); }
+  .cwa-step-num { font-size: 0.75rem; font-weight: 800; color: #cbd5e1; min-width: 20px; }
+  .cwa-step-text { font-size: 0.9rem; color: #334155; line-height: 1.4; }
+
+  /* Divider */
+  .cwa-divider { margin-top: 50px; text-align: center; position: relative; }
+  .cwa-divider span {
+    background: #fff; padding: 0 15px; position: relative; z-index: 1;
+    font-size: 0.65rem; font-weight: 800; color: #cbd5e1; letter-spacing: 2px; text-transform: uppercase;
+  }
+  .cwa-divider .cwa-line { position: absolute; top: 50%; left: 0; width: 100%; height: 1px; background: #f1f5f9; z-index: 0; }
+
+  /* ══════════ STUDIO SECTION ══════════ */
+  .cwa-studio-section {
+    background: #ffffff;
+    border-top: 6px solid #0968e5;
+    padding: 70px 40px 80px;
+  }
+
+  .cwa-studio-header { max-width: 760px; margin: 0 auto 48px; text-align: center; }
+  .cwa-eyebrow {
+    font-size: 0.72rem; font-weight: 700; text-transform: uppercase;
+    letter-spacing: 3px; color: #0968e5; display: block; margin-bottom: 10px;
+  }
+  .cwa-studio-title {
+    font-family: 'Outfit','Montserrat',sans-serif;
+    font-size: clamp(1.8rem,3vw,2.6rem); font-weight: 800;
+    color: #0f172a; text-transform: uppercase; letter-spacing: -0.5px; margin: 0 0 14px;
+  }
+  .cwa-studio-subtitle { font-size: 1rem; color: #475569; line-height: 1.7; margin: 0; }
+
+  /* Engine container */
+  #cwa-engine-wrapper {
+    position: relative;
+    max-width: 1400px; margin: 0 auto;
+    height: 730px;
+    display: flex; flex-direction: row;
+    overflow: hidden; border-radius: 16px;
+    border: 1px solid #e2e8f0;
+    box-shadow: 0 20px 50px rgba(15,23,42,0.07);
+    background-size: cover; background-position: center;
+    transition: background 0.3s ease;
+  }
+
+  /* Sidebar */
+  #cwa-ui-layer {
+    position: relative; width: 300px; flex-shrink: 0; height: 100%; z-index: 20;
+    background: rgba(255,255,255,0.92); backdrop-filter: blur(20px); -webkit-backdrop-filter: blur(20px);
+    border-right: 1px solid rgba(0,0,0,0.06);
+    box-shadow: 10px 0 30px rgba(0,0,0,0.05);
+    overflow-y: auto; overflow-x: hidden;
+    display: flex; flex-direction: column;
+    padding: 15px;
+  }
+  #cwa-ui-layer::-webkit-scrollbar { width: 4px; }
+  #cwa-ui-layer::-webkit-scrollbar-track { background: rgba(0,0,0,0.02); }
+  #cwa-ui-layer::-webkit-scrollbar-thumb { background: #cbd5e1; border-radius: 3px; }
+
+  /* Canvas — Three.js appends its own <canvas> as a child of this div */
+  #cwa-canvas-layer { position: relative; flex-grow: 1; height: 100%; z-index: 1; overflow: hidden; }
+  #cwa-canvas-layer canvas { width: 100% !important; height: 100% !important; outline: none; display: block; touch-action: none; }
+
+  /* Sidebar typography */
+  .cwa-tool-heading {
+    font-size: 1.2rem; margin: 0; text-align: center; font-weight: 800; letter-spacing: -0.5px;
+    background: linear-gradient(135deg, #0f172a 0%, #0968e5 100%);
+    -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text;
+  }
+  .cwa-ver-label {
+    display: block; text-align: center; font-size: 0.6rem; color: #64748b;
+    margin-top: 2px; margin-bottom: 12px;
+    font-weight: 700; text-transform: uppercase; letter-spacing: 1px; opacity: 0.8;
+  }
+
+  .cwa-ctrl-group {
+    background: rgba(0,0,0,0.02); border: 1px solid rgba(0,0,0,0.05);
+    padding: 10px; border-radius: 10px; margin-bottom: 8px; transition: border-color 0.3s;
+  }
+  .cwa-ctrl-group:hover { border-color: rgba(0,0,0,0.12); }
+
+  .cwa-label-row {
+    display: flex; justify-content: space-between;
+    font-size: 0.6rem; color: #0968e5; margin-bottom: 5px; font-weight: 700; letter-spacing: 1px;
+  }
+
+  .cwa-sub-label { font-size: 0.72rem; color: #666; margin-bottom: 4px; display: flex; justify-content: space-between; }
+  .cwa-sub-label span { font-weight: 700; color: #0f172a; }
+
+  /* Range */
+  .cwa-range { -webkit-appearance: none; width: 100%; background: transparent; cursor: pointer; margin-bottom: 5px; }
+  .cwa-range::-webkit-slider-runnable-track { width: 100%; height: 4px; background: #cbd5e1; border-radius: 2px; }
+  .cwa-range::-webkit-slider-thumb {
+    -webkit-appearance: none; height: 14px; width: 14px; border-radius: 50%;
+    background: #fff; box-shadow: 0 0 5px rgba(0,0,0,0.1); margin-top: -5px;
+    transition: transform 0.1s; border: 1px solid #e2e8f0;
+  }
+  .cwa-range:hover::-webkit-slider-thumb { transform: scale(1.2); }
+
+  /* Select */
+  .cwa-select {
+    width: 100%; padding: 6px 8px; background: #fff; color: #334155;
+    border: 1px solid #cbd5e1; border-radius: 6px; margin-bottom: 5px; cursor: pointer;
+    font-size: 0.75rem; outline: none; transition: border-color 0.2s; font-family: 'Inter',sans-serif;
+  }
+  .cwa-select:hover, .cwa-select:focus { border-color: #0968e5; }
+
+  /* Upload button */
+  .cwa-primary-btn {
+    background: linear-gradient(135deg, #0968e5 0%, #2563eb 100%);
+    color: white; border: none; padding: 10px; width: 100%;
+    border-radius: 8px; font-weight: 600; letter-spacing: 0.5px;
+    cursor: pointer; margin-bottom: 12px; font-size: 0.8rem;
+    display: flex; align-items: center; justify-content: center; gap: 8px;
+    box-shadow: 0 4px 15px rgba(9,104,229,0.25); transition: transform 0.2s, box-shadow 0.2s;
+    font-family: 'Inter',sans-serif;
+  }
+  .cwa-primary-btn:hover { transform: translateY(-2px); box-shadow: 0 6px 20px rgba(9,104,229,0.4); }
+
+  #cwa-loading { display: none; text-align: center; color: #16a34a; font-weight: 700; font-size: 0.7rem; margin-bottom: 8px; }
+
+  /* Small buttons */
+  .cwa-btn-row { display: flex; gap: 8px; }
+  .cwa-btn-small {
+    flex: 1; background: #f1f5f9; border: 1px solid #e2e8f0; color: #64748b;
+    padding: 8px; border-radius: 6px; cursor: pointer; font-size: 0.65rem;
+    font-weight: 600; transition: all 0.2s; font-family: 'Inter',sans-serif;
+  }
+  .cwa-btn-small:hover { background: #e2e8f0; color: #0f172a; border-color: #94a3b8; }
+
+  /* Toggle buttons */
+  .cwa-btn-row-toggle { display: flex; gap: 0; }
+  .cwa-toggle-btn {
+    flex: 1; padding: 6px 4px; font-size: 0.6rem; font-weight: 700;
+    border: 1px solid #e2e8f0; background: #fff; color: #64748b;
+    cursor: pointer; transition: all 0.2s; text-transform: uppercase; font-family: 'Inter',sans-serif;
+  }
+  .cwa-tgl-left  { border-radius: 6px 0 0 6px; border-right: none; }
+  .cwa-tgl-mid   { border-right: none; }
+  .cwa-tgl-right { border-radius: 0 6px 6px 0; }
+  .cwa-tgl-active { background: #0968e5; color: #fff; border-color: #0968e5; }
+
+  /* ── Responsive ── */
+  @media (max-width: 900px) {
+    .cwa-intro { padding: 30px 20px; }
+    .cwa-grid-layout { grid-template-columns: 1fr; gap: 40px; }
+    #cwa-main-headline { font-size: 2.2rem; }
+
+    .cwa-studio-section { padding: 50px 20px 60px; }
+    #cwa-engine-wrapper {
+      height: auto; flex-direction: column-reverse;
+    }
+    #cwa-ui-layer {
+      width: 100%; height: auto; flex: none;
+      border-right: none; border-top: 1px solid #e2e8f0;
+    }
+    #cwa-canvas-layer { width: 100%; height: 55vw; min-height: 280px; flex: none; }
+  }
+</style>
+
+<!-- ════════════════════════ GSAP ENTRANCE ════════════════════════ -->
+<script>
+  import { gsap } from "gsap";
+
+  document.addEventListener('DOMContentLoaded', () => {
+    const tl = gsap.timeline();
+    tl.from('.cwa-badge',  { duration: 0.6, y: -10, opacity: 0, ease: 'power2.out' })
+      .to('#cwa-main-headline',  { duration: 1.0, y: 0, opacity: 1, ease: 'power3.out' }, '-=0.4')
+      .from('.cwa-subtitle', { duration: 0.8, y: 10, opacity: 0, ease: 'power2.out' }, '-=0.6')
+      .from('.cwa-column',   { duration: 0.8, y: 20, opacity: 0, stagger: 0.2, ease: 'power2.out' }, '-=0.4');
+  });
+</script>
+
+<!-- ════════════════════ THREE.JS ENGINE (ES module) ════════════════════ -->
+<script is:inline type="module">
+// esm.sh rewrites all internal bare 'three' specifiers → full URLs, so no importmap needed
+import * as THREE from 'https://esm.sh/three@0.160.0';
+import { OrbitControls }  from 'https://esm.sh/three@0.160.0/examples/jsm/controls/OrbitControls';
+import { RoomEnvironment } from 'https://esm.sh/three@0.160.0/examples/jsm/environments/RoomEnvironment';
+import * as TWEEN from 'https://esm.sh/@tweenjs/tween.js@23.1.1';
+
+// ── 1. CONFIG ──────────────────────────────────────────────────────────
+const NECK_RADIUS     = 12.7;
+const DEFAULT_BG_URL  = 'https://assets.zyrosite.com/A3QlOV94WLSaL6xE/4075-N5bE7ZZnjfH0KoOV.webp';
+const BASE_CAMERA_Z   = 850;
+
+const state = { diameter:35, height:150, shoulder:15, shoulderType:'standard', bodyShape:'straight', flipX:1, flipY:1, gloss:70, brightness:50 };
+
+// ── 2. SCENE ───────────────────────────────────────────────────────────
+const scene = new THREE.Scene();
+scene.background = null;
+
+const pixelRatio = Math.min(window.devicePixelRatio, 2.0);
+const renderer  = new THREE.WebGLRenderer({ antialias: true, alpha: true });
+renderer.setPixelRatio(pixelRatio);
+renderer.toneMapping = THREE.ACESFilmicToneMapping;
+renderer.toneMappingExposure = 1.1;
+renderer.shadowMap.enabled = true;
+renderer.shadowMap.type = THREE.PCFSoftShadowMap;
+
+const canvasContainer = document.getElementById('cwa-canvas-layer');
+canvasContainer.appendChild(renderer.domElement);
+// Set directly on the element — Astro's scoped <style> can't reach a JS-created canvas
+renderer.domElement.style.touchAction = 'none';
+
+const camera = new THREE.PerspectiveCamera(18, 1, 0.1, 4000);
+camera.position.set(0, 100, BASE_CAMERA_Z);
+
+function resizeRenderer() {
+  const w = canvasContainer.clientWidth;
+  const h = canvasContainer.clientHeight;
+  if (!w || !h) return;
+  renderer.setSize(w, h);
+  camera.aspect = w / h;
+  camera.updateProjectionMatrix();
+}
+window.addEventListener('resize', resizeRenderer);
+// ResizeObserver fires once container has layout dimensions — more reliable than setTimeout in SSR
+const _ro = new ResizeObserver(() => resizeRenderer());
+_ro.observe(canvasContainer);
+
+// Environment
+const pmrem   = new THREE.PMREMGenerator(renderer);
+pmrem.compileEquirectangularShader();
+const roomEnv = pmrem.fromScene(new RoomEnvironment(), 0.04).texture;
+scene.environment = roomEnv;
+scene.environmentIntensity = 1.2;
+
+// ── 3. LIGHTING ────────────────────────────────────────────────────────
+const ambientLight = new THREE.AmbientLight(0xffffff, 0.8); scene.add(ambientLight);
+const mainLight = new THREE.DirectionalLight(0xffffff, 1.0);
+mainLight.position.set(50, 80, 50); mainLight.castShadow = true;
+mainLight.shadow.mapSize.set(1024,1024); mainLight.shadow.bias = -0.0001; scene.add(mainLight);
+const frontLight = new THREE.DirectionalLight(0xffffff, 1.5); frontLight.position.set(20,10,100); scene.add(frontLight);
+const rimLight   = new THREE.DirectionalLight(0xffffff, 1.5); rimLight.position.set(-50,50,-80);  scene.add(rimLight);
+
+const plane = new THREE.Mesh(new THREE.PlaneGeometry(2000,2000), new THREE.ShadowMaterial({ opacity:0.1, color:0x000000 }));
+plane.rotation.x = -Math.PI/2; plane.position.y = -0.1; plane.receiveShadow = true; scene.add(plane);
+const planeMat = plane.material;
+
+const controls = new OrbitControls(camera, renderer.domElement);
+controls.target.set(0, 75, 0); controls.enableDamping = true;
+controls.minDistance = 300; controls.maxDistance = 2500;
+// Block page scroll only when the pointer is directly over the 3D canvas
+renderer.domElement.addEventListener('wheel', (e) => { e.preventDefault(); }, { passive: false });
+
+// ── 4. MATERIALS ───────────────────────────────────────────────────────
+const satinMetal = new THREE.MeshStandardMaterial({ color:0xeeeeee, metalness:1.0, roughness:0.45, envMapIntensity:1.0, side:THREE.DoubleSide });
+const labelMat   = new THREE.MeshPhysicalMaterial({ color:0xeeeeee, metalness:1.0, roughness:0.45, clearcoat:0.0, clearcoatRoughness:0.1, sheen:0.5, emissive:0x000000, side:THREE.FrontSide });
+let currentTexture = null;
+
+const canGroup = new THREE.Group(); scene.add(canGroup);
+
+// ── 5. GEOMETRY ENGINE ────────────────────────────────────────────────
+function getShoulderPoints(radius, height, type, startY, vsx) {
+  const r = radius * vsx;
+  const neckR = NECK_RADIUS * vsx;
+  const pts = [];
+  if (type === 'flat') {
+    pts.push(new THREE.Vector2(neckR, startY + height));
+  } else if (type === 'bullet') {
+    const c = new THREE.CubicBezierCurve(new THREE.Vector2(r,startY), new THREE.Vector2(r,startY+height*0.7), new THREE.Vector2(r*0.8,startY+height*0.95), new THREE.Vector2(neckR,startY+height));
+    for (let i=1; i<=24; i++) pts.push(c.getPoint(i/24));
+  } else if (type === 'rimless') {
+    const c = new THREE.QuadraticBezierCurve(new THREE.Vector2(r,startY), new THREE.Vector2(r,startY+height*0.5), new THREE.Vector2(neckR,startY+height));
+    for (let i=1; i<=24; i++) pts.push(c.getPoint(i/24));
+  } else {
+    if (height > 5) { pts.push(new THREE.Vector2(r*0.95,startY+height*0.3), new THREE.Vector2(neckR*1.2,startY+height*0.8), new THREE.Vector2(neckR,startY+height)); }
+    else { pts.push(new THREE.Vector2(neckR, startY+height)); }
+  }
+  pts.push(new THREE.Vector2(neckR-(1*vsx), startY+height));
+  return pts;
+}
+
+function getBodyPoints(radius, height, type, vsx) {
+  const pts = []; const D = 128;
+  const groove = (p,s,e,dep,freq) => { if(p>s&&p<e){ const zp=(p-s)/(e-s); const w=Math.sin(zp*Math.PI*2*freq); if(w<0) return w*dep; } return 0; };
+  for (let i=0; i<=D; i++) {
+    const p = i/D; const y = p*height; let r = radius;
+    if (type==='waisted') { const c=new THREE.CubicBezierCurve(new THREE.Vector2(radius,0),new THREE.Vector2(radius,height*0.2),new THREE.Vector2(radius*0.75,height*0.5),new THREE.Vector2(radius,height)); r=c.getPoint(p).x; }
+    else if (type==='tapered') { const c=new THREE.QuadraticBezierCurve(new THREE.Vector2(radius*0.8,0),new THREE.Vector2(radius,height*0.15),new THREE.Vector2(radius,height)); r=c.getPoint(p).x; }
+    else if (type==='barrel') { const c=new THREE.QuadraticBezierCurve(new THREE.Vector2(radius,0),new THREE.Vector2(radius*1.15,height*0.5),new THREE.Vector2(radius,height)); r=c.getPoint(p).x; }
+    else if (type==='grip')        { r+=groove(p,0.65,0.85,1.5,3); }
+    else if (type==='bottom_grip') { r+=groove(p,0.10,0.30,1.5,3); }
+    else if (type==='ringed_neck') { r+=groove(p,0.80,0.95,1.0,4); }
+    pts.push(new THREE.Vector2(r*vsx, y));
+  }
+  return pts;
+}
+
+function updateCanGeometry() {
+  while (canGroup.children.length > 0) { const m=canGroup.children[0]; if(m.geometry) m.geometry.dispose(); canGroup.remove(m); }
+
+  const physR = state.diameter / 2;
+  const gf  = (state.diameter - 35) / 35;
+  const dg  = gf * 0.40;
+  const vsx = (1.0 + dg) / (1.0 + gf);
+  const shoulderH = (state.shoulder > state.height-2) ? state.height-2 : state.shoulder;
+  const bodyH     = state.height - shoulderH;
+  const bodyPts   = getBodyPoints(physR, bodyH, state.bodyShape, vsx);
+  const bodyTopR  = bodyPts[bodyPts.length-1].x / vsx;
+  const shoulderPts = getShoulderPoints(bodyTopR, shoulderH, state.shoulderType, bodyH, vsx);
+  const fullProfile = [...bodyPts, ...shoulderPts];
+  const fullMesh = new THREE.Mesh(new THREE.LatheGeometry(fullProfile, 64), labelMat);
+  fullMesh.castShadow = true; canGroup.add(fullMesh);
+
+  // Bottom dome
+  const br = bodyPts[0].x;
+  const btmPts = [new THREE.Vector2(0,6)];
+  const bc = new THREE.QuadraticBezierCurve(new THREE.Vector2(0,6),new THREE.Vector2(br*0.5,6),new THREE.Vector2(br*0.85,0));
+  for (let i=1;i<=10;i++) btmPts.push(bc.getPoint(i/10));
+  btmPts.push(new THREE.Vector2(br,2));
+  const btmMesh = new THREE.Mesh(new THREE.LatheGeometry(btmPts,64), satinMetal); canGroup.add(btmMesh);
+
+  new TWEEN.Tween(controls.target).to({y:state.height/2},500).easing(TWEEN.Easing.Quadratic.Out).start();
+  const hf = (state.height-150)/150;
+  new TWEEN.Tween(camera.position).to({z:BASE_CAMERA_Z+(hf*100)},600).easing(TWEEN.Easing.Quadratic.Out).start();
+}
+
+// ── 6. MATERIAL UPDATE ────────────────────────────────────────────────
+function updateMaterialProps() {
+  if (currentTexture) {
+    labelMat.metalness = 0.1; labelMat.color.setHex(0xffffff);
+    const g = state.gloss/100;
+    labelMat.roughness = 0.6-(g*0.55); labelMat.clearcoat = g; labelMat.clearcoatRoughness = 1.0-g;
+    const b = state.brightness;
+    if (b < 50) { labelMat.color.setScalar(b/50); labelMat.emissive.setScalar(0); }
+    else { labelMat.color.setScalar(1.0); labelMat.emissive.setScalar(((b-50)/50)*0.2); }
+  } else {
+    labelMat.metalness = 1.0; labelMat.roughness = 0.45;
+    labelMat.color.setHex(0xeeeeee); labelMat.emissive.setScalar(0); labelMat.clearcoat = 0;
+  }
+}
+
+// ── 7. EVENT LISTENERS ────────────────────────────────────────────────
+document.getElementById('diameterSelect').addEventListener('change', e => {
+  state.diameter = parseFloat(e.target.value);
+  document.getElementById('diamVal').innerText = state.diameter + 'mm';
+  updateCanGeometry();
+});
+document.getElementById('shoulderSelect').addEventListener('change', e => { state.shoulderType = e.target.value; updateCanGeometry(); });
+document.getElementById('bodyShapeSelect').addEventListener('change', e => { state.bodyShape = e.target.value; updateCanGeometry(); });
+document.getElementById('heightRange').addEventListener('input', e => {
+  state.height = parseFloat(e.target.value);
+  document.getElementById('heightVal').innerText = state.height + 'mm';
+  updateCanGeometry();
+});
+document.getElementById('shoulderRange').addEventListener('input', e => {
+  state.shoulder = parseFloat(e.target.value);
+  document.getElementById('shoulderVal').innerText = state.shoulder + 'mm';
+  updateCanGeometry();
+});
+document.getElementById('glossRange').addEventListener('input', e => {
+  state.gloss = parseFloat(e.target.value);
+  document.getElementById('glossVal').innerText = state.gloss + '%';
+  if (currentTexture) updateMaterialProps();
+});
+document.getElementById('brightRange').addEventListener('input', e => {
+  state.brightness = parseFloat(e.target.value);
+  document.getElementById('brightVal').innerText = state.brightness + '%';
+  if (currentTexture) updateMaterialProps();
+});
+
+// Background
+const wrapper = document.getElementById('cwa-engine-wrapper');
+const bgBtns = {
+  default: document.getElementById('bg-default'),
+  dark:    document.getElementById('bg-dark'),
+  white:   document.getElementById('bg-white'),
+  custom:  document.getElementById('bg-custom'),
+};
+function setActiveBg(name) {
+  Object.values(bgBtns).forEach(b => b.classList.remove('cwa-tgl-active'));
+  bgBtns[name].classList.add('cwa-tgl-active');
+}
+bgBtns.default.addEventListener('click', () => {
+  wrapper.style.backgroundImage = `url(${DEFAULT_BG_URL})`; setActiveBg('default');
+  ambientLight.intensity=0.8; frontLight.intensity=1.5; planeMat.opacity=0.15;
+});
+bgBtns.dark.addEventListener('click', () => {
+  wrapper.style.backgroundImage = 'radial-gradient(circle at 60% 50%, #1e293b 0%, #0f172a 100%)'; setActiveBg('dark');
+  ambientLight.intensity=0.5; frontLight.intensity=2.0; planeMat.opacity=0.3;
+});
+bgBtns.white.addEventListener('click', () => {
+  wrapper.style.backgroundImage = 'linear-gradient(to bottom, #ffffff, #e6e6e6)'; setActiveBg('white');
+  ambientLight.intensity=0.9; frontLight.intensity=1.2; planeMat.opacity=0.05;
+});
+bgBtns.custom.addEventListener('click', () => document.getElementById('bgUpload').click());
+document.getElementById('bgUpload').addEventListener('change', e => {
+  const f = e.target.files[0]; if (!f) return;
+  const r = new FileReader();
+  r.onload = ev => { wrapper.style.backgroundImage = `url(${ev.target.result})`; setActiveBg('custom'); ambientLight.intensity=0.7; planeMat.opacity=0.2; };
+  r.readAsDataURL(f);
+});
+wrapper.style.backgroundImage = `url(${DEFAULT_BG_URL})`;
+
+// Texture
+function updateTextureTransform() {
+  if (!currentTexture) return;
+  currentTexture.repeat.set(state.flipX, state.flipY);
+  currentTexture.offset.x = state.flipX < 0 ? 1 : 0;
+  currentTexture.offset.y = state.flipY < 0 ? 1 : 0;
+}
+document.getElementById('artUploadBtn').addEventListener('click', () => document.getElementById('artUpload').click());
+document.getElementById('artUpload').addEventListener('change', e => {
+  const file = e.target.files[0]; if (!file) return;
+  document.getElementById('cwa-loading').style.display = 'block';
+  const reader = new FileReader();
+  reader.onload = ev => {
+    const img = new Image(); img.src = ev.target.result;
+    img.onload = () => {
+      if (currentTexture) currentTexture.dispose();
+      currentTexture = new THREE.Texture(img);
+      currentTexture.colorSpace = THREE.SRGBColorSpace;
+      currentTexture.anisotropy = renderer.capabilities.getMaxAnisotropy();
+      currentTexture.wrapS = THREE.RepeatWrapping;
+      currentTexture.wrapT = THREE.ClampToEdgeWrapping;
+      currentTexture.needsUpdate = true;
+      updateTextureTransform();
+      labelMat.map = currentTexture; labelMat.needsUpdate = true;
+      document.getElementById('cwa-loading').style.display = 'none';
+      updateMaterialProps();
+    };
+  };
+  reader.readAsDataURL(file);
+});
+
+document.getElementById('btnFlipH').addEventListener('click', () => { state.flipX *= -1; updateTextureTransform(); });
+document.getElementById('btnFlipV').addEventListener('click', () => { state.flipY *= -1; updateTextureTransform(); });
+
+// ── 8. INIT + RENDER LOOP ─────────────────────────────────────────────
+updateCanGeometry();
+updateMaterialProps();
+
+function animate(time) {
+  requestAnimationFrame(animate);
+  TWEEN.update(time);
+  controls.update();
+  renderer.render(scene, camera);
+}
+animate();
+</script>

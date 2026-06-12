@@ -1,0 +1,402 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Canwrap3D™ Premium v3.95 (Mobile Fix)</title>
+
+    <script src="https://cdn.babylonjs.com/babylon.js"></script>
+    <script src="https://cdn.babylonjs.com/loaders/babylonjs.loaders.min.js"></script>
+
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;800&display=swap" rel="stylesheet">
+
+    <style>
+        /* --- 1. PREMIUM RESET & STABILITY --- */
+        html, body { 
+            margin: 0; padding: 0; width: 100%; 
+            background: #f8fafc; 
+            font-family: 'Inter', sans-serif;
+            overflow: hidden; 
+            color: #1e293b; 
+            min-height: 100vh;
+            min-height: -webkit-fill-available;
+        }
+
+        /* --- 2. MAIN WRAPPER (Dynamic Background) --- */
+        #weldmax-wrapper {
+            position: relative; 
+            width: 100%;
+            height: 100vh;
+            height: -webkit-fill-available;
+            min-height: 600px;
+            overflow: hidden;    
+            /* Default Light Background */
+            background: radial-gradient(circle at 60% 50%, #ffffff 0%, #e2e8f0 100%);
+            transition: background 0.5s ease;
+        }
+
+        /* --- 3. 3D CANVAS LAYER --- */
+        #canvas-layer {
+            position: absolute; top: 0; left: 340px; right: 0; bottom: 0; z-index: 1;
+        }
+
+        /* --- 4. SIDEBAR --- */
+        #ui-layer {
+            position: absolute; top: 0; left: 0; width: 340px; height: 100%; z-index: 20;
+            background: rgba(255, 255, 255, 0.85);
+            backdrop-filter: blur(20px); -webkit-backdrop-filter: blur(20px);
+            border-right: 1px solid rgba(0, 0, 0, 0.06);
+            box-shadow: 10px 0 30px rgba(0,0,0,0.05);
+            overflow-y: auto; display: flex; flex-direction: column; 
+            padding: 20px; 
+            box-sizing: border-box;
+        }
+
+        /* --- 5. TYPOGRAPHY & ELEMENTS --- */
+        h2 { 
+            font-size: 1.6rem; margin: 0; text-align: center; font-weight: 800; letter-spacing: -1px;
+            background: linear-gradient(135deg, #1e1b4b 0%, #4f46e5 100%);
+            -webkit-background-clip: text; -webkit-text-fill-color: transparent;
+        }
+        .version-label {
+            display: block; text-align: center; font-size: 0.7rem; color: #64748b; 
+            margin-top: 4px; 
+            margin-bottom: 20px; 
+            font-family: monospace; letter-spacing: 2px; opacity: 0.8;
+        }
+
+        .control-group { 
+            background: rgba(0, 0, 0, 0.02);
+            border: 1px solid rgba(0, 0, 0, 0.05);
+            padding: 15px; 
+            border-radius: 12px; 
+            margin-bottom: 12px;
+            transition: border-color 0.3s;
+        }
+        .control-group:hover { border-color: rgba(0, 0, 0, 0.15); }
+
+        .label-row { 
+            display: flex; justify-content: space-between; font-size: 0.65rem; color: #4f46e5; 
+            margin-bottom: 8px; font-weight: 700; letter-spacing: 1.5px; 
+        }
+
+        input[type=range] {
+            -webkit-appearance: none; width: 100%; background: transparent; cursor: pointer; margin-bottom: 5px;
+        }
+        input[type=range]::-webkit-slider-runnable-track { width: 100%; height: 4px; background: #cbd5e1; border-radius: 2px; }
+        input[type=range]::-webkit-slider-thumb {
+            -webkit-appearance: none; height: 16px; width: 16px; border-radius: 50%;
+            background: #fff; box-shadow: 0 0 10px rgba(0,0,0,0.2); margin-top: -6px; transition: transform 0.1s;
+            border: 1px solid #e2e8f0;
+        }
+        input[type=range]:hover::-webkit-slider-thumb { transform: scale(1.2); }
+
+        select {
+            width: 100%; padding: 10px; background: #ffffff; color: #334155; 
+            border: 1px solid #cbd5e1; border-radius: 8px; margin-bottom: 5px; cursor: pointer; 
+            font-size: 0.85rem; font-family: 'Inter', sans-serif; outline: none; transition: all 0.2s;
+        }
+        select:hover { border-color: #6366f1; }
+
+        /* COLOR PICKER STYLES */
+        .color-row { display: flex; gap: 10px; align-items: center; margin-top: 10px; }
+        input[type=color] {
+            -webkit-appearance: none; border: none; width: 35px; height: 35px; 
+            border-radius: 8px; cursor: pointer; background: none; padding: 0;
+        }
+        input[type=color]::-webkit-color-swatch-wrapper { padding: 0; }
+        input[type=color]::-webkit-color-swatch { border: 1px solid rgba(0,0,0,0.1); border-radius: 8px; }
+        
+        .hex-input {
+            flex: 1; background: #ffffff; border: 1px solid #cbd5e1;
+            color: #334155; padding: 8px; border-radius: 8px; font-family: monospace; 
+            text-transform: uppercase; letter-spacing: 1px; outline: none;
+        }
+        .hex-input:focus { border-color: #6366f1; }
+
+        button.primary-btn {
+            background: linear-gradient(135deg, #4f46e5 0%, #3b82f6 100%);
+            color: white; border: none; 
+            padding: 12px; 
+            width: 100%; 
+            border-radius: 8px; font-weight: 600; letter-spacing: 0.5px;
+            cursor: pointer; 
+            margin-bottom: 20px; 
+            display: flex; align-items: center; justify-content: center; gap: 10px;
+            box-shadow: 0 4px 15px rgba(79, 70, 229, 0.25); transition: transform 0.2s, box-shadow 0.2s; font-size: 0.9rem;
+        }
+        button.primary-btn:hover { transform: translateY(-2px); box-shadow: 0 6px 20px rgba(79, 70, 229, 0.4); }
+
+        .btn-row { display: flex; gap: 10px; }
+        .btn-small { 
+            flex: 1; background: #f1f5f9; border: 1px solid #e2e8f0;
+            color: #64748b; padding: 10px; border-radius: 6px; cursor: pointer; font-size: 0.75rem; font-weight: 600; transition: all 0.2s;
+        }
+        .btn-small:hover { background: #e2e8f0; color: #0f172a; border-color: #94a3b8; }
+
+        .toggle-btn {
+            flex: 1; padding: 8px; font-size: 0.75rem; font-weight: 600;
+            border: 1px solid #e2e8f0; background: #fff; color: #64748b;
+            cursor: pointer; transition: all 0.2s;
+        }
+        .toggle-btn.active {
+            background: #4f46e5; color: white; border-color: #4f46e5;
+        }
+        .toggle-left { border-radius: 6px 0 0 6px; border-right: none; }
+        .toggle-right { border-radius: 0 6px 6px 0; }
+
+        /* FIX 1: SCROLL TRAP FIX */
+        #renderCanvas { 
+            width: 100%; 
+            height: 100%; 
+            outline: none; 
+            display: block;
+            /* CRITICAL: Allows vertical scrolling on mobile while touching canvas */
+            touch-action: pan-y; 
+        }
+
+        @media (max-width: 900px) {
+            html, body { overflow-y: auto; height: auto; }
+            #weldmax-wrapper { height: auto !important; min-height: 100vh !important; display: flex; flex-direction: column-reverse; overflow-y: visible; }
+            #ui-layer { position: relative; width: 100%; height: auto; background: #ffffff; border-right: none; border-top: 1px solid #e2e8f0; flex: none; }
+            #canvas-layer { position: relative; left: auto; right: auto; top: auto; bottom: auto; width: 100%; height: 60vh; flex: none; }
+        }
+    </style>
+</head>
+<body>
+
+    <div id="weldmax-wrapper">
+        <div id="canvas-layer"><canvas id="renderCanvas"></canvas></div>
+
+        <div id="ui-layer">
+            <h2>Canwrap3D™</h2>
+            <span class="version-label">ver 3.95 Mobile</span>
+
+            <div class="control-group">
+                <div class="label-row"><span>VIEWPORT BACKGROUND</span></div>
+                <div class="btn-row" style="gap:0;">
+                    <button id="bg-light" class="toggle-btn toggle-left active" onclick="setBackground('light')">STUDIO</button>
+                    <button id="bg-dark" class="toggle-btn toggle-right" onclick="setBackground('dark')">DARK</button>
+                </div>
+            </div>
+
+            <div class="control-group">
+                <div class="label-row"><span>CAN SIZE</span></div>
+                <select id="sizeSelector" onchange="changeCanSize(this.value)">
+                    <option value="0">65mm x 165mm (Standard)</option>
+                    <option value="1">65mm x 210mm (Tall)</option>
+                    <option value="2">65mm x 220mm (Extra Tall)</option>
+                    <option value="3">52mm x 110mm (Slim Short)</option>
+                    <option value="4">52mm x 190mm (Slim Tall)</option>
+                    <option value="5">52mm x 210mm (Slim Extra)</option>
+                </select>
+            </div>
+
+            <button class="primary-btn" onclick="document.getElementById('fileInput').click()">
+                <span>&#8682;</span> UPLOAD DESIGN
+            </button>
+            <input type="file" id="fileInput" accept="image/*" style="display:none">
+
+            <div class="control-group">
+                <div class="label-row"><span>CAP COLOR</span></div>
+                <select id="capColorSelect" onchange="presetCapColor(this.value)">
+                    <option value="#0d40bf">Standard Blue</option>
+                    <option value="#000000">Black</option>
+                    <option value="#ffffff">White</option>
+                    <option value="#cc0000">Red</option>
+                    <option value="#009933">Green</option>
+                    <option value="#ffcc00">Yellow</option>
+                    <option value="custom">Custom...</option>
+                </select>
+                <div class="color-row">
+                    <input type="color" id="capColorPicker" value="#0d40bf" oninput="updateCapColor(this.value)">
+                    <input type="text" id="capHexInput" class="hex-input" value="#0D40BF" onchange="updateCapColor(this.value)">
+                </div>
+            </div>
+
+            <div class="control-group">
+                <div class="label-row"><span>VIBRANCY</span> <span id="vibVal">30%</span></div>
+                <input type="range" min="0" max="100" value="30" oninput="updateVibrancy(this.value)">
+                
+                <div style="height: 12px;"></div>
+
+                <div class="label-row"><span>GLOSS</span> <span id="glossVal">70%</span></div>
+                <input type="range" min="0" max="100" value="70" oninput="updateGloss(this.value)">
+            </div>
+
+            <div class="control-group">
+                <div class="label-row"><span>ROTATION</span></div>
+                <input id="rotSlider" type="range" min="0" max="360" value="0" oninput="updateLabelRot(this.value)">
+                
+                <div style="height: 12px;"></div>
+
+                <div class="label-row"><span>SEAM POSITION</span></div>
+                <input type="range" min="0" max="360" value="180" oninput="updateSeamRot(this.value)">
+                
+                <div style="height: 15px;"></div>
+                
+                <div class="btn-row">
+                    <button class="btn-small" onclick="flipVertical()">FLIP VERT</button>
+                    <button class="btn-small" onclick="flipHorizontal()">FLIP HORIZ</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        const CAN_DB = [
+            { id: 0, name: "65x165", diam: 4.3, height: 10.5 }, 
+            { id: 1, name: "65x210", diam: 4.3, height: 13.5 }, 
+            { id: 2, name: "65x220", diam: 4.3, height: 14.2 }, 
+            { id: 3, name: "52x110", diam: 3.4, height: 7.0 },  
+            { id: 4, name: "52x190", diam: 3.4, height: 12.0 }, 
+            { id: 5, name: "52x210", diam: 3.4, height: 13.5 }  
+        ];
+
+        let scene, rootNode, labelMaterial, metalMat, capMat;
+        let currentTexture = null;
+        let seamPivot = null;
+
+        document.addEventListener("DOMContentLoaded", () => {
+             initApp();
+        });
+
+        function initApp() {
+            const canvas = document.getElementById("renderCanvas");
+            const engine = new BABYLON.Engine(canvas, true, { preserveDrawingBuffer: true, stencil: true });
+            
+            scene = new BABYLON.Scene(engine);
+            scene.clearColor = new BABYLON.Color4(0, 0, 0, 0);
+
+            // FIX 2: RESPONSIVE CAMERA
+            // Check if screen is small (mobile breakpoint)
+            const isMobile = window.innerWidth < 900;
+            // Radius 24 for desktop, 32 for mobile (pulls camera back)
+            const initialRadius = isMobile ? 32 : 24;
+
+            const camera = new BABYLON.ArcRotateCamera("camera", Math.PI / 2, Math.PI / 2.2, initialRadius, new BABYLON.Vector3(0, 8, 0), scene);
+            camera.attachControl(canvas, true);
+            camera.wheelPrecision = 50; 
+            camera.minZ = 0.1;
+            camera.lowerRadiusLimit = 10; 
+            camera.upperRadiusLimit = 50;
+
+            const light = new BABYLON.HemisphericLight("fallbackLight", new BABYLON.Vector3(0, 1, 0), scene);
+            light.intensity = 0.6;
+            light.specular = BABYLON.Color3.Black();
+
+            scene.createDefaultEnvironment({ createSkybox: false, createGround: false, environmentTexture: "https://assets.babylonjs.com/environments/studio.env" });
+            scene.environmentIntensity = 1.2;
+
+            metalMat = new BABYLON.PBRMaterial("metal", scene);
+            metalMat.metallic = 1.0; metalMat.roughness = 0.2; 
+            metalMat.albedoColor = new BABYLON.Color3(0.95, 0.95, 0.95);
+
+            labelMaterial = new BABYLON.PBRMaterial("label", scene);
+            labelMaterial.metallic = 0.1; labelMaterial.roughness = 0.3;
+            labelMaterial.albedoColor = new BABYLON.Color3(0.9, 0.9, 0.9);
+            labelMaterial.emissiveColor = new BABYLON.Color3(0,0,0);
+
+            capMat = new BABYLON.PBRMaterial("cap", scene);
+            capMat.albedoColor = BABYLON.Color3.FromHexString("#0D40BF");
+            capMat.metallic = 0; capMat.roughness = 0.4;
+
+            buildCanMesh(0);
+
+            engine.runRenderLoop(() => scene.render());
+            window.addEventListener("resize", () => engine.resize());
+
+            const fileInput = document.getElementById('fileInput');
+            fileInput.addEventListener('change', (evt) => {
+                const file = evt.target.files[0];
+                if (!file) return;
+                const reader = new FileReader();
+                reader.onload = (e) => {
+                    if(currentTexture) currentTexture.dispose();
+                    currentTexture = new BABYLON.Texture(e.target.result, scene, false, true);
+                    currentTexture.vScale = 1; 
+                    currentTexture.uScale = 1;
+                    currentTexture.uOffset = 0;
+                    currentTexture.vOffset = 0;
+                    document.getElementById('rotSlider').value = 0;
+
+                    labelMaterial.albedoTexture = currentTexture;
+                    labelMaterial.emissiveTexture = currentTexture;
+                    labelMaterial.albedoColor = new BABYLON.Color3(1,1,1);
+                    updateVibrancy(30);
+                };
+                reader.readAsDataURL(file);
+            });
+        }
+
+        function buildCanMesh(sizeIndex) {
+            if (rootNode) rootNode.dispose();
+            const data = CAN_DB[sizeIndex];
+            const D = data.diam; const H = data.height;
+
+            rootNode = new BABYLON.TransformNode("root", scene);
+            const body = BABYLON.MeshBuilder.CreateCylinder("body", {height: H, diameter: D, tessellation: 64}, scene);
+            body.material = labelMaterial; body.position.y = H/2 + 0.2; body.parent = rootNode;
+
+            seamPivot = new BABYLON.TransformNode("sp", scene); seamPivot.position.y = H/2 + 0.2; seamPivot.parent = rootNode;
+            const seam = BABYLON.MeshBuilder.CreateBox("s", {height: H - 0.2, width: 0.1, depth: 0.05}, scene);
+            seam.material = metalMat; seam.position.z = -D/2; seam.parent = seamPivot; seamPivot.rotation.y = Math.PI;
+
+            const shoulder = BABYLON.MeshBuilder.CreateSphere("sh", {diameter: D, segments: 64}, scene);
+            shoulder.scaling.y = 0.4; shoulder.position.y = H + 0.2; shoulder.material = metalMat; shoulder.parent = rootNode;
+            
+            const cap = BABYLON.MeshBuilder.CreateCylinder("cap", {height: 3.5, diameter: D + 0.1, tessellation: 64}, scene);
+            cap.position.y = H + 1.8; cap.material = capMat; cap.parent = rootNode;
+
+            const rim = BABYLON.MeshBuilder.CreateTorus("rim", {diameter: D - 0.1, thickness: 0.25, tessellation: 64}, scene);
+            rim.position.y = 0.125; rim.material = metalMat; rim.parent = rootNode;
+        }
+
+        window.setBackground = (mode) => {
+            const wrapper = document.getElementById('weldmax-wrapper');
+            const btnLight = document.getElementById('bg-light');
+            const btnDark = document.getElementById('bg-dark');
+
+            if(mode === 'light') {
+                wrapper.style.background = "radial-gradient(circle at 60% 50%, #ffffff 0%, #e2e8f0 100%)";
+                btnLight.classList.add('active');
+                btnDark.classList.remove('active');
+            } else {
+                wrapper.style.background = "radial-gradient(circle at 60% 50%, #1e293b 0%, #0f172a 100%)";
+                btnLight.classList.remove('active');
+                btnDark.classList.add('active');
+            }
+        }
+
+        window.changeCanSize = (val) => { buildCanMesh(parseInt(val)); };
+        
+        window.updateVibrancy = (val) => {
+            document.getElementById('vibVal').innerText = val + "%";
+            if(labelMaterial) { const i = val/100; labelMaterial.emissiveColor = new BABYLON.Color3(i,i,i); }
+        }
+        window.updateGloss = (val) => {
+            document.getElementById('glossVal').innerText = val + "%";
+            if(labelMaterial) labelMaterial.roughness = 1.0 - (val/100);
+        }
+        window.updateLabelRot = (val) => { if(currentTexture) currentTexture.uOffset = val/360; }
+        window.updateSeamRot = (val) => { if(seamPivot) seamPivot.rotation.y = (val * Math.PI)/180; }
+        
+        window.flipVertical = () => { if(currentTexture) currentTexture.vScale *= -1; }
+        window.flipHorizontal = () => { if(currentTexture) currentTexture.uScale *= -1; }
+
+        window.updateCapColor = (hex) => {
+            const isValidHex = /^#([0-9A-F]{3}){1,2}$/i.test(hex);
+            if (!isValidHex) return; 
+            document.getElementById('capColorPicker').value = hex;
+            document.getElementById('capHexInput').value = hex;
+            if(capMat) capMat.albedoColor = BABYLON.Color3.FromHexString(hex);
+        }
+
+        window.presetCapColor = (val) => {
+            if(val === 'custom') return;
+            updateCapColor(val);
+        }
+
+    </script>
+</body>
+</html>

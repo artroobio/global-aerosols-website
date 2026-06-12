@@ -1,0 +1,750 @@
+---
+import Layout from '../../lc/layouts/Layout.astro';
+---
+
+<Layout
+  title="CanWrap 3D Aerosol Can Design Studio | Global Aerosols"
+  description="Visualize your aerosol can label artwork in real-time 3D. Upload your design and simulate the final offset print result on tin-plate with micron-level precision."
+  canonical="/services/canwrap-3d/"
+>
+
+  <div class="cw-page">
+
+    <!-- ═══════════════ BREADCRUMBS ═══════════════ -->
+    <div class="cw-breadcrumbs">
+      <a href="/" target="_top">Home</a>
+      <span>/</span>
+      <span>Aerosol Software</span>
+      <span>/</span>
+      <span class="curr-page">CanWrap 3D</span>
+    </div>
+
+    <!-- ═══════════════ SECTION 1 — HERO ═══════════════ -->
+    <section class="cw-hero">
+      <div class="cw-bg-layer" aria-hidden="true"></div>
+
+      <div class="hud-marker hud-tl" aria-hidden="true">
+        <div class="crosshair"></div><br>SYS.READY
+      </div>
+      <div class="hud-marker hud-tr" aria-hidden="true">
+        <div class="crosshair"></div><br>COORD: <span id="coord-x">000</span>
+      </div>
+      <div class="hud-marker hud-bl" aria-hidden="true">
+        FPS: 60<br><div class="crosshair"></div>
+      </div>
+      <div class="hud-marker hud-br" aria-hidden="true">
+        V.3.95<br><div class="crosshair"></div>
+      </div>
+
+      <div class="cw-content-grid">
+        <div class="cw-text-card" id="spotlight-card">
+          <span class="cw-badge">V.3.95 Visualization Engine</span>
+          <h1 class="cw-headline" id="scramble-target">CanWrap 3D Design Studio</h1>
+          <h2 class="cw-subhead">Instant Metal Lithography Visualization &amp; Print Proofing.</h2>
+          <div class="cw-desc-wrap">
+            <p class="cw-desc">
+              Our algorithm maps your artwork onto a 3D canvas with micron-level precision,
+              simulating the final offset print result on tin-plate.
+            </p>
+          </div>
+          <div class="cw-instruction-panel">
+            <span class="panel-label">Configuration Protocol //</span>
+            <div class="step-item">
+              <div class="step-icon">
+                <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4M17 8l-5-5-5 5M12 3v12"/></svg>
+              </div>
+              <div class="step-text">Upload Artwork<span>Accepts <strong>JPEG</strong> or <strong>PNG</strong>. <span class="b-highlight">NO PDF / CDR.</span></span></div>
+            </div>
+            <div class="step-item">
+              <div class="step-icon">
+                <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><circle cx="12" cy="12" r="3"/><path d="M19.4 15a1.65 1.65 0 0 0 .33 1.82l.06.06a2 2 0 0 1 0 2.83 2 2 0 0 1-2.83 0l-.06-.06a1.65 1.65 0 0 0-1.82-.33 1.65 1.65 0 0 0-1 1.51V21a2 2 0 0 1-2 2 2 2 0 0 1-2-2v-.09A1.65 1.65 0 0 0 9 19.4a1.65 1.65 0 0 0-1.82.33l-.06.06a2 2 0 0 1-2.83 0 2 2 0 0 1 0-2.83l.06-.06a1.65 1.65 0 0 0 .33-1.82 1.65 1.65 0 0 0-1.51-1H3a2 2 0 0 1-2-2 2 2 0 0 1 2-2h.09A1.65 1.65 0 0 0 4.6 9a1.65 1.65 0 0 0-.33-1.82l-.06-.06a2 2 0 0 1 0-2.83 2 2 0 0 1 2.83 0l.06.06a1.65 1.65 0 0 0 1.82.33H9a1.65 1.65 0 0 0 1-1.51V3a2 2 0 0 1 2-2 2 2 0 0 1 2 2v.09a1.65 1.65 0 0 0 1 1.51 1.65 1.65 0 0 0 1.82-.33l.06-.06a2 2 0 0 1 2.83 0 2 2 0 0 1 0 2.83l-.06.06a1.65 1.65 0 0 0-.33 1.82V9a1.65 1.65 0 0 0 1.51 1H21a2 2 0 0 1 2 2 2 2 0 0 1-2 2h-.09a1.65 1.65 0 0 0-1.51 1z"/></svg>
+              </div>
+              <div class="step-text">Refine &amp; Calibrate<span>Adjust <strong>Vibrancy</strong> &amp; <strong>Glossiness</strong> sliders.</span></div>
+            </div>
+            <div class="step-item">
+              <div class="step-icon">
+                <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="23 4 23 10 17 10"/><path d="M20.49 15a9 9 0 1 1-2.12-9.36L23 10"/></svg>
+              </div>
+              <div class="step-text">Orientation Check<span>Use <strong>Flip</strong> buttons if artwork is mirrored.</span></div>
+            </div>
+          </div>
+        </div>
+        <div class="cw-visual-area" id="canvas-container"></div>
+      </div>
+    </section>
+
+    <!-- ═══════════════ SECTION 2 — STUDIO ENGINE ═══════════════ -->
+    <section class="cw-studio-section">
+
+      <div class="cw-studio-header">
+        <span class="cw-eyebrow">Live Visualization Engine</span>
+        <h2 class="cw-studio-title">3D Can Design Studio</h2>
+        <p class="cw-studio-subtitle">
+          Select your can size, upload your artwork, then fine-tune vibrancy, gloss, cap colour,
+          and rotation to proof the final print result before it goes to press.
+        </p>
+      </div>
+
+      <!-- data-lenis-prevent stops the sitewide Lenis smooth-scroll from
+           hijacking the wheel here, so scroll-over-canvas zooms instead of scrolling. -->
+      <div id="cw-engine-wrapper" data-lenis-prevent>
+
+        <!-- Canvas (right) -->
+        <div id="cw-canvas-layer">
+          <canvas id="renderCanvas"></canvas>
+        </div>
+
+        <!-- Sidebar controls (left) -->
+        <div id="cw-ui-layer">
+          <h2 class="cw-tool-heading">CanWrap 3D™</h2>
+          <span class="cw-ver-label">ver 3.95</span>
+
+          <div class="cw-ctrl-group">
+            <div class="cw-label-row"><span>VIEWPORT</span></div>
+            <div class="cw-btn-row-toggle">
+              <button id="bg-light" class="cw-toggle-btn cw-toggle-left cw-toggle-active">STUDIO</button>
+              <button id="bg-dark"  class="cw-toggle-btn cw-toggle-right">DARK</button>
+            </div>
+          </div>
+
+          <div class="cw-ctrl-group">
+            <div class="cw-label-row"><span>CAN SIZE</span></div>
+            <select id="sizeSelector">
+              <option value="0">65mm × 165mm (Standard)</option>
+              <option value="1">65mm × 210mm (Tall)</option>
+              <option value="2">65mm × 220mm (Extra Tall)</option>
+              <option value="3">52mm × 110mm (Slim Short)</option>
+              <option value="4">52mm × 190mm (Slim Tall)</option>
+              <option value="5">52mm × 210mm (Slim Extra)</option>
+            </select>
+          </div>
+
+          <button id="uploadBtn" class="cw-primary-btn">
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4M17 8l-5-5-5 5M12 3v12"/></svg>
+            UPLOAD DESIGN
+          </button>
+          <input type="file" id="fileInput" accept="image/*" style="display:none">
+
+          <div class="cw-ctrl-group">
+            <div class="cw-label-row"><span>CAP COLOUR</span></div>
+            <select id="capColorSelect">
+              <option value="#0d40bf">Standard Blue</option>
+              <option value="#000000">Black</option>
+              <option value="#ffffff">White</option>
+              <option value="#cc0000">Red</option>
+              <option value="#009933">Green</option>
+              <option value="#ffcc00">Yellow</option>
+              <option value="custom">Custom…</option>
+            </select>
+            <div class="cw-color-row">
+              <input type="color" id="capColorPicker" value="#0d40bf">
+              <input type="text"  id="capHexInput" class="cw-hex-input" value="#0D40BF" maxlength="7">
+            </div>
+          </div>
+
+          <div class="cw-ctrl-group">
+            <div class="cw-label-row"><span>VIBRANCY</span><span id="vibVal">30%</span></div>
+            <input type="range" id="vibrancySlider" min="0" max="100" value="30">
+            <div style="height:12px"></div>
+            <div class="cw-label-row"><span>GLOSS</span><span id="glossVal">70%</span></div>
+            <input type="range" id="glossSlider" min="0" max="100" value="70">
+          </div>
+
+          <div class="cw-ctrl-group">
+            <div class="cw-label-row"><span>ROTATION</span></div>
+            <input type="range" id="rotSlider" min="0" max="360" value="0">
+            <div style="height:12px"></div>
+            <div class="cw-label-row"><span>SEAM POSITION</span></div>
+            <input type="range" id="seamSlider" min="0" max="360" value="180">
+            <div style="height:15px"></div>
+            <div class="cw-btn-row">
+              <button id="flipVertBtn"  class="cw-btn-small">FLIP VERT</button>
+              <button id="flipHorizBtn" class="cw-btn-small">FLIP HORIZ</button>
+            </div>
+          </div>
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+
+</Layout>
+
+<!-- ═══════════════════════════════════ STYLES ══════════════════════════════════ -->
+<style>
+  .cw-page, .cw-page * { box-sizing: border-box; }
+
+  .cw-page {
+    font-family: 'Inter', 'Roboto', sans-serif;
+    background-color: #f8fafc;
+    background-image:
+      linear-gradient(rgba(203,213,225,0.25) 1px, transparent 1px),
+      linear-gradient(90deg, rgba(203,213,225,0.25) 1px, transparent 1px);
+    background-size: 50px 50px;
+    min-height: 100vh;
+  }
+
+  /* ── Breadcrumbs ── */
+  .cw-breadcrumbs {
+    max-width: 1400px; margin: 0 auto; padding: 100px 40px 0;
+    font-size: 0.72rem; color: #475569; text-transform: uppercase;
+    font-weight: 700; letter-spacing: 2px; position: relative; z-index: 10;
+  }
+  .cw-breadcrumbs a { text-decoration: none; color: #475569; transition: color 0.25s; }
+  .cw-breadcrumbs a:hover { color: #0968e5; }
+  .cw-breadcrumbs span { color: #94a3b8; margin: 0 8px; }
+  .cw-breadcrumbs .curr-page { color: #0f172a; }
+
+  /* ══════════ HERO ══════════ */
+  .cw-hero {
+    position: relative; width: 100%; min-height: 780px;
+    display: flex; align-items: center; justify-content: center;
+    padding: 48px 40px 80px; overflow: hidden;
+  }
+  .cw-bg-layer {
+    position: absolute; inset: 0;
+    background:
+      radial-gradient(circle at 50% 50%, rgba(9,104,229,0.07), transparent 60%),
+      radial-gradient(circle at 80% 20%, rgba(9,200,255,0.04), transparent 40%);
+    animation: cwBgMove 15s infinite alternate ease-in-out;
+    pointer-events: none; z-index: 0;
+  }
+  @keyframes cwBgMove { 0% { transform: translate(-5%,-5%); } 100% { transform: translate(5%,5%); } }
+
+  .hud-marker {
+    position: absolute; color: #cbd5e1;
+    font-family: 'JetBrains Mono','Courier New',monospace;
+    font-size: 0.68rem; z-index: 2; pointer-events: none; line-height: 1.7; letter-spacing: 1px;
+  }
+  .hud-tl { top: 36px; left: 36px; }
+  .hud-tr { top: 36px; right: 36px; text-align: right; }
+  .hud-bl { bottom: 36px; left: 36px; }
+  .hud-br { bottom: 36px; right: 36px; text-align: right; }
+
+  .crosshair { display: inline-block; width: 18px; height: 18px; position: relative; vertical-align: middle; }
+  .crosshair::before, .crosshair::after { content: ''; position: absolute; background: #cbd5e1; }
+  .crosshair::before { width: 100%; height: 1px; top: 50%; left: 0; }
+  .crosshair::after  { height: 100%; width: 1px; left: 50%; top: 0; }
+
+  .cw-content-grid {
+    position: relative; z-index: 5;
+    display: grid; grid-template-columns: 1.2fr 0.8fr;
+    width: 100%; max-width: 1350px; gap: 60px; align-items: center;
+  }
+
+  .cw-text-card {
+    position: relative;
+    background: rgba(255,255,255,0.55);
+    backdrop-filter: blur(20px); -webkit-backdrop-filter: blur(20px);
+    border: 1px solid rgba(255,255,255,0.6); padding: 56px; border-radius: 20px;
+    box-shadow: 0 24px 60px rgba(0,0,0,0.04), inset 0 0 0 1px rgba(255,255,255,0.5);
+    overflow: hidden; transition: transform 0.2s ease;
+  }
+  .cw-text-card::before {
+    content: ''; position: absolute; inset: 0;
+    background: radial-gradient(800px circle at var(--mouse-x,50%) var(--mouse-y,50%), rgba(255,255,255,0.7), transparent 40%);
+    opacity: 0; transition: opacity 0.5s; z-index: -1; pointer-events: none;
+  }
+  .cw-text-card:hover::before { opacity: 1; }
+
+  .cw-badge {
+    font-family: 'Outfit', sans-serif; font-size: 0.68rem; font-weight: 700;
+    letter-spacing: 2px; text-transform: uppercase; color: #0968e5;
+    background: rgba(9,104,229,0.08); padding: 6px 16px; border-radius: 50px;
+    border: 1px solid rgba(9,104,229,0.2); margin-bottom: 24px; display: inline-block;
+  }
+  .cw-headline {
+    font-family: 'Outfit','Montserrat',sans-serif;
+    font-size: clamp(2rem,3.2vw,3rem); line-height: 1.05; font-weight: 800;
+    color: #0f172a; margin: 0 0 4px; letter-spacing: -1.5px; text-transform: uppercase;
+  }
+  .cw-subhead {
+    font-size: 1.1rem; font-weight: 400; color: #444;
+    margin: 16px 0 24px; line-height: 1.4; opacity: 0; transform: translateY(10px);
+  }
+  .cw-desc-wrap { overflow: hidden; margin-bottom: 28px; }
+  .cw-desc {
+    font-size: 0.95rem; color: #475569; line-height: 1.65;
+    border-left: 2px solid #0968e5; padding-left: 18px; margin: 0; transform: translateY(100%);
+  }
+  .cw-instruction-panel { border-top: 1px solid rgba(0,0,0,0.06); padding-top: 28px; display: flex; flex-direction: column; gap: 14px; }
+  .panel-label {
+    font-family: 'JetBrains Mono','Courier New',monospace; font-size: 0.62rem;
+    text-transform: uppercase; letter-spacing: 1.5px; color: #0968e5; display: block; margin-bottom: 4px; font-weight: 600;
+  }
+  .step-item {
+    display: flex; align-items: flex-start; gap: 16px; opacity: 0;
+    padding: 10px 12px; border-radius: 10px; transition: background 0.3s;
+  }
+  .step-item:hover { background: rgba(255,255,255,0.6); }
+  .step-icon {
+    min-width: 28px; height: 28px; background: #fff;
+    border: 1px solid rgba(0,0,0,0.06); border-radius: 8px;
+    display: flex; align-items: center; justify-content: center;
+    color: #0968e5; box-shadow: 0 4px 10px rgba(0,0,0,0.03); flex-shrink: 0;
+  }
+  .step-text { font-size: 0.92rem; color: #0f172a; line-height: 1.3; font-weight: 600; }
+  .step-text span { display: block; font-size: 0.78rem; color: #666; font-weight: 400; margin-top: 3px; }
+  .b-highlight { color: #dc2626; font-weight: 600; font-size: 0.72rem; }
+  .cw-visual-area { height: 680px; width: 100%; position: relative; }
+  .cw-visual-area canvas { width: 100% !important; height: 100% !important; outline: none; display: block; }
+
+  /* ══════════ STUDIO SECTION ══════════ */
+  .cw-studio-section {
+    background: #ffffff;
+    border-top: 6px solid #0968e5;
+    padding: 70px 40px 80px;
+  }
+
+  .cw-studio-header {
+    max-width: 760px; margin: 0 auto 48px; text-align: center;
+  }
+  .cw-eyebrow {
+    font-size: 0.72rem; font-weight: 700; text-transform: uppercase;
+    letter-spacing: 3px; color: #0968e5; display: block; margin-bottom: 10px;
+  }
+  .cw-studio-title {
+    font-family: 'Outfit','Montserrat',sans-serif;
+    font-size: clamp(1.8rem,3vw,2.6rem); font-weight: 800;
+    color: #0f172a; text-transform: uppercase; letter-spacing: -0.5px; margin: 0 0 14px;
+  }
+  .cw-studio-subtitle {
+    font-size: 1rem; color: #475569; line-height: 1.7; margin: 0;
+  }
+
+  /* ── Engine wrapper: bounded, no page overflow ── */
+  #cw-engine-wrapper {
+    position: relative;
+    width: 100%;
+    max-width: 1400px;
+    margin: 0 auto;
+    height: 710px;
+    overflow: hidden;
+    border-radius: 16px;
+    border: 1px solid #e2e8f0;
+    box-shadow: 0 20px 50px rgba(15,23,42,0.07);
+    background: radial-gradient(circle at 60% 50%, #ffffff 0%, #e2e8f0 100%);
+    transition: background 0.5s ease;
+  }
+
+  /* Canvas fills right portion */
+  #cw-canvas-layer {
+    position: absolute;
+    top: 0; left: 320px; right: 0; bottom: 0;
+    z-index: 1;
+  }
+  #renderCanvas {
+    width: 100%; height: 100%;
+    outline: none; display: block;
+    touch-action: none;
+  }
+
+  /* Sidebar */
+  #cw-ui-layer {
+    position: absolute;
+    top: 0; left: 0;
+    width: 320px; height: 100%;
+    z-index: 20;
+    background: rgba(255,255,255,0.88);
+    backdrop-filter: blur(20px); -webkit-backdrop-filter: blur(20px);
+    border-right: 1px solid rgba(0,0,0,0.06);
+    box-shadow: 10px 0 30px rgba(0,0,0,0.04);
+    overflow-y: auto;
+    display: flex; flex-direction: column;
+    padding: 20px;
+  }
+
+  /* Sidebar typography */
+  .cw-tool-heading {
+    font-size: 1.5rem; margin: 0; text-align: center; font-weight: 800; letter-spacing: -0.5px;
+    background: linear-gradient(135deg, #0f172a 0%, #0968e5 100%);
+    -webkit-background-clip: text; -webkit-text-fill-color: transparent;
+    background-clip: text;
+  }
+  .cw-ver-label {
+    display: block; text-align: center; font-size: 0.68rem; color: #64748b;
+    margin-top: 3px; margin-bottom: 18px;
+    font-family: 'JetBrains Mono','Courier New',monospace; letter-spacing: 2px;
+  }
+
+  /* Control groups */
+  .cw-ctrl-group {
+    background: rgba(0,0,0,0.02);
+    border: 1px solid rgba(0,0,0,0.05);
+    padding: 14px; border-radius: 12px; margin-bottom: 10px;
+    transition: border-color 0.3s;
+  }
+  .cw-ctrl-group:hover { border-color: rgba(0,0,0,0.12); }
+
+  .cw-label-row {
+    display: flex; justify-content: space-between;
+    font-size: 0.62rem; color: #0968e5;
+    margin-bottom: 8px; font-weight: 700; letter-spacing: 1.5px;
+  }
+
+  /* Range inputs */
+  input[type=range] {
+    -webkit-appearance: none; width: 100%; background: transparent; cursor: pointer; margin-bottom: 3px;
+  }
+  input[type=range]::-webkit-slider-runnable-track {
+    width: 100%; height: 4px; background: #cbd5e1; border-radius: 2px;
+  }
+  input[type=range]::-webkit-slider-thumb {
+    -webkit-appearance: none; height: 16px; width: 16px; border-radius: 50%;
+    background: #fff; box-shadow: 0 0 8px rgba(9,104,229,0.3); margin-top: -6px;
+    transition: transform 0.1s; border: 1px solid #e2e8f0;
+  }
+  input[type=range]:hover::-webkit-slider-thumb { transform: scale(1.2); }
+
+  /* Select */
+  select {
+    width: 100%; padding: 9px 10px; background: #fff; color: #334155;
+    border: 1px solid #cbd5e1; border-radius: 8px; margin-bottom: 4px;
+    cursor: pointer; font-size: 0.83rem; font-family: 'Inter',sans-serif;
+    outline: none; transition: border-color 0.2s;
+  }
+  select:hover, select:focus { border-color: #0968e5; }
+
+  /* Colour picker row */
+  .cw-color-row { display: flex; gap: 10px; align-items: center; margin-top: 10px; }
+  input[type=color] {
+    -webkit-appearance: none; border: none; width: 34px; height: 34px;
+    border-radius: 8px; cursor: pointer; background: none; padding: 0;
+  }
+  input[type=color]::-webkit-color-swatch-wrapper { padding: 0; }
+  input[type=color]::-webkit-color-swatch { border: 1px solid rgba(0,0,0,0.1); border-radius: 8px; }
+  .cw-hex-input {
+    flex: 1; background: #fff; border: 1px solid #cbd5e1;
+    color: #334155; padding: 8px; border-radius: 8px;
+    font-family: 'JetBrains Mono','Courier New',monospace;
+    text-transform: uppercase; letter-spacing: 1px; outline: none; font-size: 0.82rem;
+  }
+  .cw-hex-input:focus { border-color: #0968e5; }
+
+  /* Primary upload button */
+  .cw-primary-btn {
+    background: linear-gradient(135deg, #0968e5 0%, #2563eb 100%);
+    color: white; border: none; padding: 12px; width: 100%;
+    border-radius: 8px; font-weight: 600; letter-spacing: 0.5px;
+    cursor: pointer; margin-bottom: 10px;
+    display: flex; align-items: center; justify-content: center; gap: 8px;
+    box-shadow: 0 4px 14px rgba(9,104,229,0.3);
+    transition: transform 0.2s, box-shadow 0.2s;
+    font-size: 0.88rem; font-family: 'Inter',sans-serif;
+  }
+  .cw-primary-btn:hover { transform: translateY(-2px); box-shadow: 0 6px 20px rgba(9,104,229,0.4); }
+
+  /* Small secondary buttons */
+  .cw-btn-row { display: flex; gap: 10px; }
+  .cw-btn-small {
+    flex: 1; background: #f1f5f9; border: 1px solid #e2e8f0;
+    color: #64748b; padding: 9px; border-radius: 6px;
+    cursor: pointer; font-size: 0.72rem; font-weight: 600;
+    transition: all 0.2s; font-family: 'Inter',sans-serif;
+  }
+  .cw-btn-small:hover { background: #e2e8f0; color: #0f172a; border-color: #94a3b8; }
+
+  /* Toggle buttons */
+  .cw-btn-row-toggle { display: flex; gap: 0; }
+  .cw-toggle-btn {
+    flex: 1; padding: 8px; font-size: 0.72rem; font-weight: 700;
+    border: 1px solid #e2e8f0; background: #fff; color: #64748b;
+    cursor: pointer; transition: all 0.2s; font-family: 'Inter',sans-serif; letter-spacing: 0.5px;
+  }
+  .cw-toggle-left  { border-radius: 6px 0 0 6px; border-right: none; }
+  .cw-toggle-right { border-radius: 0 6px 6px 0; }
+  .cw-toggle-active { background: #0968e5; color: #fff; border-color: #0968e5; }
+
+  /* ── Responsive ── */
+  @media (max-width: 900px) {
+    .cw-hero { padding: 30px 20px 60px; min-height: unset; }
+    .cw-content-grid { grid-template-columns: 1fr; gap: 36px; }
+    .cw-text-card { padding: 28px 22px; }
+    .cw-headline { font-size: 1.85rem; }
+    .cw-visual-area { height: 360px; order: -1; }
+    .hud-marker { display: none; }
+
+    .cw-studio-section { padding: 50px 20px 60px; }
+    #cw-engine-wrapper {
+      height: auto;
+      display: flex;
+      flex-direction: column-reverse;
+      border-radius: 12px;
+    }
+    #cw-canvas-layer {
+      position: relative;
+      left: auto; top: auto; right: auto; bottom: auto;
+      width: 100%; height: 55vw; min-height: 280px;
+    }
+    #cw-ui-layer {
+      position: relative;
+      width: 100%; height: auto;
+      border-right: none;
+      border-bottom: 1px solid rgba(0,0,0,0.06);
+    }
+  }
+</style>
+
+<!-- ═════════════════════ THREE.JS (hero preview) ════════════════════ -->
+<script is:inline src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js"></script>
+<script is:inline>
+(function () {
+  var container = document.getElementById('canvas-container');
+  if (!container || typeof THREE === 'undefined') return;
+  var scene = new THREE.Scene();
+  var camera = new THREE.PerspectiveCamera(35, container.offsetWidth / container.offsetHeight, 0.1, 1000);
+  camera.position.z = 13; camera.position.y = 1;
+  var renderer = new THREE.WebGLRenderer({ alpha: true, antialias: true });
+  renderer.setSize(container.offsetWidth, container.offsetHeight);
+  renderer.setPixelRatio(window.devicePixelRatio);
+  container.appendChild(renderer.domElement);
+  var canGroup = new THREE.Group(); scene.add(canGroup);
+  canGroup.add(new THREE.Mesh(new THREE.CylinderGeometry(1.6,1.6,5,64), new THREE.MeshPhysicalMaterial({ color:0xffffff, metalness:0.3, roughness:0.1, transparent:true, opacity:0.95, clearcoat:1 })));
+  var outerMat = new THREE.MeshBasicMaterial({ color:0x0968e5, wireframe:true, transparent:true, opacity:0.15 });
+  var outerCan = new THREE.Mesh(new THREE.CylinderGeometry(1.63,1.63,5.05,32,10), outerMat);
+  canGroup.add(outerCan);
+  var capMat = new THREE.MeshStandardMaterial({ color:0xe2e8f0, metalness:0.8, roughness:0.2 });
+  var topCap = new THREE.Mesh(new THREE.CylinderGeometry(1.6,1.6,0.2,64), capMat); topCap.position.y=2.6; canGroup.add(topCap);
+  var botCap = new THREE.Mesh(new THREE.CylinderGeometry(1.6,1.6,0.2,64), capMat); botCap.position.y=-2.6; canGroup.add(botCap);
+  var ref = canGroup.clone(); ref.scale.y=-1; ref.position.y=-5.4;
+  ref.traverse(function(c){ if(c.isMesh){ c.material=c.material.clone(); c.material.transparent=true; c.material.opacity=0.1; } });
+  scene.add(ref);
+  var pg = new THREE.BufferGeometry(); var pa = new Float32Array(300);
+  for(var i=0;i<300;i++) pa[i]=(Math.random()-0.5)*10;
+  pg.setAttribute('position', new THREE.BufferAttribute(pa,3));
+  var pm = new THREE.Points(pg, new THREE.PointsMaterial({ size:0.03, color:0x0968e5, transparent:true, opacity:0.4 }));
+  scene.add(pm);
+  scene.add(new THREE.AmbientLight(0xffffff,0.9));
+  var dl = new THREE.DirectionalLight(0xffffff,1.5); dl.position.set(5,5,5); scene.add(dl);
+  var bl = new THREE.PointLight(0x0968e5,2,20); bl.position.set(-5,0,5); scene.add(bl);
+  var mx=0, my=0; canGroup.rotation.x=0.2; canGroup.rotation.z=0.1;
+  (function loop(){ requestAnimationFrame(loop);
+    canGroup.rotation.y+=0.005; outerCan.rotation.y-=0.007;
+    ref.rotation.y=-canGroup.rotation.y; ref.rotation.x=-canGroup.rotation.x;
+    pm.rotation.y+=0.001; pm.position.y+=0.002; if(pm.position.y>1) pm.position.y=-1;
+    canGroup.rotation.x+=0.05*(my*0.3+0.2-canGroup.rotation.x);
+    canGroup.rotation.y+=0.05*(mx*0.3-canGroup.rotation.y);
+    renderer.render(scene,camera);
+  })();
+  window.addEventListener('resize', function(){ camera.aspect=container.offsetWidth/container.offsetHeight; camera.updateProjectionMatrix(); renderer.setSize(container.offsetWidth,container.offsetHeight); });
+  document.addEventListener('mousemove', function(e){ mx=(e.clientX/window.innerWidth)*2-1; my=-((e.clientY/window.innerHeight)*2-1); });
+})();
+</script>
+
+<!-- ═══════════════════════ BABYLON.JS CDN ════════════════════════ -->
+<script is:inline src="https://cdn.babylonjs.com/babylon.js"></script>
+<script is:inline src="https://cdn.babylonjs.com/loaders/babylonjs.loaders.min.js"></script>
+
+<!-- ═══════════════════════ STUDIO ENGINE ════════════════════════ -->
+<script is:inline>
+document.addEventListener('DOMContentLoaded', function () {
+  if (typeof BABYLON === 'undefined') return;
+
+  var CAN_DB = [
+    { diam: 4.3, height: 10.5 },
+    { diam: 4.3, height: 13.5 },
+    { diam: 4.3, height: 14.2 },
+    { diam: 3.4, height: 7.0  },
+    { diam: 3.4, height: 12.0 },
+    { diam: 3.4, height: 13.5 }
+  ];
+
+  var canvas      = document.getElementById('renderCanvas');
+  var wrapper     = document.getElementById('cw-engine-wrapper');
+  var scene, rootNode, labelMaterial, metalMat, capMat, currentTexture, seamPivot;
+
+  var engine = new BABYLON.Engine(canvas, true, { preserveDrawingBuffer: true, stencil: true });
+  scene = new BABYLON.Scene(engine);
+  scene.clearColor = new BABYLON.Color4(0,0,0,0);
+
+  var isMobile = window.innerWidth < 900;
+  var camera = new BABYLON.ArcRotateCamera('cam', Math.PI/2, Math.PI/2.2, isMobile ? 32 : 24, new BABYLON.Vector3(0,8,0), scene);
+  camera.attachControl(canvas, true);
+  camera.wheelPrecision = 50;
+  camera.minZ = 0.1;
+  camera.lowerRadiusLimit = 10;
+  camera.upperRadiusLimit = 50;
+
+  // Block page scroll only when the pointer is directly over the 3D canvas
+  canvas.addEventListener('wheel', function(e) { e.preventDefault(); }, { passive: false });
+
+  var hLight = new BABYLON.HemisphericLight('hLight', new BABYLON.Vector3(0,1,0), scene);
+  hLight.intensity = 0.6;
+  hLight.specular  = BABYLON.Color3.Black();
+
+  scene.createDefaultEnvironment({
+    createSkybox: false,
+    createGround: false,
+    environmentTexture: 'https://assets.babylonjs.com/environments/studio.env'
+  });
+  scene.environmentIntensity = 1.2;
+
+  metalMat = new BABYLON.PBRMaterial('metal', scene);
+  metalMat.metallic  = 1.0;
+  metalMat.roughness = 0.2;
+  metalMat.albedoColor = new BABYLON.Color3(0.95, 0.95, 0.95);
+
+  labelMaterial = new BABYLON.PBRMaterial('label', scene);
+  labelMaterial.metallic  = 0.1;
+  labelMaterial.roughness = 0.3;
+  labelMaterial.albedoColor  = new BABYLON.Color3(0.9, 0.9, 0.9);
+  labelMaterial.emissiveColor = new BABYLON.Color3(0,0,0);
+
+  capMat = new BABYLON.PBRMaterial('cap', scene);
+  capMat.albedoColor = BABYLON.Color3.FromHexString('#0D40BF');
+  capMat.metallic  = 0;
+  capMat.roughness = 0.4;
+
+  function buildCan(idx) {
+    if (rootNode) rootNode.dispose();
+    var d = CAN_DB[idx]; var D = d.diam; var H = d.height;
+    rootNode = new BABYLON.TransformNode('root', scene);
+
+    var body = BABYLON.MeshBuilder.CreateCylinder('body', { height: H, diameter: D, tessellation: 64 }, scene);
+    body.material = labelMaterial; body.position.y = H/2 + 0.2; body.parent = rootNode;
+
+    seamPivot = new BABYLON.TransformNode('sp', scene);
+    seamPivot.position.y = H/2 + 0.2; seamPivot.parent = rootNode;
+    var seam = BABYLON.MeshBuilder.CreateBox('s', { height: H-0.2, width: 0.1, depth: 0.05 }, scene);
+    seam.material = metalMat; seam.position.z = -D/2; seam.parent = seamPivot;
+    seamPivot.rotation.y = Math.PI;
+
+    var shoulder = BABYLON.MeshBuilder.CreateSphere('sh', { diameter: D, segments: 64 }, scene);
+    shoulder.scaling.y = 0.4; shoulder.position.y = H + 0.2; shoulder.material = metalMat; shoulder.parent = rootNode;
+
+    var cap = BABYLON.MeshBuilder.CreateCylinder('cap', { height: 3.5, diameter: D+0.1, tessellation: 64 }, scene);
+    cap.position.y = H + 1.8; cap.material = capMat; cap.parent = rootNode;
+
+    var rim = BABYLON.MeshBuilder.CreateTorus('rim', { diameter: D-0.1, thickness: 0.25, tessellation: 64 }, scene);
+    rim.position.y = 0.125; rim.material = metalMat; rim.parent = rootNode;
+  }
+
+  buildCan(0);
+  engine.runRenderLoop(function () { scene.render(); });
+  window.addEventListener('resize', function () { engine.resize(); });
+
+  /* ── File upload ── */
+  var fileInput = document.getElementById('fileInput');
+  document.getElementById('uploadBtn').addEventListener('click', function () { fileInput.click(); });
+  fileInput.addEventListener('change', function (evt) {
+    var file = evt.target.files[0];
+    if (!file) return;
+    var reader = new FileReader();
+    reader.onload = function (e) {
+      if (currentTexture) currentTexture.dispose();
+      currentTexture = new BABYLON.Texture(e.target.result, scene, false, true);
+      currentTexture.vScale = 1; currentTexture.uScale = 1;
+      currentTexture.uOffset = 0; currentTexture.vOffset = 0;
+      document.getElementById('rotSlider').value = 0;
+      labelMaterial.albedoTexture  = currentTexture;
+      labelMaterial.emissiveTexture = currentTexture;
+      labelMaterial.albedoColor = new BABYLON.Color3(1,1,1);
+      updateVibrancy(30);
+    };
+    reader.readAsDataURL(file);
+  });
+
+  /* ── Background toggle ── */
+  document.getElementById('bg-light').addEventListener('click', function () {
+    wrapper.style.background = 'radial-gradient(circle at 60% 50%, #ffffff 0%, #e2e8f0 100%)';
+    document.getElementById('bg-light').classList.add('cw-toggle-active');
+    document.getElementById('bg-dark').classList.remove('cw-toggle-active');
+  });
+  document.getElementById('bg-dark').addEventListener('click', function () {
+    wrapper.style.background = 'radial-gradient(circle at 60% 50%, #1e293b 0%, #0f172a 100%)';
+    document.getElementById('bg-dark').classList.add('cw-toggle-active');
+    document.getElementById('bg-light').classList.remove('cw-toggle-active');
+  });
+
+  /* ── Can size ── */
+  document.getElementById('sizeSelector').addEventListener('change', function () {
+    buildCan(parseInt(this.value));
+  });
+
+  /* ── Vibrancy ── */
+  function updateVibrancy(val) {
+    document.getElementById('vibVal').innerText = val + '%';
+    if (labelMaterial) { var i = val/100; labelMaterial.emissiveColor = new BABYLON.Color3(i,i,i); }
+  }
+  document.getElementById('vibrancySlider').addEventListener('input', function () { updateVibrancy(this.value); });
+
+  /* ── Gloss ── */
+  document.getElementById('glossSlider').addEventListener('input', function () {
+    document.getElementById('glossVal').innerText = this.value + '%';
+    if (labelMaterial) labelMaterial.roughness = 1.0 - (this.value/100);
+  });
+
+  /* ── Rotation ── */
+  document.getElementById('rotSlider').addEventListener('input', function () {
+    if (currentTexture) currentTexture.uOffset = this.value/360;
+  });
+
+  /* ── Seam ── */
+  document.getElementById('seamSlider').addEventListener('input', function () {
+    if (seamPivot) seamPivot.rotation.y = (this.value * Math.PI) / 180;
+  });
+
+  /* ── Flip ── */
+  document.getElementById('flipVertBtn').addEventListener('click',  function () { if (currentTexture) currentTexture.vScale *= -1; });
+  document.getElementById('flipHorizBtn').addEventListener('click', function () { if (currentTexture) currentTexture.uScale *= -1; });
+
+  /* ── Cap colour ── */
+  function applyCapColor(hex) {
+    if (!/^#([0-9A-Fa-f]{3}){1,2}$/.test(hex)) return;
+    document.getElementById('capColorPicker').value = hex;
+    document.getElementById('capHexInput').value    = hex.toUpperCase();
+    if (capMat) capMat.albedoColor = BABYLON.Color3.FromHexString(hex);
+  }
+  document.getElementById('capColorSelect').addEventListener('change', function () {
+    if (this.value !== 'custom') applyCapColor(this.value);
+  });
+  document.getElementById('capColorPicker').addEventListener('input', function () { applyCapColor(this.value); });
+  document.getElementById('capHexInput').addEventListener('change', function () { applyCapColor(this.value); });
+});
+</script>
+
+<!-- ═══════════════════════ GSAP ANIMATIONS ═══════════════════════ -->
+<script>
+  import { gsap } from "gsap";
+
+  const card = document.getElementById('spotlight-card') as HTMLElement;
+  card?.addEventListener('mousemove', (e: MouseEvent) => {
+    const rect = card.getBoundingClientRect();
+    card.style.setProperty('--mouse-x', `${e.clientX - rect.left}px`);
+    card.style.setProperty('--mouse-y', `${e.clientY - rect.top}px`);
+  });
+
+  function scrambleText(el: HTMLElement, final: string, dur: number) {
+    const chars = 'ABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789@#$%&';
+    const frames = dur * 30; let f = 0;
+    const id = setInterval(() => {
+      f++; const p = f / frames; const rev = Math.floor(p * final.length);
+      let out = '';
+      for (let i = 0; i < final.length; i++) {
+        if (i < rev) out += final[i];
+        else if (final[i] === ' ') out += ' ';
+        else out += chars[Math.floor(Math.random() * chars.length)];
+      }
+      el.innerText = out;
+      if (f >= frames) { clearInterval(id); el.innerText = final; }
+    }, 30);
+  }
+
+  document.addEventListener('DOMContentLoaded', () => {
+    const tl = gsap.timeline({ defaults: { ease: 'power3.out' } });
+    tl.from('.cw-badge', { y: 20, opacity: 0, duration: 0.8, delay: 0.2 });
+    tl.call(() => {
+      const t = document.getElementById('scramble-target') as HTMLElement;
+      if (t) scrambleText(t, 'CanWrap 3D Design Studio', 1.8);
+    }, undefined, '-=0.4');
+    tl.to('.cw-subhead', { opacity: 1, y: 0, duration: 1 }, '-=0.2');
+    tl.to('.cw-desc',    { y: 0, duration: 1 },             '-=0.8');
+    tl.to('.step-item',  { opacity: 1, duration: 0.6, stagger: 0.15 }, '-=0.5');
+
+    setInterval(() => {
+      const el = document.getElementById('coord-x');
+      if (el) el.innerText = String(Math.floor(Math.random() * 999)).padStart(3, '0');
+    }, 150);
+  });
+</script>

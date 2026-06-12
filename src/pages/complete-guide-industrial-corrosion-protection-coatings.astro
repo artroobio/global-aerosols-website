@@ -4,36 +4,36 @@ import Layout from '../layouts/Layout.astro';
 const slug = 'complete-guide-industrial-corrosion-protection-coatings';
 const title = 'The Complete Guide to Corrosion Protection Coatings';
 const description = 'The complete guide to industrial corrosion protection coatings — ISO 12944 systems, primer types, selection criteria, and performance comparison for engineers.';
-const heroCdn    = `https://cdn.globalformulation.com/images/${slug}/${slug}-hero-globalformulation.webp`;
-const diagramCdn = `https://cdn.globalformulation.com/images/${slug}/${slug}-diagram-globalformulation.webp`;
-const infoCdn    = `https://cdn.globalformulation.com/images/${slug}/${slug}-infographic-globalformulation.webp`;
-const ctx1Cdn    = `https://cdn.globalformulation.com/images/${slug}/${slug}-contextual-1-globalformulation.webp`;
-const ctx2Cdn    = `https://cdn.globalformulation.com/images/${slug}/${slug}-contextual-2-globalformulation.webp`;
+const heroCdn    = `https://cdn.globalformulation.com/images/${slug}/${slug}-hero.webp`;
+const diagramCdn = `https://cdn.globalformulation.com/images/${slug}/${slug}-diagram.webp`;
+const infoCdn    = `https://cdn.globalformulation.com/images/${slug}/${slug}-infographic.webp`;
+const ctx1Cdn    = `https://cdn.globalformulation.com/images/${slug}/${slug}-contextual-1.webp`;
+const ctx2Cdn    = `https://cdn.globalformulation.com/images/${slug}/${slug}-contextual-2.webp`;
 
 const orgSchema = {
   "@context": "https://schema.org", "@type": "Organization",
-  "name": "Global Formulation", "url": "https://www.globalformulation.com",
-  "logo": "https://www.globalformulation.com/logo.png",
+  "name": "Global Formulation", "url": "https://www.globalaerosols.com",
+  "logo": "https://www.globalaerosols.com/logo.png",
   "contactPoint": [{ "@type": "ContactPoint", "telephone": "+91 9819548320", "contactType": "customer service" }]
 };
 const websiteSchema = {
   "@context": "https://schema.org", "@type": "WebSite",
-  "url": "https://www.globalformulation.com",
-  "potentialAction": { "@type": "SearchAction", "target": "https://www.globalformulation.com/blog?search={search_term_string}", "query-input": "required name=search_term_string" }
+  "url": "https://www.globalaerosols.com",
+  "potentialAction": { "@type": "SearchAction", "target": "https://www.globalaerosols.com/blog?search={search_term_string}", "query-input": "required name=search_term_string" }
 };
 const authorSchema = {
   "@context": "https://schema.org", "@type": "Person",
   "name": "Absar Khan", "jobTitle": "Lead Consultant",
   "url": "https://www.linkedin.com/in/absar-khan-aerosol-consultant-and-formulator-78359b162",
-  "affiliation": { "@type": "Organization", "name": "Global Formulation", "url": "https://www.globalformulation.com" },
+  "affiliation": { "@type": "Organization", "name": "Global Formulation", "url": "https://www.globalaerosols.com" },
   "sameAs": ["https://www.linkedin.com/in/absar-khan-aerosol-consultant-and-formulator-78359b162"]
 };
 const breadcrumbSchema = {
   "@context": "https://schema.org", "@type": "BreadcrumbList",
   "itemListElement": [
-    { "@type": "ListItem", "position": 1, "name": "Home", "item": "https://www.globalformulation.com" },
-    { "@type": "ListItem", "position": 2, "name": "Blog", "item": "https://www.globalformulation.com/blog" },
-    { "@type": "ListItem", "position": 3, "name": "The Complete Guide to Corrosion Protection Coatings", "item": `https://www.globalformulation.com/${slug}` }
+    { "@type": "ListItem", "position": 1, "name": "Home", "item": "https://www.globalaerosols.com" },
+    { "@type": "ListItem", "position": 2, "name": "Blog", "item": "https://www.globalaerosols.com/blog" },
+    { "@type": "ListItem", "position": 3, "name": "The Complete Guide to Corrosion Protection Coatings", "item": `https://www.globalaerosols.com/${slug}` }
   ]
 };
 const blogPostingSchema = {
@@ -42,9 +42,9 @@ const blogPostingSchema = {
   "description": "The complete guide to industrial corrosion protection coatings — ISO 12944 systems, primer types, selection criteria, and performance comparison for engineers.",
   "image": heroCdn,
   "author": { "@type": "Person", "name": "Absar Khan" },
-  "publisher": { "@type": "Organization", "name": "Global Formulation", "logo": { "@type": "ImageObject", "url": "https://www.globalformulation.com/logo.png" } },
+  "publisher": { "@type": "Organization", "name": "Global Formulation", "logo": { "@type": "ImageObject", "url": "https://www.globalaerosols.com/logo.png" } },
   "datePublished": "2026-06-01", "dateModified": "2026-06-01",
-  "mainEntityOfPage": { "@type": "WebPage", "@id": `https://www.globalformulation.com/${slug}` },
+  "mainEntityOfPage": { "@type": "WebPage", "@id": `https://www.globalaerosols.com/${slug}` },
   "articleSection": "Paints & Coatings",
   "keywords": "industrial corrosion protection coatings, anti-corrosion coating systems, ISO 12944 coating specification, zinc-rich primer corrosion, corrosion protection system selection, industrial paint corrosion guide",
   "wordCount": "2700"
@@ -87,7 +87,7 @@ const faqSchema = {
 const webpageSchema = {
   "@context": "https://schema.org", "@type": "WebPage",
   "name": "The Complete Guide to Corrosion Protection Coatings | Global Formulation",
-  "url": `https://www.globalformulation.com/${slug}`,
+  "url": `https://www.globalaerosols.com/${slug}`,
   "description": "The complete guide to industrial corrosion protection coatings — ISO 12944 systems, primer types, selection criteria, and performance comparison for engineers."
 };
 
@@ -97,7 +97,7 @@ const schemas = [orgSchema, websiteSchema, authorSchema, breadcrumbSchema, blogP
 <Layout
   title={title}
   description={description}
-  canonical={`https://www.globalformulation.com/${slug}`}
+  canonical={`https://www.globalaerosols.com/${slug}`}
   ogImage={heroCdn}
   ogType="article"
   schemaJson={schemas}

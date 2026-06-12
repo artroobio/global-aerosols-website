@@ -17,12 +17,12 @@ const {
   title = 'Global Formulation - Industrial & Chemical Product R&D Specialists',
   description = 'Get expert R&D, chemical formulations, aerosol consulting, and turnkey manufacturing engineering from industrial specialist Absar Khan and the Global Formulation team.',
   canonical = Astro.url.href,
-  ogImage = 'https://www.globalformulation.com/og-default.jpg',
+  ogImage = 'https://www.globalaerosols.com/og-default.jpg',
   ogType = 'website',
   schemaJson,
 } = Astro.props;
 
-const rawCanonical = canonical.startsWith('http') ? canonical : `https://www.globalformulation.com${canonical}`;
+const rawCanonical = canonical.startsWith('http') ? canonical : `https://www.globalaerosols.com${canonical}`;
 const cleanCanonical = (() => {
   try {
     const u = new URL(rawCanonical);

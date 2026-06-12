@@ -4,34 +4,34 @@ import Layout from '../layouts/Layout.astro';
 const slug = 'adhesive-bond-failure-types-diagnosis';
 const title = 'Why Adhesive Bonds Fail: Adhesive, Cohesive & Substrate';
 const description = 'Adhesive bond failure types — adhesive, cohesive, and substrate — how to identify each by fracture surface, root cause analysis, and corrective strategy.';
-const heroCdn  = `https://cdn.globalformulation.com/images/${slug}/${slug}-hero-globalformulation.webp`;
-const diagramCdn = `https://cdn.globalformulation.com/images/${slug}/${slug}-diagram-globalformulation.webp`;
-const infoCdn  = `https://cdn.globalformulation.com/images/${slug}/${slug}-infographic-globalformulation.webp`;
+const heroCdn  = `https://cdn.globalformulation.com/images/${slug}/${slug}-hero.webp`;
+const diagramCdn = `https://cdn.globalformulation.com/images/${slug}/${slug}-diagram.webp`;
+const infoCdn  = `https://cdn.globalformulation.com/images/${slug}/${slug}-infographic.webp`;
 
 const orgSchema = {
   "@context": "https://schema.org", "@type": "Organization",
-  "name": "Global Formulation", "url": "https://www.globalformulation.com",
-  "logo": "https://www.globalformulation.com/logo.png",
+  "name": "Global Formulation", "url": "https://www.globalaerosols.com",
+  "logo": "https://www.globalaerosols.com/logo.png",
   "contactPoint": [{ "@type": "ContactPoint", "telephone": "+91 9819548320", "contactType": "customer service" }]
 };
 const websiteSchema = {
   "@context": "https://schema.org", "@type": "WebSite",
-  "url": "https://www.globalformulation.com",
-  "potentialAction": { "@type": "SearchAction", "target": "https://www.globalformulation.com/blog?search={search_term_string}", "query-input": "required name=search_term_string" }
+  "url": "https://www.globalaerosols.com",
+  "potentialAction": { "@type": "SearchAction", "target": "https://www.globalaerosols.com/blog?search={search_term_string}", "query-input": "required name=search_term_string" }
 };
 const authorSchema = {
   "@context": "https://schema.org", "@type": "Person",
   "name": "Absar Khan", "jobTitle": "Lead Consultant",
   "url": "https://www.linkedin.com/in/absar-khan-aerosol-consultant-and-formulator-78359b162",
-  "affiliation": { "@type": "Organization", "name": "Global Formulation", "url": "https://www.globalformulation.com" },
+  "affiliation": { "@type": "Organization", "name": "Global Formulation", "url": "https://www.globalaerosols.com" },
   "sameAs": ["https://www.linkedin.com/in/absar-khan-aerosol-consultant-and-formulator-78359b162"]
 };
 const breadcrumbSchema = {
   "@context": "https://schema.org", "@type": "BreadcrumbList",
   "itemListElement": [
-    { "@type": "ListItem", "position": 1, "name": "Home", "item": "https://www.globalformulation.com" },
-    { "@type": "ListItem", "position": 2, "name": "Blog", "item": "https://www.globalformulation.com/blog" },
-    { "@type": "ListItem", "position": 3, "name": "Why Adhesive Bonds Fail: Adhesive, Cohesive & Substrate", "item": `https://www.globalformulation.com/${slug}` }
+    { "@type": "ListItem", "position": 1, "name": "Home", "item": "https://www.globalaerosols.com" },
+    { "@type": "ListItem", "position": 2, "name": "Blog", "item": "https://www.globalaerosols.com/blog" },
+    { "@type": "ListItem", "position": 3, "name": "Why Adhesive Bonds Fail: Adhesive, Cohesive & Substrate", "item": `https://www.globalaerosols.com/${slug}` }
   ]
 };
 const blogPostingSchema = {
@@ -40,9 +40,9 @@ const blogPostingSchema = {
   "description": "Adhesive bond failure types — adhesive, cohesive, and substrate — how to identify each by fracture surface, root cause analysis, and corrective strategy.",
   "image": heroCdn,
   "author": { "@type": "Person", "name": "Absar Khan" },
-  "publisher": { "@type": "Organization", "name": "Global Formulation", "logo": { "@type": "ImageObject", "url": "https://www.globalformulation.com/logo.png" } },
+  "publisher": { "@type": "Organization", "name": "Global Formulation", "logo": { "@type": "ImageObject", "url": "https://www.globalaerosols.com/logo.png" } },
   "datePublished": "2026-06-09", "dateModified": "2026-06-09",
-  "mainEntityOfPage": { "@type": "WebPage", "@id": `https://www.globalformulation.com/${slug}` },
+  "mainEntityOfPage": { "@type": "WebPage", "@id": `https://www.globalaerosols.com/${slug}` },
   "articleSection": "Adhesives & Sealants",
   "keywords": "adhesive bond failure types, cohesive failure adhesive, adhesive failure substrate, bond failure analysis, adhesive peel strength failure, adhesive joint failure diagnosis",
   "wordCount": "1900"
@@ -90,7 +90,7 @@ const faqSchema = {
 const webpageSchema = {
   "@context": "https://schema.org", "@type": "WebPage",
   "name": "Why Adhesive Bonds Fail: Adhesive, Cohesive & Substrate | Global Formulation",
-  "url": `https://www.globalformulation.com/${slug}`,
+  "url": `https://www.globalaerosols.com/${slug}`,
   "description": "Adhesive bond failure types — adhesive, cohesive, and substrate — how to identify each by fracture surface, root cause analysis, and corrective strategy."
 };
 
@@ -100,7 +100,7 @@ const schemas = [orgSchema, websiteSchema, authorSchema, breadcrumbSchema, blogP
 <Layout
   title={title}
   description={description}
-  canonical={`https://www.globalformulation.com/${slug}`}
+  canonical={`https://www.globalaerosols.com/${slug}`}
   ogImage={heroCdn}
   ogType="article"
   schemaJson={schemas}
@@ -124,9 +124,9 @@ const schemas = [orgSchema, websiteSchema, authorSchema, breadcrumbSchema, blogP
 
       <!--
         IMAGE PLACEHOLDER — HERO (1200×630px)
-        File: adhesive-bond-failure-types-diagnosis-hero-globalformulation.webp
+        File: adhesive-bond-failure-types-diagnosis-hero.webp
         Alt: adhesive bond failure types — three-panel image showing adhesive, cohesive, and substrate failure fracture surfaces | Global Formulation
-        IMG PROMPT (1200×630px): Photorealistic premium industrial/laboratory photography. A three-panel composite image arranged horizontally on a dark navy laboratory bench showing the three adhesive bond failure modes side by side. Left panel: adhesive failure — a peel test in progress showing a completely clean metal substrate surface with the adhesive layer remaining entirely on the opposing substrate, the interface exposure clearly visible under warm gold light. Centre panel: cohesive failure — a fractured adhesive layer split through its middle body, with adhesive residue visible and textured on both fracture faces, highlighted by cool steel-blue reflections. Right panel: substrate failure — a fibre composite coupon torn through its thickness layers below the adhesive, leaving the adhesive intact on the tear surface with fibrous substrate damage clearly visible. Volumetric lighting with warm gold highlights and cool steel-blue shadows. Rich depth of field, shallow focus on fracture surfaces. Corporate colour palette: deep navy background, warm gold accent lighting, clean white highlights. Ultra high detail, 4K quality, professional editorial photography style. No text, no watermarks, no logos. Cinematic composition, bokeh background, professionally lit, no people. FILE: adhesive-bond-failure-types-diagnosis-hero-globalformulation.webp
+        IMG PROMPT (1200×630px): Photorealistic premium industrial/laboratory photography. A three-panel composite image arranged horizontally on a dark navy laboratory bench showing the three adhesive bond failure modes side by side. Left panel: adhesive failure — a peel test in progress showing a completely clean metal substrate surface with the adhesive layer remaining entirely on the opposing substrate, the interface exposure clearly visible under warm gold light. Centre panel: cohesive failure — a fractured adhesive layer split through its middle body, with adhesive residue visible and textured on both fracture faces, highlighted by cool steel-blue reflections. Right panel: substrate failure — a fibre composite coupon torn through its thickness layers below the adhesive, leaving the adhesive intact on the tear surface with fibrous substrate damage clearly visible. Volumetric lighting with warm gold highlights and cool steel-blue shadows. Rich depth of field, shallow focus on fracture surfaces. Corporate colour palette: deep navy background, warm gold accent lighting, clean white highlights. Ultra high detail, 4K quality, professional editorial photography style. No text, no watermarks, no logos. Cinematic composition, bokeh background, professionally lit, no people. FILE: adhesive-bond-failure-types-diagnosis-hero.webp
       -->
       <div class="hero-img-wrap">
         <img
@@ -348,9 +348,9 @@ const schemas = [orgSchema, websiteSchema, authorSchema, breadcrumbSchema, blogP
       <!-- DIAGRAM IMAGE -->
       <!--
         IMAGE PLACEHOLDER — DIAGRAM (900×500px)
-        File: adhesive-bond-failure-types-diagnosis-diagram-globalformulation.webp
+        File: adhesive-bond-failure-types-diagnosis-diagram.webp
         Alt: adhesive bond failure types root cause diagram — cross-section classification of adhesive, cohesive, and substrate failure fracture planes | Global Formulation
-        IMG PROMPT (900×500px): Premium 3D scientific visualization. Failure mode classification diagram — three side-by-side engineering cross-section schematics on a dark navy (#0a1628) background. Left section: adhesive failure — exploded 3D cross-section of a bonded joint with a glowing cyan fracture line running precisely along the lower adhesive-substrate interface, one substrate surface shown clean and reflective, the opposing surface carrying an intact adhesive film. Centre section: cohesive failure — cross-section showing a jagged gold fracture plane through the middle of the adhesive bulk layer, adhesive residue visible on both fracture surfaces with rough textured finish. Right section: substrate failure — cross-section with the fracture plane running through the substrate material below the adhesive, substrate fibres or layers visible as torn elements, adhesive layer intact and undamaged. Glowing cyan and gold accent lines indicating fracture planes. Clean engineering annotation style with glowing boundary indicators. Dark navy background with cool steel-blue shadows. Futuristic technical dashboard aesthetic. No text, no watermarks. Ultra clean composition, high contrast against dark background, glowing accent details, professional technical illustration style. FILE: adhesive-bond-failure-types-diagnosis-diagram-globalformulation.webp
+        IMG PROMPT (900×500px): Premium 3D scientific visualization. Failure mode classification diagram — three side-by-side engineering cross-section schematics on a dark navy (#0a1628) background. Left section: adhesive failure — exploded 3D cross-section of a bonded joint with a glowing cyan fracture line running precisely along the lower adhesive-substrate interface, one substrate surface shown clean and reflective, the opposing surface carrying an intact adhesive film. Centre section: cohesive failure — cross-section showing a jagged gold fracture plane through the middle of the adhesive bulk layer, adhesive residue visible on both fracture surfaces with rough textured finish. Right section: substrate failure — cross-section with the fracture plane running through the substrate material below the adhesive, substrate fibres or layers visible as torn elements, adhesive layer intact and undamaged. Glowing cyan and gold accent lines indicating fracture planes. Clean engineering annotation style with glowing boundary indicators. Dark navy background with cool steel-blue shadows. Futuristic technical dashboard aesthetic. No text, no watermarks. Ultra clean composition, high contrast against dark background, glowing accent details, professional technical illustration style. FILE: adhesive-bond-failure-types-diagnosis-diagram.webp
       -->
       <img class="article-img"
         src={diagramCdn}
@@ -499,9 +499,9 @@ const schemas = [orgSchema, websiteSchema, authorSchema, breadcrumbSchema, blogP
       <!-- INFOGRAPHIC IMAGE -->
       <!--
         IMAGE PLACEHOLDER — INFOGRAPHIC (900×500px)
-        File: adhesive-bond-failure-types-diagnosis-infographic-globalformulation.webp
+        File: adhesive-bond-failure-types-diagnosis-infographic.webp
         Alt: adhesive bond failure types diagnostic flowchart — decision tree from fracture surface appearance to failure type identification and corrective action | Global Formulation
-        IMG PROMPT (900×500px): Premium corporate data visualization dashboard. Bond failure diagnostic flowchart — a clean decision tree starting from a single glowing node at the top labelled with a peel test icon, branching downward through two illuminated diamond diagnostic decision nodes asking 'Where is adhesive residue?' and 'Is substrate torn?', leading to three glowing terminal panels: left panel in cyan for Adhesive Failure with a clean substrate icon, centre panel in gold for Cohesive Failure with an adhesive split icon, right panel in white-silver for Substrate Failure with a torn laminate icon. Each terminal panel feeds into a downstream corrective action node below it. Clean dark navy background with gold grid lines and glowing cyan branch lines. Modern analytics interface aesthetic — think Bloomberg Terminal meets precision engineering. Decision nodes as illuminated diamond shapes with soft glow. Balanced grid layout, premium corporate aesthetic, high information density, clean modern design. No real data numbers — visual style only. No text, no watermarks. FILE: adhesive-bond-failure-types-diagnosis-infographic-globalformulation.webp
+        IMG PROMPT (900×500px): Premium corporate data visualization dashboard. Bond failure diagnostic flowchart — a clean decision tree starting from a single glowing node at the top labelled with a peel test icon, branching downward through two illuminated diamond diagnostic decision nodes asking 'Where is adhesive residue?' and 'Is substrate torn?', leading to three glowing terminal panels: left panel in cyan for Adhesive Failure with a clean substrate icon, centre panel in gold for Cohesive Failure with an adhesive split icon, right panel in white-silver for Substrate Failure with a torn laminate icon. Each terminal panel feeds into a downstream corrective action node below it. Clean dark navy background with gold grid lines and glowing cyan branch lines. Modern analytics interface aesthetic — think Bloomberg Terminal meets precision engineering. Decision nodes as illuminated diamond shapes with soft glow. Balanced grid layout, premium corporate aesthetic, high information density, clean modern design. No real data numbers — visual style only. No text, no watermarks. FILE: adhesive-bond-failure-types-diagnosis-infographic.webp
       -->
       <img class="article-img"
         src={infoCdn}

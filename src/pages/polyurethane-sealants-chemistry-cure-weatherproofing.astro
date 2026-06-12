@@ -4,15 +4,15 @@ import Layout from '../layouts/Layout.astro';
 const slug = 'polyurethane-sealants-chemistry-cure-weatherproofing';
 const title = 'Polyurethane Sealants: Chemistry, Cure & Weatherproofing';
 const description = 'Explore polyurethane sealant formulation — one-component moisture cure, two-component chemistry, joint movement, weathering, and construction use cases.';
-const heroCdn = `https://cdn.globalformulation.com/images/${slug}/${slug}-hero-globalformulation.webp`;
+const heroCdn = `https://cdn.globalformulation.com/images/${slug}/${slug}-hero.webp`;
 
 // 1. Organization Schema
 const orgSchema = {
   "@context": "https://schema.org",
   "@type": "Organization",
   "name": "Global Formulation",
-  "url": "https://www.globalformulation.com",
-  "logo": "https://www.globalformulation.com/logo.png",
+  "url": "https://www.globalaerosols.com",
+  "logo": "https://www.globalaerosols.com/logo.png",
   "contactPoint": [{ "@type": "ContactPoint", "telephone": "+91 9819548320", "contactType": "customer service" }]
 };
 
@@ -20,10 +20,10 @@ const orgSchema = {
 const websiteSchema = {
   "@context": "https://schema.org",
   "@type": "WebSite",
-  "url": "https://www.globalformulation.com",
+  "url": "https://www.globalaerosols.com",
   "potentialAction": {
     "@type": "SearchAction",
-    "target": "https://www.globalformulation.com/blog?search={search_term_string}",
+    "target": "https://www.globalaerosols.com/blog?search={search_term_string}",
     "query-input": "required name=search_term_string"
   }
 };
@@ -35,7 +35,7 @@ const authorSchema = {
   "name": "Absar Khan",
   "jobTitle": "Lead Consultant",
   "url": "https://www.linkedin.com/in/absar-khan-aerosol-consultant-and-formulator-78359b162",
-  "affiliation": { "@type": "Organization", "name": "Global Formulation", "url": "https://www.globalformulation.com" },
+  "affiliation": { "@type": "Organization", "name": "Global Formulation", "url": "https://www.globalaerosols.com" },
   "sameAs": ["https://www.linkedin.com/in/absar-khan-aerosol-consultant-and-formulator-78359b162"]
 };
 
@@ -44,9 +44,9 @@ const breadcrumbSchema = {
   "@context": "https://schema.org",
   "@type": "BreadcrumbList",
   "itemListElement": [
-    { "@type": "ListItem", "position": 1, "name": "Home", "item": "https://www.globalformulation.com" },
-    { "@type": "ListItem", "position": 2, "name": "Blog", "item": "https://www.globalformulation.com/blog" },
-    { "@type": "ListItem", "position": 3, "name": "Polyurethane Sealants: Chemistry, Cure & Weatherproofing", "item": `https://www.globalformulation.com/${slug}` }
+    { "@type": "ListItem", "position": 1, "name": "Home", "item": "https://www.globalaerosols.com" },
+    { "@type": "ListItem", "position": 2, "name": "Blog", "item": "https://www.globalaerosols.com/blog" },
+    { "@type": "ListItem", "position": 3, "name": "Polyurethane Sealants: Chemistry, Cure & Weatherproofing", "item": `https://www.globalaerosols.com/${slug}` }
   ]
 };
 
@@ -61,11 +61,11 @@ const blogPostingSchema = {
   "publisher": {
     "@type": "Organization",
     "name": "Global Formulation",
-    "logo": { "@type": "ImageObject", "url": "https://www.globalformulation.com/logo.png" }
+    "logo": { "@type": "ImageObject", "url": "https://www.globalaerosols.com/logo.png" }
   },
   "datePublished": "2026-05-29",
   "dateModified": "2026-05-29",
-  "mainEntityOfPage": { "@type": "WebPage", "@id": `https://www.globalformulation.com/${slug}` },
+  "mainEntityOfPage": { "@type": "WebPage", "@id": `https://www.globalaerosols.com/${slug}` },
   "articleSection": "Adhesives & Sealants",
   "keywords": "polyurethane sealant formulation, one component PU sealant, two component polyurethane sealant, moisture cure PU, construction joint sealant, polyurethane sealant movement",
   "wordCount": "1960"
@@ -132,7 +132,7 @@ const webpageSchema = {
   "@context": "https://schema.org",
   "@type": "WebPage",
   "name": "Polyurethane Sealants: Chemistry, Cure & Weatherproofing | Global Formulation",
-  "url": `https://www.globalformulation.com/${slug}`,
+  "url": `https://www.globalaerosols.com/${slug}`,
   "description": "Explore polyurethane sealant formulation — one-component moisture cure, two-component chemistry, joint movement, weathering, and construction use cases."
 };
 
@@ -142,7 +142,7 @@ const schemas = [orgSchema, websiteSchema, authorSchema, breadcrumbSchema, blogP
 <Layout
   title={title}
   description={description}
-  canonical={`https://www.globalformulation.com/${slug}`}
+  canonical={`https://www.globalaerosols.com/${slug}`}
   ogImage={heroCdn}
   ogType="article"
   schemaJson={schemas}
@@ -252,7 +252,7 @@ const schemas = [orgSchema, websiteSchema, authorSchema, breadcrumbSchema, blogP
       <!-- Diagram -->
       <div class="article-img-wrap" style="margin: 2em 0 0.6em; border-radius: var(--pu-radius); overflow: hidden; border: 1px solid var(--pu-border);">
         <img 
-          src={`https://cdn.globalformulation.com/images/${slug}/${slug}-diagram-globalformulation.webp`}
+          src={`https://cdn.globalformulation.com/images/${slug}/${slug}-diagram.webp`}
           alt="moisture cure PU sealant mechanism — polyurethane prepolymer reacting with water forming urea crosslinks inside glass beaker | Global Formulation diagram"
           width="900"
           height="500"
@@ -324,7 +324,7 @@ const schemas = [orgSchema, websiteSchema, authorSchema, breadcrumbSchema, blogP
       <!-- Infographic -->
       <div class="article-img-wrap" style="margin: 2em 0 0.6em; border-radius: var(--pu-radius); overflow: hidden; border: 1px solid var(--pu-border);">
         <img 
-          src={`https://cdn.globalformulation.com/images/${slug}/${slug}-infographic-globalformulation.webp`}
+          src={`https://cdn.globalformulation.com/images/${slug}/${slug}-infographic.webp`}
           alt="construction joint sealant comparison — test tubes containing PU sealant samples of varying grades and hardness | Global Formulation infographic"
           width="900"
           height="500"

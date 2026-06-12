@@ -3,10 +3,10 @@ import Layout from '../layouts/Layout.astro';
 
 const SLUG   = "surfactant-selection-guide-cleaning-formulations";
 const CDN    = `https://cdn.globalformulation.com/images/${SLUG}`;
-const HERO   = `${CDN}/${SLUG}-hero-globalformulation.webp`;
-const DIAG   = `${CDN}/${SLUG}-diagram-globalformulation.webp`;
-const INFO   = `${CDN}/${SLUG}-infographic-globalformulation.webp`;
-const CANON  = `https://www.globalformulation.com/${SLUG}`;
+const HERO   = `${CDN}/${SLUG}-hero.webp`;
+const DIAG   = `${CDN}/${SLUG}-diagram.webp`;
+const INFO   = `${CDN}/${SLUG}-infographic.webp`;
+const CANON  = `https://www.globalaerosols.com/${SLUG}`;
 const TITLE  = "Surfactant Selection Guide for Cleaning Formulations";
 const DESCR  = "How to choose surfactants for cleaning formulations — comparing anionic, nonionic, cationic and amphoteric classes by HLB value, CMC, and foam performance.";
 const DATE   = "2026-06-09";
@@ -16,8 +16,8 @@ const orgSchema = {
   "@context": "https://schema.org",
   "@type": "Organization",
   "name": "Global Formulation",
-  "url": "https://www.globalformulation.com",
-  "logo": "https://www.globalformulation.com/logo.png",
+  "url": "https://www.globalaerosols.com",
+  "logo": "https://www.globalaerosols.com/logo.png",
   "contactPoint": [{ "@type": "ContactPoint", "telephone": "+91 9819548320", "contactType": "customer service" }]
 };
 
@@ -25,8 +25,8 @@ const orgSchema = {
 const websiteSchema = {
   "@context": "https://schema.org",
   "@type": "WebSite",
-  "url": "https://www.globalformulation.com",
-  "potentialAction": { "@type": "SearchAction", "target": "https://www.globalformulation.com/blog?search={search_term_string}", "query-input": "required name=search_term_string" }
+  "url": "https://www.globalaerosols.com",
+  "potentialAction": { "@type": "SearchAction", "target": "https://www.globalaerosols.com/blog?search={search_term_string}", "query-input": "required name=search_term_string" }
 };
 
 // 3. Author
@@ -36,7 +36,7 @@ const authorSchema = {
   "name": "Absar Khan",
   "jobTitle": "Lead Consultant",
   "url": "https://www.linkedin.com/in/absar-khan-aerosol-consultant-and-formulator-78359b162",
-  "affiliation": { "@type": "Organization", "name": "Global Formulation", "url": "https://www.globalformulation.com" },
+  "affiliation": { "@type": "Organization", "name": "Global Formulation", "url": "https://www.globalaerosols.com" },
   "sameAs": ["https://www.linkedin.com/in/absar-khan-aerosol-consultant-and-formulator-78359b162"]
 };
 
@@ -45,8 +45,8 @@ const breadcrumbSchema = {
   "@context": "https://schema.org",
   "@type": "BreadcrumbList",
   "itemListElement": [
-    { "@type": "ListItem", "position": 1, "name": "Home", "item": "https://www.globalformulation.com" },
-    { "@type": "ListItem", "position": 2, "name": "Blog", "item": "https://www.globalformulation.com/blog" },
+    { "@type": "ListItem", "position": 1, "name": "Home", "item": "https://www.globalaerosols.com" },
+    { "@type": "ListItem", "position": 2, "name": "Blog", "item": "https://www.globalaerosols.com/blog" },
     { "@type": "ListItem", "position": 3, "name": "Surfactant Selection Guide for Cleaning Formulations", "item": CANON }
   ]
 };
@@ -59,7 +59,7 @@ const blogPostingSchema = {
   "description": DESCR,
   "image": HERO,
   "author": { "@type": "Person", "name": "Absar Khan" },
-  "publisher": { "@type": "Organization", "name": "Global Formulation", "logo": { "@type": "ImageObject", "url": "https://www.globalformulation.com/logo.png" } },
+  "publisher": { "@type": "Organization", "name": "Global Formulation", "logo": { "@type": "ImageObject", "url": "https://www.globalaerosols.com/logo.png" } },
   "datePublished": DATE,
   "dateModified": DATE,
   "mainEntityOfPage": { "@type": "WebPage", "@id": CANON },

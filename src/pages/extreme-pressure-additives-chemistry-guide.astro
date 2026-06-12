@@ -4,34 +4,34 @@ import Layout from '../layouts/Layout.astro';
 const slug = 'extreme-pressure-additives-chemistry-guide';
 const title = 'Extreme Pressure Additives: Chemistry & Industrial Use';
 const description = 'Extreme pressure additives in lubricants explained — sulphur-phosphorus EP chemistry, ZDDP mechanism, gear oil API GL grades, and the four-ball EP test guide.';
-const heroCdn = `https://cdn.globalformulation.com/images/${slug}/${slug}-hero-globalformulation.webp`;
-const diagramCdn = `https://cdn.globalformulation.com/images/${slug}/${slug}-diagram-globalformulation.webp`;
-const infographicCdn = `https://cdn.globalformulation.com/images/${slug}/${slug}-infographic-globalformulation.webp`;
+const heroCdn = `https://cdn.globalformulation.com/images/${slug}/${slug}-hero.webp`;
+const diagramCdn = `https://cdn.globalformulation.com/images/${slug}/${slug}-diagram.webp`;
+const infographicCdn = `https://cdn.globalformulation.com/images/${slug}/${slug}-infographic.webp`;
 
 const orgSchema = {
   "@context": "https://schema.org", "@type": "Organization",
-  "name": "Global Formulation", "url": "https://www.globalformulation.com",
-  "logo": "https://www.globalformulation.com/logo.png",
+  "name": "Global Formulation", "url": "https://www.globalaerosols.com",
+  "logo": "https://www.globalaerosols.com/logo.png",
   "contactPoint": [{ "@type": "ContactPoint", "telephone": "+91 9819548320", "contactType": "customer service" }]
 };
 const websiteSchema = {
   "@context": "https://schema.org", "@type": "WebSite",
-  "url": "https://www.globalformulation.com",
-  "potentialAction": { "@type": "SearchAction", "target": "https://www.globalformulation.com/blog?search={search_term_string}", "query-input": "required name=search_term_string" }
+  "url": "https://www.globalaerosols.com",
+  "potentialAction": { "@type": "SearchAction", "target": "https://www.globalaerosols.com/blog?search={search_term_string}", "query-input": "required name=search_term_string" }
 };
 const authorSchema = {
   "@context": "https://schema.org", "@type": "Person",
   "name": "Absar Khan", "jobTitle": "Lead Consultant",
   "url": "https://www.linkedin.com/in/absar-khan-aerosol-consultant-and-formulator-78359b162",
-  "affiliation": { "@type": "Organization", "name": "Global Formulation", "url": "https://www.globalformulation.com" },
+  "affiliation": { "@type": "Organization", "name": "Global Formulation", "url": "https://www.globalaerosols.com" },
   "sameAs": ["https://www.linkedin.com/in/absar-khan-aerosol-consultant-and-formulator-78359b162"]
 };
 const breadcrumbSchema = {
   "@context": "https://schema.org", "@type": "BreadcrumbList",
   "itemListElement": [
-    { "@type": "ListItem", "position": 1, "name": "Home", "item": "https://www.globalformulation.com" },
-    { "@type": "ListItem", "position": 2, "name": "Blog", "item": "https://www.globalformulation.com/blog" },
-    { "@type": "ListItem", "position": 3, "name": "Extreme Pressure Additives: Chemistry & Industrial Use", "item": `https://www.globalformulation.com/${slug}` }
+    { "@type": "ListItem", "position": 1, "name": "Home", "item": "https://www.globalaerosols.com" },
+    { "@type": "ListItem", "position": 2, "name": "Blog", "item": "https://www.globalaerosols.com/blog" },
+    { "@type": "ListItem", "position": 3, "name": "Extreme Pressure Additives: Chemistry & Industrial Use", "item": `https://www.globalaerosols.com/${slug}` }
   ]
 };
 const blogPostingSchema = {
@@ -40,9 +40,9 @@ const blogPostingSchema = {
   "description": "Extreme pressure additives in lubricants explained — sulphur-phosphorus EP chemistry, ZDDP mechanism, gear oil API GL grades, and the four-ball EP test guide.",
   "image": heroCdn,
   "author": { "@type": "Person", "name": "Absar Khan" },
-  "publisher": { "@type": "Organization", "name": "Global Formulation", "logo": { "@type": "ImageObject", "url": "https://www.globalformulation.com/logo.png" } },
+  "publisher": { "@type": "Organization", "name": "Global Formulation", "logo": { "@type": "ImageObject", "url": "https://www.globalaerosols.com/logo.png" } },
   "datePublished": "2026-06-06", "dateModified": "2026-06-06",
-  "mainEntityOfPage": { "@type": "WebPage", "@id": `https://www.globalformulation.com/${slug}` },
+  "mainEntityOfPage": { "@type": "WebPage", "@id": `https://www.globalaerosols.com/${slug}` },
   "articleSection": "Lubricants",
   "keywords": "extreme pressure additives lubricants, sulphur phosphorus EP additive, gear oil EP additive, ZDDP chemistry, antiwear EP mechanism, four ball EP test",
   "wordCount": "2300"
@@ -85,7 +85,7 @@ const faqSchema = {
 const webpageSchema = {
   "@context": "https://schema.org", "@type": "WebPage",
   "name": "Extreme Pressure Additives: Chemistry & Industrial Use | Global Formulation",
-  "url": `https://www.globalformulation.com/${slug}`,
+  "url": `https://www.globalaerosols.com/${slug}`,
   "description": "Extreme pressure additives in lubricants explained — sulphur-phosphorus EP chemistry, ZDDP mechanism, gear oil API GL grades, and the four-ball EP test guide."
 };
 
@@ -95,7 +95,7 @@ const schemas = [orgSchema, websiteSchema, authorSchema, breadcrumbSchema, blogP
 <Layout
   title={title}
   description={description}
-  canonical={`https://www.globalformulation.com/${slug}`}
+  canonical={`https://www.globalaerosols.com/${slug}`}
   ogImage={heroCdn}
   ogType="article"
   schemaJson={schemas}
@@ -119,7 +119,7 @@ const schemas = [orgSchema, websiteSchema, authorSchema, breadcrumbSchema, blogP
 
       <!--
         IMAGE PLACEHOLDER — HERO
-        File: extreme-pressure-additives-chemistry-guide-hero-globalformulation.webp
+        File: extreme-pressure-additives-chemistry-guide-hero.webp
         Size: 1200×630 px
         Alt: extreme pressure additives lubricants — four-ball wear test apparatus with amber EP gear oil on dark laboratory bench | Global Formulation
         Generation prompt:
@@ -192,7 +192,7 @@ const schemas = [orgSchema, websiteSchema, authorSchema, breadcrumbSchema, blogP
           and mining equipment running under high shock loads all spend significant time in the
           boundary regime. For the full context of how additive packages are assembled for these
           applications, see our overview of
-          <a href="https://www.globalformulation.com/additives-in-lubricants-guide" target="_top">lubricant additive packages and their chemistry</a>.
+          <a href="https://www.globalaerosols.com/additives-in-lubricants-guide" target="_top">lubricant additive packages and their chemistry</a>.
         </p>
         <ul>
           <li><strong>Adhesive wear prevention:</strong> EP films shear preferentially instead of the base metal, eliminating micro-weld formation</li>
@@ -205,7 +205,7 @@ const schemas = [orgSchema, websiteSchema, authorSchema, breadcrumbSchema, blogP
       <!-- DIAGRAM IMAGE -->
       <!--
         IMAGE PLACEHOLDER — DIAGRAM
-        File: extreme-pressure-additives-chemistry-guide-diagram-globalformulation.webp
+        File: extreme-pressure-additives-chemistry-guide-diagram.webp
         Size: 900×500 px
         Alt: EP additive film formation diagram — iron sulphide sacrificial layer forming on steel surface inside glass beaker | Global Formulation
         Generation prompt:
@@ -234,7 +234,7 @@ const schemas = [orgSchema, websiteSchema, authorSchema, breadcrumbSchema, blogP
           This synergistic combination has been the industry workhorse for decades, and understanding the
           individual contributions of each component is fundamental to formulation design and troubleshooting.
           As detailed in our broader guide to
-          <a href="https://www.globalformulation.com/lubricant-formulations-and-technology" target="_top">lubricant formulation technology</a>,
+          <a href="https://www.globalaerosols.com/lubricant-formulations-and-technology" target="_top">lubricant formulation technology</a>,
           no single additive class is sufficient for the full severity range encountered in real industrial applications —
           S-P packages succeed because each component activates at different temperature and stress thresholds.
         </p>
@@ -365,7 +365,7 @@ const schemas = [orgSchema, websiteSchema, authorSchema, breadcrumbSchema, blogP
           JASO MA2). This has driven intensive development of ashless antiwear additives as ZDDP
           alternatives in engine oils, while ZDDP remains largely unconstrained in industrial gear
           oils and greases where catalyst compatibility is not a concern. For lubricants serving the
-          <a href="https://www.globalformulation.com/lubricants" target="_top">broad industrial lubricants market</a>,
+          <a href="https://www.globalaerosols.com/lubricants" target="_top">broad industrial lubricants market</a>,
           ZDDP continues to offer an unmatched combination of antiwear, EP, antioxidant, and
           corrosion inhibition performance at an economical treat rate.
         </p>
@@ -374,7 +374,7 @@ const schemas = [orgSchema, websiteSchema, authorSchema, breadcrumbSchema, blogP
       <!-- INFOGRAPHIC IMAGE -->
       <!--
         IMAGE PLACEHOLDER — INFOGRAPHIC
-        File: extreme-pressure-additives-chemistry-guide-infographic-globalformulation.webp
+        File: extreme-pressure-additives-chemistry-guide-infographic.webp
         Size: 900×500 px
         Alt: gear oil extreme pressure additives comparison — row of glass test tubes with API GL-grade lubricants of varying colour and viscosity | Global Formulation
         Generation prompt:
@@ -533,7 +533,7 @@ const schemas = [orgSchema, websiteSchema, authorSchema, breadcrumbSchema, blogP
           level (CKB, CKC, CKD, CKE for standard to heavy-duty EP service) and viscosity grade
           (ISO VG 68 through 1500). CKC and CKD grades carry the highest EP requirements and must
           pass FZG stage 12 as a minimum — these directly correspond to the applications covered by
-          <a href="https://www.globalformulation.com/additives-in-lubricants-guide" target="_top">industrial EP additive packages</a>.
+          <a href="https://www.globalaerosols.com/additives-in-lubricants-guide" target="_top">industrial EP additive packages</a>.
           Premium CKD industrial gear oils designed for shock-load mining and cement plant service
           are formulated to pass FZG stage 13 or 14.
         </p>
@@ -631,7 +631,7 @@ const schemas = [orgSchema, websiteSchema, authorSchema, breadcrumbSchema, blogP
       <div class="cta-block">
         <h2>Need Expert Lubricant Formulation Support?</h2>
         <p>Our team provides end-to-end technical consultancy — from EP additive selection and bench testing strategy to scale-up, manufacturing setup, and regulatory compliance.</p>
-        <a href="https://www.globalformulation.com/contact" target="_top" class="cta-btn">
+        <a href="https://www.globalaerosols.com/contact" target="_top" class="cta-btn">
           Get a Free Consultation
         </a>
       </div>
@@ -640,12 +640,12 @@ const schemas = [orgSchema, websiteSchema, authorSchema, breadcrumbSchema, blogP
       <section class="related-section">
         <h2>Related Articles</h2>
         <ul class="related-grid">
-          <li><a href="https://www.globalformulation.com/additives-in-lubricants-guide" target="_top">Additive Packages in Lubricants: Technical &amp; Business Guide</a></li>
-          <li><a href="https://www.globalformulation.com/lubricant-formulations-and-technology" target="_top">Lubricant Formulations &amp; Technology: Full Overview</a></li>
-          <li><a href="https://www.globalformulation.com/future-of-eco-friendly-chemical-products" target="_top">Green Chemistry Revolution: Eco-Friendly Industrial Products</a></li>
-          <li><a href="https://www.globalformulation.com/volatile-organic-compounds-and-pollution" target="_top">Pollution Caused by VOCs: What Manufacturers Need to Know</a></li>
-          <li><a href="https://www.globalformulation.com/manufacturing-without-a-factory-guide" target="_top">Manufacturing Without a Factory: The MaaS Ecosystem</a></li>
-          <li><a href="https://www.globalformulation.com/choosing-the-right-product-consultant" target="_top">How to Choose the Right Product Consultant</a></li>
+          <li><a href="https://www.globalaerosols.com/additives-in-lubricants-guide" target="_top">Additive Packages in Lubricants: Technical &amp; Business Guide</a></li>
+          <li><a href="https://www.globalaerosols.com/lubricant-formulations-and-technology" target="_top">Lubricant Formulations &amp; Technology: Full Overview</a></li>
+          <li><a href="https://www.globalaerosols.com/future-of-eco-friendly-chemical-products" target="_top">Green Chemistry Revolution: Eco-Friendly Industrial Products</a></li>
+          <li><a href="https://www.globalaerosols.com/volatile-organic-compounds-and-pollution" target="_top">Pollution Caused by VOCs: What Manufacturers Need to Know</a></li>
+          <li><a href="https://www.globalaerosols.com/manufacturing-without-a-factory-guide" target="_top">Manufacturing Without a Factory: The MaaS Ecosystem</a></li>
+          <li><a href="https://www.globalaerosols.com/choosing-the-right-product-consultant" target="_top">How to Choose the Right Product Consultant</a></li>
         </ul>
       </section>
 

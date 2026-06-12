@@ -4,34 +4,34 @@ import Layout from '../layouts/Layout.astro';
 const slug = 'ghs-sds-compliance-lubricant-manufacturers';
 const title = 'GHS and SDS Compliance for Lubricant Manufacturers';
 const description = 'GHS and SDS compliance for lubricants — CLP hazard classification, REACH Annex II requirements, and revision 9 changes every lubricant manufacturer must know.';
-const heroCdn = `https://cdn.globalformulation.com/images/${slug}/${slug}-hero-globalformulation.webp`;
-const diagramCdn = `https://cdn.globalformulation.com/images/${slug}/${slug}-diagram-globalformulation.webp`;
-const infographicCdn = `https://cdn.globalformulation.com/images/${slug}/${slug}-infographic-globalformulation.webp`;
+const heroCdn = `https://cdn.globalformulation.com/images/${slug}/${slug}-hero.webp`;
+const diagramCdn = `https://cdn.globalformulation.com/images/${slug}/${slug}-diagram.webp`;
+const infographicCdn = `https://cdn.globalformulation.com/images/${slug}/${slug}-infographic.webp`;
 
 const orgSchema = {
   "@context": "https://schema.org", "@type": "Organization",
-  "name": "Global Formulation", "url": "https://www.globalformulation.com",
-  "logo": "https://www.globalformulation.com/logo.png",
+  "name": "Global Formulation", "url": "https://www.globalaerosols.com",
+  "logo": "https://www.globalaerosols.com/logo.png",
   "contactPoint": [{ "@type": "ContactPoint", "telephone": "+91 9819548320", "contactType": "customer service" }]
 };
 const websiteSchema = {
   "@context": "https://schema.org", "@type": "WebSite",
-  "url": "https://www.globalformulation.com",
-  "potentialAction": { "@type": "SearchAction", "target": "https://www.globalformulation.com/blog?search={search_term_string}", "query-input": "required name=search_term_string" }
+  "url": "https://www.globalaerosols.com",
+  "potentialAction": { "@type": "SearchAction", "target": "https://www.globalaerosols.com/blog?search={search_term_string}", "query-input": "required name=search_term_string" }
 };
 const authorSchema = {
   "@context": "https://schema.org", "@type": "Person",
   "name": "Absar Khan", "jobTitle": "Lead Consultant",
   "url": "https://www.linkedin.com/in/absar-khan-aerosol-consultant-and-formulator-78359b162",
-  "affiliation": { "@type": "Organization", "name": "Global Formulation", "url": "https://www.globalformulation.com" },
+  "affiliation": { "@type": "Organization", "name": "Global Formulation", "url": "https://www.globalaerosols.com" },
   "sameAs": ["https://www.linkedin.com/in/absar-khan-aerosol-consultant-and-formulator-78359b162"]
 };
 const breadcrumbSchema = {
   "@context": "https://schema.org", "@type": "BreadcrumbList",
   "itemListElement": [
-    { "@type": "ListItem", "position": 1, "name": "Home", "item": "https://www.globalformulation.com" },
-    { "@type": "ListItem", "position": 2, "name": "Blog", "item": "https://www.globalformulation.com/blog" },
-    { "@type": "ListItem", "position": 3, "name": "GHS and SDS Compliance for Lubricant Manufacturers", "item": `https://www.globalformulation.com/${slug}` }
+    { "@type": "ListItem", "position": 1, "name": "Home", "item": "https://www.globalaerosols.com" },
+    { "@type": "ListItem", "position": 2, "name": "Blog", "item": "https://www.globalaerosols.com/blog" },
+    { "@type": "ListItem", "position": 3, "name": "GHS and SDS Compliance for Lubricant Manufacturers", "item": `https://www.globalaerosols.com/${slug}` }
   ]
 };
 const blogPostingSchema = {
@@ -40,9 +40,9 @@ const blogPostingSchema = {
   "description": "GHS and SDS compliance for lubricants — CLP hazard classification, REACH Annex II requirements, and revision 9 changes every lubricant manufacturer must know.",
   "image": heroCdn,
   "author": { "@type": "Person", "name": "Absar Khan" },
-  "publisher": { "@type": "Organization", "name": "Global Formulation", "logo": { "@type": "ImageObject", "url": "https://www.globalformulation.com/logo.png" } },
+  "publisher": { "@type": "Organization", "name": "Global Formulation", "logo": { "@type": "ImageObject", "url": "https://www.globalaerosols.com/logo.png" } },
   "datePublished": "2026-06-06", "dateModified": "2026-06-06",
-  "mainEntityOfPage": { "@type": "WebPage", "@id": `https://www.globalformulation.com/${slug}` },
+  "mainEntityOfPage": { "@type": "WebPage", "@id": `https://www.globalaerosols.com/${slug}` },
   "articleSection": "Lubricants & Chemical Safety",
   "keywords": "GHS SDS compliance lubricants, safety data sheet lubricant GHS, CLP regulation lubricants, hazard classification lubricant, 16-section SDS lubricant, REACH SDS obligation lubricant",
   "wordCount": "2300"
@@ -85,7 +85,7 @@ const faqSchema = {
 const webpageSchema = {
   "@context": "https://schema.org", "@type": "WebPage",
   "name": "GHS and SDS Compliance for Lubricant Manufacturers | Global Formulation",
-  "url": `https://www.globalformulation.com/${slug}`,
+  "url": `https://www.globalaerosols.com/${slug}`,
   "description": "GHS and SDS compliance for lubricants — CLP hazard classification, REACH Annex II requirements, and revision 9 changes every lubricant manufacturer must know."
 };
 
@@ -95,7 +95,7 @@ const schemas = [orgSchema, websiteSchema, authorSchema, breadcrumbSchema, blogP
 <Layout
   title={title}
   description={description}
-  canonical={`https://www.globalformulation.com/${slug}`}
+  canonical={`https://www.globalaerosols.com/${slug}`}
   ogImage={heroCdn}
   ogType="article"
   schemaJson={schemas}
@@ -119,7 +119,7 @@ const schemas = [orgSchema, websiteSchema, authorSchema, breadcrumbSchema, blogP
 
       <!--
         IMAGE PLACEHOLDER — HERO
-        File: ghs-sds-compliance-lubricant-manufacturers-hero-globalformulation.webp
+        File: ghs-sds-compliance-lubricant-manufacturers-hero.webp
         Size: 1200×630 px
         Alt: GHS SDS compliance lubricants — safety data sheet being reviewed against GHS hazard pictogram requirements in compliance audit | Global Formulation
         Generation prompt:
@@ -303,7 +303,7 @@ const schemas = [orgSchema, websiteSchema, authorSchema, breadcrumbSchema, blogP
 
       <!--
         IMAGE PLACEHOLDER — DIAGRAM
-        File: ghs-sds-compliance-lubricant-manufacturers-diagram-globalformulation.webp
+        File: ghs-sds-compliance-lubricant-manufacturers-diagram.webp
         Size: 900×500 px
         Alt: GHS SDS compliance lubricants regulatory pathway diagram — CLP classification decision tree to SDS and label generation | Global Formulation
         Generation prompt:
@@ -391,7 +391,7 @@ const schemas = [orgSchema, websiteSchema, authorSchema, breadcrumbSchema, blogP
           raw material suppliers (to populate Section 3 composition and Section 11 toxicological
           data), and the REACH registration numbers for all substances manufactured or imported
           above 1 tonne per year. Our overview of
-          <a href="https://www.globalformulation.com/lubricants" target="_top">the lubricants formulation landscape</a>
+          <a href="https://www.globalaerosols.com/lubricants" target="_top">the lubricants formulation landscape</a>
           describes the additive categories most likely to require careful Section 3 and Section 11 treatment.
         </p>
       </section>
@@ -464,7 +464,7 @@ const schemas = [orgSchema, websiteSchema, authorSchema, breadcrumbSchema, blogP
 
       <!--
         IMAGE PLACEHOLDER — INFOGRAPHIC
-        File: ghs-sds-compliance-lubricant-manufacturers-infographic-globalformulation.webp
+        File: ghs-sds-compliance-lubricant-manufacturers-infographic.webp
         Size: 900×500 px
         Alt: GHS SDS compliance requirements infographic — 16-section SDS structure and key content requirements for lubricant manufacturers | Global Formulation
         Generation prompt:
@@ -514,7 +514,7 @@ const schemas = [orgSchema, websiteSchema, authorSchema, breadcrumbSchema, blogP
           more demanding: toxicological data bridging from structurally similar substances may
           be required, and the DNELs and PNECs needed for Section 8 may require derivation from
           available hazard data using the ECHA guidance methodology. Our consulting team at
-          <a href="https://www.globalformulation.com/rust-preventive-oils-soft-hard-film" target="_top">rust preventive oil and specialty lubricant formulation</a>
+          <a href="https://www.globalaerosols.com/rust-preventive-oils-soft-hard-film" target="_top">rust preventive oil and specialty lubricant formulation</a>
           includes regulatory specialists who support SDS preparation for complex lubricant product lines.
         </p>
       </section>
@@ -550,7 +550,7 @@ const schemas = [orgSchema, websiteSchema, authorSchema, breadcrumbSchema, blogP
           is present in a lubricant additive at above 0.1%, the SDS Section 3 must be updated —
           but without an active monitoring process this update is routinely missed.
           For formulation and regulatory strategy support across the
-          <a href="https://www.globalformulation.com/compressor-oils-air-refrigeration-gas" target="_top">compressor oil and specialty lubricant segment</a>,
+          <a href="https://www.globalaerosols.com/compressor-oils-air-refrigeration-gas" target="_top">compressor oil and specialty lubricant segment</a>,
           integrated SDS compliance review is part of any responsible product development programme.
         </p>
       </section>
@@ -606,7 +606,7 @@ const schemas = [orgSchema, websiteSchema, authorSchema, breadcrumbSchema, blogP
       <div class="cta-block">
         <h2>Need Regulatory Guidance for Your Lubricant Product Range?</h2>
         <p>Our team provides end-to-end regulatory strategy — from CLP classification reviews and SDS gap analysis through to 2020/878-compliant SDS preparation, UFI generation, and poison centre notification support.</p>
-        <a href="https://www.globalformulation.com/contact" target="_top" class="cta-btn">
+        <a href="https://www.globalaerosols.com/contact" target="_top" class="cta-btn">
           Get a Free Consultation
         </a>
       </div>
@@ -615,12 +615,12 @@ const schemas = [orgSchema, websiteSchema, authorSchema, breadcrumbSchema, blogP
       <section class="related-section">
         <h2>Related Articles</h2>
         <ul class="related-grid">
-          <li><a href="https://www.globalformulation.com/lubricants" target="_top">Lubricants: Formulation &amp; Technology Overview</a></li>
-          <li><a href="https://www.globalformulation.com/rust-preventive-oils-soft-hard-film" target="_top">Rust Preventive Oils: Soft Film, Hard Film &amp; Fingerprint Oils</a></li>
-          <li><a href="https://www.globalformulation.com/choosing-the-right-product-consultant" target="_top">How to Choose the Right Product Consultant</a></li>
-          <li><a href="https://www.globalformulation.com/volatile-organic-compounds-and-pollution" target="_top">Pollution Caused by VOCs: What Manufacturers Need to Know</a></li>
-          <li><a href="https://www.globalformulation.com/future-of-eco-friendly-chemical-products" target="_top">Green Chemistry Revolution: Eco-Friendly Industrial Products</a></li>
-          <li><a href="https://www.globalformulation.com/manufacturing-without-a-factory-guide" target="_top">Manufacturing Without a Factory: The MaaS Ecosystem</a></li>
+          <li><a href="https://www.globalaerosols.com/lubricants" target="_top">Lubricants: Formulation &amp; Technology Overview</a></li>
+          <li><a href="https://www.globalaerosols.com/rust-preventive-oils-soft-hard-film" target="_top">Rust Preventive Oils: Soft Film, Hard Film &amp; Fingerprint Oils</a></li>
+          <li><a href="https://www.globalaerosols.com/choosing-the-right-product-consultant" target="_top">How to Choose the Right Product Consultant</a></li>
+          <li><a href="https://www.globalaerosols.com/volatile-organic-compounds-and-pollution" target="_top">Pollution Caused by VOCs: What Manufacturers Need to Know</a></li>
+          <li><a href="https://www.globalaerosols.com/future-of-eco-friendly-chemical-products" target="_top">Green Chemistry Revolution: Eco-Friendly Industrial Products</a></li>
+          <li><a href="https://www.globalaerosols.com/manufacturing-without-a-factory-guide" target="_top">Manufacturing Without a Factory: The MaaS Ecosystem</a></li>
         </ul>
       </section>
 

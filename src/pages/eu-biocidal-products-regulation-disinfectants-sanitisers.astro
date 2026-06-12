@@ -4,34 +4,34 @@ import Layout from '../layouts/Layout.astro';
 const slug = 'eu-biocidal-products-regulation-disinfectants-sanitisers';
 const title = 'EU Biocidal Products Regulation: Disinfectant Guide';
 const description = 'EU Biocidal Products Regulation for disinfectants — authorisation pathways, product types PT1–PT4, and what manufacturers must do for EU compliance.';
-const heroCdn     = `https://cdn.globalformulation.com/images/${slug}/${slug}-hero-globalformulation.webp`;
-const diagramCdn  = `https://cdn.globalformulation.com/images/${slug}/${slug}-diagram-globalformulation.webp`;
-const infoCdn     = `https://cdn.globalformulation.com/images/${slug}/${slug}-infographic-globalformulation.webp`;
+const heroCdn     = `https://cdn.globalformulation.com/images/${slug}/${slug}-hero.webp`;
+const diagramCdn  = `https://cdn.globalformulation.com/images/${slug}/${slug}-diagram.webp`;
+const infoCdn     = `https://cdn.globalformulation.com/images/${slug}/${slug}-infographic.webp`;
 
 const orgSchema = {
   "@context": "https://schema.org", "@type": "Organization",
-  "name": "Global Formulation", "url": "https://www.globalformulation.com",
-  "logo": "https://www.globalformulation.com/logo.png",
+  "name": "Global Formulation", "url": "https://www.globalaerosols.com",
+  "logo": "https://www.globalaerosols.com/logo.png",
   "contactPoint": [{ "@type": "ContactPoint", "telephone": "+91 9819548320", "contactType": "customer service" }]
 };
 const websiteSchema = {
   "@context": "https://schema.org", "@type": "WebSite",
-  "url": "https://www.globalformulation.com",
-  "potentialAction": { "@type": "SearchAction", "target": "https://www.globalformulation.com/blog?search={search_term_string}", "query-input": "required name=search_term_string" }
+  "url": "https://www.globalaerosols.com",
+  "potentialAction": { "@type": "SearchAction", "target": "https://www.globalaerosols.com/blog?search={search_term_string}", "query-input": "required name=search_term_string" }
 };
 const authorSchema = {
   "@context": "https://schema.org", "@type": "Person",
   "name": "Absar Khan", "jobTitle": "Lead Consultant",
   "url": "https://www.linkedin.com/in/absar-khan-aerosol-consultant-and-formulator-78359b162",
-  "affiliation": { "@type": "Organization", "name": "Global Formulation", "url": "https://www.globalformulation.com" },
+  "affiliation": { "@type": "Organization", "name": "Global Formulation", "url": "https://www.globalaerosols.com" },
   "sameAs": ["https://www.linkedin.com/in/absar-khan-aerosol-consultant-and-formulator-78359b162"]
 };
 const breadcrumbSchema = {
   "@context": "https://schema.org", "@type": "BreadcrumbList",
   "itemListElement": [
-    { "@type": "ListItem", "position": 1, "name": "Home", "item": "https://www.globalformulation.com" },
-    { "@type": "ListItem", "position": 2, "name": "Blog", "item": "https://www.globalformulation.com/blog" },
-    { "@type": "ListItem", "position": 3, "name": "EU Biocidal Products Regulation: Disinfectant Guide", "item": `https://www.globalformulation.com/${slug}` }
+    { "@type": "ListItem", "position": 1, "name": "Home", "item": "https://www.globalaerosols.com" },
+    { "@type": "ListItem", "position": 2, "name": "Blog", "item": "https://www.globalaerosols.com/blog" },
+    { "@type": "ListItem", "position": 3, "name": "EU Biocidal Products Regulation: Disinfectant Guide", "item": `https://www.globalaerosols.com/${slug}` }
   ]
 };
 const blogPostingSchema = {
@@ -40,9 +40,9 @@ const blogPostingSchema = {
   "description": "EU Biocidal Products Regulation for disinfectants — authorisation pathways, product types PT1–PT4, and what manufacturers must do for EU compliance.",
   "image": heroCdn,
   "author": { "@type": "Person", "name": "Absar Khan" },
-  "publisher": { "@type": "Organization", "name": "Global Formulation", "logo": { "@type": "ImageObject", "url": "https://www.globalformulation.com/logo.png" } },
+  "publisher": { "@type": "Organization", "name": "Global Formulation", "logo": { "@type": "ImageObject", "url": "https://www.globalaerosols.com/logo.png" } },
   "datePublished": "2026-06-09", "dateModified": "2026-06-09",
-  "mainEntityOfPage": { "@type": "WebPage", "@id": `https://www.globalformulation.com/${slug}` },
+  "mainEntityOfPage": { "@type": "WebPage", "@id": `https://www.globalaerosols.com/${slug}` },
   "articleSection": "Cleaners & Biocides Regulation",
   "keywords": "EU biocidal products regulation disinfectants, BPR disinfectant authorisation EU, PT2 biocide regulation, disinfectant active substance EU, BPR Union authorisation disinfectant, sanitiser regulatory compliance EU",
   "wordCount": "2000"
@@ -90,7 +90,7 @@ const faqSchema = {
 const webpageSchema = {
   "@context": "https://schema.org", "@type": "WebPage",
   "name": "EU Biocidal Products Regulation: Disinfectant Guide | Global Formulation",
-  "url": `https://www.globalformulation.com/${slug}`,
+  "url": `https://www.globalaerosols.com/${slug}`,
   "description": "EU Biocidal Products Regulation for disinfectants — authorisation pathways, product types PT1–PT4, and what manufacturers must do for EU compliance."
 };
 
@@ -100,7 +100,7 @@ const schemas = [orgSchema, websiteSchema, authorSchema, breadcrumbSchema, blogP
 <Layout
   title={title}
   description={description}
-  canonical={`https://www.globalformulation.com/${slug}`}
+  canonical={`https://www.globalaerosols.com/${slug}`}
   ogImage={heroCdn}
   ogType="article"
   schemaJson={schemas}
@@ -124,9 +124,9 @@ const schemas = [orgSchema, websiteSchema, authorSchema, breadcrumbSchema, blogP
 
       <!--
         IMAGE PLACEHOLDER — HERO (1200×630px)
-        File: eu-biocidal-products-regulation-disinfectants-sanitisers-hero-globalformulation.webp
+        File: eu-biocidal-products-regulation-disinfectants-sanitisers-hero.webp
         Alt: EU biocidal products regulation disinfectants — authorisation dossier being prepared for PT2 disinfectant submission to ECHA | Global Formulation
-        IMG PROMPT (1200×630px): Photorealistic premium professional photography. A clean corporate regulatory compliance desk scene: an open ring-binder regulatory dossier labelled with EU compliance paperwork, surrounded by small amber glass dropper bottles representing disinfectant active substances, a laptop open to a regulatory portal, and EU flag pin on a dark navy desk surface. Official, authoritative, trust-building documentary aesthetic. Volumetric lighting with warm gold highlights and cool steel-blue shadows. Corporate colour palette: deep navy background, warm gold accent lighting, clean white highlights on pages. Ultra high detail, 4K quality, professional editorial photography style. No text, no watermarks, no logos. Cinematic composition, professional lighting, no people's faces shown, no text overlay. FILE: eu-biocidal-products-regulation-disinfectants-sanitisers-hero-globalformulation.webp
+        IMG PROMPT (1200×630px): Photorealistic premium professional photography. A clean corporate regulatory compliance desk scene: an open ring-binder regulatory dossier labelled with EU compliance paperwork, surrounded by small amber glass dropper bottles representing disinfectant active substances, a laptop open to a regulatory portal, and EU flag pin on a dark navy desk surface. Official, authoritative, trust-building documentary aesthetic. Volumetric lighting with warm gold highlights and cool steel-blue shadows. Corporate colour palette: deep navy background, warm gold accent lighting, clean white highlights on pages. Ultra high detail, 4K quality, professional editorial photography style. No text, no watermarks, no logos. Cinematic composition, professional lighting, no people's faces shown, no text overlay. FILE: eu-biocidal-products-regulation-disinfectants-sanitisers-hero.webp
       -->
       <div class="hero-img-wrap">
         <img
@@ -313,9 +313,9 @@ const schemas = [orgSchema, websiteSchema, authorSchema, breadcrumbSchema, blogP
       <!-- DIAGRAM IMAGE -->
       <!--
         IMAGE PLACEHOLDER — DIAGRAM (900×500px)
-        File: eu-biocidal-products-regulation-disinfectants-sanitisers-diagram-globalformulation.webp
+        File: eu-biocidal-products-regulation-disinfectants-sanitisers-diagram.webp
         Alt: EU biocidal products regulation authorisation pathway diagram — active substance approval, national authorisation, mutual recognition, and Union authorisation routes | Global Formulation
-        IMG PROMPT (900×500px): Premium 3D scientific visualization. EU BPR authorisation pathway flowchart on a dark navy (#0a1628) background. Two parallel vertical columns flowing downward: left column shows active substance approval pathway — glowing cyan boxes for ECHA dossier submission, member state evaluation, Commission decision, and Union list inclusion; right column shows product authorisation pathway — gold boxes for national authorisation application, competent authority review, authorisation decision, then branching right to mutual recognition pathway and left to Union authorisation centralised route. Glowing cyan connecting arrows between the two columns at the active substance approval box linking to product authorisation entry. Clean sequential compliance pathway boxes with glowing connector lines. Regulatory authority nodes rendered as illuminated authority panels. Dark navy background, futuristic technical dashboard aesthetic. No text, no watermarks. Ultra clean composition, high contrast, glowing accent details. FILE: eu-biocidal-products-regulation-disinfectants-sanitisers-diagram-globalformulation.webp
+        IMG PROMPT (900×500px): Premium 3D scientific visualization. EU BPR authorisation pathway flowchart on a dark navy (#0a1628) background. Two parallel vertical columns flowing downward: left column shows active substance approval pathway — glowing cyan boxes for ECHA dossier submission, member state evaluation, Commission decision, and Union list inclusion; right column shows product authorisation pathway — gold boxes for national authorisation application, competent authority review, authorisation decision, then branching right to mutual recognition pathway and left to Union authorisation centralised route. Glowing cyan connecting arrows between the two columns at the active substance approval box linking to product authorisation entry. Clean sequential compliance pathway boxes with glowing connector lines. Regulatory authority nodes rendered as illuminated authority panels. Dark navy background, futuristic technical dashboard aesthetic. No text, no watermarks. Ultra clean composition, high contrast, glowing accent details. FILE: eu-biocidal-products-regulation-disinfectants-sanitisers-diagram.webp
       -->
       <img class="article-img"
         src={diagramCdn}
@@ -405,9 +405,9 @@ const schemas = [orgSchema, websiteSchema, authorSchema, breadcrumbSchema, blogP
       <!-- INFOGRAPHIC IMAGE -->
       <!--
         IMAGE PLACEHOLDER — INFOGRAPHIC (900×500px)
-        File: eu-biocidal-products-regulation-disinfectants-sanitisers-infographic-globalformulation.webp
+        File: eu-biocidal-products-regulation-disinfectants-sanitisers-infographic.webp
         Alt: EU BPR product type classification infographic — PT1 human hygiene, PT2 disinfectants, PT3 veterinary hygiene, PT4 food contact biocides with compliance requirements | Global Formulation
-        IMG PROMPT (900×500px): Premium corporate data visualization dashboard. EU BPR product type classification matrix — a four-panel grid layout on dark navy background with gold grid dividers. Each panel represents one product type: top-left PT1 (Human Hygiene) with a hand icon and cyan accent; top-right PT2 (Disinfectants) with a surface spray icon and gold accent; bottom-left PT3 (Veterinary Hygiene) with an animal barn icon and cyan accent; bottom-right PT4 (Food Contact) with a food facility icon and white-gold accent. Each panel contains a compact icon-based compliance checklist showing active substance requirement, efficacy test series, and authorisation route. Clean dark navy background with gold grid lines. Modern Bloomberg Terminal analytics aesthetic. Vibrant status indicator dots in cyan and gold. No real data numbers — visual style only. No text, no watermarks. Balanced grid layout, premium corporate aesthetic, high information density. FILE: eu-biocidal-products-regulation-disinfectants-sanitisers-infographic-globalformulation.webp
+        IMG PROMPT (900×500px): Premium corporate data visualization dashboard. EU BPR product type classification matrix — a four-panel grid layout on dark navy background with gold grid dividers. Each panel represents one product type: top-left PT1 (Human Hygiene) with a hand icon and cyan accent; top-right PT2 (Disinfectants) with a surface spray icon and gold accent; bottom-left PT3 (Veterinary Hygiene) with an animal barn icon and cyan accent; bottom-right PT4 (Food Contact) with a food facility icon and white-gold accent. Each panel contains a compact icon-based compliance checklist showing active substance requirement, efficacy test series, and authorisation route. Clean dark navy background with gold grid lines. Modern Bloomberg Terminal analytics aesthetic. Vibrant status indicator dots in cyan and gold. No real data numbers — visual style only. No text, no watermarks. Balanced grid layout, premium corporate aesthetic, high information density. FILE: eu-biocidal-products-regulation-disinfectants-sanitisers-infographic.webp
       -->
       <img class="article-img"
         src={infoCdn}

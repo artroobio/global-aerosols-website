@@ -4,34 +4,34 @@ import Layout from '../layouts/Layout.astro';
 const slug = 'steel-substrates-coatings-adhesives-lubricants-cleaners-compared';
 const title = 'Steel Substrates: Coatings, Adhesives, Lubricants & Cleaners';
 const description = 'Steel substrate treatment guide — how to select the right coatings, adhesives, lubricants, and cleaners for steel surfaces across manufacturing and industrial applications.';
-const heroCdn = `https://cdn.globalformulation.com/images/${slug}/${slug}-hero-globalformulation.webp`;
-const diagramCdn = `https://cdn.globalformulation.com/images/${slug}/${slug}-diagram-globalformulation.webp`;
-const infographicCdn = `https://cdn.globalformulation.com/images/${slug}/${slug}-infographic-globalformulation.webp`;
+const heroCdn = `https://cdn.globalformulation.com/images/${slug}/${slug}-hero.webp`;
+const diagramCdn = `https://cdn.globalformulation.com/images/${slug}/${slug}-diagram.webp`;
+const infographicCdn = `https://cdn.globalformulation.com/images/${slug}/${slug}-infographic.webp`;
 
 const orgSchema = {
   "@context": "https://schema.org", "@type": "Organization",
-  "name": "Global Formulation", "url": "https://www.globalformulation.com",
-  "logo": "https://www.globalformulation.com/logo.png",
+  "name": "Global Formulation", "url": "https://www.globalaerosols.com",
+  "logo": "https://www.globalaerosols.com/logo.png",
   "contactPoint": [{ "@type": "ContactPoint", "telephone": "+91 9819548320", "contactType": "customer service" }]
 };
 const websiteSchema = {
   "@context": "https://schema.org", "@type": "WebSite",
-  "url": "https://www.globalformulation.com",
-  "potentialAction": { "@type": "SearchAction", "target": "https://www.globalformulation.com/blog?search={search_term_string}", "query-input": "required name=search_term_string" }
+  "url": "https://www.globalaerosols.com",
+  "potentialAction": { "@type": "SearchAction", "target": "https://www.globalaerosols.com/blog?search={search_term_string}", "query-input": "required name=search_term_string" }
 };
 const authorSchema = {
   "@context": "https://schema.org", "@type": "Person",
   "name": "Absar Khan", "jobTitle": "Lead Consultant",
   "url": "https://www.linkedin.com/in/absar-khan-aerosol-consultant-and-formulator-78359b162",
-  "affiliation": { "@type": "Organization", "name": "Global Formulation", "url": "https://www.globalformulation.com" },
+  "affiliation": { "@type": "Organization", "name": "Global Formulation", "url": "https://www.globalaerosols.com" },
   "sameAs": ["https://www.linkedin.com/in/absar-khan-aerosol-consultant-and-formulator-78359b162"]
 };
 const breadcrumbSchema = {
   "@context": "https://schema.org", "@type": "BreadcrumbList",
   "itemListElement": [
-    { "@type": "ListItem", "position": 1, "name": "Home", "item": "https://www.globalformulation.com" },
-    { "@type": "ListItem", "position": 2, "name": "Blog", "item": "https://www.globalformulation.com/blog" },
-    { "@type": "ListItem", "position": 3, "name": "Steel Substrates: Coatings, Adhesives, Lubricants & Cleaners", "item": `https://www.globalformulation.com/${slug}` }
+    { "@type": "ListItem", "position": 1, "name": "Home", "item": "https://www.globalaerosols.com" },
+    { "@type": "ListItem", "position": 2, "name": "Blog", "item": "https://www.globalaerosols.com/blog" },
+    { "@type": "ListItem", "position": 3, "name": "Steel Substrates: Coatings, Adhesives, Lubricants & Cleaners", "item": `https://www.globalaerosols.com/${slug}` }
   ]
 };
 const blogPostingSchema = {
@@ -40,9 +40,9 @@ const blogPostingSchema = {
   "description": "Steel substrate treatment guide — how to select the right coatings, adhesives, lubricants, and cleaners for steel surfaces across manufacturing and industrial applications.",
   "image": heroCdn,
   "author": { "@type": "Person", "name": "Absar Khan" },
-  "publisher": { "@type": "Organization", "name": "Global Formulation", "logo": { "@type": "ImageObject", "url": "https://www.globalformulation.com/logo.png" } },
+  "publisher": { "@type": "Organization", "name": "Global Formulation", "logo": { "@type": "ImageObject", "url": "https://www.globalaerosols.com/logo.png" } },
   "datePublished": "2026-06-06", "dateModified": "2026-06-06",
-  "mainEntityOfPage": { "@type": "WebPage", "@id": `https://www.globalformulation.com/${slug}` },
+  "mainEntityOfPage": { "@type": "WebPage", "@id": `https://www.globalaerosols.com/${slug}` },
   "articleSection": "Substrate-Specific Solutions",
   "keywords": "steel substrate treatment coatings adhesives lubricants cleaners, steel surface treatment comparison, metal substrate coating selection, steel adhesive bonding, steel cleaning preparation, steel corrosion protection strategy",
   "wordCount": "2500"
@@ -85,7 +85,7 @@ const faqSchema = {
 const webpageSchema = {
   "@context": "https://schema.org", "@type": "WebPage",
   "name": "Steel Substrates: Coatings, Adhesives, Lubricants & Cleaners | Global Formulation",
-  "url": `https://www.globalformulation.com/${slug}`,
+  "url": `https://www.globalaerosols.com/${slug}`,
   "description": "Steel substrate treatment guide — how to select the right coatings, adhesives, lubricants, and cleaners for steel surfaces across manufacturing and industrial applications."
 };
 
@@ -95,7 +95,7 @@ const schemas = [orgSchema, websiteSchema, authorSchema, breadcrumbSchema, blogP
 <Layout
   title={title}
   description={description}
-  canonical={`https://www.globalformulation.com/${slug}`}
+  canonical={`https://www.globalaerosols.com/${slug}`}
   ogImage={heroCdn}
   ogType="article"
   schemaJson={schemas}
@@ -119,7 +119,7 @@ const schemas = [orgSchema, websiteSchema, authorSchema, breadcrumbSchema, blogP
 
       <!--
         IMAGE PLACEHOLDER — HERO
-        File: steel-substrates-coatings-adhesives-lubricants-cleaners-compared-hero-globalformulation.webp
+        File: steel-substrates-coatings-adhesives-lubricants-cleaners-compared-hero.webp
         Size: 1200×630 px
         Alt: steel substrate treatment coatings adhesives lubricants cleaners — steel fabrication facility with primer spray, gear assembly, and degreaser operations | Global Formulation
         Generation prompt:
@@ -192,7 +192,7 @@ const schemas = [orgSchema, websiteSchema, authorSchema, breadcrumbSchema, blogP
           estimates global corrosion costs at roughly 3–4% of GDP annually, with inadequately protected steel
           as the primary driver. Selecting the correct chemistry for each operation is not a peripheral concern —
           it directly determines the service life and lifecycle cost of steel assets. Our guide to
-          <a href="https://www.globalformulation.com/zinc-phosphate-primers-chemistry-application" target="_top">zinc phosphate primers</a>
+          <a href="https://www.globalaerosols.com/zinc-phosphate-primers-chemistry-application" target="_top">zinc phosphate primers</a>
           covers the corrosion inhibition chemistry in detail; this article provides the cross-operation
           selection framework.
         </p>
@@ -211,7 +211,7 @@ const schemas = [orgSchema, websiteSchema, authorSchema, breadcrumbSchema, blogP
           ISO 12944 corrosivity category, durability period, and surface preparation standard. Understanding
           this framework is the prerequisite for any productive conversation about steel coating selection.
           For more detail on epoxy and polyurethane coating systems, see our
-          <a href="https://www.globalformulation.com/polyurethane-vs-epoxy-coatings-comparison" target="_top">polyurethane vs. epoxy coatings comparison</a>.
+          <a href="https://www.globalaerosols.com/polyurethane-vs-epoxy-coatings-comparison" target="_top">polyurethane vs. epoxy coatings comparison</a>.
         </p>
         <p>
           The ISO 12944-2 corrosivity categories — C1 (very low, dry indoor) through C5 (very high, offshore
@@ -274,7 +274,7 @@ const schemas = [orgSchema, websiteSchema, authorSchema, breadcrumbSchema, blogP
       <!-- DIAGRAM IMAGE -->
       <!--
         IMAGE PLACEHOLDER — DIAGRAM
-        File: steel-substrates-coatings-adhesives-lubricants-cleaners-compared-diagram-globalformulation.webp
+        File: steel-substrates-coatings-adhesives-lubricants-cleaners-compared-diagram.webp
         Size: 900×500 px
         Alt: steel coating system cross-section diagram — zinc-rich primer, epoxy intermediate, and polyurethane topcoat layers on blasted steel | Global Formulation
         Generation prompt:
@@ -303,7 +303,7 @@ const schemas = [orgSchema, websiteSchema, authorSchema, breadcrumbSchema, blogP
           The oxide layers that passivate steel in corrosion protection are rapidly worn away under contact
           stress, exposing fresh reactive metal that actively participates in the tribochemistry of the
           lubricant-additive system. The extreme pressure (EP) additives in
-          <a href="https://www.globalformulation.com/lubricants" target="_top">industrial lubricants</a>
+          <a href="https://www.globalaerosols.com/lubricants" target="_top">industrial lubricants</a>
           work by reacting with the freshly exposed steel surface at asperity contact temperatures,
           depositing sacrificial iron sulphide or phosphate films that prevent adhesive wear and seizure.
           Selecting the wrong lubricant chemistry or the wrong viscosity for a steel-on-steel contact
@@ -336,7 +336,7 @@ const schemas = [orgSchema, websiteSchema, authorSchema, breadcrumbSchema, blogP
           rather than removing it. The correct approach is always organic contamination removal first,
           then inorganic treatment if required. For a comprehensive discussion of the broad industrial
           degreaser product landscape, see our guide to
-          <a href="https://www.globalformulation.com/household-and-industrial-cleaners" target="_top">household and industrial cleaner formulations</a>.
+          <a href="https://www.globalaerosols.com/household-and-industrial-cleaners" target="_top">household and industrial cleaner formulations</a>.
         </p>
         <p>
           Alkaline degreasers — typically based on sodium hydroxide, sodium metasilicate, sodium carbonate,
@@ -508,7 +508,7 @@ const schemas = [orgSchema, websiteSchema, authorSchema, breadcrumbSchema, blogP
       <!-- INFOGRAPHIC IMAGE -->
       <!--
         IMAGE PLACEHOLDER — INFOGRAPHIC
-        File: steel-substrates-coatings-adhesives-lubricants-cleaners-compared-infographic-globalformulation.webp
+        File: steel-substrates-coatings-adhesives-lubricants-cleaners-compared-infographic.webp
         Size: 900×500 px
         Alt: steel substrate chemistry selection infographic — row of glass test tubes with coating primer, adhesive, gear oil, and degreaser for steel operations | Global Formulation
         Generation prompt:
@@ -643,7 +643,7 @@ const schemas = [orgSchema, websiteSchema, authorSchema, breadcrumbSchema, blogP
       <div class="cta-block">
         <h2>Not Sure Which Option Is Right for Your Steel Application?</h2>
         <p>Our independent consultants evaluate your specific substrate condition, operating environment, and regulatory requirements — recommending the right coating, adhesive, lubricant, or cleaner chemistry with no raw material sales bias.</p>
-        <a href="https://www.globalformulation.com/contact" target="_top" class="cta-btn">
+        <a href="https://www.globalaerosols.com/contact" target="_top" class="cta-btn">
           Get a Free Consultation
         </a>
       </div>
@@ -652,12 +652,12 @@ const schemas = [orgSchema, websiteSchema, authorSchema, breadcrumbSchema, blogP
       <section class="related-section">
         <h2>Related Articles</h2>
         <ul class="related-grid">
-          <li><a href="https://www.globalformulation.com/zinc-phosphate-primers-chemistry-application" target="_top">Zinc Phosphate Primers: Chemistry &amp; Application</a></li>
-          <li><a href="https://www.globalformulation.com/polyurethane-vs-epoxy-coatings-comparison" target="_top">Polyurethane vs Epoxy Coatings: Which to Choose</a></li>
-          <li><a href="https://www.globalformulation.com/future-of-eco-friendly-chemical-products" target="_top">Green Chemistry Revolution: Eco-Friendly Industrial Products</a></li>
-          <li><a href="https://www.globalformulation.com/volatile-organic-compounds-and-pollution" target="_top">Pollution Caused by VOCs: What Manufacturers Need to Know</a></li>
-          <li><a href="https://www.globalformulation.com/manufacturing-without-a-factory-guide" target="_top">Manufacturing Without a Factory: The MaaS Ecosystem</a></li>
-          <li><a href="https://www.globalformulation.com/choosing-the-right-product-consultant" target="_top">How to Choose the Right Product Consultant</a></li>
+          <li><a href="https://www.globalaerosols.com/zinc-phosphate-primers-chemistry-application" target="_top">Zinc Phosphate Primers: Chemistry &amp; Application</a></li>
+          <li><a href="https://www.globalaerosols.com/polyurethane-vs-epoxy-coatings-comparison" target="_top">Polyurethane vs Epoxy Coatings: Which to Choose</a></li>
+          <li><a href="https://www.globalaerosols.com/future-of-eco-friendly-chemical-products" target="_top">Green Chemistry Revolution: Eco-Friendly Industrial Products</a></li>
+          <li><a href="https://www.globalaerosols.com/volatile-organic-compounds-and-pollution" target="_top">Pollution Caused by VOCs: What Manufacturers Need to Know</a></li>
+          <li><a href="https://www.globalaerosols.com/manufacturing-without-a-factory-guide" target="_top">Manufacturing Without a Factory: The MaaS Ecosystem</a></li>
+          <li><a href="https://www.globalaerosols.com/choosing-the-right-product-consultant" target="_top">How to Choose the Right Product Consultant</a></li>
         </ul>
       </section>
 

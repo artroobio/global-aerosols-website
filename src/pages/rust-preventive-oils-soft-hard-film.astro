@@ -4,35 +4,35 @@ import Layout from '../layouts/Layout.astro';
 const slug = 'rust-preventive-oils-soft-hard-film';
 const title = 'Rust Preventive Oils: Soft Film vs Hard Film Chemistry';
 const description = 'Explore rust preventive oil formulation — soft film and hard film chemistry, VCI inhibitors, corrosion protection mechanisms, and metal preservation.';
-const heroCdn = `https://cdn.globalformulation.com/images/${slug}/${slug}-hero-globalformulation.webp`;
+const heroCdn = `https://cdn.globalformulation.com/images/${slug}/${slug}-hero.webp`;
 
 const orgSchema = {
   "@context": "https://schema.org", "@type": "Organization",
-  "name": "Global Formulation", "url": "https://www.globalformulation.com",
-  "logo": "https://www.globalformulation.com/logo.png",
+  "name": "Global Formulation", "url": "https://www.globalaerosols.com",
+  "logo": "https://www.globalaerosols.com/logo.png",
   "contactPoint": [{ "@type": "ContactPoint", "telephone": "+91 9819548320", "contactType": "customer service" }]
 };
 
 const websiteSchema = {
   "@context": "https://schema.org", "@type": "WebSite",
-  "url": "https://www.globalformulation.com",
-  "potentialAction": { "@type": "SearchAction", "target": "https://www.globalformulation.com/blog?search={search_term_string}", "query-input": "required name=search_term_string" }
+  "url": "https://www.globalaerosols.com",
+  "potentialAction": { "@type": "SearchAction", "target": "https://www.globalaerosols.com/blog?search={search_term_string}", "query-input": "required name=search_term_string" }
 };
 
 const authorSchema = {
   "@context": "https://schema.org", "@type": "Person",
   "name": "Absar Khan", "jobTitle": "Lead Consultant",
   "url": "https://www.linkedin.com/in/absar-khan-aerosol-consultant-and-formulator-78359b162",
-  "affiliation": { "@type": "Organization", "name": "Global Formulation", "url": "https://www.globalformulation.com" },
+  "affiliation": { "@type": "Organization", "name": "Global Formulation", "url": "https://www.globalaerosols.com" },
   "sameAs": ["https://www.linkedin.com/in/absar-khan-aerosol-consultant-and-formulator-78359b162"]
 };
 
 const breadcrumbSchema = {
   "@context": "https://schema.org", "@type": "BreadcrumbList",
   "itemListElement": [
-    { "@type": "ListItem", "position": 1, "name": "Home", "item": "https://www.globalformulation.com" },
-    { "@type": "ListItem", "position": 2, "name": "Blog", "item": "https://www.globalformulation.com/blog" },
-    { "@type": "ListItem", "position": 3, "name": "Rust Preventive Oils: Soft Film vs Hard Film Chemistry", "item": `https://www.globalformulation.com/${slug}` }
+    { "@type": "ListItem", "position": 1, "name": "Home", "item": "https://www.globalaerosols.com" },
+    { "@type": "ListItem", "position": 2, "name": "Blog", "item": "https://www.globalaerosols.com/blog" },
+    { "@type": "ListItem", "position": 3, "name": "Rust Preventive Oils: Soft Film vs Hard Film Chemistry", "item": `https://www.globalaerosols.com/${slug}` }
   ]
 };
 
@@ -42,9 +42,9 @@ const blogPostingSchema = {
   "description": "Explore rust preventive oil formulation — soft film and hard film chemistry, VCI inhibitors, corrosion protection mechanisms, and metal preservation.",
   "image": heroCdn,
   "author": { "@type": "Person", "name": "Absar Khan" },
-  "publisher": { "@type": "Organization", "name": "Global Formulation", "logo": { "@type": "ImageObject", "url": "https://www.globalformulation.com/logo.png" } },
+  "publisher": { "@type": "Organization", "name": "Global Formulation", "logo": { "@type": "ImageObject", "url": "https://www.globalaerosols.com/logo.png" } },
   "datePublished": "2026-05-29", "dateModified": "2026-05-29",
-  "mainEntityOfPage": { "@type": "WebPage", "@id": `https://www.globalformulation.com/${slug}` },
+  "mainEntityOfPage": { "@type": "WebPage", "@id": `https://www.globalaerosols.com/${slug}` },
   "articleSection": "Lubricants",
   "keywords": "rust preventive oil formulation, corrosion inhibitor oil, VCI rust prevention, soft film rust preventive, hard film rust coating, metal preservation oil",
   "wordCount": "1960"
@@ -89,7 +89,7 @@ const faqSchema = {
 const webpageSchema = {
   "@context": "https://schema.org", "@type": "WebPage",
   "name": "Rust Preventive Oils: Soft Film vs Hard Film Chemistry | Global Formulation",
-  "url": `https://www.globalformulation.com/${slug}`,
+  "url": `https://www.globalaerosols.com/${slug}`,
   "description": "Explore rust preventive oil formulation — soft film and hard film chemistry, VCI inhibitors, corrosion protection mechanisms, and metal preservation."
 };
 
@@ -99,7 +99,7 @@ const schemas = [orgSchema, websiteSchema, authorSchema, breadcrumbSchema, blogP
 <Layout
   title={title}
   description={description}
-  canonical={`https://www.globalformulation.com/${slug}`}
+  canonical={`https://www.globalaerosols.com/${slug}`}
   ogImage={heroCdn}
   ogType="article"
   schemaJson={schemas}
@@ -247,7 +247,7 @@ const schemas = [orgSchema, websiteSchema, authorSchema, breadcrumbSchema, blogP
       <!-- Diagram -->
       <div class="article-img-wrap" style="margin: 2em 0 0.6em; border-radius: var(--rp-radius); overflow: hidden; border: 1px solid var(--rp-border);">
         <img 
-          src={`https://cdn.globalformulation.com/images/${slug}/${slug}-diagram-globalformulation.webp`}
+          src={`https://cdn.globalformulation.com/images/${slug}/${slug}-diagram.webp`}
           alt="hard film coating metal part storage — water beading on rust preventive oil-coated steel strip in glass beaker | Global Formulation diagram"
           width="900"
           height="500"
@@ -278,7 +278,7 @@ const schemas = [orgSchema, websiteSchema, authorSchema, breadcrumbSchema, blogP
       <!-- Infographic -->
       <div class="article-img-wrap" style="margin: 2em 0 0.6em; border-radius: var(--rp-radius); overflow: hidden; border: 1px solid var(--rp-border);">
         <img 
-          src={`https://cdn.globalformulation.com/images/${slug}/${slug}-infographic-globalformulation.webp`}
+          src={`https://cdn.globalformulation.com/images/${slug}/${slug}-infographic.webp`}
           alt="corrosion test panel rust preventive comparison — test tubes showing rust preventive products from thin oil to thick wax grades | Global Formulation infographic"
           width="900"
           height="500"

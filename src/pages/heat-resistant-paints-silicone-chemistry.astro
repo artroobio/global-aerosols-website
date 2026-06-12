@@ -4,34 +4,34 @@ import Layout from '../layouts/Layout.astro';
 const slug = 'heat-resistant-paints-silicone-chemistry';
 const title = 'Heat Resistant Paints: Silicone Chemistry & Applications';
 const description = 'Heat resistant paint formulation — silicone resin chemistry, thermal stability science, pigment selection, and high-temperature industrial coating system guide.';
-const heroCdn = `https://cdn.globalformulation.com/images/${slug}/${slug}-hero-globalformulation.webp`;
-const diagramCdn = `https://cdn.globalformulation.com/images/${slug}/${slug}-diagram-globalformulation.webp`;
-const infographicCdn = `https://cdn.globalformulation.com/images/${slug}/${slug}-infographic-globalformulation.webp`;
+const heroCdn = `https://cdn.globalformulation.com/images/${slug}/${slug}-hero.webp`;
+const diagramCdn = `https://cdn.globalformulation.com/images/${slug}/${slug}-diagram.webp`;
+const infographicCdn = `https://cdn.globalformulation.com/images/${slug}/${slug}-infographic.webp`;
 
 const orgSchema = {
   "@context": "https://schema.org", "@type": "Organization",
-  "name": "Global Formulation", "url": "https://www.globalformulation.com",
-  "logo": "https://www.globalformulation.com/logo.png",
+  "name": "Global Formulation", "url": "https://www.globalaerosols.com",
+  "logo": "https://www.globalaerosols.com/logo.png",
   "contactPoint": [{ "@type": "ContactPoint", "telephone": "+91 9819548320", "contactType": "customer service" }]
 };
 const websiteSchema = {
   "@context": "https://schema.org", "@type": "WebSite",
-  "url": "https://www.globalformulation.com",
-  "potentialAction": { "@type": "SearchAction", "target": "https://www.globalformulation.com/blog?search={search_term_string}", "query-input": "required name=search_term_string" }
+  "url": "https://www.globalaerosols.com",
+  "potentialAction": { "@type": "SearchAction", "target": "https://www.globalaerosols.com/blog?search={search_term_string}", "query-input": "required name=search_term_string" }
 };
 const authorSchema = {
   "@context": "https://schema.org", "@type": "Person",
   "name": "Absar Khan", "jobTitle": "Lead Consultant",
   "url": "https://www.linkedin.com/in/absar-khan-aerosol-consultant-and-formulator-78359b162",
-  "affiliation": { "@type": "Organization", "name": "Global Formulation", "url": "https://www.globalformulation.com" },
+  "affiliation": { "@type": "Organization", "name": "Global Formulation", "url": "https://www.globalaerosols.com" },
   "sameAs": ["https://www.linkedin.com/in/absar-khan-aerosol-consultant-and-formulator-78359b162"]
 };
 const breadcrumbSchema = {
   "@context": "https://schema.org", "@type": "BreadcrumbList",
   "itemListElement": [
-    { "@type": "ListItem", "position": 1, "name": "Home", "item": "https://www.globalformulation.com" },
-    { "@type": "ListItem", "position": 2, "name": "Blog", "item": "https://www.globalformulation.com/blog" },
-    { "@type": "ListItem", "position": 3, "name": "Heat Resistant Paints: Silicone Chemistry & Applications", "item": `https://www.globalformulation.com/${slug}` }
+    { "@type": "ListItem", "position": 1, "name": "Home", "item": "https://www.globalaerosols.com" },
+    { "@type": "ListItem", "position": 2, "name": "Blog", "item": "https://www.globalaerosols.com/blog" },
+    { "@type": "ListItem", "position": 3, "name": "Heat Resistant Paints: Silicone Chemistry & Applications", "item": `https://www.globalaerosols.com/${slug}` }
   ]
 };
 const blogPostingSchema = {
@@ -40,9 +40,9 @@ const blogPostingSchema = {
   "description": "Heat resistant paint formulation — silicone resin chemistry, thermal stability science, pigment selection, and high-temperature industrial coating system guide.",
   "image": heroCdn,
   "author": { "@type": "Person", "name": "Absar Khan" },
-  "publisher": { "@type": "Organization", "name": "Global Formulation", "logo": { "@type": "ImageObject", "url": "https://www.globalformulation.com/logo.png" } },
+  "publisher": { "@type": "Organization", "name": "Global Formulation", "logo": { "@type": "ImageObject", "url": "https://www.globalaerosols.com/logo.png" } },
   "datePublished": "2026-06-05", "dateModified": "2026-06-05",
-  "mainEntityOfPage": { "@type": "WebPage", "@id": `https://www.globalformulation.com/${slug}` },
+  "mainEntityOfPage": { "@type": "WebPage", "@id": `https://www.globalaerosols.com/${slug}` },
   "articleSection": "Paints & Coatings",
   "keywords": "heat resistant paint formulation, silicone resin high temp coating, exhaust pipe coating, industrial furnace paint, thermal stability coating, silicone alkyd coating",
   "wordCount": "2050"
@@ -85,7 +85,7 @@ const faqSchema = {
 const webpageSchema = {
   "@context": "https://schema.org", "@type": "WebPage",
   "name": "Heat Resistant Paints: Silicone Chemistry & Applications | Global Formulation",
-  "url": `https://www.globalformulation.com/${slug}`,
+  "url": `https://www.globalaerosols.com/${slug}`,
   "description": "Heat resistant paint formulation — silicone resin chemistry, thermal stability science, pigment selection, and high-temperature industrial coating system guide."
 };
 
@@ -95,7 +95,7 @@ const schemas = [orgSchema, websiteSchema, authorSchema, breadcrumbSchema, blogP
 <Layout
   title={title}
   description={description}
-  canonical={`https://www.globalformulation.com/${slug}`}
+  canonical={`https://www.globalaerosols.com/${slug}`}
   ogImage={heroCdn}
   ogType="article"
   schemaJson={schemas}
@@ -117,7 +117,7 @@ const schemas = [orgSchema, websiteSchema, authorSchema, breadcrumbSchema, blogP
         <span>12 min read</span>
       </div>
       <!--
-        IMAGE: heat-resistant-paints-silicone-chemistry-hero-globalformulation.webp (1200×630px)
+        IMAGE: heat-resistant-paints-silicone-chemistry-hero.webp (1200×630px)
         PROMPT: Photorealistic premium industrial/scientific photography. A close-up shot of a
         glowing red-orange exhaust pipe or industrial chimney stack coated in matte dark silicone
         heat-resistant paint, radiating intense heat haze. Active industrial scene — not static.
@@ -207,7 +207,7 @@ const schemas = [orgSchema, websiteSchema, authorSchema, breadcrumbSchema, blogP
 
       <!-- Diagram image -->
       <!--
-        IMAGE: heat-resistant-paints-silicone-chemistry-diagram-globalformulation.webp (900×500px)
+        IMAGE: heat-resistant-paints-silicone-chemistry-diagram.webp (900×500px)
         PROMPT: Photorealistic premium laboratory photography. A macro shot of a glass beaker
         containing viscous amber-gold silicone resin solution on a dark laboratory bench.
         Realistic thick fluid surface with subtle meniscus visible at the glass edge. Deep navy
@@ -308,7 +308,7 @@ const schemas = [orgSchema, websiteSchema, authorSchema, breadcrumbSchema, blogP
 
       <!-- Infographic image -->
       <!--
-        IMAGE: heat-resistant-paints-silicone-chemistry-infographic-globalformulation.webp (900×500px)
+        IMAGE: heat-resistant-paints-silicone-chemistry-infographic.webp (900×500px)
         PROMPT: Photorealistic premium scientific photography. A high-end editorial shot of a row
         of five clear glass test tubes in a sleek metal rack on a dark slate-grey laboratory desk,
         each containing a different heat-stable inorganic pigment: silver aluminium flake, iron

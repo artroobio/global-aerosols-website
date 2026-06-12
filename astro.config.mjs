@@ -5,7 +5,7 @@ import cloudflare from '@astrojs/cloudflare';
 
 // Astro configuration - Triggering deployment rebuild
 export default defineConfig({
-  site: 'https://www.globalformulation.com',
+  site: 'https://www.globalaerosols.com',
   trailingSlash: 'always',
   output: 'server',
   adapter: cloudflare({

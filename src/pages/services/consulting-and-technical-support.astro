@@ -1,0 +1,525 @@
+---
+import Layout from '../../lc/layouts/Layout.astro';
+import ContactFormVideo from '../../lc/components/ContactFormVideo.astro';
+
+const features = [
+  {
+    theme: 'light',
+    eyebrow: 'Production Troubleshooting',
+    title: 'Resolve manufacturing bottlenecks with speed',
+    body: "Whether you're struggling with foaming issues, compatibility problems, unstable suspensions, or low spray performance — we're here to solve it with precision, speed, and cost efficiency. We identify root causes on the factory floor and provide immediate corrective actions.",
+    points: [
+      'Batch inconsistency, creaming, or phase separation resolution',
+      'Valve clogging, stem deposit buildup, or spray irregularity diagnostics',
+      'Sedimentation, flocculation, or gelling issue corrections',
+      'Actuator incompatibility, sputtering, or low discharge rate adjustments',
+      'Foam instability, rapid collapse, or failure to break down fixes'
+    ],
+    cta: 'Request Troubleshooting Support',
+    href: '#contact',
+    img: '/images/service-troubleshooting.webp',
+    reverse: false
+  },
+  {
+    theme: 'dark',
+    eyebrow: 'Packaging & Filling Support',
+    title: 'Optimise can, valve, and propellant compatibility',
+    body: 'Incorrect component selection leads to propellant loss, container degradation, or poor atomization. We test and adjust compatibility across the can, valve, actuator, and propellant to verify pressure safety and performance.',
+    points: [
+      'Correcting spray rates or droplet sizes (too large or small)',
+      'Mitigating can swelling, valve cup leakage, or internal container corrosion',
+      'Preventing propellant loss and pressure drop over time',
+      'Tailored selection of propellant vapor pressure for specific container types'
+    ],
+    cta: 'Request Compatibility Review',
+    href: '#contact',
+    img: 'https://cdn.globalaerosols.com/https://cdn.globalaerosols.com/images/service-engineering.webp',
+    reverse: true
+  },
+  {
+    theme: 'light',
+    eyebrow: 'Quality Control & Testing Protocols',
+    title: 'Establish rigorous in-house testing standards',
+    body: 'Quality is built-in, not tested-out. We help you design and implement standard operating procedures (SOPs) and QC protocols for your laboratory or factory floor, ensuring batch-to-batch consistency.',
+    points: [
+      'Standardized viscosity, rheology, and emulsion stability testing processes',
+      'Spray rate measurement and spray pattern/cone angle consistency protocols',
+      'Pressure testing, hot water bath validation, and accelerated aging tests',
+      'Standardized sensory evaluation (appearance, texture, and odor)'
+    ],
+    cta: 'Request QC Protocols Setup',
+    href: '#contact',
+    img: 'https://cdn.globalaerosols.com/https://cdn.globalaerosols.com/images/service-laboratory.webp',
+    reverse: false
+  },
+  {
+    theme: 'dark',
+    eyebrow: 'Ongoing Support — For Growth, Not Just Launch',
+    title: 'Sustain performance and scale production',
+    body: 'We offer continuous support packages for clients scaling production, launching new variants, or dealing with market feedback.',
+    points: [
+      'On-call formulation and QC laboratory support',
+      'Batch-specific reviews and corrective recommendations for plant deviations',
+      'Field failure investigation and forensic reformulation',
+      'New product variant extensions (e.g., new fragrances, colors, or formats)'
+    ],
+    cta: 'Explore Ongoing Support Plans',
+    href: '#contact',
+    img: '/images/service-optimization.webp',
+    reverse: true
+  },
+  {
+    theme: 'light',
+    eyebrow: 'Reverse Engineering & Product Recovery',
+    title: 'Recover lost formulas and rebuild products',
+    body: "If you've lost access to a previous supplier, manufacturer, or formula, we can reverse engineer the product and rebuild it for your new plant, cost targets, or local regulatory markets.",
+    points: [
+      'Detailed reverse engineering of existing commercial aerosol products',
+      'Rebuilding formulations to match specific filling plant machinery limits',
+      'Recovering or redesigning outdated or lost formulations with modern ingredients'
+    ],
+    cta: 'Request Reverse Engineering Audit',
+    href: '#contact',
+    img: '/images/service-formulations.webp',
+    reverse: false
+  }
+];
+
+const splitWords = (s: string) => s.split(' ');
+---
+
+<Layout 
+  title="Aerosol Consulting & Technical Support Services | Global Aerosols" 
+  description="Expert aerosol R&D consultancy and technical support. We solve foaming, compatibility, filling, scale-up, and reverse engineering challenges with precision and speed."
+>
+
+  <!-- ════════════ HERO SECTION ════════════ -->
+  <section class="ab-hero">
+    <!-- Breadcrumbs absolute inside hero -->
+    <div class="ind-breadcrumbs">
+      <a href="/" target="_top">Home</a> <span>/</span> <a href="/services/product-formulation/" target="_top">Services</a> <span>/</span> <span class="curr-page">Consulting & Support</span>
+    </div>
+
+    <div class="ab-hero-inner">
+      <span class="ab-eyebrow-center reveal">Consulting &amp; Technical Support</span>
+      <h1 class="ab-hero-title">
+        {splitWords("Expertise Beyond Formulation — We're With You Every Step").map(word => (
+          <span class="aw">{word.split('').map(c => <span class="ac ac-dark">{c}</span>)}</span>
+        ))}
+      </h1>
+      
+      <!-- Ecosystem Consultation Paragraph -->
+      <div class="ecosystem-box reveal">
+        <span class="eco-badge">Complete Aerosol Ecosystem Consultation</span>
+        <p class="ab-hero-sub eco-text">
+          An aerosol product is a delicate thermodynamic system. Success depends on the complete synergy between the chemical formulation, propellant dynamics, container metallurgy, valve mechanisms, and actuator geometry. We guide your product from its initial chemical structure to automated filling line tolerances, ensuring optimal spray pattern consistency, package stability, safety standard compliance, and long-term shelf integrity.
+        </p>
+      </div>
+
+      <p class="ab-hero-sub reveal main-pitch-text">
+        At our consultancy, technical support doesn't end with the formula — it begins there. We understand that in the aerosol industry, real challenges arise during scale-up, production, storage, and field performance. That’s why we offer end-to-end technical assistance to ensure your products not only work in the lab but thrive in the real world.
+      </p>
+    </div>
+  </section>
+
+  <!-- ════════════ FEATURE SEGMENTS (ALTERNATING THEMES) ════════════ -->
+  {features.map((f, i) => (
+    <section class={`ab-feature feat-${i} theme-${f.theme} ${f.reverse ? 'is-reverse' : ''}`}>
+      <div class="ab-feature-inner">
+        <div class="ab-feature-text">
+          <span class="ab-eyebrow reveal">{f.eyebrow}</span>
+          <h2 class="ab-feature-title">
+            {splitWords(f.title).map(word => (
+              <span class="aw">{word.split('').map(c => <span class="ac" class:list={[`ac-${f.theme}`]}>{c}</span>)}</span>
+            ))}
+          </h2>
+          <p class="ab-feature-body reveal">{f.body}</p>
+          
+          <ul class="ab-points">
+            {f.points.map(p => (
+              <li class="ab-point reveal">
+                <span class="ab-point-ico">
+                  <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="5 12 10 17 19 7"/></svg>
+                </span>
+                <span>{p}</span>
+              </li>
+            ))}
+          </ul>
+
+          <a href={f.href} class="ab-btn reveal">{f.cta}</a>
+        </div>
+        <div class="ab-feature-media reveal">
+          <img src={f.img} alt={f.title} loading="lazy" width="1000" height="760" />
+        </div>
+      </div>
+    </section>
+  ))}
+
+  <!-- ════════════ CONTACT / ACTION CTA ════════════ -->
+  <section class="ab-tour">
+    <div class="ab-tour-card reveal">
+      <img class="ab-tour-bg" src="/images/about/consultation_banner.png" alt="" loading="lazy" aria-hidden="true" />
+      <div class="ab-tour-content">
+        <span class="ab-eyebrow reveal" style="color: #4f9dff; margin-bottom: 12px;">Get Expert Guidance</span>
+        <h2 class="ab-tour-title">
+          {splitWords('Request a technical audit or consultation').map(word => (
+            <span class="aw">{word.split('').map(c => <span class="ac ac-dark">{c}</span>)}</span>
+          ))}
+        </h2>
+        <p class="ab-tour-sub reveal">
+          Partner with our lead specialists to optimize your production lines, resolve formulation instability, or reverse engineer a product with complete data validation.
+        </p>
+        <a href="#contact" class="ab-btn reveal">Schedule Consultation Audit</a>
+      </div>
+    </div>
+  </section>
+
+  <ContactFormVideo />
+
+</Layout>
+
+<style>
+  /* ════════ CORE DESIGN & SPLIT THEMES ════════ */
+  
+  /* Breadcrumbs styling for top of dark Hero */
+  .ind-breadcrumbs {
+    position: absolute;
+    top: 90px;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 100%;
+    max-width: 1240px;
+    padding: 0 30px;
+    z-index: 10;
+    font-size: 0.72rem;
+    color: #94a3b8;
+    text-transform: uppercase;
+    font-weight: 700;
+    letter-spacing: 2px;
+  }
+  .ind-breadcrumbs a {
+    text-decoration: none;
+    color: #94a3b8;
+    transition: color 0.25s ease;
+  }
+  .ind-breadcrumbs a:hover {
+    color: #4f9dff;
+  }
+  .ind-breadcrumbs span {
+    color: #475569;
+    margin: 0 8px;
+  }
+  .ind-breadcrumbs .curr-page {
+    color: #ffffff;
+  }
+
+  /* Shared structures */
+  .reveal { opacity: 0; transform: translateY(24px); }
+  .aw { display: inline-block; white-space: nowrap; margin-right: 0.24em; }
+  
+  /* Heading char colors based on section themes */
+  .ac-dark { display: inline-block; opacity: 0; color: #ffffff; -webkit-text-fill-color: #ffffff; }
+  .ac-light { display: inline-block; opacity: 0; color: #0f172a; -webkit-text-fill-color: #0f172a; }
+
+  /* Eyebrows */
+  .ab-eyebrow, .ab-eyebrow-center {
+    display: block;
+    font-size: 0.72rem;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 4px;
+    color: #4f9dff;
+  }
+  .ab-eyebrow-center { text-align: center; }
+
+  /* ════════ HERO SECTION ════════ */
+  .ab-hero {
+    position: relative;
+    min-height: 95vh;
+    min-height: 95svh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 160px max(6%, env(safe-area-inset-left)) 100px;
+    background:
+      radial-gradient(ellipse 80% 60% at 50% 30%, rgba(9, 104, 229, 0.14) 0%, transparent 60%),
+      #060a14;
+    color: #e2e8f0;
+    box-sizing: border-box;
+    text-align: center;
+  }
+  .ab-hero-inner { max-width: 980px; margin: 0 auto; }
+  .ab-hero .ab-eyebrow-center { margin-bottom: 30px; }
+  .ab-hero-title {
+    font-size: clamp(2.2rem, 4.8vw, 4rem);
+    font-weight: 800;
+    line-height: 1.1;
+    letter-spacing: -0.025em;
+    margin: 0 0 36px 0;
+    color: #ffffff;
+    font-family: 'Outfit', sans-serif;
+  }
+
+  /* Ecosystem consultation card */
+  .ecosystem-box {
+    background: rgba(9, 104, 229, 0.06);
+    border: 1px solid rgba(79, 157, 255, 0.18);
+    border-radius: 16px;
+    padding: 32px;
+    margin: 0 auto 40px;
+    max-width: 860px;
+    text-align: left;
+    box-shadow: 0 10px 40px rgba(0, 0, 0, 0.2);
+  }
+  .eco-badge {
+    display: inline-block;
+    background: rgba(79, 157, 255, 0.15);
+    color: #4f9dff;
+    font-size: 0.65rem;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 2px;
+    padding: 6px 14px;
+    border-radius: 20px;
+    margin-bottom: 16px;
+    border: 1px solid rgba(79, 157, 255, 0.25);
+  }
+  .eco-text {
+    font-size: clamp(0.95rem, 1.3vw, 1.05rem) !important;
+    line-height: 1.7 !important;
+    color: #b4c2d6 !important;
+    margin: 0 !important;
+  }
+
+  .main-pitch-text {
+    font-size: clamp(1rem, 1.5vw, 1.15rem);
+    color: #94a3b8;
+    line-height: 1.7;
+    max-width: 800px;
+    margin: 0 auto;
+  }
+
+  /* ════════ ALTERNATING FEATURE SECTIONS ════════ */
+  .ab-feature {
+    padding: 90px max(6%, env(safe-area-inset-left));
+    box-sizing: border-box;
+  }
+  .ab-feature-inner {
+    max-width: 1240px;
+    margin: 0 auto;
+    display: grid;
+    grid-template-columns: 1fr 1.1fr;
+    gap: clamp(40px, 6vw, 90px);
+    align-items: center;
+  }
+  .ab-feature.is-reverse .ab-feature-text { order: 2; }
+  .ab-feature.is-reverse .ab-feature-media { order: 1; }
+
+  .ab-feature .ab-eyebrow { margin-bottom: 18px; }
+  .ab-feature-title {
+    font-size: clamp(1.7rem, 3vw, 2.5rem);
+    font-weight: 800;
+    line-height: 1.15;
+    letter-spacing: -0.02em;
+    margin: 0 0 22px 0;
+    font-family: 'Outfit', sans-serif;
+  }
+  .ab-feature-body {
+    font-size: clamp(0.95rem, 1.3vw, 1.05rem);
+    line-height: 1.7;
+    margin: 0 0 28px 0;
+  }
+
+  /* Checked points */
+  .ab-points { list-style: none; margin: 0 0 32px 0; padding: 0; display: flex; flex-direction: column; gap: 18px; }
+  .ab-point { display: flex; gap: 14px; align-items: flex-start; }
+  .ab-point-ico {
+    flex-shrink: 0;
+    width: 30px; height: 30px;
+    border-radius: 8px;
+    display: flex; align-items: center; justify-content: center;
+  }
+  .ab-point-ico svg { width: 15px; height: 15px; }
+
+  /* Standard CTA Button styling */
+  .ab-btn {
+    display: inline-block;
+    padding: 13px 30px;
+    background: #0968e5;
+    color: #ffffff;
+    font-weight: 700;
+    font-size: 0.9rem;
+    letter-spacing: 0.2px;
+    border-radius: 9px;
+    text-decoration: none;
+    transition: background 0.25s ease, transform 0.25s ease, box-shadow 0.25s ease;
+    box-shadow: 0 6px 20px rgba(9, 104, 229, 0.3);
+  }
+  .ab-btn:hover { background: #3b82f6; transform: translateY(-2px); box-shadow: 0 10px 28px rgba(9, 104, 229, 0.4); }
+
+  /* Feature Images */
+  .ab-feature-media img {
+    width: 100%;
+    height: auto;
+    display: block;
+    border-radius: 16px;
+  }
+
+  /* ── Light Theme styles ── */
+  .theme-light {
+    background: #ffffff;
+    color: #475569;
+    border-top: 1px solid #e2e8f0;
+  }
+  .theme-light .ab-feature-title { color: #0f172a; }
+  .theme-light .ab-feature-body { color: #475569; }
+  .theme-light .ab-eyebrow { color: #0968e5; }
+  .theme-light .ab-point span:last-child { color: #334155; font-size: 0.92rem; line-height: 1.55; }
+  .theme-light .ab-point-ico {
+    background: rgba(9, 104, 229, 0.08);
+    border: 1px solid rgba(9, 104, 229, 0.2);
+    color: #0968e5;
+  }
+  .theme-light .ab-feature-media img {
+    border: 1px solid rgba(0, 0, 0, 0.06);
+    box-shadow: 0 30px 70px rgba(15, 23, 42, 0.12);
+  }
+
+  /* ── Dark Theme styles ── */
+  .theme-dark {
+    background: #060a14;
+    color: #cbd5e1;
+    border-top: 1px solid rgba(255, 255, 255, 0.05);
+  }
+  .theme-dark .ab-feature-title { color: #ffffff; }
+  .theme-dark .ab-feature-body { color: #94a3b8; }
+  .theme-dark .ab-eyebrow { color: #4f9dff; }
+  .theme-dark .ab-point span:last-child { color: #b4c2d6; font-size: 0.92rem; line-height: 1.55; }
+  .theme-dark .ab-point-ico {
+    background: rgba(9, 104, 229, 0.14);
+    border: 1px solid rgba(79, 157, 255, 0.3);
+    color: #4f9dff;
+  }
+  .theme-dark .ab-feature-media img {
+    border: 1px solid rgba(255, 255, 255, 0.08);
+    box-shadow: 0 30px 70px rgba(0, 0, 0, 0.5);
+  }
+
+  /* ════════ CONTACT CARD / TOUR SECTION ════════ */
+  .ab-tour { 
+    background: #060a14;
+    color: #e2e8f0;
+    padding: 60px max(6%, env(safe-area-inset-left)) 100px;
+    border-top: 1px solid rgba(255, 255, 255, 0.05);
+  }
+  .ab-tour-card {
+    position: relative;
+    max-width: 1240px;
+    margin: 0 auto;
+    border-radius: 20px;
+    overflow: hidden;
+    border: 1px solid rgba(255, 255, 255, 0.08);
+    isolation: isolate;
+  }
+  .ab-tour-bg {
+    position: absolute; inset: 0;
+    width: 100%; height: 100%;
+    object-fit: cover;
+    z-index: -2;
+    opacity: 0.35;
+  }
+  .ab-tour-card::after {
+    content: '';
+    position: absolute; inset: 0;
+    background: linear-gradient(120deg, rgba(6, 10, 20, 0.96) 0%, rgba(6, 10, 20, 0.78) 55%, rgba(9, 75, 176, 0.55) 100%);
+    z-index: -1;
+  }
+  .ab-tour-content { padding: clamp(40px, 6vw, 72px); max-width: 680px; }
+  .ab-tour-title {
+    font-size: clamp(1.7rem, 3vw, 2.6rem);
+    font-weight: 800;
+    color: #ffffff;
+    line-height: 1.15;
+    margin: 0 0 18px 0;
+    letter-spacing: -0.02em;
+    font-family: 'Outfit', sans-serif;
+  }
+  .ab-tour-sub { font-size: clamp(0.95rem, 1.3vw, 1.05rem); color: #cbd5e1; line-height: 1.65; margin: 0 0 30px 0; }
+
+  /* ════════ RESPONSIVE LAYOUTS ════════ */
+  @media (max-width: 980px) {
+    .ab-feature-inner { grid-template-columns: 1fr; gap: 40px; }
+    .ab-feature.is-reverse .ab-feature-text { order: 1; }
+    .ab-feature.is-reverse .ab-feature-media { order: 2; }
+    .ind-breadcrumbs { top: 75px; text-align: center; }
+  }
+
+  @media (max-width: 600px) {
+    .ab-hero { padding: 140px 22px 70px; }
+    .ab-feature, .ab-tour { padding-left: 22px; padding-right: 22px; }
+    .ecosystem-box { padding: 22px; }
+    .ind-breadcrumbs { display: none; } /* Hide on tiny devices to save vertical space */
+  }
+</style>
+
+<script>
+  import { gsap } from "gsap";
+  import { ScrollTrigger } from "gsap/ScrollTrigger";
+  gsap.registerPlugin(ScrollTrigger);
+
+  /* dynamic colour transition reveal */
+  const charReveal = (selector: string, finalColor: string, delay = 0) => {
+    gsap.fromTo(selector,
+      { opacity: 0, x: -8, color: '#0968e5', webkitTextFillColor: '#0968e5' },
+      {
+        opacity: 1, x: 0, color: '#0968e5', webkitTextFillColor: '#0968e5',
+        duration: 0.45, stagger: 0.01, delay, ease: 'power3.out',
+        onComplete: () => {
+          gsap.to(selector, { color: finalColor, webkitTextFillColor: finalColor, duration: 0.4, stagger: 0.01, ease: 'power2.inOut' });
+        }
+      }
+    );
+  };
+
+  const fadeUp = (targets: gsap.TweenTarget, delay = 0, stagger = 0) =>
+    gsap.to(targets, { opacity: 1, y: 0, duration: 0.6, stagger, delay, ease: 'power2.out' });
+
+  /* ── HERO reveal ── */
+  const startHero = () => {
+    const tl = gsap.timeline();
+    tl.to('.ab-hero .ab-eyebrow-center', { opacity: 1, y: 0, duration: 0.6, ease: 'power3.out' });
+    tl.fromTo('.ab-hero .ac',
+      { opacity: 0, x: -8, color: '#0968e5', webkitTextFillColor: '#0968e5' },
+      { opacity: 1, x: 0, color: '#0968e5', webkitTextFillColor: '#0968e5', duration: 0.5, stagger: 0.012, ease: 'power3.out' },
+      '-=0.2'
+    ).to('.ab-hero .ac', { color: '#ffffff', webkitTextFillColor: '#ffffff', duration: 0.45, stagger: 0.012, ease: 'power2.inOut' }, '-=0.45');
+    tl.to('.ecosystem-box', { opacity: 1, y: 0, duration: 0.7, ease: 'power2.out' }, '-=0.4');
+    tl.to('.main-pitch-text', { opacity: 1, y: 0, duration: 0.7, ease: 'power2.out' }, '-=0.5');
+  };
+  
+  // Run on initial load
+  startHero();
+
+  /* ── ScrollTriggers for alternating sections ── */
+  const setupSectionReveal = (sel: string, theme: string, opts: { charDelay?: number; bodyDelay?: number; stagger?: number } = {}) => {
+    const el = document.querySelector(sel);
+    if (!el) return;
+    const isLight = theme === 'light';
+    ScrollTrigger.create({
+      trigger: sel,
+      start: 'top 75%',
+      once: true,
+      onEnter: () => {
+        charReveal(`${sel} .ac`, isLight ? '#0f172a' : '#ffffff', opts.charDelay ?? 0.1);
+        fadeUp(`${sel} .reveal`, opts.bodyDelay ?? 0.35, opts.stagger ?? 0.08);
+      }
+    });
+  };
+
+  setupSectionReveal('.feat-0', 'light');
+  setupSectionReveal('.feat-1', 'dark');
+  setupSectionReveal('.feat-2', 'light');
+  setupSectionReveal('.feat-3', 'dark');
+  setupSectionReveal('.feat-4', 'light');
+  setupSectionReveal('.ab-tour', 'dark', { stagger: 0.06 });
+</script>

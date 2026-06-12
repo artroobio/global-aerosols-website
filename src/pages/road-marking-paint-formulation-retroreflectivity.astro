@@ -4,35 +4,35 @@ import Layout from '../layouts/Layout.astro';
 const slug = 'road-marking-paint-formulation-retroreflectivity';
 const title = 'Road Marking Paint: Formulation & Retroreflectivity';
 const description = 'Explore road marking paint formulation — thermoplastic systems, glass bead retroreflectivity, traffic paint durability, and chlorinated rubber chemistry.';
-const heroCdn = `https://cdn.globalformulation.com/images/${slug}/${slug}-hero-globalformulation.webp`;
+const heroCdn = `https://cdn.globalformulation.com/images/${slug}/${slug}-hero.webp`;
 
 const orgSchema = {
   "@context": "https://schema.org", "@type": "Organization",
-  "name": "Global Formulation", "url": "https://www.globalformulation.com",
-  "logo": "https://www.globalformulation.com/logo.png",
+  "name": "Global Formulation", "url": "https://www.globalaerosols.com",
+  "logo": "https://www.globalaerosols.com/logo.png",
   "contactPoint": [{ "@type": "ContactPoint", "telephone": "+91 9819548320", "contactType": "customer service" }]
 };
 
 const websiteSchema = {
   "@context": "https://schema.org", "@type": "WebSite",
-  "url": "https://www.globalformulation.com",
-  "potentialAction": { "@type": "SearchAction", "target": "https://www.globalformulation.com/blog?search={search_term_string}", "query-input": "required name=search_term_string" }
+  "url": "https://www.globalaerosols.com",
+  "potentialAction": { "@type": "SearchAction", "target": "https://www.globalaerosols.com/blog?search={search_term_string}", "query-input": "required name=search_term_string" }
 };
 
 const authorSchema = {
   "@context": "https://schema.org", "@type": "Person",
   "name": "Absar Khan", "jobTitle": "Lead Consultant",
   "url": "https://www.linkedin.com/in/absar-khan-aerosol-consultant-and-formulator-78359b162",
-  "affiliation": { "@type": "Organization", "name": "Global Formulation", "url": "https://www.globalformulation.com" },
+  "affiliation": { "@type": "Organization", "name": "Global Formulation", "url": "https://www.globalaerosols.com" },
   "sameAs": ["https://www.linkedin.com/in/absar-khan-aerosol-consultant-and-formulator-78359b162"]
 };
 
 const breadcrumbSchema = {
   "@context": "https://schema.org", "@type": "BreadcrumbList",
   "itemListElement": [
-    { "@type": "ListItem", "position": 1, "name": "Home", "item": "https://www.globalformulation.com" },
-    { "@type": "ListItem", "position": 2, "name": "Blog", "item": "https://www.globalformulation.com/blog" },
-    { "@type": "ListItem", "position": 3, "name": "Road Marking Paint: Formulation & Retroreflectivity", "item": `https://www.globalformulation.com/${slug}` }
+    { "@type": "ListItem", "position": 1, "name": "Home", "item": "https://www.globalaerosols.com" },
+    { "@type": "ListItem", "position": 2, "name": "Blog", "item": "https://www.globalaerosols.com/blog" },
+    { "@type": "ListItem", "position": 3, "name": "Road Marking Paint: Formulation & Retroreflectivity", "item": `https://www.globalaerosols.com/${slug}` }
   ]
 };
 
@@ -42,9 +42,9 @@ const blogPostingSchema = {
   "description": "Explore road marking paint formulation — thermoplastic systems, glass bead retroreflectivity, traffic paint durability, and chlorinated rubber chemistry.",
   "image": heroCdn,
   "author": { "@type": "Person", "name": "Absar Khan" },
-  "publisher": { "@type": "Organization", "name": "Global Formulation", "logo": { "@type": "ImageObject", "url": "https://www.globalformulation.com/logo.png" } },
+  "publisher": { "@type": "Organization", "name": "Global Formulation", "logo": { "@type": "ImageObject", "url": "https://www.globalaerosols.com/logo.png" } },
   "datePublished": "2026-05-29", "dateModified": "2026-05-29",
-  "mainEntityOfPage": { "@type": "WebPage", "@id": `https://www.globalformulation.com/${slug}` },
+  "mainEntityOfPage": { "@type": "WebPage", "@id": `https://www.globalaerosols.com/${slug}` },
   "articleSection": "Paints & Coatings",
   "keywords": "road marking paint formulation, thermoplastic road marking, glass beads retroreflectivity, traffic paint formulation, road marking durability, chlorinated rubber road paint",
   "wordCount": "1950"
@@ -89,7 +89,7 @@ const faqSchema = {
 const webpageSchema = {
   "@context": "https://schema.org", "@type": "WebPage",
   "name": "Road Marking Paint: Formulation & Retroreflectivity | Global Formulation",
-  "url": `https://www.globalformulation.com/${slug}`,
+  "url": `https://www.globalaerosols.com/${slug}`,
   "description": "Explore road marking paint formulation — thermoplastic systems, glass bead retroreflectivity, traffic paint durability, and chlorinated rubber chemistry."
 };
 
@@ -99,7 +99,7 @@ const schemas = [orgSchema, websiteSchema, authorSchema, breadcrumbSchema, blogP
 <Layout
   title={title}
   description={description}
-  canonical={`https://www.globalformulation.com/${slug}`}
+  canonical={`https://www.globalaerosols.com/${slug}`}
   ogImage={heroCdn}
   ogType="article"
   schemaJson={schemas}
@@ -233,7 +233,7 @@ const schemas = [orgSchema, websiteSchema, authorSchema, breadcrumbSchema, blogP
       <!-- Diagram -->
       <div class="article-img-wrap" style="margin: 2em 0 0.6em; border-radius: var(--rm-radius); overflow: hidden; border: 1px solid var(--rm-border);">
         <img 
-          src={`https://cdn.globalformulation.com/images/${slug}/${slug}-diagram-globalformulation.webp`}
+          src={`https://cdn.globalformulation.com/images/${slug}/${slug}-diagram.webp`}
           alt="glass beads retroreflectivity road marking — macro shot of spherical glass microspheres refracting light in glass beaker | Global Formulation diagram"
           width="900"
           height="500"
@@ -286,7 +286,7 @@ const schemas = [orgSchema, websiteSchema, authorSchema, breadcrumbSchema, blogP
       <!-- Infographic -->
       <div class="article-img-wrap" style="margin: 2em 0 0.6em; border-radius: var(--rm-radius); overflow: hidden; border: 1px solid var(--rm-border);">
         <img 
-          src={`https://cdn.globalformulation.com/images/${slug}/${slug}-infographic-globalformulation.webp`}
+          src={`https://cdn.globalformulation.com/images/${slug}/${slug}-infographic.webp`}
           alt="road marking paint systems comparison — test tubes showing paint samples from waterborne to thermoplastic grades | Global Formulation infographic"
           width="900"
           height="500"
