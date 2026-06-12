@@ -1,8 +1,23 @@
 export async function onRequest(context: any, next: any) {
   const response = await next();
 
-  // Only rewrite references in local development mode
-  if (import.meta.env.DEV) {
+  // Detect if requested from a local address
+  let isLocal = false;
+  try {
+    const url = new URL(context.request.url);
+    const host = url.hostname.toLowerCase();
+    isLocal = host === "localhost" || 
+              host === "127.0.0.1" || 
+              host === "[::1]" || 
+              host.startsWith("192.168.") || 
+              host.startsWith("10.") || 
+              host.startsWith("172.");
+  } catch (e) {
+    // Fallback to DEV flag if parsing fails
+  }
+
+  // Rewrite references in local development mode or when running on localhost
+  if (import.meta.env.DEV || isLocal) {
     try {
       const contentType = response.headers.get("content-type");
       if (contentType && contentType.includes("text/html")) {
