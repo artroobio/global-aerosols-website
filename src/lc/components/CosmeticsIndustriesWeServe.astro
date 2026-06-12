@@ -2,30 +2,30 @@
 // src/lc/components/CosmeticsIndustriesWeServe.astro
 // Cosmetics & Personal Care — "Industries We Serve" interactive radial diagram.
 const leftPills = [
-  "Skincare & Dermal Creams",
-  "Serums & Active Treatments",
-  "Hair Cleansing & Conditioning",
-  "Hair Styling & Color Tech",
-  "Bath & Body Cleansers",
-  "Body Lotions & Exfoliators"
+  "Dry Shampoos",
+  "Hair Sprays & Mousses",
+  "Antiperspirant Sprays",
+  "Shaving Foams & Gels",
+  "Sunscreen Aerosols",
+  "Thermal Water Mists"
 ];
 const rightPills = [
-  "Face & Eye Color Cosmetics",
-  "Lip & Nail Formulations",
-  "Intimate & Feminine Hygiene",
-  "Sanitizers & Disinfectants",
-  "Baby Skin & Barrier Creams",
-  "Mild Baby Wash & Shampoos"
+  "Ultra-Fine Dispersion",
+  "Quick-Dry Texturizing",
+  "Invisible Matte Finish",
+  "Active Odour Control",
+  "Cooling Skin Relief",
+  "24H Sweat Protection"
 ];
 ---
 
-<section class="industries-section-cosmetics vibrant-gradients">
+<section class="industries-section-cosmetics vibrant-gradients" id="serve-section">
   <div class="industries-inner">
 
     <!-- Main Title -->
     <div class="industries-header">
       <h2 class="industries-title">
-        {"Industries We Serve".split(' ').map(word => (
+        {"Personal Care Aerosols".split(' ').map(word => (
           <span class="word-wrapper">
             {word.split('').map(char => (
               <span class="blue-char">{char}</span>

@@ -7,63 +7,28 @@ import ContactFormVideo from '../lc/components/ContactFormVideo.astro';
 ---
 
 <Layout title="Cosmetics and Personal Care Formulations | Global Formulation" description="Cosmetics and personal care formulation services — skincare, haircare, sun care, and colour cosmetics. Custom R&D, stability testing, and regulatory compliance for beauty brands and manufacturers.">
-  <section class="split-hero cosmetics-hero">
-    <!-- Full-screen Background Image with Dark Overlay -->
-    <div class="hero-bg-wrapper">
-      <img 
-        src="https://cdn.globalformulation.com/images/cosmetics/cosmetics_hero.webp" 
-        alt="Premium Cosmetics & Personal Care Formulation Background" 
-        class="gf-hero-bg-image" 
-        loading="eager"
-        decoding="async"
-      />
-      <div class="hero-dark-overlay"></div>
+  <section id="ga-main-wrapper">
+    <!-- Background Image -->
+    <div id="hero-bg-container">
+      <img id="hero-image" src="/images/cosmetics/cosmetics_hero.png" alt="Cosmetics &amp; Personal Care Aerosols" />
     </div>
 
-    <div class="split-container hero-full-content">
-      <!-- Elegant Content Block in a centered/contained column -->
-      <div class="hero-content-block">
-        <span class="category-tag">Formulations & Technology</span>
-        <h1 class="hero-title">
-          <span class="hero-title__line hero-title__line--primary">
-            {"Cosmetics and".split(' ').map(word => (
-              <span class="word-wrapper">
-                {word.split('').map(char => (
-                  <span class="blue-char">{char}</span>
-                ))}
-              </span>
-            ))}
-          </span>
-          <span class="hero-title__line hero-title__line--primary">
-            <span class="word-wrapper">
-              {"Personal Care".split(' ').map(word => (
-                <span class="word-wrapper">
-                  {word.split('').map(char => (
-                    <span class="blue-char">{char}</span>
-                  ))}
-                </span>
-              ))}
-            </span>
-          </span>
-          <span class="hero-title__line">
-            <span class="word-wrapper">
-              {"Formulations".split('').map(char => (
-                <span class="blue-char">{char}</span>
-              ))}
-            </span>
-          </span>
-        </h1>
-        
-        <p class="hero-subtitle">
-          Innovative cosmetics and personal care technologies built on formulation science, stable emulsions, and targeted performance enhancement.
-        </p>
-        
-        <div class="hero-actions">
-          <a href="/contact" class="gf-button">
-            <span class="button-text">Consult Specialist</span>
-            <span class="arrow">➤</span>
-          </a>
+    <div id="ui-layer">
+      <div id="hero-sequence">
+        <!-- Mid-screen horizontal divider line with labels -->
+        <div class="hero-mid-divider">
+          <span class="mid-label left-label">SKINCARE &amp; HAIRCARE</span>
+          <span class="mid-label center-label">PERSONAL CARE AEROSOLS</span>
+          <span class="mid-label right-label">SUN CARE &amp; DEODORANTS</span>
         </div>
+
+        <!-- Massive Bottom Title -->
+        <div class="hero-bottom-container">
+          <h2 class="hero-massive-title" id="hero-massive-title">Personal Care</h2>
+        </div>
+
+        <!-- CTA Button -->
+        <a href="#serve-section" class="hero-cta-btn">EXPLORE SERVICES +</a>
       </div>
     </div>
   </section>
@@ -74,264 +39,217 @@ import ContactFormVideo from '../lc/components/ContactFormVideo.astro';
   <ContactFormVideo />
 </Layout>
 
-<style>
-  .split-hero.cosmetics-hero {
+<style is:global>
+  #ga-main-wrapper {
     position: relative;
-    min-height: 100vh;
-    min-height: 100svh;
     width: 100%;
-    background: #080a12; /* Sleek dark theme base */
-    display: flex;
-    align-items: center;
-    padding: 120px max(5%, env(safe-area-inset-left)) 80px max(5%, env(safe-area-inset-right));
+    height: 100vh;
+    min-height: 600px;
     overflow: hidden;
+    background: #020617;
   }
 
-  /* Full-Screen Background Image and Overlay Styling */
-  .hero-bg-wrapper {
+  #hero-bg-container {
     position: absolute;
-    inset: 0;
-    width: 100%;
-    height: 100%;
+    top: 0; left: 0; width: 100%; height: 100%;
+    background-color: #020617;
     z-index: 1;
-    overflow: hidden;
   }
 
-  .gf-hero-bg-image {
+  #hero-bg-container::after {
+    content: '';
+    position: absolute;
+    top: 0; left: 0; width: 100%; height: 100%;
+    background: radial-gradient(circle, rgba(0,0,0,0.05) 0%, rgba(2,6,23,0.55) 100%);
+    z-index: 6;
+    pointer-events: none;
+  }
+
+  #hero-image {
+    position: absolute;
+    top: 0; left: 0;
     width: 100%;
     height: 100%;
     object-fit: cover;
-    transform: scale(1.03); /* Subtle zoom for premium feel */
-    transition: transform 10s ease-out;
-  }
-
-  /* Dark Cinematic Overlay with gradient to highlight text legibility */
-  .hero-dark-overlay {
-    position: absolute;
-    inset: 0;
-    background: linear-gradient(
-      135deg,
-      rgba(8, 10, 18, 0.70) 0%,
-      rgba(8, 10, 18, 0.45) 50%,
-      rgba(8, 10, 18, 0.20) 100%
-    );
-    z-index: 2;
-  }
-
-  .split-container.hero-full-content {
-    width: 100%;
-    max-width: 1200px;
-    margin: 0 auto;
-    display: flex;
-    justify-content: flex-start; /* Left aligned for high-end editorial feel */
-    position: relative;
+    opacity: 1;
     z-index: 3;
-  }
-
-  .hero-content-block {
-    width: 100%;
-    max-width: 680px; /* Perfect reading and typographic width */
-    display: flex;
-    flex-direction: column;
-    align-items: flex-start;
-  }
-
-  /* Radial backdrop highlight - adjusted for dark full-screen layout to add depth */
-  .split-hero.cosmetics-hero::before {
-    content: "";
-    position: absolute;
-    top: 50%;
-    left: 20%;
-    transform: translate(-50%, -50%);
-    width: clamp(300px, 50vw, 800px);
-    height: clamp(300px, 50vw, 800px);
-    background: radial-gradient(circle, rgba(9, 104, 229, 0.15) 0%, rgba(9, 104, 229, 0) 70%);
     pointer-events: none;
-    z-index: 2;
   }
 
-  /* Override global Navbar to remain highly visible on dark background */
-  :global(.navbar) {
-    background: rgba(8, 10, 18, 0.8) !important;
-    backdrop-filter: blur(20px) !important;
-    -webkit-backdrop-filter: blur(20px) !important;
-    border-bottom: 1px solid rgba(255, 255, 255, 0.05) !important;
+  #ui-layer {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    z-index: 10;
+    pointer-events: none;
   }
 
-  /* Category tag styling */
-  .category-tag {
-    font-size: 0.85rem;
-    font-weight: 600;
-    text-transform: uppercase;
-    letter-spacing: 3px;
-    color: #3b82f6; /* Brighter blue for contrast against dark bg */
-    display: inline-block;
-    margin-bottom: 18px;
-    opacity: 0;
-    transform: translateY(15px);
+  #hero-sequence {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    opacity: 1;
+    pointer-events: auto;
+    box-sizing: border-box;
   }
 
-  /* Typography Styles on Dark Background */
-  .hero-title {
-    display: flex;
-    flex-direction: column;
-    align-items: flex-start;
-    gap: 6px;
-    font-size: clamp(2.2rem, 5vw, 4.4rem);
+  .hero-mid-divider {
+    position: absolute;
+    top: 40%;
+    left: 0;
+    width: 100%;
+    height: 1px;
+    border-bottom: 1px dashed rgba(255, 255, 255, 0.65);
+    transform: translateY(-50%);
+    z-index: 5;
+  }
+
+  .mid-label {
+    position: absolute;
+    font-family: 'Poppins', sans-serif;
+    font-size: clamp(0.65rem, 1.1vw, 0.82rem);
     font-weight: 700;
-    line-height: 1.15;
-    margin-bottom: 30px;
-    color: #ffffff; /* Clean high-contrast white */
-    text-shadow: 0 4px 20px rgba(0, 0, 0, 0.5);
-    font-family: 'Outfit', sans-serif;
-  }
-
-  .hero-title__line {
-    display: flex;
-    flex-wrap: wrap;
-    align-items: flex-start;
-    gap: 0.25em;
-    max-width: 100%;
-  }
-
-  .hero-title__line--primary {
-    font-size: clamp(2.6rem, 6vw, 5.2rem);
-    line-height: 1.05;
-    letter-spacing: -1px;
-  }
-
-  .word-wrapper {
-    display: inline-block;
-    white-space: nowrap;
-    margin-right: 0.25em;
-  }
-
-  .blue-char {
-    display: inline-block;
-    opacity: 0;
+    text-transform: uppercase;
+    letter-spacing: 5px;
     color: #ffffff;
-    -webkit-text-fill-color: #ffffff;
+    transform: translateY(calc(-100% - 10px));
+    text-shadow: 0 1px 8px rgba(0, 0, 0, 0.7);
+    padding: 0 6px;
   }
 
-  .hero-subtitle {
-    font-size: clamp(1rem, 1.8vw, 1.25rem);
-    color: #cbd5e1; /* Light gray for high legibility on dark overlay */
-    font-weight: 400;
-    line-height: 1.65;
-    margin-bottom: 36px;
-    max-width: 600px;
-    opacity: 0;
-    transform: translateY(20px);
-    text-shadow: 0 2px 10px rgba(0, 0, 0, 0.3);
+  .left-label  { left: 5%; }
+  .center-label { left: 50%; transform: translate(-50%, calc(-100% - 10px)); }
+  .right-label  { right: 5%; }
+
+  .hero-bottom-container {
+    position: absolute;
+    bottom: 18%;
+    left: 0;
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: flex-end;
+    z-index: 10;
+    pointer-events: none;
+    padding-top: 0.5em;
+    padding-bottom: 0.4em;
+    overflow: hidden;
   }
 
-  .hero-actions {
-    opacity: 0;
-    transform: translateY(20px);
+  .hero-massive-title {
+    font-family: 'Montserrat', sans-serif;
+    font-weight: 300;
+    font-size: clamp(2rem, 6.4vw, 7.2rem);
+    white-space: nowrap;
+    color: #ffffff;
+    text-transform: uppercase;
+    letter-spacing: 4px;
+    margin: 0;
+    line-height: 1;
+    text-align: center;
+    width: 100%;
+    text-shadow: 0 2px 40px rgba(0, 0, 0, 0.6);
   }
 
-  /* Responsive Adjustments */
-  @media (max-width: 1024px) {
-    .split-hero.cosmetics-hero {
-      padding: 140px max(5%, env(safe-area-inset-left)) 60px max(5%, env(safe-area-inset-right));
-      text-align: center;
-    }
-
-    .split-container.hero-full-content {
-      justify-content: center;
-    }
-
-    .hero-content-block {
-      align-items: center;
-    }
-
-    .hero-title {
-      align-items: center;
-      margin-bottom: 24px;
-    }
-
-    .hero-title__line {
-      justify-content: center;
-    }
-
-    .hero-subtitle {
-      margin-bottom: 30px;
-    }
+  .char {
+    display: inline-block;
+  }
+  .char-space {
+    display: inline-block;
+    width: 0.22em;
   }
 
-  @media (max-width: 480px) {
-    .split-hero.cosmetics-hero {
-      padding-top: 120px;
-      padding-bottom: 40px;
-    }
+  .hero-cta-btn {
+    position: absolute;
+    bottom: 8%;
+    right: 5%;
+    text-decoration: none;
+    padding: 11px 22px;
+    background: #000000;
+    border: none;
+    border-radius: 0;
+    font-family: 'Poppins', sans-serif;
+    font-size: 0.8rem;
+    font-weight: 700;
+    color: #00ffcc;
+    cursor: pointer;
+    transition: background 0.25s ease, color 0.25s ease;
+    z-index: 15;
+    letter-spacing: 2px;
+    text-transform: uppercase;
+    pointer-events: auto;
+  }
+
+  .hero-cta-btn:hover {
+    background: #00ffcc;
+    color: #000000;
+  }
+
+  @media (max-width: 899px) {
+    .hero-bottom-container { bottom: 14%; }
+    .hero-massive-title    { font-size: clamp(1.2rem, 5.5vw, 3.2rem); letter-spacing: 2px; }
+    .mid-label             { font-size: 0.5rem; letter-spacing: 2px; }
+    .hero-cta-btn          { right: 5%; bottom: 6%; font-size: 0.7rem; padding: 10px 18px; }
+    .hero-mid-divider      { top: 42%; }
+  }
+
+  @media (min-width: 900px) {
+    .mid-label { font-size: 0.72rem; letter-spacing: 5px; }
+  }
+
+  @media (min-width: 1200px) {
+    .mid-label { font-size: 0.82rem; }
   }
 </style>
 
 <script>
   import { gsap } from "gsap";
-  import { ScrollTrigger } from "gsap/ScrollTrigger";
 
-  gsap.registerPlugin(ScrollTrigger);
+  function initHeroReveal() {
+    const titleEl = document.getElementById('hero-massive-title');
+    const divider = document.querySelector('.hero-mid-divider');
+    const ctaBtn = document.querySelector('.hero-cta-btn');
 
-  // No video interaction needed - photorealistic cosmetics & personal care hero image active
+    if (titleEl) {
+      const raw = titleEl.textContent || '';
+      titleEl.innerHTML = raw.split('').map(ch => {
+        return ch === ' '
+          ? '<span class="char char-space">&nbsp;</span>'
+          : `<span class="char">${ch}</span>`;
+      }).join('');
+      
+      const chars = titleEl.querySelectorAll('.char');
+      
+      // Reset styles cleanly
+      gsap.set(chars, { y: 130, opacity: 0 });
+      if (divider) gsap.set(divider, { opacity: 0 });
+      if (ctaBtn) gsap.set(ctaBtn, { opacity: 0 });
 
-  // GSAP Cinematic Reveal animation for Hero Section
-  const heroChars = document.querySelectorAll('.hero-title .blue-char');
-  const subtitle = document.querySelector('.hero-subtitle');
-  const actions = document.querySelector('.hero-actions');
-  const tag = document.querySelector('.category-tag');
-
-  const startAnimation = () => {
-    const tl = gsap.timeline();
-
-    // 1. Reveal Category Tag
-    tl.to(tag, {
-      opacity: 1,
-      y: 0,
-      duration: 0.6,
-      ease: 'power3.out'
-    });
-
-    // 2. Reveal Title chars left-to-right (Signature Blue → Solid White #ffffff)
-    tl.fromTo(heroChars,
-      { opacity: 0, x: -12, color: '#0968e5', webkitTextFillColor: '#0968e5' },
-      {
+      // Run GSAP Reveal timeline
+      const tl = gsap.timeline();
+      
+      if (divider) {
+        tl.to(divider, { opacity: 1, duration: 0.9, delay: 0.4, ease: 'power2.out' });
+      }
+      
+      tl.to(chars, {
+        y: 0,
         opacity: 1,
-        x: 0,
-        duration: 0.7,
-        stagger: 0.02,
-        ease: 'power3.out',
-        color: '#0968e5',
-        webkitTextFillColor: '#0968e5'
-      },
-      '-=0.4'
-    )
-    .to(heroChars, {
-      color: '#ffffff',
-      webkitTextFillColor: '#ffffff',
-      duration: 0.7,
-      stagger: 0.02,
-      ease: 'power2.inOut'
-    }, '-=0.4');
+        duration: 1.4,
+        stagger: 0.038,
+        ease: 'power4.out'
+      }, '-=0.5');
 
-    // 3. Reveal Subtitle
-    tl.to(subtitle, {
-      opacity: 1,
-      y: 0,
-      duration: 0.6,
-      ease: 'power3.out'
-    }, '-=0.6');
+      if (ctaBtn) {
+        tl.to(ctaBtn, { opacity: 1, duration: 0.6, ease: 'power2.out' }, '-=0.6');
+      }
+    }
+  }
 
-    // 4. Reveal Actions
-    tl.to(actions, {
-      opacity: 1,
-      y: 0,
-      duration: 0.6,
-      ease: 'power3.out'
-    }, '-=0.4');
-  };
-
-  // Run animation instantly
-  startAnimation();
-
+  window.addEventListener('load', initHeroReveal);
+  document.addEventListener('astro:page-load', initHeroReveal);
 </script>
