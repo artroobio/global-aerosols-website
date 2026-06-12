@@ -1,0 +1,452 @@
+---
+import Layout from '../../lc/layouts/Layout.astro';
+import ContactFormVideo from '../../lc/components/ContactFormVideo.astro';
+
+/* ───────── Feature segments ───────── */
+const features = [
+  {
+    eyebrow: 'Segment 01',
+    title: 'Industrial Aerosol Formulations',
+    body: 'Industrial aerosols demand high chemical resistance, lubrication stability, and corrosion protection. They operate in challenging environments where heat, pressure, and contamination are constant factors.',
+    points: [
+      'Lubricant Systems: Mineral, synthetic, or ester-based oils combined with extreme-pressure (EP) and anti-wear (AW) additives. PTFE, MoS₂, and graphite suspensions for dry lubrication.',
+      'Corrosion Protection: Waxes, microcrystalline polymers, and polar inhibitors that form hydrophobic barriers on metal surfaces.',
+      'Cleaner & Degreaser Formulations: Solvent-based blends using hydrocarbons, oxygenated solvents, or eco-friendly esters like dimethyl glutarate for residue-free cleaning.',
+      'Penetrants & Release Agents: Low-viscosity carriers and silicone-based release systems ensuring controlled wetting and evaporation rates.',
+      'Propellant Balancing: Hydrocarbon–CO₂ or DME systems tailored for atomization without excessive pressure drop.'
+    ],
+    failures: [
+      'Phase separation or sludge formation due to oil–solvent incompatibility.',
+      'Clogging of valves from suspended solids or thickened residues.',
+      'Metal corrosion inside the can caused by improper inhibitor selection or pH drift.',
+      'Reduced lubrication film strength due to volatility mismatch or additive imbalance.'
+    ],
+    failureHeader: 'Common Failures When Improperly Formulated',
+    cta: 'Consult Industrial Chemistries',
+    href: '#contact',
+    img: '/images/industrial_category.png',
+    reverse: false
+  },
+  {
+    eyebrow: 'Segment 02',
+    title: 'Household Aerosols & Cleaners',
+    body: 'Household aerosols focus on cleaning, protection, deodorization, and surface care, requiring safe yet powerful chemical systems that comply with consumer and environmental standards.',
+    points: [
+      'Core Chemistries: Surfactant blends (nonionic, amphoteric, or anionic) optimized for soil removal, foaming, and rinsability.',
+      'Solvent-Based Systems: Use of glycol ethers, light hydrocarbons, or green solvents for grease and stain removal.',
+      'Functional Additives: Antistatic agents, UV blockers, silicones, and waxes for shine and protection.',
+      'Propellants: DME, hydrocarbon blends, or nitrogen for stable spray delivery without compromising product safety.'
+    ],
+    failures: [
+      'Phase instability and separation of surfactants leading to cloudy or uneven sprays.',
+      'Inadequate cleaning due to poor solvent polarity balance or surfactant mismatch.',
+      'Over-foaming or dripping caused by poor rheology control.',
+      'Corrosion in cans or valve seizure from uncontrolled water content or pH.'
+    ],
+    failureHeader: 'Typical Formulation Failures',
+    cta: 'Consult Household Chemistries',
+    href: '#contact',
+    img: '/images/household_category.png',
+    reverse: true
+  },
+  {
+    eyebrow: 'Segment 03',
+    title: 'Personal Care & Cosmetic Aerosols',
+    body: 'Personal care formulations combine sensitivity, safety, and sensory performance. These products require dermatologically safe, cosmetically elegant systems that deliver uniform application and pleasant sensory feel.',
+    points: [
+      'Base Systems: Water, alcohol, or silicone-based carriers designed for controlled volatility.',
+      'Active Ingredients: Deodorant actives (aluminum salts, zinc ricinoleate), emollients, conditioning agents, and natural extracts.',
+      'Emulsion & Suspension Systems: Use of emulsifiers, thickeners, and stabilizers (PEGs, polysorbates, cellulose derivatives) to maintain uniformity.',
+      'Fragrance and Sensory Design: Solubilizers and fixatives ensure fragrance stability under pressure.',
+      'Propellant Systems: Low-irritant hydrocarbons, nitrogen, or HFO-based propellants to meet safety and environmental norms.'
+    ],
+    failures: [
+      'Phase separation or gelling over time, affecting spray quality.',
+      'Skin irritation from incompatible solvents or propellants.',
+      'Poor atomization leading to uneven application or dripping.',
+      'Fragrance degradation due to improper solvent–surfactant balance.'
+    ],
+    failureHeader: 'Frequent Failures in Poor Formulations',
+    cta: 'Consult Personal Care Chemistries',
+    href: '#contact',
+    img: '/images/personalcare_category.png',
+    reverse: false
+  },
+  {
+    eyebrow: 'Segment 04',
+    title: 'Paints, Coatings & Specialty Finishes',
+    body: 'Aerosol paints and coatings demand the perfect balance between resin chemistry, pigment dispersion, solvent evaporation, and propellant pressure. Performance depends on both chemical structure and physical dynamics during spray and curing.',
+    points: [
+      'Resins: Acrylics, alkyds, epoxies, polyurethanes, and silicone-modified hybrids for tailored film strength, gloss, and weather resistance.',
+      'Pigments & Additives: Wetting agents, dispersants, and anti-settling systems to prevent nozzle clogging and ensure color uniformity.',
+      'Solvent Systems: Hydrocarbons, esters, and ketones balanced for viscosity, drying speed, and resin solubility.',
+      'Propellants: DME or hydrocarbon blends engineered for atomization and film uniformity.',
+      'Special Effects: Metallics, fluorescents, zinc-rich, and ceramic systems for functional or aesthetic applications.'
+    ],
+    failures: [
+      'Loss of gloss or hazy finish due to solvent imbalance or resin incompatibility.',
+      'Poor adhesion or cracking from incorrect polymer blend or drying rate.',
+      'Valve clogging and pigment settling, resulting in uneven spray or incomplete coverage.',
+      'Color shift or dullness due to unstable dispersion or oxidizing propellants.'
+    ],
+    failureHeader: 'Common Failures in Poorly Designed Paint Aerosols',
+    cta: 'Consult Paint Chemistries',
+    href: '#contact',
+    img: '/images/paints_category.png',
+    reverse: true
+  }
+];
+
+const splitWords = (s: string) => s.split(' ');
+---
+
+<Layout title="Aerosol Product Formulations | Global Formulation" description="Advanced aerosol product formulation services. Applied chemistry, propellant balancing, and packaging stability studies across industrial, cleaners, cosmetics, and coatings.">
+
+  <!-- ════════════ HERO ════════════ -->
+  <section class="ab-hero">
+    <div class="ab-hero-inner">
+      <span class="ab-eyebrow-center reveal">Applied Chemical Science</span>
+      <h1 class="ab-hero-title">
+        {splitWords('Aerosol Product Formulations').map(word => (
+          <span class="aw">{word.split('').map(c => <span class="ac">{c}</span>)}</span>
+        ))}
+      </h1>
+      <p class="ab-hero-sub reveal">
+        At Global Aerosols, formulation is not guesswork — it’s applied chemistry, process control, and material science combined. Every aerosol product represents a complex system where base fluid, active ingredient, propellant, and packaging must work together in perfect harmony. A slight imbalance can lead to performance failure, brand damage, and financial loss.
+      </p>
+    </div>
+  </section>
+
+  <!-- ════════════ FEATURE SEGMENTS ════════════ -->
+  {features.map((f, i) => (
+    <section class={`ab-feature feat-${i} ${f.reverse ? 'is-reverse' : ''}`}>
+      <div class="ab-feature-inner">
+        <div class="ab-feature-text">
+          <span class="ab-eyebrow reveal">{f.eyebrow}</span>
+          <h2 class="ab-feature-title">
+            {splitWords(f.title).map(word => (
+              <span class="aw">{word.split('').map(c => <span class="ac">{c}</span>)}</span>
+            ))}
+          </h2>
+          <p class="ab-feature-body reveal">{f.body}</p>
+          
+          <!-- Key Chemistries -->
+          <span class="sub-list-title reveal">Key Chemistries &amp; Systems</span>
+          <ul class="ab-points">
+            {f.points.map(p => (
+              <li class="ab-point reveal">
+                <span class="ab-point-ico">
+                  <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="5 12 10 17 19 7"/></svg>
+                </span>
+                <span>{p}</span>
+              </li>
+            ))}
+          </ul>
+
+          <!-- Common Failures -->
+          <span class="sub-list-title reveal sub-list-title--failure">{f.failureHeader}</span>
+          <ul class="ab-points ab-points--failures">
+            {f.failures.map(fail => (
+              <li class="ab-point reveal">
+                <span class="ab-point-ico ab-point-ico--failure">
+                  <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/></svg>
+                </span>
+                <span>{fail}</span>
+              </li>
+            ))}
+          </ul>
+
+          <a href={f.href} class="ab-btn reveal">{f.cta}</a>
+        </div>
+        <div class="ab-feature-media reveal">
+          <img src={f.img} alt={f.title} loading="lazy" width="1000" height="760" />
+        </div>
+      </div>
+    </section>
+  ))}
+
+  <!-- ════════════ SCIENTIFIC FORMULATION OUTRO ════════════ -->
+  <section class="ab-tour">
+    <div class="ab-tour-card reveal">
+      <img class="ab-tour-bg" src="/images/about/consultation_banner.png" alt="" loading="lazy" aria-hidden="true" />
+      <div class="ab-tour-content">
+        <span class="ab-eyebrow reveal" style="color: #4f9dff; margin-bottom: 12px;">Data-Driven R&amp;D</span>
+        <h2 class="ab-tour-title">
+          {splitWords('Ensuring Success Through Scientific Formulation').map(word => (
+            <span class="aw">{word.split('').map(c => <span class="ac">{c}</span>)}</span>
+          ))}
+        </h2>
+        <p class="ab-tour-sub reveal">
+          At Global Aerosols, we apply a scientific, data-driven approach to aerosol development. Each formulation is built from the ground up — starting with raw material compatibility studies, propellant optimization, and stability testing under real-world conditions.
+        </p>
+        <p class="ab-tour-sub reveal" style="font-weight: 700; color: #4ade80; font-size: 1.15rem; margin-top:-10px; margin-bottom:20px; text-transform: uppercase; letter-spacing: 1px;">
+          ➡ Zero failure. Zero returns. 100% performance consistency.
+        </p>
+        <p class="ab-tour-sub reveal" style="font-size: 0.95rem; line-height: 1.6; opacity: 0.85; margin-bottom: 28px;">
+          With a deep understanding of chemistry, engineering, and application science, we ensure that your products don’t just meet specifications — they exceed customer expectations, protect your brand’s integrity, and perform flawlessly every time.
+        </p>
+        <a href="#contact" class="ab-btn reveal">Request Formulation Audit</a>
+      </div>
+    </div>
+  </section>
+
+  <ContactFormVideo />
+
+</Layout>
+
+<style>
+  /* ════════ GLOBAL DARK THEME ════════ */
+  .ab-hero, .ab-feature, .ab-tour {
+    background: #060a14;
+    color: #e2e8f0;
+    box-sizing: border-box;
+  }
+
+  /* Reusable reveal initial state */
+  .reveal { opacity: 0; transform: translateY(24px); }
+
+  /* Animated heading char spans */
+  .aw { display: inline-block; white-space: nowrap; margin-right: 0.24em; }
+  .ac { display: inline-block; opacity: 0; color: #ffffff; -webkit-text-fill-color: #ffffff; }
+
+  /* Shared eyebrows */
+  .ab-eyebrow, .ab-eyebrow-center {
+    display: block;
+    font-size: 0.72rem;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 4px;
+    color: #4f9dff;
+  }
+  .ab-eyebrow-center { text-align: center; }
+
+  /* ════════ HERO ════════ */
+  .ab-hero {
+    position: relative;
+    min-height: 75vh;
+    min-height: 75svh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 140px max(6%, env(safe-area-inset-left)) 100px;
+    background:
+      radial-gradient(ellipse 80% 60% at 50% 30%, rgba(9, 104, 229,0.14) 0%, transparent 60%),
+      #060a14;
+  }
+  .ab-hero-inner { max-width: 980px; text-align: center; }
+  .ab-hero .ab-eyebrow-center { margin-bottom: 30px; }
+  .ab-hero-title {
+    font-size: clamp(2.3rem, 5vw, 4.4rem);
+    font-weight: 800;
+    line-height: 1.08;
+    letter-spacing: -0.025em;
+    margin: 0 0 32px 0;
+    color: #ffffff;
+    font-family: 'Outfit', sans-serif;
+  }
+  .ab-hero-sub {
+    font-size: clamp(1rem, 1.5vw, 1.2rem);
+    color: #94a3b8;
+    line-height: 1.7;
+    max-width: 820px;
+    margin: 0 auto;
+  }
+
+  /* ════════ FEATURE SEGMENTS ════════ */
+  .ab-feature {
+    padding: 80px max(6%, env(safe-area-inset-left));
+    border-top: 1px solid rgba(255,255,255,0.05);
+  }
+  .ab-feature-inner {
+    max-width: 1240px;
+    margin: 0 auto;
+    display: grid;
+    grid-template-columns: 1fr 1.1fr;
+    gap: clamp(40px, 6vw, 90px);
+    align-items: center;
+  }
+  .ab-feature.is-reverse .ab-feature-text { order: 2; }
+  .ab-feature.is-reverse .ab-feature-media { order: 1; }
+
+  .ab-feature .ab-eyebrow { margin-bottom: 18px; }
+  .ab-feature-title {
+    font-size: clamp(1.7rem, 3vw, 2.5rem);
+    font-weight: 800;
+    line-height: 1.15;
+    letter-spacing: -0.02em;
+    margin: 0 0 22px 0;
+    color: #ffffff;
+    font-family: 'Outfit', sans-serif;
+  }
+  .ab-feature-body {
+    font-size: clamp(0.95rem, 1.3vw, 1.05rem);
+    color: #94a3b8;
+    line-height: 1.7;
+    margin: 0 0 28px 0;
+  }
+
+  /* Lists and points */
+  .sub-list-title {
+    display: block;
+    font-size: 0.85rem;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 2px;
+    color: #4f9dff;
+    margin-bottom: 12px;
+  }
+  .sub-list-title--failure {
+    color: #f87171;
+    margin-top: 28px;
+  }
+
+  .ab-points { list-style: none; margin: 0 0 28px 0; padding: 0; display: flex; flex-direction: column; gap: 16px; }
+  .ab-point { display: flex; gap: 14px; align-items: flex-start; }
+  .ab-point-ico {
+    flex-shrink: 0;
+    width: 30px; height: 30px;
+    border-radius: 8px;
+    background: rgba(9, 104, 229,0.14);
+    border: 1px solid rgba(79,157,255,0.3);
+    display: flex; align-items: center; justify-content: center;
+    color: #4f9dff;
+  }
+  .ab-point-ico svg { width: 15px; height: 15px; }
+  .ab-point span:last-child { font-size: 0.92rem; color: #b4c2d6; line-height: 1.55; }
+
+  .ab-point-ico--failure {
+    background: rgba(248, 113, 113, 0.14);
+    border-color: rgba(248, 113, 113, 0.3);
+    color: #f87171;
+  }
+
+  .ab-btn {
+    display: inline-block;
+    padding: 13px 30px;
+    background: #0968e5;
+    color: #ffffff;
+    font-weight: 700;
+    font-size: 0.9rem;
+    letter-spacing: 0.2px;
+    border-radius: 9px;
+    text-decoration: none;
+    transition: background 0.25s ease, transform 0.25s ease, box-shadow 0.25s ease;
+    box-shadow: 0 6px 20px rgba(9, 104, 229,0.3);
+  }
+  .ab-btn:hover { background: #3b82f6; transform: translateY(-2px); box-shadow: 0 10px 28px rgba(9, 104, 229,0.4); }
+
+  .ab-feature-media img {
+    width: 100%;
+    height: auto;
+    display: block;
+    border-radius: 16px;
+    border: 1px solid rgba(255,255,255,0.08);
+    box-shadow: 0 30px 70px rgba(0,0,0,0.5);
+  }
+
+  /* ════════ OUTRO CARD ════════ */
+  .ab-tour { padding: 40px max(6%, env(safe-area-inset-left)) 80px; border-top: 1px solid rgba(255,255,255,0.05); }
+  .ab-tour-card {
+    position: relative;
+    max-width: 1240px;
+    margin: 0 auto;
+    border-radius: 20px;
+    overflow: hidden;
+    border: 1px solid rgba(255,255,255,0.08);
+    isolation: isolate;
+  }
+  .ab-tour-bg {
+    position: absolute; inset: 0;
+    width: 100%; height: 100%;
+    object-fit: cover;
+    z-index: -2;
+    opacity: 0.35;
+  }
+  .ab-tour-card::after {
+    content: '';
+    position: absolute; inset: 0;
+    background: linear-gradient(120deg, rgba(6,10,20,0.96) 0%, rgba(6,10,20,0.78) 55%, rgba(9,75,176,0.55) 100%);
+    z-index: -1;
+  }
+  .ab-tour-content { padding: clamp(40px, 6vw, 72px); max-width: 820px; }
+  .ab-tour-title {
+    font-size: clamp(1.7rem, 3vw, 2.6rem);
+    font-weight: 800;
+    color: #ffffff;
+    line-height: 1.15;
+    margin: 0 0 18px 0;
+    letter-spacing: -0.02em;
+    font-family: 'Outfit', sans-serif;
+  }
+  .ab-tour-sub { font-size: clamp(0.95rem, 1.3vw, 1.05rem); color: #cbd5e1; line-height: 1.65; margin: 0 0 30px 0; }
+
+  /* ════════ RESPONSIVE ════════ */
+  @media (max-width: 980px) {
+    .ab-feature-inner { grid-template-columns: 1fr; gap: 40px; }
+    .ab-feature.is-reverse .ab-feature-text { order: 1; }
+    .ab-feature.is-reverse .ab-feature-media { order: 2; }
+  }
+
+  @media (max-width: 600px) {
+    .ab-hero { padding: 120px 22px 80px; }
+    .ab-feature, .ab-tour { padding-left: 22px; padding-right: 22px; }
+  }
+</style>
+
+<script>
+  import { gsap } from "gsap";
+  import { ScrollTrigger } from "gsap/ScrollTrigger";
+  gsap.registerPlugin(ScrollTrigger);
+
+  /* blue → white char reveal */
+  const charReveal = (selector: string, delay = 0) => {
+    gsap.fromTo(selector,
+      { opacity: 0, x: -8, color: '#0968e5', webkitTextFillColor: '#0968e5' },
+      {
+        opacity: 1, x: 0, color: '#0968e5', webkitTextFillColor: '#0968e5',
+        duration: 0.45, stagger: 0.01, delay, ease: 'power3.out',
+        onComplete: () => {
+          gsap.to(selector, { color: '#ffffff', webkitTextFillColor: '#ffffff', duration: 0.4, stagger: 0.01, ease: 'power2.inOut' });
+        }
+      }
+    );
+  };
+
+  const fadeUp = (targets: gsap.TweenTarget, delay = 0, stagger = 0) =>
+    gsap.to(targets, { opacity: 1, y: 0, duration: 0.6, stagger, delay, ease: 'power2.out' });
+
+  /* ── HERO (on load) ── */
+  const startHero = () => {
+    const tl = gsap.timeline();
+    tl.to('.ab-hero .ab-eyebrow-center', { opacity: 1, y: 0, duration: 0.6, ease: 'power3.out' });
+    tl.fromTo('.ab-hero .ac',
+      { opacity: 0, x: -8, color: '#0968e5', webkitTextFillColor: '#0968e5' },
+      { opacity: 1, x: 0, color: '#0968e5', webkitTextFillColor: '#0968e5', duration: 0.5, stagger: 0.012, ease: 'power3.out' },
+      '-=0.2'
+    ).to('.ab-hero .ac', { color: '#ffffff', webkitTextFillColor: '#ffffff', duration: 0.45, stagger: 0.012, ease: 'power2.inOut' }, '-=0.45');
+    tl.to('.ab-hero-sub', { opacity: 1, y: 0, duration: 0.7, ease: 'power2.out' }, '-=0.4');
+  };
+  // Run animation instantly
+  startHero();
+
+  /* ── Generic per-section reveal ── */
+  const section = (sel: string, opts: { charDelay?: number; bodyDelay?: number; stagger?: number } = {}) => {
+    const el = document.querySelector(sel);
+    if (!el) return;
+    ScrollTrigger.create({
+      trigger: sel,
+      start: 'top 75%',
+      once: true,
+      onEnter: () => {
+        charReveal(`${sel} .ac`, opts.charDelay ?? 0.1);
+        fadeUp(`${sel} .reveal`, opts.bodyDelay ?? 0.35, opts.stagger ?? 0.08);
+      }
+    });
+  };
+
+  section('.feat-0');
+  section('.feat-1');
+  section('.feat-2');
+  section('.feat-3');
+  section('.ab-tour', { stagger: 0.06 });
+</script>
