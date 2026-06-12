@@ -13,15 +13,15 @@ interface Props {
 }
 
 const {
-	title = 'Global Formulation | Chemical Product R&D & Manufacturing Specialists',
-	description = 'Expert chemical formulations, R&D services, and manufacturing engineering across paints, lubricants, cosmetics, cleaners, aerosols, and specialty chemicals.',
+	title = 'Global Aerosols | Premium Aerosol Engineering & Systems',
+	description = 'Expert aerosol engineering, consulting, and turnkey manufacturing engineering from industrial specialist Absar Khan and the Global Aerosols team.',
 	canonical,
-	ogImage = 'https://www.globalformulation.com/og-default.jpg',
+	ogImage = 'https://www.globalaerosols.com/og-default.jpg',
 	ogType = 'website',
 } = Astro.props;
 
 const rawCanonicalUrl = canonical
-	? (canonical.startsWith('http') ? canonical : `https://www.globalformulation.com${canonical}`)
+	? (canonical.startsWith('http') ? canonical : `https://www.globalaerosols.com${canonical}`)
 	: Astro.url.href;
 const canonicalUrl = (() => {
 	try {
@@ -59,7 +59,7 @@ const canonicalUrl = (() => {
 		<meta property="og:title" content={title} />
 		<meta property="og:description" content={description} />
 		<meta property="og:image" content={ogImage} />
-		<meta property="og:site_name" content="Global Formulation" />
+		<meta property="og:site_name" content="Global Aerosols" />
 
 		<meta name="twitter:card" content="summary_large_image" />
 		<meta name="twitter:url" content={canonicalUrl} />
@@ -73,8 +73,8 @@ const canonicalUrl = (() => {
 		<!-- Fonts async (non-render-blocking) -->
 		<link rel="preconnect" href="https://fonts.googleapis.com" />
 		<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-		<link rel="preload" as="style" href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700;800;900&family=Inter:wght@400;500;600;700&display=swap" onload="this.onload=null;this.rel='stylesheet'" />
-		<noscript><link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700;800;900&family=Inter:wght@400;500;600;700&display=swap" /></noscript>
+		<link rel="preload" as="style" href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700;800;900&family=Inter:wght@400;500;600;700&family=Michroma&family=Montserrat:wght@200;300;400;700;800;900&family=Poppins:wght@300;400;600&display=swap" onload="this.onload=null;this.rel='stylesheet'" />
+		<noscript><link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700;800;900&family=Inter:wght@400;500;600;700&family=Michroma&family=Montserrat:wght@200;300;400;700;800;900&family=Poppins:wght@300;400;600&display=swap" /></noscript>
 	</head>
 	<body>
 		<SmoothScroll />
