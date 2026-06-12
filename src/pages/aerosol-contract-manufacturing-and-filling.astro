@@ -1,0 +1,1354 @@
+---
+import Layout from '../lc/layouts/Layout.astro';
+import ContactFormVideo from '../lc/components/ContactFormVideo.astro';
+
+const capabilities = [
+  {
+    num: '01',
+    title: 'Product Concept Validation',
+    desc: 'Evaluating formulation thermodynamics, pressure feasibility, propellant chemistry, and safety profiles.'
+  },
+  {
+    num: '02',
+    title: 'Custom Formulation Development',
+    desc: 'Engineering stable active ingredients, solvent blends, and propellant dispersion ratios.'
+  },
+  {
+    num: '03',
+    title: 'Lab-Scale & Pilot Trials',
+    desc: 'Creating prototype batches to validate canister pressure, discharge rate, and spray morphology.'
+  },
+  {
+    num: '04',
+    title: 'Bulk Manufacturing',
+    desc: 'High-precision mixing and chemical compounding in reaction vessels under controlled temperatures.'
+  },
+  {
+    num: '05',
+    title: 'Aerosol Filling & Gassing',
+    desc: 'Under-the-cup and through-the-valve filling lines with high-speed automated propellant charging.'
+  },
+  {
+    num: '06',
+    title: 'Component Selection',
+    desc: 'Selecting optimal can coatings, mounting cup gaskets, dip tubes, valves, and specialized actuators.'
+  },
+  {
+    num: '07',
+    title: 'Crimp & Pressure Testing',
+    desc: 'Electronic crimp dimension measurement, gross-weight verification, and water bath leak detection.'
+  },
+  {
+    num: '08',
+    title: 'Labeling & Packaging',
+    desc: 'Automated shrink-sleeving, inline printing, batch coding, and dangerous goods cartoning.'
+  },
+  {
+    num: '09',
+    title: 'Logistics & Warehousing',
+    desc: 'Specialized DG storage, regulatory transport documentation, and global export support.'
+  }
+];
+
+const productCategories = [
+  {
+    num: '01',
+    title: 'Automotive Aerosols',
+    items: [
+      'Brake & Parts Cleaners',
+      'Carburetor & Throttle Body Cleaners',
+      'Fuel Injector Cleaners',
+      'Penetrating Oils & Chain Lubricants',
+      'Engine Degreasers & Detailers',
+      'Rust Converters & Protectants',
+      'Tire Foams & Dashboard Shiners',
+      'Glass & Windshield Cleaners',
+      'AC Deodorizing & Sanitizing Sprays'
+    ]
+  },
+  {
+    num: '02',
+    title: 'Industrial Aerosols',
+    items: [
+      'Mold Release Sprays (Silicone/Lecithin)',
+      'Weld Anti-Spatter Barrier Sprays',
+      'Electrical Contact Cleaners (Fast Dry)',
+      'PTFE & Dry Film Lubricants',
+      'Cold Galvanizing Zinc Rich Primers',
+      'Heavy-Duty Degreasers & Solvents',
+      'Rust Removers & Shielding Sprays',
+      'Surface Preparation Aerosols'
+    ]
+  },
+  {
+    num: '03',
+    title: 'Household & FMCG',
+    items: [
+      'Air Fresheners & Room Deodorizers',
+      'Fabric & Upholstery Fresheners',
+      'Insect Control & Repellent Sprays',
+      'Multi-Surface Cleaners',
+      'Kitchen & Bathroom Specialty Cleaners',
+      'Stain Removers & Spot Cleaners',
+      'Window & Glass Polishing Sprays'
+    ]
+  },
+  {
+    num: '04',
+    title: 'Coatings & Specialty',
+    items: [
+      'Industrial & Decorative Spray Paints',
+      'Anti-Corrosion Structural Coatings',
+      'Heat-Resistant Silicone Coatings',
+      'Silicone Lubricant Sprays',
+      'Temporary & Line Marking Paints',
+      'Pressure-Sensitive Adhesive Sprays',
+      'Clear Coats, Sealers & Varnishes'
+    ]
+  },
+  {
+    num: '05',
+    title: 'Cosmetics & Personal Care',
+    items: [
+      'Deodorant Body Sprays & Antiperspirants',
+      'Perfume Body Mists & Colognes',
+      'Hair Styling Sprays & Mousses',
+      'Dry Shampoos & Volumizers',
+      'Shaving Foams, Gels & Aftershaves',
+      'Aerosol Sunscreens & Body Shimmers',
+      'Foot Deodorizing & Cooling Sprays'
+    ]
+  }
+];
+
+const executionTimeline = [
+  {
+    step: '1',
+    title: 'Requirement Discussion & NDA',
+    desc: 'We sign mutual NDAs to protect your intellectual property and align on initial product performance metrics, packaging type, and target market guidelines.'
+  },
+  {
+    step: '2',
+    title: 'Product Benchmarking & Feasibility',
+    desc: 'Our technical teams audit formulation viscosity, active ingredient solubility, propellant pressure requirements, and container coating compatibility.'
+  },
+  {
+    step: '3',
+    title: 'Lab Trials & Sample Approval',
+    desc: 'We prepare lab-scale pilot batches, test spray patterns, calculate discharge rates, and send verified samples for your review and laboratory verification.'
+  },
+  {
+    step: '4',
+    title: 'Costing & Commercial Finalization',
+    desc: 'Once samples are approved, we finalize the commercial structure: raw materials sourcing, valve and can costs, MOQ levels, and packaging dimensions.'
+  },
+  {
+    step: '5',
+    title: 'Component Procurement & Setup',
+    desc: 'Cans are manufactured/printed, valve assemblies with specified gaskets are prepared, and filling lines are configured with custom tooling for your specific SKU.'
+  },
+  {
+    step: '6',
+    title: 'Bulk Production & Automated Filling',
+    desc: 'Bulk compounding is performed under strict GMP conditions. Automated lines fill the liquid concentrate, crimp the valves, and charge the LPG/DME/CO₂ propellant.'
+  },
+  {
+    step: '7',
+    title: 'Quality Control, Packaging & Dispatch',
+    desc: 'Each can undergoes 100% water-bath leak detection, gross weight verification, and inkjet batch coding before packing into UN-certified dangerous goods cartons.'
+  }
+];
+
+const splitWords = (s: string) => s.split(' ');
+---
+
+<Layout 
+  title="Aerosol Contract Manufacturing & Filling Services | Global Aerosols" 
+  description="End-to-end aerosol contract manufacturing and filling services for automotive, industrial, FMCG, cosmetics and specialty products. Private label, custom formulations, low MOQs, PAN-India & export support by Global Aerosols."
+  canonical="https://www.globalaerosols.com/aerosol-contract-manufacturing-and-filling"
+>
+  <script type="application/ld+json" is:inline>
+  {
+    "@context": "https://schema.org",
+    "@type": "Organization",
+    "name": "Global Aerosols",
+    "url": "https://www.globalaerosols.com",
+    "logo": "https://www.globalaerosols.com/assets/logo.png",
+    "contactPoint": {
+      "@type": "ContactPoint",
+      "telephone": "+91-9819548320",
+      "contactType": "customer service",
+      "areaServed": "IN",
+      "availableLanguage": ["English"]
+    },
+    "sameAs": []
+  }
+  </script>
+
+  <script type="application/ld+json" is:inline>
+  {
+    "@context": "https://schema.org",
+    "@type": "Service",
+    "serviceType": "Aerosol Contract Manufacturing and Filling",
+    "provider": {
+      "@type": "Organization",
+      "name": "Global Aerosols"
+    },
+    "areaServed": {
+      "@type": "AdministrativeArea",
+      "name": "India"
+    },
+    "hasOfferCatalog": {
+      "@type": "OfferCatalog",
+      "name": "Aerosol Manufacturing Services",
+      "itemListElement": [
+        {"@type": "Offer", "itemOffered": {"@type": "Service", "name": "Private Label Aerosol Manufacturing"}},
+        {"@type": "Offer", "itemOffered": {"@type": "Service", "name": "Aerosol Filling & Gassing"}},
+        {"@type": "Offer", "itemOffered": {"@type": "Service", "name": "Custom Aerosol Formulation Development"}},
+        {"@type": "Offer", "itemOffered": {"@type": "Service", "name": "Export-Oriented Aerosol Production"}}
+      ]
+    }
+  }
+  </script>
+
+  <div class="industrial-light-wrapper" id="contract-filling-service">
+    
+    <!-- ════════════ BREADCRUMBS ════════════ -->
+    <div class="ind-breadcrumbs">
+      <a href="/" target="_top">Home</a> <span>/</span> <span class="curr-page">Contract Manufacturing</span>
+    </div>
+
+    <!-- ════════════ HERO ════════════ -->
+    <section class="ind-hero">
+      <div class="ind-hero-inner">
+        <span class="ind-hero-badge">Turnkey Private Label & Filling</span>
+        <h1 class="ind-title">
+          {splitWords('Aerosol Contract Manufacturing & Filling').map(word => (
+            <span class="aw">{word.split('').map(c => <span class="ac">{c}</span>)}</span>
+          ))}
+        </h1>
+        <p class="ind-subtitle reveal">End-to-End Production for Global Brands</p>
+        <p class="ind-hero-desc reveal">
+          At Global Aerosols, we provide complete contract manufacturing and filling solutions, from custom formulation support to commercial-scale production and market-ready packaging. We deliver reliable, compliant, and cost-efficient aerosol manufacturing under your private label.
+        </p>
+
+        <div class="hero-media reveal">
+          <img src="https://assets.zyrosite.com/A3QlOV94WLSaL6xE/industrial-aerosol-filling-line-consultancy-ZU6zudFt62zW5jNo.png" alt="Industrial aerosol filling line consultancy" loading="eager" width="350" height="240" />
+          <img src="https://assets.zyrosite.com/A3QlOV94WLSaL6xE/an_ultra_realistic_high_resolution_image_showing_two_aerosol-1-YX4jgQxQr2tXNVBO.jpeg" alt="Spray paint aerosol cans" loading="eager" width="350" height="240" />
+          <img src="https://assets.zyrosite.com/A3QlOV94WLSaL6xE/hero-cosmetic-aerosol-can-collection-f1nla258347byKsu.png" alt="Cosmetic aerosol cans" loading="eager" width="350" height="240" />
+        </div>
+      </div>
+    </section>
+
+    <!-- ════════════ WHAT IS SECTION ════════════ -->
+    <section class="ind-container">
+      <div class="two-col-layout reveal">
+        <div class="col-text">
+          <span class="section-eyebrow">Production Outsourcing</span>
+          <h2>What Is Aerosol Contract Manufacturing?</h2>
+          <p>Aerosol contract manufacturing allows brands to outsource the entire aerosol production process—including formulation, filling, crimping, gassing, labeling, and packing—without owning manufacturing infrastructure.</p>
+          <p>Because aerosols involve pressurized systems, flammable propellants, and regulated transport, contract filling demands specialized infrastructure such as explosion-proof zones, controlled propellant storage, crimping systems, leak detection equipment, and trained operators. These requirements make aerosol filling a regulated industrial activity rather than a simple packaging service.</p>
+          <p><strong>You focus on sales and branding — we manage the chemistry, pressure physics, production compliance, and logistics.</strong></p>
+        </div>
+        <div class="col-list-card">
+          <div class="gradient-line"></div>
+          <h3>Operational Advantages</h3>
+          <ul class="clean-list">
+            <li>
+              <span class="icon-check">✓</span>
+              <div>
+                <strong>Scale & Velocity</strong>
+                <span>Instant access to semi-automatic & fully automatic high-speed filling lines.</span>
+              </div>
+            </li>
+            <li>
+              <span class="icon-check">✓</span>
+              <div>
+                <strong>Regulatory Conformity</strong>
+                <span>PESO-certified, flameproof, and safety-compliant production environment.</span>
+              </div>
+            </li>
+            <li>
+              <span class="icon-check">✓</span>
+              <div>
+                <strong>Quality Assured</strong>
+                <span>Rigorous in-process batch control, water-bath tests, and crimp validation.</span>
+              </div>
+            </li>
+            <li>
+              <span class="icon-check">✓</span>
+              <div>
+                <strong>Go-To-Market Speed</strong>
+                <span>Bypass heavy capital investment, construction delays, and licensing processes.</span>
+              </div>
+            </li>
+            <li>
+              <span class="icon-check">✓</span>
+              <div>
+                <strong>Capital Efficiency</strong>
+                <span>Directly allocate resources to sales, marketing, and distribution.</span>
+              </div>
+            </li>
+          </ul>
+        </div>
+      </div>
+    </section>
+
+    <!-- ════════════ CAPABILITIES ════════════ -->
+    <section class="ind-container">
+      <div class="grid-header reveal">
+        <span class="grid-eyebrow">Integrated Services</span>
+        <h2 class="grid-title">End-to-End Aerosol Capabilities</h2>
+        <div class="grid-line-bar"></div>
+      </div>
+
+      <div class="capabilities-grid">
+        {capabilities.map((cap, idx) => (
+          <div class="cap-card reveal" data-index={idx}>
+            <div class="cap-index">{cap.num}</div>
+            <div class="cap-content">
+              <h3>{cap.title}</h3>
+              <p>{cap.desc}</p>
+            </div>
+          </div>
+        ))}
+      </div>
+    </section>
+
+    <!-- ════════════ PRODUCTS WE MANUFACTURE ════════════ -->
+    <section class="ind-container">
+      <div class="grid-header reveal">
+        <span class="grid-eyebrow">Formulations</span>
+        <h2 class="grid-title">Aerosol Products We Manufacture</h2>
+        <div class="grid-line-bar"></div>
+      </div>
+
+      <div class="products-grid">
+        {productCategories.map((cat, idx) => (
+          <div class="prod-cat-card reveal" data-index={idx}>
+            <div class="cat-header">
+              <span class="cat-num">{cat.num}</span>
+              <h3>{cat.title}</h3>
+            </div>
+            <ul class="cat-prod-list">
+              {cat.items.map(item => (
+                <li>
+                  <span class="bullet">•</span>
+                  <span>{item}</span>
+                </li>
+              ))}
+            </ul>
+          </div>
+        ))}
+      </div>
+
+      <div class="image-strip reveal">
+        <img src="https://assets.zyrosite.com/A3QlOV94WLSaL6xE/types-of-aerosol-systems-hero-Kaxem1LkMavI8Fg7.png" alt="Types of aerosol systems solutions suspensions BOV" loading="lazy" width="280" height="200" />
+        <img src="https://assets.zyrosite.com/A3QlOV94WLSaL6xE/64f0b05a588bb11540004068_aluminium-aerosol-cans-oTuatqkCmKUCrwY2.jpg" alt="Aluminium aerosol cans" loading="lazy" width="280" height="200" />
+        <img src="https://assets.zyrosite.com/A3QlOV94WLSaL6xE/image4-1fmqEA9pS7m3mRn1.png" alt="Aerosol valve types" loading="lazy" width="280" height="200" />
+        <img src="https://assets.zyrosite.com/A3QlOV94WLSaL6xE/hair-mousse-aerosol-foam-texture-xhzKlzSKUMRi8UrM.jpg" alt="Hair mousse aerosol foam texture" loading="lazy" width="280" height="200" />
+      </div>
+    </section>
+
+    <!-- ════════════ TECHNICAL SPECIFICATIONS DOSSIER (DARK) ════════════ -->
+    <section class="tech-dossier dossier-section">
+      <div class="dossier-container">
+        <div class="dossier-head reveal">
+          <span class="dossier-eyebrow">Dossier & Specifications</span>
+          <h2 class="dossier-title">Technical Dossier & Operations</h2>
+          <div class="dossier-line"></div>
+        </div>
+
+        <div class="dossier-grid">
+          <div class="dossier-card reveal">
+            <h3>1. Filling Infrastructure</h3>
+            <p>Our manufacturing facility is equipped with automated and semi-automated aerosol filling lines capable of handling diverse liquid product formulations. We run dedicated liquid, powder, and gel filling systems alongside multi-stage gas dosing chambers.</p>
+            <ul class="dossier-list">
+              <li>High-speed automatic rotary filling, valve crimping, and propellant charging lines.</li>
+              <li>Propellant compatibility: Liquefied Petroleum Gas (LPG/Propane-Butane), Dimethyl Ether (DME), Carbon Dioxide (CO₂), and Nitrogen (N₂).</li>
+              <li>Ex-proof and ATEX-compliant filling zones with flame detectors and air exchange systems.</li>
+            </ul>
+          </div>
+
+          <div class="dossier-card reveal">
+            <h3>2. Custom Formulation & Reverse Engineering</h3>
+            <p>We provide chemical formulation and engineering assistance. We help brands bench-test active ingredients, adjust pressure curves, and select appropriate solvent blends to prevent post-launch chemical failures.</p>
+            <ul class="dossier-list">
+              <li>Reverse engineering of existing benchmark market products.</li>
+              <li>Viscosity optimization for smooth spray morphology.</li>
+              <li>Propellant ratio calculations to achieve target drop size distributions.</li>
+              <li>Accelerated stability and packaging corrosion testing.</li>
+            </ul>
+          </div>
+
+          <div class="dossier-card reveal">
+            <h3>3. Private Labeling & Intellectual Property</h3>
+            <p>Our private label service is structured to bring your product lineup to market with total compliance. We operate under strict NDAs, securing your formulas and trade secrets.</p>
+            <ul class="dossier-list">
+              <li>Turnkey branding: we handle can printing, shrink sleeves, and label integration.</li>
+              <li>IP protection: All customer formulations are segregated and secured in encrypted databases.</li>
+              <li>Flexible scheduling: support for low pilot batch sizes up to full-scale commercial launches.</li>
+            </ul>
+          </div>
+
+          <div class="dossier-card reveal">
+            <h3>4. Quality Control & Safety Standards</h3>
+            <p>Aerosols are pressurized vessels, making quality control a legal requirement. We enforce strict in-process metrics from initial material checks to outbound logistics packaging validation.</p>
+            <ul class="dossier-list">
+              <li>Incoming material inspection (can pressure ratings, valve gaskets, active purity).</li>
+              <li>Crimp inspection: continuous validation of crimp depth and diameter.</li>
+              <li>100% water-bath testing or electronic micro-leak checking to guarantee seal integrity.</li>
+              <li>MSDS, TDS, and dangerous goods transport compliance support.</li>
+            </ul>
+          </div>
+
+          <div class="dossier-card reveal">
+            <h3>5. Component & Packaging Support</h3>
+            <p>Aerosol compatibility depends on the precise union of metal, plastic, rubber, and gas. We assist in matching these components based on chemical compatibility data.</p>
+            <ul class="dossier-list">
+              <li>Containers: Tinplate steel (52mm, 57mm, 65mm) and monobloc aluminium cans (35mm, 45mm, 53mm).</li>
+              <li>Valves: 1-inch mounting cups, male/female stems, specialized gaskets (Neoprene, Buna, Viton).</li>
+              <li>Actuators: Swirl inserts, MBUs, extension tubes, trigger sprayers, and tamper-evident caps.</li>
+            </ul>
+          </div>
+
+          <div class="dossier-card reveal">
+            <h3>6. MOQs & Scalability</h3>
+            <p>Minimum Order Quantities (MOQs) are dependent on container size, formulation complexity, and packaging styles. We balance setup costs with order sizes to optimize unit economics.</p>
+            <ul class="dossier-list">
+              <li>Support for small-run pilot trials to test market feasibility.</li>
+              <li>Turnkey scaling pipelines to smoothly transition from startup SKUs to industrial volumes.</li>
+              <li>Flexible warehouse dispatch schedules for domestic and export projects.</li>
+            </ul>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ════════════ EXECUTION FLOW TIMELINE ════════════ -->
+    <section class="ind-container timeline-section">
+      <div class="grid-header reveal">
+        <span class="grid-eyebrow">Methodology</span>
+        <h2 class="grid-title">Typical Project Execution Flow</h2>
+        <div class="grid-line-bar"></div>
+      </div>
+
+      <div class="timeline-container">
+        {executionTimeline.map((item, idx) => (
+          <div class="timeline-item reveal" data-index={idx}>
+            <div class="timeline-circle"></div>
+            <div class="timeline-content">
+              <h3>{item.step}. {item.title}</h3>
+              <p>{item.desc}</p>
+            </div>
+          </div>
+        ))}
+      </div>
+    </section>
+
+    <!-- ════════════ WHY BRANDS CHOOSE US / WHO WE SERVE ════════════ -->
+    <section class="resource-section">
+      <div class="resource-head reveal">
+        <span class="resource-eyebrow">Strategic Partnership</span>
+        <h2 class="heading-font">Why Brands Choose <span class="highlight">Global Aerosols</span></h2>
+        <p class="resource-subtitle-text">We serve FMCG conglomerates, automotive distributors, industrial suppliers, D2C startups, and international exporters.</p>
+      </div>
+
+      <div class="resource-grid">
+        <div class="resource-card reveal">
+          <h3 class="resource-title">Deep Formulation Expertise</h3>
+          <p class="resource-p">We don't just fill cans. Our lead chemists and process engineers support you in formulation design, solvent compatibility, and chemical safety metrics.</p>
+        </div>
+        <div class="resource-card reveal">
+          <h3 class="resource-title">Multi-Industry Coverage</h3>
+          <p class="resource-p">From high-pressure industrial cold-galvanizing primers to delicate cosmetic body sprays, we fill formulations across diverse markets.</p>
+        </div>
+        <div class="resource-card reveal">
+          <h3 class="resource-title">Strict Confidentiality</h3>
+          <p class="resource-p">Your formulas are protected by mutual NDAs and strict internal security protocols. We guarantee full intellectual property custody.</p>
+        </div>
+        <div class="resource-card reveal">
+          <h3 class="resource-title">Pan-India & Export Ready</h3>
+          <p class="resource-p">We ensure all packaging, labeling, and shipping documents are fully compliant with international maritime and air dangerous goods standards.</p>
+        </div>
+      </div>
+    </section>
+
+    <!-- ════════════ CTA BOX (BLUE GRADIENT) ════════════ -->
+    <section class="cta-banner reveal">
+      <div class="cta-inner">
+        <h2>Get Your Aerosol Product Manufactured Today</h2>
+        <p>Partner with Global Aerosols to formulate, test, fill, and package your product range. We provide turnkey compliance, low MOQs, and professional support for domestic and international export projects.</p>
+        
+        <div class="cta-info-box">
+          <div class="cta-contact-item">
+            <strong>Email:</strong> <a href="mailto:globalaerosols@gmail.com">globalaerosols@gmail.com</a>
+          </div>
+          <div class="cta-contact-item">
+            <strong>Phone / WhatsApp:</strong> <a href="tel:+919819548320">+91-9819548320</a>
+          </div>
+          <div class="cta-contact-item">
+            <strong>Location Support:</strong> PAN-India & Export Shipments
+          </div>
+        </div>
+      </div>
+    </section>
+
+  </div>
+
+  <ContactFormVideo />
+</Layout>
+
+<style>
+  /* ════════════ 1. THEME VARIABLES ════════════ */
+  :root {
+    --light-bg: #f8fafc;       
+    --light-card: #ffffff;     
+    --light-text-main: #0f172a; 
+    --light-text-sub: #475569;  
+    --light-border: #e2e8f0;   
+    --brand-blue: #0968e5;  
+    --brand-blue-hover: #2563eb;
+    --dossier-bg: #0f172a;
+    --dossier-card: #1e293b;
+    --dossier-text: #cbd5e1;
+    --grid-line: rgba(203, 213, 225, 0.25);
+  }
+
+  .industrial-light-wrapper * { 
+    box-sizing: border-box; 
+  }
+
+  .industrial-light-wrapper {
+    font-family: 'Inter', sans-serif;
+    background-color: var(--light-bg);
+    color: var(--light-text-main);
+    padding-bottom: 0px; 
+    /* Blueprint Technical Grid Background */
+    background-image: 
+      linear-gradient(var(--grid-line) 1px, transparent 1px),
+      linear-gradient(90deg, var(--grid-line) 1px, transparent 1px);
+    background-size: 50px 50px;
+    position: relative;
+    overflow: hidden;
+  }
+
+  /* Typography overrides */
+  .heading-font, h1, h2, h3, .prod-name, .resource-title, .dossier-title {
+    font-family: 'Outfit', 'Montserrat', sans-serif;
+    font-weight: 800;
+    text-transform: uppercase;
+    letter-spacing: -0.01em;
+  }
+
+  /* GSAP initial reveal state */
+  .reveal {
+    opacity: 0;
+    transform: translateY(24px);
+  }
+
+  /* Animated heading structures */
+  .aw { 
+    display: inline-block; 
+    white-space: nowrap; 
+    margin-right: 0.24em; 
+  }
+  .ac { 
+    display: inline-block; 
+    opacity: 0; 
+    color: var(--brand-blue); 
+    -webkit-text-fill-color: var(--brand-blue); 
+  }
+
+  /* ════════════ 2. BREADCRUMBS ════════════ */
+  .ind-breadcrumbs {
+    max-width: 1400px;
+    margin: 0 auto;
+    padding: 100px 30px 0; /* Nav offset */
+    font-size: 0.72rem;
+    color: var(--light-text-sub);
+    text-transform: uppercase;
+    font-weight: 700;
+    letter-spacing: 2px;
+  }
+  .ind-breadcrumbs a {
+    text-decoration: none;
+    color: var(--light-text-sub);
+    transition: color 0.25s ease;
+  }
+  .ind-breadcrumbs a:hover {
+    color: var(--brand-blue);
+  }
+  .ind-breadcrumbs span {
+    color: #94a3b8;
+    margin: 0 8px;
+  }
+  .ind-breadcrumbs .curr-page {
+    color: var(--light-text-main);
+  }
+
+  /* ════════════ 3. HERO SECTION ════════════ */
+  .ind-hero {
+    background: #ffffff;
+    border-bottom: 6px solid var(--brand-blue);
+    padding: 80px 30px 100px;
+    text-align: center;
+    position: relative;
+    box-shadow: 0 4px 30px rgba(15, 23, 42, 0.03);
+    margin-bottom: 60px;
+    overflow: hidden;
+  }
+
+  .ind-hero::after {
+    content: '';
+    position: absolute;
+    bottom: -150px;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 600px;
+    height: 300px;
+    background: radial-gradient(ellipse at center, rgba(9, 104, 229, 0.08) 0%, transparent 70%);
+    pointer-events: none;
+  }
+
+  .ind-hero-inner {
+    max-width: 1000px;
+    margin: 0 auto;
+    position: relative;
+    z-index: 2;
+  }
+
+  .ind-hero-badge {
+    display: inline-block;
+    background: rgba(9, 104, 229, 0.09);
+    color: var(--brand-blue);
+    font-family: 'Outfit', sans-serif;
+    font-weight: 700;
+    font-size: 0.72rem;
+    padding: 6px 18px;
+    letter-spacing: 2px;
+    text-transform: uppercase;
+    border-radius: 50px;
+    border: 1px solid rgba(9, 104, 229, 0.2);
+    margin-bottom: 24px;
+  }
+
+  .ind-title {
+    font-size: clamp(2rem, 4.5vw, 3.5rem);
+    color: var(--light-text-main);
+    line-height: 1.15;
+    margin-bottom: 16px;
+  }
+
+  .ind-subtitle {
+    color: var(--brand-blue);
+    font-size: clamp(1.1rem, 2vw, 1.5rem);
+    font-weight: 700;
+    letter-spacing: 1.5px;
+    text-transform: uppercase;
+    margin-bottom: 28px;
+  }
+
+  .ind-hero-desc {
+    font-size: clamp(0.95rem, 1.4vw, 1.1rem);
+    color: var(--light-text-sub);
+    line-height: 1.75;
+    max-width: 800px;
+    margin: 0 auto 50px;
+  }
+
+  .hero-media {
+    display: grid;
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+    gap: 24px;
+    opacity: 0;
+    transform: translateY(28px);
+  }
+
+  .hero-media img {
+    width: 100%;
+    height: 250px;
+    object-fit: cover;
+    border-radius: 16px;
+    box-shadow: 0 15px 35px rgba(15, 23, 42, 0.06);
+    border: 1px solid var(--light-border);
+    transition: transform 0.4s cubic-bezier(0.16, 1, 0.3, 1);
+  }
+
+  .hero-media img:hover {
+    transform: translateY(-6px) scale(1.02);
+  }
+
+  /* ════════════ 4. TWO-COLUMN DETAILS SECTION ════════════ */
+  .ind-container {
+    max-width: 1400px;
+    margin: 0 auto;
+    padding: 0 30px 80px;
+  }
+
+  .two-col-layout {
+    display: grid;
+    grid-template-columns: 1.1fr 0.9fr;
+    gap: 50px;
+    background: #ffffff;
+    border: 1px solid var(--light-border);
+    border-radius: 20px;
+    padding: 50px;
+    box-shadow: 0 10px 30px rgba(15, 23, 42, 0.015);
+  }
+
+  .col-text h2 {
+    font-size: clamp(1.6rem, 3vw, 2.2rem);
+    color: var(--light-text-main);
+    margin: 10px 0 20px 0;
+  }
+
+  .section-eyebrow {
+    font-size: 0.72rem;
+    text-transform: uppercase;
+    letter-spacing: 3px;
+    font-weight: 700;
+    color: var(--brand-blue);
+    display: block;
+  }
+
+  .col-text p {
+    font-size: 0.98rem;
+    color: var(--light-text-sub);
+    line-height: 1.8;
+    margin-bottom: 20px;
+  }
+
+  .col-list-card {
+    background: #f8fafc;
+    border-radius: 16px;
+    padding: 35px;
+    border: 1px solid var(--light-border);
+    position: relative;
+    overflow: hidden;
+  }
+
+  .gradient-line {
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    height: 4px;
+    background: linear-gradient(90deg, var(--brand-blue) 0%, var(--brand-blue-hover) 100%);
+  }
+
+  .col-list-card h3 {
+    margin: 0 0 24px 0;
+    font-size: 1.2rem;
+    color: var(--light-text-main);
+  }
+
+  .clean-list {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+    display: flex;
+    flex-direction: column;
+    gap: 18px;
+  }
+
+  .clean-list li {
+    display: flex;
+    gap: 12px;
+    align-items: flex-start;
+  }
+
+  .icon-check {
+    color: var(--brand-blue);
+    font-weight: 900;
+    font-size: 1.05rem;
+    line-height: 1.3;
+  }
+
+  .clean-list li strong {
+    display: block;
+    font-size: 0.9rem;
+    color: var(--light-text-main);
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+    margin-bottom: 2px;
+  }
+
+  .clean-list li span {
+    font-size: 0.85rem;
+    color: var(--light-text-sub);
+    line-height: 1.5;
+  }
+
+  /* ════════════ 5. CAPABILITIES GRID ════════════ */
+  .grid-header {
+    text-align: center;
+    margin-bottom: 50px;
+    margin-top: 20px;
+  }
+
+  .grid-eyebrow {
+    font-size: 0.72rem;
+    text-transform: uppercase;
+    letter-spacing: 3px;
+    font-weight: 700;
+    color: var(--brand-blue);
+    display: block;
+    margin-bottom: 8px;
+  }
+
+  .grid-title {
+    font-size: clamp(1.6rem, 3vw, 2.3rem);
+    color: var(--light-text-main);
+    margin-bottom: 16px;
+  }
+
+  .grid-line-bar {
+    width: 60px;
+    height: 4px;
+    background: var(--brand-blue);
+    margin: 0 auto;
+    border-radius: 2px;
+  }
+
+  .capabilities-grid {
+    display: grid;
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+    gap: 28px;
+  }
+
+  .cap-card {
+    background: var(--light-card);
+    border: 1px solid var(--light-border);
+    border-radius: 16px;
+    padding: 30px;
+    position: relative;
+    transition: all 0.4s cubic-bezier(0.16, 1, 0.3, 1);
+    box-shadow: 0 8px 25px rgba(15, 23, 42, 0.01);
+  }
+
+  .cap-card:hover {
+    border-color: var(--brand-blue);
+    transform: translateY(-6px);
+    box-shadow: 0 18px 40px rgba(15, 23, 42, 0.06);
+  }
+
+  .cap-index {
+    position: absolute;
+    top: 20px;
+    right: 20px;
+    font-family: 'Outfit', sans-serif;
+    font-size: 1.8rem;
+    font-weight: 900;
+    color: #e2e8f0;
+    line-height: 1;
+    transition: color 0.4s;
+  }
+
+  .cap-card:hover .cap-index {
+    color: rgba(9, 104, 229, 0.15);
+  }
+
+  .cap-content h3 {
+    margin: 0 0 12px 0;
+    font-size: 1.15rem;
+    color: var(--light-text-main);
+    padding-right: 30px;
+    line-height: 1.3;
+  }
+
+  .cap-content p {
+    margin: 0;
+    font-size: 0.88rem;
+    color: var(--light-text-sub);
+    line-height: 1.6;
+  }
+
+  /* ════════════ 6. PRODUCTS GRID & STRIP ════════════ */
+  .products-grid {
+    display: grid;
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+    gap: 28px;
+  }
+
+  .prod-cat-card {
+    background: #ffffff;
+    border: 1px solid var(--light-border);
+    border-radius: 16px;
+    padding: 30px;
+    display: flex;
+    flex-direction: column;
+    box-shadow: 0 8px 25px rgba(15, 23, 42, 0.01);
+    transition: border-color 0.35s, box-shadow 0.35s;
+  }
+
+  .prod-cat-card:hover {
+    border-color: var(--brand-blue);
+    box-shadow: 0 18px 40px rgba(15, 23, 42, 0.05);
+  }
+
+  .cat-header {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    border-bottom: 2px solid #f1f5f9;
+    padding-bottom: 16px;
+    margin-bottom: 20px;
+  }
+
+  .cat-num {
+    background: rgba(9, 104, 229, 0.08);
+    color: var(--brand-blue);
+    font-family: 'Outfit', sans-serif;
+    font-weight: 800;
+    font-size: 0.85rem;
+    width: 28px;
+    height: 28px;
+    border-radius: 6px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border: 1px solid rgba(9, 104, 229, 0.15);
+  }
+
+  .cat-header h3 {
+    margin: 0;
+    font-size: 1.15rem;
+    color: var(--light-text-main);
+  }
+
+  .cat-prod-list {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+  }
+
+  .cat-prod-list li {
+    display: flex;
+    gap: 8px;
+    font-size: 0.88rem;
+    color: var(--light-text-sub);
+    line-height: 1.4;
+  }
+
+  .bullet {
+    color: var(--brand-blue);
+    font-weight: 900;
+  }
+
+  .image-strip {
+    display: grid;
+    grid-template-columns: repeat(4, minmax(0, 1fr));
+    gap: 24px;
+    margin-top: 50px;
+  }
+
+  .image-strip img {
+    width: 100%;
+    height: 180px;
+    object-fit: cover;
+    border-radius: 14px;
+    border: 1px solid var(--light-border);
+    box-shadow: 0 10px 25px rgba(15, 23, 42, 0.04);
+    transition: transform 0.4s cubic-bezier(0.16, 1, 0.3, 1), border-color 0.4s;
+  }
+
+  .image-strip img:hover {
+    transform: scale(1.03) translateY(-4px);
+    border-color: var(--brand-blue);
+  }
+
+  /* ════════════ 7. TECH DOSSIER (DARK) ════════════ */
+  .tech-dossier {
+    background: var(--dossier-bg);
+    color: var(--dossier-text);
+    padding: 90px 30px;
+    border-top: 5px solid var(--brand-blue);
+  }
+
+  .dossier-container {
+    max-width: 1400px;
+    margin: 0 auto;
+  }
+
+  .dossier-head {
+    margin-bottom: 50px;
+  }
+
+  .dossier-eyebrow {
+    font-size: 0.72rem;
+    text-transform: uppercase;
+    letter-spacing: 3px;
+    font-weight: 700;
+    color: var(--brand-blue);
+    display: block;
+    margin-bottom: 8px;
+  }
+
+  .dossier-title {
+    color: #ffffff;
+    font-size: clamp(1.8rem, 3.5vw, 2.5rem);
+    margin: 0 0 16px 0;
+  }
+
+  .dossier-line {
+    width: 80px;
+    height: 4px;
+    background: var(--brand-blue);
+    border-radius: 2px;
+  }
+
+  .dossier-grid {
+    display: grid;
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+    gap: 30px;
+  }
+
+  .dossier-card {
+    background: var(--dossier-card);
+    border-radius: 16px;
+    padding: 35px;
+    border: 1px solid rgba(255, 255, 255, 0.04);
+    box-shadow: 0 15px 35px rgba(0, 0, 0, 0.15);
+    transition: border-color 0.4s, transform 0.4s;
+  }
+
+  .dossier-card:hover {
+    border-color: var(--brand-blue);
+    transform: translateY(-6px);
+  }
+
+  .dossier-card h3 {
+    color: #ffffff;
+    font-size: 1.15rem;
+    margin: 0 0 16px 0;
+    letter-spacing: 0.5px;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.08);
+    padding-bottom: 10px;
+  }
+
+  .dossier-card p {
+    font-size: 0.88rem;
+    line-height: 1.6;
+    color: #94a3b8;
+    margin-bottom: 20px;
+  }
+
+  .dossier-list {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+  }
+
+  .dossier-list li {
+    position: relative;
+    padding-left: 14px;
+    font-size: 0.82rem;
+    line-height: 1.4;
+    color: #cbd5e1;
+  }
+
+  .dossier-list li::before {
+    content: '▪';
+    position: absolute;
+    left: 0;
+    color: var(--brand-blue);
+    font-size: 0.75rem;
+    top: -1px;
+  }
+
+  /* ════════════ 8. EXECUTION TIMELINE ════════════ */
+  .timeline-section {
+    padding-top: 80px;
+    padding-bottom: 80px;
+  }
+
+  .timeline-container {
+    max-width: 900px;
+    margin: 60px auto 0;
+    position: relative;
+    padding-left: 50px;
+  }
+
+  .timeline-container::before {
+    content: '';
+    position: absolute;
+    left: 17px;
+    top: 6px;
+    bottom: 6px;
+    width: 2px;
+    background: var(--light-border);
+  }
+
+  .timeline-item {
+    position: relative;
+    margin-bottom: 45px;
+  }
+
+  .timeline-item:last-child {
+    margin-bottom: 0;
+  }
+
+  .timeline-circle {
+    position: absolute;
+    left: -42px;
+    top: 2px;
+    width: 18px;
+    height: 18px;
+    border-radius: 50%;
+    background: #ffffff;
+    border: 3px solid var(--brand-blue);
+    z-index: 2;
+    transition: background-color 0.4s, border-color 0.4s;
+  }
+
+  .timeline-item:hover .timeline-circle {
+    background-color: var(--brand-blue);
+    box-shadow: 0 0 12px rgba(9, 104, 229, 0.4);
+  }
+
+  .timeline-content h3 {
+    margin: 0 0 8px 0;
+    font-size: 1.15rem;
+    color: var(--light-text-main);
+  }
+
+  .timeline-content p {
+    margin: 0;
+    font-size: 0.92rem;
+    color: var(--light-text-sub);
+    line-height: 1.65;
+  }
+
+  /* ════════════ 9. PARTNERSHIP / RESOURCE SECTION ════════════ */
+  .resource-section {
+    background: #ffffff;
+    padding: 85px 30px;
+    border-top: 1px solid var(--light-border);
+    border-bottom: 1px solid var(--light-border);
+  }
+
+  .resource-head {
+    max-width: 800px;
+    margin: 0 auto 50px;
+    text-align: center;
+  }
+
+  .resource-eyebrow {
+    font-size: 0.72rem;
+    text-transform: uppercase;
+    letter-spacing: 3px;
+    font-weight: 700;
+    color: var(--brand-blue);
+    display: block;
+    margin-bottom: 8px;
+  }
+
+  .resource-section .heading-font {
+    font-size: clamp(1.8rem, 3.5vw, 2.5rem);
+    color: var(--light-text-main);
+    margin-bottom: 14px;
+  }
+
+  .resource-section .heading-font .highlight {
+    color: var(--brand-blue);
+  }
+
+  .resource-subtitle-text {
+    font-size: clamp(0.95rem, 1.3vw, 1.05rem);
+    color: var(--light-text-sub);
+    margin: 0;
+  }
+
+  .resource-grid {
+    max-width: 1400px;
+    margin: 0 auto;
+    display: grid;
+    grid-template-columns: repeat(4, minmax(0, 1fr));
+    gap: 28px;
+  }
+
+  .resource-card {
+    background: #f8fafc;
+    border-top: 4px solid var(--brand-blue);
+    border-radius: 0 0 12px 12px;
+    padding: 30px;
+    box-shadow: 0 4px 20px rgba(15, 23, 42, 0.01);
+    transition: all 0.35s cubic-bezier(0.16, 1, 0.3, 1);
+    border-left: 1px solid var(--light-border);
+    border-right: 1px solid var(--light-border);
+    border-bottom: 1px solid var(--light-border);
+  }
+
+  .resource-card:hover {
+    transform: translateY(-6px);
+    background: #ffffff;
+    box-shadow: 0 15px 35px rgba(15, 23, 42, 0.04);
+    border-color: var(--light-border);
+  }
+
+  .resource-title {
+    font-size: 1.15rem;
+    color: var(--light-text-main);
+    margin-bottom: 12px;
+    line-height: 1.3;
+  }
+
+  .resource-p {
+    font-size: 0.88rem;
+    color: var(--light-text-sub);
+    line-height: 1.6;
+    margin-bottom: 0;
+  }
+
+  /* ════════════ 10. CTA BANNER (BLUE GRADIENT) ════════════ */
+  .cta-banner {
+    max-width: 1400px;
+    margin: 60px auto 80px;
+    padding: 0 30px;
+  }
+
+  .cta-inner {
+    background: linear-gradient(135deg, var(--brand-blue) 0%, #064094 100%);
+    color: #ffffff;
+    border-radius: 24px;
+    padding: 60px;
+    text-align: center;
+    box-shadow: 0 20px 50px rgba(9, 104, 229, 0.15);
+  }
+
+  .cta-inner h2 {
+    color: #ffffff;
+    font-size: clamp(1.8rem, 3.5vw, 2.5rem);
+    margin: 0 0 16px 0;
+  }
+
+  .cta-inner p {
+    font-size: clamp(0.95rem, 1.3vw, 1.1rem);
+    line-height: 1.7;
+    max-width: 800px;
+    margin: 0 auto 35px;
+    opacity: 0.95;
+  }
+
+  .cta-info-box {
+    display: flex;
+    justify-content: center;
+    gap: 30px 50px;
+    flex-wrap: wrap;
+    background: rgba(255, 255, 255, 0.12);
+    padding: 24px 35px;
+    border-radius: 16px;
+    backdrop-filter: blur(8px);
+    border: 1px solid rgba(255, 255, 255, 0.15);
+    max-width: 900px;
+    margin: 0 auto;
+  }
+
+  .cta-contact-item {
+    font-size: 0.95rem;
+  }
+
+  .cta-contact-item a {
+    color: #ffffff;
+    font-weight: 700;
+    text-decoration: underline;
+  }
+
+  /* ════════════ 11. MEDIA QUERIES ════════════ */
+  @media (max-width: 1200px) {
+    .capabilities-grid,
+    .products-grid,
+    .dossier-grid {
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+    }
+    .resource-grid {
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+    }
+  }
+
+  @media (max-width: 992px) {
+    .two-col-layout {
+      grid-template-columns: 1fr;
+      gap: 35px;
+      padding: 35px;
+    }
+  }
+
+  @media (max-width: 768px) {
+    .capabilities-grid,
+    .products-grid,
+    .dossier-grid,
+    .resource-grid {
+      grid-template-columns: 1fr;
+    }
+    .cta-inner {
+      padding: 40px 20px;
+    }
+    .cta-info-box {
+      flex-direction: column;
+      gap: 15px;
+      padding: 20px;
+    }
+    .ind-container,
+    .tech-dossier,
+    .resource-section,
+    .cta-banner {
+      padding-left: 20px;
+      padding-right: 20px;
+    }
+  }
+</style>
+
+<script>
+  import { gsap } from "gsap";
+  import { ScrollTrigger } from "gsap/ScrollTrigger";
+  gsap.registerPlugin(ScrollTrigger);
+
+  /* Character reveal for Hero text */
+  const startHero = () => {
+    const tl = gsap.timeline();
+    tl.to('.ind-hero .ind-hero-badge', { opacity: 1, y: 0, duration: 0.6, ease: 'power3.out' });
+    tl.fromTo('.ind-hero .ac',
+      { opacity: 0, x: -8, color: '#0968e5', webkitTextFillColor: '#0968e5' },
+      { opacity: 1, x: 0, color: '#0968e5', webkitTextFillColor: '#0968e5', duration: 0.5, stagger: 0.012, ease: 'power3.out' },
+      '-=0.2'
+    ).to('.ind-hero .ac', { clearProps: 'color,webkitTextFillColor', duration: 0.45, stagger: 0.012, ease: 'power2.inOut' }, '-=0.45');
+    tl.to('.ind-hero .ind-subtitle', { opacity: 1, y: 0, duration: 0.5, ease: 'power2.out' }, '-=0.4');
+    tl.to('.ind-hero .ind-hero-desc', { opacity: 1, y: 0, duration: 0.6, ease: 'power2.out' }, '-=0.3');
+    tl.to('.hero-media', { opacity: 1, y: 0, duration: 0.6, ease: 'power2.out' }, '-=0.3');
+  };
+
+  startHero();
+
+  /* Scroll reveals */
+  const fadeUp = (targets: gsap.TweenTarget, delay = 0, stagger = 0) =>
+    gsap.to(targets, { opacity: 1, y: 0, duration: 0.6, stagger, delay, ease: 'power2.out' });
+
+  const section = (sel: string, opts: { bodyDelay?: number; stagger?: number } = {}) => {
+    const el = document.querySelector(sel);
+    if (!el) return;
+    ScrollTrigger.create({
+      trigger: sel,
+      start: 'top 80%',
+      once: true,
+      onEnter: () => {
+        fadeUp(`${sel} .reveal`, opts.bodyDelay ?? 0.1, opts.stagger ?? 0.08);
+      }
+    });
+  };
+
+  section('.two-col-layout', { stagger: 0.1 });
+  section('.capabilities-grid', { stagger: 0.05 });
+  section('.products-grid', { stagger: 0.05 });
+  section('.dossier-section', { stagger: 0.06 });
+  section('.timeline-section', { stagger: 0.06 });
+  section('.resource-section', { stagger: 0.06 });
+  section('.cta-banner', { stagger: 0.1 });
+</script>
