@@ -1,4 +1,4 @@
-﻿---
+---
 // src/lc/components/TripleRevealPaints.astro
 ---
 
@@ -9,7 +9,7 @@
       <!-- Panel 1: Consultation -->
       <div class="triple-panel">
         <img 
-          src="https://cdn.globalformulation.com/images/adhesives/adhesives_consultation.webp" 
+          src="/images/adhesives/adhesives_consultation.webp" 
           alt="Research Consultation" 
           class="triple-img" 
           loading="lazy"
@@ -28,7 +28,7 @@
           </h3>
           <div class="triple-cta">
             <a href="/contact" class="triple-btn">Book Session</a>
-            <a href="/paints-and-coatings-formulations" class="triple-link">Overview</a>
+            <a href="/adhesives-and-sealants-formulations-and-technology" class="triple-link">Overview</a>
           </div>
         </div>
       </div>
@@ -36,7 +36,7 @@
       <!-- Panel 2: Product Development -->
       <div class="triple-panel">
         <img 
-          src="https://cdn.globalformulation.com/images/adhesives/adhesives_development.webp" 
+          src="/images/adhesives/adhesives_development.webp" 
           alt="Product Formulation Development" 
           class="triple-img" 
           loading="lazy"
@@ -55,7 +55,7 @@
           </h3>
           <div class="triple-cta">
             <a href="/contact" class="triple-btn">Formulate</a>
-            <a href="/paints-and-coatings-formulations" class="triple-link">Science</a>
+            <a href="/adhesives-and-sealants-formulations-and-technology" class="triple-link">Science</a>
           </div>
         </div>
       </div>
@@ -63,7 +63,7 @@
       <!-- Panel 3: Product Lab Trials -->
       <div class="triple-panel">
         <img 
-          src="https://cdn.globalformulation.com/images/adhesives/adhesives_trials.webp" 
+          src="/images/adhesives/adhesives_trials.webp" 
           alt="Product Lab Trials & Testing" 
           class="triple-img" 
           loading="lazy"
@@ -82,7 +82,7 @@
           </h3>
           <div class="triple-cta">
             <a href="/contact" class="triple-btn">Test Run</a>
-            <a href="/paints-and-coatings-formulations" class="triple-link">Analysis</a>
+            <a href="/adhesives-and-sealants-formulations-and-technology" class="triple-link">Analysis</a>
           </div>
         </div>
       </div>
@@ -90,7 +90,7 @@
       <!-- Panel 4: Production -->
       <div class="triple-panel">
         <img 
-          src="https://cdn.globalformulation.com/images/adhesives/adhesives_production.webp" 
+          src="/images/adhesives/adhesives_production.webp" 
           alt="Turnkey Manufacturing & Packaging" 
           class="triple-img" 
           loading="lazy"
@@ -109,7 +109,7 @@
           </h3>
           <div class="triple-cta">
             <a href="/contact" class="triple-btn">Scale Up</a>
-            <a href="/paints-and-coatings-formulations" class="triple-link">Logistics</a>
+            <a href="/adhesives-and-sealants-formulations-and-technology" class="triple-link">Logistics</a>
           </div>
         </div>
       </div>
@@ -355,7 +355,7 @@
 
   gsap.registerPlugin(ScrollTrigger);
 
-  function initTripleRevealPaints() {
+  function initTripleRevealAdhesives() {
     const isDesktop = window.innerWidth > 768;
     const section = document.querySelector(".triple-reveal-section");
     const container = document.querySelector(".triple-reveal-container");
@@ -486,6 +486,6 @@
   }
 
   // Handle initial page load and view transitions
-  window.addEventListener("load", initTripleRevealPaints);
-  document.addEventListener("astro:page-load", initTripleRevealPaints);
+  window.addEventListener("load", initTripleRevealAdhesives);
+  document.addEventListener("astro:page-load", initTripleRevealAdhesives);
 </script>

@@ -9,8 +9,8 @@
       <!-- Panel 1: Consultation -->
       <div class="triple-panel">
         <img 
-          src="/images/arts/arts_consultation.webp" 
-          alt="Research Consultation" 
+          src="/images/arts/arts_scroll_stencils.png" 
+          alt="Arts & Crafts Stencils and Design Consultation" 
           class="triple-img" 
           loading="lazy"
         />
@@ -28,7 +28,7 @@
           </h3>
           <div class="triple-cta">
             <a href="/contact" class="triple-btn">Book Session</a>
-            <a href="/adhesives-and-sealants-formulations" class="triple-link">Overview</a>
+            <a href="/arts-and-crafts/" class="triple-link">Overview</a>
           </div>
         </div>
       </div>
@@ -36,8 +36,8 @@
       <!-- Panel 2: Product Development -->
       <div class="triple-panel">
         <img 
-          src="/images/arts/arts_development.webp" 
-          alt="Product Formulation Development" 
+          src="/images/arts/arts_scroll_adhesives.png" 
+          alt="Craft Adhesive and Binder Development" 
           class="triple-img" 
           loading="lazy"
         />
@@ -55,7 +55,7 @@
           </h3>
           <div class="triple-cta">
             <a href="/contact" class="triple-btn">Formulate</a>
-            <a href="/adhesives-and-sealants-formulations" class="triple-link">Science</a>
+            <a href="/arts-and-crafts/" class="triple-link">Science</a>
           </div>
         </div>
       </div>
@@ -63,8 +63,8 @@
       <!-- Panel 3: Product Lab Trials -->
       <div class="triple-panel">
         <img 
-          src="/images/arts/arts_trials.webp" 
-          alt="Product Lab Trials & Testing" 
+          src="/images/arts/arts_scroll_glitter.png" 
+          alt="Glitter and Shimmer Spray Lab Trials" 
           class="triple-img" 
           loading="lazy"
         />
@@ -82,7 +82,7 @@
           </h3>
           <div class="triple-cta">
             <a href="/contact" class="triple-btn">Test Run</a>
-            <a href="/adhesives-and-sealants-formulations" class="triple-link">Analysis</a>
+            <a href="/arts-and-crafts/" class="triple-link">Analysis</a>
           </div>
         </div>
       </div>
@@ -90,8 +90,8 @@
       <!-- Panel 4: Production -->
       <div class="triple-panel">
         <img 
-          src="/images/arts/arts_production.webp" 
-          alt="Turnkey Manufacturing & Packaging" 
+          src="/images/arts/arts_scroll_sealers.png" 
+          alt="Craft Sealer and Glaze Production" 
           class="triple-img" 
           loading="lazy"
         />
@@ -109,7 +109,7 @@
           </h3>
           <div class="triple-cta">
             <a href="/contact" class="triple-btn">Scale Up</a>
-            <a href="/adhesives-and-sealants-formulations" class="triple-link">Logistics</a>
+            <a href="/arts-and-crafts/" class="triple-link">Logistics</a>
           </div>
         </div>
       </div>
@@ -355,7 +355,7 @@
 
   gsap.registerPlugin(ScrollTrigger);
 
-  function initTripleRevealPaints() {
+  function initTripleRevealArtsCrafts() {
     const isDesktop = window.innerWidth > 768;
     const section = document.querySelector(".triple-reveal-section");
     const container = document.querySelector(".triple-reveal-container");
@@ -486,6 +486,6 @@
   }
 
   // Handle initial page load and view transitions
-  window.addEventListener("load", initTripleRevealPaints);
-  document.addEventListener("astro:page-load", initTripleRevealPaints);
+  window.addEventListener("load", initTripleRevealArtsCrafts);
+  document.addEventListener("astro:page-load", initTripleRevealArtsCrafts);
 </script>
