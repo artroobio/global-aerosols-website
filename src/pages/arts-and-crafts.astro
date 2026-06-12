@@ -1,0 +1,255 @@
+---
+import Layout from '../lc/layouts/Layout.astro';
+import ArtsCraftsIndustriesWeServe from '../lc/components/ArtsCraftsIndustriesWeServe.astro';
+import TripleRevealArtsCrafts from '../lc/components/TripleRevealArtsCrafts.astro';
+import ArtsCraftsProcessParallax from '../lc/components/ArtsCraftsProcessParallax.astro';
+import ContactFormVideo from '../lc/components/ContactFormVideo.astro';
+---
+
+<Layout title="Arts & Crafts Aerosol Formulations & Technology | Global Aerosols" description="Creative aerosol sprays for arts and crafts — glitter sprays, adhesive sprays, fabric paints, and clear sealers. Technical R&D and manufacturing support.">
+  <section id="ga-main-wrapper">
+    <!-- Background Image -->
+    <div id="hero-bg-container">
+      <img id="hero-image" src="/images/arts/arts_crafts_hero.png" alt="Arts &amp; Crafts Aerosols" />
+    </div>
+
+    <div id="ui-layer">
+      <div id="hero-sequence">
+        <!-- Mid-screen horizontal divider line with labels -->
+        <div class="hero-mid-divider">
+          <span class="mid-label left-label">GLITTER &amp; TEXTURE SPRAYS</span>
+          <span class="mid-label center-label">AEROSOL CRAFTS</span>
+          <span class="mid-label right-label">ADHESIVE SPRAYS</span>
+        </div>
+
+        <!-- Massive Bottom Title -->
+        <div class="hero-bottom-container">
+          <h2 class="hero-massive-title" id="hero-massive-title">Arts &amp; Crafts</h2>
+        </div>
+
+        <!-- CTA Button -->
+        <a href="#serve-section" class="hero-cta-btn">EXPLORE SERVICES +</a>
+      </div>
+    </div>
+  </section>
+
+  <ArtsCraftsIndustriesWeServe />
+  <TripleRevealArtsCrafts />
+  <ArtsCraftsProcessParallax />
+  <ContactFormVideo />
+</Layout>
+
+<style is:global>
+  #ga-main-wrapper {
+    position: relative;
+    width: 100%;
+    height: 100vh;
+    min-height: 600px;
+    overflow: hidden;
+    background: #010a0a;
+  }
+
+  #hero-bg-container {
+    position: absolute;
+    top: 0; left: 0; width: 100%; height: 100%;
+    background-color: #010a0a;
+    z-index: 1;
+  }
+
+  #hero-bg-container::after {
+    content: '';
+    position: absolute;
+    top: 0; left: 0; width: 100%; height: 100%;
+    background: radial-gradient(circle, rgba(0,0,0,0.05) 0%, rgba(1,10,10,0.55) 100%);
+    z-index: 6;
+    pointer-events: none;
+  }
+
+  #hero-image {
+    position: absolute;
+    top: 0; left: 0;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    opacity: 1;
+    z-index: 3;
+    pointer-events: none;
+  }
+
+  #ui-layer {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    z-index: 10;
+    pointer-events: none;
+  }
+
+  #hero-sequence {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    opacity: 1;
+    pointer-events: auto;
+    box-sizing: border-box;
+  }
+
+  .hero-mid-divider {
+    position: absolute;
+    top: 40%;
+    left: 0;
+    width: 100%;
+    height: 1px;
+    border-bottom: 1px dashed rgba(255, 255, 255, 0.65);
+    transform: translateY(-50%);
+    z-index: 5;
+  }
+
+  .mid-label {
+    position: absolute;
+    font-family: 'Poppins', sans-serif;
+    font-size: clamp(0.65rem, 1.1vw, 0.82rem);
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 5px;
+    color: #ffffff;
+    transform: translateY(calc(-100% - 10px));
+    text-shadow: 0 1px 8px rgba(0, 0, 0, 0.7);
+    padding: 0 6px;
+  }
+
+  .left-label  { left: 5%; }
+  .center-label { left: 50%; transform: translate(-50%, calc(-100% - 10px)); }
+  .right-label  { right: 5%; }
+
+  .hero-bottom-container {
+    position: absolute;
+    bottom: 18%;
+    left: 0;
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: flex-end;
+    z-index: 10;
+    pointer-events: none;
+    padding-top: 0.5em;
+    padding-bottom: 0.4em;
+    overflow: hidden;
+  }
+
+  .hero-massive-title {
+    font-family: 'Montserrat', sans-serif;
+    font-weight: 300;
+    font-size: clamp(2rem, 6.4vw, 7.2rem);
+    white-space: nowrap;
+    color: #ffffff;
+    text-transform: uppercase;
+    letter-spacing: 4px;
+    margin: 0;
+    line-height: 1;
+    text-align: center;
+    width: 100%;
+    text-shadow: 0 2px 40px rgba(0, 0, 0, 0.6);
+  }
+
+  .char {
+    display: inline-block;
+  }
+  .char-space {
+    display: inline-block;
+    width: 0.22em;
+  }
+
+  .hero-cta-btn {
+    position: absolute;
+    bottom: 8%;
+    right: 5%;
+    text-decoration: none;
+    padding: 11px 22px;
+    background: #000000;
+    border: none;
+    border-radius: 0;
+    font-family: 'Poppins', sans-serif;
+    font-size: 0.8rem;
+    font-weight: 700;
+    color: #00ffcc;
+    cursor: pointer;
+    transition: background 0.25s ease, color 0.25s ease;
+    z-index: 15;
+    letter-spacing: 2px;
+    text-transform: uppercase;
+    pointer-events: auto;
+  }
+
+  .hero-cta-btn:hover {
+    background: #00ffcc;
+    color: #000000;
+  }
+
+  @media (max-width: 899px) {
+    .hero-bottom-container { bottom: 14%; }
+    .hero-massive-title    { font-size: clamp(1.2rem, 5.5vw, 3.2rem); letter-spacing: 2px; }
+    .mid-label             { font-size: 0.5rem; letter-spacing: 2px; }
+    .hero-cta-btn          { right: 5%; bottom: 6%; font-size: 0.7rem; padding: 10px 18px; }
+    .hero-mid-divider      { top: 42%; }
+  }
+
+  @media (min-width: 900px) {
+    .mid-label { font-size: 0.72rem; letter-spacing: 5px; }
+  }
+
+  @media (min-width: 1200px) {
+    .mid-label { font-size: 0.82rem; }
+  }
+</style>
+
+<script>
+  import { gsap } from "gsap";
+
+  function initHeroReveal() {
+    const titleEl = document.getElementById('hero-massive-title');
+    const divider = document.querySelector('.hero-mid-divider');
+    const ctaBtn = document.querySelector('.hero-cta-btn');
+
+    if (titleEl) {
+      const raw = titleEl.textContent || '';
+      titleEl.innerHTML = raw.split('').map(ch => {
+        return ch === ' '
+          ? '<span class="char char-space">&nbsp;</span>'
+          : `<span class="char">${ch}</span>`;
+      }).join('');
+      
+      const chars = titleEl.querySelectorAll('.char');
+      
+      // Reset styles cleanly
+      gsap.set(chars, { y: 130, opacity: 0 });
+      if (divider) gsap.set(divider, { opacity: 0 });
+      if (ctaBtn) gsap.set(ctaBtn, { opacity: 0 });
+
+      // Run GSAP Reveal timeline
+      const tl = gsap.timeline();
+      
+      if (divider) {
+        tl.to(divider, { opacity: 1, duration: 0.9, delay: 0.4, ease: 'power2.out' });
+      }
+      
+      tl.to(chars, {
+        y: 0,
+        opacity: 1,
+        duration: 1.4,
+        stagger: 0.038,
+        ease: 'power4.out'
+      }, '-=0.5');
+
+      if (ctaBtn) {
+        tl.to(ctaBtn, { opacity: 1, duration: 0.6, ease: 'power2.out' }, '-=0.6');
+      }
+    }
+  }
+
+  window.addEventListener('load', initHeroReveal);
+  document.addEventListener('astro:page-load', initHeroReveal);
+</script>

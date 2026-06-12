@@ -1,0 +1,491 @@
+---
+// src/lc/components/TripleRevealPaints.astro
+---
+
+<section class="triple-reveal-section">
+  <div class="triple-reveal-container">
+    <div class="triple-grid">
+      
+      <!-- Panel 1: Consultation -->
+      <div class="triple-panel">
+        <img 
+          src="/images/adhesives/adhesives_consultation.webp" 
+          alt="Research Consultation" 
+          class="triple-img" 
+          loading="lazy"
+        />
+        <div class="triple-overlay"></div>
+        <div class="triple-content">
+          <span class="triple-eyebrow">Phase 01</span>
+          <h3 class="triple-title">
+            {"CONSULTATION".split(' ').map(word => (
+              <span class="word-wrapper">
+                {word.split('').map(char => (
+                  <span class="blue-char">{char}</span>
+                ))}
+              </span>
+            ))}
+          </h3>
+          <div class="triple-cta">
+            <a href="/contact" class="triple-btn">Book Session</a>
+            <a href="/adhesives-and-sealants-formulations" class="triple-link">Overview</a>
+          </div>
+        </div>
+      </div>
+      
+      <!-- Panel 2: Product Development -->
+      <div class="triple-panel">
+        <img 
+          src="/images/adhesives/adhesives_development.webp" 
+          alt="Product Formulation Development" 
+          class="triple-img" 
+          loading="lazy"
+        />
+        <div class="triple-overlay"></div>
+        <div class="triple-content">
+          <span class="triple-eyebrow">Phase 02</span>
+          <h3 class="triple-title">
+            {"DEVELOPMENT".split(' ').map(word => (
+              <span class="word-wrapper">
+                {word.split('').map(char => (
+                  <span class="blue-char">{char}</span>
+                ))}
+              </span>
+            ))}
+          </h3>
+          <div class="triple-cta">
+            <a href="/contact" class="triple-btn">Formulate</a>
+            <a href="/adhesives-and-sealants-formulations" class="triple-link">Science</a>
+          </div>
+        </div>
+      </div>
+      
+      <!-- Panel 3: Product Lab Trials -->
+      <div class="triple-panel">
+        <img 
+          src="/images/adhesives/adhesives_trials.webp" 
+          alt="Product Lab Trials & Testing" 
+          class="triple-img" 
+          loading="lazy"
+        />
+        <div class="triple-overlay"></div>
+        <div class="triple-content">
+          <span class="triple-eyebrow">Phase 03</span>
+          <h3 class="triple-title">
+            {"LAB TRIALS".split(' ').map(word => (
+              <span class="word-wrapper">
+                {word.split('').map(char => (
+                  <span class="blue-char">{char}</span>
+                ))}
+              </span>
+            ))}
+          </h3>
+          <div class="triple-cta">
+            <a href="/contact" class="triple-btn">Test Run</a>
+            <a href="/adhesives-and-sealants-formulations" class="triple-link">Analysis</a>
+          </div>
+        </div>
+      </div>
+
+      <!-- Panel 4: Production -->
+      <div class="triple-panel">
+        <img 
+          src="/images/adhesives/adhesives_production.webp" 
+          alt="Turnkey Manufacturing & Packaging" 
+          class="triple-img" 
+          loading="lazy"
+        />
+        <div class="triple-overlay"></div>
+        <div class="triple-content">
+          <span class="triple-eyebrow">Phase 04</span>
+          <h3 class="triple-title">
+            {"PRODUCTION".split(' ').map(word => (
+              <span class="word-wrapper">
+                {word.split('').map(char => (
+                  <span class="blue-char">{char}</span>
+                ))}
+              </span>
+            ))}
+          </h3>
+          <div class="triple-cta">
+            <a href="/contact" class="triple-btn">Scale Up</a>
+            <a href="/adhesives-and-sealants-formulations" class="triple-link">Logistics</a>
+          </div>
+        </div>
+      </div>
+      
+    </div>
+  </div>
+</section>
+
+<style>
+  .triple-reveal-section {
+    width: 100%;
+    height: 95vh;
+    min-height: 600px;
+    background-color: #ffffff;
+    overflow: hidden;
+    position: relative;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    box-sizing: border-box;
+    padding: 80px 0;
+  }
+
+  .triple-reveal-container {
+    width: 100%;
+    height: 100%;
+    overflow: hidden;
+    position: relative;
+    will-change: transform, border-radius;
+  }
+
+  .triple-grid {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    width: 100%;
+    height: 100%;
+  }
+
+  .triple-panel {
+    position: relative;
+    overflow: hidden;
+    height: 100%;
+    border-right: 1px solid rgba(255, 255, 255, 0.08);
+    cursor: pointer;
+  }
+
+  .triple-panel:last-child {
+    border-right: none;
+  }
+
+  .triple-img {
+    position: absolute;
+    top: -15%;
+    left: 0;
+    width: 100%;
+    height: 130%;
+    object-fit: cover;
+    will-change: transform;
+    transition: filter 0.8s ease;
+  }
+
+  .triple-overlay {
+    position: absolute;
+    inset: 0;
+    background: linear-gradient(
+      to top,
+      rgba(15, 23, 42, 0.85) 0%,
+      rgba(15, 23, 42, 0.3) 50%,
+      transparent 100%
+    );
+    z-index: 2;
+    pointer-events: none;
+    transition: background 0.7s cubic-bezier(0.25, 1, 0.3, 1);
+  }
+
+  /* Premium hover gradients */
+  .triple-panel:hover .triple-overlay {
+    background: linear-gradient(
+      to top,
+      rgba(9, 104, 229, 0.95) 0%,
+      rgba(15, 23, 42, 0.65) 50%,
+      rgba(9, 104, 229, 0.15) 100%
+    );
+  }
+
+  .triple-content {
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    padding: clamp(20px, 3vw, 40px);
+    z-index: 10;
+    box-sizing: border-box;
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+  }
+
+  .triple-eyebrow {
+    font-size: 0.7rem;
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: 4px;
+    color: rgba(255, 255, 255, 0.55);
+    margin-bottom: 8px;
+    display: block;
+    transition: color 0.4s ease;
+  }
+
+  .triple-panel:hover .triple-eyebrow {
+    color: #22d3ee;
+  }
+
+  .triple-title {
+    font-family: 'Outfit', sans-serif;
+    font-size: clamp(1.25rem, 2.4vw, 1.85rem);
+    font-weight: 700;
+    color: #ffffff;
+    line-height: 1.15;
+    margin: 0 0 20px 0;
+    letter-spacing: -0.5px;
+    text-transform: uppercase;
+  }
+
+  .word-wrapper {
+    display: inline-block;
+    white-space: nowrap;
+    margin-right: 0.28em;
+  }
+
+  .blue-char {
+    display: inline-block;
+    opacity: 0;
+    color: #ffffff;
+    -webkit-text-fill-color: #ffffff;
+  }
+
+  .triple-cta {
+    display: flex;
+    align-items: center;
+    gap: 14px;
+  }
+
+  .triple-btn {
+    background-color: #ffffff;
+    color: #0f172a;
+    padding: 8px 20px;
+    border-radius: 9999px;
+    font-weight: 600;
+    font-size: 0.7rem;
+    text-transform: uppercase;
+    letter-spacing: 1.5px;
+    border: 1px solid #ffffff;
+    cursor: pointer;
+    text-decoration: none;
+    transition: all 0.4s cubic-bezier(0.25, 1, 0.3, 1);
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+  }
+
+  .triple-btn:hover {
+    background-color: #0968e5;
+    border-color: #0968e5;
+    color: #ffffff;
+    transform: translateY(-2px) scale(1.02);
+    box-shadow: 0 8px 24px rgba(9, 104, 229, 0.4);
+  }
+
+  .triple-link {
+    color: #ffffff;
+    font-size: 0.7rem;
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: 2px;
+    text-decoration: none;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.3);
+    padding-bottom: 2px;
+    cursor: pointer;
+    transition: all 0.4s cubic-bezier(0.25, 1, 0.3, 1);
+  }
+
+  .triple-link:hover {
+    border-color: #ffffff;
+    color: #00ffcc;
+    text-shadow: 0 0 8px rgba(0, 255, 204, 0.4);
+  }
+
+  .triple-panel:hover .triple-img {
+    filter: brightness(1.05) contrast(1.03);
+  }
+
+  /* Responsive styling */
+  @media (max-width: 1024px) {
+    .triple-grid {
+      grid-template-columns: repeat(2, 1fr);
+    }
+    .triple-panel {
+      height: 50%;
+    }
+    .triple-panel:nth-child(2) {
+      border-right: none;
+    }
+    .triple-panel:nth-child(3), .triple-panel:nth-child(4) {
+      border-top: 1px solid rgba(255, 255, 255, 0.08);
+    }
+  }
+
+  @media (max-width: 768px) {
+    .triple-reveal-section {
+      height: auto;
+      padding: 48px 16px;
+    }
+    .triple-reveal-container {
+      width: 100% !important;
+      height: auto !important;
+      border-radius: 24px !important;
+      transform: none !important;
+      overflow: visible;
+    }
+    .triple-grid {
+      grid-template-columns: 1fr;
+      gap: 24px;
+      height: auto;
+    }
+    .triple-panel {
+      height: 380px;
+      border-right: none;
+      border-top: none !important;
+      border-radius: 24px;
+    }
+    .triple-img {
+      top: 0;
+      height: 100%;
+      transform: none !important;
+    }
+  }
+</style>
+
+<script>
+  import { gsap } from "gsap";
+  import { ScrollTrigger } from "gsap/ScrollTrigger";
+
+  gsap.registerPlugin(ScrollTrigger);
+
+  function initTripleRevealPaints() {
+    const isDesktop = window.innerWidth > 768;
+    const section = document.querySelector(".triple-reveal-section");
+    const container = document.querySelector(".triple-reveal-container");
+    const imgs = document.querySelectorAll(".triple-img");
+    const titles = document.querySelectorAll(".triple-title");
+    const ctas = document.querySelectorAll(".triple-cta");
+
+    if (!section || !container) return;
+
+    // Clear any existing triggers on load/refresh to prevent duplicates
+    ScrollTrigger.getAll().forEach((trigger) => {
+      if (
+        trigger.trigger === section ||
+        (trigger.trigger as HTMLElement)?.classList?.contains("triple-reveal-section")
+      ) {
+        trigger.kill();
+      }
+    });
+
+    if (isDesktop) {
+      // 1. Container Widescreen Capsule Expansion
+      gsap.fromTo(
+        container,
+        {
+          scale: 0.9,
+          borderRadius: "120px",
+          width: "80%",
+          height: "80vh",
+        },
+        {
+          scale: 1,
+          borderRadius: "0px",
+          width: "100%",
+          height: "95vh",
+          ease: "none",
+          force3D: true,
+          scrollTrigger: {
+            trigger: section,
+            start: "top 95%",
+            end: "center center",
+            scrub: true,
+          },
+        }
+      );
+
+      // 2. Parallax Image Motion Zoom inside panels
+      imgs.forEach((img) => {
+        gsap.fromTo(
+          img,
+          {
+            y: "-15%",
+          },
+          {
+            y: "10%",
+            ease: "none",
+            force3D: true,
+            scrollTrigger: {
+              trigger: section,
+              start: "top bottom",
+              end: "bottom top",
+              scrub: true,
+            },
+          }
+        );
+      });
+
+      // 3. Cinematic Left-to-Right character reveal, matching Where Science Meets Sophistication
+      const revealTl = gsap.timeline({
+        scrollTrigger: {
+          trigger: section,
+          start: "top 45%",
+          toggleActions: "play none none reverse"
+        }
+      });
+
+      revealTl.fromTo(".triple-reveal-section .blue-char", 
+        { opacity: 0, x: -12, color: "#0968e5", webkitTextFillColor: "#0968e5" },
+        {
+          opacity: 1,
+          x: 0,
+          color: "#0968e5",
+          webkitTextFillColor: "#0968e5",
+          duration: 0.6,
+          stagger: 0.015,
+          ease: "power3.out"
+        }
+      )
+      .to(".triple-reveal-section .blue-char", {
+        color: "#ffffff",
+        webkitTextFillColor: "#ffffff",
+        duration: 0.6,
+        stagger: 0.015,
+        ease: "power2.inOut"
+      }, 0.3);
+
+      // 4. Premium CTA Blur-to-Focus Fade
+      ctas.forEach((cta, i) => {
+        gsap.fromTo(
+          cta,
+          {
+            opacity: 0,
+            filter: "blur(8px)",
+            y: 16,
+          },
+          {
+            opacity: 1,
+            filter: "blur(0px)",
+            y: 0,
+            duration: 1.2,
+            delay: 0.4 + i * 0.1,
+            ease: "power2.out",
+            scrollTrigger: {
+              trigger: section,
+              start: "top 30%",
+              toggleActions: "play none none reverse",
+            },
+          }
+        );
+      });
+    } else {
+      // Clean states for mobile (prevent GSAP inline styles from overriding responsive styling)
+      gsap.set(container, { clearProps: "all" });
+      imgs.forEach((img) => gsap.set(img, { clearProps: "all" }));
+      ctas.forEach((cta) => gsap.set(cta, { clearProps: "all" }));
+    }
+
+    ScrollTrigger.refresh();
+  }
+
+  // Handle initial page load and view transitions
+  window.addEventListener("load", initTripleRevealPaints);
+  document.addEventListener("astro:page-load", initTripleRevealPaints);
+</script>
