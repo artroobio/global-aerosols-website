@@ -36,7 +36,7 @@ import ContactFormVideo from '../lc/components/ContactFormVideo.astro';
   <CleanersIndustriesWeServe />
   <TripleRevealCleaners />
   <CleanersProcessParallax />
-  <ContactFormVideo /><style>
+  <ContactFormVideo /><style is:global>
   #ga-main-wrapper {
     position: relative;
     width: 100%;
@@ -152,10 +152,10 @@ import ContactFormVideo from '../lc/components/ContactFormVideo.astro';
     text-shadow: 0 2px 40px rgba(0, 0, 0, 0.6);
   }
 
-  :global(.char) {
+  .char {
     display: inline-block;
   }
-  :global(.char-space) {
+  .char-space {
     display: inline-block;
     width: 0.22em;
   }
