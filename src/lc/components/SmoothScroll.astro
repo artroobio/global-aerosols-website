@@ -71,9 +71,4 @@
   window.addEventListener('load', scheduleRefresh);
   // After the webfonts finish loading and reflow the text.
   document.fonts?.ready.then(scheduleRefresh);
-  // As each below-the-fold lazy image decodes and shifts layout.
-  // `load` does not bubble, so it must be captured on the document.
-  document.addEventListener('load', (e) => {
-    if (e.target instanceof HTMLImageElement) scheduleRefresh();
-  }, true);
 </script>

@@ -39,7 +39,6 @@
     max-height: 900px;
     background: #ffffff;
     overflow: hidden;
-    will-change: transform, border-radius;
     position: relative;
     display: flex;
     justify-content: center;
@@ -57,7 +56,6 @@
     width: 100%;
     height: 100%;
     object-fit: cover;
-    will-change: transform;
     /* Soft filter adjustment for premium luxury feel */
     filter: brightness(1.0) contrast(1.02);
     transition: filter 0.8s ease;
@@ -159,6 +157,7 @@
     }
   }
 
-  // Handle load and resize for robust GSAP updates
+  // Handle load and Astro view transitions
   window.addEventListener('load', initWidescreenReveal);
+  document.addEventListener('astro:page-load', initWidescreenReveal);
 </script>

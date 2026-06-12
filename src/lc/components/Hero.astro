@@ -3,15 +3,15 @@
 // Landing hero section - Global Aerosols
 ---
 
-<!-- Fonts -->
+<!-- Fonts — non-blocking preload swap -->
 <link rel="preconnect" href="https://fonts.googleapis.com" />
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-<link href="https://fonts.googleapis.com/css2?family=Michroma&family=Montserrat:wght@200;300;400;700;800;900&family=Poppins:wght@300;400;600&display=swap" rel="stylesheet" />
+<link rel="preload" href="https://fonts.googleapis.com/css2?family=Michroma&family=Montserrat:wght@200;300;400;700;800;900&family=Poppins:wght@300;400;600&display=swap" as="style" onload="this.onload=null;this.rel='stylesheet'" />
+<noscript><link href="https://fonts.googleapis.com/css2?family=Michroma&family=Montserrat:wght@200;300;400;700;800;900&family=Poppins:wght@300;400;600&display=swap" rel="stylesheet" /></noscript>
 
 <section id="ga-main-wrapper">
     <!-- Ambient Backgrounds locked to hero viewport -->
     <div id="hero-bg-container">
-        <div id="star-canvas-container"></div>
         <!-- Hero image: static visible fallback while WebGL ripple loads -->
         <img id="hero-image" src="/global aerosols 2.png" alt="Global Aerosols" />
         <canvas id="ripple-canvas"></canvas>
@@ -64,11 +64,9 @@
         pointer-events: none;
     }
 
-    #star-canvas-container, #ui-layer {
+    #ui-layer {
         position: absolute; top: 0; left: 0; width: 100%; height: 100%;
     }
-
-    #star-canvas-container { z-index: 2; pointer-events: none; }
 
     /* Hero image: static fallback — always visible until WebGL ripple fades in */
     #hero-image {
@@ -171,7 +169,6 @@
 
     .hero-massive-title .char {
         display: inline-block;
-        will-change: transform, opacity;
     }
     .hero-massive-title .char-space {
         display: inline-block;
@@ -206,7 +203,6 @@
 
     @media (max-width: 899px) {
         /* Hide all WebGL/canvas elements — static image only on mobile */
-        #star-canvas-container,
         #ripple-canvas,
         #hero-image { display: none !important; }
 
@@ -264,17 +260,25 @@
     var isMobile = window.matchMedia('(max-width: 899px)').matches ||
                    /Mobi|Android|iPhone|iPad/i.test(navigator.userAgent);
 
-    // ── Boot sequence: load Three.js → GSAP → run app ────────────────────
+    // Hide UI elements synchronously (before first paint) to prevent flash
+    if (!isMobile) {
+        var _h = document.getElementById('hero-massive-title');
+        var _d = document.querySelector('.hero-mid-divider');
+        var _c = document.querySelector('.hero-cta-btn');
+        if (_h) _h.style.opacity = '0';
+        if (_d) _d.style.opacity = '0';
+        if (_c) _c.style.opacity = '0';
+    }
+
+    // ── Boot sequence: load GSAP → run app ───────────────────────────────
     function boot() {
         if (isMobile) {
             // On mobile: just run the lightweight parts (no CDN scripts, no WebGL)
             initApp();
             return;
         }
-        loadScript('https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js', function () {
-            loadScript('https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/gsap.min.js', function () {
-                initApp();
-            });
+        loadScript('https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/gsap.min.js', function () {
+            initApp();
         });
     }
 
@@ -289,105 +293,84 @@
         var heroGroup    = document.getElementById('hero-sequence');
         var rippleCanvas = document.getElementById('ripple-canvas');
         var heroImage    = document.getElementById('hero-image');
-        var starContainer= document.getElementById('star-canvas-container');
-        var wrapper      = document.getElementById('ga-main-wrapper');
 
         if (!heroGroup) return;
+        if (isMobile) return;
 
-        // ── On mobile: only run GSAP title animation (no WebGL, no Three.js) ──
-        if (isMobile) {
-            // Title is already visible via CSS opacity:1; no animation needed on mobile
+        if (!rippleCanvas || !heroImage) {
+            console.warn('Hero: canvas or image element missing.');
             return;
         }
 
-        if (!rippleCanvas || !heroImage || !starContainer || !wrapper) {
-            console.warn('Hero: one or more elements missing.');
-            return;
+        var titleEl = document.getElementById('hero-massive-title');
+        var divider = document.querySelector('.hero-mid-divider');
+        var ctaBtn  = document.querySelector('.hero-cta-btn');
+        var chars   = [];
+
+        // Prepare char spans now so they're ready when ripple fires
+        if (typeof gsap !== 'undefined' && titleEl) {
+            var raw = titleEl.textContent;
+            titleEl.innerHTML = raw.split('').map(function(ch) {
+                return ch === ' '
+                    ? '<span class="char char-space">&nbsp;</span>'
+                    : '<span class="char">' + ch + '</span>';
+            }).join('');
+            chars = Array.from(titleEl.querySelectorAll('.char'));
+            chars.forEach(function(ch) { ch.style.willChange = 'transform, opacity'; });
+            gsap.set(chars, { y: 130, opacity: 0 });
         }
 
-        // ── 1. Star field (Three.js) — desktop only ───────────────────────
-        if (typeof THREE !== 'undefined') {
-            var isPaused = false;
-            var scene    = new THREE.Scene();
-            var camera   = new THREE.PerspectiveCamera(60, window.innerWidth / window.innerHeight, 0.1, 5000);
-            var renderer = new THREE.WebGLRenderer({ antialias: false, alpha: true });
-            renderer.setPixelRatio(Math.min(window.devicePixelRatio, 1.5));
-            renderer.setSize(window.innerWidth, window.innerHeight);
-            starContainer.appendChild(renderer.domElement);
+        // Divider + labels appear while image/WebGL is still loading (0.4s after boot)
+        if (typeof gsap !== 'undefined' && divider) {
+            gsap.to(divider, { opacity: 1, duration: 0.9, delay: 0.4, ease: 'power2.out' });
+        }
 
-            var starCount = 800;
-            var geo   = new THREE.BoxGeometry(0.5, 0.5, 1);
-            var mat   = new THREE.MeshBasicMaterial({ color: 0xffffff });
-            var mesh  = new THREE.InstancedMesh(geo, mat, starCount);
-            var dummy = new THREE.Object3D();
-            var stars = [];
-            for (var i = 0; i < starCount; i++) {
-                var sx = (Math.random() - 0.5) * 1600;
-                var sy = (Math.random() - 0.5) * 1600;
-                var sz = (Math.random() - 0.5) * 4000;
-                stars.push({ x: sx, y: sy, z: sz });
-                dummy.position.set(sx, sy, sz);
-                dummy.updateMatrix();
-                mesh.setMatrixAt(i, dummy.matrix);
+        // ── Sequence callback: fires when WebGL texture is loaded and ripple begins ──
+        function onRippleReady() {
+            if (typeof gsap === 'undefined') {
+                if (titleEl) titleEl.style.opacity = '1';
+                if (ctaBtn) ctaBtn.style.opacity = '1';
+                return;
             }
-            scene.add(mesh);
 
-            var speed = 0.2;
-            function animateStars() {
-                if (isPaused) return;
-                requestAnimationFrame(animateStars);
-                for (var j = 0; j < starCount; j++) {
-                    var s = stars[j];
-                    s.z += speed;
-                    if (s.z > 500) s.z -= 4000;
-                    dummy.position.set(s.x, s.y, s.z);
-                    dummy.scale.set(1, 1, 1);
-                    dummy.updateMatrix();
-                    mesh.setMatrixAt(j, dummy.matrix);
-                }
-                mesh.instanceMatrix.needsUpdate = true;
-                renderer.render(scene, camera);
-            }
-            window.addEventListener('resize', function () {
-                camera.aspect = window.innerWidth / window.innerHeight;
-                camera.updateProjectionMatrix();
-                renderer.setSize(window.innerWidth, window.innerHeight);
-            });
-            new IntersectionObserver(function (entries) {
-                entries.forEach(function (entry) {
-                    if (!entry.isIntersecting) { isPaused = true; }
-                    else if (isPaused) { isPaused = false; animateStars(); }
+            // Title chars slide up in sync with the opening ripple wave
+            if (titleEl && chars.length) {
+                titleEl.style.opacity = '1';
+                gsap.to(chars, {
+                    y: 0, opacity: 1, duration: 1.4, stagger: 0.038, ease: 'power4.out', delay: 0.5,
+                    onComplete: function() {
+                        chars.forEach(function(ch) { ch.style.willChange = 'auto'; });
+                        // CTA fades in after title settles
+                        if (ctaBtn) gsap.to(ctaBtn, { opacity: 1, duration: 0.6, ease: 'power2.out' });
+                    }
                 });
-            }, { threshold: 0 }).observe(wrapper);
-            animateStars();
+            }
         }
 
-        // ── 2. Ripple WebGL engine — desktop only ─────────────────────────
-        buildRipple(rippleCanvas, heroImage);
+        // ── Start ripple; onRippleReady fires when WebGL is rendering ─────
+        var rippleOk = buildRipple(rippleCanvas, heroImage, onRippleReady);
 
-        // ── 3. GSAP title reveal — desktop only ───────────────────────────
-        if (typeof gsap !== 'undefined') {
-            var titleEl = document.getElementById('hero-massive-title');
-            if (titleEl) {
-                var raw = titleEl.textContent;
-                titleEl.innerHTML = raw.split('').map(function (ch) {
-                    return ch === ' '
-                        ? '<span class="char char-space">&nbsp;</span>'
-                        : '<span class="char">' + ch + '</span>';
-                }).join('');
-                var chars = Array.from(titleEl.querySelectorAll('.char'));
-                gsap.set(chars, { y: 130, opacity: 0 });
-                gsap.to(chars, { y: 0, opacity: 1, duration: 1.4, stagger: 0.038, ease: 'power4.out', delay: 0.2 });
+        // Fallback if WebGL unavailable: reveal title immediately
+        if (!rippleOk) {
+            if (titleEl) titleEl.style.opacity = '1';
+            if (ctaBtn) ctaBtn.style.opacity = '1';
+            if (typeof gsap !== 'undefined' && chars.length) {
+                gsap.to(chars, {
+                    y: 0, opacity: 1, duration: 1.4, stagger: 0.038, ease: 'power4.out',
+                    onComplete: function() {
+                        chars.forEach(function(ch) { ch.style.willChange = 'auto'; });
+                    }
+                });
             }
         }
     }
 
     // ── Ripple engine (self-contained, no GSAP / THREE dependency) ────────
-    function buildRipple(canvas, fallbackImg) {
+    function buildRipple(canvas, fallbackImg, onReady) {
         var gl = canvas.getContext('webgl', { alpha: false });
         if (!gl) {
             console.warn('WebGL not supported — static image remains visible.');
-            return;
+            return false;
         }
 
         var vs = [
@@ -463,7 +446,7 @@
         gl.linkProgram(prog);
         if (!gl.getProgramParameter(prog, gl.LINK_STATUS)) {
             console.error('Program link error:', gl.getProgramInfoLog(prog));
-            return;
+            return false;
         }
 
         var buf = gl.createBuffer();
@@ -507,7 +490,10 @@
             uvOffset = [(1 - uvScale[0]) / 2, (1 - uvScale[1]) / 2];
         }
 
+        var ripplePaused = false;
+
         function tick() {
+            if (ripplePaused) return;
             requestAnimationFrame(tick);
             var t = (performance.now() - t0) / 1000;
             gl.useProgram(prog);
@@ -530,7 +516,7 @@
             waves[wIdx * 3 + 2] = (now - t0) / 1000;
             wIdx = (wIdx + 1) % MAX;
             lastMT = now;
-        });
+        }, { passive: true });
 
         window.addEventListener('resize', resize);
 
@@ -554,6 +540,18 @@
             hasMain = true;
             mainT   = (performance.now() - t0) / 1000;
 
+            // Pause render loop when hero is scrolled off-screen
+            new IntersectionObserver(function(entries) {
+                entries.forEach(function(entry) {
+                    if (!entry.isIntersecting) {
+                        ripplePaused = true;
+                    } else if (ripplePaused) {
+                        ripplePaused = false;
+                        tick();
+                    }
+                });
+            }, { threshold: 0 }).observe(canvas);
+
             // Start render loop
             tick();
 
@@ -561,15 +559,26 @@
             canvas.style.opacity = '1';
             fallbackImg.style.opacity = '0';
 
-            console.log('Ripple engine: texture loaded, rendering started.');
+            // Trigger a second centre ripple 0.5 s from now to coincide with
+            // the title sliding in — creates the "title arrival → ripple" effect
+            setTimeout(function() {
+                waves[wIdx * 3]     = 0.5;
+                waves[wIdx * 3 + 1] = 0.5;
+                waves[wIdx * 3 + 2] = (performance.now() - t0) / 1000;
+                wIdx = (wIdx + 1) % MAX;
+            }, 500);
+
+            if (onReady) onReady();
         };
 
         img.onerror = function () {
             console.error('Ripple: failed to load image from', img.src);
+            if (onReady) onReady();
         };
 
         // Use the page-rendered img src — always same-origin, always loaded already
         img.src = fallbackImg.src;
+        return true;
     }
 
 })();
