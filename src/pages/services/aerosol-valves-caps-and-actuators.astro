@@ -1,0 +1,1142 @@
+---
+import Layout from '../../lc/layouts/Layout.astro';
+import ContactFormVideo from '../../lc/components/ContactFormVideo.astro';
+
+const components = [
+  {
+    index: '01',
+    name: 'Standard 1" Valve',
+    tag: 'Universal Fit',
+    specs: [
+      { key: 'Mounting', val: '1 Inch Cup' },
+      { key: 'Stem', val: '4mm Nylon' },
+      { key: 'Use', val: 'Household/Tech' }
+    ],
+    img: 'https://assets.zyrosite.com/A3QlOV94WLSaL6xE/image-zWvEMowUFOLtFKMM.png',
+    alt: '1-Inch Standard Aerosol Valve with mounting cup and dip tube'
+  },
+  {
+    index: '02',
+    name: 'Bag-On-Valve (BoV)',
+    tag: 'Advanced Barrier',
+    specs: [
+      { key: 'Propellant', val: 'Comp. Air/N2' },
+      { key: 'Discharge', val: '360° Spray' },
+      { key: 'Material', val: '4-Layer Pouch' }
+    ],
+    img: 'https://assets.zyrosite.com/A3QlOV94WLSaL6xE/bov-01-5kGsBClzX5Ttzbjl.jpg',
+    alt: 'Bag-on-Valve (BoV) aerosol system with multi-layer laminated pouch'
+  },
+  {
+    index: '03',
+    name: 'Butane Gas Valve',
+    tag: 'Fuel Systems',
+    specs: [
+      { key: 'Type', val: 'Lighter Refill' },
+      { key: 'Seal', val: 'Buna / Viton' },
+      { key: 'Stem', val: 'Stemless/Adaptor' }
+    ],
+    img: 'https://assets.zyrosite.com/A3QlOV94WLSaL6xE/butane-valve-GmeywRZnMccQuWXN.webp',
+    alt: 'Butane Gas Valve for lighter refills and portable stoves'
+  },
+  {
+    index: '04',
+    name: 'Female Paint Valve',
+    tag: 'High Viscosity',
+    specs: [
+      { key: 'Interface', val: 'No Stem' },
+      { key: 'Application', val: 'Spray Paint' },
+      { key: 'Cleaning', val: 'Anti-Clog' }
+    ],
+    img: 'https://assets.zyrosite.com/A3QlOV94WLSaL6xE/av01-female-valve-tV7caTBNL1ljog1A.png',
+    alt: 'Female aerosol valve for spray paint and high viscosity products'
+  },
+  {
+    index: '05',
+    name: 'Standard Actuators',
+    tag: 'Actuators',
+    specs: [
+      { key: 'Insert', val: 'Mist / Stream' },
+      { key: 'Fit', val: 'Single/Double' },
+      { key: 'Color', val: 'Customizable' }
+    ],
+    img: 'https://assets.zyrosite.com/A3QlOV94WLSaL6xE/caps-4PpYuwcstA2iYm01.jpg',
+    alt: 'Standard aerosol actuator buttons in various colors'
+  },
+  {
+    index: '06',
+    name: 'Integrated Spray Caps',
+    tag: 'Cosmetic Design',
+    specs: [
+      { key: 'Style', val: 'Hoodless' },
+      { key: 'Finish', val: 'Gloss / Matte' },
+      { key: 'Use', val: 'Deo / Hair' }
+    ],
+    img: 'https://assets.zyrosite.com/A3QlOV94WLSaL6xE/integrated-spray-cap-pLcBYZUQzTqfTO7E.webp',
+    alt: 'Integrated spray cap with hoodless design for cosmetics'
+  }
+];
+
+const faqs = [
+  {
+    q: 'How do I determine the correct dip tube length?',
+    a: 'Dip tube length is critical for total product evacuation. It is measured from the top of the mounting cup to the bottom of the tube. We recommend a "V-cut" or capillary tube that bends slightly into the can\'s chine, usually length = can height - 2mm allowance for gasket compression.'
+  },
+  {
+    q: 'What is the difference between Male and Female valves?',
+    a: 'A Male valve has a stem protruding from the mounting cup (common for household products). A Female valve has no protruding stem; the stem is part of the actuator/spray cap (common for spray paints and high-viscosity formulations).'
+  },
+  {
+    q: 'Do you offer Bag-on-Valve (BoV) systems?',
+    a: 'Yes. Our BoV systems feature a multi-layer laminated pouch welded to the valve. This separates the product from the propellant (compressed air/nitrogen), allowing for 360-degree spraying and 99% product evacuation.'
+  },
+  {
+    q: 'What gasket material should I use for solvent-based products?',
+    a: 'Rubber compatibility is vital. For strong solvents, we recommend Buna-N or Neoprene gaskets to prevent swelling. For water-based formulas, standard Butyl gaskets are cost-effective and reliable.'
+  }
+];
+
+const splitWords = (s: string) => s.split(' ');
+---
+
+<Layout 
+  title="Aerosol Valves, Actuators & Spray Caps | Global Aerosols" 
+  description="Precision-engineered aerosol valves, actuators, caps, and barrier systems (BoV). High-performance flow control solutions for cosmetic, pharma, and industrial sprays."
+>
+  <script type="application/ld+json" is:inline>
+    [
+      {
+        "@context": "https://schema.org",
+        "@type": "FAQPage",
+        "mainEntity": [{
+          "@type": "Question",
+          "name": "How do I determine the correct dip tube length?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Dip tube length is critical for total product evacuation. It is measured from the top of the mounting cup to the bottom of the tube. We recommend a 'V-cut' or capillary tube that bends slightly into the can's chine, usually length = can height - 2mm allowance for gasket compression."
+          }
+        }, {
+          "@type": "Question",
+          "name": "What is the difference between Male and Female valves?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "A Male valve has a stem protruding from the mounting cup (common for household products). A Female valve has no protruding stem; the stem is part of the actuator/spray cap (common for spray paints and high-viscosity formulations)."
+          }
+        }, {
+          "@type": "Question",
+          "name": "Do you offer Bag-on-Valve (BoV) systems?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Yes. Our BoV systems feature a multi-layer laminated pouch welded to the valve. This separates the product from the propellant (compressed air/nitrogen), allowing for 360-degree spraying and 99% product evacuation."
+          }
+        }, {
+          "@type": "Question",
+          "name": "What gasket material should I use for solvent-based products?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Rubber compatibility is vital. For strong solvents, we recommend Buna-N or Neoprene gaskets to prevent swelling. For water-based formulas, standard Butyl gaskets are cost-effective and reliable."
+          }
+        }]
+      },
+      {
+        "@context": "https://schema.org",
+        "@type": "BreadcrumbList",
+        "itemListElement": [{
+          "@type": "ListItem",
+          "position": 1,
+          "name": "Home",
+          "item": "https://www.globalaerosols.com"
+        },{
+          "@type": "ListItem",
+          "position": 2,
+          "name": "Valves & Actuators"
+        }]
+      }
+    ]
+  </script>
+
+  <div class="industrial-light-wrapper" id="industrial-light-valves-final">
+    
+    <!-- ════════════ BREADCRUMBS ════════════ -->
+    <div class="ind-breadcrumbs">
+      <a href="/" target="_top">Home</a> <span>/</span> <span class="curr-page">Valves & Actuators</span>
+    </div>
+
+    <!-- ════════════ HERO ════════════ -->
+    <section class="ind-hero">
+      <div class="ind-hero-inner">
+        <span class="ind-hero-badge">Component Engineering & Supply</span>
+        <h1 class="ind-title">
+          {splitWords('Aerosol Valves, Actuators & Spray Caps').map(word => (
+            <span class="aw">{word.split('').map(c => <span class="ac">{c}</span>)}</span>
+          ))}
+        </h1>
+        <p class="ind-subtitle reveal">Precision Flow Control Technology</p>
+        <p class="ind-hero-desc reveal">
+          Global Aerosols is a leading wholesale supplier and exporter of high-precision aerosol components. From standard 1-inch mounting cups to advanced Bag-on-Valve (BoV) systems, we provide engineered solutions for the personal care, automotive, and pharmaceutical industries.
+        </p>
+      </div>
+    </section>
+
+    <!-- ════════════ SHOWCASE GRID ════════════ -->
+    <section class="ind-container">
+      <div class="grid-header reveal">
+        <span class="grid-eyebrow">Component Specifications</span>
+        <h2 class="grid-title">Technical Specifications</h2>
+        <div class="grid-line-bar"></div>
+      </div>
+
+      <div class="ind-grid">
+        {components.map((can, idx) => (
+          <div class="ind-card reveal" data-index={idx}>
+            <div class="card-index">{can.index}</div>
+            <div class="img-zone">
+              <img src={can.img} alt={can.alt} loading="lazy" width="350" height="350" />
+            </div>
+            <div class="info-zone">
+              <span class="cat-tag">{can.tag}</span>
+              <h3 class="prod-name">{can.name}</h3>
+              <div class="spec-grid">
+                {can.specs.map(spec => (
+                  <span class="spec-key">{spec.key}</span>
+                  <span class="spec-val">{spec.val}</span>
+                ))}
+              </div>
+              <a href="/contact/" class="action-btn">Enquire</a>
+            </div>
+          </div>
+        ))}
+      </div>
+    </section>
+
+    <!-- ════════════ ENGINEERING RESOURCES ════════════ -->
+    <section class="resource-section">
+      <div class="resource-head reveal">
+        <span class="resource-eyebrow">Technical Knowledge Hub</span>
+        <h2 class="heading-font">Engineering <span class="highlight">Resources</span></h2>
+        <p class="resource-subtitle-text">Review the documentation and mechanical blueprints that power our flow control systems.</p>
+      </div>
+      
+      <div class="resource-grid">
+        <div class="resource-card reveal">
+          <h3 class="resource-title">Crimping & Leak Detection</h3>
+          <p class="resource-p">A guide to the most critical manufacturing steps: ensuring a safe seal with crimp depth validation and water bath testing.</p>
+          <a href="/aerosol-crimping-gassing-leak-detection-explained/" class="resource-link">View Tech Guide</a>
+        </div>
+        <div class="resource-card reveal">
+          <h3 class="resource-title">Actuators 101</h3>
+          <p class="resource-p">Understanding the components that determine spray patterns, particle size (MBU), and consumer experience.</p>
+          <a href="/aerosol-actuators-101/" class="resource-link">Actuator Guide</a>
+        </div>
+        <div class="resource-card reveal">
+          <h3 class="resource-title">Manufacturing 101</h3>
+          <p class="resource-p">A comprehensive overview of the aerosol production line, from empty cans to finished goods.</p>
+          <a href="/aerosol-manufacturing-101-guide/" class="resource-link">Production Flow</a>
+        </div>
+        <div class="resource-card reveal">
+          <h3 class="resource-title">How Aerosol Cans Work</h3>
+          <p class="resource-p">The physics behind pressurized packaging: the relationship between propellants, product, and pressure.</p>
+          <a href="/how-aerosol-cans-work/" class="resource-link">Physics Explained</a>
+        </div>
+      </div>
+    </section>
+
+    <!-- ════════════ FAQ SECTION ════════════ -->
+    <section class="faq-section-wrapper">
+      <div class="faq-container">
+        <div class="faq-head reveal">
+          <span class="faq-eyebrow">Common Enquiries</span>
+          <h2 class="heading-font">Valve Technical FAQ</h2>
+        </div>
+        
+        <div class="faq-accordion-group">
+          {faqs.map((faq, i) => (
+            <div class="faq-item reveal">
+              <button class="faq-question-btn" aria-expanded="false" aria-controls={`faq-answer-${i}`}>
+                <span class="faq-q-prefix">Q.</span>
+                <span class="faq-q-text">{faq.q}</span>
+                <span class="faq-icon"></span>
+              </button>
+              <div id={`faq-answer-${i}`} class="faq-answer-panel" hidden>
+                <div class="faq-a-content">
+                  {faq.a}
+                </div>
+              </div>
+            </div>
+          ))}
+        </div>
+      </div>
+    </section>
+
+    <!-- ════════════ VALVE ENGINEERING DOSSIER ════════════ -->
+    <section class="tech-dossier">
+      <div class="dossier-container">
+        <div class="dossier-head reveal">
+          <span class="dossier-eyebrow">Technical Dossier</span>
+          <h2 class="dossier-title">Valve Engineering Dossier</h2>
+          <div class="dossier-line"></div>
+        </div>
+        
+        <div class="dossier-col-layout">
+          <div class="dossier-text reveal">
+            <h3>1. The Mechanics of Actuation</h3>
+            <p>The aerosol valve is a precision mechanism designed to control the emission of product. It consists of a mounting cup, a housing, a spring, a stem, and a dip tube. When the stem is depressed (or tilted), the orifice within the housing aligns with the stem channel, allowing the pressurized product to flow upward.</p>
+            <p>We engineer our springs from stainless steel to ensure consistent actuation force (typically 1.5kg to 2.5kg) throughout the shelf life of the product, preventing "lazy" return.</p>
+
+            <h3>2. Orifice Geometry & Flow Rates</h3>
+            <p>The flow rate is determined by the specific combination of the <strong>Stem Orifice</strong>, the <strong>Body Orifice</strong>, and the <strong>Vapor Tap</strong>. A vapor tap is a small hole in the valve body that allows gas to mix with the liquid before it leaves the can, creating a finer mist and reducing flammability.</p>
+            <p>For high-viscosity products like adhesives, we utilize large orifices (up to 0.030") to prevent blockage. For perfumes, micro-orifices create a dry mist effect.</p>
+          </div>
+
+          <div class="dossier-text reveal">
+            <h3>3. Mounting Cup Metallurgy</h3>
+            <p>The mounting cup seals the valve to the can. We offer both <strong>Tinplate</strong> (with or without PET lamination) and <strong>Aluminum</strong> cups. The choice depends on the galvanic compatibility with the can body to prevent corrosion (e.g., Aluminum cups must be used with Aluminum Monobloc cans).</p>
+            
+            <h3>4. Bag-on-Valve (BoV) Technology</h3>
+            <p>BoV represents the future of sustainable dispensing. By placing the product inside a collapsible bag, the propellant (Compressed Air or Nitrogen) never touches the formula. This allows for:</p>
+            <ul style="color:#cbd5e1; margin-bottom:20px; list-style: none; padding: 0;">
+              <li style="margin-bottom: 8px; display: flex; gap: 8px; align-items: center;">
+                <span style="color: var(--industrial-green); font-weight: 800;">✓</span> Dispensing of pure product without chilling effect.
+              </li>
+              <li style="margin-bottom: 8px; display: flex; gap: 8px; align-items: center;">
+                <span style="color: var(--industrial-green); font-weight: 800;">✓</span> Extends shelf life by preventing oxidation.
+              </li>
+              <li style="margin-bottom: 8px; display: flex; gap: 8px; align-items: center;">
+                <span style="color: var(--industrial-green); font-weight: 800;">✓</span> Works at any angle (inverted spraying).
+              </li>
+            </ul>
+
+            <h3>5. Quality Control: Micro-Leak Detection</h3>
+            <p>Every valve batch undergoes statistical sampling for leak detection. We test crimp dimensions and gasket integrity to ensure leakage rates remain below 1.5 grams per year, complying with global FEA and aerosol safety standards.</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+  </div>
+
+  <ContactFormVideo />
+</Layout>
+
+<style>
+  /* ════════════ 1. CORE THEME & BACKGROUND ════════════ */
+  :root {
+    --light-bg: #f8fafc;       
+    --light-card: #ffffff;     
+    --light-text-main: #0f172a; 
+    --light-text-sub: #475569;  
+    --light-border: #e2e8f0;   
+    --industrial-green: #059669;  
+    --industrial-green-hover: #047857;
+    --grid-line: #cbd5e1;      
+  }
+
+  .industrial-light-wrapper * { 
+    box-sizing: border-box; 
+  }
+
+  .industrial-light-wrapper {
+    font-family: 'Inter', 'Roboto', sans-serif;
+    background-color: var(--light-bg);
+    color: var(--light-text-main);
+    padding-bottom: 0px; 
+    /* Premium Technical Grid Background */
+    background-image: 
+      linear-gradient(rgba(203, 213, 225, 0.25) 1px, transparent 1px),
+      linear-gradient(90deg, rgba(203, 213, 225, 0.25) 1px, transparent 1px);
+    background-size: 50px 50px;
+    position: relative;
+  }
+
+  /* Font Styling */
+  .heading-font, h1, h2, h3, .prod-name, .resource-title, .dossier-title {
+    font-family: 'Outfit', 'Montserrat', sans-serif;
+    font-weight: 800;
+    text-transform: uppercase;
+    letter-spacing: -0.01em;
+  }
+
+  /* GSAP initial reveal states */
+  .reveal {
+    opacity: 0;
+    transform: translateY(24px);
+  }
+
+  /* Animated heading char spans */
+  .aw { 
+    display: inline-block; 
+    white-space: nowrap; 
+    margin-right: 0.24em; 
+  }
+  .ac { 
+    display: inline-block; 
+    opacity: 0; 
+    color: var(--industrial-green); 
+    -webkit-text-fill-color: var(--industrial-green); 
+  }
+
+  /* ════════════ 2. BREADCRUMBS ════════════ */
+  .ind-breadcrumbs {
+    max-width: 1400px;
+    margin: 0 auto;
+    padding: 100px 30px 0; /* Padding top accounts for navbar height */
+    font-size: 0.72rem;
+    color: var(--light-text-sub);
+    text-transform: uppercase;
+    font-weight: 700;
+    letter-spacing: 2px;
+  }
+  .ind-breadcrumbs a {
+    text-decoration: none;
+    color: var(--light-text-sub);
+    transition: color 0.25s ease;
+  }
+  .ind-breadcrumbs a:hover {
+    color: var(--industrial-green);
+  }
+  .ind-breadcrumbs span {
+    color: #94a3b8;
+    margin: 0 8px;
+  }
+  .ind-breadcrumbs .curr-page {
+    color: var(--light-text-main);
+  }
+
+  /* ════════════ 3. HERO SECTION ════════════ */
+  .ind-hero {
+    background: #ffffff;
+    border-bottom: 6px solid var(--industrial-green);
+    padding: 80px 30px 100px;
+    text-align: center;
+    position: relative;
+    box-shadow: 0 4px 30px rgba(15, 23, 42, 0.03);
+    margin-bottom: 60px;
+    overflow: hidden;
+  }
+
+  .ind-hero::after {
+    content: '';
+    position: absolute;
+    bottom: -150px;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 600px;
+    height: 300px;
+    background: radial-gradient(ellipse at center, rgba(5, 150, 105, 0.08) 0%, transparent 70%);
+    pointer-events: none;
+  }
+
+  .ind-hero-inner {
+    max-width: 900px;
+    margin: 0 auto;
+    position: relative;
+    z-index: 2;
+  }
+
+  .ind-hero-badge {
+    display: inline-block;
+    background: rgba(5, 150, 105, 0.09);
+    color: var(--industrial-green);
+    font-family: 'Outfit', sans-serif;
+    font-weight: 700;
+    font-size: 0.72rem;
+    padding: 6px 18px;
+    letter-spacing: 2px;
+    text-transform: uppercase;
+    border-radius: 50px;
+    border: 1px solid rgba(5, 150, 105, 0.2);
+    margin-bottom: 24px;
+  }
+
+  .ind-title {
+    font-size: clamp(2rem, 4.5vw, 3.8rem);
+    color: var(--light-text-main);
+    line-height: 1.1;
+    margin-bottom: 16px;
+  }
+
+  .ind-subtitle {
+    color: var(--industrial-green);
+    font-size: clamp(1.1rem, 2vw, 1.6rem);
+    font-weight: 700;
+    letter-spacing: 1.5px;
+    text-transform: uppercase;
+    margin-bottom: 28px;
+  }
+
+  .ind-hero-desc {
+    font-size: clamp(0.95rem, 1.4vw, 1.1rem);
+    color: var(--light-text-sub);
+    line-height: 1.75;
+    max-width: 760px;
+    margin: 0 auto;
+  }
+
+  /* ════════════ 4. SHOWCASE GRID ════════════ */
+  .ind-container {
+    max-width: 1400px;
+    margin: 0 auto;
+    padding: 0 30px 80px;
+  }
+
+  .grid-header {
+    text-align: center;
+    margin-bottom: 50px;
+  }
+
+  .grid-eyebrow {
+    font-size: 0.72rem;
+    text-transform: uppercase;
+    letter-spacing: 3px;
+    font-weight: 700;
+    color: var(--industrial-green);
+    display: block;
+    margin-bottom: 8px;
+  }
+
+  .grid-title {
+    font-size: clamp(1.6rem, 3vw, 2.3rem);
+    color: var(--light-text-main);
+    margin-bottom: 16px;
+  }
+
+  .grid-line-bar {
+    width: 60px;
+    height: 4px;
+    background: var(--industrial-green);
+    margin: 0 auto;
+    border-radius: 2px;
+  }
+
+  .ind-grid {
+    display: grid;
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+    gap: 32px;
+  }
+
+  /* Card Layout */
+  .ind-card {
+    background: var(--light-card);
+    border: 1px solid var(--light-border);
+    border-radius: 12px;
+    display: flex;
+    flex-direction: column;
+    position: relative;
+    transition: all 0.4s cubic-bezier(0.16, 1, 0.3, 1);
+    width: 100%;
+    min-width: 0;
+    overflow: hidden;
+    box-shadow: 0 10px 30px rgba(15, 23, 42, 0.015);
+  }
+
+  .ind-card:hover {
+    border-color: var(--industrial-green);
+    transform: translateY(-8px);
+    box-shadow: 0 20px 45px rgba(15, 23, 42, 0.08);
+    z-index: 10;
+  }
+
+  .card-index {
+    position: absolute;
+    top: 16px;
+    left: 16px;
+    background: var(--industrial-green);
+    color: white;
+    font-family: 'Outfit', sans-serif;
+    font-weight: 800;
+    font-size: 0.95rem;
+    width: 32px;
+    height: 32px;
+    border-radius: 6px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    z-index: 10;
+    box-shadow: 0 4px 10px rgba(5, 150, 105, 0.25);
+  }
+
+  /* Image Container & Shine Sweep */
+  .img-zone {
+    height: 260px;
+    background: #f8fafc;
+    position: relative;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-bottom: 1px solid var(--light-border);
+    overflow: hidden;
+    transition: border-color 0.4s;
+    z-index: 2;
+    padding: 30px;
+  }
+
+  .img-zone::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: -100%;
+    width: 50%;
+    height: 100%;
+    background: linear-gradient(to right, transparent, rgba(255, 255, 255, 0.75), transparent);
+    transform: skewX(-25deg);
+    transition: 0.6s ease-in-out;
+    z-index: 10;
+    pointer-events: none;
+  }
+
+  .ind-card:hover .img-zone::before {
+    left: 150%;
+  }
+
+  .ind-card:hover .img-zone {
+    border-bottom-color: var(--industrial-green);
+  }
+
+  .img-zone img {
+    max-width: 90%;
+    max-height: 90%;
+    width: auto;
+    height: auto;
+    object-fit: contain;
+    mix-blend-mode: multiply;
+    transition: transform 0.6s cubic-bezier(0.16, 1, 0.3, 1);
+  }
+
+  .ind-card:hover .img-zone img {
+    transform: scale(1.06);
+  }
+
+  /* Info Container */
+  .info-zone {
+    padding: 24px;
+    flex-grow: 1;
+    display: flex;
+    flex-direction: column;
+    background: #ffffff;
+    z-index: 2;
+  }
+
+  .cat-tag {
+    font-family: 'Outfit', sans-serif;
+    font-size: 0.68rem;
+    color: var(--industrial-green);
+    font-weight: 700;
+    background: rgba(5, 150, 105, 0.08);
+    border: 1px solid rgba(5, 150, 105, 0.2);
+    padding: 4px 10px;
+    border-radius: 4px;
+    display: inline-block;
+    letter-spacing: 0.5px;
+    text-transform: uppercase;
+    margin-bottom: 12px;
+    align-self: flex-start;
+  }
+
+  .prod-name {
+    font-size: 1.25rem;
+    color: var(--light-text-main);
+    margin: 0 0 16px 0;
+    font-weight: 800;
+    letter-spacing: -0.01em;
+  }
+
+  /* Specification Grid */
+  .spec-grid {
+    display: grid;
+    grid-template-columns: auto 1fr;
+    gap: 8px 16px;
+    font-size: 0.82rem;
+    color: var(--light-text-sub);
+    margin-bottom: 24px;
+    border-top: 1px solid #f1f5f9;
+    padding-top: 16px;
+  }
+
+  .spec-key {
+    font-weight: 700;
+    color: var(--light-text-main);
+    text-transform: uppercase;
+    font-size: 0.75rem;
+    letter-spacing: 0.5px;
+  }
+
+  .spec-val {
+    font-family: monospace;
+    font-weight: 600;
+    color: var(--light-text-sub);
+    text-align: right;
+  }
+
+  /* Button styling */
+  .action-btn {
+    margin-top: auto;
+    background: transparent;
+    border: 2px solid var(--light-text-main);
+    color: var(--light-text-main);
+    padding: 12px;
+    text-align: center;
+    font-family: 'Outfit', sans-serif;
+    font-weight: 700;
+    font-size: 0.85rem;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    text-decoration: none;
+    border-radius: 8px;
+    transition: all 0.3s cubic-bezier(0.16, 1, 0.3, 1);
+    cursor: pointer;
+  }
+
+  .ind-card:hover .action-btn {
+    background: var(--industrial-green);
+    border-color: var(--industrial-green);
+    color: white;
+    box-shadow: 0 4px 15px rgba(5, 150, 105, 0.3);
+  }
+
+  /* ════════════ 5. KNOWLEDGE HUB SECTION ════════════ */
+  .resource-section {
+    background: #ffffff;
+    padding: 80px 30px;
+    border-top: 1px solid var(--light-border);
+    border-bottom: 1px solid var(--light-border);
+  }
+
+  .resource-head {
+    max-width: 800px;
+    margin: 0 auto 50px;
+    text-align: center;
+  }
+
+  .resource-eyebrow {
+    font-size: 0.72rem;
+    text-transform: uppercase;
+    letter-spacing: 3px;
+    font-weight: 700;
+    color: var(--industrial-green);
+    display: block;
+    margin-bottom: 8px;
+  }
+
+  .resource-section .heading-font {
+    font-size: clamp(1.8rem, 3.5vw, 2.5rem);
+    color: var(--light-text-main);
+    margin-bottom: 14px;
+  }
+
+  .resource-section .heading-font .highlight {
+    color: var(--industrial-green);
+  }
+
+  .resource-subtitle-text {
+    font-size: clamp(0.95rem, 1.3vw, 1.05rem);
+    color: var(--light-text-sub);
+    margin: 0;
+  }
+
+  .resource-grid {
+    max-width: 1400px;
+    margin: 0 auto;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 30px;
+  }
+
+  .resource-card {
+    background: #f8fafc;
+    border-left: 5px solid var(--industrial-green);
+    border-radius: 0 12px 12px 0;
+    padding: 36px;
+    box-shadow: 0 4px 20px rgba(15, 23, 42, 0.01);
+    transition: all 0.3s cubic-bezier(0.16, 1, 0.3, 1);
+  }
+
+  .resource-card:hover {
+    transform: translateX(8px);
+    background: #f1f5f9;
+    box-shadow: 0 10px 30px rgba(15, 23, 42, 0.04);
+  }
+
+  .resource-title {
+    font-size: 1.3rem;
+    color: var(--light-text-main);
+    margin-bottom: 12px;
+  }
+
+  .resource-p {
+    font-size: 0.95rem;
+    color: var(--light-text-sub);
+    line-height: 1.65;
+    margin-bottom: 24px;
+  }
+
+  .resource-link {
+    font-family: 'Outfit', sans-serif;
+    font-weight: 700;
+    font-size: 0.85rem;
+    color: var(--industrial-green);
+    text-decoration: none;
+    text-transform: uppercase;
+    display: inline-flex;
+    align-items: center;
+    letter-spacing: 0.5px;
+    transition: color 0.25s;
+  }
+
+  .resource-link:hover {
+    color: var(--industrial-green-hover);
+  }
+
+  .resource-link::after {
+    content: "→";
+    margin-left: 8px;
+    font-size: 1rem;
+    transition: transform 0.25s ease;
+  }
+
+  .resource-link:hover::after {
+    transform: translateX(4px);
+  }
+
+  /* ════════════ 6. FAQ ACCORDION ════════════ */
+  .faq-section-wrapper {
+    background: var(--light-bg);
+    padding: 90px 30px;
+  }
+
+  .faq-container {
+    max-width: 900px;
+    margin: 0 auto;
+  }
+
+  .faq-head {
+    text-align: center;
+    margin-bottom: 48px;
+  }
+
+  .faq-eyebrow {
+    font-size: 0.72rem;
+    text-transform: uppercase;
+    letter-spacing: 3px;
+    font-weight: 700;
+    color: var(--industrial-green);
+    display: block;
+    margin-bottom: 8px;
+  }
+
+  .faq-head .heading-font {
+    font-size: clamp(1.6rem, 3vw, 2.3rem);
+    color: var(--light-text-main);
+  }
+
+  .faq-accordion-group {
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
+  }
+
+  .faq-item {
+    background: #ffffff;
+    border: 1px solid var(--light-border);
+    border-radius: 8px;
+    overflow: hidden;
+    transition: border-color 0.3s ease, box-shadow 0.3s ease;
+  }
+
+  .faq-item:hover {
+    border-color: rgba(5, 150, 105, 0.4);
+    box-shadow: 0 4px 20px rgba(15, 23, 42, 0.03);
+  }
+
+  .faq-question-btn {
+    width: 100%;
+    background: none;
+    border: none;
+    padding: 24px;
+    display: flex;
+    align-items: center;
+    text-align: left;
+    cursor: pointer;
+    font-family: 'Outfit', sans-serif;
+    font-weight: 700;
+    font-size: 1.1rem;
+    color: var(--light-text-main);
+    transition: color 0.25s;
+  }
+
+  .faq-question-btn:hover {
+    color: var(--industrial-green);
+  }
+
+  .faq-q-prefix {
+    color: var(--industrial-green);
+    margin-right: 12px;
+    font-weight: 800;
+  }
+
+  .faq-q-text {
+    flex-grow: 1;
+    line-height: 1.4;
+  }
+
+  .faq-icon {
+    width: 20px;
+    height: 20px;
+    position: relative;
+    flex-shrink: 0;
+    margin-left: 16px;
+  }
+
+  .faq-icon::before,
+  .faq-icon::after {
+    content: '';
+    position: absolute;
+    background-color: var(--light-text-sub);
+    transition: transform 0.3s ease, background-color 0.3s ease;
+  }
+
+  /* Horizontal line */
+  .faq-icon::before {
+    top: 9px;
+    left: 2px;
+    width: 16px;
+    height: 2px;
+  }
+
+  /* Vertical line */
+  .faq-icon::after {
+    top: 2px;
+    left: 9px;
+    width: 2px;
+    height: 16px;
+  }
+
+  .faq-question-btn[aria-expanded="true"] .faq-icon::before {
+    background-color: var(--industrial-green);
+  }
+
+  .faq-question-btn[aria-expanded="true"] .faq-icon::after {
+    transform: rotate(90deg);
+    opacity: 0;
+    background-color: var(--industrial-green);
+  }
+
+  .faq-answer-panel {
+    transition: max-height 0.3s cubic-bezier(0.16, 1, 0.3, 1), opacity 0.3s ease;
+    opacity: 0;
+    max-height: 0;
+    overflow: hidden;
+  }
+
+  .faq-answer-panel:not([hidden]) {
+    opacity: 1;
+  }
+
+  .faq-a-content {
+    padding: 0 24px 24px 44px;
+    font-size: 0.95rem;
+    color: var(--light-text-sub);
+    line-height: 1.7;
+    border-top: 1px solid #f8fafc;
+  }
+
+  /* ════════════ 7. ENGINEERING DOSSIER ════════════ */
+  .tech-dossier {
+    background: #0f172a;
+    color: #cbd5e1;
+    padding: 90px 30px;
+    border-top: 5px solid var(--industrial-green);
+  }
+
+  .dossier-container {
+    max-width: 1200px;
+    margin: 0 auto;
+  }
+
+  .dossier-head {
+    margin-bottom: 50px;
+  }
+
+  .dossier-eyebrow {
+    font-size: 0.72rem;
+    text-transform: uppercase;
+    letter-spacing: 3px;
+    font-weight: 700;
+    color: var(--industrial-green);
+    display: block;
+    margin-bottom: 8px;
+  }
+
+  .dossier-title {
+    color: white;
+    font-size: clamp(1.8rem, 3.5vw, 2.5rem);
+    margin: 0 0 16px 0;
+  }
+
+  .dossier-line {
+    width: 80px;
+    height: 4px;
+    background: var(--industrial-green);
+    border-radius: 2px;
+  }
+
+  .dossier-col-layout {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 50px;
+  }
+
+  .dossier-text h3 {
+    color: white;
+    font-size: 1.25rem;
+    margin-top: 32px;
+    margin-bottom: 16px;
+    letter-spacing: 0.5px;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.08);
+    padding-bottom: 10px;
+  }
+
+  .dossier-text p {
+    margin-bottom: 20px;
+    line-height: 1.75;
+    font-size: 0.92rem;
+    text-align: justify;
+    color: #94a3b8;
+  }
+
+  .dossier-text strong {
+    color: #ffffff;
+  }
+
+  /* ════════════ 8. RESPONSIVE MEDIA QUERIES ════════════ */
+  @media (max-width: 1150px) { 
+    .ind-grid { 
+      grid-template-columns: repeat(2, minmax(0, 1fr)); 
+    } 
+    .resource-grid, 
+    .dossier-col-layout { 
+      grid-template-columns: 1fr; 
+    }
+  }
+
+  @media (max-width: 768px) { 
+    .ind-grid { 
+      grid-template-columns: 1fr; 
+    }
+    .ind-hero {
+      padding: 60px 20px 70px;
+    }
+    .ind-container,
+    .resource-section,
+    .faq-section-wrapper,
+    .tech-dossier {
+      padding-left: 20px;
+      padding-right: 20px;
+    }
+  }
+</style>
+
+<script>
+  import { gsap } from "gsap";
+  import { ScrollTrigger } from "gsap/ScrollTrigger";
+  gsap.registerPlugin(ScrollTrigger);
+
+  /* ── FAQ ACCORDION CODE ── */
+  const initAccordion = () => {
+    const items = document.querySelectorAll('.faq-item');
+    
+    items.forEach(item => {
+      const button = item.querySelector('.faq-question-btn') as HTMLButtonElement;
+      const panel = item.querySelector('.faq-answer-panel') as HTMLDivElement;
+      
+      if (!button || !panel) return;
+      
+      button.addEventListener('click', () => {
+        const isExpanded = button.getAttribute('aria-expanded') === 'true';
+        
+        // Collapse all other panels
+        items.forEach(otherItem => {
+          if (otherItem !== item) {
+            const otherBtn = otherItem.querySelector('.faq-question-btn');
+            const otherPanel = otherItem.querySelector('.faq-answer-panel') as HTMLDivElement;
+            if (otherBtn && otherPanel) {
+              otherBtn.setAttribute('aria-expanded', 'false');
+              otherPanel.style.maxHeight = '0';
+              setTimeout(() => {
+                otherPanel.setAttribute('hidden', '');
+              }, 300);
+            }
+          }
+        });
+
+        if (isExpanded) {
+          button.setAttribute('aria-expanded', 'false');
+          panel.style.maxHeight = '0';
+          setTimeout(() => {
+            panel.setAttribute('hidden', '');
+          }, 300);
+        } else {
+          button.setAttribute('aria-expanded', 'true');
+          panel.removeAttribute('hidden');
+          // Scroll height calculation for animation
+          panel.style.maxHeight = panel.scrollHeight + 'px';
+        }
+      });
+    });
+  };
+
+  initAccordion();
+
+  /* ── GSAP ANIMATIONS ── */
+
+  /* blue/green → actual text-color char reveal */
+  const charReveal = (selector: string, delay = 0) => {
+    gsap.fromTo(selector,
+      { opacity: 0, x: -8, color: '#059669', webkitTextFillColor: '#059669' },
+      {
+        opacity: 1, x: 0, color: '#059669', webkitTextFillColor: '#059669',
+        duration: 0.45, stagger: 0.01, delay, ease: 'power3.out',
+        onComplete: () => {
+          gsap.to(selector, { clearProps: 'color,webkitTextFillColor', duration: 0.4, stagger: 0.01, ease: 'power2.inOut' });
+        }
+      }
+    );
+  };
+
+  const fadeUp = (targets: gsap.TweenTarget, delay = 0, stagger = 0) =>
+    gsap.to(targets, { opacity: 1, y: 0, duration: 0.6, stagger, delay, ease: 'power2.out' });
+
+  /* ── HERO (on load) ── */
+  const startHero = () => {
+    const tl = gsap.timeline();
+    tl.to('.ind-hero .ind-hero-badge', { opacity: 1, y: 0, duration: 0.6, ease: 'power3.out' });
+    tl.fromTo('.ind-hero .ac',
+      { opacity: 0, x: -8, color: '#059669', webkitTextFillColor: '#059669' },
+      { opacity: 1, x: 0, color: '#059669', webkitTextFillColor: '#059669', duration: 0.5, stagger: 0.012, ease: 'power3.out' },
+      '-=0.2'
+    ).to('.ind-hero .ac', { clearProps: 'color,webkitTextFillColor', duration: 0.45, stagger: 0.012, ease: 'power2.inOut' }, '-=0.45');
+    tl.to('.ind-hero .ind-subtitle', { opacity: 1, y: 0, duration: 0.5, ease: 'power2.out' }, '-=0.4');
+    tl.to('.ind-hero-desc', { opacity: 1, y: 0, duration: 0.6, ease: 'power2.out' }, '-=0.3');
+  };
+
+  startHero();
+
+  /* ── Generic per-section reveal ── */
+  const section = (sel: string, opts: { bodyDelay?: number; stagger?: number } = {}) => {
+    const el = document.querySelector(sel);
+    if (!el) return;
+    ScrollTrigger.create({
+      trigger: sel,
+      start: 'top 80%',
+      once: true,
+      onEnter: () => {
+        fadeUp(`${sel} .reveal`, opts.bodyDelay ?? 0.1, opts.stagger ?? 0.08);
+      }
+    });
+  };
+
+  // Animate showcase container title and grid items
+  section('.ind-container', { stagger: 0.05 });
+  section('.resource-section', { stagger: 0.06 });
+  section('.faq-section-wrapper', { stagger: 0.06 });
+  section('.tech-dossier', { stagger: 0.08 });
+</script>
