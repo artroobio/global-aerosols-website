@@ -2,7 +2,7 @@
 // src/lc/components/TripleRevealCosmetics.astro
 ---
 
-<section class="triple-reveal-section">
+<section class="triple-reveal-section-personal-care">
   <div class="triple-reveal-container">
     <div class="triple-grid">
       
@@ -28,7 +28,7 @@
           </h3>
           <div class="triple-cta">
             <a href="/contact" class="triple-btn">Book Session</a>
-            <a href="/cosmetics" class="triple-link">Overview</a>
+            <a href="/cosmetics-and-personal-care" class="triple-link">Overview</a>
           </div>
         </div>
       </div>
@@ -55,7 +55,7 @@
           </h3>
           <div class="triple-cta">
             <a href="/contact" class="triple-btn">Formulate</a>
-            <a href="/cosmetics" class="triple-link">Science</a>
+            <a href="/cosmetics-and-personal-care" class="triple-link">Science</a>
           </div>
         </div>
       </div>
@@ -82,7 +82,7 @@
           </h3>
           <div class="triple-cta">
             <a href="/contact" class="triple-btn">Test Run</a>
-            <a href="/cosmetics" class="triple-link">Analysis</a>
+            <a href="/cosmetics-and-personal-care" class="triple-link">Analysis</a>
           </div>
         </div>
       </div>
@@ -109,7 +109,7 @@
           </h3>
           <div class="triple-cta">
             <a href="/contact" class="triple-btn">Scale Up</a>
-            <a href="/cosmetics" class="triple-link">Logistics</a>
+            <a href="/cosmetics-and-personal-care" class="triple-link">Logistics</a>
           </div>
         </div>
       </div>
@@ -119,7 +119,7 @@
 </section>
 
 <style>
-  .triple-reveal-section {
+  .triple-reveal-section-personal-care {
     width: 100%;
     height: 95vh;
     min-height: 600px;
@@ -319,7 +319,7 @@
   }
 
   @media (max-width: 768px) {
-    .triple-reveal-section {
+    .triple-reveal-section-personal-care {
       height: auto;
       padding: 48px 16px;
     }
@@ -355,9 +355,9 @@
 
   gsap.registerPlugin(ScrollTrigger);
 
-  function initTripleRevealCosmetics() {
+  function initTripleRevealPersonalCare() {
     const isDesktop = window.innerWidth > 768;
-    const section = document.querySelector(".triple-reveal-section");
+    const section = document.querySelector(".triple-reveal-section-personal-care");
     const container = document.querySelector(".triple-reveal-container");
     const imgs = document.querySelectorAll(".triple-img");
     const titles = document.querySelectorAll(".triple-title");
@@ -369,7 +369,7 @@
     ScrollTrigger.getAll().forEach((trigger) => {
       if (
         trigger.trigger === section ||
-        (trigger.trigger as HTMLElement)?.classList?.contains("triple-reveal-section")
+        (trigger.trigger as HTMLElement)?.classList?.contains("triple-reveal-section-personal-care")
       ) {
         trigger.kill();
       }
@@ -431,7 +431,7 @@
         }
       });
 
-      revealTl.fromTo(".triple-reveal-section .blue-char", 
+      revealTl.fromTo(".triple-reveal-section-personal-care .blue-char", 
         { opacity: 0, x: -12, color: "#ec4899", webkitTextFillColor: "#ec4899" },
         {
           opacity: 1,
@@ -443,7 +443,7 @@
           ease: "power3.out"
         }
       )
-      .to(".triple-reveal-section .blue-char", {
+      .to(".triple-reveal-section-personal-care .blue-char", {
         color: "#ffffff",
         webkitTextFillColor: "#ffffff",
         duration: 0.6,
@@ -486,6 +486,6 @@
   }
 
   // Handle initial page load and view transitions
-  window.addEventListener("load", initTripleRevealCosmetics);
-  document.addEventListener("astro:page-load", initTripleRevealCosmetics);
+  window.addEventListener("load", initTripleRevealPersonalCare);
+  document.addEventListener("astro:page-load", initTripleRevealPersonalCare);
 </script>

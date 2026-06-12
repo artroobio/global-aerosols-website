@@ -3,50 +3,50 @@
 const steps = [
   {
     num: "01",
-    title: "Color & Dispersion Chemistry",
+    title: "Phase Stability & Emulsions",
     img: "/images/cosmetics/cosmetics_scroll_1.png",
-    description: "Formulating stable pigments, micro-fine powders, and shimmer glitters in pressurized systems to prevent settling and ensure uniform discharge.",
-    badge: "Color Science"
+    description: "Formulating stable skincare emulsions, hair polymer networks, and active antiperspirant salts that remain stable under pressure when in contact with liquid propellants.",
+    badge: "Phase Stability"
   },
   {
     num: "02",
-    title: "Valves, Actuators & Spray Patterns",
+    title: "Propellant Balancing",
     img: "/images/cosmetics/cosmetics_scroll_2.png",
-    description: "Engineering soft-mist actuators and micro-orifice valves to achieve an airbrush finish without splattering or heavy droplets.",
-    badge: "Mist Engineering"
+    description: "Engineering pure DME, butane, isobutane, and propane balances to ensure optimal vaporization, fine mist generation, and a pleasant cooling effect without skin irritation.",
+    badge: "Gas Balancing"
   },
   {
     num: "03",
-    title: "Propellant System Engineering",
+    title: "Dispensing & Actuator Selection",
     img: "/images/cosmetics/cosmetics_scroll_3.png",
-    description: "Balancing dimethylether (DME) and high-purity cosmetic-grade hydrocarbon propellants for pleasant skin cooling and odor-free discharge.",
-    badge: "Gas Formulation"
+    description: "Selecting and testing high-precision cosmetic valves, continuous spray actuators, and 360-degree spray systems for uniform coverage in dry shampoos, deodorants, and sunscreens.",
+    badge: "Dispensing Systems"
   },
   {
     num: "04",
-    title: "Safety, Leak Testing & Gassing",
+    title: "Safety & Gassing Compliance",
     img: "/images/cosmetics/cosmetics_scroll_4.png",
-    description: "Implementing clean safety protocols for vacuum purge checks and water-bath leak detection tailored to high-end beauty brand standards.",
-    badge: "Quality & Safety"
+    description: "Implementing strict safety protocols for pressure testing, automatic vacuum check valves, and water-bath leak detection tailored to highly-flammable liquefied propellants.",
+    badge: "Safety Compliance"
   },
   {
     num: "05",
-    title: "Packaging & Aesthetics",
+    title: "Packaging & Internal Lining",
     img: "/images/cosmetics/cosmetics_scroll_5.png",
-    description: "Selecting premium aluminum aerosol cans, custom tactile prints, and double-lacquered protective linings to prevent perfume or color reaction.",
-    badge: "Aesthetic Pack"
+    description: "Sourcing premium aluminum or tinplate cans, food-grade internal linings, and aesthetic matte/gloss prints for premium personal care brands.",
+    badge: "Packaging Design"
   },
   {
     num: "06",
-    title: "Cosmetics GMP Scale-Up",
+    title: "GMP Commercial Scale-Up",
     img: "/images/cosmetics/cosmetics_scroll_6.png",
-    description: "Scaling from bench formulation to automated under-the-cup gassing operations under strict ISO 22716 Cosmetics GMP standards.",
+    description: "Scaling production from laboratory bench batches to commercial-scale automated filling lines under ISO 22716 Cosmetics GMP standards.",
     badge: "GMP Scale-Up"
   }
 ];
 ---
 
-<section class="cosmetics-process-sticky-section">
+<section class="personal-care-process-sticky-section">
   <div class="process-grid-container">
 
     <!-- Left Column: Sticky Sidebar -->
@@ -54,7 +54,7 @@ const steps = [
       <div class="sidebar-content">
         <span class="process-eyebrow">R&D Process</span>
         <h2 class="process-main-title">
-          {"Cosmetics Aerosol R&D".split(' ').map(word => (
+          {"Personal Care Aerosol R&D".split(' ').map(word => (
             <span class="word-wrapper">
               {word.split('').map(char => (
                 <span class="pink-char">{char}</span>
@@ -63,17 +63,17 @@ const steps = [
           ))}
         </h2>
         <p class="process-subtitle">
-          Cosmetics aerosols combine ultra-fine pigment dispersions, smudge-proof film-forming polymers, premium skin-friendly propellants, and precision micro-orifice valves to achieve a flawless airbrush finish.
+          Personal care aerosols combine dermatology-safe active ingredients, moisturizing emulsions, customized liquefied gas propellants, and high-performance valves to deliver dry, non-greasy sprays.
         </p>
         <div class="process-bullet-subs">
-          <p class="sub-bullet">✦ High-dispersion color pigments</p>
-          <p class="sub-bullet">✦ Ultra-fine mist & setting polymers</p>
+          <p class="sub-bullet">✦ Dermatology-safe formulations</p>
+          <p class="sub-bullet">✦ Precise propellant & valve matching</p>
         </div>
 
         <!-- Vertical Interactive Timeline (Desktop Only) -->
         <div class="process-timeline">
           <div class="timeline-line">
-            <div class="timeline-progress" id="cosmetics-timeline-progress-bar"></div>
+            <div class="timeline-progress" id="personal-care-timeline-progress-bar"></div>
           </div>
           {steps.map((step, index) => (
             <div class="timeline-step" data-step-index={index}>
@@ -102,7 +102,7 @@ const steps = [
             </span>
           ))}
         </h3>
-        <p>Experience a systematic scientific approach built specifically for modern high-end cosmetics aerosols.</p>
+        <p>Experience a systematic scientific approach built specifically for modern high-performance personal care aerosols.</p>
         <div class="scroll-instruction">
           <span class="scroll-dot"></span>
           <span>Scroll down to explore our R&D process</span>
@@ -180,7 +180,7 @@ const steps = [
 </section>
 
 <style>
-  .cosmetics-process-sticky-section {
+  .personal-care-process-sticky-section {
     background-color: #ffffff;
     position: relative;
     width: 100%;
@@ -793,13 +793,13 @@ const steps = [
 
   gsap.registerPlugin(ScrollTrigger);
 
-  function initCosmeticsProcessDiagram() {
-    const section = document.querySelector('.cosmetics-process-sticky-section');
+  function initPersonalCareProcessDiagram() {
+    const section = document.querySelector('.personal-care-process-sticky-section');
     if (!section) return;
 
-    const mainTitleChars = document.querySelectorAll('.cosmetics-process-sticky-section .pink-char');
-    const introCardChars = document.querySelectorAll('.cosmetics-process-sticky-section .process-intro-card .cc');
-    const outroCardChars = document.querySelectorAll('.cosmetics-process-sticky-section .process-outro-card .cc');
+    const mainTitleChars = document.querySelectorAll('.personal-care-process-sticky-section .pink-char');
+    const introCardChars = document.querySelectorAll('.personal-care-process-sticky-section .process-intro-card .cc');
+    const outroCardChars = document.querySelectorAll('.personal-care-process-sticky-section .process-outro-card .cc');
 
     const revealTrigger = ScrollTrigger.create({
       trigger: section,
@@ -820,9 +820,9 @@ const steps = [
     const isMobile = window.innerWidth <= 991;
     if (isMobile) return;
 
-    const cards = gsap.utils.toArray('.cosmetics-process-sticky-section .process-card');
-    const timelineSteps = gsap.utils.toArray('.cosmetics-process-sticky-section .timeline-step');
-    const progressBar = document.getElementById('cosmetics-timeline-progress-bar');
+    const cards = gsap.utils.toArray('.personal-care-process-sticky-section .process-card');
+    const timelineSteps = gsap.utils.toArray('.personal-care-process-sticky-section .timeline-step');
+    const progressBar = document.getElementById('personal-care-timeline-progress-bar');
 
     cards.forEach((card: any, index: number) => {
       const charElements = card.querySelectorAll('.cc');
@@ -859,7 +859,7 @@ const steps = [
     });
 
     ScrollTrigger.create({
-      trigger: '.cosmetics-process-sticky-section .process-intro-card',
+      trigger: '.personal-care-process-sticky-section .process-intro-card',
       start: "top 55%",
       onEnter: () => {
         timelineSteps.forEach(s => s.classList.remove('active'));
@@ -873,7 +873,7 @@ const steps = [
     });
 
     ScrollTrigger.create({
-      trigger: '.cosmetics-process-sticky-section .process-outro-card',
+      trigger: '.personal-care-process-sticky-section .process-outro-card',
       start: "top 55%",
       onEnter: () => {
         timelineSteps.forEach(s => s.classList.remove('active'));
@@ -897,6 +897,6 @@ const steps = [
     });
   }
 
-  window.addEventListener('load', initCosmeticsProcessDiagram);
-  document.addEventListener('astro:page-load', initCosmeticsProcessDiagram);
+  window.addEventListener('load', initPersonalCareProcessDiagram);
+  document.addEventListener('astro:page-load', initPersonalCareProcessDiagram);
 </script>

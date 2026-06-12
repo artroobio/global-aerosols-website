@@ -1,31 +1,31 @@
 ---
-// src/lc/components/CosmeticsIndustriesWeServe.astro
-// Cosmetics & Personal Care — "Industries We Serve" interactive radial diagram.
+// src/lc/components/PersonalCareIndustriesWeServe.astro
+// Personal Care — "Industries We Serve" interactive radial diagram.
 const leftPills = [
-  "Color Sprays (Hair/Body)",
-  "Airbrush Foundation",
-  "Self-Tanning Mists",
-  "Setting Sprays",
-  "Glitter Body Shimmers",
-  "Powder Sprays"
+  "Dry Shampoos",
+  "Hair Sprays & Mousses",
+  "Antiperspirant Sprays",
+  "Shaving Foams & Gels",
+  "Sunscreen Aerosols",
+  "Thermal Water Mists"
 ];
 const rightPills = [
-  "Flawless Coverage",
-  "HD Photo Finish",
-  "Smudge-Proof Seal",
-  "Lightweight Feel",
-  "Hydrating Glow",
-  "Transfer-Resistant"
+  "Ultra-Fine Dispersion",
+  "Quick-Dry Texturizing",
+  "Invisible Matte Finish",
+  "Active Odour Control",
+  "Cooling Skin Relief",
+  "24H Sweat Protection"
 ];
 ---
 
-<section class="industries-section-cosmetics vibrant-gradients" id="serve-section">
+<section class="industries-section-personal-care vibrant-gradients" id="serve-section">
   <div class="industries-inner">
 
     <!-- Main Title -->
     <div class="industries-header">
       <h2 class="industries-title">
-        {"Cosmetics Aerosols".split(' ').map(word => (
+        {"Personal Care Aerosols".split(' ').map(word => (
           <span class="word-wrapper">
             {word.split('').map(char => (
               <span class="blue-char">{char}</span>
@@ -36,14 +36,14 @@ const rightPills = [
     </div>
 
     <!-- Diagram Area -->
-    <div class="diagram-container" id="cosmetics-diagram-area">
+    <div class="diagram-container" id="personal-care-diagram-area">
 
       <!-- SVG for connector lines -->
-      <svg class="absolute-svg" id="cosmetics-lines-svg"></svg>
+      <svg class="absolute-svg" id="personal-care-lines-svg"></svg>
 
       <!-- Center Ring -->
-      <div class="center-ring" id="cosmetics-center-element">
-        <div class="center-text">Cosmetics</div>
+      <div class="center-ring" id="personal-care-center-element">
+        <div class="center-text">Personal<br>Care</div>
       </div>
 
       <!-- Left Side Pills -->
@@ -74,7 +74,7 @@ const rightPills = [
 </section>
 
 <style>
-  .industries-section-cosmetics {
+  .industries-section-personal-care {
     --accent-cyan: #ec4899;
     --accent-blue: #a855f7;
     --accent-emerald: #f43f5e;
@@ -477,7 +477,7 @@ const rightPills = [
 
   /* ── Responsive ── */
   @media (max-width: 768px) {
-    .industries-section-cosmetics {
+    .industries-section-personal-care {
       height: auto;
       min-height: auto;
       overflow: visible;
@@ -555,8 +555,8 @@ const rightPills = [
 
   ScrollTrigger.config({ ignoreMobileResize: true });
 
-  function initCosmeticsIndustriesDiagram() {
-    const section = document.querySelector('.industries-section-cosmetics');
+  function initPersonalCareIndustriesDiagram() {
+    const section = document.querySelector('.industries-section-personal-care');
     if (!section) return;
 
     const pillColors = [
@@ -574,10 +574,10 @@ const rightPills = [
       { default: 'rgba(192, 38, 211, 0.28)', active: '#c026d3' }  // 11: Berry Purple
     ];
 
-    const diagramArea = document.getElementById('cosmetics-diagram-area');
-    const svg = document.getElementById('cosmetics-lines-svg');
-    const centerRing = document.getElementById('cosmetics-center-element');
-    const pills = document.querySelectorAll('.industries-section-cosmetics .pill-container');
+    const diagramArea = document.getElementById('personal-care-diagram-area');
+    const svg = document.getElementById('personal-care-lines-svg');
+    const centerRing = document.getElementById('personal-care-center-element');
+    const pills = document.querySelectorAll('.industries-section-personal-care .pill-container');
 
     gsap.set(pills, { opacity: 0 });
     if (svg) gsap.set(svg, { opacity: 0 });
@@ -753,7 +753,7 @@ const rightPills = [
       { opacity: 0, y: 20 },
       { opacity: 1, y: 0, duration: 0.4, ease: 'power3.out' }
     )
-    .fromTo(".industries-section-cosmetics .blue-char",
+    .fromTo(".industries-section-personal-care .blue-char",
       { opacity: 0, x: -12, color: "#0968e5", webkitTextFillColor: "#0968e5" },
       {
         opacity: 1, x: 0,
@@ -762,7 +762,7 @@ const rightPills = [
       },
       '-=0.25'
     )
-    .to(".industries-section-cosmetics .blue-char", {
+    .to(".industries-section-personal-care .blue-char", {
       color: "#ffffff", webkitTextFillColor: "#ffffff",
       duration: 0.45, stagger: 0.015, ease: "power2.inOut"
     }, '-=0.5')
@@ -779,6 +779,6 @@ const rightPills = [
     );
   }
 
-  window.addEventListener('load', initCosmeticsIndustriesDiagram);
-  document.addEventListener('astro:page-load', initCosmeticsIndustriesDiagram);
+  window.addEventListener('load', initPersonalCareIndustriesDiagram);
+  document.addEventListener('astro:page-load', initPersonalCareIndustriesDiagram);
 </script>
