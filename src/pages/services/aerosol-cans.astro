@@ -403,8 +403,8 @@ const splitWords = (s: string) => s.split(' ');
     --light-text-main: #0f172a; 
     --light-text-sub: #475569;  
     --light-border: #e2e8f0;   
-    --safety-orange: #f97316;  
-    --safety-orange-hover: #ea580c;
+    --brand-blue: #0968e5;  
+    --brand-blue-hover: #2563eb;
     --grid-line: #cbd5e1;      
   }
 
@@ -448,8 +448,8 @@ const splitWords = (s: string) => s.split(' ');
   .ac { 
     display: inline-block; 
     opacity: 0; 
-    color: var(--safety-orange); 
-    -webkit-text-fill-color: var(--safety-orange); 
+    color: var(--brand-blue); 
+    -webkit-text-fill-color: var(--brand-blue); 
   }
 
   /* ════════════ 2. BREADCRUMBS ════════════ */
@@ -469,7 +469,7 @@ const splitWords = (s: string) => s.split(' ');
     transition: color 0.25s ease;
   }
   .ind-breadcrumbs a:hover {
-    color: var(--safety-orange);
+    color: var(--brand-blue);
   }
   .ind-breadcrumbs span {
     color: #94a3b8;
@@ -482,7 +482,7 @@ const splitWords = (s: string) => s.split(' ');
   /* ════════════ 3. HERO SECTION ════════════ */
   .ind-hero {
     background: #ffffff;
-    border-bottom: 6px solid var(--safety-orange);
+    border-bottom: 6px solid var(--brand-blue);
     padding: 80px 30px 100px;
     text-align: center;
     position: relative;
@@ -499,7 +499,7 @@ const splitWords = (s: string) => s.split(' ');
     transform: translateX(-50%);
     width: 600px;
     height: 300px;
-    background: radial-gradient(ellipse at center, rgba(249, 115, 22, 0.08) 0%, transparent 70%);
+    background: radial-gradient(ellipse at center, rgba(9, 104, 229, 0.08) 0%, transparent 70%);
     pointer-events: none;
   }
 
@@ -512,8 +512,8 @@ const splitWords = (s: string) => s.split(' ');
 
   .ind-hero-badge {
     display: inline-block;
-    background: rgba(249, 115, 22, 0.09);
-    color: var(--safety-orange);
+    background: rgba(9, 104, 229, 0.09);
+    color: var(--brand-blue);
     font-family: 'Outfit', sans-serif;
     font-weight: 700;
     font-size: 0.72rem;
@@ -521,7 +521,7 @@ const splitWords = (s: string) => s.split(' ');
     letter-spacing: 2px;
     text-transform: uppercase;
     border-radius: 50px;
-    border: 1px solid rgba(249, 115, 22, 0.2);
+    border: 1px solid rgba(9, 104, 229, 0.2);
     margin-bottom: 24px;
   }
 
@@ -533,7 +533,7 @@ const splitWords = (s: string) => s.split(' ');
   }
 
   .ind-subtitle {
-    color: var(--safety-orange);
+    color: var(--brand-blue);
     font-size: clamp(1.1rem, 2vw, 1.6rem);
     font-weight: 700;
     letter-spacing: 1.5px;
@@ -566,7 +566,7 @@ const splitWords = (s: string) => s.split(' ');
     text-transform: uppercase;
     letter-spacing: 3px;
     font-weight: 700;
-    color: var(--safety-orange);
+    color: var(--brand-blue);
     display: block;
     margin-bottom: 8px;
   }
@@ -580,7 +580,7 @@ const splitWords = (s: string) => s.split(' ');
   .grid-line-bar {
     width: 60px;
     height: 4px;
-    background: var(--safety-orange);
+    background: var(--brand-blue);
     margin: 0 auto;
     border-radius: 2px;
   }
@@ -607,7 +607,7 @@ const splitWords = (s: string) => s.split(' ');
   }
 
   .ind-card:hover {
-    border-color: var(--safety-orange);
+    border-color: var(--brand-blue);
     transform: translateY(-8px);
     box-shadow: 0 20px 45px rgba(15, 23, 42, 0.08);
     z-index: 10;
@@ -617,7 +617,7 @@ const splitWords = (s: string) => s.split(' ');
     position: absolute;
     top: 16px;
     left: 16px;
-    background: var(--safety-orange);
+    background: var(--brand-blue);
     color: white;
     font-family: 'Outfit', sans-serif;
     font-weight: 800;
@@ -629,7 +629,7 @@ const splitWords = (s: string) => s.split(' ');
     align-items: center;
     justify-content: center;
     z-index: 10;
-    box-shadow: 0 4px 10px rgba(249, 115, 22, 0.25);
+    box-shadow: 0 4px 10px rgba(9, 104, 229, 0.25);
   }
 
   /* Image Container & Shine Sweep */
@@ -666,7 +666,7 @@ const splitWords = (s: string) => s.split(' ');
   }
 
   .ind-card:hover .img-zone {
-    border-bottom-color: var(--safety-orange);
+    border-bottom-color: var(--brand-blue);
   }
 
   .img-zone img {
@@ -696,10 +696,10 @@ const splitWords = (s: string) => s.split(' ');
   .cat-tag {
     font-family: 'Outfit', sans-serif;
     font-size: 0.68rem;
-    color: var(--safety-orange);
+    color: var(--brand-blue);
     font-weight: 700;
-    background: rgba(249, 115, 22, 0.08);
-    border: 1px solid rgba(249, 115, 22, 0.2);
+    background: rgba(9, 104, 229, 0.08);
+    border: 1px solid rgba(9, 104, 229, 0.2);
     padding: 4px 10px;
     border-radius: 4px;
     display: inline-block;
@@ -764,10 +764,10 @@ const splitWords = (s: string) => s.split(' ');
   }
 
   .ind-card:hover .action-btn {
-    background: var(--safety-orange);
-    border-color: var(--safety-orange);
+    background: var(--brand-blue);
+    border-color: var(--brand-blue);
     color: white;
-    box-shadow: 0 4px 15px rgba(249, 115, 22, 0.3);
+    box-shadow: 0 4px 15px rgba(9, 104, 229, 0.3);
   }
 
   /* ════════════ 5. KNOWLEDGE HUB SECTION ════════════ */
@@ -789,7 +789,7 @@ const splitWords = (s: string) => s.split(' ');
     text-transform: uppercase;
     letter-spacing: 3px;
     font-weight: 700;
-    color: var(--safety-orange);
+    color: var(--brand-blue);
     display: block;
     margin-bottom: 8px;
   }
@@ -801,7 +801,7 @@ const splitWords = (s: string) => s.split(' ');
   }
 
   .resource-section .heading-font .highlight {
-    color: var(--safety-orange);
+    color: var(--brand-blue);
   }
 
   .resource-subtitle-text {
@@ -820,7 +820,7 @@ const splitWords = (s: string) => s.split(' ');
 
   .resource-card {
     background: #f8fafc;
-    border-left: 5px solid var(--safety-orange);
+    border-left: 5px solid var(--brand-blue);
     border-radius: 0 12px 12px 0;
     padding: 36px;
     box-shadow: 0 4px 20px rgba(15, 23, 42, 0.01);
@@ -850,7 +850,7 @@ const splitWords = (s: string) => s.split(' ');
     font-family: 'Outfit', sans-serif;
     font-weight: 700;
     font-size: 0.85rem;
-    color: var(--safety-orange);
+    color: var(--brand-blue);
     text-decoration: none;
     text-transform: uppercase;
     display: inline-flex;
@@ -860,7 +860,7 @@ const splitWords = (s: string) => s.split(' ');
   }
 
   .resource-link:hover {
-    color: var(--safety-orange-hover);
+    color: var(--brand-blue-hover);
   }
 
   .resource-link::after {
@@ -895,7 +895,7 @@ const splitWords = (s: string) => s.split(' ');
     text-transform: uppercase;
     letter-spacing: 3px;
     font-weight: 700;
-    color: var(--safety-orange);
+    color: var(--brand-blue);
     display: block;
     margin-bottom: 8px;
   }
@@ -920,7 +920,7 @@ const splitWords = (s: string) => s.split(' ');
   }
 
   .faq-item:hover {
-    border-color: rgba(249, 115, 22, 0.4);
+    border-color: rgba(9, 104, 229, 0.4);
     box-shadow: 0 4px 20px rgba(15, 23, 42, 0.03);
   }
 
@@ -941,11 +941,11 @@ const splitWords = (s: string) => s.split(' ');
   }
 
   .faq-question-btn:hover {
-    color: var(--safety-orange);
+    color: var(--brand-blue);
   }
 
   .faq-q-prefix {
-    color: var(--safety-orange);
+    color: var(--brand-blue);
     margin-right: 12px;
     font-weight: 800;
   }
@@ -988,13 +988,13 @@ const splitWords = (s: string) => s.split(' ');
   }
 
   .faq-question-btn[aria-expanded="true"] .faq-icon::before {
-    background-color: var(--safety-orange);
+    background-color: var(--brand-blue);
   }
 
   .faq-question-btn[aria-expanded="true"] .faq-icon::after {
     transform: rotate(90deg);
     opacity: 0;
-    background-color: var(--safety-orange);
+    background-color: var(--brand-blue);
   }
 
   .faq-answer-panel {
@@ -1021,7 +1021,7 @@ const splitWords = (s: string) => s.split(' ');
     background: #0f172a;
     color: #cbd5e1;
     padding: 90px 30px;
-    border-top: 5px solid var(--safety-orange);
+    border-top: 5px solid var(--brand-blue);
   }
 
   .dossier-container {
@@ -1038,7 +1038,7 @@ const splitWords = (s: string) => s.split(' ');
     text-transform: uppercase;
     letter-spacing: 3px;
     font-weight: 700;
-    color: var(--safety-orange);
+    color: var(--brand-blue);
     display: block;
     margin-bottom: 8px;
   }
@@ -1052,7 +1052,7 @@ const splitWords = (s: string) => s.split(' ');
   .dossier-line {
     width: 80px;
     height: 4px;
-    background: var(--safety-orange);
+    background: var(--brand-blue);
     border-radius: 2px;
   }
 
@@ -1165,12 +1165,12 @@ const splitWords = (s: string) => s.split(' ');
 
   /* ── GSAP ANIMATIONS ── */
 
-  /* blue/orange → actual text-color char reveal */
+  /* blue → actual text-color char reveal */
   const charReveal = (selector: string, delay = 0) => {
     gsap.fromTo(selector,
-      { opacity: 0, x: -8, color: '#f97316', webkitTextFillColor: '#f97316' },
+      { opacity: 0, x: -8, color: '#0968e5', webkitTextFillColor: '#0968e5' },
       {
-        opacity: 1, x: 0, color: '#f97316', webkitTextFillColor: '#f97316',
+        opacity: 1, x: 0, color: '#0968e5', webkitTextFillColor: '#0968e5',
         duration: 0.45, stagger: 0.01, delay, ease: 'power3.out',
         onComplete: () => {
           gsap.to(selector, { clearProps: 'color,webkitTextFillColor', duration: 0.4, stagger: 0.01, ease: 'power2.inOut' });
@@ -1187,8 +1187,8 @@ const splitWords = (s: string) => s.split(' ');
     const tl = gsap.timeline();
     tl.to('.ind-hero .ind-hero-badge', { opacity: 1, y: 0, duration: 0.6, ease: 'power3.out' });
     tl.fromTo('.ind-hero .ac',
-      { opacity: 0, x: -8, color: '#f97316', webkitTextFillColor: '#f97316' },
-      { opacity: 1, x: 0, color: '#f97316', webkitTextFillColor: '#f97316', duration: 0.5, stagger: 0.012, ease: 'power3.out' },
+      { opacity: 0, x: -8, color: '#0968e5', webkitTextFillColor: '#0968e5' },
+      { opacity: 1, x: 0, color: '#0968e5', webkitTextFillColor: '#0968e5', duration: 0.5, stagger: 0.012, ease: 'power3.out' },
       '-=0.2'
     ).to('.ind-hero .ac', { clearProps: 'color,webkitTextFillColor', duration: 0.45, stagger: 0.012, ease: 'power2.inOut' }, '-=0.45');
     tl.to('.ind-hero .ind-subtitle', { opacity: 1, y: 0, duration: 0.5, ease: 'power2.out' }, '-=0.4');
