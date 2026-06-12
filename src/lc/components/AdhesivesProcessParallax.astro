@@ -2,45 +2,45 @@
 const steps = [
   {
     num: "01",
-    title: "Custom Adhesive & Sealant Formulation",
-    img: "/images/adhesives/adhesives_scroll_formulation.webp",
-    description: "Development of structural adhesives, silicone sealants, polyurethane systems, epoxy formulations, acrylic adhesives, and specialty bonding solutions tailored to automotive, construction, aerospace, and industrial applications.",
-    badge: "Custom Formulation"
+    title: "Elastomeric Binder Chemistry",
+    img: "/images/adhesives/adhesives_scroll_formulation.png",
+    description: "Formulating synthetic rubber, SBS, neoprene, polyurethane, and acrylic polymer bases for optimal tensile strength and initial tack in pressurized canisters.",
+    badge: "Binder Base"
   },
   {
     num: "02",
-    title: "Reverse Engineering & Benchmarking",
-    img: "/images/adhesives/adhesives_scroll_reverse.webp",
-    description: "Analysis of competitor adhesives and sealants including polymer composition, crosslinking chemistry, filler systems, rheology modifiers, adhesion promoters, and performance additive reconstruction.",
-    badge: "Reverse Engineering"
+    title: "Tackifiers & Fast Solvents",
+    img: "/images/adhesives/adhesives_scroll_reverse.png",
+    description: "Optimizing solvent vaporization rates and hydrocarbon/terpene resin ratios to achieve instant bonding upon contact with minimal substrate soak-in.",
+    badge: "Tack & Solvency"
   },
   {
     num: "03",
-    title: "Performance Enhancement & Optimization",
-    img: "/images/adhesives/adhesives_scroll_additives.webp",
-    description: "Fine-tuning of rheology modifiers, adhesion promoters, plasticizers, UV stabilizers, catalysts, fillers, and crosslinking agents for maximum bond strength, flexibility, durability, and environmental resistance.",
-    badge: "Performance Tuning"
+    title: "Propellant System Engineering",
+    img: "/images/adhesives/adhesives_scroll_additives.png",
+    description: "Balancing dimethyl ether (DME) and hydrocarbon propellants to control aerosol pressure, solve phase solubility, and ensure smooth delivery.",
+    badge: "Gas Dynamics"
   },
   {
     num: "04",
-    title: "Private Label & Packaging Support",
-    img: "/images/adhesives/adhesives_scroll_packaging.webp",
-    description: "Complete manufacturing support including formulation specs, SDS & TDS creation, cartridge and tube packaging selection, dispensing systems, labeling, and regulatory compliance for construction, automotive, and industrial adhesives.",
-    badge: "Private Label"
+    title: "Actuator & Spray Pattern Design",
+    img: "/images/adhesives/adhesives_scroll_packaging.png",
+    description: "Selecting and engineering web/lace spray patterns, mist nozzles, and variable flow valves to provide even, stripe-free coverage with zero overspray.",
+    badge: "Pattern Control"
   },
   {
     num: "05",
-    title: "Cost Optimization & Raw Material Substitution",
-    img: "/images/adhesives/adhesives_scroll_cost.webp",
-    description: "Reduce manufacturing cost by optimizing polymer selection, filler systems, plasticizer alternatives, and catalyst efficiency while maintaining or improving adhesion, cure time, and mechanical properties.",
-    badge: "Cost Optimization"
+    title: "Clog Prevention & Storage Stability",
+    img: "/images/adhesives/adhesives_scroll_cost.png",
+    description: "Preventing nozzle blockage, skinning, and valve freeze-up through custom formulation adjustments, anti-skinning agents, and airtight packaging.",
+    badge: "Can Integrity"
   },
   {
     num: "06",
-    title: "Scale-Up, Plant Setup & Production Transfer",
-    img: "/images/adhesives/adhesives_scroll_scaleup.webp",
-    description: "Guidance for mixing equipment selection, dispersion control, degassing systems, filling lines, QC parameters, and seamless transition from lab batch to commercial-scale adhesive and sealant production.",
-    badge: "Scale-Up & Plant Setup"
+    title: "Turnkey Gassing & Scale-Up",
+    img: "/images/adhesives/adhesives_scroll_scaleup.png",
+    description: "Design and implementation of safety-certified automatic filling lines, specialized vacuum purge systems, and under-the-cup gassing operations.",
+    badge: "Filling Scalability"
   }
 ];
 ---
@@ -50,7 +50,7 @@ const steps = [
   overflow:hidden breaks position:sticky on all child elements.
   The sticky sidebar REQUIRES a clear scroll context on the page body.
 -->
-<section class="paints-process-sticky-section">
+<section class="adhesives-process-sticky-section">
   <div class="process-grid-container">
 
     <!-- Left Column: Sticky Sidebar -->
@@ -58,7 +58,7 @@ const steps = [
       <div class="sidebar-content">
         <span class="process-eyebrow">Engineering</span>
         <h2 class="process-main-title">
-          {"Advanced Adhesive & Sealant Technology Solutions".split(' ').map(word => (
+          {"Advanced Aerosol Adhesive & Sealant Technology".split(' ').map(word => (
             <span class="word-wrapper">
               {word.split('').map(char => (
                 <span class="blue-char">{char}</span>
@@ -67,17 +67,17 @@ const steps = [
           ))}
         </h2>
         <p class="process-subtitle">
-          Paints and coatings integrate resins, pigments, solvents, plasticizers, additives, and performance modifiers to deliver superior gloss, adhesion, durability, chemical resistance, corrosion protection, and long-lasting appearance across automotive, industrial, architectural, and specialty applications.
+          Aerosol adhesives and sealants combine rubber elastomer binders, tackifying resins, fast-evaporating solvents, and liquified propellants to deliver instant-tack bonding and weather-proof sealing.
         </p>
         <div class="process-bullet-subs">
-          <p class="sub-bullet">✦ Advanced formulation development</p>
-          <p class="sub-bullet">✦ High-performance surface protection</p>
+          <p class="sub-bullet">✦ High-tack aerosol bonding systems</p>
+          <p class="sub-bullet">✦ Moisture-resistant sealant sprays</p>
         </div>
 
         <!-- Vertical Interactive Timeline (Desktop Only) -->
         <div class="process-timeline">
           <div class="timeline-line">
-            <div class="timeline-progress" id="timeline-progress-bar"></div>
+            <div class="timeline-progress" id="adhesives-timeline-progress-bar"></div>
           </div>
           {steps.map((step, index) => (
             <div class="timeline-step" data-step-index={index}>
@@ -106,7 +106,7 @@ const steps = [
             </span>
           ))}
         </h3>
-        <p>Experience a systematic engineering approach built specifically for modern architectural, industrial, and automotive coatings.</p>
+        <p>Experience a systematic engineering approach built specifically for modern high-performance aerosol adhesives and spray sealants.</p>
         <div class="scroll-instruction">
           <span class="scroll-dot"></span>
           <span>Scroll down to explore our engineering</span>
@@ -189,7 +189,7 @@ const steps = [
      overflow:hidden destroys position:sticky on all descendants.
      ============================================================ */
 
-  .paints-process-sticky-section {
+  .adhesives-process-sticky-section {
     background-color: #ffffff;
     position: relative;
     width: 100%;
@@ -289,7 +289,7 @@ const steps = [
   .sub-bullet {
     font-size: 0.95rem;
     font-weight: 600;
-    color: #0968e5;
+    color: #f59e0b;
     margin: 0;
   }
 
@@ -326,7 +326,7 @@ const steps = [
     left: 0;
     width: 100%;
     height: 0%;
-    background: linear-gradient(to bottom, var(--primary, #0968e5), var(--secondary, #00f2fe));
+    background: linear-gradient(to bottom, #fbbf24, #f59e0b);
   }
 
     .timeline-step {
@@ -389,11 +389,10 @@ const steps = [
     transition: color 0.35s ease;
   }
 
-  /* Active state overrides */
   .timeline-step.active .step-indicator {
-    border-color: var(--primary, #0968e5);
-    background: var(--primary, #0968e5);
-    box-shadow: 0 0 0 4px rgba(9, 104, 229, 0.12);
+    border-color: #f59e0b;
+    background: #f59e0b;
+    box-shadow: 0 0 0 4px rgba(245, 158, 11, 0.12);
   }
 
   .timeline-step.active .step-num-label {
@@ -448,14 +447,14 @@ const steps = [
     top: 0; left: 0;
     width: 100%;
     height: 5px;
-    background: linear-gradient(to right, var(--secondary, #00f2fe), var(--primary, #0968e5));
+    background: linear-gradient(to right, #fbbf24, #f59e0b);
   }
 
   .tagline {
     font-size: 0.72rem;
     text-transform: uppercase;
     letter-spacing: 4px;
-    color: var(--primary, #0968e5);
+    color: #f59e0b;
     font-weight: 700;
     display: block;
     margin-bottom: 20px;
@@ -514,15 +513,15 @@ const steps = [
     width: 8px;
     height: 8px;
     border-radius: 50%;
-    background-color: var(--primary, #0968e5);
+    background-color: #f59e0b;
     flex-shrink: 0;
     animation: pulseGlow 1.8s ease infinite;
   }
 
   @keyframes pulseGlow {
-    0%   { transform: scale(0.9); opacity: 0.6; box-shadow: 0 0 0 0 rgba(9, 104, 229, 0.35); }
-    70%  { transform: scale(1.2); opacity: 1;   box-shadow: 0 0 0 10px rgba(9, 104, 229, 0); }
-    100% { transform: scale(0.9); opacity: 0.6; box-shadow: 0 0 0 0   rgba(9, 104, 229, 0); }
+    0%   { transform: scale(0.9); opacity: 0.6; box-shadow: 0 0 0 0 rgba(245, 158, 11, 0.35); }
+    70%  { transform: scale(1.2); opacity: 1;   box-shadow: 0 0 0 10px rgba(245, 158, 11, 0); }
+    100% { transform: scale(0.9); opacity: 0.6; box-shadow: 0 0 0 0   rgba(245, 158, 11, 0); }
   }
 
   /* ============================================================
@@ -672,7 +671,7 @@ const steps = [
      ============================================================ */
 
   .process-outro-card {
-    background: linear-gradient(150deg, #f0f6ff 0%, #fafbff 100%);
+    background: linear-gradient(150deg, #fffaf5 0%, #fffefe 100%);
     display: flex;
     flex-direction: column;
     justify-content: center;
@@ -686,14 +685,14 @@ const steps = [
     top: 0; left: 0;
     width: 100%;
     height: 5px;
-    background: linear-gradient(to right, var(--primary, #0968e5), var(--secondary, #00f2fe));
+    background: linear-gradient(to right, #f59e0b, #fbbf24);
   }
 
   .outro-tag {
     font-size: 0.72rem;
     text-transform: uppercase;
     letter-spacing: 4px;
-    color: var(--primary, #0968e5);
+    color: #f59e0b;
     font-weight: 700;
     display: block;
     margin-bottom: 20px;
@@ -719,7 +718,7 @@ const steps = [
     display: inline-flex;
     align-items: center;
     gap: 14px;
-    background: var(--primary, #0968e5);
+    background: #f59e0b;
     color: #ffffff;
     padding: 14px 28px;
     border-radius: 12px;
@@ -727,13 +726,13 @@ const steps = [
     font-size: 0.92rem;
     text-decoration: none;
     align-self: flex-start;
-    box-shadow: 0 8px 20px rgba(9, 104, 229, 0.2);
+    box-shadow: 0 8px 20px rgba(245, 158, 11, 0.2);
     transition: background 0.3s ease, box-shadow 0.3s ease, transform 0.3s ease;
   }
 
   .outro-cta-btn:hover {
-    background: #0755c8;
-    box-shadow: 0 12px 30px rgba(9, 104, 229, 0.3);
+    background: #ea580c;
+    box-shadow: 0 12px 30px rgba(245, 158, 11, 0.3);
     transform: translateY(-2px);
   }
 
@@ -892,7 +891,7 @@ const steps = [
 
     // ── 1. SIDEBAR ENTRANCE ANIMATIONS ──────────────────────────
 
-    const section = document.querySelector(".paints-process-sticky-section");
+    const section = document.querySelector(".adhesives-process-sticky-section");
     if (!section) return;
 
     // Eyebrow fade-up
@@ -908,17 +907,14 @@ const steps = [
     );
 
     // Title: characters slide in as blue then transition to dark — matches every other section
-    const titleTl = gsap.timeline({
-      scrollTrigger: { trigger: section, start: "top 78%" }
-    });
     titleTl
       .fromTo(
         section.querySelectorAll(".process-main-title .blue-char"),
-        { opacity: 0, x: -12, color: "#0968e5", webkitTextFillColor: "#0968e5" },
+        { opacity: 0, x: -12, color: "#f59e0b", webkitTextFillColor: "#f59e0b" },
         {
           opacity: 1, x: 0,
-          color: "#0968e5",
-          webkitTextFillColor: "#0968e5",
+          color: "#f59e0b",
+          webkitTextFillColor: "#f59e0b",
           duration: 0.65,
           stagger: 0.022,
           ease: "power3.out"
@@ -956,10 +952,10 @@ const steps = [
     function animateCardTitle(chars, finalColor, tl) {
       tl.fromTo(
         chars,
-        { opacity: 0, x: -10, color: "#0968e5", webkitTextFillColor: "#0968e5" },
+        { opacity: 0, x: -10, color: "#f59e0b", webkitTextFillColor: "#f59e0b" },
         {
           opacity: 1, x: 0,
-          color: "#0968e5", webkitTextFillColor: "#0968e5",
+          color: "#f59e0b", webkitTextFillColor: "#f59e0b",
           duration: 0.55,
           stagger: 0.018,
           ease: "power3.out"
@@ -1046,7 +1042,7 @@ const steps = [
 
     const stepCards    = section.querySelectorAll(".process-card");
     const timelineSteps = section.querySelectorAll(".timeline-step");
-    const progressBar  = section.querySelector("#timeline-progress-bar");
+    const progressBar  = section.querySelector("#adhesives-timeline-progress-bar");
 
     if (!stepCards.length || !timelineSteps.length) return;
 

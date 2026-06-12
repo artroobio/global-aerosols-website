@@ -1,5 +1,5 @@
 ---
-// src/lc/components/TripleRevealPaints.astro
+// src/lc/components/TripleRevealAdhesives.astro
 ---
 
 <section class="triple-reveal-section">
@@ -9,7 +9,7 @@
       <!-- Panel 1: Consultation -->
       <div class="triple-panel">
         <img 
-          src="/images/adhesives/adhesives_consultation.webp" 
+          src="/images/adhesives/adhesives_consultation.png" 
           alt="Research Consultation" 
           class="triple-img" 
           loading="lazy"
@@ -36,7 +36,7 @@
       <!-- Panel 2: Product Development -->
       <div class="triple-panel">
         <img 
-          src="/images/adhesives/adhesives_development.webp" 
+          src="/images/adhesives/adhesives_development.png" 
           alt="Product Formulation Development" 
           class="triple-img" 
           loading="lazy"
@@ -63,7 +63,7 @@
       <!-- Panel 3: Product Lab Trials -->
       <div class="triple-panel">
         <img 
-          src="/images/adhesives/adhesives_trials.webp" 
+          src="/images/adhesives/adhesives_trials.png" 
           alt="Product Lab Trials & Testing" 
           class="triple-img" 
           loading="lazy"
@@ -90,7 +90,7 @@
       <!-- Panel 4: Production -->
       <div class="triple-panel">
         <img 
-          src="/images/adhesives/adhesives_production.webp" 
+          src="/images/adhesives/adhesives_production.png" 
           alt="Turnkey Manufacturing & Packaging" 
           class="triple-img" 
           loading="lazy"
@@ -185,13 +185,12 @@
     transition: background 0.7s cubic-bezier(0.25, 1, 0.3, 1);
   }
 
-  /* Premium hover gradients */
   .triple-panel:hover .triple-overlay {
     background: linear-gradient(
       to top,
-      rgba(9, 104, 229, 0.95) 0%,
+      rgba(245, 158, 11, 0.95) 0%,
       rgba(15, 23, 42, 0.65) 50%,
-      rgba(9, 104, 229, 0.15) 100%
+      rgba(245, 158, 11, 0.15) 100%
     );
   }
 
@@ -220,7 +219,7 @@
   }
 
   .triple-panel:hover .triple-eyebrow {
-    color: #22d3ee;
+    color: #fbbf24;
   }
 
   .triple-title {
@@ -272,11 +271,11 @@
   }
 
   .triple-btn:hover {
-    background-color: #0968e5;
-    border-color: #0968e5;
+    background-color: #f59e0b;
+    border-color: #f59e0b;
     color: #ffffff;
     transform: translateY(-2px) scale(1.02);
-    box-shadow: 0 8px 24px rgba(9, 104, 229, 0.4);
+    box-shadow: 0 8px 24px rgba(245, 158, 11, 0.4);
   }
 
   .triple-link {
@@ -432,12 +431,12 @@
       });
 
       revealTl.fromTo(".triple-reveal-section .blue-char", 
-        { opacity: 0, x: -12, color: "#0968e5", webkitTextFillColor: "#0968e5" },
+        { opacity: 0, x: -12, color: "#f59e0b", webkitTextFillColor: "#f59e0b" },
         {
           opacity: 1,
           x: 0,
-          color: "#0968e5",
-          webkitTextFillColor: "#0968e5",
+          color: "#f59e0b",
+          webkitTextFillColor: "#f59e0b",
           duration: 0.6,
           stagger: 0.015,
           ease: "power3.out"

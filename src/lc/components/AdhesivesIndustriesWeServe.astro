@@ -3,30 +3,30 @@
 // Adhesives & Sealants — interactive radial diagram.
 // Left: by chemistry / polymer type.  Right: by application industry.
 const leftPills = [
-  "Epoxy",
-  "Polyurethane",
-  "Acrylic",
-  "Silicone",
-  "Cyanoacrylate",
-  "Hot-Melt"
+  "SBR Contact Sprays",
+  "PU Expanding Foams",
+  "CA Activator Sprays",
+  "Web & Lace Adhesives",
+  "Pressure Sensitive Sprays",
+  "Silicone Spray Sealants"
 ];
 const rightPills = [
-  "Automotive",
-  "Construction",
-  "Packaging",
-  "Electronics",
-  "Medical",
-  "Consumer"
+  "Automotive Upholstery",
+  "HVAC Duct Bonding",
+  "Packaging & Labeling",
+  "Construction Insulation",
+  "Furniture & Carpentry",
+  "Marine Deck Bonding"
 ];
 ---
 
-<section class="industries-section">
+<section class="industries-section" id="serve-section">
   <div class="industries-inner">
 
     <!-- Main Title -->
     <div class="industries-header">
       <h2 class="industries-title">
-        {"Industries We Serve".split(' ').map(word => (
+        {"Aerosol Adhesives".split(' ').map(word => (
           <span class="word-wrapper">
             {word.split('').map(char => (
               <span class="blue-char">{char}</span>
