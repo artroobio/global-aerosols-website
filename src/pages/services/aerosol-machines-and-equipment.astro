@@ -1,0 +1,436 @@
+---
+import Layout from '../../lc/layouts/Layout.astro';
+import ContactFormVideo from '../../lc/components/ContactFormVideo.astro';
+
+/* ───────── Feature segments ───────── */
+const features = [
+  {
+    eyebrow: 'Propellant Filling',
+    title: 'Aerosol Gassing Machine',
+    body: 'Our Aerosol Gassing Machines are designed for safe and precise charging of propellants like LPG, DME, CO₂, and Nitrogen. These systems ensure stable pressure control, leak-free operation, and maximum production safety — ideal for large-scale lines.',
+    points: [
+      'Compatible with all common propellants (LPG, DME, CO₂, N₂)',
+      'Integrated safety valves and gas recovery systems',
+      'High charging accuracy with stable flow rate control',
+      'Explosion-proof design with stainless-steel body'
+    ],
+    cta: 'Discuss Gassing Machines',
+    href: '#contact',
+    img: 'https://assets.zyrosite.com/A3QlOV94WLSaL6xE/gassing-machine-GlWNvAHyvtKA4M3A.jpg',
+    reverse: false
+  },
+  {
+    eyebrow: 'Secure Sealing',
+    title: 'Aerosol Crimping Machine',
+    body: 'Engineered for precision sealing and consistent quality. Whether for semi-automatic or fully automatic lines, our machines deliver leak-proof crimping with exact control over seal diameter and pressure.',
+    points: [
+      'Adjustable crimp diameter and pressure for different valve types',
+      'Compatible with 1-inch aerosol valves',
+      'Precision sealing with minimal air loss',
+      'Easy setup and quick changeover between can sizes'
+    ],
+    cta: 'Discuss Crimping Machines',
+    href: '#contact',
+    img: 'https://assets.zyrosite.com/A3QlOV94WLSaL6xE/crimping-machine-sijKTk2nSCF1udwm.jpg',
+    reverse: true
+  },
+  {
+    eyebrow: 'Purity & Quality',
+    title: 'Deodorization Column',
+    body: 'Essential for clean aerosol manufacturing, removing unwanted odors and impurities from propellants like LPG or DME. Constructed from corrosion-resistant stainless steel.',
+    points: [
+      'Efficient removal of sulfur compounds and impurities',
+      'Continuous filtration and odor neutralization process',
+      'Long-life stainless steel structure',
+      'Customizable flow capacity based on production volume'
+    ],
+    cta: 'Discuss Filtration Options',
+    href: '#contact',
+    img: 'https://assets.zyrosite.com/A3QlOV94WLSaL6xE/columns-p9ToqwsNVwURUNBm.jpg',
+    reverse: false
+  }
+];
+
+const splitWords = (s: string) => s.split(' ');
+---
+
+<Layout title="Aerosol Machines & Equipment | Global Formulation" description="Precision aerosol crimping, gassing, and propellant deodorization machines. Safe, high-performance equipment designed for turnkey aerosol filling and gassing lines.">
+
+  <!-- ════════════ HERO ════════════ -->
+  <section class="ab-hero">
+    <div class="ab-hero-inner">
+      <span class="ab-eyebrow-center reveal">Industrial Equipment</span>
+      <h1 class="ab-hero-title">
+        {splitWords('Aerosol Machines & Equipment').map(word => (
+          <span class="aw">{word.split('').map(c => <span class="ac">{c}</span>)}</span>
+        ))}
+      </h1>
+      <p class="ab-hero-sub reveal">
+        High-performance machinery engineered for precision filling, sealing, and propellant filtration. Constructed under rigid standards to support secure, leak-free, and high-efficiency aerosol production.
+      </p>
+    </div>
+  </section>
+
+  <!-- ════════════ FEATURE SEGMENTS (Alternating Themes) ════════════ -->
+  {features.map((f, i) => (
+    <section class={`ab-feature feat-${i} ${f.reverse ? 'is-reverse' : ''}`}>
+      <div class="ab-feature-inner">
+        <div class="ab-feature-text">
+          <span class="ab-eyebrow reveal">{f.eyebrow}</span>
+          <h2 class="ab-feature-title">
+            {splitWords(f.title).map(word => (
+              <span class="aw">{word.split('').map(c => <span class="ac">{c}</span>)}</span>
+            ))}
+          </h2>
+          <p class="ab-feature-body reveal">{f.body}</p>
+          <ul class="ab-points">
+            {f.points.map(p => (
+              <li class="ab-point reveal">
+                <span class="ab-point-ico">
+                  <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="5 12 10 17 19 7"/></svg>
+                </span>
+                <span>{p}</span>
+              </li>
+            ))}
+          </ul>
+          <a href={f.href} class="ab-btn reveal">{f.cta}</a>
+        </div>
+        <div class="ab-feature-media reveal">
+          <img src={f.img} alt={f.title} loading="lazy" width="1000" height="760" />
+        </div>
+      </div>
+    </section>
+  ))}
+
+  <!-- ════════════ WHY / COMPARISON (Double Column Bento Grid) ════════════ -->
+  <section class="ab-why">
+    <div class="ab-why-head">
+      <span class="ab-eyebrow-center reveal">Complete Production Support</span>
+      <h2 class="ab-why-title">
+        {splitWords('Precision Aerosol Setup').map(word => (
+          <span class="aw">{word.split('').map(c => <span class="ac">{c}</span>)}</span>
+        ))}
+      </h2>
+      <p class="ab-why-sub reveal">
+        We bridge the gap between formulation development and high-speed mechanical filling.
+      </p>
+    </div>
+
+    <div class="ab-why-grid">
+      <div class="ab-col ab-col-gf reveal">
+        <div class="ab-col-head">
+          <span class="ab-col-mark">GF</span>
+          <span class="ab-col-name">Why Choose Us?</span>
+        </div>
+        <p style="font-size: 0.95rem; color: #b4c2d6; line-height: 1.7; margin: 0;">
+          At Global Aerosols, we ensure optimum machine performance through precision engineering and rigorous quality control. Our commitment extends beyond delivery — with industry-leading after-sales service and rapid parts replacement.
+        </p>
+      </div>
+
+      <div class="ab-col ab-col-alt reveal">
+        <div class="ab-col-head">
+          <span class="ab-col-mark ab-col-mark-muted">E</span>
+          <span class="ab-col-name">Aerosol Ecosystem</span>
+        </div>
+        <p style="font-size: 0.95rem; color: #b4c2d6; line-height: 1.7; margin: 0;">
+          We operate as a complete end-to-end aerosol ecosystem, providing a one-stop solution for everything from formulation development to raw material sourcing, packaging design, filling line setup, and private labeling.
+        </p>
+      </div>
+    </div>
+  </section>
+
+  <ContactFormVideo />
+
+</Layout>
+
+<style>
+  /* ════════ GLOBAL DARK THEME ════════ */
+  .ab-hero, .ab-why {
+    background: #060a14;
+    color: #e2e8f0;
+    box-sizing: border-box;
+  }
+
+  /* Reusable reveal initial state */
+  .reveal { opacity: 0; transform: translateY(24px); }
+
+  /* Animated heading char spans */
+  .aw { display: inline-block; white-space: nowrap; margin-right: 0.24em; }
+  .ac { display: inline-block; opacity: 0; color: #ffffff; -webkit-text-fill-color: #ffffff; }
+
+  /* Shared eyebrows */
+  .ab-eyebrow, .ab-eyebrow-center {
+    display: block;
+    font-size: 0.72rem;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 4px;
+    color: #4f9dff;
+  }
+  .ab-eyebrow-center { text-align: center; }
+
+  /* ════════ HERO ════════ */
+  .ab-hero {
+    position: relative;
+    min-height: 75vh;
+    min-height: 75svh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 140px max(6%, env(safe-area-inset-left)) 100px;
+    background:
+      radial-gradient(ellipse 80% 60% at 50% 30%, rgba(9, 104, 229,0.14) 0%, transparent 60%),
+      #060a14;
+  }
+  .ab-hero-inner { max-width: 980px; text-align: center; }
+  .ab-hero .ab-eyebrow-center { margin-bottom: 30px; }
+  .ab-hero-title {
+    font-size: clamp(2.3rem, 5vw, 4.4rem);
+    font-weight: 800;
+    line-height: 1.08;
+    letter-spacing: -0.025em;
+    margin: 0 0 32px 0;
+    color: #ffffff;
+    font-family: 'Outfit', sans-serif;
+  }
+  .ab-hero-sub {
+    font-size: clamp(1rem, 1.5vw, 1.2rem);
+    color: #94a3b8;
+    line-height: 1.7;
+    max-width: 820px;
+    margin: 0 auto;
+  }
+
+  /* ════════ FEATURE SEGMENTS (Alternating Themes) ════════ */
+  .ab-feature {
+    padding: 80px max(6%, env(safe-area-inset-left));
+    box-sizing: border-box;
+  }
+  .ab-feature-inner {
+    max-width: 1240px;
+    margin: 0 auto;
+    display: grid;
+    grid-template-columns: 1fr 1.1fr;
+    gap: clamp(40px, 6vw, 90px);
+    align-items: center;
+  }
+  .ab-feature.is-reverse .ab-feature-text { order: 2; }
+  .ab-feature.is-reverse .ab-feature-media { order: 1; }
+
+  .ab-feature .ab-eyebrow { margin-bottom: 18px; }
+  .ab-feature-title {
+    font-size: clamp(1.7rem, 3vw, 2.5rem);
+    font-weight: 800;
+    line-height: 1.15;
+    letter-spacing: -0.02em;
+    margin: 0 0 22px 0;
+    font-family: 'Outfit', sans-serif;
+  }
+  .ab-feature-body {
+    font-size: clamp(0.95rem, 1.3vw, 1.05rem);
+    line-height: 1.7;
+    margin: 0 0 28px 0;
+  }
+
+  /* Lists and points */
+  .ab-points { list-style: none; margin: 0 0 32px 0; padding: 0; display: flex; flex-direction: column; gap: 18px; }
+  .ab-point { display: flex; gap: 14px; align-items: flex-start; }
+  .ab-point-ico {
+    flex-shrink: 0;
+    width: 30px; height: 30px;
+    border-radius: 8px;
+    display: flex; align-items: center; justify-content: center;
+  }
+  .ab-point-ico svg { width: 15px; height: 15px; }
+
+  .ab-btn {
+    display: inline-block;
+    padding: 13px 30px;
+    background: #0968e5;
+    color: #ffffff;
+    font-weight: 700;
+    font-size: 0.9rem;
+    letter-spacing: 0.2px;
+    border-radius: 9px;
+    text-decoration: none;
+    transition: background 0.25s ease, transform 0.25s ease, box-shadow 0.25s ease;
+    box-shadow: 0 6px 20px rgba(9, 104, 229,0.3);
+  }
+  .ab-btn:hover { background: #3b82f6; transform: translateY(-2px); box-shadow: 0 10px 28px rgba(9, 104, 229,0.4); }
+
+  .ab-feature-media img {
+    width: 100%;
+    height: auto;
+    display: block;
+    border-radius: 16px;
+  }
+
+  /* Alternating theme styles using section index */
+  /* Even elements (Gassing Machine at index 0, Deodorization Column at index 2) -> LIGHT THEME */
+  .ab-feature:nth-of-type(even) {
+    background: #ffffff;
+    color: #475569;
+  }
+  .ab-feature:nth-of-type(even) .ab-feature-title {
+    color: #0f172a;
+  }
+  .ab-feature:nth-of-type(even) .ab-eyebrow {
+    color: #2563eb;
+  }
+  .ab-feature:nth-of-type(even) .ab-point-ico {
+    background: rgba(37, 99, 235, 0.08);
+    border-color: rgba(37, 99, 235, 0.25);
+    color: #2563eb;
+    border: 1px solid rgba(37, 99, 235, 0.25);
+  }
+  .ab-feature:nth-of-type(even) .ab-point span:last-child {
+    color: #334155;
+  }
+  .ab-feature:nth-of-type(even) .ab-feature-media img {
+    border: 1px solid rgba(15, 23, 42, 0.08);
+    box-shadow: 0 20px 50px rgba(15, 23, 42, 0.15);
+  }
+
+  /* Odd elements (Crimping Machine at index 1) -> DARK THEME */
+  .ab-feature:nth-of-type(odd) {
+    background: #060a14;
+    color: #94a3b8;
+  }
+  .ab-feature:nth-of-type(odd) .ab-feature-title {
+    color: #ffffff;
+  }
+  .ab-feature:nth-of-type(odd) .ab-eyebrow {
+    color: #4f9dff;
+  }
+  .ab-feature:nth-of-type(odd) .ab-point-ico {
+    background: rgba(9, 104, 229, 0.14);
+    border: 1px solid rgba(79, 157, 255, 0.3);
+    color: #4f9dff;
+  }
+  .ab-feature:nth-of-type(odd) .ab-point span:last-child {
+    color: #b4c2d6;
+  }
+  .ab-feature:nth-of-type(odd) .ab-feature-media img {
+    border: 1px solid rgba(255, 255, 255, 0.08);
+    box-shadow: 0 30px 70px rgba(0, 0, 0, 0.5);
+  }
+
+  /* ════════ WHY / COMPARISON ════════ */
+  .ab-why {
+    padding: 100px max(6%, env(safe-area-inset-left)) 110px;
+    border-top: 1px solid rgba(255,255,255,0.05);
+  }
+  .ab-why-head { max-width: 720px; margin: 0 auto 56px; text-align: center; }
+  .ab-why .ab-eyebrow-center { margin-bottom: 18px; }
+  .ab-why-title {
+    font-size: clamp(1.9rem, 3.4vw, 2.9rem);
+    font-weight: 800;
+    color: #ffffff;
+    margin: 0 0 16px 0;
+    letter-spacing: -0.02em;
+    font-family: 'Outfit', sans-serif;
+  }
+  .ab-why-sub { font-size: clamp(0.95rem, 1.3vw, 1.05rem); color: #94a3b8; line-height: 1.65; margin: 0; }
+
+  .ab-why-grid {
+    max-width: 980px;
+    margin: 0 auto;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 24px;
+  }
+  .ab-col {
+    border-radius: 18px;
+    padding: 36px 32px;
+    border: 1px solid rgba(255,255,255,0.08);
+  }
+  .ab-col-gf {
+    background: linear-gradient(160deg, rgba(9, 104, 229,0.16) 0%, rgba(9, 104, 229,0.04) 100%);
+    border-color: rgba(79,157,255,0.35);
+    box-shadow: 0 0 50px rgba(9, 104, 229,0.12);
+  }
+  .ab-col-alt { background: rgba(255,255,255,0.02); }
+  .ab-col-head { display: flex; align-items: center; gap: 14px; margin-bottom: 24px; padding-bottom: 18px; border-bottom: 1px solid rgba(255,255,255,0.08); }
+  .ab-col-mark {
+    width: 40px; height: 40px;
+    border-radius: 10px;
+    background: #0968e5;
+    color: #fff;
+    font-weight: 800;
+    font-size: 0.95rem;
+    display: flex; align-items: center; justify-content: center;
+    font-family: 'Outfit', sans-serif;
+  }
+  .ab-col-mark-muted { background: rgba(255,255,255,0.1); color: #94a3b8; }
+  .ab-col-name { font-size: 1.15rem; font-weight: 700; color: #ffffff; font-family: 'Outfit', sans-serif; }
+
+  /* ════════ RESPONSIVE ════════ */
+  @media (max-width: 980px) {
+    .ab-feature-inner { grid-template-columns: 1fr; gap: 40px; }
+    .ab-feature.is-reverse .ab-feature-text { order: 1; }
+    .ab-feature.is-reverse .ab-feature-media { order: 2; }
+    .ab-why-grid { grid-template-columns: 1fr; }
+  }
+
+  @media (max-width: 600px) {
+    .ab-hero { padding: 120px 22px 80px; }
+    .ab-feature { padding-left: 22px; padding-right: 22px; }
+  }
+</style>
+
+<script>
+  import { gsap } from "gsap";
+  import { ScrollTrigger } from "gsap/ScrollTrigger";
+  gsap.registerPlugin(ScrollTrigger);
+
+  /* blue → actual text-color char reveal */
+  const charReveal = (selector: string, delay = 0) => {
+    gsap.fromTo(selector,
+      { opacity: 0, x: -8, color: '#0968e5', webkitTextFillColor: '#0968e5' },
+      {
+        opacity: 1, x: 0, color: '#0968e5', webkitTextFillColor: '#0968e5',
+        duration: 0.45, stagger: 0.01, delay, ease: 'power3.out',
+        onComplete: () => {
+          gsap.to(selector, { clearProps: 'color,webkitTextFillColor', duration: 0.4, stagger: 0.01, ease: 'power2.inOut' });
+        }
+      }
+    );
+  };
+
+  const fadeUp = (targets: gsap.TweenTarget, delay = 0, stagger = 0) =>
+    gsap.to(targets, { opacity: 1, y: 0, duration: 0.6, stagger, delay, ease: 'power2.out' });
+
+  /* ── HERO (on load) ── */
+  const startHero = () => {
+    const tl = gsap.timeline();
+    tl.to('.ab-hero .ab-eyebrow-center', { opacity: 1, y: 0, duration: 0.6, ease: 'power3.out' });
+    tl.fromTo('.ab-hero .ac',
+      { opacity: 0, x: -8, color: '#0968e5', webkitTextFillColor: '#0968e5' },
+      { opacity: 1, x: 0, color: '#0968e5', webkitTextFillColor: '#0968e5', duration: 0.5, stagger: 0.012, ease: 'power3.out' },
+      '-=0.2'
+    ).to('.ab-hero .ac', { clearProps: 'color,webkitTextFillColor', duration: 0.45, stagger: 0.012, ease: 'power2.inOut' }, '-=0.45');
+    tl.to('.ab-hero-sub', { opacity: 1, y: 0, duration: 0.7, ease: 'power2.out' }, '-=0.4');
+  };
+  // Run animation instantly
+  startHero();
+
+  /* ── Generic per-section reveal ── */
+  const section = (sel: string, opts: { charDelay?: number; bodyDelay?: number; stagger?: number } = {}) => {
+    const el = document.querySelector(sel);
+    if (!el) return;
+    ScrollTrigger.create({
+      trigger: sel,
+      start: 'top 75%',
+      once: true,
+      onEnter: () => {
+        charReveal(`${sel} .ac`, opts.charDelay ?? 0.1);
+        fadeUp(`${sel} .reveal`, opts.bodyDelay ?? 0.35, opts.stagger ?? 0.08);
+      }
+    });
+  };
+
+  section('.feat-0');
+  section('.feat-1');
+  section('.feat-2');
+  section('.ab-why', { stagger: 0.12 });
+</script>
