@@ -2,14 +2,14 @@
 // src/lc/components/TripleRevealPharmaceuticals.astro
 ---
 
-<section class="triple-reveal-section">
+<section class="triple-reveal-section-pharmaceuticals">
   <div class="triple-reveal-container">
     <div class="triple-grid">
       
       <!-- Panel 1: Consultation -->
       <div class="triple-panel">
         <img 
-          src="https://cdn.globalformulation.com/images/pharmaceuticals/pharma_consultation.webp" 
+          src="/images/pharmaceuticals/pharma_consultation.png" 
           alt="Pharmaceutical Formulation Consultation" 
           class="triple-img" 
           loading="lazy"
@@ -28,7 +28,7 @@
           </h3>
           <div class="triple-cta">
             <a href="/contact" class="triple-btn">Book Session</a>
-            <a href="/pharmaceutical-and-healthcare-guide" class="triple-link">Overview</a>
+            <a href="/pharmaceuticals-and-health-care/" class="triple-link">Overview</a>
           </div>
         </div>
       </div>
@@ -36,7 +36,7 @@
       <!-- Panel 2: Product Development -->
       <div class="triple-panel">
         <img 
-          src="https://cdn.globalformulation.com/images/pharmaceuticals/pharma_development.webp" 
+          src="/images/pharmaceuticals/pharma_development.png" 
           alt="Pharmaceutical Product Formulation Development" 
           class="triple-img" 
           loading="lazy"
@@ -55,7 +55,7 @@
           </h3>
           <div class="triple-cta">
             <a href="/contact" class="triple-btn">Formulate</a>
-            <a href="/pharmaceutical-and-healthcare-guide" class="triple-link">Science</a>
+            <a href="/pharmaceuticals-and-health-care/" class="triple-link">Science</a>
           </div>
         </div>
       </div>
@@ -63,7 +63,7 @@
       <!-- Panel 3: Product Lab Trials -->
       <div class="triple-panel">
         <img 
-          src="https://cdn.globalformulation.com/images/pharmaceuticals/pharma_trials.webp" 
+          src="/images/pharmaceuticals/pharma_trials.png" 
           alt="Efficacy & Bioavailability Lab Testing" 
           class="triple-img" 
           loading="lazy"
@@ -82,7 +82,7 @@
           </h3>
           <div class="triple-cta">
             <a href="/contact" class="triple-btn">Test Run</a>
-            <a href="/pharmaceutical-and-healthcare-guide" class="triple-link">Analysis</a>
+            <a href="/pharmaceuticals-and-health-care/" class="triple-link">Analysis</a>
           </div>
         </div>
       </div>
@@ -90,7 +90,7 @@
       <!-- Panel 4: Production -->
       <div class="triple-panel">
         <img 
-          src="https://cdn.globalformulation.com/images/pharmaceuticals/pharma_production.webp" 
+          src="/images/pharmaceuticals/pharma_production.png" 
           alt="GMP Certified Turnkey Manufacturing" 
           class="triple-img" 
           loading="lazy"
@@ -109,7 +109,7 @@
           </h3>
           <div class="triple-cta">
             <a href="/contact" class="triple-btn">Scale Up</a>
-            <a href="/pharmaceutical-and-healthcare-guide" class="triple-link">Logistics</a>
+            <a href="/pharmaceuticals-and-health-care/" class="triple-link">Logistics</a>
           </div>
         </div>
       </div>
@@ -119,7 +119,7 @@
 </section>
 
 <style>
-  .triple-reveal-section {
+  .triple-reveal-section-pharmaceuticals {
     width: 100%;
     height: 95vh;
     min-height: 600px;
@@ -319,7 +319,7 @@
   }
 
   @media (max-width: 768px) {
-    .triple-reveal-section {
+    .triple-reveal-section-pharmaceuticals {
       height: auto;
       padding: 48px 16px;
     }
@@ -357,7 +357,7 @@
 
   function initTripleRevealPharmaceuticals() {
     const isDesktop = window.innerWidth > 768;
-    const section = document.querySelector(".triple-reveal-section");
+    const section = document.querySelector(".triple-reveal-section-pharmaceuticals");
     const container = document.querySelector(".triple-reveal-container");
     const imgs = document.querySelectorAll(".triple-img");
     const titles = document.querySelectorAll(".triple-title");
@@ -369,7 +369,7 @@
     ScrollTrigger.getAll().forEach((trigger) => {
       if (
         trigger.trigger === section ||
-        (trigger.trigger as HTMLElement)?.classList?.contains("triple-reveal-section")
+        (trigger.trigger as HTMLElement)?.classList?.contains("triple-reveal-section-pharmaceuticals")
       ) {
         trigger.kill();
       }
@@ -431,7 +431,7 @@
         }
       });
 
-      revealTl.fromTo(".triple-reveal-section .blue-char", 
+      revealTl.fromTo(".triple-reveal-section-pharmaceuticals .blue-char", 
         { opacity: 0, x: -12, color: "#2563eb", webkitTextFillColor: "#2563eb" },
         {
           opacity: 1,
@@ -443,7 +443,7 @@
           ease: "power3.out"
         }
       )
-      .to(".triple-reveal-section .blue-char", {
+      .to(".triple-reveal-section-pharmaceuticals .blue-char", {
         color: "#ffffff",
         webkitTextFillColor: "#ffffff",
         duration: 0.6,
