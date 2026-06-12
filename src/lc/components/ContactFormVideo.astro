@@ -455,6 +455,21 @@
 
     if (!section || !container) return;
 
+    // Prefill email from query parameter if present (e.g. from service pages)
+    try {
+      const urlParams = new URLSearchParams(window.location.search);
+      const emailParam = urlParams.get('email');
+      if (emailParam) {
+        const emailInput = document.getElementById('email') as HTMLInputElement | null;
+        if (emailInput) {
+          emailInput.value = emailParam;
+          emailInput.dispatchEvent(new Event('input'));
+        }
+      }
+    } catch (e) {
+      console.warn("Failed to prefill email from query param", e);
+    }
+
     // Entry Animations
     const tl = gsap.timeline({
       scrollTrigger: {
