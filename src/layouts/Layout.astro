@@ -3,7 +3,6 @@ import '../styles/global.css';
 import Navbar from '../lc/components/Navbar.astro';
 import Footer from '../lc/components/Footer.astro';
 import SmoothScroll from '../lc/components/SmoothScroll.astro';
-import CartIcon from '../lc/components/CartIcon.astro';
 
 interface Props {
   title?: string;
@@ -13,7 +12,6 @@ interface Props {
   ogType?: string;
   schemaJson?: any;
   robots?: string;
-  hideCart?: boolean;
 }
 
 const {
@@ -24,7 +22,6 @@ const {
   ogType = 'website',
   schemaJson,
   robots = 'index, follow',
-  hideCart = false,
 } = Astro.props;
 
 const rawCanonical = canonical.startsWith('http') ? canonical : `https://www.globalaerosols.com${canonical}`;
@@ -93,7 +90,6 @@ const cleanCanonical = (() => {
     </div>
 
     <Footer />
-    {!hideCart && <CartIcon />}
 
     <script is:inline>
       (function() {
