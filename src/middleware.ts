@@ -1,6 +1,4 @@
-import { defineMiddleware } from "astro:middleware";
-
-export const onRequest = defineMiddleware(async (context, next) => {
+export async function onRequest(context: any, next: any) {
   const response = await next();
 
   // Only rewrite references in local development mode
@@ -12,9 +10,12 @@ export const onRequest = defineMiddleware(async (context, next) => {
         // Rewrite cdn.globalaerosols.com to relative paths for local serving from public/
         const rewrittenHtml = html.replace(/https:\/\/cdn\.globalaerosols\.com/g, "");
         
+        // Clone headers to bypass Cloudflare Worker's immutable headers guard
+        const newHeaders = new Headers(response.headers);
+        
         return new Response(rewrittenHtml, {
           status: response.status,
-          headers: response.headers
+          headers: newHeaders
         });
       }
     } catch (err) {
@@ -23,4 +24,4 @@ export const onRequest = defineMiddleware(async (context, next) => {
   }
 
   return response;
-});
+}
