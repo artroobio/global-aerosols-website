@@ -326,8 +326,8 @@ const splitWords = (s: string) => s.split(' ');
     --light-text-main: #0f172a; 
     --light-text-sub: #475569;  
     --light-border: #e2e8f0;   
-    --industrial-green: #059669;  
-    --industrial-green-hover: #047857;
+    --industrial-green: #0968e5;  
+    --industrial-green-hover: #2563eb;
     --grid-line: #cbd5e1;      
   }
 
@@ -1088,12 +1088,12 @@ const splitWords = (s: string) => s.split(' ');
 
   /* ── GSAP ANIMATIONS ── */
 
-  /* blue/green → actual text-color char reveal */
+  /* blue → actual text-color char reveal */
   const charReveal = (selector: string, delay = 0) => {
     gsap.fromTo(selector,
-      { opacity: 0, x: -8, color: '#059669', webkitTextFillColor: '#059669' },
+      { opacity: 0, x: -8, color: '#0968e5', webkitTextFillColor: '#0968e5' },
       {
-        opacity: 1, x: 0, color: '#059669', webkitTextFillColor: '#059669',
+        opacity: 1, x: 0, color: '#0968e5', webkitTextFillColor: '#0968e5',
         duration: 0.45, stagger: 0.01, delay, ease: 'power3.out',
         onComplete: () => {
           gsap.to(selector, { clearProps: 'color,webkitTextFillColor', duration: 0.4, stagger: 0.01, ease: 'power2.inOut' });
@@ -1110,8 +1110,8 @@ const splitWords = (s: string) => s.split(' ');
     const tl = gsap.timeline();
     tl.to('.ind-hero .ind-hero-badge', { opacity: 1, y: 0, duration: 0.6, ease: 'power3.out' });
     tl.fromTo('.ind-hero .ac',
-      { opacity: 0, x: -8, color: '#059669', webkitTextFillColor: '#059669' },
-      { opacity: 1, x: 0, color: '#059669', webkitTextFillColor: '#059669', duration: 0.5, stagger: 0.012, ease: 'power3.out' },
+      { opacity: 0, x: -8, color: '#0968e5', webkitTextFillColor: '#0968e5' },
+      { opacity: 1, x: 0, color: '#0968e5', webkitTextFillColor: '#0968e5', duration: 0.5, stagger: 0.012, ease: 'power3.out' },
       '-=0.2'
     ).to('.ind-hero .ac', { clearProps: 'color,webkitTextFillColor', duration: 0.45, stagger: 0.012, ease: 'power2.inOut' }, '-=0.45');
     tl.to('.ind-hero .ind-subtitle', { opacity: 1, y: 0, duration: 0.5, ease: 'power2.out' }, '-=0.4');
