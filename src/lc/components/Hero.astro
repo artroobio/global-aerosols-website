@@ -202,7 +202,7 @@
     }
 
     @media (max-width: 899px) {
-        /* Hide all WebGL/canvas elements — static image only on mobile */
+        /* Hide WebGL/canvas — static image fallback on mobile */
         #ripple-canvas,
         #hero-image { display: none !important; }
 
@@ -211,27 +211,51 @@
             transform: none !important;
         }
 
-        /* Full-height dark background with the hero image as CSS bg on mobile */
+        /* bg-image must live on hero-bg-container, NOT ga-main-wrapper —
+           hero-bg-container is opaque and covers the parent entirely */
         #ga-main-wrapper {
             background-color: #010a0a;
+        }
+
+        #hero-bg-container {
             background-image: url('/global-aerosols-2.png');
             background-size: cover;
             background-position: center center;
+            background-color: transparent;
         }
 
-        /* Darken bg for text legibility */
-        #hero-bg-container::after {
-            background: rgba(1, 10, 10, 0.55) !important;
-            z-index: 1 !important;
-        }
+        #hero-bg-container::after { background: none !important; }
 
         #ui-layer { z-index: 5; }
 
         .hero-bottom-container { bottom: 14%; }
         .hero-massive-title    { font-size: clamp(1.8rem, 8vw, 3.5rem); letter-spacing: 2px; }
-        .mid-label             { font-size: 0.5rem; letter-spacing: 2px; }
         .hero-cta-btn          { right: 5%; bottom: 6%; font-size: 0.7rem; padding: 10px 18px; }
-        .hero-mid-divider      { top: 42%; }
+
+        /* Mid-divider: vertical stack so labels never overlap on narrow screens */
+        .hero-mid-divider {
+            top: 38%;
+            height: auto;
+            border-bottom: none;
+            border-top: 1px dashed rgba(255, 255, 255, 0.55);
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 6px;
+            padding-top: 12px;
+        }
+
+        .mid-label,
+        .center-label {
+            position: static;
+            transform: none !important;
+            left: unset;
+            right: unset;
+            font-size: 0.5rem;
+            letter-spacing: 2.5px;
+            text-align: center;
+            padding: 0;
+        }
     }
 
     @media (min-width: 900px) {
