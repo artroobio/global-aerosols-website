@@ -13,12 +13,11 @@ export const POST: APIRoute = async ({ request, locals }) => {
       });
     }
 
-    // Retrieve environment variables
-    // Cloudflare environment variables are stored in context.locals.runtime.env on SSR
-    const env = (locals as any).runtime?.env || {};
-    const resendApiKey = env.RESEND_API_KEY || import.meta.env.RESEND_API_KEY || process.env.RESEND_API_KEY;
-    const recipientEmail = env.CONTACT_EMAIL_RECIPIENT || import.meta.env.CONTACT_EMAIL_RECIPIENT || process.env.CONTACT_EMAIL_RECIPIENT || "globalaerosols@gmail.com";
-    const senderEmail = env.RESEND_SENDER_EMAIL || import.meta.env.RESEND_SENDER_EMAIL || process.env.RESEND_SENDER_EMAIL || "inquiry@globalaerosols.com";
+    // Cloudflare Pages runtime env — secrets set in the Pages dashboard
+    const env = (locals as any).runtime?.env ?? {};
+    const resendApiKey = env.RESEND_API_KEY;
+    const recipientEmail = env.CONTACT_EMAIL_RECIPIENT ?? "globalaerosols@gmail.com";
+    const senderEmail = env.RESEND_SENDER_EMAIL ?? "inquiry@globalaerosols.com";
 
     if (!resendApiKey) {
       console.error("[Resend API Error]: RESEND_API_KEY is not defined in the environment.");
