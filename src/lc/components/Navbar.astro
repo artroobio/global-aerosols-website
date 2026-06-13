@@ -71,6 +71,58 @@ const formTechItems = [
     image: "https://cdn.globalaerosols.com/images/nav/pharmaceuticals.webp?v=2",
   },
 ];
+
+const servicesItems = [
+  {
+    label: "Contract Manufacturing & Filling",
+    url: "/aerosol-contract-manufacturing-and-filling/",
+    tag: "Manufacturing & Filling",
+    desc: "Turnkey contract aerosol filling and automated packaging, scaled to ISO GMP cosmetics standards.",
+    image: "https://cdn.globalaerosols.com/images/nav/services-manufacturing.webp",
+  },
+  {
+    label: "Product Formulation",
+    url: "/services/product-formulation/",
+    tag: "R&D & Science",
+    desc: "Expert chemical engineering for high-performance aerosols, emulsion stability, and custom active delivery.",
+    image: "https://cdn.globalaerosols.com/images/nav/services-formulation.webp",
+  },
+  {
+    label: "Consulting & Technical Support",
+    url: "/services/consulting-and-technical-support/",
+    tag: "Technical Audit",
+    desc: "On-site audits, raw material sourcing, regulatory compliance, and optimization of R&D laboratory workflows.",
+    image: "https://cdn.globalaerosols.com/images/nav/services-consulting.webp",
+  },
+  {
+    label: "Aerosol Machines & Equipment",
+    url: "/services/aerosol-machines-and-equipment/",
+    tag: "Filling Machinery",
+    desc: "Precision semi-automatic and fully automatic aerosol gassing, crimping, and leak-testing systems.",
+    image: "https://cdn.globalaerosols.com/images/nav/services-machinery.webp",
+  },
+  {
+    label: "Aerosol Cans",
+    url: "/services/aerosol-cans/",
+    tag: "Packaging Systems",
+    desc: "Premium double-lacquered aluminum and tinplate cans, tactile prints, and customized pressure specs.",
+    image: "https://cdn.globalaerosols.com/images/nav/services-cans.webp",
+  },
+  {
+    label: "Valves, Caps & Actuators",
+    url: "/services/aerosol-valves-caps-and-actuators/",
+    tag: "Spray Engineering",
+    desc: "Micro-orifice aerosol valves and soft-mist actuators engineered for stable spray dispersion and pattern.",
+    image: "https://cdn.globalaerosols.com/images/nav/services-valves.webp",
+  },
+  {
+    label: "Aerosol Caps",
+    url: "/services/aerosol-caps/",
+    tag: "Aesthetic Finishes",
+    desc: "Premium custom-colored overcaps, double-wall caps, and child-resistant closures for cosmetic aerosols.",
+    image: "https://cdn.globalaerosols.com/images/nav/services-caps.webp",
+  }
+];
 ---
 <nav class={`navbar${isHome ? '' : ' is-opaque'}`}>
   <div class="nav-container">
@@ -149,20 +201,51 @@ const formTechItems = [
         </div>
       </li>
 
-      <!-- Services Dropdown -->
-      <li class="dropdown">
+      <!-- Services Mega Dropdown -->
+      <li class="dropdown mega-dropdown">
         <button class="dropdown-toggle" aria-haspopup="true" aria-expanded="false">
           Services <span class="chevron">▼</span>
         </button>
-        <ul class="dropdown-menu">
-          <li><a href="/aerosol-contract-manufacturing-and-filling/">Contract Manufacturing &amp; Filling</a></li>
-          <li><a href="/services/product-formulation/">Product Formulation</a></li>
-          <li><a href="/services/consulting-and-technical-support/">Consulting &amp; Technical Support</a></li>
-          <li><a href="/services/aerosol-machines-and-equipment/">Aerosol Machines &amp; Equipment</a></li>
-          <li><a href="/services/aerosol-cans/">Aerosol Cans</a></li>
-          <li><a href="/services/aerosol-valves-caps-and-actuators/">Valves, Caps &amp; Actuators</a></li>
-          <li><a href="/services/aerosol-caps/">Aerosol Caps</a></li>
-        </ul>
+
+        <!-- ── Mega Menu ── -->
+        <div class="mega-menu" role="dialog" aria-label="Services">
+          <div class="mega-left">
+            <p class="mega-eyebrow">Services</p>
+            <ul class="mega-links">
+              {servicesItems.map((item, i) => (
+                <li class="mega-item" data-index={i}>
+                  <a href={item.url}>
+                    <span class="mega-item-label">{item.label}</span>
+                    <svg class="mega-item-arrow" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" width="13" height="13">
+                      <path stroke-linecap="round" stroke-linejoin="round" d="M9 5l7 7-7 7"/>
+                    </svg>
+                  </a>
+                </li>
+              ))}
+            </ul>
+          </div>
+
+          <div class="mega-right">
+            {servicesItems.map((item, i) => (
+              <div class="mega-pane" data-index={i}>
+                <div class="mega-img-wrap">
+                  <img src={item.image} alt={item.label} loading="lazy" decoding="async" />
+                </div>
+                <div class="mega-info">
+                  <span class="mega-tag">{item.tag}</span>
+                  <h3 class="mega-title">{item.label}</h3>
+                  <p class="mega-desc">{item.desc}</p>
+                  <a href={item.url} class="mega-cta">
+                    Explore
+                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" width="13" height="13">
+                      <path stroke-linecap="round" stroke-linejoin="round" d="M9 5l7 7-7 7"/>
+                    </svg>
+                  </a>
+                </div>
+              </div>
+            ))}
+          </div>
+        </div>
       </li>
 
       <!-- Aerosol Software Dropdown -->

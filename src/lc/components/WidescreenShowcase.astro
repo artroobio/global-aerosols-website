@@ -7,13 +7,11 @@
   <div class="widescreen-reveal-wrapper">
     <div class="widescreen-image-container">
       <img 
-        src="https://cdn.globalaerosols.com/images/home/team-synergy.webp" 
-        alt="Multidisciplinary R&D Collaboration" 
+        src="https://cdn.globalaerosols.com/images/home/aerosol-lifestyle.webp" 
+        alt="Premium Aerosol Lifestyle Application" 
         class="widescreen-parallax-img" 
         loading="lazy" 
       />
-      <!-- Fine luxury cinematic vignette overlay -->
-      <div class="widescreen-vignette"></div>
     </div>
   </div>
 </section>
@@ -135,25 +133,6 @@
         }
       );
 
-      // 2. Parallax Image Motion Zoom inside the container
-      gsap.fromTo(img,
-        {
-          scale: 1.15,
-          y: "-5%"
-        },
-        {
-          scale: 1.03,
-          y: "0%",
-          ease: "none",
-          force3D: true,
-          scrollTrigger: {
-            trigger: ".widescreen-showcase-section",
-            start: "top 100%",
-            end: "bottom 0%",
-            scrub: true,
-          }
-        }
-      );
     }
   }
 
