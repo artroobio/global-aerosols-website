@@ -81,17 +81,20 @@ const steps = [
           <p class="sub-bullet">✦ Hobbyist & craft sealers</p>
         </div>
 
-        <!-- Vertical Interactive Timeline (Desktop Only) -->
+        <!-- Horizontal Button Timeline (Desktop Only) -->
         <div class="process-timeline">
-          <div class="timeline-line">
-            <div class="timeline-progress" id="timeline-progress-bar"></div>
-          </div>
           {steps.map((step, index) => (
             <div class="timeline-step" data-step-index={index}>
-              <div class="step-indicator">
-                <span class="step-num-label">{step.num}</span>
+              <div class="step-content">
+                <span class="step-num">{step.num}</span>
+                <span class="step-label">{step.title}</span>
               </div>
-              <span class="step-label-title">{step.title}</span>
+              <div class="step-arrow-box">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" class="step-arrow-icon">
+                  <line x1="5" y1="12" x2="19" y2="12"></line>
+                  <polyline points="12 5 19 12 12 19"></polyline>
+                </svg>
+              </div>
             </div>
           ))}
         </div>
@@ -301,115 +304,120 @@ const steps = [
   }
 
   /* ============================================================
-     VERTICAL TIMELINE (Desktop)
+     BUTTON ROW TIMELINE (Desktop)
      ============================================================ */
 
   .process-timeline {
-    margin-top: 44px;
-    position: relative;
+    margin-top: 36px;
     display: flex;
     flex-direction: column;
-    gap: 24px;
-    padding-left: 4px;
+    width: calc(100% + 48px);
+    margin-left: -24px;
+    margin-right: -24px;
+    border-top: 2px solid rgba(15, 23, 42, 0.08);
+    box-sizing: border-box;
   }
 
-  /* The vertical line track behind the dots */
-  .timeline-line {
-    position: absolute;
-    left: 15px; /* centres behind the 24px dot circle */
-    top: 12px;
-    bottom: 12px;
-    width: 2px;
-    background: #e8ecf0;
-    border-radius: 99px;
-    overflow: hidden;
-    z-index: 1;
-  }
-
-  /* The fill that animates with scroll */
-  .timeline-progress {
-    position: absolute;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 0%;
-    background: linear-gradient(to bottom, var(--primary, #0968e5), var(--secondary, #00f2fe));
-  }
-
-    .timeline-step {
+  .timeline-step {
     display: flex;
     align-items: center;
-    gap: 14px;
+    justify-content: space-between;
+    width: 100%;
+    padding: 10px 20px;
     cursor: pointer;
-    transition: transform 0.35s ease;
+    border-bottom: 2px solid rgba(15, 23, 42, 0.08);
+    background: transparent;
+    transition: all 0.35s cubic-bezier(0.16, 1, 0.3, 1);
     position: relative;
     z-index: 2;
     user-select: none;
+    box-sizing: border-box;
   }
 
-  .timeline-step.active {
-    transform: translateX(6px);
+  .step-content {
+    display: flex;
+    align-items: center;
+    gap: 10px;
   }
 
-  /* Fade text and indicator for inactive steps, keeping the step-indicator's background fully opaque white! */
-  .timeline-step:not(.active) .step-indicator {
-    border-color: rgba(209, 213, 219, 0.4);
+  .step-num {
+    font-family: 'Outfit', sans-serif;
+    font-size: 0.8rem;
+    font-weight: 800;
+    color: #94a3b8;
+    -webkit-text-fill-color: #94a3b8;
+    opacity: 0.8;
+    transition: all 0.35s ease;
   }
 
-  .timeline-step:not(.active) .step-num-label {
-    opacity: 0.4;
+  .step-label {
+    font-family: 'Poppins', sans-serif;
+    font-size: clamp(0.7rem, 0.9vw, 0.82rem);
+    font-weight: 800;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    color: #0f172a;
+    -webkit-text-fill-color: #0f172a;
+    transition: all 0.35s ease;
   }
 
-  .timeline-step:not(.active) .step-label-title {
-    opacity: 0.4;
-  }
-
-  /* Circle dot */
-  .step-indicator {
-    flex-shrink: 0;
-    width: 24px;
-    height: 24px;
-    border-radius: 50%;
-    background: #ffffff;
-    border: 2px solid #d1d5db;
+  .step-arrow-box {
+    width: 26px;
+    height: 26px;
     display: flex;
     align-items: center;
     justify-content: center;
-    box-sizing: border-box;
-    transition: border-color 0.35s ease, background 0.35s ease, box-shadow 0.35s ease;
+    border-radius: 5px;
+    background: rgba(255, 255, 255, 0.18);
+    border: 1px solid rgba(255, 255, 255, 0.15);
+    opacity: 0;
+    transform: translateX(-8px);
+    transition: all 0.35s cubic-bezier(0.16, 1, 0.3, 1);
+    margin-left: auto;
   }
 
-  .step-num-label {
-    font-size: 0.6rem;
-    font-weight: 800;
-    color: #94a3b8;
-    font-family: 'Outfit', sans-serif;
-    transition: color 0.35s ease;
-    line-height: 1;
-  }
-
-  .step-label-title {
-    font-size: 0.9rem;
-    font-weight: 600;
-    color: #94a3b8;
-    font-family: 'Outfit', sans-serif;
-    transition: color 0.35s ease;
-  }
-
-  /* Active state overrides */
-  .timeline-step.active .step-indicator {
-    border-color: var(--primary, #0968e5);
-    background: var(--primary, #0968e5);
-    box-shadow: 0 0 0 4px rgba(9, 104, 229, 0.12);
-  }
-
-  .timeline-step.active .step-num-label {
+  .step-arrow-icon {
+    width: 12px;
+    height: 12px;
     color: #ffffff;
   }
 
-  .timeline-step.active .step-label-title {
-    color: var(--text-primary, #0f172a);
-    font-weight: 700;
+  .timeline-step:hover {
+    background-color: var(--primary, #0968e5);
+    padding-left: 28px;
+  }
+
+  .timeline-step:hover .step-num,
+  .timeline-step:hover .step-label {
+    color: #ffffff !important;
+    -webkit-text-fill-color: #ffffff !important;
+  }
+
+  .timeline-step:hover .step-arrow-box {
+    opacity: 1;
+    transform: translateX(0);
+  }
+
+  .timeline-step.active .step-num,
+  .timeline-step.active .step-label {
+    color: var(--primary, #0968e5) !important;
+    -webkit-text-fill-color: var(--primary, #0968e5) !important;
+  }
+
+  .process-timeline:not(:hover) .timeline-step.active {
+    background-color: var(--primary, #0968e5);
+    padding-left: 28px;
+  }
+
+  .process-timeline:not(:hover) .timeline-step.active .step-num,
+  .process-timeline:not(:hover) .timeline-step.active .step-label {
+    color: #ffffff !important;
+    -webkit-text-fill-color: #ffffff !important;
+  }
+
+  .process-timeline:not(:hover) .timeline-step.active .step-arrow-box {
+    opacity: 1;
+    transform: translateX(0);
   }
 
   /* ============================================================
@@ -884,7 +892,6 @@ const steps = [
     }
     .process-timeline {
       margin-top: 20px;
-      gap: 14px;
     }
   }
 </style>
@@ -1073,6 +1080,7 @@ const steps = [
 
     function activateStep(index) {
       timelineSteps.forEach((s, i) => s.classList.toggle("active", i === index));
+      timelineSteps[index]?.scrollIntoView({ behavior: "smooth", block: "nearest" });
     }
 
     function clearActive() {

@@ -4,14 +4,14 @@ import ContactFormVideo from '../lc/components/ContactFormVideo.astro';
 
 /* ───────── Radial capability hub: positions computed at build time ───────── */
 const hubModules = [
-  { label: 'Coatings & Paints',   icon: '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><path d="M12 3a9 9 0 1 0 0 18 3 3 0 0 0 0-6 1.5 1.5 0 0 1 0-3h2a4 4 0 0 0 4-4c0-3-3.6-5-8-5Z"/></svg>' },
-  { label: 'Aerosols',            icon: '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><rect x="9" y="8" width="7" height="13" rx="2"/><path d="M11 8V5h4v3M6 5h2M6 8h1"/></svg>' },
-  { label: 'Lubricants',          icon: '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><path d="M12 3c3 4.5 5 7.4 5 10a5 5 0 0 1-10 0c0-2.6 2-5.5 5-10Z"/></svg>' },
-  { label: 'Cleaners & FMCG',     icon: '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><circle cx="12" cy="13" r="7"/><path d="M12 6V3M9 3h6"/></svg>' },
-  { label: 'Personal Care',       icon: '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><path d="M12 21s-7-4.5-7-10a4 4 0 0 1 7-2.6A4 4 0 0 1 19 11c0 5.5-7 10-7 10Z"/></svg>' },
-  { label: 'Polymers & Resins',   icon: '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><circle cx="7" cy="8" r="3"/><circle cx="17" cy="8" r="3"/><circle cx="12" cy="16" r="3"/><path d="M9.5 9.5 10.5 14M14.5 9.5 13.5 14M9.5 8h5"/></svg>' },
-  { label: 'Agrochemicals',       icon: '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><path d="M12 21V9M12 9c0-3 2-5 6-5 0 4-2 6-6 5ZM12 13c0-3-2-5-6-5 0 4 2 6 6 5Z"/></svg>' },
-  { label: 'Specialty Chemicals', icon: '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><path d="M12 4 4 19h16L12 4Z"/><path d="M8.5 12.5h7"/></svg>' },
+  { label: 'Household & Homecare',    icon: '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><path d="M3 9.5 12 3l9 6.5V20a1 1 0 0 1-1 1H4a1 1 0 0 1-1-1V9.5Z"/><path d="M9 21V12h6v9"/></svg>' },
+  { label: 'Paints & Coatings',       icon: '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><path d="M12 3a9 9 0 1 0 0 18 3 3 0 0 0 0-6 1.5 1.5 0 0 1 0-3h2a4 4 0 0 0 4-4c0-3-3.6-5-8-5Z"/></svg>' },
+  { label: 'Arts & Crafts',           icon: '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><path d="m12 19 7-7 3 3-7 7-3-3Z"/><path d="m18 13-1.5-7.5L2 2l3.5 14.5L13 18l5-5Z"/><path d="m2 2 7.586 7.586"/><circle cx="11" cy="11" r="2"/></svg>' },
+  { label: 'Automotive',              icon: '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><path d="M5 17H3a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h11l5 5v9a2 2 0 0 1-2 2h-2"/><circle cx="9" cy="17" r="2"/><circle cx="19" cy="17" r="2"/></svg>' },
+  { label: 'Industrial',              icon: '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><path d="M2 20h20M5 20V8l7-5 7 5v12"/><path d="M9 20v-5h6v5"/></svg>' },
+  { label: 'Adhesives & Sealants',    icon: '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><path d="M12 3c3 4.5 5 7.4 5 10a5 5 0 0 1-10 0c0-2.6 2-5.5 5-10Z"/></svg>' },
+  { label: 'Personal Care',           icon: '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><path d="M12 21s-7-4.5-7-10a4 4 0 0 1 7-2.6A4 4 0 0 1 19 11c0 5.5-7 10-7 10Z"/></svg>' },
+  { label: 'Cosmetics',               icon: '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><rect x="9" y="8" width="7" height="13" rx="2"/><path d="M11 8V5h4v3M6 5h2M6 8h1"/></svg>' },
 ];
 const R = 232, cx = 300, cy = 300;
 const hubPositioned = hubModules.map((m, i) => {
@@ -22,94 +22,94 @@ const hubPositioned = hubModules.map((m, i) => {
 /* ───────── Feature blocks ───────── */
 const features = [
   {
-    eyebrow: 'Formulation Science',
-    title: 'Get from lab to production fast',
-    body: 'Our application-driven approach identifies the right chemistry, raw materials, and performance targets early — so you move from concept to a validated, ready-to-produce formulation without guesswork.',
+    eyebrow: 'Aerosol Formulation',
+    title: 'From lab concentrate to ready-to-fill aerosol',
+    body: 'Our application-driven approach identifies the right propellant system, concentrate chemistry, and delivery mechanism early — so you move from concept to a validated, production-ready aerosol without guesswork.',
     points: [
-      'Ready-to-produce and custom formulations across coatings, cleaners, lubricants, personal care, and specialty chemicals.',
-      'Reverse engineering and benchmarking to match or beat existing market products.',
-      'Stability, performance, and regulatory validation grounded in industrial reality.',
+      'Ready-to-fill formulations across household cleaners, paints, automotive, personal care, cosmetics, and pharmaceutical aerosols.',
+      'Propellant compatibility testing across LPG, DME, HFC, CO₂, and compressed-gas systems.',
+      'Spray pattern, stability, and regulatory validation grounded in real aerosol filling line requirements.',
     ],
     cta: 'Contact Us',
-    href: '#contact',
+    href: '/contact/',
     img: '/images/about/formulation_science.png',
     reverse: false,
   },
   {
-    eyebrow: 'Process Engineering',
-    title: 'A single source of truth for scale-up',
-    body: 'We design, analyse, and optimise end-to-end manufacturing workflows so laboratory performance is consistently and safely replicated at industrial throughput.',
+    eyebrow: 'Engineering & Filling',
+    title: 'End-to-end aerosol manufacturing support',
+    body: 'We design and optimise complete aerosol production workflows — from valve crimping and gas dosing to line throughput and pressure safety — so lab performance translates consistently to commercial volumes.',
     points: [
-      'Reactor design, mixing hydrodynamics, and material & energy balances for every unit operation.',
-      'Thermal runaway and safety analysis — TMRad/MTSR, HAZOP, and relief sizing.',
-      'Solvent recovery, mass-transfer operations, and plant automation readiness.',
+      'Valve, actuator, and crimping specification for every fill type, can format, and propellant combination.',
+      'Gas dosing system design — under-the-cup and pressure-fill configurations for high-speed lines.',
+      'Over-pressure, leak testing, and HAZOP analysis to meet ADR, aerosol directive, and export compliance.',
     ],
-    cta: 'Learn more about our process',
-    href: '/consulting',
+    cta: 'Explore our services',
+    href: '/aerosol-contract-manufacturing-and-filling/',
     img: '/images/about/process_engineering.png',
     reverse: true,
   },
   {
     eyebrow: 'End-to-End Support',
-    title: 'Pioneering industrial chemistry',
-    body: 'From raw-material intelligence and cost engineering to regulatory compliance and production transfer, we stay engaged from concept through commercial launch.',
+    title: 'From can design to commercial launch',
+    body: 'From raw-material sourcing and can specification to regulatory compliance and production handover, we stay engaged from concept through commercial launch — and beyond.',
     points: [
-      'Raw-material sourcing and cost engineering to protect your margins.',
-      'Regulatory and compliance guidance across multiple sectors and regions.',
-      'Production transfer, plant setup, and long-term technical partnership.',
+      'Can, valve, and cap sourcing across aluminium, tinplate, and BOV formats to protect your margins.',
+      'ADR, GHS, and BIS regulatory compliance support across domestic and export markets.',
+      'Production transfer, plant commissioning, and long-term aerosol technical partnership.',
     ],
-    cta: 'Explore consulting services',
-    href: '/consulting',
+    cta: 'Explore consulting',
+    href: '/services/consulting-and-technical-support/',
     img: '/images/about/launch_support.png',
     reverse: false,
   },
 ];
 
 const steps = [
-  { n: '01', t: 'Discovery & Feasibility', d: 'A free initial assessment of your product goals, target performance, and constraints. We map the technical and commercial landscape before any lab work begins.' },
-  { n: '02', t: 'Formulation Development', d: 'We develop and validate ready-to-produce formulations against your performance, cost, and regulatory targets — with full benchmarking and stability testing.' },
-  { n: '03', t: 'Process Engineering & Scale-Up', d: 'We engineer the manufacturing workflow — reactor design, mixing, thermal safety, and mass balances — so lab performance is replicated at industrial scale.' },
-  { n: '04', t: 'Production & Ongoing Support', d: 'We support production transfer and plant commissioning, then stay on as a long-term technical partner to sustain and optimise performance.' },
+  { n: '01', t: 'Discovery & Feasibility', d: 'A free initial assessment of your aerosol product goals, target market, propellant system, and can format. We map the technical and commercial landscape before any lab work begins.' },
+  { n: '02', t: 'Formulation Development', d: 'We develop and validate ready-to-fill aerosol formulations — concentrate chemistry, propellant ratio, and spray performance — against your cost, stability, and regulatory targets.' },
+  { n: '03', t: 'Filling Trials & Engineering', d: 'We specify valve, actuator, crimping, and gas-dosing parameters, then support filling trials to ensure lab spray performance is consistently replicated at commercial line speeds.' },
+  { n: '04', t: 'Production & Ongoing Support', d: 'We support production transfer and plant commissioning, then stay on as a long-term aerosol technical partner to optimise yields, reduce rejects, and sustain compliance.' },
 ];
 
 const gfWins = [
-  'Independent and application-driven — no raw-material sales bias',
-  'Formulation science and process engineering under one roof',
-  'Plant-level feasibility built into every recommendation',
-  'Long-term technical partnership, concept to commercial launch',
-  'Transparent, validated, ready-to-produce deliverables',
+  ‘Independent and application-driven — no propellant or raw-material supplier bias’,
+  ‘Aerosol formulation science and filling engineering under one roof’,
+  ‘Can, valve, and line compatibility built into every recommendation’,
+  ‘Long-term aerosol technical partnership, concept to commercial launch’,
+  ‘Transparent, validated, ready-to-fill deliverables you can reproduce’,
 ];
 const altLimits = [
-  'Raw-material suppliers steer you toward their own products',
-  'Lab-only consultants hand off before scale-up',
-  'Generic formulations that ignore your equipment reality',
-  'One-off engagements with no ongoing support',
-  'Opaque “black-box” formulations you can’t reproduce',
+  ‘Propellant suppliers steer you toward their own gas systems’,
+  ‘Lab-only consultants hand off before filling trials and scale-up’,
+  ‘Generic formulations that ignore your valve and actuator reality’,
+  ‘One-off engagements with no ongoing aerosol technical support’,
+  ‘Opaque “black-box” concentrates you can\’t modify or audit’,
 ];
 
 /* Split a string into animated word/char spans markup data */
 const splitWords = (s: string) => s.split(' ');
 ---
 
-<Layout title="About Us | Global Formulation" description="Independent chemical formulation and process engineering consultancy — lab-ready formulations across paints, lubricants, cosmetics, and specialty chemicals, through to full scale-up and plant commissioning.">
+<Layout title="About Us | Global Aerosols" description="Independent aerosol formulation and manufacturing consultancy — ready-to-fill aerosol systems across household, automotive, personal care, cosmetics, and industrial applications, through to commercial production.">
 
   <!-- ════════════ HERO ════════════ -->
   <section class="ab-hero">
     <div class="ab-hero-inner">
-      <span class="ab-eyebrow-center reveal">About Global Formulation</span>
+      <span class="ab-eyebrow-center reveal">About Global Aerosols</span>
       <h1 class="ab-hero-title">
-        {splitWords('Global Formulation has the science, tech and expertise').map(word => (
+        {splitWords('Global Aerosols has the science, technology and expertise').map(word => (
           <span class="aw">{word.split('').map(c => <span class="ac">{c}</span>)}</span>
         ))}
         <br class="hide-sm" />
-        {splitWords('to take your chemistry to commercial production').map(word => (
+        {splitWords('to engineer your aerosol from concept to commercial filling').map(word => (
           <span class="aw">{word.split('').map(c => <span class="ac">{c}</span>)}</span>
         ))}
       </h1>
       <p class="ab-hero-sub reveal">
-        No more guesswork. No more failed scale-ups. Independent, application-driven
-        formulation science and chemical engineering that moves with the realities of
-        your plant, your market, and your margins.
+        No more guesswork. No more failed fills. Independent, application-driven
+        aerosol formulation science and engineering that works with your propellant
+        system, your filling line, and your margins.
       </p>
     </div>
   </section>
@@ -148,15 +148,15 @@ const splitWords = (s: string) => s.split(' ');
   <!-- ════════════ CAPABILITY HUB ════════════ -->
   <section class="ab-hub">
     <div class="ab-hub-head">
-      <span class="ab-eyebrow-center reveal">Formulation Platform</span>
+      <span class="ab-eyebrow-center reveal">Aerosol Application Platform</span>
       <h2 class="ab-hub-title">
-        {splitWords('Formulate across every industry, from one partner.').map(word => (
+        {splitWords('Aerosol systems for every sector, from one partner.').map(word => (
           <span class="aw">{word.split('').map(c => <span class="ac">{c}</span>)}</span>
         ))}
       </h2>
       <p class="ab-hub-sub reveal">
-        Global Formulation works across a connected ecosystem of chemical sectors —
-        from a single mission-critical formulation to full plant commissioning.
+        Global Aerosols works across a connected ecosystem of aerosol application sectors —
+        from a single mission-critical formulation to full commercial filling and plant commissioning.
       </p>
     </div>
 
@@ -164,8 +164,8 @@ const splitWords = (s: string) => s.split(' ');
       <div class="hub-orbit"></div>
       <div class="hub-orbit hub-orbit-2"></div>
       <div class="hub-core">
-        <span class="hub-core-mark">GF</span>
-        <span class="hub-core-label">Global<br />Formulation</span>
+        <span class="hub-core-mark">GA</span>
+        <span class="hub-core-label">Global<br />Aerosols</span>
       </div>
       {hubPositioned.map(m => (
         <div class="hub-node" style={`left:${(m.x / 600) * 100}%; top:${(m.y / 600) * 100}%;`}>
@@ -182,13 +182,13 @@ const splitWords = (s: string) => s.split(' ');
       <img class="ab-tour-bg" src="/images/about/consultation_banner.png" alt="" loading="lazy" aria-hidden="true" />
       <div class="ab-tour-content">
         <h2 class="ab-tour-title">
-          {splitWords('Get a personalised consultation').map(word => (
-            <span class="aw">{word.split('').map(c => <span class="ac">{c}</span>)}</span>
+          {splitWords(‘Get a personalised aerosol consultation’).map(word => (
+            <span class="aw">{word.split(‘’).map(c => <span class="ac">{c}</span>)}</span>
           ))}
         </h2>
         <p class="ab-tour-sub reveal">
-          Tell us about your project and we’ll connect you with the right formulation
-          specialist — with minimal fuss and maximum technical depth.
+          Tell us about your aerosol product and we’ll connect you with the right
+          formulation and filling specialist — with minimal fuss and maximum technical depth.
         </p>
         <form class="ab-tour-form reveal" action="#contact" method="get">
           <input type="email" placeholder="Enter your email to get started…" aria-label="Email address" required />
@@ -203,13 +203,13 @@ const splitWords = (s: string) => s.split(' ');
     <div class="ab-process-head">
       <span class="ab-eyebrow-center reveal">Phased Process</span>
       <h2 class="ab-process-title">
-        {splitWords('Our 4-step process').map(word => (
-          <span class="aw">{word.split('').map(c => <span class="ac">{c}</span>)}</span>
+        {splitWords(‘Our 4-step aerosol process’).map(word => (
+          <span class="aw">{word.split(‘’).map(c => <span class="ac">{c}</span>)}</span>
         ))}
       </h2>
       <p class="ab-process-sub reveal">
-        Find your best starting point based on a process we’ve refined and proven
-        across more than 20 years of industrial formulation work.
+        Find your best starting point based on a process refined and proven
+        across more than 20 years of aerosol formulation and manufacturing work.
       </p>
     </div>
 
@@ -228,10 +228,10 @@ const splitWords = (s: string) => s.split(' ');
   <!-- ════════════ WHY / COMPARISON ════════════ -->
   <section class="ab-why">
     <div class="ab-why-head">
-      <span class="ab-eyebrow-center reveal">Global Formulation vs. Alternatives</span>
+      <span class="ab-eyebrow-center reveal">Global Aerosols vs. Alternatives</span>
       <h2 class="ab-why-title">
-        {splitWords('Why Global Formulation?').map(word => (
-          <span class="aw">{word.split('').map(c => <span class="ac">{c}</span>)}</span>
+        {splitWords(‘Why Global Aerosols?’).map(word => (
+          <span class="aw">{word.split(‘’).map(c => <span class="ac">{c}</span>)}</span>
         ))}
       </h2>
       <p class="ab-why-sub reveal">
