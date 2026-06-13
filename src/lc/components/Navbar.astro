@@ -12,63 +12,63 @@ const formTechItems = [
     url: "/household-and-industrial-cleaners/",
     tag: "Cleaners & Detergents",
     desc: "Surfactant-based cleaning formulations from premium household products to heavy-duty cleaners.",
-    image: "https://cdn.globalaerosols.com/images/nav/household-cleaners.webp?v=2",
+    image: "https://cdn.globalaerosols.com/images/nav/household-cleaners.webp?v=3",
   },
   {
     label: "Paints & Coatings",
     url: "/paints-and-coatings/",
     tag: "Coatings & Resins",
     desc: "From alkyd to epoxy resins — industrial coatings formulations, pigment dispersion, and full-scale manufacturing.",
-    image: "https://cdn.globalaerosols.com/images/nav/paints-coatings.webp?v=2",
+    image: "https://cdn.globalaerosols.com/images/nav/paints-coatings.webp?v=3",
   },
   {
     label: "Arts & Crafts",
     url: "/arts-and-crafts/",
     tag: "Creative & Hobbies",
     desc: "Specialty adhesives, glues, and binders developed for creative, craft, and hobby applications.",
-    image: "https://cdn.globalaerosols.com/images/artscrafts_category.webp",
+    image: "https://cdn.globalaerosols.com/images/nav/artscrafts.webp?v=3",
   },
   {
     label: "Automotive",
     url: "/automotive/",
     tag: "Car Care & Aerosols",
     desc: "Brake cleaners, carburetor sprays, penetrating lubricants, and automotive maintenance aerosols engineered to specs.",
-    image: "https://cdn.globalaerosols.com/images/automotive_category.webp",
+    image: "https://cdn.globalaerosols.com/images/nav/automotive.webp?v=3",
   },
   {
     label: "Industrial",
     url: "/industrial/",
     tag: "Industrial Aerosols",
     desc: "Mold release agents, weld spatter release, cold galvanizing zinc, and heavy-duty industrial aerosols.",
-    image: "https://cdn.globalaerosols.com/images/industrial_category.webp",
+    image: "https://cdn.globalaerosols.com/images/nav/industrial.webp?v=3",
   },
   {
     label: "Adhesives & Sealants",
     url: "/adhesives-and-sealants/",
     tag: "Structural Bonding",
     desc: "Structural adhesives, MS polymers, and reactive sealants formulated for bond strength and durability.",
-    image: "https://cdn.globalaerosols.com/images/nav/adhesives-sealants.webp?v=2",
+    image: "https://cdn.globalaerosols.com/images/nav/adhesives-sealants.webp?v=3",
   },
   {
     label: "Personal Care",
     url: "/cosmetics-and-personal-care/",
     tag: "Hygiene & Wellness",
     desc: "Daily care, skin, hair, hygiene formulations, and personal care solutions.",
-    image: "https://cdn.globalaerosols.com/images/personalcare_category.webp",
+    image: "https://cdn.globalaerosols.com/images/nav/personalcare.webp?v=3",
   },
   {
     label: "Cosmetics",
     url: "/cosmetics/",
     tag: "Beauty & Luxury",
     desc: "Premium cosmetics emulsions, active delivery systems, and regulatory-compliant makeup formulations.",
-    image: "https://cdn.globalaerosols.com/images/cosmetics_category.webp",
+    image: "https://cdn.globalaerosols.com/images/nav/cosmetics.webp?v=3",
   },
   {
     label: "Pharmaceuticals",
     url: "/pharmaceuticals-and-health-care/",
     tag: "Pharma & Healthcare",
     desc: "API suspensions, topical gels, and OTC product development under WHO GMP and regulatory frameworks.",
-    image: "https://cdn.globalaerosols.com/images/nav/pharmaceuticals.webp?v=2",
+    image: "https://cdn.globalaerosols.com/images/nav/pharmaceuticals.webp?v=3",
   },
 ];
 
@@ -78,14 +78,14 @@ const servicesItems = [
     url: "/aerosol-contract-manufacturing-and-filling/",
     tag: "Manufacturing & Filling",
     desc: "Turnkey contract aerosol filling and automated packaging, scaled to ISO GMP cosmetics standards.",
-    image: "https://cdn.globalaerosols.com/images/nav/services-manufacturing.webp",
+    image: "https://cdn.globalaerosols.com/images/nav/services-manufacturing.webp?v=2",
   },
   {
     label: "Product Formulation",
     url: "/services/product-formulation/",
     tag: "R&D & Science",
     desc: "Expert chemical engineering for high-performance aerosols, emulsion stability, and custom active delivery.",
-    image: "https://cdn.globalaerosols.com/images/nav/services-formulation.webp",
+    image: "https://cdn.globalaerosols.com/images/nav/services-formulation.webp?v=2",
   },
   {
     label: "Consulting & Technical Support",
@@ -121,6 +121,23 @@ const servicesItems = [
     tag: "Aesthetic Finishes",
     desc: "Premium custom-colored overcaps, double-wall caps, and child-resistant closures for cosmetic aerosols.",
     image: "https://cdn.globalaerosols.com/images/nav/services-caps.webp",
+  }
+];
+
+const softwareItems = [
+  {
+    label: "CanWrap 3D",
+    url: "/services/canwrap-3d/",
+    tag: "3D Tinplate Configurator",
+    desc: "Apply your artwork, adjust gloss and vibrancy, and proof your final print designs on standard tinplate cans in real-time.",
+    image: "https://cdn.globalaerosols.com/images/nav/software-canwrap-3d.webp",
+  },
+  {
+    label: "CanWrap 3D Aluminium",
+    url: "/services/canwrap-3d-aluminium/",
+    tag: "3D Monoblock Configurator",
+    desc: "Simulate complex can geometries, shoulder profiles, and flexographic labels on aluminium monoblock cans.",
+    image: "https://cdn.globalaerosols.com/images/nav/software-canwrap-3d-aluminium.webp",
   }
 ];
 ---
@@ -181,7 +198,7 @@ const servicesItems = [
                       <source src={item.image} type="video/webm" />
                     </video>
                   ) : (
-                    <img src={item.image} alt={item.label} loading="lazy" decoding="async" />
+                    <img src={item.image} alt={item.label} loading="eager" decoding="async" />
                   )}
                 </div>
                 <div class="mega-info">
@@ -249,14 +266,50 @@ const servicesItems = [
       </li>
 
       <!-- Aerosol Software Dropdown -->
-      <li class="dropdown">
+      <li class="dropdown mega-dropdown">
         <button class="dropdown-toggle" aria-haspopup="true" aria-expanded="false">
           Aerosol Software <span class="chevron">▼</span>
         </button>
-        <ul class="dropdown-menu">
-          <li><a href="/services/canwrap-3d/">CanWrap 3D</a></li>
-          <li><a href="/services/canwrap-3d-aluminium/">CanWrap 3D Aluminium</a></li>
-        </ul>
+
+        <!-- ── Mega Menu ── -->
+        <div class="mega-menu" role="dialog" aria-label="Aerosol Software">
+          <div class="mega-left">
+            <p class="mega-eyebrow">Aerosol Software</p>
+            <ul class="mega-links">
+              {softwareItems.map((item, i) => (
+                <li class="mega-item" data-index={i}>
+                  <a href={item.url}>
+                    <span class="mega-item-label">{item.label}</span>
+                    <svg class="mega-item-arrow" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" width="13" height="13">
+                      <path stroke-linecap="round" stroke-linejoin="round" d="M9 5l7 7-7 7"/>
+                    </svg>
+                  </a>
+                </li>
+              ))}
+            </ul>
+          </div>
+
+          <div class="mega-right">
+            {softwareItems.map((item, i) => (
+              <div class="mega-pane" data-index={i}>
+                <div class="mega-img-wrap mega-img-wrap--contain">
+                  <img src={item.image} alt={item.label} loading="lazy" decoding="async" />
+                </div>
+                <div class="mega-info">
+                  <span class="mega-tag">{item.tag}</span>
+                  <h3 class="mega-title">{item.label}</h3>
+                  <p class="mega-desc">{item.desc}</p>
+                  <a href={item.url} class="mega-cta">
+                    Launch Studio
+                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" width="13" height="13">
+                      <path stroke-linecap="round" stroke-linejoin="round" d="M9 5l7 7-7 7"/>
+                    </svg>
+                  </a>
+                </div>
+              </div>
+            ))}
+          </div>
+        </div>
       </li>
 
       <li><a href="/about/" class={pathname === "/about/" ? "active" : undefined}>About</a></li>
@@ -878,19 +931,27 @@ const servicesItems = [
     min-height: 0;
   }
 
+  .mega-img-wrap--contain {
+    background: #f8fafc; /* Match the default mega-menu right pane background */
+  }
+
+  .mega-img-wrap--contain img {
+    object-fit: contain !important;
+  }
+
   .mega-img-wrap img,
   .mega-img-wrap video {
     width: 100%;
     height: 100%;
-    object-fit: cover;
+    object-fit: contain;
+    object-position: center;
     display: block;
-    transition: transform 0.7s cubic-bezier(0.25, 1, 0.3, 1);
-    transform: scale(1.04);
+    transition: opacity 0.4s ease;
   }
 
   .mega-pane.is-active .mega-img-wrap img,
   .mega-pane.is-active .mega-img-wrap video {
-    transform: scale(1);
+    opacity: 1;
   }
 
   .mega-info {
