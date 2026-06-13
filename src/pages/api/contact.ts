@@ -1,6 +1,7 @@
 import type { APIRoute } from 'astro';
+import { RESEND_API_KEY, RESEND_SENDER_EMAIL, CONTACT_EMAIL_RECIPIENT } from 'astro:env/server';
 
-export const POST: APIRoute = async ({ request, locals }) => {
+export const POST: APIRoute = async ({ request }) => {
   try {
     const body = await request.json();
     const { name, email, message } = body;
@@ -13,11 +14,10 @@ export const POST: APIRoute = async ({ request, locals }) => {
       });
     }
 
-    // Cloudflare Pages runtime env — secrets set in the Pages dashboard
-    const env = (locals as any).runtime?.env ?? {};
-    const resendApiKey = env.RESEND_API_KEY;
-    const recipientEmail = env.CONTACT_EMAIL_RECIPIENT ?? "globalaerosols@gmail.com";
-    const senderEmail = env.RESEND_SENDER_EMAIL ?? "inquiry@globalaerosols.com";
+    // Secrets set in Cloudflare Pages dashboard, read via Astro v6 env module
+    const resendApiKey = RESEND_API_KEY;
+    const recipientEmail = CONTACT_EMAIL_RECIPIENT ?? "globalaerosols@gmail.com";
+    const senderEmail = RESEND_SENDER_EMAIL ?? "inquiry@globalaerosols.com";
 
     if (!resendApiKey) {
       console.error("[Resend API Error]: RESEND_API_KEY is not defined in the environment.");

@@ -1,5 +1,5 @@
 // @ts-check
-import { defineConfig } from 'astro/config';
+import { defineConfig, envField } from 'astro/config';
 import sitemap from '@astrojs/sitemap';
 import cloudflare from '@astrojs/cloudflare';
 
@@ -11,6 +11,13 @@ export default defineConfig({
   adapter: cloudflare({
     platformProxy: { enabled: true },
   }),
+  env: {
+    schema: {
+      RESEND_API_KEY: envField.string({ context: 'server', access: 'secret', optional: true }),
+      RESEND_SENDER_EMAIL: envField.string({ context: 'server', access: 'secret', optional: true }),
+      CONTACT_EMAIL_RECIPIENT: envField.string({ context: 'server', access: 'secret', optional: true }),
+    },
+  },
   integrations: [
     sitemap({
       filter: (page) =>
