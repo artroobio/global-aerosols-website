@@ -95,12 +95,14 @@ const cleanCanonical = (() => {
 
     <script is:inline>
       (function() {
-        const CDN_PREFIX = 'https://cdn.globalaerosols.com/';
         const STATIC_CATEGORIES = ['home', 'industrial', 'auto', 'cosmetics', 'paints', 'arts', 'nav'];
 
         function getFallbackSrc(src) {
-          if (!src || !src.startsWith(CDN_PREFIX)) return src;
-          const cleanPath = src.substring(CDN_PREFIX.length);
+          if (!src) return src;
+          const idx = src.indexOf('images/');
+          if (idx === -1) return src;
+
+          const cleanPath = src.substring(idx); // e.g. "images/category/filename" or "images/slug/filename"
           const segments = cleanPath.split('/');
           if (segments.length === 3) {
             const category = segments[1];
@@ -121,7 +123,7 @@ const cleanCanonical = (() => {
         } catch (e) {}
 
         function handleImageError(img) {
-          if (img.src && img.src.startsWith(CDN_PREFIX)) {
+          if (img.src) {
             const fallback = getFallbackSrc(img.src);
             if (fallback !== img.src) {
               img.src = fallback;
@@ -146,22 +148,23 @@ const cleanCanonical = (() => {
         function scanAndRewrite() {
           // 1. Rewrite <img> tags
           document.querySelectorAll('img').forEach(function(img) {
-            if (img.src && img.src.startsWith(CDN_PREFIX)) {
-              img.src = getFallbackSrc(img.src);
+            if (img.src) {
+              const fallback = getFallbackSrc(img.src);
+              if (fallback !== img.src) {
+                img.src = fallback;
+              }
             }
           });
 
           // 2. Rewrite background images
-          document.querySelectorAll('[style*="' + CDN_PREFIX + '"]').forEach(function(el) {
+          document.querySelectorAll('[style*="images"]').forEach(function(el) {
             const style = el.getAttribute('style') || '';
-            if (style.indexOf(CDN_PREFIX) !== -1) {
-              const match = style.match(/url\(['"]?(https:\/\/cdn\.globalformulation\.com\/[^'")]+)['"]?\)/);
-              if (match && match[1]) {
-                const originalUrl = match[1];
-                const fallbackUrl = getFallbackSrc(originalUrl);
-                if (fallbackUrl !== originalUrl) {
-                  el.style.backgroundImage = 'url("' + fallbackUrl + '")';
-                }
+            const match = style.match(/url\(['"]?([^'")]+images\/[^'")]+)['"]?\)/);
+            if (match && match[1]) {
+              const originalUrl = match[1];
+              const fallbackUrl = getFallbackSrc(originalUrl);
+              if (fallbackUrl !== originalUrl) {
+                el.style.backgroundImage = 'url("' + fallbackUrl + '")';
               }
             }
           });

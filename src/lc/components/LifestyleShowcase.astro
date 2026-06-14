@@ -48,20 +48,14 @@
       <div class="visual-card">
         <div class="visual-image-container">
           <img 
-            src="https://cdn.globalaerosols.com/images/aerosols/aerosols_hero.webp" 
+            src="https://cdn.globalaerosols.com/images/aerosols/aerosols_hero_v3.webp" 
             alt="Precision Aerosol Manufacturing and Contract Filling"
             class="visual-img" 
             loading="lazy"
           />
           <div class="visual-gradient-overlay"></div>
         </div>
-        <div class="floating-luxury-badge">
-          <span class="badge-ring"></span>
-          <div class="badge-text">
-            <span class="badge-title">Aerosol Grade</span>
-            <span class="badge-subtitle">Precision Filling</span>
-          </div>
-        </div>
+
       </div>
     </div>
   </div>
@@ -288,68 +282,7 @@
     transform: scale(1.08);
   }
 
-  /* Floating luxury badge */
-  .floating-luxury-badge {
-    position: absolute;
-    left: -40px;
-    bottom: 50px;
-    z-index: 10;
-    background: rgba(24, 24, 27, 0.85);
-    backdrop-filter: blur(20px);
-    border: 1px solid rgba(255, 255, 255, 0.1);
-    padding: 16px 28px;
-    border-radius: 20px;
-    display: flex;
-    align-items: center;
-    gap: 16px;
-    box-shadow: 0 20px 40px rgba(0,0,0,0.3);
-    opacity: 0;
-    transform: translateX(-30px);
-    transition: all 1s cubic-bezier(0.25, 1, 0.3, 1) 0.6s;
-  }
 
-  .badge-ring {
-    width: 12px;
-    height: 12px;
-    border-radius: 50%;
-    background: #0968e5;
-    position: relative;
-    box-shadow: 0 0 15px #0968e5;
-  }
-
-  .badge-ring::after {
-    content: '';
-    position: absolute;
-    inset: -6px;
-    border-radius: 50%;
-    border: 1.5px solid rgba(9, 104, 229, 0.4);
-    animation: ring-pulse 2s infinite ease-out;
-  }
-
-  @keyframes ring-pulse {
-    0% { transform: scale(0.8); opacity: 1; }
-    100% { transform: scale(1.8); opacity: 0; }
-  }
-
-  .badge-text {
-    display: flex;
-    flex-direction: column;
-  }
-
-  .badge-title {
-    font-size: 0.85rem;
-    font-weight: 700;
-    color: #ffffff;
-    letter-spacing: 0.05em;
-  }
-
-  .badge-subtitle {
-    font-size: 0.65rem;
-    color: #a1a1aa;
-    text-transform: uppercase;
-    letter-spacing: 0.1em;
-    margin-top: 2px;
-  }
 
   /* GSAP Active States */
   .lifestyle-showcase-section.active .eyebrow-accent,
@@ -369,10 +302,7 @@
     transform: scale(1.03);
   }
 
-  .lifestyle-showcase-section.active .floating-luxury-badge {
-    opacity: 1;
-    transform: translateX(0);
-  }
+
 
   /* Responsiveness */
   @media (max-width: 1024px) {
@@ -385,10 +315,7 @@
       max-width: 100%;
     }
     
-    .floating-luxury-badge {
-      left: 20px;
-      bottom: -20px;
-    }
+
     
     .visual-card {
       aspect-ratio: 16 / 11;
@@ -404,9 +331,7 @@
       aspect-ratio: 4 / 3;
     }
     
-    .floating-luxury-badge {
-      display: none; /* Hide floating elements on mobile for pure screen utilization */
-    }
+
     
     .attributes-grid {
       grid-template-columns: 1fr;
