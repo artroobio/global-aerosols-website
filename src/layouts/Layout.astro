@@ -173,23 +173,23 @@ const cleanCanonical = (() => {
         // If CDN already marked as failed, rewrite immediately to prevent flash/delay
         if (cdnFailed) {
           scanAndRewrite();
-        }
 
-        // Set up periodic scanning and DOM-ready triggers
-        document.addEventListener('DOMContentLoaded', scanAndRewrite);
-        window.addEventListener('load', scanAndRewrite);
-        
-        // Use MutationObserver for high-performance reactive scanning
-        if (window.MutationObserver) {
-          const observer = new MutationObserver(scanAndRewrite);
-          observer.observe(document.documentElement, {
-            childList: true,
-            subtree: true,
-            attributes: true,
-            attributeFilter: ['style', 'src']
-          });
-        } else {
-          setInterval(scanAndRewrite, 300);
+          // Set up periodic scanning and DOM-ready triggers
+          document.addEventListener('DOMContentLoaded', scanAndRewrite);
+          window.addEventListener('load', scanAndRewrite);
+          
+          // Use MutationObserver for high-performance reactive scanning
+          if (window.MutationObserver) {
+            const observer = new MutationObserver(scanAndRewrite);
+            observer.observe(document.documentElement, {
+              childList: true,
+              subtree: true,
+              attributes: true,
+              attributeFilter: ['style', 'src']
+            });
+          } else {
+            setInterval(scanAndRewrite, 300);
+          }
         }
       })();
     </script>
