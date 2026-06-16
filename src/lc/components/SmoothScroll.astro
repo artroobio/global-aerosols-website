@@ -12,6 +12,7 @@
   import { ScrollTrigger } from 'gsap/ScrollTrigger';
 
   gsap.registerPlugin(ScrollTrigger);
+  ScrollTrigger.config({ ignoreMobileResize: true });
 
   const prefersReduced = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
   // Match the exact breakpoint the rest of the site uses to gate heavy scroll work.
