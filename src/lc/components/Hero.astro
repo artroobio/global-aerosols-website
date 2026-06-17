@@ -362,11 +362,26 @@
             }
         }
 
-        // ── Start ripple; onRippleReady fires when WebGL is rendering ─────
-        var rippleOk = buildRipple(rippleCanvas, heroImage, onRippleReady);
+        // ── Ripple lifecycle ──────────────────────────────────────────────
+        // buildRipple returns its teardown function on success, or false on
+        // failure. We build the ripple while the hero is in view, fully unload
+        // it from memory once the user scrolls away, and rebuild it when they
+        // scroll back to the top.
+        var rippleDestroy = null;   // teardown fn while the ripple is alive, else null
+        var webglFailed   = false;  // WebGL unsupported → never (re)build
+        var introDone     = false;  // run the title/CTA intro animation only once
 
-        // Fallback if WebGL unavailable: reveal title immediately
-        if (!rippleOk) {
+        // Reveal title + CTA via the ripple-synced intro (first build only).
+        function onRippleReadyManaged() {
+            if (introDone) return;  // on rebuilds the content is already visible
+            introDone = true;
+            onRippleReady();
+        }
+
+        // Reveal title + CTA without a ripple (WebGL unavailable, first time only).
+        function revealContentFallback() {
+            if (introDone) return;
+            introDone = true;
             if (titleEl) titleEl.style.opacity = '1';
             if (ctaBtn) ctaBtn.style.opacity = '1';
             if (typeof gsap !== 'undefined' && chars.length) {
@@ -377,6 +392,54 @@
                     }
                 });
             }
+        }
+
+        function startRipple() {
+            if (rippleDestroy || webglFailed) return;
+            var ok = buildRipple(rippleCanvas, heroImage, onRippleReadyManaged);
+            if (typeof ok === 'function') {
+                rippleDestroy = ok;
+            } else {
+                webglFailed = true;
+                revealContentFallback();
+            }
+        }
+
+        function stopRipple() {
+            if (!rippleDestroy) return;
+            rippleDestroy();
+            rippleDestroy = null;
+
+            // The old canvas's WebGL context was lost via loseContext() and can
+            // never be revived, so getContext() on it would hand back a dead
+            // context. Swap in a fresh canvas (same id/class/styles) so the next
+            // rebuild gets a working context.
+            if (rippleCanvas && rippleCanvas.parentNode) {
+                var fresh = rippleCanvas.cloneNode(false);
+                fresh.style.opacity = '0'; // stay hidden until the new ripple swaps it in
+                rippleCanvas.parentNode.replaceChild(fresh, rippleCanvas);
+                rippleCanvas = fresh;
+            }
+        }
+
+        // Hysteresis thresholds (px) so scrolling across the edge doesn't thrash.
+        var BUILD_AT  = 10;   // at/under: hero in view  → ripple on
+        var UNLOAD_AT = 80;   // past:     scrolled away  → ripple off (freed)
+
+        function onHeroScroll() {
+            if (webglFailed) return;
+            var y = window.scrollY || window.pageYOffset || 0;
+            if (y > UNLOAD_AT) {
+                stopRipple();
+            } else if (y <= BUILD_AT) {
+                startRipple();
+            }
+        }
+        window.addEventListener('scroll', onHeroScroll, { passive: true });
+
+        // Initial build only if the hero is actually in view on load.
+        if ((window.scrollY || window.pageYOffset || 0) <= BUILD_AT) {
+            startRipple();
         }
     }
 
@@ -456,8 +519,10 @@
         }
 
         var prog = gl.createProgram();
-        gl.attachShader(prog, mkShader(gl.VERTEX_SHADER, vs));
-        gl.attachShader(prog, mkShader(gl.FRAGMENT_SHADER, fs));
+        var vsh = mkShader(gl.VERTEX_SHADER, vs);
+        var fsh = mkShader(gl.FRAGMENT_SHADER, fs);
+        gl.attachShader(prog, vsh);
+        gl.attachShader(prog, fsh);
         gl.linkProgram(prog);
         if (!gl.getProgramParameter(prog, gl.LINK_STATUS)) {
             console.error('Program link error:', gl.getProgramInfoLog(prog));
@@ -506,10 +571,14 @@
         }
 
         var ripplePaused = false;
+        var destroyed    = false;
+        var rafId        = 0;
+        var tex          = null;
+        var io           = null;
 
         function tick() {
-            if (ripplePaused) return;
-            requestAnimationFrame(tick);
+            if (destroyed || ripplePaused) return;
+            rafId = requestAnimationFrame(tick);
             var t = (performance.now() - t0) / 1000;
             gl.useProgram(prog);
             gl.uniform1f(locs.t, t);
@@ -522,7 +591,7 @@
             gl.drawArrays(gl.TRIANGLES, 0, 6);
         }
 
-        window.addEventListener('mousemove', function (e) {
+        function onMouseMove(e) {
             var now = performance.now();
             if (now - lastMT < 30) return;
             var r = canvas.getBoundingClientRect();
@@ -531,7 +600,8 @@
             waves[wIdx * 3 + 2] = (now - t0) / 1000;
             wIdx = (wIdx + 1) % MAX;
             lastMT = now;
-        }, { passive: true });
+        }
+        window.addEventListener('mousemove', onMouseMove, { passive: true });
 
         window.addEventListener('resize', resize);
 
@@ -540,10 +610,17 @@
         var img = new Image();
         img.crossOrigin = 'anonymous';
         img.onload = function () {
+            // If the user scrolled and tore the ripple down before the texture
+            // finished loading, skip all GL work but still reveal the hero content.
+            if (destroyed) {
+                if (onReady) onReady();
+                return;
+            }
+
             imgW = img.width;
             imgH = img.height;
 
-            var tex = gl.createTexture();
+            tex = gl.createTexture();
             gl.bindTexture(gl.TEXTURE_2D, tex);
             gl.texParameteri(gl.TEXTURE_2D, gl.TEXTURE_WRAP_S, gl.CLAMP_TO_EDGE);
             gl.texParameteri(gl.TEXTURE_2D, gl.TEXTURE_WRAP_T, gl.CLAMP_TO_EDGE);
@@ -557,16 +634,17 @@
             mainT   = (performance.now() - t0) / 1000;
 
             // Pause render loop when hero is scrolled off-screen
-            new IntersectionObserver(function(entries) {
+            io = new IntersectionObserver(function(entries) {
                 entries.forEach(function(entry) {
                     if (!entry.isIntersecting) {
                         ripplePaused = true;
-                    } else if (ripplePaused) {
+                    } else if (ripplePaused && !destroyed) {
                         ripplePaused = false;
                         tick();
                     }
                 });
-            }, { threshold: 0 }).observe(canvas);
+            }, { threshold: 0 });
+            io.observe(canvas);
 
             // Start render loop
             tick();
@@ -594,7 +672,36 @@
 
         // Use the page-rendered img src — always same-origin, always loaded already
         img.src = fallbackImg.src;
-        return true;
+
+        // ── Full teardown: free the WebGL ripple from memory ──────────────
+        // Stops the render loop, removes listeners, deletes all GL resources
+        // and loses the context. The static hero image is restored so the
+        // section still shows artwork after the effect is gone.
+        function destroy() {
+            if (destroyed) return;
+            destroyed = true;
+
+            if (rafId) cancelAnimationFrame(rafId);
+            window.removeEventListener('mousemove', onMouseMove);
+            window.removeEventListener('resize', resize);
+            if (io) io.disconnect();
+
+            // Reveal the static fallback image before the canvas goes blank
+            if (fallbackImg) fallbackImg.style.opacity = '1';
+            if (canvas) canvas.style.opacity = '0';
+
+            try {
+                if (tex)  gl.deleteTexture(tex);
+                if (buf)  gl.deleteBuffer(buf);
+                if (prog) gl.deleteProgram(prog);
+                if (vsh)  gl.deleteShader(vsh);
+                if (fsh)  gl.deleteShader(fsh);
+                var lose = gl.getExtension('WEBGL_lose_context');
+                if (lose) lose.loseContext();
+            } catch (e) { /* context may already be gone */ }
+        }
+
+        return destroy;
     }
 
 })();
