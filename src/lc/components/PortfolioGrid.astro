@@ -478,17 +478,21 @@
         {
           scale: 0.9,
           borderRadius: "120px",
+          width: "80%",
+          height: "80vh",
         },
         {
           scale: 1,
           borderRadius: "0px",
+          width: "100%",
+          height: "95vh",
           ease: "none",
           force3D: true,
           scrollTrigger: {
             trigger: section,
             start: "top 95%",
             end: "center center",
-            scrub: 1,
+            scrub: true,
           },
         }
       );
@@ -519,7 +523,7 @@
         scrollTrigger: {
           trigger: section,
           start: "top 45%",
-          toggleActions: "play none none none"
+          toggleActions: "play none none reverse"
         }
       });
 
@@ -562,7 +566,7 @@
             scrollTrigger: {
               trigger: section,
               start: "top 30%",
-              toggleActions: "play none none none",
+              toggleActions: "play none none reverse",
             },
           }
         );
