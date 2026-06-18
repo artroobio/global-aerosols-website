@@ -6,47 +6,56 @@ const capabilities = [
   {
     num: '01',
     title: 'Product Concept Validation',
-    desc: 'Evaluating formulation thermodynamics, pressure feasibility, propellant chemistry, and safety profiles.'
+    desc: 'Evaluating formulation thermodynamics, pressure feasibility, propellant chemistry, and safety profiles.',
+    img: 'https://cdn.globalaerosols.com/images/contract/capabilities/concept_validation.webp'
   },
   {
     num: '02',
     title: 'Custom Formulation Development',
-    desc: 'Engineering stable active ingredients, solvent blends, and propellant dispersion ratios.'
+    desc: 'Engineering stable active ingredients, solvent blends, and propellant dispersion ratios.',
+    img: 'https://cdn.globalaerosols.com/images/contract/capabilities/formulation_development.webp'
   },
   {
     num: '03',
     title: 'Lab-Scale & Pilot Trials',
-    desc: 'Creating prototype batches to validate canister pressure, discharge rate, and spray morphology.'
+    desc: 'Creating prototype batches to validate canister pressure, discharge rate, and spray morphology.',
+    img: 'https://cdn.globalaerosols.com/images/contract/capabilities/pilot_trials.webp'
   },
   {
     num: '04',
     title: 'Bulk Manufacturing',
-    desc: 'High-precision mixing and chemical compounding in reaction vessels under controlled temperatures.'
+    desc: 'High-precision mixing and chemical compounding in reaction vessels under controlled temperatures.',
+    img: 'https://cdn.globalaerosols.com/images/contract/capabilities/bulk_manufacturing.webp'
   },
   {
     num: '05',
     title: 'Aerosol Filling & Gassing',
-    desc: 'Under-the-cup and through-the-valve filling lines with high-speed automated propellant charging.'
+    desc: 'Under-the-cup and through-the-valve filling lines with high-speed automated propellant charging.',
+    img: 'https://cdn.globalaerosols.com/images/contract/capabilities/filling_gassing.webp'
   },
   {
     num: '06',
     title: 'Component Selection',
-    desc: 'Selecting optimal can coatings, mounting cup gaskets, dip tubes, valves, and specialized actuators.'
+    desc: 'Selecting optimal can coatings, mounting cup gaskets, dip tubes, valves, and specialized actuators.',
+    img: 'https://cdn.globalaerosols.com/images/contract/capabilities/component_selection.webp'
   },
   {
     num: '07',
     title: 'Crimp & Pressure Testing',
-    desc: 'Electronic crimp dimension measurement, gross-weight verification, and water bath leak detection.'
+    desc: 'Electronic crimp dimension measurement, gross-weight verification, and water bath leak detection.',
+    img: 'https://cdn.globalaerosols.com/images/contract/capabilities/pressure_testing.webp'
   },
   {
     num: '08',
     title: 'Labeling & Packaging',
-    desc: 'Automated shrink-sleeving, inline printing, batch coding, and dangerous goods cartoning.'
+    desc: 'Automated shrink-sleeving, inline printing, batch coding, and dangerous goods cartoning.',
+    img: 'https://cdn.globalaerosols.com/images/contract/capabilities/labeling_packaging.webp'
   },
   {
     num: '09',
     title: 'Logistics & Warehousing',
-    desc: 'Specialized DG storage, regulatory transport documentation, and global export support.'
+    desc: 'Specialized DG storage, regulatory transport documentation, and global export support.',
+    img: 'https://cdn.globalaerosols.com/images/contract/capabilities/logistics_warehousing.webp'
   }
 ];
 
@@ -54,6 +63,7 @@ const productCategories = [
   {
     num: '01',
     title: 'Automotive Aerosols',
+    img: 'https://cdn.globalaerosols.com/images/contract/automotive_cans.webp',
     items: [
       'Brake & Parts Cleaners',
       'Carburetor & Throttle Body Cleaners',
@@ -69,6 +79,7 @@ const productCategories = [
   {
     num: '02',
     title: 'Industrial Aerosols',
+    img: 'https://cdn.globalaerosols.com/images/contract/filling_line.webp',
     items: [
       'Mold Release Sprays (Silicone/Lecithin)',
       'Weld Anti-Spatter Barrier Sprays',
@@ -83,6 +94,7 @@ const productCategories = [
   {
     num: '03',
     title: 'Household & FMCG',
+    img: 'https://cdn.globalaerosols.com/images/contract/valve_spray.webp',
     items: [
       'Air Fresheners & Room Deodorizers',
       'Fabric & Upholstery Fresheners',
@@ -96,6 +108,7 @@ const productCategories = [
   {
     num: '04',
     title: 'Coatings & Specialty',
+    img: 'https://cdn.globalaerosols.com/images/contract/hero_paint.webp',
     items: [
       'Industrial & Decorative Spray Paints',
       'Anti-Corrosion Structural Coatings',
@@ -109,6 +122,7 @@ const productCategories = [
   {
     num: '05',
     title: 'Cosmetics & Personal Care',
+    img: 'https://cdn.globalaerosols.com/images/contract/hero_cosmetic.webp',
     items: [
       'Deodorant Body Sprays & Antiperspirants',
       'Perfume Body Mists & Colognes',
@@ -241,7 +255,7 @@ const splitWords = (s: string) => s.split(' ');
     </section>
 
     <!-- ════════════ WHAT IS SECTION ════════════ -->
-    <section class="ind-container">
+    <section class="ind-container whatis-section">
       <div class="two-col-layout reveal">
         <div class="col-text">
           <span class="section-eyebrow">Production Outsourcing</span>
@@ -295,18 +309,21 @@ const splitWords = (s: string) => s.split(' ');
     </section>
 
     <!-- ════════════ CAPABILITIES ════════════ -->
-    <section class="ind-container">
+    <section class="ind-container capabilities-section">
       <div class="grid-header reveal">
         <span class="grid-eyebrow">Integrated Services</span>
         <h2 class="grid-title">End-to-End Aerosol Capabilities</h2>
         <div class="grid-line-bar"></div>
       </div>
 
-      <div class="capabilities-grid">
+      <div class="z-scroll-container">
         {capabilities.map((cap, idx) => (
-          <div class="cap-card reveal" data-index={idx}>
-            <div class="cap-index">{cap.num}</div>
-            <div class="cap-content">
+          <div class={`z-item reveal ${idx % 2 === 1 ? 'is-reversed' : ''}`} data-index={idx}>
+            <div class="z-image-zone">
+              <img src={cap.img} alt={cap.title} loading="lazy" width="600" height="400" />
+            </div>
+            <div class="z-text-zone">
+              <span class="z-num">{cap.num}</span>
               <h3>{cap.title}</h3>
               <p>{cap.desc}</p>
             </div>
@@ -316,7 +333,7 @@ const splitWords = (s: string) => s.split(' ');
     </section>
 
     <!-- ════════════ PRODUCTS WE MANUFACTURE ════════════ -->
-    <section class="ind-container">
+    <section class="ind-container products-section">
       <div class="grid-header reveal">
         <span class="grid-eyebrow">Formulations</span>
         <h2 class="grid-title">Aerosol Products We Manufacture</h2>
@@ -326,6 +343,9 @@ const splitWords = (s: string) => s.split(' ');
       <div class="products-grid">
         {productCategories.map((cat, idx) => (
           <div class="prod-cat-card reveal" data-index={idx}>
+            <div class="cat-img-zone">
+              <img src={cat.img} alt={cat.title} loading="lazy" width="360" height="180" />
+            </div>
             <div class="cat-header">
               <span class="cat-num">{cat.num}</span>
               <h3>{cat.title}</h3>
@@ -340,13 +360,6 @@ const splitWords = (s: string) => s.split(' ');
             </ul>
           </div>
         ))}
-      </div>
-
-      <div class="image-strip reveal">
-        <img src="https://cdn.globalaerosols.com/images/contract/filling_line.webp" alt="Industrial filling line machinery" loading="lazy" width="280" height="200" />
-        <img src="https://cdn.globalaerosols.com/images/contract/premium_cans.webp" alt="Premium aluminium aerosol cans" loading="lazy" width="280" height="200" />
-        <img src="https://cdn.globalaerosols.com/images/contract/valve_spray.webp" alt="Aerosol valve mechanism spraying mist" loading="lazy" width="280" height="200" />
-        <img src="https://cdn.globalaerosols.com/images/contract/automotive_cans.webp" alt="Automotive aerosol spray products" loading="lazy" width="280" height="200" />
       </div>
     </section>
 
@@ -564,7 +577,7 @@ const splitWords = (s: string) => s.split(' ');
   .ind-breadcrumbs {
     max-width: 1400px;
     margin: 0 auto;
-    padding: 100px 30px 0; /* Nav offset */
+    padding: 75px 30px 0; /* Nav offset */
     font-size: 0.72rem;
     color: var(--light-text-sub);
     text-transform: uppercase;
@@ -591,7 +604,7 @@ const splitWords = (s: string) => s.split(' ');
   .ind-hero {
     background: #ffffff;
     border-bottom: 6px solid var(--brand-blue);
-    padding: 80px 30px 100px;
+    padding: 40px 30px 50px;
     text-align: center;
     position: relative;
     box-shadow: 0 4px 30px rgba(15, 23, 42, 0.03);
@@ -811,57 +824,97 @@ const splitWords = (s: string) => s.split(' ');
     border-radius: 2px;
   }
 
-  .capabilities-grid {
-    display: grid;
-    grid-template-columns: repeat(3, minmax(0, 1fr));
-    gap: 28px;
+  .z-scroll-container {
+    display: flex;
+    flex-direction: column;
+    gap: clamp(60px, 8vw, 100px);
+    margin-top: 60px;
   }
 
-  .cap-card {
-    background: var(--light-card);
+  .z-item {
+    display: flex;
+    align-items: center;
+    gap: clamp(40px, 6vw, 80px);
+  }
+
+  .z-item.is-reversed {
+    flex-direction: row-reverse;
+  }
+
+  .z-image-zone {
+    flex: 1.1;
+    height: clamp(280px, 24vw, 380px);
+    border-radius: 20px;
+    overflow: hidden;
     border: 1px solid var(--light-border);
-    border-radius: 16px;
-    padding: 30px;
+    box-shadow: 0 15px 35px rgba(15, 23, 42, 0.03);
+    background: #ffffff;
+  }
+
+  .z-image-zone img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    transition: transform 0.8s cubic-bezier(0.16, 1, 0.3, 1);
+  }
+
+  .z-item:hover .z-image-zone img {
+    transform: scale(1.05);
+  }
+
+  .z-text-zone {
+    flex: 0.9;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
     position: relative;
-    transition: all 0.4s cubic-bezier(0.16, 1, 0.3, 1);
-    box-shadow: 0 8px 25px rgba(15, 23, 42, 0.01);
   }
 
-  .cap-card:hover {
-    border-color: var(--brand-blue);
-    transform: translateY(-6px);
-    box-shadow: 0 18px 40px rgba(15, 23, 42, 0.06);
-  }
-
-  .cap-index {
-    position: absolute;
-    top: 20px;
-    right: 20px;
+  .z-num {
     font-family: 'Outfit', sans-serif;
-    font-size: 1.8rem;
+    font-size: clamp(2.2rem, 3.8vw, 4rem);
     font-weight: 900;
-    color: #e2e8f0;
+    color: rgba(9, 104, 229, 0.08);
     line-height: 1;
+    margin-bottom: -12px;
+    margin-left: -2px;
     transition: color 0.4s;
   }
 
-  .cap-card:hover .cap-index {
-    color: rgba(9, 104, 229, 0.15);
+  .z-item:hover .z-num {
+    color: rgba(9, 104, 229, 0.16);
   }
 
-  .cap-content h3 {
-    margin: 0 0 12px 0;
-    font-size: 1.15rem;
+  .z-text-zone h3 {
+    font-size: clamp(1.3rem, 2vw, 1.7rem);
     color: var(--light-text-main);
-    padding-right: 30px;
+    margin: 0 0 14px 0;
     line-height: 1.3;
+    z-index: 2;
   }
 
-  .cap-content p {
-    margin: 0;
-    font-size: 0.88rem;
+  .z-text-zone p {
+    font-size: clamp(0.9rem, 1.2vw, 1rem);
     color: var(--light-text-sub);
-    line-height: 1.6;
+    line-height: 1.65;
+    margin: 0;
+    z-index: 2;
+  }
+
+  @media (max-width: 992px) {
+    .z-scroll-container {
+      gap: 60px;
+    }
+    .z-item,
+    .z-item.is-reversed {
+      flex-direction: column;
+      align-items: stretch;
+      gap: 24px;
+    }
+    .z-image-zone {
+      height: 280px;
+    }
+  }
   }
 
   /* ════════════ 6. PRODUCTS GRID & STRIP ════════════ */
@@ -885,6 +938,26 @@ const splitWords = (s: string) => s.split(' ');
   .prod-cat-card:hover {
     border-color: var(--brand-blue);
     box-shadow: 0 18px 40px rgba(15, 23, 42, 0.05);
+  }
+
+  .cat-img-zone {
+    height: 180px;
+    border-radius: 12px;
+    overflow: hidden;
+    margin-bottom: 20px;
+    border: 1px solid var(--light-border);
+    background: #f8fafc;
+  }
+
+  .cat-img-zone img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    transition: transform 0.6s cubic-bezier(0.16, 1, 0.3, 1);
+  }
+
+  .prod-cat-card:hover .cat-img-zone img {
+    transform: scale(1.06);
   }
 
   .cat-header {
@@ -1309,10 +1382,11 @@ const splitWords = (s: string) => s.split(' ');
 <script>
   import { gsap } from "gsap";
   import { ScrollTrigger } from "gsap/ScrollTrigger";
-  gsap.registerPlugin(ScrollTrigger);
 
-  /* Character reveal for Hero text */
-  const startHero = () => {
+  const initReveal = () => {
+    gsap.registerPlugin(ScrollTrigger);
+
+    // ── CHARACTER REVEAL FOR HERO TEXT ──
     const tl = gsap.timeline();
     tl.to('.ind-hero .ind-hero-badge', { opacity: 1, y: 0, duration: 0.6, ease: 'power3.out' });
     tl.fromTo('.ind-hero .ac',
@@ -1323,32 +1397,44 @@ const splitWords = (s: string) => s.split(' ');
     tl.to('.ind-hero .ind-subtitle', { opacity: 1, y: 0, duration: 0.5, ease: 'power2.out' }, '-=0.4');
     tl.to('.ind-hero .ind-hero-desc', { opacity: 1, y: 0, duration: 0.6, ease: 'power2.out' }, '-=0.3');
     tl.to('.hero-media', { opacity: 1, y: 0, duration: 0.6, ease: 'power2.out' }, '-=0.3');
+
+    // ── GENERIC SCROLL REVEALS ──
+    const fadeUp = (targets: gsap.TweenTarget, delay = 0, stagger = 0) =>
+      gsap.to(targets, { opacity: 1, y: 0, duration: 0.6, stagger, delay, ease: 'power2.out' });
+
+    const section = (sel: string, opts: { bodyDelay?: number; stagger?: number } = {}) => {
+      const el = document.querySelector(sel);
+      if (!el) return;
+      
+      ScrollTrigger.create({
+        trigger: sel,
+        start: 'top 85%',
+        once: true,
+        onEnter: () => {
+          if (el.classList.contains('reveal')) {
+            fadeUp(el, opts.bodyDelay ?? 0.1);
+          }
+          const reveals = el.querySelectorAll('.reveal');
+          if (reveals.length > 0) {
+            fadeUp(reveals, opts.bodyDelay ?? 0.1, opts.stagger ?? 0.08);
+          }
+        }
+      });
+    };
+
+    section('.whatis-section', { stagger: 0.1 });
+    section('.capabilities-section', { stagger: 0.05 });
+    section('.products-section', { stagger: 0.05 });
+    section('.dossier-section', { stagger: 0.06 });
+    section('.timeline-section', { stagger: 0.06 });
+    section('.resource-section', { stagger: 0.06 });
+    section('.cta-banner', { stagger: 0.1 });
   };
 
-  startHero();
-
-  /* Scroll reveals */
-  const fadeUp = (targets: gsap.TweenTarget, delay = 0, stagger = 0) =>
-    gsap.to(targets, { opacity: 1, y: 0, duration: 0.6, stagger, delay, ease: 'power2.out' });
-
-  const section = (sel: string, opts: { bodyDelay?: number; stagger?: number } = {}) => {
-    const el = document.querySelector(sel);
-    if (!el) return;
-    ScrollTrigger.create({
-      trigger: sel,
-      start: 'top 80%',
-      once: true,
-      onEnter: () => {
-        fadeUp(`${sel} .reveal`, opts.bodyDelay ?? 0.1, opts.stagger ?? 0.08);
-      }
-    });
-  };
-
-  section('.two-col-layout', { stagger: 0.1 });
-  section('.capabilities-grid', { stagger: 0.05 });
-  section('.products-grid', { stagger: 0.05 });
-  section('.dossier-section', { stagger: 0.06 });
-  section('.timeline-section', { stagger: 0.06 });
-  section('.resource-section', { stagger: 0.06 });
-  section('.cta-banner', { stagger: 0.1 });
+  if (document.readyState === 'loading') {
+    document.addEventListener('DOMContentLoaded', initReveal);
+  } else {
+    initReveal();
+  }
+  document.addEventListener('astro:page-load', initReveal);
 </script>
