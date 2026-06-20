@@ -1,0 +1,531 @@
+---
+import Layout from '../layouts/Layout.astro';
+
+const orgSchema = {
+  "@context": "https://schema.org",
+  "@type": "Organization",
+  "name": "Global Aerosols",
+  "url": "https://www.globalaerosols.com",
+  "logo": "https://www.globalaerosols.com/logo.png",
+  "sameAs": [
+    "https://www.linkedin.com/in/absar-khan-aerosol-consultant-and-formulator-78359b162"
+  ]
+};
+
+const websiteSchema = {
+  "@context": "https://schema.org",
+  "@type": "WebSite",
+  "url": "https://www.globalaerosols.com",
+  "potentialAction": {
+    "@type": "SearchAction",
+    "target": "https://www.globalaerosols.com/search?q={search_term_string}",
+    "query-input": "required name=search_term_string"
+  }
+};
+
+const authorSchema = {
+  "@context": "https://schema.org",
+  "@type": "Person",
+  "name": "Absar Khan",
+  "jobTitle": "Founder & Lead Aerosol Consultant",
+  "url": "https://www.linkedin.com/in/absar-khan-aerosol-consultant-and-formulator-78359b162",
+  "affiliation": {
+    "@type": "Organization",
+    "name": "Global Aerosols"
+  }
+};
+
+const blogSchema = {
+  "@context": "https://schema.org",
+  "@type": "BlogPosting",
+  "headline": "DOT & UN Aerosol Transport Regulations: Hazmat Classification & Packaging Requirements",
+  "description": "Master DOT & UN aerosol transport regulations. Understand hazmat classification, UN 1950 guidelines, Limited Quantity exemptions, and IATA air transport rules.",
+  "image": "https://cdn.globalaerosols.com/images/dot-un-aerosol-transport-regulations-hazmat/dot-un-aerosol-transport-regulations-hazmat-hero-globalaerosols.webp",
+  "author": {
+    "@type": "Person",
+    "name": "Absar Khan"
+  },
+  "publisher": {
+    "@type": "Organization",
+    "name": "Global Aerosols",
+    "logo": {
+      "@type": "ImageObject",
+      "url": "https://www.globalaerosols.com/logo.png"
+    }
+  },
+  "datePublished": "2026-06-20",
+  "dateModified": "2026-06-20",
+  "mainEntityOfPage": {
+    "@type": "WebPage",
+    "@id": "https://www.globalaerosols.com/dot-un-aerosol-transport-regulations-hazmat"
+  },
+  "articleSection": "Aerosol Regulatory & Safety",
+  "keywords": "DOT aerosol transport regulation, UN aerosol hazmat classification, aerosol transport packaging regulation, DOT 49 CFR aerosol, dangerous goods aerosol air transport, aerosol IATA shipping regulation",
+  "wordCount": "2245"
+};
+
+const breadcrumbSchema = {
+  "@context": "https://schema.org",
+  "@type": "BreadcrumbList",
+  "itemListElement": [
+    {
+      "@type": "ListItem",
+      "position": 1,
+      "name": "Home",
+      "item": "https://www.globalaerosols.com"
+    },
+    {
+      "@type": "ListItem",
+      "position": 2,
+      "name": "Blog",
+      "item": "https://www.globalaerosols.com/blog"
+    },
+    {
+      "@type": "ListItem",
+      "position": 3,
+      "name": "DOT & UN Aerosol Transport Regulations: Hazmat Classification & Packaging Requirements",
+      "item": "https://www.globalaerosols.com/dot-un-aerosol-transport-regulations-hazmat"
+    }
+  ]
+};
+
+const faqSchema = {
+  "@context": "https://schema.org",
+  "@type": "FAQPage",
+  "mainEntity": [
+    {
+      "@type": "Question",
+      "name": "What is the primary regulation governing domestic aerosol transport in the US?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Domestic aerosol shipping within the United States is regulated by the Department of Transportation (DOT) under Title 49 of the Code of Federal Regulations (49 CFR), specifically Part 173.306 for Limited Quantity exceptions. This framework outlines the pressure thresholds, packaging configurations, and capacity limits required to transport pressurized gas containers legally and safely."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "How does the UN classify aerosol products for international transport?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Under the UN Recommendations on the Transport of Dangerous Goods Model Regulations, aerosols are classified under Class 2 (Gases) and assigned the identification number UN 1950. They are categorized based on their contents as flammable (Division 2.1), non-flammable/non-toxic (Division 2.2), or toxic (Division 2.3), which determines the corresponding handling and labeling protocols."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "What are the requirements for shipping aerosols under the Limited Quantity exemption?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "To qualify for Limited Quantity exemptions, each inner aerosol container must have a capacity of 1,000 mL (1.0 L) or less. The containers must be packed in sturdy outer packages with a total gross package weight not exceeding 30 kg (66 lbs). The package must be marked with the standard Limited Quantity black-and-white diamond symbol, exempting it from full dangerous goods shipping documentation for domestic highway transport."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "What are the hot water bath testing requirements for shipping aerosol cans?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "The DOT 49 CFR and UN model regulations require that every filled aerosol container undergo a hot water bath test before shipment. The water bath must be maintained at 55 °C (131 °F), or 50 °C (122 °F) if the liquid phase does not exceed 95% of the capacity at that temperature. This thermal exposure raises internal pressures to ensure the container structural integrity is verified and any potential leakage is detected."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "Can flammable aerosols be shipped by air under IATA regulations?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Yes, flammable aerosols (UN 1950, Division 2.1) can be shipped by air, but they are subject to strict quantity limitations and packaging requirements. Under IATA Packaging Instruction 203, passenger aircraft shipping is highly restricted (typically limited to 75 kg net weight per package or forbidden for certain flammable formulations), while cargo aircraft allow larger volumes up to 150 kg per package when enclosed in certified UN specification outer packaging."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "What packaging group performance level must fully regulated aerosols meet?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Fully regulated aerosol products that do not qualify for or use the Limited Quantity exemption must be shipped in UN-certified specification outer packagings. These packagings must meet the Performance Group II standards. This involves rigorous verification testing including a 1.2-meter drop test, structural stack testing, and compliance with specific interior liner or padding specifications to prevent accidental discharge."
+      }
+    }
+  ]
+};
+
+const webpageSchema = {
+  "@context": "https://schema.org",
+  "@type": "WebPage",
+  "@id": "https://www.globalaerosols.com/dot-un-aerosol-transport-regulations-hazmat",
+  "url": "https://www.globalaerosols.com/dot-un-aerosol-transport-regulations-hazmat",
+  "name": "DOT & UN Aerosol Transport Regulations: Hazmat Classification & Packaging Requirements",
+  "description": "Master DOT & UN aerosol transport regulations. Understand hazmat classification, UN 1950 guidelines, Limited Quantity exemptions, and IATA air transport rules.",
+  "isPartOf": {
+    "@type": "WebSite",
+    "url": "https://www.globalaerosols.com"
+  },
+  "breadcrumb": {
+    "@type": "BreadcrumbList",
+    "itemListElement": [
+      { "@type": "ListItem", "position": 1, "name": "Home", "item": "https://www.globalaerosols.com" },
+      { "@type": "ListItem", "position": 2, "name": "Blog", "item": "https://www.globalaerosols.com/blog" },
+      { "@type": "ListItem", "position": 3, "name": "DOT & UN Aerosol Transport Regulations: Hazmat Classification & Packaging Requirements", "item": "https://www.globalaerosols.com/dot-un-aerosol-transport-regulations-hazmat" }
+    ]
+  },
+  "primaryImageOfPage": {
+    "@type": "ImageObject",
+    "url": "https://cdn.globalaerosols.com/images/dot-un-aerosol-transport-regulations-hazmat/dot-un-aerosol-transport-regulations-hazmat-hero-globalaerosols.webp"
+  },
+  "datePublished": "2026-06-20",
+  "dateModified": "2026-06-20"
+};
+
+const schemas = [orgSchema, websiteSchema, authorSchema, blogSchema, breadcrumbSchema, faqSchema, webpageSchema];
+---
+
+<Layout
+  title="DOT & UN Aerosol Transport Regulations: Hazmat Shipping Requirements | Global Aerosols"
+  description="Master DOT & UN aerosol transport regulations. Understand hazmat classification, UN 1950 guidelines, Limited Quantity exemptions, and IATA air transport rules."
+  canonical="https://www.globalaerosols.com/dot-un-aerosol-transport-regulations-hazmat"
+  ogImage="https://cdn.globalaerosols.com/images/dot-un-aerosol-transport-regulations-hazmat/dot-un-aerosol-transport-regulations-hazmat-hero-globalaerosols.webp"
+  ogType="article"
+  schemaJson={schemas}
+>
+  <main class="section-container" style="max-width: 100%; padding-left: 48px; padding-right: 48px; padding-top: 40px; padding-bottom: 80px;">
+    
+    <!-- HTML5 Compliant Breadcrumbs -->
+    <nav aria-label="Breadcrumb" style="display: flex; gap: 8px; font-size: 0.85rem; color: var(--text-muted); margin-bottom: 24px; font-family: 'Inter', sans-serif;">
+      <a href="/" style="color: var(--text-muted);">Home</a>
+      <span>&gt;</span>
+      <a href="/blog" style="color: var(--text-muted);">Blog</a>
+      <span>&gt;</span>
+      <span style="color: var(--text-primary); font-weight: 500;">Aerosol Regulatory & Safety</span>
+    </nav>
+
+    <!-- Main article container -->
+    <article class="blog-prose">
+      <header class="post-header">
+        <h1 class="gradient-text" style="font-size: 3rem; line-height: 1.15; font-weight: 900; margin-bottom: 20px;">
+          DOT & UN Aerosol Transport Regulations: Hazmat Classification & Packaging Requirements
+        </h1>
+        
+        <!-- Post meta details -->
+        <div style="display: flex; align-items: center; gap: 16px; font-size: 0.9rem; color: var(--text-muted); margin-bottom: 30px; font-family: 'Inter', sans-serif; font-weight: 500; border-bottom: 1px solid var(--border); padding-bottom: 20px;">
+          <div style="display: flex; align-items: center; gap: 8px;">
+            <span style="width: 28px; height: 28px; background: var(--primary); color: white; display: flex; align-items: center; justify-content: center; border-radius: 50%; font-weight: 700; font-size: 0.75rem;">AK</span>
+            <span>By <strong>Absar Khan</strong></span>
+          </div>
+          <span style="width: 4px; height: 4px; border-radius: 50%; background-color: var(--border);"></span>
+          <span>Published: <strong>June 20, 2026</strong></span>
+          <span style="width: 4px; height: 4px; border-radius: 50%; background-color: var(--border);"></span>
+          <span>Reading Time: <strong>11 min read</strong></span>
+          <span style="width: 4px; height: 4px; border-radius: 50%; background-color: var(--border);"></span>
+          <span style="background: #e0f2fe; color: #0369a1; padding: 2px 10px; border-radius: 50px; font-size: 0.75rem; font-weight: 700; text-transform: uppercase;">Regulatory & Safety</span>
+        </div>
+      </header>
+
+      <!-- Primary Featured Image -->
+      <div class="image-slot">
+        <img 
+          src="https://cdn.globalaerosols.com/images/dot-un-aerosol-transport-regulations-hazmat/dot-un-aerosol-transport-regulations-hazmat-hero-globalaerosols.webp" 
+          alt="DOT aerosol transport regulation compliance check — Global Aerosols" 
+          width="1200" 
+          height="800" 
+          loading="eager" 
+        />
+      </div>
+
+      <!-- Table of Contents / Guide Contents -->
+      <div class="box" style="background: #f8fafc; border: 1px solid var(--border); border-radius: var(--radius-lg); padding: 24px; margin: 30px 0;">
+        <h3 style="margin-top: 0; font-family: 'Outfit', sans-serif; color: var(--text-primary); font-size: 1.25rem; font-weight: 700; border-bottom: 2px solid var(--border); padding-bottom: 8px;">Guide Contents</h3>
+        <ul style="display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 10px; list-style-type: none; padding-left: 0; margin-bottom: 0;">
+          <li><a href="#principles" style="font-weight: 600; color: var(--primary);">1. Introduction to DOT & UN Aerosol Transport Regulations</a></li>
+          <li><a href="#levels" style="font-weight: 600; color: var(--primary);">2. UN Aerosol Hazmat Classification Criteria</a></li>
+          <li><a href="#sprinklers" style="font-weight: 600; color: var(--primary);">3. DOT 49 CFR Aerosol Shipping Rules & Limited Quantity Exemptions</a></li>
+          <li><a href="#compliance" style="font-weight: 600; color: var(--primary);">4. Aerosol Transport Packaging Regulation & Drop Test Standards</a></li>
+          <li><a href="#chemistry" style="font-weight: 600; color: var(--primary);">5. Dangerous Goods Aerosol Air Transport & IATA Compliance</a></li>
+          <li><a href="#design" style="font-weight: 600; color: var(--primary);">6. Aerosol IATA Shipping Regulation Checklist</a></li>
+          <li><a href="#faq" style="font-weight: 600; color: var(--primary);">7. Frequently Asked Questions</a></li>
+        </ul>
+      </div>
+
+      <section id="introduction" class="section">
+        <p>The <strong>DOT aerosol transport regulation</strong> framework ensures that pressurized gas containers are transported safely across domestic and international shipping corridors. It works by classifying aerosol products under hazardous material protocols based on container volume, propellant flammability, and structural pressure limits. This matters for aerosol manufacturers because failure to adhere to these rules results in severe compliance fines, rejected shipments, or catastrophic transport fire incidents. For a foundational exploration of container design limits and failure modes under thermal stress, refer to our guide on <a href="https://www.globalaerosols.com/aerosol-can-safety-explained" target="_top">aerosol can safety explained</a>.</p>
+        <p>Aerosol shipping classifications require direct knowledge of chemical properties and containment specs, since any thermal instability can cause pressurisation issues in cargo holds. High-temperature conditions, especially during road haulage or air transit, can lead to package fatigue. Proper assessment is key to preventing containment failures and complying with dangerous goods laws.</p>
+      </section>
+
+      <!-- Section 1 -->
+      <section id="principles" class="section">
+        <h2>Introduction to DOT & UN Aerosol Transport Regulations</h2>
+        <p>Aerosol products are unique hazardous materials because they combine pressurized gases, flammable propellants, and active chemical concentrates within a single metallic container. During transport, these containers are exposed to mechanical vibrations, extreme temperatures, and ambient pressure fluctuations that can compromise container structural integrity. The Pipeline and Hazardous Materials Safety Administration (PHMSA), a branch of the US Department of Transportation, enforces rules designed to prevent accidental product release during transit. These requirements are outlined in detail in the <a href="https://www.phmsa.dot.gov/hazmat/transporting-hazardous-materials" target="_blank" rel="noopener noreferrer">PHMSA hazmat transportation guide</a>.</p>
+        <p>To safely manage these risks, logistics professionals must verify that all aerosol packages comply with international dangerous goods harmonized frameworks. Compliance involves verifying container pressure limits, choosing matching valves and caps, and ensuring outer boxes can protect the cans. These standards prevent leakage and dangerous chemical reactions when packages are stacked in cargo trucks or shipping containers. To learn more about standard documentation requirements like Safety Data Sheets, read our technical walkthrough on <a href="https://www.globalaerosols.com/understanding-sds-tds-and-coa-for-aerosol-products" target="_top">understanding SDS, TDS, and COA documents</a>.</p>
+      </section>
+
+      <!-- Diagram Image -->
+      <div class="image-slot">
+        <img 
+          src="https://cdn.globalaerosols.com/images/dot-un-aerosol-transport-regulations-hazmat/dot-un-aerosol-transport-regulations-hazmat-diagram-globalaerosols.webp" 
+          alt="UN aerosol hazmat classification markings verification — Global Aerosols diagram" 
+          width="900" 
+          height="500" 
+          loading="lazy" 
+        />
+        <p style="text-align: center; font-size: 0.85rem; color: var(--text-muted); margin-top: 8px; font-style: italic;">
+          Figure 1: Verification of certified markings on UN specification outer packaging, ensuring containment safety for aerosol transit.
+        </p>
+      </div>
+
+      <!-- Section 2 -->
+      <section id="levels" class="section">
+        <h2>UN Aerosol Hazmat Classification Criteria</h2>
+        <p>The international system for classifying dangerous goods is established by the United Nations Recommendations on the Transport of Dangerous Goods. This harmonized framework places all aerosols under Class 2 (Gases) and assigns them the unified shipping identification number UN 1950. Within this classification, products are sub-categorized based on propellant flammability, toxicity, and corrosive properties of the underlying formulation. The global guidelines for these hazards are outlined in the <a href="https://unece.org/dangerous-goods" target="_blank" rel="noopener noreferrer">UN Recommendations on the Transport of Dangerous Goods</a>.</p>
+        <p>Classification determines whether a product is marked as Division 2.1 (Flammable Gases), Division 2.2 (Non-flammable, Non-toxic Gases), or Division 2.3 (Toxic Gases). Formulations are categorized as flammable under UN rules if they contain more than a nominal mass fraction of flammable components. If the formulation chemical heat of combustion exceeds a set threshold, it is automatically classified as a flammable aerosol. For a thorough breakdown of how labels must present these classifications to handlers, read our guide on <a href="https://www.globalaerosols.com/ghs-hazcom-labeling-aerosol-products" target="_top">GHS & HazCom labeling for aerosol products</a>.</p>
+
+        <div class="table-container" style="overflow-x: auto; margin: 24px 0;">
+          <table style="width: 100%; border-collapse: collapse; text-align: left; font-size: 0.95rem;">
+            <thead>
+              <tr style="background: var(--primary); color: white;">
+                <th style="padding: 12px; border: 1px solid var(--border);">UN Division</th>
+                <th style="padding: 12px; border: 1px solid var(--border);">Hazard Class Name</th>
+                <th style="padding: 12px; border: 1px solid var(--border);">Criteria & Thresholds</th>
+                <th style="padding: 12px; border: 1px solid var(--border);">Required Transport Markings</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr style="background: #f8fafc;">
+                <td style="padding: 12px; border: 1px solid var(--border);"><strong>Division 2.1</strong></td>
+                <td style="padding: 12px; border: 1px solid var(--border);">Flammable Gas</td>
+                <td style="padding: 12px; border: 1px solid var(--border);">Formulation contains &gt; 85% flammable ingredients OR heat of combustion &gt;= 30 kJ/g</td>
+                <td style="padding: 12px; border: 1px solid var(--border);">Class 2.1 Flammable Gas diamond placard, UN 1950 designation</td>
+              </tr>
+              <tr>
+                <td style="padding: 12px; border: 1px solid var(--border);"><strong>Division 2.2</strong></td>
+                <td style="padding: 12px; border: 1px solid var(--border);">Non-Flammable, Non-Toxic</td>
+                <td style="padding: 12px; border: 1px solid var(--border);">Formulation contains &lt; 1% flammable components and has heat of combustion &lt; 20 kJ/g</td>
+                <td style="padding: 12px; border: 1px solid var(--border);">Class 2.2 Non-Flammable Gas diamond placard, UN 1950 designation</td>
+              </tr>
+              <tr style="background: #f8fafc;">
+                <td style="padding: 12px; border: 1px solid var(--border);"><strong>Division 2.3</strong></td>
+                <td style="padding: 12px; border: 1px solid var(--border);">Toxic Gas</td>
+                <td style="padding: 12px; border: 1px solid var(--border);">Contains gases with LC50 values &lt;= 5,000 ppm (often forbidden on passenger aircraft)</td>
+                <td style="padding: 12px; border: 1px solid var(--border);">Class 2.3 Poison Gas diamond placard, toxic inhalation hazard notations</td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+      </section>
+
+      <!-- Section 3 -->
+      <section id="sprinklers" class="section">
+        <h2>DOT 49 CFR Aerosol Shipping Rules & Limited Quantity Exemptions</h2>
+        <p>Under US domestic law, dangerous goods shipping rules are codified in Title 49 of the Code of Federal Regulations. The specific regulations governing pressurized gas containers are detailed under 49 CFR Section 173.306, which provides rules for shipping limited quantities of compressed gases. This section allows certain packages to bypass full hazardous material shipping papers, placards, and certified UN containers if they meet strict safety criteria. The exact regulatory provisions are maintained in the federal <a href="https://www.ecfr.gov/current/title-49" target="_blank" rel="noopener noreferrer">eCFR Title 49 standard repository</a>.</p>
+        <p>To qualify for the Limited Quantity exemption under DOT rules, the inner container capacity must not exceed 1.0 Liter (1,000 mL). The containers must be packed inside robust outer boxes, and the total gross weight of the package must not exceed 30 kilograms (66 pounds). These packages must be marked on the exterior with the black-and-white Limited Quantity diamond symbol. This marking notifies logistics workers that the packages contain small volumes of dangerous goods, allowing them to be transported by road or rail without formal hazardous material manifesting.</p>
+
+        <div class="box" style="border-left: 4px solid var(--primary); background: #f0f9ff; padding: 20px; margin: 24px 0; border-radius: 0 var(--radius-md) var(--radius-md) 0;">
+          <strong style="color: var(--primary); display: block; margin-bottom: 6px; font-family: 'Outfit', sans-serif;">Key Insight</strong>
+          While Limited Quantity shipments are exempt from shipping papers for domestic highway transport, they must still undergo standard hot water bath testing to verify structural margins and pressure thresholds before leaving the filling plant.
+        </div>
+      </section>
+
+      <!-- Infographic Image -->
+      <div class="image-slot">
+        <img 
+          src="https://cdn.globalaerosols.com/images/dot-un-aerosol-transport-regulations-hazmat/dot-un-aerosol-transport-regulations-hazmat-infographic-globalaerosols.webp" 
+          alt="aerosol transport packaging regulation shipping category matrix — Global Aerosols infographic" 
+          width="900" 
+          height="500" 
+          loading="lazy" 
+        />
+        <p style="text-align: center; font-size: 0.85rem; color: var(--text-muted); margin-top: 8px; font-style: italic;">
+          Figure 2: Infographic comparison matrix of aerosol transport packaging regulation shipping categories, comparing Limited Quantity and Fully Regulated requirements.
+        </p>
+      </div>
+
+      <!-- Section 4 -->
+      <section id="compliance" class="section">
+        <h2>Aerosol Transport Packaging Regulation & Drop Test Standards</h2>
+        <p>The primary goal of any aerosol transport packaging regulation is to prevent the accidental discharge of contents during shipping. When aerosol products are fully regulated (i.e. when they exceed the capacity or pressure thresholds for Limited Quantity exemptions), they must be packed in UN-certified specification outer boxes. These boxes must meet Performance Group II standards, which are verified through rigorous packaging testing protocols. These tests simulate transport stresses to confirm the boxes can protect the pressurized cans from damage.</p>
+        <p>The performance tests require the loaded shipping container to pass a 1.2-meter (4-foot) drop test onto a solid concrete pad in five distinct orientations (flat on bottom, top, long side, short side, and corner). The packaging must also pass a stacking test, where a load equivalent to the weight of similar packages stacked to a height of 3 meters is applied for 24 hours. The inner containers must be packed with protective caps or recessed valves to prevent the valve from actuating if the box is dropped or compressed in transit.</p>
+
+        <div class="box" style="border-left: 4px solid var(--amber); background: #fffbeb; padding: 20px; margin: 24px 0; border-radius: 0 var(--radius-md) var(--radius-md) 0;">
+          <strong style="color: var(--amber); display: block; margin-bottom: 6px; font-family: 'Outfit', sans-serif;">Rule of Thumb</strong>
+          Aerosol cans must be oriented vertically in the outer package with valves pointing upward. This configuration ensures that any pressure release involves vapor phase propellant rather than liquid phase concentrate, reducing potential hazard levels.
+        </div>
+      </section>
+
+      <!-- Section 5 -->
+      <section id="chemistry" class="section">
+        <h2>Dangerous Goods Aerosol Air Transport & IATA Compliance</h2>
+        <p>Shipping aerosols by air introduces extra risks due to low cargo compartment temperatures, vibrations, and pressure drops at high altitudes. The International Air Transport Association publishes rules based on the International Civil Aviation Organization technical instructions to regulate air transport. These standards apply to all international flights and most domestic air cargo operators. The official requirements are detailed in the <a href="https://www.iata.org/en/programs/cargo/dgr" target="_blank" rel="noopener noreferrer">IATA Dangerous Goods Regulations portal</a>.</p>
+        <p>Under air transport rules, Limited Quantity packages are subject to stricter packaging requirements than ground shipments. They must be able to withstand a differential pressure of at least 95 kPa (13.8 psi) without leaking, and they require a formal Limited Quantity marking that includes the letter "Y" in the center of the diamond. Furthermore, passenger aircraft ban Division 2.1 flammable aerosols in cargo holds, restricting them to cargo-only flights with lower total package weight limits. Non-flammable Division 2.2 aerosols are allowed on passenger aircraft but face strict net weight limits per package.</p>
+      </section>
+
+      <!-- Section 6 -->
+      <section id="design" class="section">
+        <h2>Aerosol IATA Shipping Regulation Checklist</h2>
+        <p>To avoid transit delays, logistics operators should use a standardized checklist for air cargo shipments. Each package must have the correct hazard label (Division 2.1 or 2.2) and the UN 1950 shipping name marked on the box exterior. The shipper must also prepare a Dangerous Goods Declaration, listing the proper technical name, hazard division, packaging group, and emergency response contact details. This documentation must be signed by certified hazardous materials personnel who have completed mandated training.</p>
+        <p>Air shipping requires double-walled corrugated fiberboard boxes (such as 4G UN specification boxes) with plastic interior liners to contain any accidental leaks. Valves must be protected by durable plastic caps that fit securely and do not pop off during vibration testing. Before shipping, logistics teams should verify that the carrier is authorized to handle the specific hazard division. Some cargo operators maintain custom restrictions that are stricter than general international rules.</p>
+      </section>
+
+      <!-- FAQ Section -->
+      <section id="faq" class="box" style="background: #ffffff; border: 1px solid var(--border); border-radius: var(--radius-lg); padding: 30px; margin: 40px 0;">
+        <h2 style="margin-top: 0; margin-bottom: 24px; font-family: 'Outfit', sans-serif; color: var(--text-primary);">Frequently Asked Questions</h2>
+        
+        <div style="display: flex; flex-direction: column; gap: 16px;">
+          <div style="border-bottom: 1px solid var(--border); padding-bottom: 16px;">
+            <h4 style="font-size: 1.05rem; font-weight: 700; margin-bottom: 6px; color: var(--text-primary);">What is the primary regulation governing domestic aerosol transport in the US?</h4>
+            <p style="font-size: 0.95rem; line-height: 1.6; color: var(--text-muted); margin-bottom: 0;">Domestic aerosol shipping within the United States is regulated by the Department of Transportation (DOT) under Title 49 of the Code of Federal Regulations (49 CFR), specifically Part 173.306 for Limited Quantity exceptions. This framework outlines the pressure thresholds, packaging configurations, and capacity limits required to transport pressurized gas containers legally and safely.</p>
+          </div>
+
+          <div style="border-bottom: 1px solid var(--border); padding-bottom: 16px;">
+            <h4 style="font-size: 1.05rem; font-weight: 700; margin-bottom: 6px; color: var(--text-primary);">How does the UN classify aerosol products for international transport?</h4>
+            <p style="font-size: 0.95rem; line-height: 1.6; color: var(--text-muted); margin-bottom: 0;">Under the UN Recommendations on the Transport of Dangerous Goods Model Regulations, aerosols are classified under Class 2 (Gases) and assigned the identification number UN 1950. They are categorized based on their contents as flammable (Division 2.1), non-flammable/non-toxic (Division 2.2), or toxic (Division 2.3), which determines the corresponding handling and labeling protocols.</p>
+          </div>
+
+          <div style="border-bottom: 1px solid var(--border); padding-bottom: 16px;">
+            <h4 style="font-size: 1.05rem; font-weight: 700; margin-bottom: 6px; color: var(--text-primary);">What are the requirements for shipping aerosols under the Limited Quantity exemption?</h4>
+            <p style="font-size: 0.95rem; line-height: 1.6; color: var(--text-muted); margin-bottom: 0;">To qualify for Limited Quantity exemptions, each inner aerosol container must have a capacity of 1,000 mL (1.0 L) or less. The containers must be packed in sturdy outer packages with a total gross package weight not exceeding 30 kg (66 lbs). The package must be marked with the standard Limited Quantity black-and-white diamond symbol, exempting it from full dangerous goods shipping documentation for domestic highway transport.</p>
+          </div>
+
+          <div style="border-bottom: 1px solid var(--border); padding-bottom: 16px;">
+            <h4 style="font-size: 1.05rem; font-weight: 700; margin-bottom: 6px; color: var(--text-primary);">What are the hot water bath testing requirements for shipping aerosol cans?</h4>
+            <p style="font-size: 0.95rem; line-height: 1.6; color: var(--text-muted); margin-bottom: 0;">The DOT 49 CFR and UN model regulations require that every filled aerosol container undergo a hot water bath test before shipment. The water bath must be maintained at 55 °C (131 °F), or 50 °C (122 °F) if the liquid phase does not exceed 95% of the capacity at that temperature. This thermal exposure raises internal pressures to ensure the container structural integrity is verified and any potential leakage is detected.</p>
+          </div>
+
+          <div style="border-bottom: 1px solid var(--border); padding-bottom: 16px;">
+            <h4 style="font-size: 1.05rem; font-weight: 700; margin-bottom: 6px; color: var(--text-primary);">Can flammable aerosols be shipped by air under IATA regulations?</h4>
+            <p style="font-size: 0.95rem; line-height: 1.6; color: var(--text-muted); margin-bottom: 0;">Yes, flammable aerosols (UN 1950, Division 2.1) can be shipped by air, but they are subject to strict quantity limitations and packaging requirements. Under IATA Packaging Instruction 203, passenger aircraft shipping is highly restricted (typically limited to 75 kg net weight per package or forbidden for certain flammable formulations), while cargo aircraft allow larger volumes up to 150 kg per package when enclosed in certified UN specification outer packaging.</p>
+          </div>
+
+          <div style="padding-bottom: 8px;">
+            <h4 style="font-size: 1.05rem; font-weight: 700; margin-bottom: 6px; color: var(--text-primary);">What packaging group performance level must fully regulated aerosols meet?</h4>
+            <p style="font-size: 0.95rem; line-height: 1.6; color: var(--text-muted); margin-bottom: 0;">Fully regulated aerosol products that do not qualify for or use the Limited Quantity exemption must be shipped in UN-certified specification outer packagings. These packagings must meet the Performance Group II standards. This involves rigorous verification testing including a 1.2-meter drop test, structural stack testing, and compliance with specific interior liner or padding specifications to prevent accidental discharge.</p>
+          </div>
+        </div>
+      </section>
+
+      <!-- Contact/Consulting Box -->
+      <div class="cta" style="background: linear-gradient(135deg, var(--primary) 0%, var(--secondary) 100%); color: #ffffff; padding: 30px; border-radius: var(--radius-lg); margin-top: 40px; display: flex; flex-direction: column; justify-content: space-between; align-items: flex-start; gap: 20px; md-flex-direction: row; md-align-items: center;">
+        <div class="left">
+          <p style="margin:0 0 8px 0; font-size:1.25rem; font-weight:800; font-family: 'Outfit', sans-serif;">Need Technical Support for Aerosol Formulations?</p>
+          <p style="margin:0 0 16px 0; font-size:0.95rem; line-height:1.6; opacity:0.95;">
+            Partner with the Global Aerosols team to audit, scale up, and troubleshoot your aerosol chemistry, canister pressure calculations, filling lines, and safety systems.
+          </p>
+          <p style="margin:0; font-size:0.9rem; line-height:1.6; font-family: monospace;">
+            Email: <strong>consulting@globalaerosols.com</strong><br />
+            Website: <a href="/" style="color: #ffffff; font-weight: 600; text-decoration: underline;">https://www.globalaerosols.com</a><br />
+            Phone: <strong>+91 9819548320 &nbsp;&nbsp; +91 8169102990</strong>
+          </p>
+        </div>
+        <a href="mailto:consulting@globalaerosols.com" class="btn" style="background:#ffffff; color:var(--primary); font-weight:700; padding:12px 24px; border-radius:var(--radius-sm); border:none; text-decoration:none; transition: all var(--transition-fast);">
+          Request Consultation
+        </a>
+      </div>
+
+      <!-- Related articles section -->
+      <section class="related-section" style="margin-top: 50px;">
+        <h3 style="font-family: 'Outfit', sans-serif; font-size: 1.4rem; font-weight: 700; color: var(--text-primary); margin-bottom: 20px; border-bottom: 2px solid var(--border); padding-bottom: 8px;">Related Articles</h3>
+        <ul style="display: grid; grid-template-columns: repeat(auto-fit, minmax(320px, 1fr)); gap: 16px; list-style-type: none; padding-left: 0;">
+          <li>
+            <a href="/aerosol-can-safety-explained" style="display: block; padding: 16px; background: #f8fafc; border: 1px solid var(--border); border-radius: var(--radius-md); font-weight: 600; color: var(--text-primary); transition: all 0.2s ease;" onmouseover="this.style.borderColor='var(--primary)'; this.style.color='var(--primary)';" onmouseout="this.style.borderColor='var(--border)'; this.style.color='var(--text-primary)';">
+              Aerosol Can Safety: Pressure Ratings, Burst Margins & Regulatory Standards
+            </a>
+          </li>
+          <li>
+            <a href="/understanding-sds-tds-and-coa-for-aerosol-products" style="display: block; padding: 16px; background: #f8fafc; border: 1px solid var(--border); border-radius: var(--radius-md); font-weight: 600; color: var(--text-primary); transition: all 0.2s ease;" onmouseover="this.style.borderColor='var(--primary)'; this.style.color='var(--primary)';" onmouseout="this.style.borderColor='var(--border)'; this.style.color='var(--text-primary)';">
+              The Startup’s Guide to Aerosol Documentation: SDS, TDS & COA
+            </a>
+          </li>
+          <li>
+            <a href="/ghs-hazcom-labeling-aerosol-products" style="display: block; padding: 16px; background: #f8fafc; border: 1px solid var(--border); border-radius: var(--radius-md); font-weight: 600; color: var(--text-primary); transition: all 0.2s ease;" onmouseover="this.style.borderColor='var(--primary)'; this.style.color='var(--primary)';" onmouseout="this.style.borderColor='var(--border)'; this.style.color='var(--text-primary)';">
+              GHS & HazCom Labeling for Aerosol Products: Pictograms, Signal Words & P-Statements
+            </a>
+          </li>
+          <li>
+            <a href="/aerosol-manufacturing-101-guide" style="display: block; padding: 16px; background: #f8fafc; border: 1px solid var(--border); border-radius: var(--radius-md); font-weight: 600; color: var(--text-primary); transition: all 0.2s ease;" onmouseover="this.style.borderColor='var(--primary)'; this.style.color='var(--primary)';" onmouseout="this.style.borderColor='var(--border)'; this.style.color='var(--text-primary)';">
+              Aerosol Manufacturing 101: The Complete Technical Guide
+            </a>
+          </li>
+          <li>
+            <a href="/how-aerosol-cans-work" style="display: block; padding: 16px; background: #f8fafc; border: 1px solid var(--border); border-radius: var(--radius-md); font-weight: 600; color: var(--text-primary); transition: all 0.2s ease;" onmouseover="this.style.borderColor='var(--primary)'; this.style.color='var(--primary)';" onmouseout="this.style.borderColor='var(--border)'; this.style.color='var(--text-primary)';">
+              How Aerosol Cans Work: Propellant, Pressure, Valve & Spray Dynamics
+            </a>
+          </li>
+          <li>
+            <a href="/aerosol-propellants-explained-lpg-vs-dme-vs-hfc-vs-n2-vs-co2" style="display: block; padding: 16px; background: #f8fafc; border: 1px solid var(--border); border-radius: var(--radius-md); font-weight: 600; color: var(--text-primary); transition: all 0.2s ease;" onmouseover="this.style.borderColor='var(--primary)'; this.style.color='var(--primary)';" onmouseout="this.style.borderColor='var(--border)'; this.style.color='var(--text-primary)';">
+              Aerosol Propellants Explained: LPG vs DME vs HFC vs N₂ vs CO₂
+            </a>
+          </li>
+          <li>
+            <a href="/aerosol-chemistry-101" style="display: block; padding: 16px; background: #f8fafc; border: 1px solid var(--border); border-radius: var(--radius-md); font-weight: 600; color: var(--text-primary); transition: all 0.2s ease;" onmouseover="this.style.borderColor='var(--primary)'; this.style.color='var(--primary)';" onmouseout="this.style.borderColor='var(--border)'; this.style.color='var(--text-primary)';">
+              Aerosol Chemistry 101: Solvents, Binders, Surfactants & Additives
+            </a>
+          </li>
+          <li>
+            <a href="/from-lab-to-commercial-launch" style="display: block; padding: 16px; background: #f8fafc; border: 1px solid var(--border); border-radius: var(--radius-md); font-weight: 600; color: var(--text-primary); transition: all 0.2s ease;" onmouseover="this.style.borderColor='var(--primary)'; this.style.color='var(--primary)';" onmouseout="this.style.borderColor='var(--border)'; this.style.color='var(--text-primary)';">
+              From Lab to Factory: Aerosol R&D to Commercial Manufacturing
+            </a>
+          </li>
+        </ul>
+      </section>
+
+      <!-- ABOUT THE AUTHOR -->
+      <section class="section" id="about-author" style="margin-top: 50px; background: #f8fafc; border: 1px solid var(--border); padding: 30px; border-radius: var(--radius-lg); display: flex; flex-direction: column; gap: 20px; md-flex-direction: row;">
+        <div style="flex-shrink: 0; width: 60px; height: 60px; background: linear-gradient(135deg, var(--primary) 0%, var(--secondary) 100%); color: white; display: flex; align-items: center; justify-content: center; border-radius: 50%; font-size: 1.5rem; font-weight: 800; font-family: 'Outfit', sans-serif; box-shadow: var(--shadow-md);">
+          AK
+        </div>
+        <div>
+          <h3 style="margin-top: 0; margin-bottom: 8px; font-family: 'Outfit', sans-serif; font-size: 1.3rem; font-weight: 700; color: var(--text-primary);">About the Specialist</h3>
+          <p style="margin-top: 0; margin-bottom: 12px; font-size: 0.95rem; line-height: 1.6; color: var(--text-muted);">
+            <strong>Absar Khan</strong> is the principal consultant and chemical formulation architect at <strong>Global Aerosols</strong>. He possesses cross-disciplinary engineering expertise spanning aerosol gassing systems, pharmaceutical manufacturing, sterile injectables, cosmetics, and green chemical plant setups. Absar leads scientific and engineering advisory teams supporting manufacturers globally in technology selection, GMP layouts, validation frameworks, and regulatory strategies.
+          </p>
+          <p style="margin: 0; font-size: 0.9rem;">
+            <strong>LinkedIn Portfolio:</strong> 
+            <a 
+              href="https://www.linkedin.com/in/absar-khan-aerosol-consultant-and-formulator-78359b162" 
+              target="_blank"
+              rel="noopener noreferrer"
+              style="font-weight: 700; color: var(--primary); text-decoration: underline;"
+            >
+              Connect with Absar Khan on LinkedIn
+            </a>
+          </p>
+        </div>
+      </section>
+
+      <!-- Footer copyright -->
+      <footer style="text-align: center; margin-top: 50px; color: var(--text-muted); font-size: 0.85rem; font-family: 'Inter', sans-serif; border-top: 1px solid var(--border); padding-top: 20px;">
+        &copy; 2026 Global Aerosols. All rights reserved. 
+        <br />
+        <span style="font-size: 0.75rem; opacity: 0.8;">Centralised Aerosol Dosing &amp; Chemical Scale-Up Engineering.</span>
+      </footer>
+
+    </article>
+  </main>
+</Layout>
+
+<style>
+  .blog-prose h1, 
+  .blog-prose h2, 
+  .blog-prose h3 {
+    font-family: 'Playfair Display', 'Outfit', serif !important;
+  }
+
+  .blog-prose p, 
+  .blog-prose ul, 
+  .blog-prose ol,
+  .blog-prose h3,
+  .blog-prose .lead,
+  .blog-prose .box,
+  .blog-prose .cta,
+  .blog-prose .table-container,
+  .blog-prose #faq {
+    max-width: 100%;
+    width: 100%;
+  }
+
+  .blog-prose .lead {
+    margin: 2rem 0;
+  }
+  
+  .blog-prose ul, .blog-prose ol {
+    margin-left: 20px;
+    margin-bottom: 24px;
+  }
+  
+  .blog-prose li {
+    margin-bottom: 8px;
+    line-height: 1.6;
+  }
+</style>

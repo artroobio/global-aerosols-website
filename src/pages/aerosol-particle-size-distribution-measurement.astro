@@ -1,0 +1,531 @@
+---
+import Layout from '../layouts/Layout.astro';
+
+const orgSchema = {
+  "@context": "https://schema.org",
+  "@type": "Organization",
+  "name": "Global Aerosols",
+  "url": "https://www.globalaerosols.com",
+  "logo": "https://www.globalaerosols.com/logo.png",
+  "sameAs": [
+    "https://www.linkedin.com/in/absar-khan-aerosol-consultant-and-formulator-78359b162"
+  ]
+};
+
+const websiteSchema = {
+  "@context": "https://schema.org",
+  "@type": "WebSite",
+  "url": "https://www.globalaerosols.com",
+  "potentialAction": {
+    "@type": "SearchAction",
+    "target": "https://www.globalaerosols.com/search?q={search_term_string}",
+    "query-input": "required name=search_term_string"
+  }
+};
+
+const authorSchema = {
+  "@context": "https://schema.org",
+  "@type": "Person",
+  "name": "Absar Khan",
+  "jobTitle": "Founder & Lead Aerosol Consultant",
+  "url": "https://www.linkedin.com/in/absar-khan-aerosol-consultant-and-formulator-78359b162",
+  "affiliation": {
+    "@type": "Organization",
+    "name": "Global Aerosols"
+  }
+};
+
+const blogSchema = {
+  "@context": "https://schema.org",
+  "@type": "BlogPosting",
+  "headline": "Aerosol Particle Size Distribution: Measurement Methods & Spray Characterization",
+  "description": "Master aerosol particle size distribution. Learn about laser diffraction, cascade impactor testing, MMAD calculations, and spray characterization principles.",
+  "image": "https://cdn.globalaerosols.com/images/aerosol-particle-size-distribution-measurement/aerosol-particle-size-distribution-measurement-hero-globalaerosols.webp",
+  "author": {
+    "@type": "Person",
+    "name": "Absar Khan"
+  },
+  "publisher": {
+    "@type": "Organization",
+    "name": "Global Aerosols",
+    "logo": {
+      "@type": "ImageObject",
+      "url": "https://www.globalaerosols.com/logo.png"
+    }
+  },
+  "datePublished": "2026-06-20",
+  "dateModified": "2026-06-20",
+  "mainEntityOfPage": {
+    "@type": "WebPage",
+    "@id": "https://www.globalaerosols.com/aerosol-particle-size-distribution-measurement"
+  },
+  "articleSection": "Aerosol Technology & Engineering",
+  "keywords": "aerosol particle size distribution, laser diffraction aerosol measurement, cascade impactor aerosol testing, MMAD aerosol spray, droplet size aerosol, aerosol spray characterization",
+  "wordCount": "2280"
+};
+
+const breadcrumbSchema = {
+  "@context": "https://schema.org",
+  "@type": "BreadcrumbList",
+  "itemListElement": [
+    {
+      "@type": "ListItem",
+      "position": 1,
+      "name": "Home",
+      "item": "https://www.globalaerosols.com"
+    },
+    {
+      "@type": "ListItem",
+      "position": 2,
+      "name": "Blog",
+      "item": "https://www.globalaerosols.com/blog"
+    },
+    {
+      "@type": "ListItem",
+      "position": 3,
+      "name": "Aerosol Particle Size Distribution: Measurement Methods & Spray Characterization",
+      "item": "https://www.globalaerosols.com/aerosol-particle-size-distribution-measurement"
+    }
+  ]
+};
+
+const faqSchema = {
+  "@context": "https://schema.org",
+  "@type": "FAQPage",
+  "mainEntity": [
+    {
+      "@type": "Question",
+      "name": "What is aerosol particle size distribution?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Aerosol particle size distribution describes the relative abundance of aerosol droplets or solid particles categorized by their physical or aerodynamic diameter within a given volume of air. It is a critical parameter determining deposition kinetics, spray coverage efficiency, and respiratory safety boundaries."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "How is laser diffraction used to measure aerosol spray droplets?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Laser diffraction aerosol measurement operates by passing a collimated laser beam through the spray plume. Droplets scatter the laser light at angles inversely proportional to their size. Optical detectors collect this scattered light pattern, and mathematical models decode it into a volumetric droplet size distribution."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "What is the purpose of cascade impactor aerosol testing?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Cascade impactor aerosol testing separates particles inertially based on their aerodynamic diameter rather than optical size. By drawing the aerosol through stages of decreasing jet nozzle diameter, particles are forced to impact on specific plates based on their velocity, allowing physical collection and subsequent chemical assaying of different sizing fractions."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "What does MMAD stand for in aerosol spray diagnostics?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "MMAD stands for Mass Median Aerodynamic Diameter. It represents the aerodynamic diameter above and below which exactly 50% of the total aerosol mass is suspended. It is the primary metric used by pharmaceutical and industrial formulators to classify inhalable fractions."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "How does droplet size affect the safety and efficacy of personal care aerosols?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Droplet size determines whether a personal care spray remains on the target skin/hair surface or becomes respirable. Droplets smaller than 10 microns can bypass nasal filtration and enter deep pulmonary alveolar spaces, posing inhalation health risks, which is why cosmetic spray formulators aim to keep mean droplet diameters well above 30 microns."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "What standards govern the testing and validation of aerosol spray characterization?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Aerosol spray characterization is validated under standards established by groups like ASTM International (such as ASTM D5964 for spray rates) and the International Organization for Standardization (ISO). These guidelines mandate specific nozzle-to-beam distances, airflow rates, and temperature controls to ensure repeatable size distribution measurements."
+      }
+    }
+  ]
+};
+
+const webpageSchema = {
+  "@context": "https://schema.org",
+  "@type": "WebPage",
+  "@id": "https://www.globalaerosols.com/aerosol-particle-size-distribution-measurement",
+  "url": "https://www.globalaerosols.com/aerosol-particle-size-distribution-measurement",
+  "name": "Aerosol Particle Size Distribution: Measurement Methods & Spray Characterization",
+  "description": "Master aerosol particle size distribution. Learn about laser diffraction, cascade impactor testing, MMAD calculations, and spray characterization principles.",
+  "isPartOf": {
+    "@type": "WebSite",
+    "url": "https://www.globalaerosols.com"
+  },
+  "breadcrumb": {
+    "@type": "BreadcrumbList",
+    "itemListElement": [
+      { "@type": "ListItem", "position": 1, "name": "Home", "item": "https://www.globalaerosols.com" },
+      { "@type": "ListItem", "position": 2, "name": "Blog", "item": "https://www.globalaerosols.com/blog" },
+      { "@type": "ListItem", "position": 3, "name": "Aerosol Particle Size Distribution: Measurement Methods & Spray Characterization", "item": "https://www.globalaerosols.com/aerosol-particle-size-distribution-measurement" }
+    ]
+  },
+  "primaryImageOfPage": {
+    "@type": "ImageObject",
+    "url": "https://cdn.globalaerosols.com/images/aerosol-particle-size-distribution-measurement/aerosol-particle-size-distribution-measurement-hero-globalaerosols.webp"
+  },
+  "datePublished": "2026-06-20",
+  "dateModified": "2026-06-20"
+};
+
+const schemas = [orgSchema, websiteSchema, authorSchema, blogSchema, breadcrumbSchema, faqSchema, webpageSchema];
+---
+
+<Layout
+  title="Aerosol Particle Size Distribution: Measurement Methods & Spray Characterization | Global Aerosols"
+  description="Master aerosol particle size distribution. Learn about laser diffraction, cascade impactor testing, MMAD calculations, and spray characterization principles."
+  canonical="https://www.globalaerosols.com/aerosol-particle-size-distribution-measurement"
+  ogImage="https://cdn.globalaerosols.com/images/aerosol-particle-size-distribution-measurement/aerosol-particle-size-distribution-measurement-hero-globalaerosols.webp"
+  ogType="article"
+  schemaJson={schemas}
+>
+  <main class="section-container" style="max-width: 100%; padding-left: 48px; padding-right: 48px; padding-top: 40px; padding-bottom: 80px;">
+    
+    <!-- HTML5 Compliant Breadcrumbs -->
+    <nav aria-label="Breadcrumb" style="display: flex; gap: 8px; font-size: 0.85rem; color: var(--text-muted); margin-bottom: 24px; font-family: 'Inter', sans-serif;">
+      <a href="/" style="color: var(--text-muted);">Home</a>
+      <span>&gt;</span>
+      <a href="/blog" style="color: var(--text-muted);">Blog</a>
+      <span>&gt;</span>
+      <span style="color: var(--text-primary); font-weight: 500;">Aerosol Technology & Engineering</span>
+    </nav>
+
+    <!-- Main article container -->
+    <article class="blog-prose">
+      <header class="post-header">
+        <h1 class="gradient-text" style="font-size: 3rem; line-height: 1.15; font-weight: 900; margin-bottom: 20px;">
+          Aerosol Particle Size Distribution: Measurement Methods & Spray Characterization
+        </h1>
+        
+        <!-- Post meta details -->
+        <div style="display: flex; align-items: center; gap: 16px; font-size: 0.9rem; color: var(--text-muted); margin-bottom: 30px; font-family: 'Inter', sans-serif; font-weight: 500; border-bottom: 1px solid var(--border); padding-bottom: 20px;">
+          <div style="display: flex; align-items: center; gap: 8px;">
+            <span style="width: 28px; height: 28px; background: var(--primary); color: white; display: flex; align-items: center; justify-content: center; border-radius: 50%; font-weight: 700; font-size: 0.75rem;">AK</span>
+            <span>By <strong>Absar Khan</strong></span>
+          </div>
+          <span style="width: 4px; height: 4px; border-radius: 50%; background-color: var(--border);"></span>
+          <span>Published: <strong>June 20, 2026</strong></span>
+          <span style="width: 4px; height: 4px; border-radius: 50%; background-color: var(--border);"></span>
+          <span>Reading Time: <strong>11 min read</strong></span>
+          <span style="width: 4px; height: 4px; border-radius: 50%; background-color: var(--border);"></span>
+          <span style="background: #e0f2fe; color: #0369a1; padding: 2px 10px; border-radius: 50px; font-size: 0.75rem; font-weight: 700; text-transform: uppercase;">Technology & Engineering</span>
+        </div>
+      </header>
+
+      <!-- Primary Featured Image -->
+      <div class="image-slot">
+        <img 
+          src="https://cdn.globalaerosols.com/images/aerosol-particle-size-distribution-measurement/aerosol-particle-size-distribution-measurement-hero-globalaerosols.webp" 
+          alt="aerosol particle size distribution laser diffraction measurement — Global Aerosols" 
+          width="1200" 
+          height="800" 
+          loading="eager" 
+        />
+      </div>
+
+      <!-- Table of Contents / Guide Contents -->
+      <div class="box" style="background: #f8fafc; border: 1px solid var(--border); border-radius: var(--radius-lg); padding: 24px; margin: 30px 0;">
+        <h3 style="margin-top: 0; font-family: 'Outfit', sans-serif; color: var(--text-primary); font-size: 1.25rem; font-weight: 700; border-bottom: 2px solid var(--border); padding-bottom: 8px;">Guide Contents</h3>
+        <ul style="display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 10px; list-style-type: none; padding-left: 0; margin-bottom: 0;">
+          <li><a href="#principles" style="font-weight: 600; color: var(--primary);">1. Introduction to Aerosol Particle Sizing and Characterization</a></li>
+          <li><a href="#levels" style="font-weight: 600; color: var(--primary);">2. The Physics of Droplet Size Aerosol Dispersion</a></li>
+          <li><a href="#sprinklers" style="font-weight: 600; color: var(--primary);">3. Laser Diffraction Aerosol Measurement Principles</a></li>
+          <li><a href="#compliance" style="font-weight: 600; color: var(--primary);">4. Cascade Impactor Aerosol Testing and Sizing Stages</a></li>
+          <li><a href="#chemistry" style="font-weight: 600; color: var(--primary);">5. Sizing Parameters: MMAD Aerosol Spray Diagnostics</a></li>
+          <li><a href="#design" style="font-weight: 600; color: var(--primary);">6. Practical Aerosol Spray Characterization for Quality Systems</a></li>
+          <li><a href="#faq" style="font-weight: 600; color: var(--primary);">7. Frequently Asked Questions</a></li>
+        </ul>
+      </div>
+
+      <section id="introduction" class="section">
+        <p>The <strong>aerosol particle size distribution</strong> determines the transport dynamics, surface coverage efficiency, and safety profile of pressurized spray products. It works by categorizing suspended liquid droplets or solid particles based on their physical or aerodynamic diameter across a multi-stage spectrum. This matters for chemical and process engineers because sizing characteristics dictate whether a formulation deposits effectively on target substrates or remains suspended as a respirable hazard. For a foundational exploration of actuator orifice design and its direct influence on atomization physics, consult our guide on <a href="https://www.globalaerosols.com/aerosol-actuators-101" target="_top">aerosol actuators 101</a>.</p>
+        <p>Developing effective aerosol products requires analyzing droplet sizes and spray angles to verify formulation efficacy and avoid inhalation risks. Physical properties of propellants, solvent density, and valve elastomer selections play a massive role in droplet breaking mechanics. This guide breaks down the methods and sizing metrics used in modern aerosol engineering labs.</p>
+      </section>
+
+      <!-- Section 1 -->
+      <section id="principles" class="section">
+        <h2>Introduction to Aerosol Particle Sizing and Characterization</h2>
+        <p>Aerosol particle size characterization is a key engineering process for many industries, including cosmetics, pharmaceuticals, automotive coatings, and household cleaners. When a pressurized formulation is discharged, the high-velocity expansion of propellants causes the liquid stream to break up into a cloud of millions of droplets. Understanding how these droplets behave in flight requires measuring their size distribution profile using precise optical and mechanical instruments. To explore general scientific literature and aerosol definition physics, see the comprehensive <a href="https://en.wikipedia.org/wiki/Aerosol" target="_blank" rel="noopener noreferrer">Wikipedia aerosol science summary</a>.</p>
+        <p>Logistics and quality control systems rely on repeatable particle sizing to ensure product consistency and meet strict regulatory standards. Droplet size profiles affect not only the sensory characteristics of consumer sprays (like spray dry-time and feel) but also their safety profiles. Inhalation hazards are directly linked to particle size, making size validation a non-negotiable compliance step. To review standard chemical solvents, binders, and active ingredients that influence spray atomization, see our guide on <a href="https://www.globalaerosols.com/aerosol-chemistry-101" target="_top">aerosol chemistry 101</a>.</p>
+      </section>
+
+      <!-- Diagram Image -->
+      <div class="image-slot">
+        <img 
+          src="https://cdn.globalaerosols.com/images/aerosol-particle-size-distribution-measurement/aerosol-particle-size-distribution-measurement-diagram-globalaerosols.webp" 
+          alt="cascade impactor stages showing droplet size aerosol separation stages — Global Aerosols diagram" 
+          width="900" 
+          height="500" 
+          loading="lazy" 
+        />
+        <p style="text-align: center; font-size: 0.85rem; color: var(--text-muted); margin-top: 8px; font-style: italic;">
+          Figure 1: Cascade impactor stages separating aerosol particles based on aerodynamic cut-off diameters.
+        </p>
+      </div>
+
+      <!-- Section 2 -->
+      <section id="levels" class="section">
+        <h2>The Physics of Droplet Size Aerosol Dispersion</h2>
+        <p>The final droplet size aerosol distribution of a spray is determined by the balance of cohesive forces within the formulation and destructive aerodynamic forces at the nozzle exit. Viscosity, surface tension, and liquid density resist droplet breakup, while propellant expansion and shear forces disrupt the liquid sheet. The Weber number (We), a dimensionless parameter comparing inertial forces to surface tension, is used to model this breakup behavior. The British Aerosol Manufacturers' Association maintains reports on droplet behaviors and spray physics in the official <a href="https://www.bama.co.uk" target="_blank" rel="noopener noreferrer">BAMA technical resources</a> portal.</p>
+        <p>If the formulation viscosity is too high, or if the propellant pressure is insufficient, the atomization process will fail, resulting in large droplets, spitting, or stream discharge. Conversely, low viscosity and high propellant levels generate highly atomized sprays with very small droplets. Formulators must balance these parameters to optimize spray patterns while avoiding the generation of respirable fine particles. To review safety systems, canister margins, and flammability testing parameters, read our complete guide on <a href="https://www.globalaerosols.com/aerosol-can-safety-explained" target="_top">aerosol can safety explained</a>.</p>
+      </section>
+
+      <!-- Section 3 -->
+      <section id="sprinklers" class="section">
+        <h2>Laser Diffraction Aerosol Measurement Principles</h2>
+        <p>Laser diffraction aerosol measurement is the most common optical method used to characterize industrial and consumer sprays. This technique passes a collimated laser beam through the spray plume, where droplets scatter the light at angles inversely proportional to their size. Large droplets scatter light at narrow angles with high intensity, while small droplets scatter light at wider angles with lower intensity. The scattered light pattern is captured by an array of photosensors, and mathematical algorithms calculate the volumetric size distribution.</p>
+        <p>The value of laser diffraction is its speed, allowing real-time measurement of transient spray phases (such as the start, middle, and end of a spray actuation). This method is non-intrusive, meaning it does not alter the droplet velocities or trajectories during sizing. However, it requires careful nozzle positioning relative to the laser beam, as dense plumes can cause multiple scattering events that distort the results. Laser diffraction instruments must be calibrated using standard reference materials under stable temperature and humidity conditions.</p>
+
+        <div class="table-container" style="overflow-x: auto; margin: 24px 0;">
+          <table style="width: 100%; border-collapse: collapse; text-align: left; font-size: 0.95rem;">
+            <thead>
+              <tr style="background: var(--primary); color: white;">
+                <th style="padding: 12px; border: 1px solid var(--border);">Measurement Method</th>
+                <th style="padding: 12px; border: 1px solid var(--border);">Sizing Parameter Type</th>
+                <th style="padding: 12px; border: 1px solid var(--border);">Typical Sizing Range</th>
+                <th style="padding: 12px; border: 1px solid var(--border);">Primary Application Area</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr style="background: #f8fafc;">
+                <td style="padding: 12px; border: 1px solid var(--border);"><strong>Laser Diffraction</strong></td>
+                <td style="padding: 12px; border: 1px solid var(--border);">Volumetric / Equivalent Sphere Diameter</td>
+                <td style="padding: 12px; border: 1px solid var(--border);">0.1 – 2,000 microns</td>
+                <td style="padding: 12px; border: 1px solid var(--border);">Consumer sprays, paint atomization, cosmetic aerosols</td>
+              </tr>
+              <tr>
+                <td style="padding: 12px; border: 1px solid var(--border);"><strong>Cascade Impaction</strong></td>
+                <td style="padding: 12px; border: 1px solid var(--border);">Aerodynamic Diameter</td>
+                <td style="padding: 12px; border: 1px solid var(--border);">0.5 – 15 microns</td>
+                <td style="padding: 12px; border: 1px solid var(--border);">Inhalation therapy, pharmaceutical MDIs & DPIs</td>
+              </tr>
+              <tr style="background: #f8fafc;">
+                <td style="padding: 12px; border: 1px solid var(--border);"><strong>Phase Doppler (PDPA)</strong></td>
+                <td style="padding: 12px; border: 1px solid var(--border);">Droplet Diameter & Velocity Vector</td>
+                <td style="padding: 12px; border: 1px solid var(--border);">0.5 – 8,000 microns</td>
+                <td style="padding: 12px; border: 1px solid var(--border);">Nozzle spray pattern analysis, combustion sprays</td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+      </section>
+
+      <!-- Section 4 -->
+      <section id="compliance" class="section">
+        <h2>Cascade Impactor Aerosol Testing and Sizing Stages</h2>
+        <p>For pharmaceutical aerosols like metered-dose inhalers (MDIs), cascade impactor aerosol testing is the primary regulatory standard. Unlike optical methods, cascade impactors separate particles based on their aerodynamic behavior, which directly correlates with how droplets deposit in the human lungs. The aerosol is drawn through the impactor stages at a set flow rate. Each stage features smaller nozzle jets that increase the air velocity, forcing larger particles to impact on collection plates while smaller particles flow to subsequent stages.</p>
+        <p>After sampling, the mass of the formulation deposited on each stage is quantified using high-performance liquid chromatography (HPLC) or gravimetric analysis. This allows formulators to determine the active ingredient concentration within specific sizing ranges. While cascade impaction is time-consuming and labor-intensive, it provides the chemical specificity required for regulatory filings. Researchers can find validation studies for inhalation and impactor testing protocols in the peer-reviewed <a href="https://pubmed.ncbi.nlm.nih.gov" target="_blank" rel="noopener noreferrer">PubMed database</a>.</p>
+
+        <div class="box" style="border-left: 4px solid var(--primary); background: #f0f9ff; padding: 20px; margin: 24px 0; border-radius: 0 var(--radius-md) var(--radius-md) 0;">
+          <strong style="color: var(--primary); display: block; margin-bottom: 6px; font-family: 'Outfit', sans-serif;">Key Insight</strong>
+          Cascade impactors measure the aerodynamic diameter rather than physical size. For porous or low-density droplets, the aerodynamic diameter can be significantly smaller than the physical diameter, affecting deposition velocity calculations.
+        </div>
+      </section>
+
+      <!-- Infographic Image -->
+      <div class="image-slot">
+        <img 
+          src="https://cdn.globalaerosols.com/images/aerosol-particle-size-distribution-measurement/aerosol-particle-size-distribution-measurement-infographic-globalaerosols.webp" 
+          alt="droplet size aerosol measurement methods comparison — Global Aerosols infographic" 
+          width="900" 
+          height="500" 
+          loading="lazy" 
+        />
+        <p style="text-align: center; font-size: 0.85rem; color: var(--text-muted); margin-top: 8px; font-style: italic;">
+          Figure 2: Technical performance comparison of the primary droplet size measurement methods used in aerosol characterization.
+        </p>
+      </div>
+
+      <!-- Section 5 -->
+      <section id="chemistry" class="section">
+        <h2>Sizing Parameters: MMAD Aerosol Spray Diagnostics</h2>
+        <p>Analyzing size distributions requires defining key statistical parameters to describe the spray cloud. The primary metric used is the MMAD aerosol spray diameter, which is the Mass Median Aerodynamic Diameter. The MMAD represents the aerodynamic diameter above and below which exactly 50% of the total aerosol mass is suspended. This value is used to assess respirable risk, as particles with an MMAD smaller than 10 microns can enter the respiratory tract. Sizing statistics can be cross-referenced against standard physical databases like the <a href="https://www.astm.org" target="_blank" rel="noopener noreferrer">ASTM International standards database</a>.</p>
+        <p>Other critical sizing parameters include the Span, which measures the width of the size distribution curve. A narrow Span indicates a highly uniform droplet size, while a wide Span indicates a broad range of droplet sizes. The Dv10 and Dv90 values represent the diameters below which 10% and 90% of the spray volume exist. Monitoring these values during product development helps engineers optimize valve and actuator geometries to ensure a consistent, safe spray pattern.</p>
+
+        <div class="box" style="border-left: 4px solid var(--amber); background: #fffbeb; padding: 20px; margin: 24px 0; border-radius: 0 var(--radius-md) var(--radius-md) 0;">
+          <strong style="color: var(--amber); display: block; margin-bottom: 6px; font-family: 'Outfit', sans-serif;">Rule of Thumb</strong>
+          For consumer products like hair sprays or insect repellents, formulators must keep the respirable fraction (droplets &lt; 10 microns) below 1% of the total spray volume to prevent inhalation health risks.
+        </div>
+      </section>
+
+      <!-- Section 6 -->
+      <section id="design" class="section">
+        <h2>Practical Aerosol Spray Characterization for Quality Systems</h2>
+        <p>Integrating aerosol spray characterization into a manufacturing quality system requires standardized testing protocols. Small changes in nozzle dimensions, propellant pressure, or active ingredient concentrations can significantly alter the spray droplet size. Quality assurance programs use automated laser diffraction systems to test samples from each production run, verifying that the Dv50 and Span remain within specifications. This step ensures consistent spray performance and safety across batches.</p>
+        <p>Environmental parameters like temperature and humidity must be controlled during sizing tests, as they affect propellant evaporation rates and droplet lifetimes. Test benches must feature exhaust systems to capture the spray, preventing droplet recirculation and lens contamination. By maintaining strict control over testing parameters, manufacturers can generate reliable spray data to support regulatory compliance and product development.</p>
+      </section>
+
+      <!-- FAQ Section -->
+      <section id="faq" class="box" style="background: #ffffff; border: 1px solid var(--border); border-radius: var(--radius-lg); padding: 30px; margin: 40px 0;">
+        <h2 style="margin-top: 0; margin-bottom: 24px; font-family: 'Outfit', sans-serif; color: var(--text-primary);">Frequently Asked Questions</h2>
+        
+        <div style="display: flex; flex-direction: column; gap: 16px;">
+          <div style="border-bottom: 1px solid var(--border); padding-bottom: 16px;">
+            <h4 style="font-size: 1.05rem; font-weight: 700; margin-bottom: 6px; color: var(--text-primary);">What is aerosol particle size distribution?</h4>
+            <p style="font-size: 0.95rem; line-height: 1.6; color: var(--text-muted); margin-bottom: 0;">Aerosol particle size distribution describes the relative abundance of aerosol droplets or solid particles categorized by their physical or aerodynamic diameter within a given volume of air. It is a critical parameter determining deposition kinetics, spray coverage efficiency, and respiratory safety boundaries.</p>
+          </div>
+
+          <div style="border-bottom: 1px solid var(--border); padding-bottom: 16px;">
+            <h4 style="font-size: 1.05rem; font-weight: 700; margin-bottom: 6px; color: var(--text-primary);">How is laser diffraction used to measure aerosol spray droplets?</h4>
+            <p style="font-size: 0.95rem; line-height: 1.6; color: var(--text-muted); margin-bottom: 0;">Laser diffraction aerosol measurement operates by passing a collimated laser beam through the spray plume. Droplets scatter the laser light at angles inversely proportional to their size. Optical detectors collect this scattered light pattern, and mathematical models decode it into a volumetric droplet size distribution.</p>
+          </div>
+
+          <div style="border-bottom: 1px solid var(--border); padding-bottom: 16px;">
+            <h4 style="font-size: 1.05rem; font-weight: 700; margin-bottom: 6px; color: var(--text-primary);">What is the purpose of cascade impactor aerosol testing?</h4>
+            <p style="font-size: 0.95rem; line-height: 1.6; color: var(--text-muted); margin-bottom: 0;">Cascade impactor aerosol testing separates particles inertially based on their aerodynamic diameter rather than optical size. By drawing the aerosol through stages of decreasing jet nozzle diameter, particles are forced to impact on specific plates based on their velocity, allowing physical collection and subsequent chemical assaying of different sizing fractions.</p>
+          </div>
+
+          <div style="border-bottom: 1px solid var(--border); padding-bottom: 16px;">
+            <h4 style="font-size: 1.05rem; font-weight: 700; margin-bottom: 6px; color: var(--text-primary);">What does MMAD stand for in aerosol spray diagnostics?</h4>
+            <p style="font-size: 0.95rem; line-height: 1.6; color: var(--text-muted); margin-bottom: 0;">MMAD stands for Mass Median Aerodynamic Diameter. It represents the aerodynamic diameter above and below which exactly 50% of the total aerosol mass is suspended. It is the primary metric used by pharmaceutical and industrial formulators to classify inhalable fractions.</p>
+          </div>
+
+          <div style="border-bottom: 1px solid var(--border); padding-bottom: 16px;">
+            <h4 style="font-size: 1.05rem; font-weight: 700; margin-bottom: 6px; color: var(--text-primary);">How does droplet size affect the safety and efficacy of personal care aerosols?</h4>
+            <p style="font-size: 0.95rem; line-height: 1.6; color: var(--text-muted); margin-bottom: 0;">Droplet size determines whether a personal care spray remains on the target skin/hair surface or becomes respirable. Droplets smaller than 10 microns can bypass nasal filtration and enter deep pulmonary alveolar spaces, posing inhalation health risks, which is why cosmetic spray formulators aim to keep mean droplet diameters well above 30 microns.</p>
+          </div>
+
+          <div style="padding-bottom: 8px;">
+            <h4 style="font-size: 1.05rem; font-weight: 700; margin-bottom: 6px; color: var(--text-primary);">What standards govern the testing and validation of aerosol spray characterization?</h4>
+            <p style="font-size: 0.95rem; line-height: 1.6; color: var(--text-muted); margin-bottom: 0;">Aerosol spray characterization is validated under standards established by groups like ASTM International (such as ASTM D5964 for spray rates) and the International Organization for Standardization (ISO). These guidelines mandate specific nozzle-to-beam distances, airflow rates, and temperature controls to ensure repeatable size distribution measurements.</p>
+          </div>
+        </div>
+      </section>
+
+      <!-- Contact/Consulting Box -->
+      <div class="cta" style="background: linear-gradient(135deg, var(--primary) 0%, var(--secondary) 100%); color: #ffffff; padding: 30px; border-radius: var(--radius-lg); margin-top: 40px; display: flex; flex-direction: column; justify-content: space-between; align-items: flex-start; gap: 20px; md-flex-direction: row; md-align-items: center;">
+        <div class="left">
+          <p style="margin:0 0 8px 0; font-size:1.25rem; font-weight:800; font-family: 'Outfit', sans-serif;">Need Technical Support for Aerosol Formulations?</p>
+          <p style="margin:0 0 16px 0; font-size:0.95rem; line-height:1.6; opacity:0.95;">
+            Partner with the Global Aerosols team to audit, scale up, and troubleshoot your aerosol chemistry, canister pressure calculations, filling lines, and safety systems.
+          </p>
+          <p style="margin:0; font-size:0.9rem; line-height:1.6; font-family: monospace;">
+            Email: <strong>consulting@globalaerosols.com</strong><br />
+            Website: <a href="/" style="color: #ffffff; font-weight: 600; text-decoration: underline;">https://www.globalaerosols.com</a><br />
+            Phone: <strong>+91 9819548320 &nbsp;&nbsp; +91 8169102990</strong>
+          </p>
+        </div>
+        <a href="mailto:consulting@globalaerosols.com" class="btn" style="background:#ffffff; color:var(--primary); font-weight:700; padding:12px 24px; border-radius:var(--radius-sm); border:none; text-decoration:none; transition: all var(--transition-fast);">
+          Request Consultation
+        </a>
+      </div>
+
+      <!-- Related articles section -->
+      <section class="related-section" style="margin-top: 50px;">
+        <h3 style="font-family: 'Outfit', sans-serif; font-size: 1.4rem; font-weight: 700; color: var(--text-primary); margin-bottom: 20px; border-bottom: 2px solid var(--border); padding-bottom: 8px;">Related Articles</h3>
+        <ul style="display: grid; grid-template-columns: repeat(auto-fit, minmax(320px, 1fr)); gap: 16px; list-style-type: none; padding-left: 0;">
+          <li>
+            <a href="/aerosol-actuators-101" style="display: block; padding: 16px; background: #f8fafc; border: 1px solid var(--border); border-radius: var(--radius-md); font-weight: 600; color: var(--text-primary); transition: all 0.2s ease;" onmouseover="this.style.borderColor='var(--primary)'; this.style.color='var(--primary)';" onmouseout="this.style.borderColor='var(--border)'; this.style.color='var(--text-primary)';">
+              Aerosol Actuators 101: Design, Spray Patterns, and Industrial Applications
+            </a>
+          </li>
+          <li>
+            <a href="/aerosol-chemistry-101" style="display: block; padding: 16px; background: #f8fafc; border: 1px solid var(--border); border-radius: var(--radius-md); font-weight: 600; color: var(--text-primary); transition: all 0.2s ease;" onmouseover="this.style.borderColor='var(--primary)'; this.style.color='var(--primary)';" onmouseout="this.style.borderColor='var(--border)'; this.style.color='var(--text-primary)';">
+              Aerosol Chemistry 101: Solvents, Binders, Surfactants & Additives
+            </a>
+          </li>
+          <li>
+            <a href="/aerosol-can-safety-explained" style="display: block; padding: 16px; background: #f8fafc; border: 1px solid var(--border); border-radius: var(--radius-md); font-weight: 600; color: var(--text-primary); transition: all 0.2s ease;" onmouseover="this.style.borderColor='var(--primary)'; this.style.color='var(--primary)';" onmouseout="this.style.borderColor='var(--border)'; this.style.color='var(--text-primary)';">
+              Aerosol Can Safety: Pressure Ratings, Burst Margins & Regulatory Standards
+            </a>
+          </li>
+          <li>
+            <a href="/aerosol-manufacturing-101-guide" style="display: block; padding: 16px; background: #f8fafc; border: 1px solid var(--border); border-radius: var(--radius-md); font-weight: 600; color: var(--text-primary); transition: all 0.2s ease;" onmouseover="this.style.borderColor='var(--primary)'; this.style.color='var(--primary)';" onmouseout="this.style.borderColor='var(--border)'; this.style.color='var(--text-primary)';">
+              Aerosol Manufacturing 101: The Complete Technical Guide
+            </a>
+          </li>
+          <li>
+            <a href="/how-aerosol-cans-work" style="display: block; padding: 16px; background: #f8fafc; border: 1px solid var(--border); border-radius: var(--radius-md); font-weight: 600; color: var(--text-primary); transition: all 0.2s ease;" onmouseover="this.style.borderColor='var(--primary)'; this.style.color='var(--primary)';" onmouseout="this.style.borderColor='var(--border)'; this.style.color='var(--text-primary)';">
+              How Aerosol Cans Work: Propellant, Pressure, Valve & Spray Dynamics
+            </a>
+          </li>
+          <li>
+            <a href="/aerosol-propellants-explained-lpg-vs-dme-vs-hfc-vs-n2-vs-co2" style="display: block; padding: 16px; background: #f8fafc; border: 1px solid var(--border); border-radius: var(--radius-md); font-weight: 600; color: var(--text-primary); transition: all 0.2s ease;" onmouseover="this.style.borderColor='var(--primary)'; this.style.color='var(--primary)';" onmouseout="this.style.borderColor='var(--border)'; this.style.color='var(--text-primary)';">
+              Aerosol Propellants Explained: LPG vs DME vs HFC vs N₂ vs CO₂
+            </a>
+          </li>
+          <li>
+            <a href="/from-lab-to-commercial-launch" style="display: block; padding: 16px; background: #f8fafc; border: 1px solid var(--border); border-radius: var(--radius-md); font-weight: 600; color: var(--text-primary); transition: all 0.2s ease;" onmouseover="this.style.borderColor='var(--primary)'; this.style.color='var(--primary)';" onmouseout="this.style.borderColor='var(--border)'; this.style.color='var(--text-primary)';">
+              From Lab to Factory: Aerosol R&D to Commercial Manufacturing
+            </a>
+          </li>
+          <li>
+            <a href="/choosing-the-right-product-consultant" style="display: block; padding: 16px; background: #f8fafc; border: 1px solid var(--border); border-radius: var(--radius-md); font-weight: 600; color: var(--text-primary); transition: all 0.2s ease;" onmouseover="this.style.borderColor='var(--primary)'; this.style.color='var(--primary)';" onmouseout="this.style.borderColor='var(--border)'; this.style.color='var(--text-primary)';">
+              How to Choose the Right Aerosol Product Consultant
+            </a>
+          </li>
+        </ul>
+      </section>
+
+      <!-- ABOUT THE AUTHOR -->
+      <section class="section" id="about-author" style="margin-top: 50px; background: #f8fafc; border: 1px solid var(--border); padding: 30px; border-radius: var(--radius-lg); display: flex; flex-direction: column; gap: 20px; md-flex-direction: row;">
+        <div style="flex-shrink: 0; width: 60px; height: 60px; background: linear-gradient(135deg, var(--primary) 0%, var(--secondary) 100%); color: white; display: flex; align-items: center; justify-content: center; border-radius: 50%; font-size: 1.5rem; font-weight: 800; font-family: 'Outfit', sans-serif; box-shadow: var(--shadow-md);">
+          AK
+        </div>
+        <div>
+          <h3 style="margin-top: 0; margin-bottom: 8px; font-family: 'Outfit', sans-serif; font-size: 1.3rem; font-weight: 700; color: var(--text-primary);">About the Specialist</h3>
+          <p style="margin-top: 0; margin-bottom: 12px; font-size: 0.95rem; line-height: 1.6; color: var(--text-muted);">
+            <strong>Absar Khan</strong> is the principal consultant and chemical formulation architect at <strong>Global Aerosols</strong>. He possesses cross-disciplinary engineering expertise spanning aerosol gassing systems, pharmaceutical manufacturing, sterile injectables, cosmetics, and green chemical plant setups. Absar leads scientific and engineering advisory teams supporting manufacturers globally in technology selection, GMP layouts, validation frameworks, and regulatory strategies.
+          </p>
+          <p style="margin: 0; font-size: 0.9rem;">
+            <strong>LinkedIn Portfolio:</strong> 
+            <a 
+              href="https://www.linkedin.com/in/absar-khan-aerosol-consultant-and-formulator-78359b162" 
+              target="_blank"
+              rel="noopener noreferrer"
+              style="font-weight: 700; color: var(--primary); text-decoration: underline;"
+            >
+              Connect with Absar Khan on LinkedIn
+            </a>
+          </p>
+        </div>
+      </section>
+
+      <!-- Footer copyright -->
+      <footer style="text-align: center; margin-top: 50px; color: var(--text-muted); font-size: 0.85rem; font-family: 'Inter', sans-serif; border-top: 1px solid var(--border); padding-top: 20px;">
+        &copy; 2026 Global Aerosols. All rights reserved. 
+        <br />
+        <span style="font-size: 0.75rem; opacity: 0.8;">Centralised Aerosol Dosing &amp; Chemical Scale-Up Engineering.</span>
+      </footer>
+
+    </article>
+  </main>
+</Layout>
+
+<style>
+  .blog-prose h1, 
+  .blog-prose h2, 
+  .blog-prose h3 {
+    font-family: 'Playfair Display', 'Outfit', serif !important;
+  }
+
+  .blog-prose p, 
+  .blog-prose ul, 
+  .blog-prose ol,
+  .blog-prose h3,
+  .blog-prose .lead,
+  .blog-prose .box,
+  .blog-prose .cta,
+  .blog-prose .table-container,
+  .blog-prose #faq {
+    max-width: 100%;
+    width: 100%;
+  }
+
+  .blog-prose .lead {
+    margin: 2rem 0;
+  }
+  
+  .blog-prose ul, .blog-prose ol {
+    margin-left: 20px;
+    margin-bottom: 24px;
+  }
+  
+  .blog-prose li {
+    margin-bottom: 8px;
+    line-height: 1.6;
+  }
+</style>
