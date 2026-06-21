@@ -1,6 +1,7 @@
 ---
 import Layout from '../../lc/layouts/Layout.astro';
 import ContactFormVideo from '../../lc/components/ContactFormVideo.astro';
+import ProductSupplyBlock from '../../lc/components/ProductSupplyBlock.astro';
 
 const components = [
   {
@@ -12,7 +13,7 @@ const components = [
       { key: 'Stem', val: '4mm Nylon' },
       { key: 'Use', val: 'Household/Tech' }
     ],
-    img: 'https://assets.zyrosite.com/A3QlOV94WLSaL6xE/image-zWvEMowUFOLtFKMM.png',
+    img: 'https://cdn.globalaerosols.com/images/products/aerosol-valves/standard-1-inch-aerosol-valve.webp',
     alt: '1-Inch Standard Aerosol Valve with mounting cup and dip tube'
   },
   {
@@ -24,7 +25,7 @@ const components = [
       { key: 'Discharge', val: '360° Spray' },
       { key: 'Material', val: '4-Layer Pouch' }
     ],
-    img: 'https://assets.zyrosite.com/A3QlOV94WLSaL6xE/bov-01-5kGsBClzX5Ttzbjl.jpg',
+    img: 'https://cdn.globalaerosols.com/images/products/aerosol-valves/bag-on-valve-bov-system.webp',
     alt: 'Bag-on-Valve (BoV) aerosol system with multi-layer laminated pouch'
   },
   {
@@ -36,7 +37,7 @@ const components = [
       { key: 'Seal', val: 'Buna / Viton' },
       { key: 'Stem', val: 'Stemless/Adaptor' }
     ],
-    img: 'https://assets.zyrosite.com/A3QlOV94WLSaL6xE/butane-valve-GmeywRZnMccQuWXN.webp',
+    img: 'https://cdn.globalaerosols.com/images/products/aerosol-valves/butane-gas-valve.webp',
     alt: 'Butane Gas Valve for lighter refills and portable stoves'
   },
   {
@@ -48,7 +49,7 @@ const components = [
       { key: 'Application', val: 'Spray Paint' },
       { key: 'Cleaning', val: 'Anti-Clog' }
     ],
-    img: 'https://assets.zyrosite.com/A3QlOV94WLSaL6xE/av01-female-valve-tV7caTBNL1ljog1A.png',
+    img: 'https://cdn.globalaerosols.com/images/products/aerosol-valves/female-paint-aerosol-valve.webp',
     alt: 'Female aerosol valve for spray paint and high viscosity products'
   },
   {
@@ -60,7 +61,7 @@ const components = [
       { key: 'Fit', val: 'Single/Double' },
       { key: 'Color', val: 'Customizable' }
     ],
-    img: 'https://assets.zyrosite.com/A3QlOV94WLSaL6xE/caps-4PpYuwcstA2iYm01.jpg',
+    img: 'https://cdn.globalaerosols.com/images/products/aerosol-valves/standard-aerosol-actuators.webp',
     alt: 'Standard aerosol actuator buttons in various colors'
   },
   {
@@ -72,7 +73,7 @@ const components = [
       { key: 'Finish', val: 'Gloss / Matte' },
       { key: 'Use', val: 'Deo / Hair' }
     ],
-    img: 'https://assets.zyrosite.com/A3QlOV94WLSaL6xE/integrated-spray-cap-pLcBYZUQzTqfTO7E.webp',
+    img: 'https://cdn.globalaerosols.com/images/products/aerosol-valves/integrated-spray-cap.webp',
     alt: 'Integrated spray cap with hoodless design for cosmetics'
   }
 ];
@@ -97,11 +98,54 @@ const faqs = [
 ];
 
 const splitWords = (s: string) => s.split(' ');
+
+const SITE = 'https://www.globalaerosols.com';
+const PAGE_URL = `${SITE}/services/aerosol-valves-caps-and-actuators/`;
+
+const itemListSchema = {
+  '@context': 'https://schema.org',
+  '@type': 'ItemList',
+  name: 'Aerosol Valve & Actuator Catalog',
+  itemListOrder: 'https://schema.org/ItemListOrderAscending',
+  numberOfItems: components.length,
+  itemListElement: components.map((c, i) => ({
+    '@type': 'ListItem',
+    position: i + 1,
+    item: {
+      '@type': 'Product',
+      name: c.name,
+      image: c.img,
+      description: c.alt,
+      category: 'Aerosol Valves & Actuators',
+      brand: { '@type': 'Brand', name: 'Global Aerosols' },
+      additionalProperty: c.specs.map(s => ({ '@type': 'PropertyValue', name: s.key, value: s.val })),
+      offers: {
+        '@type': 'Offer',
+        availability: 'https://schema.org/InStock',
+        businessFunction: 'http://purl.org/goodrelations/v1#Sell',
+        areaServed: 'Worldwide',
+        seller: { '@id': `${SITE}/#organization` },
+        url: PAGE_URL
+      }
+    }
+  }))
+};
+
+const serviceSchema = ['Bag-on-Valve (BoV) Assembly', 'Custom Actuator Tooling', 'Wholesale & Bulk Component Supply'].map(name => ({
+  '@context': 'https://schema.org',
+  '@type': 'Service',
+  serviceType: name,
+  provider: { '@id': `${SITE}/#organization` },
+  areaServed: 'Worldwide',
+  url: PAGE_URL
+}));
+
+const commercialSchema = [itemListSchema, ...serviceSchema];
 ---
 
-<Layout 
-  title="Aerosol Valves, Actuators & Spray Caps | Global Aerosols" 
-  description="Precision-engineered aerosol valves, actuators, caps, and barrier systems (BoV). High-performance flow control solutions for cosmetic, pharma, and industrial sprays."
+<Layout
+  title="Aerosol Valves & Actuators — Wholesale Supplier & Exporter | BoV, Spray Caps | Global Aerosols"
+  description="Wholesale supplier & exporter of aerosol valves, actuators, spray caps and Bag-on-Valve (BoV) systems for cosmetic, pharma & industrial sprays. Bulk & OEM supply — request a quote."
 >
   <script type="application/ld+json" is:inline>
     [
@@ -145,21 +189,29 @@ const splitWords = (s: string) => s.split(' ');
           "@type": "ListItem",
           "position": 1,
           "name": "Home",
-          "item": "https://www.globalaerosols.com"
+          "item": "https://www.globalaerosols.com/"
         },{
           "@type": "ListItem",
           "position": 2,
+          "name": "Products",
+          "item": "https://www.globalaerosols.com/products/"
+        },{
+          "@type": "ListItem",
+          "position": 3,
           "name": "Valves & Actuators"
         }]
       }
     ]
   </script>
 
+  <!-- ── Commercial Product / ItemList / Service schema (marketplace signal) ── -->
+  <script type="application/ld+json" is:inline set:html={JSON.stringify(commercialSchema)} />
+
   <div class="industrial-light-wrapper" id="industrial-light-valves-final">
     
     <!-- ════════════ BREADCRUMBS ════════════ -->
     <div class="ind-breadcrumbs">
-      <a href="/" target="_top">Home</a> <span>/</span> <span class="curr-page">Valves & Actuators</span>
+      <a href="/" target="_top">Home</a> <span>/</span> <a href="/products/" target="_top">Products</a> <span>/</span> <span class="curr-page">Valves & Actuators</span>
     </div>
 
     <!-- ════════════ HERO ════════════ -->
@@ -202,12 +254,38 @@ const splitWords = (s: string) => s.split(' ');
                   <span class="spec-val">{spec.val}</span>
                 ))}
               </div>
-              <a href="/contact/" class="action-btn">Enquire</a>
+              <a href="/contact/" class="action-btn">Request Quote</a>
             </div>
           </div>
         ))}
       </div>
     </section>
+
+    <!-- ════════════ SUPPLY SPECS / MOQ / LEAD TIMES / CTA ════════════ -->
+    <ProductSupplyBlock
+      eyebrow="Wholesale Supply"
+      heading="Specs, MOQ & Lead Times"
+      columns={["Component", "Mounting", "Options", "Typical MOQ", "Lead Time"]}
+      rows={[
+        ["Standard 1\" Valve", "1-inch cup", "Vapor tap, dip-tube cuts", "50,000 pcs", "3–5 weeks"],
+        ["Bag-on-Valve (BoV)", "1-inch cup", "Pouch size, Air/N₂", "30,000 pcs", "5–7 weeks"],
+        ["Female Paint Valve", "1-inch cup", "Anti-clog orifices", "50,000 pcs", "3–5 weeks"],
+        ["Actuators & Caps", "Snap-on", "Insert, colour, finish", "100,000 pcs", "4–6 weeks (custom)"],
+      ]}
+      badges={["FEA Compliant", "<1.5g/yr Leak Rate", "Buna / Viton / Butyl", "Custom Tooling"]}
+      ctaText="Request a quote for wholesale valves, actuators and BoV systems — custom tooling and gaskets included."
+      industries={[
+        { label: "Cosmetics & Personal Care", href: "/cosmetics-and-personal-care-aerosols-guide/" },
+        { label: "Pharmaceutical", href: "/pharmaceutical-and-healthcare-guide/" },
+        { label: "Automotive", href: "/automotive-aerosol-products/" },
+        { label: "Paints & Coatings", href: "/paints-and-coatings-guide/" },
+      ]}
+      related={[
+        { label: "Aerosol Cans", href: "/services/aerosol-cans/" },
+        { label: "Aerosol Caps", href: "/services/aerosol-caps/" },
+        { label: "Filling Equipment", href: "/services/aerosol-machines-and-equipment/" },
+      ]}
+    />
 
     <!-- ════════════ ENGINEERING RESOURCES ════════════ -->
     <section class="resource-section">

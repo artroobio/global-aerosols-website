@@ -68,6 +68,45 @@ const canonicalUrl = (() => {
 		<meta name="twitter:description" content={description} />
 		<meta name="twitter:image" content={ogImage} />
 
+		<!-- ── Sitewide Organization / Manufacturer entity (commercial supplier signal) ── -->
+		<script type="application/ld+json" is:inline set:html={JSON.stringify({
+			"@context": "https://schema.org",
+			"@type": ["Organization", "Manufacturer"],
+			"@id": "https://www.globalaerosols.com/#organization",
+			"name": "Global Aerosols",
+			"url": "https://www.globalaerosols.com/",
+			"logo": "https://www.globalaerosols.com/og-default.jpg",
+			"image": "https://www.globalaerosols.com/og-default.jpg",
+			"description": "Manufacturer, wholesale supplier and exporter of aerosol cans, valves, actuators, caps and filling equipment, plus contract aerosol filling and product formulation services.",
+			"slogan": "Premium Aerosol Engineering & Systems",
+			"areaServed": "Worldwide",
+			"knowsAbout": [
+				"Aerosol cans", "Aluminum monobloc cans", "Tinplate aerosol cans",
+				"Aerosol valves", "Bag-on-valve (BoV)", "Aerosol actuators", "Aerosol caps",
+				"Aerosol filling equipment", "Contract aerosol filling", "Product formulation"
+			],
+			"sameAs": [],
+			"contactPoint": {
+				"@type": "ContactPoint",
+				"telephone": "+91-9819548320",
+				"contactType": "sales",
+				"areaServed": "Worldwide",
+				"availableLanguage": ["English"]
+			},
+			"address": {
+				"@type": "PostalAddress",
+				"addressCountry": "IN"
+			},
+			"makesOffer": [
+				{ "@type": "Offer", "itemOffered": { "@type": "Product", "name": "Aerosol Cans (Aluminum Monobloc & Tinplate)" }, "url": "https://www.globalaerosols.com/services/aerosol-cans/" },
+				{ "@type": "Offer", "itemOffered": { "@type": "Product", "name": "Aerosol Valves, Actuators & Spray Caps" }, "url": "https://www.globalaerosols.com/services/aerosol-valves-caps-and-actuators/" },
+				{ "@type": "Offer", "itemOffered": { "@type": "Product", "name": "Aerosol Caps & Overcaps" }, "url": "https://www.globalaerosols.com/services/aerosol-caps/" },
+				{ "@type": "Offer", "itemOffered": { "@type": "Product", "name": "Aerosol Machines & Filling Equipment" }, "url": "https://www.globalaerosols.com/services/aerosol-machines-and-equipment/" },
+				{ "@type": "Offer", "itemOffered": { "@type": "Service", "name": "Contract Aerosol Filling" } },
+				{ "@type": "Offer", "itemOffered": { "@type": "Service", "name": "Product Formulation" } }
+			]
+		})} />
+
 		<!-- Preconnect to image CDN -->
 		<link rel="preconnect" href="https://cdn.globalaerosols.com/" crossorigin />
 
