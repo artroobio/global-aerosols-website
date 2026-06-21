@@ -1,6 +1,7 @@
 ---
 import Layout from '../../lc/layouts/Layout.astro';
 import ContactFormVideo from '../../lc/components/ContactFormVideo.astro';
+import ProductSupplyBlock from '../../lc/components/ProductSupplyBlock.astro';
 
 /* ───────── Feature segments ───────── */
 const features = [
@@ -16,7 +17,7 @@ const features = [
     ],
     cta: 'Discuss Gassing Machines',
     href: '#contact',
-    img: 'https://assets.zyrosite.com/A3QlOV94WLSaL6xE/gassing-machine-GlWNvAHyvtKA4M3A.jpg',
+    img: 'https://cdn.globalaerosols.com/images/products/aerosol-machines/aerosol-gassing-machine.webp',
     reverse: false
   },
   {
@@ -31,7 +32,7 @@ const features = [
     ],
     cta: 'Discuss Crimping Machines',
     href: '#contact',
-    img: 'https://assets.zyrosite.com/A3QlOV94WLSaL6xE/crimping-machine-sijKTk2nSCF1udwm.jpg',
+    img: 'https://cdn.globalaerosols.com/images/products/aerosol-machines/aerosol-crimping-machine.webp',
     reverse: true
   },
   {
@@ -46,15 +47,70 @@ const features = [
     ],
     cta: 'Discuss Filtration Options',
     href: '#contact',
-    img: 'https://assets.zyrosite.com/A3QlOV94WLSaL6xE/columns-p9ToqwsNVwURUNBm.jpg',
+    img: 'https://cdn.globalaerosols.com/images/products/aerosol-machines/aerosol-filling-line-columns.webp',
     reverse: false
   }
 ];
 
 const splitWords = (s: string) => s.split(' ');
+
+const SITE = 'https://www.globalaerosols.com';
+const PAGE_URL = `${SITE}/services/aerosol-machines-and-equipment/`;
+
+const itemListSchema = {
+  '@context': 'https://schema.org',
+  '@type': 'ItemList',
+  name: 'Aerosol Machinery & Equipment Catalog',
+  itemListOrder: 'https://schema.org/ItemListOrderAscending',
+  numberOfItems: features.length,
+  itemListElement: features.map((f, i) => ({
+    '@type': 'ListItem',
+    position: i + 1,
+    item: {
+      '@type': 'Product',
+      name: f.title,
+      image: f.img,
+      description: f.body,
+      category: 'Aerosol Manufacturing Equipment',
+      brand: { '@type': 'Brand', name: 'Global Aerosols' },
+      additionalProperty: f.points.map(p => ({ '@type': 'PropertyValue', name: 'Feature', value: p })),
+      offers: {
+        '@type': 'Offer',
+        availability: 'https://schema.org/InStock',
+        businessFunction: 'http://purl.org/goodrelations/v1#Sell',
+        areaServed: 'Worldwide',
+        seller: { '@id': `${SITE}/#organization` },
+        url: PAGE_URL
+      }
+    }
+  }))
+};
+
+const serviceSchema = ['Turnkey Aerosol Line Setup', 'Installation & Commissioning', 'After-Sales Service & Spare Parts'].map(name => ({
+  '@context': 'https://schema.org',
+  '@type': 'Service',
+  serviceType: name,
+  provider: { '@id': `${SITE}/#organization` },
+  areaServed: 'Worldwide',
+  url: PAGE_URL
+}));
+
+const breadcrumbSchema = {
+  '@context': 'https://schema.org',
+  '@type': 'BreadcrumbList',
+  itemListElement: [
+    { '@type': 'ListItem', position: 1, name: 'Home', item: `${SITE}/` },
+    { '@type': 'ListItem', position: 2, name: 'Products', item: `${SITE}/products/` },
+    { '@type': 'ListItem', position: 3, name: 'Machines & Equipment' }
+  ]
+};
+
+const commercialSchema = [itemListSchema, ...serviceSchema, breadcrumbSchema];
 ---
 
-<Layout title="Aerosol Machines & Equipment | Global Formulation" description="Precision aerosol crimping, gassing, and propellant deodorization machines. Safe, high-performance equipment designed for turnkey aerosol filling and gassing lines.">
+<Layout title="Aerosol Machines & Equipment — Supplier of Gassing, Crimping & Filling Lines | Global Aerosols" description="Supplier of aerosol gassing machines, crimping machines and deodorization columns for turnkey aerosol filling lines. Safe, high-performance equipment — request a quote.">
+
+  <script type="application/ld+json" is:inline set:html={JSON.stringify(commercialSchema)} />
 
   <!-- ════════════ HERO ════════════ -->
   <section class="ab-hero">
@@ -138,6 +194,31 @@ const splitWords = (s: string) => s.split(' ');
       </div>
     </div>
   </section>
+
+  <!-- ════════════ SUPPLY SPECS / CTA ════════════ -->
+  <ProductSupplyBlock
+    eyebrow="Equipment Supply"
+    heading="Machine Range & Capacity"
+    columns={["Machine", "Function", "Automation", "Throughput", "Lead Time"]}
+    rows={[
+      ["Gassing Machine", "Propellant charging (LPG/DME/CO₂/N₂)", "Semi / Fully Auto", "Up to 120 cans/min", "On request"],
+      ["Crimping Machine", "Valve sealing", "Semi / Fully Auto", "Adjustable per valve", "On request"],
+      ["Deodorization Column", "Propellant purification", "Continuous", "Custom flow capacity", "On request"],
+    ]}
+    badges={["Explosion-Proof Design", "Stainless Steel Body", "After-Sales Support", "Turnkey Line Setup"]}
+    ctaTitle="Plan Your Aerosol Filling Line"
+    ctaText="Request a quote for gassing, crimping and deodorization equipment — turnkey line design and commissioning available."
+    industries={[
+      { label: "Contract Filling", href: "/aerosol-contract-manufacturing-and-filling/" },
+      { label: "Manufacturing 101", href: "/aerosol-manufacturing-101-guide/" },
+      { label: "Crimping & Gassing Guide", href: "/aerosol-crimping-gassing-leak-detection-explained/" },
+    ]}
+    related={[
+      { label: "Aerosol Cans", href: "/services/aerosol-cans/" },
+      { label: "Valves & Actuators", href: "/services/aerosol-valves-caps-and-actuators/" },
+      { label: "Aerosol Caps", href: "/services/aerosol-caps/" },
+    ]}
+  />
 
   <ContactFormVideo />
 

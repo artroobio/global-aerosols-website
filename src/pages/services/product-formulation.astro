@@ -98,9 +98,46 @@ const features = [
 ];
 
 const splitWords = (s: string) => s.split(' ');
+
+const SITE = 'https://www.globalaerosols.com';
+const PAGE_URL = `${SITE}/services/product-formulation/`;
+
+const serviceSchema = {
+  '@context': 'https://schema.org',
+  '@type': 'Service',
+  '@id': `${PAGE_URL}#service`,
+  serviceType: 'Aerosol Product Formulation',
+  name: 'Aerosol Product Formulation Services',
+  description: 'Applied chemistry, propellant balancing and packaging stability studies for industrial, household, personal care and coatings aerosols.',
+  provider: { '@id': `${SITE}/#organization` },
+  areaServed: 'Worldwide',
+  url: PAGE_URL,
+  hasOfferCatalog: {
+    '@type': 'OfferCatalog',
+    name: 'Formulation Capabilities',
+    itemListElement: features.map(f => ({
+      '@type': 'Offer',
+      itemOffered: { '@type': 'Service', name: f.title, description: f.body }
+    }))
+  }
+};
+
+const breadcrumbSchema = {
+  '@context': 'https://schema.org',
+  '@type': 'BreadcrumbList',
+  itemListElement: [
+    { '@type': 'ListItem', position: 1, name: 'Home', item: `${SITE}/` },
+    { '@type': 'ListItem', position: 2, name: 'Products', item: `${SITE}/products/` },
+    { '@type': 'ListItem', position: 3, name: 'Product Formulation' }
+  ]
+};
+
+const pageSchema = [serviceSchema, breadcrumbSchema];
 ---
 
-<Layout title="Aerosol Product Formulations | Global Formulation" description="Advanced aerosol product formulation services. Applied chemistry, propellant balancing, and packaging stability studies across industrial, cleaners, cosmetics, and coatings.">
+<Layout title="Aerosol Product Formulation Services — Custom Development | Global Aerosols" description="Aerosol product formulation services: applied chemistry, propellant balancing and packaging stability across industrial, cleaners, cosmetics and coatings. Request a consultation.">
+
+  <script type="application/ld+json" is:inline set:html={JSON.stringify(pageSchema)} />
 
   <!-- ════════════ HERO ════════════ -->
   <section class="ab-hero">

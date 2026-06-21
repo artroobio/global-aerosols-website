@@ -1,6 +1,7 @@
 ---
 import Layout from '../../lc/layouts/Layout.astro';
 import ContactFormVideo from '../../lc/components/ContactFormVideo.astro';
+import ProductSupplyBlock from '../../lc/components/ProductSupplyBlock.astro';
 
 const cans = [
   {
@@ -12,7 +13,7 @@ const cans = [
       { key: 'Grade', val: 'Cosmetic / Pharma' },
       { key: 'Pressure', val: '15 BAR' }
     ],
-    img: 'https://assets.zyrosite.com/A3QlOV94WLSaL6xE/64f0b05a588bb11540004068_aluminium-aerosol-cans-oTuatqkCmKUCrwY2.jpg',
+    img: 'https://cdn.globalaerosols.com/images/products/aerosol-cans/aluminum-monobloc-aerosol-can.webp',
     alt: '45mm Seamless Aluminum Monobloc Aerosol Can'
   },
   {
@@ -24,7 +25,7 @@ const cans = [
       { key: 'Pressure', val: '12 BAR' },
       { key: 'Use', val: 'Home Care' }
     ],
-    img: 'https://assets.zyrosite.com/A3QlOV94WLSaL6xE/aerosol-tank-for-household-tin-can-waterproof-spray-tank-iron-can-daily-chemical-packaging-tank-wEaqfSg9Mz3oYB9E.webp',
+    img: 'https://cdn.globalaerosols.com/images/products/aerosol-cans/tinplate-aerosol-canister.webp',
     alt: '3-Piece Welded Tinplate Canister'
   },
   {
@@ -36,7 +37,7 @@ const cans = [
       { key: 'Shape', val: 'Custom Profiles' },
       { key: 'Finish', val: 'Matte / Gloss' }
     ],
-    img: 'https://assets.zyrosite.com/A3QlOV94WLSaL6xE/axe-A85MVer0OMf415wK.jpg',
+    img: 'https://cdn.globalaerosols.com/images/products/aerosol-cans/body-spray-deodorant-aerosol-can.webp',
     alt: 'Custom Printed Body Spray'
   },
   {
@@ -48,7 +49,7 @@ const cans = [
       { key: 'Valve', val: 'Metered Dose' },
       { key: 'Material', val: 'Pure Aluminum' }
     ],
-    img: 'https://assets.zyrosite.com/A3QlOV94WLSaL6xE/51o0jbvzrzl-8pGISlSbUWPHtbGg.jpg',
+    img: 'https://cdn.globalaerosols.com/images/products/aerosol-cans/pharma-inhaler-aerosol-can.webp',
     alt: 'Pharma Inhaler Can'
   },
   {
@@ -60,7 +61,7 @@ const cans = [
       { key: 'Feature', val: 'Mixing Agitator' },
       { key: 'Valve', val: 'Non-Clog Tech' }
     ],
-    img: 'https://assets.zyrosite.com/A3QlOV94WLSaL6xE/an_ultra_realistic_high_resolution_image_showing_two_aerosol-2-AMqD9jQJ8PsQ7rBR.jpeg',
+    img: 'https://cdn.globalaerosols.com/images/products/aerosol-cans/spray-paint-aerosol-can.webp',
     alt: 'Spray Paint Can'
   },
   {
@@ -72,7 +73,7 @@ const cans = [
       { key: 'Seam', val: 'Reinforced Weld' },
       { key: 'Safety', val: 'CRV Locks' }
     ],
-    img: 'https://assets.zyrosite.com/A3QlOV94WLSaL6xE/flamex-butane-gas-cartridge-1000x1000-mJAzr4YSve5lRFIv.webp',
+    img: 'https://cdn.globalaerosols.com/images/products/aerosol-cans/butane-gas-cartridge.webp',
     alt: 'Butane Gas Cartridge'
   },
   {
@@ -84,7 +85,7 @@ const cans = [
       { key: 'Accessory', val: 'Extension Straw' },
       { key: 'Stock', val: 'Bulk Available' }
     ],
-    img: 'https://assets.zyrosite.com/A3QlOV94WLSaL6xE/wd-40-170g-mutli-use-spray.png-Ek1UYFtPrbMpmqBJ.webp',
+    img: 'https://cdn.globalaerosols.com/images/products/aerosol-cans/penetrating-oil-aerosol-spray.webp',
     alt: 'Penetrative Oil Spray'
   },
   {
@@ -96,7 +97,7 @@ const cans = [
       { key: 'Temp', val: 'Heat Resistant' },
       { key: 'Sector', val: 'Industrial' }
     ],
-    img: 'https://assets.zyrosite.com/A3QlOV94WLSaL6xE/chain-spray-tRatoZhHJ2gWHevp.jpg',
+    img: 'https://cdn.globalaerosols.com/images/products/aerosol-cans/chain-lubricant-aerosol-spray.webp',
     alt: 'Chain Spray Lubricant'
   },
   {
@@ -108,7 +109,7 @@ const cans = [
       { key: 'Safety', val: 'Non-Flammable' },
       { key: 'Supply', val: 'Global Export' }
     ],
-    img: 'https://assets.zyrosite.com/A3QlOV94WLSaL6xE/snow-spray-BcHUOdyCul1X4P0C.jpg',
+    img: 'https://cdn.globalaerosols.com/images/products/aerosol-cans/artificial-snow-spray.webp',
     alt: 'Snow Spray'
   },
   {
@@ -120,7 +121,7 @@ const cans = [
       { key: 'Mechanism', val: 'Auto/Manual' },
       { key: 'Size', val: '300ml Standard' }
     ],
-    img: 'https://assets.zyrosite.com/A3QlOV94WLSaL6xE/ambipur-edited-AE07ra0b1bSNjzee.jpeg',
+    img: 'https://cdn.globalaerosols.com/images/products/aerosol-cans/air-freshener-aerosol-can.webp',
     alt: 'Air Freshener'
   },
   {
@@ -132,7 +133,7 @@ const cans = [
       { key: 'Valve', val: '360° Application' },
       { key: 'Target', val: 'Upholstery/Car' }
     ],
-    img: 'https://assets.zyrosite.com/A3QlOV94WLSaL6xE/foaming-cleaner-t1VsSWaqypk705Wh.jpg',
+    img: 'https://cdn.globalaerosols.com/images/products/aerosol-cans/foaming-cleaner-aerosol-can.webp',
     alt: 'Foaming Cleaner'
   },
   {
@@ -144,7 +145,7 @@ const cans = [
       { key: 'Standard', val: 'DIN 50021' },
       { key: 'Protection', val: 'Cathodic/Anti-Rust' }
     ],
-    img: 'https://assets.zyrosite.com/A3QlOV94WLSaL6xE/zinc-spray-MHRRaeKHXSs8c6hS.jpg',
+    img: 'https://cdn.globalaerosols.com/images/products/aerosol-cans/zinc-galvanizing-aerosol-spray.webp',
     alt: 'Zinc Galvanizing Spray'
   }
 ];
@@ -173,11 +174,58 @@ const faqs = [
 ];
 
 const splitWords = (s: string) => s.split(' ');
+
+const SITE = 'https://www.globalaerosols.com';
+const PAGE_URL = `${SITE}/services/aerosol-cans/`;
+
+// ── Commercial schema built from the catalog above (kept in sync with the grid) ──
+const itemListSchema = {
+  '@context': 'https://schema.org',
+  '@type': 'ItemList',
+  name: 'Aerosol Can Production Catalog',
+  itemListOrder: 'https://schema.org/ItemListOrderAscending',
+  numberOfItems: cans.length,
+  itemListElement: cans.map((can, i) => ({
+    '@type': 'ListItem',
+    position: i + 1,
+    item: {
+      '@type': 'Product',
+      name: `${can.name} Aerosol Can`,
+      image: can.img,
+      description: can.alt,
+      category: 'Aerosol Cans',
+      brand: { '@type': 'Brand', name: 'Global Aerosols' },
+      additionalProperty: can.specs.map(s => ({
+        '@type': 'PropertyValue', name: s.key, value: s.val
+      })),
+      // Offer asserts commercial intent (supplier/wholesale). Price intentionally omitted — quote-based.
+      offers: {
+        '@type': 'Offer',
+        availability: 'https://schema.org/InStock',
+        businessFunction: 'http://purl.org/goodrelations/v1#Sell',
+        areaServed: 'Worldwide',
+        seller: { '@id': `${SITE}/#organization` },
+        url: PAGE_URL
+      }
+    }
+  }))
+};
+
+const serviceSchema = ['Contract Aerosol Filling', 'Custom Lithography & Printing', 'Wholesale & Bulk Supply'].map(name => ({
+  '@context': 'https://schema.org',
+  '@type': 'Service',
+  serviceType: name,
+  provider: { '@id': `${SITE}/#organization` },
+  areaServed: 'Worldwide',
+  url: PAGE_URL
+}));
+
+const commercialSchema = [itemListSchema, ...serviceSchema];
 ---
 
-<Layout 
-  title="Aerosol Can Manufacturing | Aluminum & Tinplate | Global Aerosols" 
-  description="Precision engineered aluminum monobloc and tinplate steel aerosol cans. Adhering to DOT 2Q/2P and FEA pressure standards. Contract filling and custom lithography."
+<Layout
+  title="Aerosol Cans — Wholesale Supplier & Manufacturer | Aluminum & Tinplate | Global Aerosols"
+  description="Wholesale supplier & manufacturer of aluminum monobloc and tinplate aerosol cans, certified to DOT 2Q/2P & FEA. Bulk supply, contract filling & custom lithography — request a quote."
 >
   <script type="application/ld+json" is:inline>
     [
@@ -228,21 +276,29 @@ const splitWords = (s: string) => s.split(' ');
           "@type": "ListItem",
           "position": 1,
           "name": "Home",
-          "item": "https://www.globalaerosols.com"
+          "item": "https://www.globalaerosols.com/"
         },{
           "@type": "ListItem",
           "position": 2,
+          "name": "Products",
+          "item": "https://www.globalaerosols.com/products/"
+        },{
+          "@type": "ListItem",
+          "position": 3,
           "name": "Aerosol Cans"
         }]
       }
     ]
   </script>
 
+  <!-- ── Commercial Product / ItemList / Service schema (marketplace signal) ── -->
+  <script type="application/ld+json" is:inline set:html={JSON.stringify(commercialSchema)} />
+
   <div class="industrial-light-wrapper" id="industrial-light-final-v7">
     
     <!-- ════════════ BREADCRUMBS ════════════ -->
     <div class="ind-breadcrumbs">
-      <a href="/" target="_top">Home</a> <span>/</span> <span class="curr-page">Aerosol Cans</span>
+      <a href="/" target="_top">Home</a> <span>/</span> <a href="/products/" target="_top">Products</a> <span>/</span> <span class="curr-page">Aerosol Cans</span>
     </div>
 
     <!-- ════════════ HERO ════════════ -->
@@ -285,12 +341,38 @@ const splitWords = (s: string) => s.split(' ');
                   <span class="spec-val">{spec.val}</span>
                 ))}
               </div>
-              <a href="/contact/" class="action-btn">Enquire</a>
+              <a href="/contact/" class="action-btn">Request Quote</a>
             </div>
           </div>
         ))}
       </div>
     </section>
+
+    <!-- ════════════ SUPPLY SPECS / MOQ / LEAD TIMES / CTA ════════════ -->
+    <ProductSupplyBlock
+      eyebrow="Wholesale Supply"
+      heading="Sizes, MOQ & Lead Times"
+      columns={["Can Type", "Diameters", "Material", "Typical MOQ", "Lead Time"]}
+      rows={[
+        ["Aluminum Monobloc", "35 / 45 / 53 / 66 mm", "Alloy 99.7%", "10,000 units", "4–6 weeks (custom)"],
+        ["Tinplate (3-Piece)", "45 / 52 / 65 mm", "ETP Steel", "20,000 units", "4–6 weeks (custom)"],
+        ["Plain / Stock Cans", "Standard range", "Aluminum / Tinplate", "Pallet quantities", "Immediate dispatch"],
+      ]}
+      badges={["DOT 2Q / 2P", "FEA Standards", "GMP (Pharma)", "Recyclable Metal"]}
+      ctaText="Request a quote for wholesale aerosol cans — custom sizes, lithography and contract filling included."
+      industries={[
+        { label: "Cosmetics & Personal Care", href: "/cosmetics-and-personal-care-aerosols-guide/" },
+        { label: "Automotive", href: "/automotive-aerosol-products/" },
+        { label: "Paints & Coatings", href: "/paints-and-coatings-guide/" },
+        { label: "Pharmaceutical", href: "/pharmaceutical-and-healthcare-guide/" },
+        { label: "Household & Cleaning", href: "/household-cleaners-formulations-technology/" },
+      ]}
+      related={[
+        { label: "Valves & Actuators", href: "/services/aerosol-valves-caps-and-actuators/" },
+        { label: "Aerosol Caps", href: "/services/aerosol-caps/" },
+        { label: "Filling Equipment", href: "/services/aerosol-machines-and-equipment/" },
+      ]}
+    />
 
     <!-- ════════════ TECHNICAL KNOWLEDGE HUB ════════════ -->
     <section class="resource-section">

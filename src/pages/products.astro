@@ -1,0 +1,221 @@
+---
+import Layout from '../lc/layouts/Layout.astro';
+import ContactFormVideo from '../lc/components/ContactFormVideo.astro';
+
+const SITE = 'https://www.globalaerosols.com';
+
+const products = [
+  {
+    name: 'Aerosol Cans',
+    tag: 'Aluminum & Tinplate',
+    desc: 'Wholesale aluminum monobloc and tinplate steel aerosol cans certified to DOT 2Q/2P and FEA standards. Custom lithography and contract filling.',
+    href: '/services/aerosol-cans/',
+    img: 'https://cdn.globalaerosols.com/images/products/aerosol-cans/aluminum-monobloc-aerosol-can.webp',
+    alt: 'Aluminum monobloc aerosol cans for wholesale supply'
+  },
+  {
+    name: 'Valves & Actuators',
+    tag: 'Flow Control & BoV',
+    desc: 'Precision aerosol valves, actuators, spray caps and Bag-on-Valve (BoV) systems for cosmetic, pharma and industrial sprays.',
+    href: '/services/aerosol-valves-caps-and-actuators/',
+    img: 'https://cdn.globalaerosols.com/images/products/aerosol-valves/bag-on-valve-bov-system.webp',
+    alt: 'Aerosol valves, actuators and bag-on-valve systems'
+  },
+  {
+    name: 'Aerosol Caps',
+    tag: 'Closures & Overcaps',
+    desc: 'Overcaps, spray caps and custom actuators for tinplate steel and monobloc aluminium cans, with custom tooling and colour matching.',
+    href: '/services/aerosol-caps/',
+    img: 'https://cdn.globalaerosols.com/images/products/aerosol-caps/aluminium-can-caps.webp',
+    alt: 'Aerosol caps, overcaps and spray actuators'
+  },
+  {
+    name: 'Machines & Equipment',
+    tag: 'Filling Lines',
+    desc: 'Aerosol gassing machines, crimping machines and deodorization columns for safe, high-throughput turnkey filling lines.',
+    href: '/services/aerosol-machines-and-equipment/',
+    img: 'https://cdn.globalaerosols.com/images/products/aerosol-machines/aerosol-gassing-machine.webp',
+    alt: 'Aerosol gassing and crimping machines for filling lines'
+  },
+];
+
+const schema = [
+  {
+    '@context': 'https://schema.org',
+    '@type': 'CollectionPage',
+    name: 'Aerosol Products & Components',
+    url: `${SITE}/products/`,
+    description: 'Wholesale aerosol cans, valves, actuators, caps and filling equipment from Global Aerosols — manufacturer, supplier and exporter.',
+    isPartOf: { '@id': `${SITE}/#organization` },
+    about: { '@id': `${SITE}/#organization` }
+  },
+  {
+    '@context': 'https://schema.org',
+    '@type': 'ItemList',
+    name: 'Aerosol Product Categories',
+    numberOfItems: products.length,
+    itemListElement: products.map((p, i) => ({
+      '@type': 'ListItem',
+      position: i + 1,
+      name: p.name,
+      url: `${SITE}${p.href}`,
+      image: p.img
+    }))
+  },
+  {
+    '@context': 'https://schema.org',
+    '@type': 'BreadcrumbList',
+    itemListElement: [
+      { '@type': 'ListItem', position: 1, name: 'Home', item: `${SITE}/` },
+      { '@type': 'ListItem', position: 2, name: 'Products' }
+    ]
+  }
+];
+---
+
+<Layout
+  title="Aerosol Products & Components — Wholesale Supplier & Manufacturer | Global Aerosols"
+  description="Wholesale aerosol cans, valves, actuators, caps and filling equipment. Global Aerosols is a manufacturer, supplier and exporter serving cosmetic, pharma, automotive and industrial markets — request a quote."
+  canonical="/products/"
+>
+  <script type="application/ld+json" is:inline set:html={JSON.stringify(schema)} />
+
+  <div class="prod-hub">
+    <!-- Breadcrumbs -->
+    <div class="hub-breadcrumbs">
+      <a href="/">Home</a> <span>/</span> <span class="curr">Products</span>
+    </div>
+
+    <!-- Hero -->
+    <header class="hub-hero">
+      <span class="hub-badge">Manufacturer · Supplier · Exporter</span>
+      <h1>Aerosol Products &amp; Components</h1>
+      <p>
+        A complete, single-source range for the aerosol industry — cans, valves, actuators, caps and
+        filling equipment. We supply wholesale, bulk and OEM quantities worldwide, backed by contract
+        filling and product formulation.
+      </p>
+    </header>
+
+    <!-- Category grid -->
+    <section class="hub-grid">
+      {products.map(p => (
+        <a class="hub-card" href={p.href}>
+          <div class="hub-img">
+            <img src={p.img} alt={p.alt} loading="lazy" width="400" height="300" />
+          </div>
+          <div class="hub-body">
+            <span class="hub-tag">{p.tag}</span>
+            <h2>{p.name}</h2>
+            <p>{p.desc}</p>
+            <span class="hub-link">View Range →</span>
+          </div>
+        </a>
+      ))}
+    </section>
+
+    <!-- CTA -->
+    <section class="hub-cta">
+      <h2>Request a Wholesale Quote</h2>
+      <p>Tell us your specifications, volumes and target markets — we'll prepare bulk and export pricing.</p>
+      <a href="/contact/" class="hub-cta-btn">Request a Quote</a>
+    </section>
+  </div>
+
+  <ContactFormVideo />
+</Layout>
+
+<style>
+  .prod-hub {
+    font-family: 'Inter', 'Roboto', sans-serif;
+    background-color: #f8fafc;
+    color: #0f172a;
+    background-image:
+      linear-gradient(rgba(203, 213, 225, 0.25) 1px, transparent 1px),
+      linear-gradient(90deg, rgba(203, 213, 225, 0.25) 1px, transparent 1px);
+    background-size: 50px 50px;
+    padding-bottom: 80px;
+  }
+
+  .hub-breadcrumbs {
+    max-width: 1400px; margin: 0 auto; padding: 100px 30px 0;
+    font-size: 0.72rem; color: #475569; text-transform: uppercase;
+    font-weight: 700; letter-spacing: 2px;
+  }
+  .hub-breadcrumbs a { color: #475569; text-decoration: none; }
+  .hub-breadcrumbs a:hover { color: #0968e5; }
+  .hub-breadcrumbs span { color: #94a3b8; margin: 0 8px; }
+  .hub-breadcrumbs .curr { color: #0f172a; }
+
+  .hub-hero {
+    max-width: 900px; margin: 0 auto; text-align: center; padding: 60px 30px 70px;
+  }
+  .hub-badge {
+    display: inline-block; background: rgba(9, 104, 229, 0.09); color: #0968e5;
+    font-family: 'Outfit', sans-serif; font-weight: 700; font-size: 0.72rem;
+    padding: 6px 18px; letter-spacing: 2px; text-transform: uppercase;
+    border-radius: 50px; border: 1px solid rgba(9, 104, 229, 0.2); margin-bottom: 24px;
+  }
+  .hub-hero h1 {
+    font-family: 'Outfit', 'Montserrat', sans-serif; font-weight: 800;
+    text-transform: uppercase; letter-spacing: -0.01em;
+    font-size: clamp(2rem, 4.5vw, 3.6rem); line-height: 1.1; margin: 0 0 20px; color: #0f172a;
+  }
+  .hub-hero p { font-size: clamp(0.95rem, 1.4vw, 1.1rem); color: #475569; line-height: 1.75; margin: 0; }
+
+  .hub-grid {
+    max-width: 1400px; margin: 0 auto; padding: 0 30px;
+    display: grid; grid-template-columns: repeat(2, 1fr); gap: 30px;
+  }
+  .hub-card {
+    background: #fff; border: 1px solid #e2e8f0; border-radius: 14px; overflow: hidden;
+    text-decoration: none; color: inherit; display: flex; flex-direction: column;
+    transition: transform 0.35s cubic-bezier(0.16,1,0.3,1), box-shadow 0.35s, border-color 0.35s;
+  }
+  .hub-card:hover {
+    transform: translateY(-8px); border-color: #0968e5;
+    box-shadow: 0 20px 45px rgba(15, 23, 42, 0.08);
+  }
+  .hub-img {
+    height: 240px; background: #f8fafc; display: flex; align-items: center; justify-content: center;
+    border-bottom: 1px solid #e2e8f0; padding: 28px; overflow: hidden;
+  }
+  .hub-img img { max-width: 92%; max-height: 92%; width: auto; height: auto; object-fit: contain; mix-blend-mode: multiply; }
+  .hub-body { padding: 28px; display: flex; flex-direction: column; }
+  .hub-tag {
+    font-family: 'Outfit', sans-serif; font-size: 0.68rem; color: #0968e5; font-weight: 700;
+    background: rgba(9, 104, 229, 0.08); border: 1px solid rgba(9, 104, 229, 0.2);
+    padding: 4px 10px; border-radius: 4px; align-self: flex-start; text-transform: uppercase;
+    letter-spacing: 0.5px; margin-bottom: 14px;
+  }
+  .hub-body h2 {
+    font-family: 'Outfit', sans-serif; font-weight: 800; text-transform: uppercase;
+    font-size: 1.4rem; margin: 0 0 12px; color: #0f172a;
+  }
+  .hub-body p { font-size: 0.95rem; color: #475569; line-height: 1.65; margin: 0 0 20px; }
+  .hub-link { margin-top: auto; font-family: 'Outfit', sans-serif; font-weight: 700; color: #0968e5; font-size: 0.9rem; text-transform: uppercase; letter-spacing: 0.5px; }
+
+  .hub-cta {
+    max-width: 1400px; margin: 60px auto 0; padding: 0 30px;
+  }
+  .hub-cta > * { text-align: center; }
+  .hub-cta h2 {
+    font-family: 'Outfit', sans-serif; font-weight: 800; text-transform: uppercase;
+    font-size: clamp(1.6rem, 3vw, 2.3rem); color: #0f172a; margin: 0 0 12px; text-align: center;
+  }
+  .hub-cta p { color: #475569; text-align: center; max-width: 600px; margin: 0 auto 28px; }
+  .hub-cta-btn {
+    display: block; width: max-content; margin: 0 auto;
+    background: #0968e5; color: #fff; text-decoration: none;
+    font-family: 'Outfit', sans-serif; font-weight: 700; font-size: 0.9rem;
+    text-transform: uppercase; letter-spacing: 1px; padding: 16px 36px; border-radius: 10px;
+    transition: background 0.25s, transform 0.25s;
+  }
+  .hub-cta-btn:hover { background: #2563eb; transform: translateY(-2px); }
+
+  @media (max-width: 768px) {
+    .hub-grid { grid-template-columns: 1fr; }
+    .hub-breadcrumbs { padding-left: 20px; padding-right: 20px; }
+    .hub-hero { padding: 40px 20px 50px; }
+  }
+</style>

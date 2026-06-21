@@ -1,6 +1,7 @@
 ---
 import Layout from '../../lc/layouts/Layout.astro';
 import ContactFormVideo from '../../lc/components/ContactFormVideo.astro';
+import ProductSupplyBlock from '../../lc/components/ProductSupplyBlock.astro';
 
 const components = [
   {
@@ -12,7 +13,7 @@ const components = [
       { key: 'Material', val: 'PP / Metal' },
       { key: 'Fit', val: 'Steel Cans' }
     ],
-    img: 'https://assets.zyrosite.com/A3QlOV94WLSaL6xE/800_6415bce5559a3-NuvJCNncFWWHkDfW.webp',
+    img: 'https://cdn.globalaerosols.com/images/products/aerosol-caps/aerosol-cap-01.webp',
     alt: 'Tin plate Aerosol caps for steel cans'
   },
   {
@@ -24,7 +25,7 @@ const components = [
       { key: 'Insert', val: 'Variable MBU' },
       { key: 'Color', val: 'Customizable' }
     ],
-    img: 'https://assets.zyrosite.com/A3QlOV94WLSaL6xE/actuators_sfocato-4Y0qecOWI7P2pQg1.jpg',
+    img: 'https://cdn.globalaerosols.com/images/products/aerosol-caps/aerosol-actuators.webp',
     alt: 'Aerosol spray caps and actuators'
   },
   {
@@ -36,7 +37,7 @@ const components = [
       { key: 'Finish', val: 'Gloss / Matte' },
       { key: 'Style', val: 'Seamless' }
     ],
-    img: 'https://assets.zyrosite.com/A3QlOV94WLSaL6xE/aluminium-can-caps-BxVzDVBV5n35ufI7.webp',
+    img: 'https://cdn.globalaerosols.com/images/products/aerosol-caps/aluminium-can-caps.webp',
     alt: 'Aluminium can caps for monobloc bottles'
   },
   {
@@ -48,7 +49,7 @@ const components = [
       { key: 'Use', val: 'Lubricants' },
       { key: 'Feature', val: '2-Way Spray' }
     ],
-    img: 'https://assets.zyrosite.com/A3QlOV94WLSaL6xE/cap-with-extension-tube-4VrRUl6uNA9jWqvk.webp',
+    img: 'https://cdn.globalaerosols.com/images/products/aerosol-caps/cap-with-extension-tube.webp',
     alt: 'Aerosol cap with extension tube smart straw'
   },
   {
@@ -60,7 +61,7 @@ const components = [
       { key: 'Safety', val: 'Locking Tab' },
       { key: 'Output', val: 'High Volume' }
     ],
-    img: 'https://assets.zyrosite.com/A3QlOV94WLSaL6xE/trigger-spray-valve-ZZR7dF4BqKhGhyrW.webp',
+    img: 'https://cdn.globalaerosols.com/images/products/aerosol-caps/trigger-spray-valve.webp',
     alt: 'Trigger spray cap for aerosol cans'
   }
 ];
@@ -85,11 +86,54 @@ const faqs = [
 ];
 
 const splitWords = (s: string) => s.split(' ');
+
+const SITE = 'https://www.globalaerosols.com';
+const PAGE_URL = `${SITE}/services/aerosol-caps/`;
+
+const itemListSchema = {
+  '@context': 'https://schema.org',
+  '@type': 'ItemList',
+  name: 'Aerosol Cap & Overcap Catalog',
+  itemListOrder: 'https://schema.org/ItemListOrderAscending',
+  numberOfItems: components.length,
+  itemListElement: components.map((c, i) => ({
+    '@type': 'ListItem',
+    position: i + 1,
+    item: {
+      '@type': 'Product',
+      name: c.name,
+      image: c.img,
+      description: c.alt,
+      category: 'Aerosol Caps & Closures',
+      brand: { '@type': 'Brand', name: 'Global Aerosols' },
+      additionalProperty: c.specs.map(s => ({ '@type': 'PropertyValue', name: s.key, value: s.val })),
+      offers: {
+        '@type': 'Offer',
+        availability: 'https://schema.org/InStock',
+        businessFunction: 'http://purl.org/goodrelations/v1#Sell',
+        areaServed: 'Worldwide',
+        seller: { '@id': `${SITE}/#organization` },
+        url: PAGE_URL
+      }
+    }
+  }))
+};
+
+const serviceSchema = ['Custom Cap Tooling & Moulding', 'Colour Matching & Finishing', 'Wholesale & Bulk Supply'].map(name => ({
+  '@context': 'https://schema.org',
+  '@type': 'Service',
+  serviceType: name,
+  provider: { '@id': `${SITE}/#organization` },
+  areaServed: 'Worldwide',
+  url: PAGE_URL
+}));
+
+const commercialSchema = [itemListSchema, ...serviceSchema];
 ---
 
-<Layout 
-  title="Industrial Aerosol Caps & Spray Actuators | Global Aerosols" 
-  description="Precision engineered aerosol overcaps, spray caps, and custom actuators. Complete range of closures for tinplate steel and monobloc aluminium cans."
+<Layout
+  title="Aerosol Caps & Overcaps — Wholesale Supplier | Spray Caps & Actuators | Global Aerosols"
+  description="Wholesale supplier of aerosol overcaps, spray caps and custom actuators for tinplate steel and monobloc aluminium cans. Bulk & OEM supply with custom tooling — request a quote."
 >
   <script type="application/ld+json" is:inline>
     [
@@ -133,21 +177,29 @@ const splitWords = (s: string) => s.split(' ');
           "@type": "ListItem",
           "position": 1,
           "name": "Home",
-          "item": "https://www.globalaerosols.com"
+          "item": "https://www.globalaerosols.com/"
         },{
           "@type": "ListItem",
           "position": 2,
+          "name": "Products",
+          "item": "https://www.globalaerosols.com/products/"
+        },{
+          "@type": "ListItem",
+          "position": 3,
           "name": "Aerosol Caps"
         }]
       }
     ]
   </script>
 
+  <!-- ── Commercial Product / ItemList / Service schema (marketplace signal) ── -->
+  <script type="application/ld+json" is:inline set:html={JSON.stringify(commercialSchema)} />
+
   <div class="industrial-light-wrapper" id="industrial-light-caps-blue">
     
     <!-- ════════════ BREADCRUMBS ════════════ -->
     <div class="ind-breadcrumbs">
-      <a href="/" target="_top">Home</a> <span>/</span> <span class="curr-page">Aerosol Caps</span>
+      <a href="/" target="_top">Home</a> <span>/</span> <a href="/products/" target="_top">Products</a> <span>/</span> <span class="curr-page">Aerosol Caps</span>
     </div>
 
     <!-- ════════════ HERO ════════════ -->
@@ -190,12 +242,38 @@ const splitWords = (s: string) => s.split(' ');
                   <span class="spec-val">{spec.val}</span>
                 ))}
               </div>
-              <a href="/contact/" class="action-btn">Enquire</a>
+              <a href="/contact/" class="action-btn">Request Quote</a>
             </div>
           </div>
         ))}
       </div>
     </section>
+
+    <!-- ════════════ SUPPLY SPECS / MOQ / LEAD TIMES / CTA ════════════ -->
+    <ProductSupplyBlock
+      eyebrow="Wholesale Supply"
+      heading="Sizes, MOQ & Lead Times"
+      columns={["Closure Type", "Diameters", "Material", "Typical MOQ", "Lead Time"]}
+      rows={[
+        ["Tinplate Caps", "52 / 57 / 65 mm", "PP / Metal", "50,000 pcs", "4–6 weeks"],
+        ["Aluminium Caps", "35 / 45 / 53 mm", "Aluminium / PP", "50,000 pcs", "4–6 weeks"],
+        ["Spray Caps & Actuators", "Standard fit", "PP / PE", "100,000 pcs", "4–6 weeks (custom)"],
+        ["Trigger / Extension Caps", "Snap-on", "PP", "50,000 pcs", "5–7 weeks"],
+      ]}
+      badges={["Custom Colour Matching", "Variable MBU Inserts", "Gloss / Matte Finish", "Custom Moulding"]}
+      ctaText="Request a quote for wholesale aerosol caps, overcaps and actuators — custom tooling and colours included."
+      industries={[
+        { label: "Cosmetics & Personal Care", href: "/cosmetics-and-personal-care-aerosols-guide/" },
+        { label: "Automotive", href: "/automotive-aerosol-products/" },
+        { label: "Household & Cleaning", href: "/household-cleaners-formulations-technology/" },
+        { label: "Pharmaceutical", href: "/pharmaceutical-and-healthcare-guide/" },
+      ]}
+      related={[
+        { label: "Aerosol Cans", href: "/services/aerosol-cans/" },
+        { label: "Valves & Actuators", href: "/services/aerosol-valves-caps-and-actuators/" },
+        { label: "Filling Equipment", href: "/services/aerosol-machines-and-equipment/" },
+      ]}
+    />
 
     <!-- ════════════ ENGINEERING RESOURCES ════════════ -->
     <section class="resource-section">

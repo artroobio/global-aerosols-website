@@ -86,12 +86,49 @@ const features = [
 ];
 
 const splitWords = (s: string) => s.split(' ');
+
+const SITE = 'https://www.globalaerosols.com';
+const PAGE_URL = `${SITE}/services/consulting-and-technical-support/`;
+
+const serviceSchema = {
+  '@context': 'https://schema.org',
+  '@type': 'Service',
+  '@id': `${PAGE_URL}#service`,
+  serviceType: 'Aerosol Consulting & Technical Support',
+  name: 'Aerosol Consulting & Technical Support Services',
+  description: 'Expert aerosol R&D consultancy and technical support — troubleshooting, compatibility, filling, scale-up and reverse engineering.',
+  provider: { '@id': `${SITE}/#organization` },
+  areaServed: 'Worldwide',
+  url: PAGE_URL,
+  hasOfferCatalog: {
+    '@type': 'OfferCatalog',
+    name: 'Consulting Capabilities',
+    itemListElement: features.map(f => ({
+      '@type': 'Offer',
+      itemOffered: { '@type': 'Service', name: f.title, description: f.body }
+    }))
+  }
+};
+
+const breadcrumbSchema = {
+  '@context': 'https://schema.org',
+  '@type': 'BreadcrumbList',
+  itemListElement: [
+    { '@type': 'ListItem', position: 1, name: 'Home', item: `${SITE}/` },
+    { '@type': 'ListItem', position: 2, name: 'Products', item: `${SITE}/products/` },
+    { '@type': 'ListItem', position: 3, name: 'Consulting & Technical Support' }
+  ]
+};
+
+const pageSchema = [serviceSchema, breadcrumbSchema];
 ---
 
-<Layout 
-  title="Aerosol Consulting & Technical Support Services | Global Aerosols" 
+<Layout
+  title="Aerosol Consulting & Technical Support Services | Global Aerosols"
   description="Expert aerosol R&D consultancy and technical support. We solve foaming, compatibility, filling, scale-up, and reverse engineering challenges with precision and speed."
 >
+
+  <script type="application/ld+json" is:inline set:html={JSON.stringify(pageSchema)} />
 
   <!-- ════════════ HERO SECTION ════════════ -->
   <section class="ab-hero">
