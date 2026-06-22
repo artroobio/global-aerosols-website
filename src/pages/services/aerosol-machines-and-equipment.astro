@@ -75,7 +75,10 @@ const itemListSchema = {
       brand: { '@type': 'Brand', name: 'Global Aerosols' },
       additionalProperty: f.points.map(p => ({ '@type': 'PropertyValue', name: 'Feature', value: p })),
       offers: {
-        '@type': 'Offer',
+        '@type': 'AggregateOffer',
+        priceCurrency: 'USD',
+        lowPrice: '10000',
+        highPrice: '50000',
         availability: 'https://schema.org/InStock',
         businessFunction: 'http://purl.org/goodrelations/v1#Sell',
         areaServed: 'Worldwide',

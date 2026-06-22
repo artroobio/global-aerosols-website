@@ -198,9 +198,13 @@ const itemListSchema = {
       additionalProperty: can.specs.map(s => ({
         '@type': 'PropertyValue', name: s.key, value: s.val
       })),
-      // Offer asserts commercial intent (supplier/wholesale). Price intentionally omitted — quote-based.
+      // Indicative wholesale per-unit pricing (INR). AggregateOffer satisfies Google's
+      // Product rich-result requirement; exact price is quote-based on volume/spec.
       offers: {
-        '@type': 'Offer',
+        '@type': 'AggregateOffer',
+        priceCurrency: 'INR',
+        lowPrice: '12',
+        highPrice: '18',
         availability: 'https://schema.org/InStock',
         businessFunction: 'http://purl.org/goodrelations/v1#Sell',
         areaServed: 'Worldwide',
