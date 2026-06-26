@@ -3,11 +3,7 @@
 // Landing hero section - Global Aerosols
 ---
 
-<!-- Fonts — non-blocking preload swap -->
-<link rel="preconnect" href="https://fonts.googleapis.com" />
-<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-<link rel="preload" href="https://fonts.googleapis.com/css2?family=Michroma&family=Montserrat:wght@200;300;400;700;800;900&family=Poppins:wght@300;400;600&display=swap" as="style" onload="this.onload=null;this.rel='stylesheet'" />
-<noscript><link href="https://fonts.googleapis.com/css2?family=Michroma&family=Montserrat:wght@200;300;400;700;800;900&family=Poppins:wght@300;400;600&display=swap" rel="stylesheet" /></noscript>
+
 
 <section id="ga-main-wrapper">
     <!-- Ambient Backgrounds locked to hero viewport -->
@@ -256,66 +252,38 @@
     @media (min-width: 1200px) {
         .mid-label { font-size: 0.82rem; }
     }
+
+    @media (min-width: 900px) {
+        .hero-massive-title,
+        .hero-mid-divider,
+        .hero-cta-btn {
+            opacity: 0;
+        }
+    }
 </style>
 
-<script is:inline>
-(function () {
-    // ── Utility: load a script and call onload when done ──────────────────
-    function loadScript(src, onload) {
-        var s = document.createElement('script');
-        s.src = src;
-        s.onload = onload;
-        s.onerror = function () { console.warn('Failed to load:', src); onload && onload(); };
-        document.head.appendChild(s);
-    }
+<script>
+import { gsap } from 'gsap';
 
-    // ── Mobile guard: skip ALL heavy JS/WebGL on mobile screens ─────────
-    // This prevents Three.js (~600KB) and WebGL from ever loading on phones.
-    // The mobile CSS media query shows the hero image as a CSS background instead.
+(function () {
     var isMobile = window.matchMedia('(max-width: 899px)').matches ||
                    /Mobi|Android|iPhone|iPad/i.test(navigator.userAgent);
 
-    // Hide UI elements synchronously (before first paint) to prevent flash
-    if (!isMobile) {
-        var _h = document.getElementById('hero-massive-title');
-        var _d = document.querySelector('.hero-mid-divider');
-        var _c = document.querySelector('.hero-cta-btn');
-        if (_h) _h.style.opacity = '0';
-        if (_d) _d.style.opacity = '0';
-        if (_c) _c.style.opacity = '0';
-    }
+    if (isMobile) return;
 
-    // ── Boot sequence: load GSAP → run app ───────────────────────────────
-    function boot() {
-        if (isMobile) {
-            // On mobile: just run the lightweight parts (no CDN scripts, no WebGL)
-            initApp();
-            return;
-        }
-        loadScript('https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/gsap.min.js', function () {
-            initApp();
-        });
-    }
-
+    // Run initApp when DOM is parsed
     if (document.readyState === 'loading') {
-        document.addEventListener('DOMContentLoaded', boot);
+        document.addEventListener('DOMContentLoaded', initApp);
     } else {
-        boot();
+        initApp();
     }
 
-    // ────────────────────────────────────────────────────────────────────
     function initApp() {
         var heroGroup    = document.getElementById('hero-sequence');
         var rippleCanvas = document.getElementById('ripple-canvas');
         var heroImage    = document.getElementById('hero-image');
 
-        if (!heroGroup) return;
-        if (isMobile) return;
-
-        if (!rippleCanvas || !heroImage) {
-            console.warn('Hero: canvas or image element missing.');
-            return;
-        }
+        if (!heroGroup || !rippleCanvas || !heroImage) return;
 
         var titleEl = document.getElementById('hero-massive-title');
         var divider = document.querySelector('.hero-mid-divider');
@@ -323,8 +291,8 @@
         var chars   = [];
 
         // Prepare char spans now so they're ready when ripple fires
-        if (typeof gsap !== 'undefined' && titleEl) {
-            var raw = titleEl.textContent;
+        if (titleEl) {
+            var raw = titleEl.textContent || '';
             titleEl.innerHTML = raw.split('').map(function(ch) {
                 return ch === ' '
                     ? '<span class="char char-space">&nbsp;</span>'
@@ -335,20 +303,14 @@
             gsap.set(chars, { y: 130, opacity: 0 });
         }
 
-        // Divider + labels appear while image/WebGL is still loading (0.4s after boot)
-        if (typeof gsap !== 'undefined' && divider) {
+        // Divider + labels appear 0.4s after load
+        if (divider) {
             gsap.to(divider, { opacity: 1, duration: 0.9, delay: 0.4, ease: 'power2.out' });
         }
 
         // ── Sequence callback: fires when WebGL texture is loaded and ripple begins ──
         function onRippleReady() {
-            if (typeof gsap === 'undefined') {
-                if (titleEl) titleEl.style.opacity = '1';
-                if (ctaBtn) ctaBtn.style.opacity = '1';
-                return;
-            }
-
-            // Title chars slide up in sync with the opening ripple wave
+            // Title chars slide up
             if (titleEl && chars.length) {
                 titleEl.style.opacity = '1';
                 gsap.to(chars, {
@@ -363,10 +325,6 @@
         }
 
         // ── Ripple lifecycle ──────────────────────────────────────────────
-        // buildRipple returns its teardown function on success, or false on
-        // failure. We build the ripple while the hero is in view, fully unload
-        // it from memory once the user scrolls away, and rebuild it when they
-        // scroll back to the top.
         var rippleDestroy = null;   // teardown fn while the ripple is alive, else null
         var webglFailed   = false;  // WebGL unsupported → never (re)build
         var introDone     = false;  // run the title/CTA intro animation only once
@@ -384,7 +342,7 @@
             introDone = true;
             if (titleEl) titleEl.style.opacity = '1';
             if (ctaBtn) ctaBtn.style.opacity = '1';
-            if (typeof gsap !== 'undefined' && chars.length) {
+            if (chars.length) {
                 gsap.to(chars, {
                     y: 0, opacity: 1, duration: 1.4, stagger: 0.038, ease: 'power4.out',
                     onComplete: function() {
@@ -410,10 +368,6 @@
             rippleDestroy();
             rippleDestroy = null;
 
-            // The old canvas's WebGL context was lost via loseContext() and can
-            // never be revived, so getContext() on it would hand back a dead
-            // context. Swap in a fresh canvas (same id/class/styles) so the next
-            // rebuild gets a working context.
             if (rippleCanvas && rippleCanvas.parentNode) {
                 var fresh = rippleCanvas.cloneNode(false);
                 fresh.style.opacity = '0'; // stay hidden until the new ripple swaps it in
@@ -422,9 +376,9 @@
             }
         }
 
-        // Hysteresis thresholds (px) so scrolling across the edge doesn't thrash.
-        var BUILD_AT  = 10;   // at/under: hero in view  → ripple on
-        var UNLOAD_AT = 80;   // past:     scrolled away  → ripple off (freed)
+        // Hysteresis thresholds (px)
+        var BUILD_AT  = 10;
+        var UNLOAD_AT = 80;
 
         function onHeroScroll() {
             if (webglFailed) return;
@@ -441,9 +395,15 @@
         if ((window.scrollY || window.pageYOffset || 0) <= BUILD_AT) {
             startRipple();
         }
+
+        // Trigger reveal immediately without waiting for WebGL texture load to optimize Speed Index / FCP / LCP
+        if (!introDone) {
+            introDone = true;
+            onRippleReady();
+        }
     }
 
-    // ── Ripple engine (self-contained, no GSAP / THREE dependency) ────────
+    // ── Ripple engine ──────────────────────────────────────────────────
     function buildRipple(canvas, fallbackImg, onReady) {
         var gl = canvas.getContext('webgl', { alpha: false });
         if (!gl) {
@@ -512,9 +472,6 @@
             var sh = gl.createShader(type);
             gl.shaderSource(sh, src);
             gl.compileShader(sh);
-            if (!gl.getShaderParameter(sh, gl.COMPILE_STATUS)) {
-                console.error('Shader error:', gl.getShaderInfoLog(sh));
-            }
             return sh;
         }
 
@@ -524,10 +481,6 @@
         gl.attachShader(prog, vsh);
         gl.attachShader(prog, fsh);
         gl.linkProgram(prog);
-        if (!gl.getProgramParameter(prog, gl.LINK_STATUS)) {
-            console.error('Program link error:', gl.getProgramInfoLog(prog));
-            return false;
-        }
 
         var buf = gl.createBuffer();
         gl.bindBuffer(gl.ARRAY_BUFFER, buf);
@@ -562,19 +515,15 @@
             gl.viewport(0, 0, canvas.width, canvas.height);
             var rs = canvas.width / canvas.height;
             var ri = imgW / imgH;
-            if (rs < ri) {
-                uvScale  = [rs / ri, 1.0];
-            } else {
-                uvScale  = [1.0, ri / rs];
-            }
+            if (rs < ri) { uvScale = [rs / ri, 1.0]; } else { uvScale = [1.0, ri / rs]; }
             uvOffset = [(1 - uvScale[0]) / 2, (1 - uvScale[1]) / 2];
         }
 
         var ripplePaused = false;
         var destroyed    = false;
         var rafId        = 0;
-        var tex          = null;
-        var io           = null;
+        var tex = null;
+        var io = null;
 
         function tick() {
             if (destroyed || ripplePaused) return;
@@ -602,16 +551,11 @@
             lastMT = now;
         }
         window.addEventListener('mousemove', onMouseMove, { passive: true });
-
         window.addEventListener('resize', resize);
 
-        // Load the texture from the same <img> element already on the page
-        // This avoids all CORS issues — same-origin, no crossOrigin flag needed
         var img = new Image();
         img.crossOrigin = 'anonymous';
         img.onload = function () {
-            // If the user scrolled and tore the ripple down before the texture
-            // finished loading, skip all GL work but still reveal the hero content.
             if (destroyed) {
                 if (onReady) onReady();
                 return;
@@ -629,11 +573,9 @@
 
             resize();
 
-            // Trigger opening ripple immediately
             hasMain = true;
             mainT   = (performance.now() - t0) / 1000;
 
-            // Pause render loop when hero is scrolled off-screen
             io = new IntersectionObserver(function(entries) {
                 entries.forEach(function(entry) {
                     if (!entry.isIntersecting) {
@@ -646,15 +588,11 @@
             }, { threshold: 0 });
             io.observe(canvas);
 
-            // Start render loop
             tick();
 
-            // Swap: fade in canvas, fade out static img fallback
             canvas.style.opacity = '1';
             fallbackImg.style.opacity = '0';
 
-            // Trigger a second centre ripple 0.5 s from now to coincide with
-            // the title sliding in — creates the "title arrival → ripple" effect
             setTimeout(function() {
                 waves[wIdx * 3]     = 0.5;
                 waves[wIdx * 3 + 1] = 0.5;
@@ -670,13 +608,8 @@
             if (onReady) onReady();
         };
 
-        // Use the page-rendered img src — always same-origin, always loaded already
         img.src = fallbackImg.src;
 
-        // ── Full teardown: free the WebGL ripple from memory ──────────────
-        // Stops the render loop, removes listeners, deletes all GL resources
-        // and loses the context. The static hero image is restored so the
-        // section still shows artwork after the effect is gone.
         function destroy() {
             if (destroyed) return;
             destroyed = true;
@@ -686,7 +619,6 @@
             window.removeEventListener('resize', resize);
             if (io) io.disconnect();
 
-            // Reveal the static fallback image before the canvas goes blank
             if (fallbackImg) fallbackImg.style.opacity = '1';
             if (canvas) canvas.style.opacity = '0';
 
@@ -698,11 +630,10 @@
                 if (fsh)  gl.deleteShader(fsh);
                 var lose = gl.getExtension('WEBGL_lose_context');
                 if (lose) lose.loseContext();
-            } catch (e) { /* context may already be gone */ }
+            } catch (e) { }
         }
 
         return destroy;
     }
-
 })();
 </script>

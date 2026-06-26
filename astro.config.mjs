@@ -7,7 +7,11 @@ import cloudflare from '@astrojs/cloudflare';
 export default defineConfig({
   site: 'https://www.globalaerosols.com',
   trailingSlash: 'always',
-  output: 'server',
+  output: 'static',
+  prefetch: {
+    prefetchAll: true,
+    defaultStrategy: 'hover',
+  },
   adapter: cloudflare({
     platformProxy: { enabled: true },
   }),

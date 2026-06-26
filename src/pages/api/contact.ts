@@ -1,3 +1,5 @@
+export const prerender = false;
+
 import type { APIRoute } from 'astro';
 import { RESEND_API_KEY, RESEND_SENDER_EMAIL, CONTACT_EMAIL_RECIPIENT } from 'astro:env/server';
 

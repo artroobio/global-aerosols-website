@@ -10,8 +10,7 @@ const { variant = 'default' } = Astro.props;
       <!-- Background Video Overlay -->
       <div class="video-underlay">
         <video
-          src="https://cdn.globalformulation.com/contact-form-video.webm"
-          autoplay
+          data-src="https://cdn.globalformulation.com/contact-form-video.webm"
           muted
           loop
           playsinline
@@ -570,6 +569,25 @@ const { variant = 'default' } = Astro.props;
     const bgVideo = document.querySelector('.bg-video');
 
     if (!section || !container) return;
+
+    // Lazy load background video only when it approaches the viewport
+    if (bgVideo) {
+      const observer = new IntersectionObserver((entries) => {
+        entries.forEach(entry => {
+          if (entry.isIntersecting) {
+            const videoEl = entry.target as HTMLVideoElement;
+            const src = videoEl.getAttribute('data-src');
+            if (src && !videoEl.src) {
+              videoEl.src = src;
+              videoEl.load();
+              videoEl.play().catch(err => console.warn("Video play failed:", err));
+            }
+            observer.unobserve(videoEl);
+          }
+        });
+      }, { rootMargin: '200px' });
+      observer.observe(bgVideo);
+    }
 
     // Prefill email from query parameter if present (e.g. from service pages)
     try {
