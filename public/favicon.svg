@@ -1,14 +1,21 @@
 <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100" width="100" height="100">
   <defs>
-    <linearGradient id="gfBlue" x1="0" y1="0" x2="1" y2="1">
-      <stop offset="0%" stop-color="#0968e5"/>
-      <stop offset="100%" stop-color="#074bb5"/>
+    <linearGradient id="blueGradient" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0%" stop-color="#00d2ff"/>
+      <stop offset="100%" stop-color="#0046ff"/>
     </linearGradient>
+    <style>
+      @import url('https://fonts.googleapis.com/css2?family=Inter:wght@800&amp;display=swap');
+      .fav-text {
+        font-family: 'Inter', 'Segoe UI', Roboto, Helvetica, Arial, sans-serif;
+        font-weight: 800;
+        fill: #ffffff;
+        font-size: 82px;
+        text-anchor: middle;
+        dominant-baseline: central;
+      }
+    </style>
   </defs>
-  <rect width="100" height="100" rx="24" ry="24" fill="url(#gfBlue)"/>
-  <text x="50" y="50" fill="#ffffff"
-        font-family="'Segoe UI', 'Helvetica Neue', Helvetica, Arial, sans-serif"
-        font-size="74" font-weight="700"
-        text-anchor="middle" dominant-baseline="central"
-        letter-spacing="-1">G</text>
+  <rect width="100" height="100" rx="22" ry="22" fill="url(#blueGradient)"/>
+  <text x="50" y="52" class="fav-text">G</text>
 </svg>
