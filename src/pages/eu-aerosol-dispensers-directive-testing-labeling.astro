@@ -1,0 +1,509 @@
+---
+import Layout from '../layouts/Layout.astro';
+
+const orgSchema = {
+  "@context": "https://schema.org",
+  "@type": "Organization",
+  "name": "Global Aerosols",
+  "url": "https://www.globalaerosols.com",
+  "logo": "https://www.globalaerosols.com/logo.png",
+  "sameAs": [
+    "https://www.linkedin.com/in/absar-khan-aerosol-consultant-and-formulator-78359b162"
+  ]
+};
+
+const websiteSchema = {
+  "@context": "https://schema.org",
+  "@type": "WebSite",
+  "url": "https://www.globalaerosols.com",
+  "potentialAction": {
+    "@type": "SearchAction",
+    "target": "https://www.globalaerosols.com/search?q={search_term_string}",
+    "query-input": "required name=search_term_string"
+  }
+};
+
+const authorSchema = {
+  "@context": "https://schema.org",
+  "@type": "Person",
+  "name": "Absar Khan",
+  "jobTitle": "Founder & Lead Aerosol Consultant",
+  "url": "https://www.linkedin.com/in/absar-khan-aerosol-consultant-and-formulator-78359b162",
+  "affiliation": {
+    "@type": "Organization",
+    "name": "Global Aerosols"
+  }
+};
+
+const blogSchema = {
+  "@context": "https://schema.org",
+  "@type": "BlogPosting",
+  "headline": "EU Aerosol Dispensers Directive 75/324/EEC: Testing, Labeling & CE Marking",
+  "description": "Understand the EU Aerosol Dispensers Directive 75/324/EEC. Learn pressure testing thresholds, labeling requirements, and CE marking compliance for European aerosols.",
+  "image": "https://cdn.globalaerosols.com/images/eu-aerosol-dispensers-directive-testing-labeling/eu-aerosol-dispensers-directive-testing-labeling-hero-globalaerosols.webp",
+  "author": {
+    "@type": "Person",
+    "name": "Absar Khan"
+  },
+  "publisher": {
+    "@type": "Organization",
+    "name": "Global Aerosols",
+    "logo": {
+      "@type": "ImageObject",
+      "url": "https://www.globalaerosols.com/logo.png"
+    }
+  },
+  "datePublished": "2026-07-04",
+  "dateModified": "2026-07-04",
+  "mainEntityOfPage": {
+    "@type": "WebPage",
+    "@id": "https://www.globalaerosols.com/eu-aerosol-dispensers-directive-testing-labeling"
+  },
+  "articleSection": "Aerosol Regulatory & Safety",
+  "keywords": "EU aerosol dispensers directive, 75/324/EEC aerosol compliance, CE marking aerosol product, EU aerosol pressure testing, aerosol labeling EU regulation, European aerosol directive compliance",
+  "wordCount": "2280"
+};
+
+const breadcrumbSchema = {
+  "@context": "https://schema.org",
+  "@type": "BreadcrumbList",
+  "itemListElement": [
+    {
+      "@type": "ListItem",
+      "position": 1,
+      "name": "Home",
+      "item": "https://www.globalaerosols.com"
+    },
+    {
+      "@type": "ListItem",
+      "position": 2,
+      "name": "Blog",
+      "item": "https://www.globalaerosols.com/blog"
+    },
+    {
+      "@type": "ListItem",
+      "position": 3,
+      "name": "EU Aerosol Dispensers Directive 75/324/EEC",
+      "item": "https://www.globalaerosols.com/eu-aerosol-dispensers-directive-testing-labeling"
+    }
+  ]
+};
+
+const faqSchema = {
+  "@context": "https://schema.org",
+  "@type": "FAQPage",
+  "mainEntity": [
+    {
+      "@type": "Question",
+      "name": "What products does the EU Aerosol Dispensers Directive 75/324/EEC cover?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Directive 75/324/EEC covers all aerosol dispensers placed on the EU market, meaning any non-reusable container made of metal, glass, or plastic, filled with compressed, liquefied, or dissolved gas, fitted with a release device that discharges its contents as a spray, foam, paste, or powder. This includes cosmetic, household, industrial, and technical aerosol products, though certain categories such as medicinal aerosols are regulated under separate pharmaceutical directives."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "What pressure testing is required under the EU aerosol dispensers directive?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "The directive requires that aerosol dispensers withstand a hot water bath test at 50°C for a minimum period without leaking, distorting, or bursting, verifying that internal pressure at that elevated temperature stays within the container's design limits. Manufacturers must also verify that the filled container's internal pressure at 50°C does not exceed 12 bar for most metal containers, with specific limits varying by container material and construction."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "Does an aerosol product need CE marking under 75/324/EEC?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Aerosol dispensers that comply with Directive 75/324/EEC carry the reversed epsilon symbol on the label rather than the CE mark used for most other product categories under EU law. This symbol certifies that the dispenser meets the directive's design, filling, and testing requirements, and it is a mandatory conformity marking for aerosol products legally placed on the EU market."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "What labeling information is mandatory on an EU-compliant aerosol can?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Mandatory labeling includes the reversed epsilon conformity symbol, flammability classification symbols where applicable, precautionary statements regarding pressurized containers (such as warnings against puncturing, heat exposure, and disposal), the net content by volume, and GHS hazard pictograms and signal words corresponding to the product's classification under the CLP Regulation."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "How does the EU aerosol directive classify flammability for labeling purposes?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Flammability classification under the directive follows criteria based on flame projection distance during ignition testing, flashback distance, and the presence of flammable components exceeding defined thresholds. Products are classified as non-flammable, flammable, or extremely flammable, with each tier requiring corresponding GHS pictograms and precautionary statements under the CLP Regulation, which implements GHS within the EU."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "Who is responsible for demonstrating compliance with 75/324/EEC before market placement?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "The manufacturer or, for imported products, the entity placing the aerosol dispenser on the EU market bears responsibility for demonstrating compliance. This includes maintaining technical documentation covering pressure test results, formulation flammability data, and quality control records, which must be available for inspection by EU market surveillance authorities."
+      }
+    }
+  ]
+};
+
+const webpageSchema = {
+  "@context": "https://schema.org",
+  "@type": "WebPage",
+  "@id": "https://www.globalaerosols.com/eu-aerosol-dispensers-directive-testing-labeling",
+  "url": "https://www.globalaerosols.com/eu-aerosol-dispensers-directive-testing-labeling",
+  "name": "EU Aerosol Dispensers Directive 75/324/EEC: Testing, Labeling & CE Marking",
+  "description": "Understand the EU Aerosol Dispensers Directive 75/324/EEC. Learn pressure testing thresholds, labeling requirements, and CE marking compliance for European aerosols.",
+  "isPartOf": {
+    "@type": "WebSite",
+    "url": "https://www.globalaerosols.com"
+  },
+  "breadcrumb": {
+    "@type": "BreadcrumbList",
+    "itemListElement": [
+      { "@type": "ListItem", "position": 1, "name": "Home", "item": "https://www.globalaerosols.com" },
+      { "@type": "ListItem", "position": 2, "name": "Blog", "item": "https://www.globalaerosols.com/blog" },
+      { "@type": "ListItem", "position": 3, "name": "EU Aerosol Dispensers Directive 75/324/EEC", "item": "https://www.globalaerosols.com/eu-aerosol-dispensers-directive-testing-labeling" }
+    ]
+  },
+  "primaryImageOfPage": {
+    "@type": "ImageObject",
+    "url": "https://cdn.globalaerosols.com/images/eu-aerosol-dispensers-directive-testing-labeling/eu-aerosol-dispensers-directive-testing-labeling-hero-globalaerosols.webp"
+  },
+  "datePublished": "2026-07-04",
+  "dateModified": "2026-07-04"
+};
+
+const schemas = [orgSchema, websiteSchema, authorSchema, blogSchema, breadcrumbSchema, faqSchema, webpageSchema];
+
+/*
+  IMAGE GENERATION PLACEHOLDERS — pending AI image generation per BlogSkill.md Step 4.
+  Replace the src values below once assets are generated and uploaded to R2.
+
+  HERO (eu-aerosol-dispensers-directive-testing-labeling-hero-globalaerosols.webp, 1200x630):
+  "Photorealistic premium industrial/scientific photography. A close-up shot of a CE marked aerosol
+  product showing compliance labeling in European market packaging, resting on a dark industrial
+  bench. Active industrial scene — not static. Volumetric lighting with warm gold highlights and cool
+  steel-blue shadows. Rich depth of field, shallow focus on foreground subject. Deep navy background,
+  warm gold accent lighting, clean white highlights. Ultra high detail, 4K quality, professional
+  editorial photography style. No text, no watermarks, no logos. Cinematic composition, bokeh
+  background, professionally lit, no people."
+
+  DIAGRAM (eu-aerosol-dispensers-directive-testing-labeling-diagram-globalaerosols.webp, 900x500):
+  "Photorealistic premium laboratory photography. A macro shot of pressure testing equipment used for
+  EU aerosol directive compliance verification, aerosol can submerged in a hot water bath apparatus in
+  a laboratory setting. Realistic physical phase separation, real fluid droplets, or a physical chemical
+  reaction happening inside glass apparatus. Deep navy background, subtle cyan and gold backlighting
+  reflecting off glass. High-end editorial scientific journal style. No text, no watermarks, no
+  diagrams, no icons. Ultra clean composition, high contrast, shallow depth of field, no people."
+
+  INFOGRAPHIC (eu-aerosol-dispensers-directive-testing-labeling-infographic-globalaerosols.webp, 900x500):
+  "Photorealistic premium scientific photography. A high-end editorial shot of an aerosol can label
+  showing required EU directive symbols, flammability warnings and pressure markings — represented as
+  a row of clear glass test tubes or precision aerosol components, resting on a sleek dark industrial
+  surface. Warm gold and cool steel-blue highlights. Professional editorial laboratory style. No text,
+  no watermarks, no charts, no graphics. Clean, symmetric, high-information density composition,
+  shallow focus, no people."
+*/
+const heroImg = "https://cdn.globalaerosols.com/images/eu-aerosol-dispensers-directive-testing-labeling/eu-aerosol-dispensers-directive-testing-labeling-hero-globalaerosols.webp";
+const diagramImg = "https://cdn.globalaerosols.com/images/eu-aerosol-dispensers-directive-testing-labeling/eu-aerosol-dispensers-directive-testing-labeling-diagram-globalaerosols.webp";
+const infographicImg = "https://cdn.globalaerosols.com/images/eu-aerosol-dispensers-directive-testing-labeling/eu-aerosol-dispensers-directive-testing-labeling-infographic-globalaerosols.webp";
+---
+
+<Layout
+  title="EU Aerosol Dispensers Directive 75/324/EEC Explained | Global Aerosols"
+  description="Understand the EU Aerosol Dispensers Directive 75/324/EEC. Learn pressure testing thresholds, labeling requirements, and CE marking compliance for European aerosols."
+  canonical="https://www.globalaerosols.com/eu-aerosol-dispensers-directive-testing-labeling"
+  ogImage={heroImg}
+  ogType="article"
+  schemaJson={schemas}
+>
+  <main class="section-container" style="max-width: 100%; padding-left: 48px; padding-right: 48px; padding-top: 40px; padding-bottom: 80px;">
+
+    <!-- HTML5 Compliant Breadcrumbs -->
+    <nav aria-label="Breadcrumb" style="display: flex; gap: 8px; font-size: 0.85rem; color: var(--text-muted); margin-bottom: 24px; font-family: 'Inter', sans-serif;">
+      <a href="/" style="color: var(--text-muted);">Home</a>
+      <span>&gt;</span>
+      <a href="/blog/" style="color: var(--text-muted);">Blog</a>
+      <span>&gt;</span>
+      <span style="color: var(--text-primary); font-weight: 500;">Aerosol Regulatory & Safety</span>
+    </nav>
+
+    <!-- Main article container -->
+    <article class="blog-prose">
+      <header class="post-header">
+        <h1 class="gradient-text" style="font-size: 3rem; line-height: 1.15; font-weight: 900; margin-bottom: 20px;">
+          EU Aerosol Dispensers Directive 75/324/EEC: Testing, Labeling & CE Marking
+        </h1>
+
+        <!-- Post meta details -->
+        <div style="display: flex; align-items: center; gap: 16px; font-size: 0.9rem; color: var(--text-muted); margin-bottom: 30px; font-family: 'Inter', sans-serif; font-weight: 500; border-bottom: 1px solid var(--border); padding-bottom: 20px;">
+          <div style="display: flex; align-items: center; gap: 8px;">
+            <span style="width: 28px; height: 28px; background: var(--primary); color: white; display: flex; align-items: center; justify-content: center; border-radius: 50%; font-weight: 700; font-size: 0.75rem;">AK</span>
+            <span>By <strong>Absar Khan</strong></span>
+          </div>
+          <span style="width: 4px; height: 4px; border-radius: 50%; background-color: var(--border);"></span>
+          <span>Published: <strong>July 4, 2026</strong></span>
+          <span style="width: 4px; height: 4px; border-radius: 50%; background-color: var(--border);"></span>
+          <span>Reading Time: <strong>13 min read</strong></span>
+          <span style="width: 4px; height: 4px; border-radius: 50%; background-color: var(--border);"></span>
+          <span style="background: #e0f2fe; color: #0369a1; padding: 2px 10px; border-radius: 50px; font-size: 0.75rem; font-weight: 700; text-transform: uppercase;">Regulatory & Safety</span>
+        </div>
+      </header>
+
+      <!-- Primary Featured Image (PLACEHOLDER — see frontmatter for generation prompt) -->
+      <div class="image-slot" style="margin-bottom: 30px; border-radius: var(--radius-lg); overflow: hidden; max-height: 500px;">
+        <img
+          src={heroImg}
+          alt="EU aerosol dispensers directive — CE marked aerosol product showing compliance labeling in European packaging | Global Aerosols"
+          width="1200"
+          height="800"
+          loading="eager"
+          style="width: 100%; object-fit: cover; height: auto;"
+        />
+      </div>
+
+      <!-- Table of Contents / Guide Contents -->
+      <div class="box" style="background: #f8fafc; border: 1px solid var(--border); border-radius: var(--radius-lg); padding: 24px; margin: 30px 0;">
+        <h3 style="margin-top: 0; font-family: 'Outfit', sans-serif; color: var(--text-primary); font-size: 1.25rem; font-weight: 700; border-bottom: 2px solid var(--border); padding-bottom: 8px;">Guide Contents</h3>
+        <ul style="display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 10px; list-style-type: none; padding-left: 0; margin-bottom: 0;">
+          <li><a href="#scope" style="font-weight: 600; color: var(--primary);">1. Scope of the EU Aerosol Dispensers Directive</a></li>
+          <li><a href="#pressure-testing" style="font-weight: 600; color: var(--primary);">2. EU Aerosol Pressure Testing Requirements</a></li>
+          <li><a href="#labeling" style="font-weight: 600; color: var(--primary);">3. Aerosol Labeling Under EU Regulation</a></li>
+          <li><a href="#conformity-marking" style="font-weight: 600; color: var(--primary);">4. CE Marking and the Reversed Epsilon Symbol</a></li>
+          <li><a href="#flammability" style="font-weight: 600; color: var(--primary);">5. Flammability Classification & CLP Alignment</a></li>
+          <li><a href="#compliance-documentation" style="font-weight: 600; color: var(--primary);">6. Compliance Documentation & Market Surveillance</a></li>
+          <li><a href="#faq" style="font-weight: 600; color: var(--primary);">7. Frequently Asked Questions</a></li>
+        </ul>
+      </div>
+
+      <section id="introduction" class="section">
+        <p>The <strong>EU aerosol dispensers directive</strong>, formally Directive 75/324/EEC, is the harmonized European law governing the design, pressure testing, filling, and labeling of aerosol dispensers placed on the EU market. It works by setting mandatory technical construction standards and conformity marking requirements that every aerosol manufacturer or importer must satisfy before a product can be legally sold in EU member states. This matters for aerosol manufacturers because non-compliance blocks market access entirely and exposes companies to regulatory enforcement, making early compliance planning essential for any product destined for Europe.</p>
+      </section>
+
+      <!-- Section 1 -->
+      <section id="scope" class="section">
+        <h2>Scope of the EU Aerosol Dispensers Directive</h2>
+        <p>Directive 75/324/EEC applies to any non-reusable container made of metal, glass, or plastic that is filled with compressed, liquefied, or dissolved gas, and fitted with a release device that discharges its contents as a spray, foam, paste, or powder. This broad definition captures cosmetic aerosols, household cleaning sprays, industrial lubricants, paints, and technical products alike, spanning nearly every category of aerosol manufactured for the EU market.</p>
+        <p>Certain product categories fall outside the directive's direct scope and are instead governed by separate, more specific EU frameworks. Medicinal aerosols, such as metered dose inhalers, are regulated under pharmaceutical legislation, while cosmetic-specific ingredient safety and claims are governed by the EU Cosmetics Regulation. Manufacturers producing multi-category products, such as a cosmetic aerosol, must therefore satisfy both the aerosol dispensers directive for container and pressure compliance and the relevant product-category regulation for formulation and labeling claims. For a broader view of how EU rules interact with cosmetic aerosol formulation, see our <a href="/cosmetics-and-personal-care-aerosols-guide/" target="_top">cosmetics and personal care aerosols guide</a>.</p>
+        <p>Understanding this scope early in product development prevents costly redesign later. Manufacturers exporting into the EU from outside markets should map their product portfolio against the directive's definitions before finalizing container specifications, as detailed further in our <a href="/aerosol-manufacturing-101-guide/" target="_top">aerosol manufacturing 101 guide</a>.</p>
+      </section>
+
+      <!-- Diagram Image (PLACEHOLDER — see frontmatter for generation prompt) -->
+      <div class="image-slot" style="margin: 30px 0; border-radius: var(--radius-lg); overflow: hidden;">
+        <img
+          src={diagramImg}
+          alt="EU aerosol pressure testing process diagram — hot water bath compliance verification apparatus | Global Aerosols diagram"
+          width="900"
+          height="500"
+          loading="lazy"
+        />
+        <p style="text-align: center; font-size: 0.85rem; color: var(--text-muted); margin-top: 8px; font-style: italic;">
+          Figure 1: Hot water bath pressure testing apparatus used to verify aerosol container integrity under EU directive requirements.
+        </p>
+      </div>
+
+      <!-- Section 2 -->
+      <section id="pressure-testing" class="section">
+        <h2>EU Aerosol Pressure Testing Requirements</h2>
+        <p>EU aerosol pressure testing is central to demonstrating compliance with Directive 75/324/EEC, since container integrity under thermal stress is the primary safety concern for pressurized dispensers. The directive requires filled containers to be immersed in a hot water bath maintained at 50°C for a specified duration, verifying that the container does not leak, distort, or burst under the elevated internal pressure this temperature produces. This test simulates realistic worst-case storage and transport conditions, such as a vehicle interior or warehouse exposed to summer heat.</p>
+        <p>Alongside the hot water bath test, manufacturers must verify that the internal pressure of the filled container at 50°C remains within defined limits relative to the container's rated burst pressure, ensuring an adequate safety margin. These limits vary based on container material and construction, with metal aerosol cans, glass containers, and plastic dispensers each subject to specific design and pressure thresholds under the directive's technical annexes.</p>
+        <div class="table-container" style="overflow-x: auto; margin: 24px 0;">
+          <table style="width: 100%; border-collapse: collapse; text-align: left; font-size: 0.95rem;">
+            <thead>
+              <tr style="background: var(--primary); color: white;">
+                <th style="padding: 12px; border: 1px solid var(--border);">Test Parameter</th>
+                <th style="padding: 12px; border: 1px solid var(--border);">Requirement Under 75/324/EEC</th>
+                <th style="padding: 12px; border: 1px solid var(--border);">Purpose</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr style="background: #f8fafc;">
+                <td style="padding: 12px; border: 1px solid var(--border);"><strong>Hot Water Bath Test</strong></td>
+                <td style="padding: 12px; border: 1px solid var(--border);">Immersion at 50°C for defined hold period</td>
+                <td style="padding: 12px; border: 1px solid var(--border);">Verifies no leakage, distortion, or bursting under thermal stress</td>
+              </tr>
+              <tr>
+                <td style="padding: 12px; border: 1px solid var(--border);"><strong>Internal Pressure at 50°C</strong></td>
+                <td style="padding: 12px; border: 1px solid var(--border);">Must remain within container-rated safety margin</td>
+                <td style="padding: 12px; border: 1px solid var(--border);">Confirms adequate margin below burst pressure</td>
+              </tr>
+              <tr style="background: #f8fafc;">
+                <td style="padding: 12px; border: 1px solid var(--border);"><strong>Fill Ratio Verification</strong></td>
+                <td style="padding: 12px; border: 1px solid var(--border);">Liquid phase must not fully occupy container at 50°C</td>
+                <td style="padding: 12px; border: 1px solid var(--border);">Prevents hydraulic overpressure from thermal expansion</td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+        <p>Manufacturers seeking the underlying pressure test methodologies referenced across international aerosol standards can consult <a href="https://www.astm.org" target="_blank" rel="noopener noreferrer">ASTM International</a>, whose test methods for aerosol fill and pressure characteristics are frequently cross-referenced during EU compliance testing. For a detailed breakdown of how burst pressure testing protocols compare across jurisdictions, see our guide on <a href="/aerosol-burst-pressure-testing-iso-dot-protocols/" target="_top">aerosol burst pressure testing</a>.</p>
+      </section>
+
+      <!-- Section 3 -->
+      <section id="labeling" class="section">
+        <h2>Aerosol Labeling Under EU Regulation</h2>
+        <p>Aerosol labeling EU regulation requirements under Directive 75/324/EEC work alongside the CLP Regulation (Classification, Labelling and Packaging), which implements the Global Harmonized System within the EU. Every compliant aerosol label must display the reversed epsilon conformity symbol, the net content by volume, and precautionary statements specific to pressurized containers, including warnings against exposure to heat above 50°C, puncturing, and incineration even when empty.</p>
+        <p>Beyond the directive-specific pressure warnings, labels must carry GHS hazard pictograms and signal words corresponding to the product's classification under CLP, covering flammability, health hazards, and environmental hazards where applicable. Precautionary (P-statement) and hazard (H-statement) codes must be printed in the official language(s) of each EU member state where the product is sold, which often requires multi-language label variants for pan-European distribution. To understand the full pictogram and statement system referenced here, see our guide on <a href="/ghs-hazcom-labeling-aerosol-products/" target="_top">GHS and HazCom labeling for aerosol products</a>.</p>
+      </section>
+
+      <!-- Infographic Image (PLACEHOLDER — see frontmatter for generation prompt) -->
+      <div class="image-slot" style="margin: 30px 0; border-radius: var(--radius-lg); overflow: hidden;">
+        <img
+          src={infographicImg}
+          alt="EU aerosol dispensers directive comparison infographic — required label symbols, flammability warnings and pressure markings | Global Aerosols infographic"
+          width="900"
+          height="500"
+          loading="lazy"
+        />
+        <p style="text-align: center; font-size: 0.85rem; color: var(--text-muted); margin-top: 8px; font-style: italic;">
+          Figure 2: Required EU aerosol label elements, including the reversed epsilon symbol, flammability pictograms, and pressure warning statements.
+        </p>
+      </div>
+
+      <!-- Section 4 -->
+      <section id="conformity-marking" class="section">
+        <h2>CE Marking and the Reversed Epsilon Symbol</h2>
+        <p>A common point of confusion for manufacturers new to the EU market is CE marking aerosol product expectations. Unlike most consumer product categories that carry the standard CE mark under general EU product safety law, aerosol dispensers compliant with Directive 75/324/EEC instead display the reversed epsilon symbol — a stylized "3" or reversed "E" mark — as their conformity indicator. This symbol certifies that the container's design, filling process, and pressure testing satisfy the directive's technical requirements.</p>
+        <p>The reversed epsilon mark is a legal declaration by the manufacturer or importer that the aerosol dispenser has undergone the required design verification and testing procedures. It must appear clearly and permanently on the container, typically alongside the net content declaration, and cannot be substituted with a general CE mark, since the aerosol dispensers directive operates as a distinct, self-contained conformity system within EU product law.</p>
+        <div class="box" style="border-left: 4px solid var(--primary); background: #f0f9ff; padding: 20px; margin: 24px 0; border-radius: 0 var(--radius-md) var(--radius-md) 0;">
+          <strong style="color: var(--primary); display: block; margin-bottom: 6px; font-family: 'Outfit', sans-serif;">Key Insight</strong>
+          The reversed epsilon symbol is specific to Directive 75/324/EEC and is not interchangeable with the general CE mark — aerosol manufacturers should not assume standard CE marking procedures apply to pressurized dispenser compliance.
+        </div>
+      </section>
+
+      <!-- Section 5 -->
+      <section id="flammability" class="section">
+        <h2>Flammability Classification & CLP Alignment</h2>
+        <p>Flammability classification under the EU aerosol framework is determined through standardized ignition testing that measures flame projection distance, flashback distance, and the presence of flammable components above defined concentration thresholds. Based on these results, products are classified as non-flammable, flammable, or extremely flammable, a tiering system that determines which hazard pictograms and precautionary statements must appear on the finished label under the CLP Regulation.</p>
+        <p>This classification also has downstream implications beyond labeling, directly influencing warehouse storage segregation and transport documentation. Products classified as extremely flammable under the EU framework typically align with the highest hazard tiers used in warehouse fire protection standards, meaning formulation choices made for EU flammability classification often echo requirements seen in storage codes elsewhere. For a comparison of flammability-driven storage classification, see our guide on <a href="/nfpa-30b-aerosol-warehouse-storage-classification/" target="_top">NFPA 30B warehouse storage classification</a>. Formulators evaluating solvent and propellant flash point data during EU classification testing can reference the <a href="https://echa.europa.eu/regulations/clp" target="_blank" rel="noopener noreferrer">ECHA CLP Regulation</a> portal directly.</p>
+        <div class="box" style="border-left: 4px solid var(--amber); background: #fffbeb; padding: 20px; margin: 24px 0; border-radius: 0 var(--radius-md) var(--radius-md) 0;">
+          <strong style="color: var(--amber); display: block; margin-bottom: 6px; font-family: 'Outfit', sans-serif;">Rule of Thumb</strong>
+          Run flammability classification testing early in formulation development, since a shift from "flammable" to "extremely flammable" changes label pictograms, transport documentation, and warehouse storage requirements simultaneously.
+        </div>
+      </section>
+
+      <!-- Section 6 -->
+      <section id="compliance-documentation" class="section">
+        <h2>Compliance Documentation & Market Surveillance</h2>
+        <p>European aerosol directive compliance requires manufacturers or the entity placing the product on the EU market to maintain comprehensive technical documentation, including pressure test results, formulation flammability data, container specification sheets, and quality control records from the filling process. This documentation must be retained and made available to national market surveillance authorities upon request, forming the evidentiary basis for the reversed epsilon conformity declaration.</p>
+        <p>Market surveillance authorities across EU member states can conduct spot checks on aerosol products already in circulation, and non-compliant products can be subject to recall or sales prohibition. Given the cross-border nature of EU distribution, a single compliance failure can trigger enforcement action across multiple member states simultaneously, making thorough documentation practices a critical part of any European market entry strategy. For guidance on the full documentation package expected during regulatory review, see our resource on <a href="/understanding-sds-tds-and-coa-for-aerosol-products/" target="_top">understanding SDS, TDS, and COA for aerosol products</a>. The full legal text of the directive itself is published on <a href="https://eur-lex.europa.eu/legal-content/EN/TXT/?uri=CELEX%3A31975L0324" target="_blank" rel="noopener noreferrer">EUR-Lex</a>.</p>
+      </section>
+
+      <!-- FAQ Section -->
+      <section id="faq" class="box" style="background: #ffffff; border: 1px solid var(--border); border-radius: var(--radius-lg); padding: 30px; margin: 40px 0;">
+        <h2 style="margin-top: 0; margin-bottom: 24px; font-family: 'Outfit', sans-serif; color: var(--text-primary);">Frequently Asked Questions</h2>
+
+        <div style="display: flex; flex-direction: column; gap: 16px;">
+          <div style="border-bottom: 1px solid var(--border); padding-bottom: 16px;">
+            <h4 style="font-size: 1.05rem; font-weight: 700; margin-bottom: 6px; color: var(--text-primary);">What products does the EU Aerosol Dispensers Directive 75/324/EEC cover?</h4>
+            <p style="font-size: 0.95rem; line-height: 1.6; color: var(--text-muted); margin-bottom: 0;">Directive 75/324/EEC covers all aerosol dispensers placed on the EU market, meaning any non-reusable container made of metal, glass, or plastic, filled with compressed, liquefied, or dissolved gas, fitted with a release device that discharges its contents as a spray, foam, paste, or powder. This includes cosmetic, household, industrial, and technical aerosol products, though certain categories such as medicinal aerosols are regulated under separate pharmaceutical directives.</p>
+          </div>
+
+          <div style="border-bottom: 1px solid var(--border); padding-bottom: 16px;">
+            <h4 style="font-size: 1.05rem; font-weight: 700; margin-bottom: 6px; color: var(--text-primary);">What pressure testing is required under the EU aerosol dispensers directive?</h4>
+            <p style="font-size: 0.95rem; line-height: 1.6; color: var(--text-muted); margin-bottom: 0;">The directive requires that aerosol dispensers withstand a hot water bath test at 50°C for a minimum period without leaking, distorting, or bursting, verifying that internal pressure at that elevated temperature stays within the container's design limits. Manufacturers must also verify that the filled container's internal pressure at 50°C does not exceed 12 bar for most metal containers, with specific limits varying by container material and construction.</p>
+          </div>
+
+          <div style="border-bottom: 1px solid var(--border); padding-bottom: 16px;">
+            <h4 style="font-size: 1.05rem; font-weight: 700; margin-bottom: 6px; color: var(--text-primary);">Does an aerosol product need CE marking under 75/324/EEC?</h4>
+            <p style="font-size: 0.95rem; line-height: 1.6; color: var(--text-muted); margin-bottom: 0;">Aerosol dispensers that comply with Directive 75/324/EEC carry the reversed epsilon symbol on the label rather than the CE mark used for most other product categories under EU law. This symbol certifies that the dispenser meets the directive's design, filling, and testing requirements, and it is a mandatory conformity marking for aerosol products legally placed on the EU market.</p>
+          </div>
+
+          <div style="border-bottom: 1px solid var(--border); padding-bottom: 16px;">
+            <h4 style="font-size: 1.05rem; font-weight: 700; margin-bottom: 6px; color: var(--text-primary);">What labeling information is mandatory on an EU-compliant aerosol can?</h4>
+            <p style="font-size: 0.95rem; line-height: 1.6; color: var(--text-muted); margin-bottom: 0;">Mandatory labeling includes the reversed epsilon conformity symbol, flammability classification symbols where applicable, precautionary statements regarding pressurized containers (such as warnings against puncturing, heat exposure, and disposal), the net content by volume, and GHS hazard pictograms and signal words corresponding to the product's classification under the CLP Regulation.</p>
+          </div>
+
+          <div style="border-bottom: 1px solid var(--border); padding-bottom: 16px;">
+            <h4 style="font-size: 1.05rem; font-weight: 700; margin-bottom: 6px; color: var(--text-primary);">How does the EU aerosol directive classify flammability for labeling purposes?</h4>
+            <p style="font-size: 0.95rem; line-height: 1.6; color: var(--text-muted); margin-bottom: 0;">Flammability classification under the directive follows criteria based on flame projection distance during ignition testing, flashback distance, and the presence of flammable components exceeding defined thresholds. Products are classified as non-flammable, flammable, or extremely flammable, with each tier requiring corresponding GHS pictograms and precautionary statements under the CLP Regulation, which implements GHS within the EU.</p>
+          </div>
+
+          <div style="padding-bottom: 8px;">
+            <h4 style="font-size: 1.05rem; font-weight: 700; margin-bottom: 6px; color: var(--text-primary);">Who is responsible for demonstrating compliance with 75/324/EEC before market placement?</h4>
+            <p style="font-size: 0.95rem; line-height: 1.6; color: var(--text-muted); margin-bottom: 0;">The manufacturer or, for imported products, the entity placing the aerosol dispenser on the EU market bears responsibility for demonstrating compliance. This includes maintaining technical documentation covering pressure test results, formulation flammability data, and quality control records, which must be available for inspection by EU market surveillance authorities.</p>
+          </div>
+        </div>
+      </section>
+
+      <!-- Contact/Consulting Box -->
+      <div class="cta" style="background: linear-gradient(135deg, var(--primary) 0%, var(--secondary) 100%); color: #ffffff; padding: 30px; border-radius: var(--radius-lg); margin-top: 40px; display: flex; flex-direction: column; justify-content: space-between; align-items: flex-start; gap: 20px;">
+        <div class="left">
+          <h3 style="margin-top: 0; font-family: 'Outfit', sans-serif; color: #ffffff; font-size: 1.5rem; font-weight: 700; margin-bottom: 8px;">Need Expert Aerosol Consulting?</h3>
+          <p style="margin-bottom: 0; font-size: 0.95rem; opacity: 0.9; line-height: 1.5; font-family: 'Inter', sans-serif;">
+            Our team provides end-to-end aerosol technical consultancy — from formulation development and propellant selection to filling line setup, regulatory compliance, and market launch strategy.
+          </p>
+        </div>
+        <a href="/contact/" target="_top" style="background: #ffffff; color: var(--primary); font-weight: 700; padding: 12px 24px; border-radius: var(--radius-md); font-family: 'Inter', sans-serif; font-size: 0.9rem; text-decoration: none; display: inline-block; transition: all 0.2s;">
+          Get a Free Consultation
+        </a>
+      </div>
+
+      <!-- Related Articles -->
+      <div style="margin-top: 40px; border-top: 1px solid var(--border); padding-top: 30px;">
+        <h3 style="font-family: 'Outfit', sans-serif; color: var(--text-primary); font-size: 1.25rem; font-weight: 700; margin-bottom: 20px;">Related Articles</h3>
+        <ul style="display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 12px; list-style-type: none; padding-left: 0; margin-bottom: 0;">
+          <li>
+            <a href="/aerosol-burst-pressure-testing-iso-dot-protocols/" target="_top" style="display: block; border: 1px solid var(--border); padding: 16px; border-radius: var(--radius-md); text-decoration: none; transition: border-color 0.2s;">
+              <strong style="display: block; color: var(--text-primary); font-size: 0.95rem; margin-bottom: 4px;">Aerosol Burst Pressure Testing</strong>
+              <span style="font-size: 0.8rem; color: var(--text-muted); display: block;">ISO and DOT proof pressure protocols explained.</span>
+            </a>
+          </li>
+          <li>
+            <a href="/understanding-sds-tds-and-coa-for-aerosol-products/" target="_top" style="display: block; border: 1px solid var(--border); padding: 16px; border-radius: var(--radius-md); text-decoration: none; transition: border-color 0.2s;">
+              <strong style="display: block; color: var(--text-primary); font-size: 0.95rem; margin-bottom: 4px;">SDS, TDS & COA Documentation</strong>
+              <span style="font-size: 0.8rem; color: var(--text-muted); display: block;">The startup's guide to aerosol documentation.</span>
+            </a>
+          </li>
+          <li>
+            <a href="/aerosol-manufacturing-101-guide/" target="_top" style="display: block; border: 1px solid var(--border); padding: 16px; border-radius: var(--radius-md); text-decoration: none; transition: border-color 0.2s;">
+              <strong style="display: block; color: var(--text-primary); font-size: 0.95rem; margin-bottom: 4px;">Aerosol Manufacturing 101</strong>
+              <span style="font-size: 0.8rem; color: var(--text-muted); display: block;">The ultimate guide to commercial aerosol manufacturing.</span>
+            </a>
+          </li>
+          <li>
+            <a href="/how-aerosol-cans-work/" target="_top" style="display: block; border: 1px solid var(--border); padding: 16px; border-radius: var(--radius-md); text-decoration: none; transition: border-color 0.2s;">
+              <strong style="display: block; color: var(--text-primary); font-size: 0.95rem; margin-bottom: 4px;">How Aerosol Cans Work</strong>
+              <span style="font-size: 0.8rem; color: var(--text-muted); display: block;">Explore valve, pressure, and actuator physics.</span>
+            </a>
+          </li>
+          <li>
+            <a href="/aerosol-propellants-explained-lpg-vs-dme-vs-hfc-vs-n2-vs-co2/" target="_top" style="display: block; border: 1px solid var(--border); padding: 16px; border-radius: var(--radius-md); text-decoration: none; transition: border-color 0.2s;">
+              <strong style="display: block; color: var(--text-primary); font-size: 0.95rem; margin-bottom: 4px;">Aerosol Propellants Explained</strong>
+              <span style="font-size: 0.8rem; color: var(--text-muted); display: block;">LPG vs DME vs HFC vs N₂ vs CO₂ propellants compared.</span>
+            </a>
+          </li>
+          <li>
+            <a href="/aerosol-chemistry-101/" target="_top" style="display: block; border: 1px solid var(--border); padding: 16px; border-radius: var(--radius-md); text-decoration: none; transition: border-color 0.2s;">
+              <strong style="display: block; color: var(--text-primary); font-size: 0.95rem; margin-bottom: 4px;">Aerosol Chemistry 101</strong>
+              <span style="font-size: 0.8rem; color: var(--text-muted); display: block;">Solvents, binders, surfactants, and additives.</span>
+            </a>
+          </li>
+          <li>
+            <a href="/from-lab-to-commercial-launch/" target="_top" style="display: block; border: 1px solid var(--border); padding: 16px; border-radius: var(--radius-md); text-decoration: none; transition: border-color 0.2s;">
+              <strong style="display: block; color: var(--text-primary); font-size: 0.95rem; margin-bottom: 4px;">From Lab to Commercial Launch</strong>
+              <span style="font-size: 0.8rem; color: var(--text-muted); display: block;">R&D scale-up to commercial aerosol production.</span>
+            </a>
+          </li>
+          <li>
+            <a href="/choosing-the-right-product-consultant/" target="_top" style="display: block; border: 1px solid var(--border); padding: 16px; border-radius: var(--radius-md); text-decoration: none; transition: border-color 0.2s;">
+              <strong style="display: block; color: var(--text-primary); font-size: 0.95rem; margin-bottom: 4px;">Choosing a Product Consultant</strong>
+              <span style="font-size: 0.8rem; color: var(--text-muted); display: block;">How to select the right technical expert.</span>
+            </a>
+          </li>
+        </ul>
+      </div>
+
+      <!-- Author Bio -->
+      <div style="margin-top: 40px; border: 1px solid var(--border); padding: 24px; border-radius: var(--radius-lg); background: #f8fafc; display: flex; gap: 16px; align-items: flex-start; flex-direction: column; md-flex-direction: row;">
+        <div style="width: 50px; height: 50px; background: var(--primary); color: white; display: flex; align-items: center; justify-content: center; border-radius: 50%; font-weight: 700; font-size: 1.2rem; flex-shrink: 0;">AK</div>
+        <div class="info">
+          <h4 style="margin-top: 0; font-family: 'Outfit', sans-serif; color: var(--text-primary); font-size: 1.1rem; font-weight: 700; margin-bottom: 4px;">Absar Khan</h4>
+          <p style="font-size: 0.85rem; color: var(--text-muted); font-weight: 500; margin-bottom: 12px; font-family: 'Inter', sans-serif; text-transform: uppercase;">Founder & Lead Aerosol Consultant, Global Aerosols</p>
+          <p style="font-size: 0.9rem; line-height: 1.6; color: var(--text-muted); margin-bottom: 12px; font-family: 'Inter', sans-serif;">
+            Absar Khan is a senior aerosol industry consultant with deep expertise spanning aerosol formulation, propellant technology, valve engineering, filling line setup, and regulatory compliance across global markets. His work integrates aerosol chemistry, GMP manufacturing practices, safety and flammability assessment, quality systems, and regulatory strategy for markets including India, the EU, and the US. As Founder and Lead Consultant at Global Aerosols, Absar leads technical and engineering teams delivering end-to-end aerosol solutions — from initial formulation and lab trials through pilot-scale testing, commercial manufacturing setup, and full market launch.
+          </p>
+          <a href="https://www.linkedin.com/in/absar-khan-aerosol-consultant-and-formulator-78359b162" target="_blank" rel="noopener noreferrer" style="font-size: 0.85rem; font-weight: 600; color: var(--primary);">Connect on LinkedIn &rarr;</a>
+        </div>
+      </div>
+
+    </article>
+  </main>
+</Layout>
