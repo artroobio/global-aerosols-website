@@ -427,7 +427,7 @@ import { gsap } from 'gsap';
             'uniform int u_go;',
             'uniform sampler2D u_img;',
             'uniform vec2 u_res;',
-            'uniform vec3 u_w[32];',
+            'uniform vec4 u_w[32];',
             'uniform vec2 u_scale;',
             'uniform vec2 u_offset;',
             'varying vec2 v;',
@@ -436,7 +436,7 @@ import { gsap } from 'gsap';
             '  vec2 asp = vec2(u_res.x / u_res.y, 1.);',
             '  vec2 d = vec2(0.);',
             '  for(int i=0;i<32;i++){',
-            '    vec3 w = u_w[i];',
+            '    vec4 w = u_w[i];',
             '    if(w.z > 0.){',
             '      float lf = u_t - w.z;',
             '      if(lf < 5.){',
@@ -446,7 +446,7 @@ import { gsap } from 'gsap';
             '        float rr = sin((di-r)*70.);',
             '        float fd = 1.-smoothstep(0.,5.,lf);',
             '        vec2 dr  = normalize((uv*asp)-(vec2(w.x,w.y)*asp));',
-            '        d += dr*(rr*mk*fd*.03);',
+            '        d += dr*(rr*mk*fd*.03*w.w);',
             '      }',
             '    }',
             '  }',
@@ -490,8 +490,9 @@ import { gsap } from 'gsap';
         gl.vertexAttribPointer(loc, 2, gl.FLOAT, false, 0, 0);
 
         var MAX   = 32;
-        var waves = new Float32Array(MAX * 3);
+        var waves = new Float32Array(MAX * 4);
         var wIdx  = 0;
+        var MOUSE_WAVE_STRENGTH = 0.4;
         var t0    = performance.now();
         var mainT = 0;
         var hasMain = false;
@@ -536,7 +537,7 @@ import { gsap } from 'gsap';
             gl.uniform2f(locs.res, canvas.width, canvas.height);
             gl.uniform2f(locs.scale,  uvScale[0],  uvScale[1]);
             gl.uniform2f(locs.offset, uvOffset[0], uvOffset[1]);
-            gl.uniform3fv(locs.w, waves);
+            gl.uniform4fv(locs.w, waves);
             gl.drawArrays(gl.TRIANGLES, 0, 6);
         }
 
@@ -544,9 +545,10 @@ import { gsap } from 'gsap';
             var now = performance.now();
             if (now - lastMT < 30) return;
             var r = canvas.getBoundingClientRect();
-            waves[wIdx * 3]     = (e.clientX - r.left) / r.width;
-            waves[wIdx * 3 + 1] = (e.clientY - r.top)  / r.height;
-            waves[wIdx * 3 + 2] = (now - t0) / 1000;
+            waves[wIdx * 4]     = (e.clientX - r.left) / r.width;
+            waves[wIdx * 4 + 1] = (e.clientY - r.top)  / r.height;
+            waves[wIdx * 4 + 2] = (now - t0) / 1000;
+            waves[wIdx * 4 + 3] = MOUSE_WAVE_STRENGTH;
             wIdx = (wIdx + 1) % MAX;
             lastMT = now;
         }
@@ -594,9 +596,10 @@ import { gsap } from 'gsap';
             fallbackImg.style.opacity = '0';
 
             setTimeout(function() {
-                waves[wIdx * 3]     = 0.5;
-                waves[wIdx * 3 + 1] = 0.5;
-                waves[wIdx * 3 + 2] = (performance.now() - t0) / 1000;
+                waves[wIdx * 4]     = 0.5;
+                waves[wIdx * 4 + 1] = 0.5;
+                waves[wIdx * 4 + 2] = (performance.now() - t0) / 1000;
+                waves[wIdx * 4 + 3] = 1.0;
                 wIdx = (wIdx + 1) % MAX;
             }, 500);
 
