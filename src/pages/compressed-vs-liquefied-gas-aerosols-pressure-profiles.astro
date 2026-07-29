@@ -1,0 +1,469 @@
+---
+import Layout from '../layouts/Layout.astro';
+
+const slug = 'compressed-vs-liquefied-gas-aerosols-pressure-profiles';
+const heroUrl = `https://cdn.globalaerosols.com/images/${slug}/${slug}-hero-globalaerosols.webp`;
+const diagramUrl = `https://cdn.globalaerosols.com/images/${slug}/${slug}-diagram-globalaerosols.webp`;
+const infographicUrl = `https://cdn.globalaerosols.com/images/${slug}/${slug}-infographic-globalaerosols.webp`;
+
+const blogSchema = {
+  "@context": "https://schema.org",
+  "@graph": [
+    {
+      "@type": "Organization",
+      "@id": "https://www.globalaerosols.com/#organization",
+      "name": "Global Aerosols",
+      "url": "https://www.globalaerosols.com/",
+      "logo": {
+        "@type": "ImageObject",
+        "url": "https://www.globalaerosols.com/logo.png"
+      },
+      "sameAs": [
+        "https://www.linkedin.com/in/absar-khan-aerosol-consultant-and-formulator-78359b162"
+      ]
+    },
+    {
+      "@type": "WebSite",
+      "@id": "https://www.globalaerosols.com/#website",
+      "url": "https://www.globalaerosols.com/",
+      "name": "Global Aerosols",
+      "publisher": { "@id": "https://www.globalaerosols.com/#organization" },
+      "potentialAction": {
+        "@type": "SearchAction",
+        "target": "https://www.globalaerosols.com/search?q={search_term_string}",
+        "query-input": "required name=search_term_string"
+      }
+    },
+    {
+      "@type": "Person",
+      "name": "Absar Khan",
+      "jobTitle": "Founder & Lead Aerosol Consultant",
+      "url": "https://www.linkedin.com/in/absar-khan-aerosol-consultant-and-formulator-78359b162",
+      "affiliation": { "@id": "https://www.globalaerosols.com/#organization" }
+    },
+    {
+      "@type": "BreadcrumbList",
+      "@id": `https://www.globalaerosols.com/${slug}#breadcrumb`,
+      "itemListElement": [
+        { "@type": "ListItem", "position": 1, "name": "Home", "item": "https://www.globalaerosols.com/" },
+        { "@type": "ListItem", "position": 2, "name": "Blog", "item": "https://www.globalaerosols.com/blog" },
+        { "@type": "ListItem", "position": 3, "name": "Compressed Gas vs Liquefied Gas Aerosols", "item": `https://www.globalaerosols.com/${slug}` }
+      ]
+    },
+    {
+      "@type": "BlogPosting",
+      "@id": `https://www.globalaerosols.com/${slug}#article`,
+      "headline": "Compressed Gas vs Liquefied Gas Aerosols: Pressure Profiles & Spray Behaviour",
+      "description": "Learn how compressed gas and liquefied gas aerosols differ in pressure profiles, spray behaviour, and product performance. Expert engineering guide for aerosol manufacturers.",
+      "image": { "@type": "ImageObject", "url": heroUrl },
+      "author": {
+        "@type": "Person",
+        "name": "Absar Khan",
+        "url": "https://www.linkedin.com/in/absar-khan-aerosol-consultant-and-formulator-78359b162"
+      },
+      "publisher": { "@id": "https://www.globalaerosols.com/#organization" },
+      "datePublished": "2026-07-29",
+      "dateModified": "2026-07-29",
+      "mainEntityOfPage": { "@id": `https://www.globalaerosols.com/${slug}` },
+      "articleSection": "Aerosol Technology & Engineering",
+      "keywords": "compressed gas aerosol, compressed air aerosol vs LPG, liquefied gas aerosol pressure, constant pressure aerosol, nitrogen aerosol propellant, CO2 aerosol can",
+      "wordCount": 2650
+    },
+    {
+      "@type": "FAQPage",
+      "mainEntity": [
+        {
+          "@type": "Question",
+          "name": "What is the main difference between compressed gas and liquefied gas aerosols?",
+          "acceptedAnswer": { "@type": "Answer", "text": "Compressed gas aerosols store propellant entirely in the gas phase at high initial pressure, so internal pressure drops progressively as product is dispensed. Liquefied gas aerosols store propellant as a liquid in equilibrium with its own vapor, maintaining near-constant pressure throughout most of the product's life because liquid continuously evaporates to replace expelled vapor." }
+        },
+        {
+          "@type": "Question",
+          "name": "Why do compressed gas aerosols lose spray force toward the end of the can?",
+          "acceptedAnswer": { "@type": "Answer", "text": "Because compressed gas aerosols contain a fixed quantity of gas with no liquid reservoir to replenish vapor, the internal pressure decreases with every actuation. As the headspace volume increases and gas quantity decreases, the driving force behind spray delivery weakens, resulting in progressively softer spray output near depletion." }
+        },
+        {
+          "@type": "Question",
+          "name": "Which propellants are used in compressed gas aerosols?",
+          "acceptedAnswer": { "@type": "Answer", "text": "The most common propellants for compressed gas aerosol systems are nitrogen (N₂) and carbon dioxide (CO₂). Nitrogen is chemically inert, has no GWP, and is the preferred choice for food-contact and sensitive formulations. CO₂ offers higher initial pressure but can influence formulation pH and is often used in food carbonation and specific beverage aerosol applications." }
+        },
+        {
+          "@type": "Question",
+          "name": "What is the constant pressure advantage of liquefied gas propellants?",
+          "acceptedAnswer": { "@type": "Answer", "text": "Liquefied gas propellants — such as LPG blends and DME — maintain a constant vapor pressure determined by temperature rather than the volume of gas remaining. Spray performance stays consistent from the first actuation to near-empty." }
+        },
+        {
+          "@type": "Question",
+          "name": "Are compressed gas aerosols safer than liquefied gas aerosols?",
+          "acceptedAnswer": { "@type": "Answer", "text": "Nitrogen and CO₂ compressed gas aerosols are non-flammable. LPG-based liquefied gas aerosols are classified as flammable and require NFPA 30B compliance. Both systems are safe when properly designed and handled within their engineering specifications." }
+        },
+        {
+          "@type": "Question",
+          "name": "How does temperature affect compressed gas versus liquefied gas aerosol pressure?",
+          "acceptedAnswer": { "@type": "Answer", "text": "Compressed gas aerosols follow ideal gas law behaviour — pressure increases linearly with absolute temperature. Liquefied gas aerosols follow vapour pressure curves that typically rise more steeply in the relevant temperature range." }
+        },
+        {
+          "@type": "Question",
+          "name": "When should a formulator choose a compressed gas aerosol over a liquefied gas system?",
+          "acceptedAnswer": { "@type": "Answer", "text": "Compressed gas systems are preferred when non-flammability is required, when the formulation is incompatible with hydrocarbon solvency, when the product is food-grade, or when the application tolerates a declining pressure profile across the can's life." }
+        }
+      ]
+    },
+    {
+      "@type": "WebPage",
+      "@id": `https://www.globalaerosols.com/${slug}`,
+      "url": `https://www.globalaerosols.com/${slug}`,
+      "name": "Compressed Gas vs Liquefied Gas Aerosols: Pressure Profiles & Spray Behaviour",
+      "description": "Learn how compressed gas and liquefied gas aerosols differ in pressure profiles, spray behaviour, and product performance. Expert engineering guide for aerosol manufacturers.",
+      "isPartOf": { "@id": "https://www.globalaerosols.com/#website" },
+      "primaryImageOfPage": { "@type": "ImageObject", "url": heroUrl },
+      "datePublished": "2026-07-29",
+      "dateModified": "2026-07-29"
+    }
+  ]
+};
+---
+
+<Layout
+  title="Compressed Gas vs Liquefied Gas Aerosols: Pressure Profiles Explained"
+  description="Learn how compressed gas and liquefied gas aerosols differ in pressure profiles, spray behaviour, and product performance. Expert engineering guide for aerosol manufacturers."
+  canonical={`https://www.globalaerosols.com/${slug}`}
+  ogImage={heroUrl}
+  ogType="article"
+  schemaJson={blogSchema}
+>
+  <main style="max-width: 100%; padding: 0 0 80px; background: #F9F9F7;">
+
+    <!-- POST HERO BAND -->
+    <div style="background: #FFFFFF; border-bottom: 1px solid #E4E4E0; padding: 0;">
+      <div style="max-width: 1140px; margin: 0 auto; padding: 36px 32px 0;">
+
+        <!-- BREADCRUMB -->
+        <nav aria-label="Breadcrumb" style="font-size: 0.8rem; color: #6B7280; margin-bottom: 16px;">
+          <a href="https://www.globalaerosols.com" target="_top" style="color: #6B7280;">Home</a>
+          <span style="margin: 0 6px;">›</span>
+          <a href="https://www.globalaerosols.com/blog" target="_top" style="color: #6B7280;">Blog</a>
+          <span style="margin: 0 6px;">›</span>
+          <span>Compressed Gas vs Liquefied Gas Aerosols</span>
+        </nav>
+
+        <span style="display: inline-block; font-size: 0.72rem; font-weight: 700; letter-spacing: 0.06em; text-transform: uppercase; color: #0968e5; border: 1px solid #0968e5; border-radius: 3px; padding: 3px 10px; margin-bottom: 18px;">
+          Aerosol Technology &amp; Engineering
+        </span>
+
+        <h1 style="font-family: 'Playfair Display', Georgia, serif; font-size: clamp(1.75rem, 4vw, 2.6rem); font-weight: 700; line-height: 1.2; letter-spacing: -0.02em; color: #0A0A0A; max-width: 760px; margin-bottom: 16px;">
+          Compressed Gas vs Liquefied Gas Aerosols: Pressure Profiles &amp; Spray Behaviour
+        </h1>
+
+        <div style="display: flex; flex-wrap: wrap; gap: 20px; font-size: 0.82rem; color: #6B7280; margin-bottom: 32px;">
+          <span>By Global Aerosols Team</span>
+          <span>July 29, 2026</span>
+          <span>14 min read</span>
+        </div>
+
+        <!-- HERO IMAGE -->
+        <div style="width: 100%; border-radius: 10px 10px 0 0; overflow: hidden; max-height: 480px;">
+          <img
+            src={heroUrl}
+            alt="compressed gas aerosol pressure gauge on industrial testing rig — Global Aerosols"
+            width="1140" height="480"
+            loading="eager"
+            style="width: 100%; height: 100%; object-fit: cover; display: block;"
+          />
+        </div>
+
+      </div>
+    </div>
+
+    <!-- TWO-COLUMN BODY -->
+    <div style="max-width: 1140px; margin: 0 auto; padding: 48px 32px 80px; display: grid; grid-template-columns: 260px 1fr; gap: 48px; align-items: start;">
+
+      <!-- LEFT: STICKY TOC SIDEBAR -->
+      <aside style="position: sticky; top: 104px; max-height: calc(100vh - 124px); overflow-y: auto;">
+        <nav aria-label="Table of Contents" style="background: #FFFFFF; border: 1px solid #E4E4E0; border-radius: 6px; padding: 20px;">
+          <div style="font-size: 0.7rem; font-weight: 700; letter-spacing: 0.09em; text-transform: uppercase; color: #6B7280; margin-bottom: 14px;">In This Article</div>
+          <ol style="list-style: none; padding: 0; display: flex; flex-direction: column; gap: 2px;">
+            <li><a href="#section-1" target="_top" style="display: block; font-size: 0.82rem; color: #6B7280; padding: 5px 8px 5px 10px; border-left: 2px solid transparent; border-radius: 0 3px 3px 0;">What Is a Compressed Gas Aerosol?</a></li>
+            <li><a href="#section-2" target="_top" style="display: block; font-size: 0.82rem; color: #6B7280; padding: 5px 8px 5px 10px; border-left: 2px solid transparent; border-radius: 0 3px 3px 0;">How Liquefied Gas Propellants Work</a></li>
+            <li><a href="#section-3" target="_top" style="display: block; font-size: 0.82rem; color: #6B7280; padding: 5px 8px 5px 10px; border-left: 2px solid transparent; border-radius: 0 3px 3px 0;">Pressure Profiles Compared</a></li>
+            <li><a href="#section-4" target="_top" style="display: block; font-size: 0.82rem; color: #6B7280; padding: 5px 8px 5px 10px; border-left: 2px solid transparent; border-radius: 0 3px 3px 0;">Spray Behaviour &amp; Performance</a></li>
+            <li><a href="#section-5" target="_top" style="display: block; font-size: 0.82rem; color: #6B7280; padding: 5px 8px 5px 10px; border-left: 2px solid transparent; border-radius: 0 3px 3px 0;">Selection Criteria for Formulators</a></li>
+            <li><a href="#section-6" target="_top" style="display: block; font-size: 0.82rem; color: #6B7280; padding: 5px 8px 5px 10px; border-left: 2px solid transparent; border-radius: 0 3px 3px 0;">Regulatory &amp; Safety Considerations</a></li>
+            <li><a href="#faq" target="_top" style="display: block; font-size: 0.82rem; color: #6B7280; padding: 5px 8px 5px 10px; border-left: 2px solid transparent; border-radius: 0 3px 3px 0;">Frequently Asked Questions</a></li>
+          </ol>
+        </nav>
+      </aside>
+
+      <!-- RIGHT: ARTICLE CONTENT -->
+      <article style="min-width: 0; max-width: 720px; font-family: 'Source Serif 4', Georgia, serif; font-size: 17px; line-height: 1.72; color: #0A0A0A;">
+
+        <!-- INTRO -->
+        <p style="margin-bottom: 1.4em;">A <strong>compressed gas aerosol</strong> uses a non-condensable gas — most commonly nitrogen or carbon dioxide — stored entirely in the vapour phase at high initial pressure. Unlike systems that rely on a liquefied propellant, the pressure inside a compressed gas aerosol decreases progressively with each actuation because there is no liquid reservoir to replenish expelled gas. This fundamental distinction governs every aspect of spray performance, formulation compatibility, and storage behaviour, and it is the first engineering decision any aerosol product developer must make. Understanding how each propellant system behaves across its pressure-temperature envelope is essential for designing a product that performs consistently, complies with applicable regulations, and reaches market with predictable shelf life.</p>
+
+        <!-- SECTION 1 -->
+        <section id="section-1">
+          <h2 style="font-family: 'Playfair Display', Georgia, serif; font-size: clamp(1.25rem, 2.5vw, 1.6rem); font-weight: 700; letter-spacing: -0.01em; margin: 2.4em 0 0.6em; padding-top: 0.4em;">What Is a Compressed Gas Aerosol?</h2>
+          <p style="margin-bottom: 1.4em;">A compressed gas aerosol stores its propellant entirely as a gas within the can headspace, with no phase change occurring during storage or use. The gas is charged at a defined pressure at the point of filling, and this charge represents the system's entire pressure reservoir. Common compressed gas propellants include nitrogen (N₂), carbon dioxide (CO₂), and compressed air in certain specialised applications. Each is stored in its gaseous state at ambient temperatures, meaning there is no liquid propellant phase present inside the can at any point in the product's life cycle.</p>
+
+          <p style="margin-bottom: 1.4em;">The operating principle is straightforward but has significant implications: as product is dispensed and the headspace volume expands, gas pressure drops according to <a href="https://en.wikipedia.org/wiki/Ideal_gas_law" target="_blank" rel="noopener noreferrer" style="color: #0968e5;">ideal gas law behaviour</a>. The relationship between volume and pressure means that a can at 50% fill will deliver noticeably lower spray velocity than it did when full, all else being equal. This pressure decay is not a defect — it is an intrinsic characteristic of the technology that formulators must account for in product design.</p>
+
+          <h3 style="font-family: 'Playfair Display', Georgia, serif; font-size: 1.15rem; font-weight: 600; margin: 1.8em 0 0.5em;">Nitrogen as a Compressed Gas Propellant</h3>
+          <p style="margin-bottom: 1.4em;">Nitrogen is the most widely used compressed gas propellant due to its chemical inertness, lack of global warming potential (GWP = 0), non-flammability, and complete absence of solvency effects on organic formulations. It is the standard choice for food-contact aerosols, pharmaceutical applications, and products where hydrocarbon solvency would compromise formulation stability. As documented by <a href="https://pubchem.ncbi.nlm.nih.gov/compound/Nitrogen" target="_blank" rel="noopener noreferrer" style="color: #0968e5;">PubChem</a>, nitrogen is a diatomic gas with near-ideal behaviour across the pressure and temperature ranges relevant to aerosol applications.</p>
+
+          <h3 style="font-family: 'Playfair Display', Georgia, serif; font-size: 1.15rem; font-weight: 600; margin: 1.8em 0 0.5em;">Carbon Dioxide as a Compressed Gas Propellant</h3>
+          <p style="margin-bottom: 1.4em;">Carbon dioxide occupies a unique position: at the pressures and temperatures encountered in aerosol manufacturing, CO₂ may exist at or near its critical point, exhibiting more complex phase behaviour than nitrogen. It is moderately soluble in many organic solvents and aqueous systems, which means dissolved CO₂ can influence formulation pH and contribute additional pressure as it evolves from solution. CO₂ is widely used in food aerosol applications — particularly beverage and whipped cream systems — where its interaction with the product is by design rather than a liability.</p>
+
+          <ul style="padding-left: 1.5em; margin-bottom: 1.4em;">
+            <li style="margin-bottom: 0.4em;">Nitrogen: GWP = 0, non-flammable, inert, no solvency — preferred for food, pharma, and sensitive formulations</li>
+            <li style="margin-bottom: 0.4em;">CO₂: Moderate solubility in water and organics, can affect pH, higher initial pressure potential</li>
+            <li style="margin-bottom: 0.4em;">Compressed air: Limited industrial use; oxygen content creates oxidation and flammability risks in many formulations</li>
+            <li style="margin-bottom: 0.4em;">Filling is performed at a defined charge pressure; no liquid propellant phase is introduced to the can</li>
+          </ul>
+        </section>
+
+        <!-- DIAGRAM IMAGE -->
+        <img
+          src={diagramUrl}
+          alt="compressed gas aerosol versus liquefied gas phase comparison in glass laboratory vessels — Global Aerosols diagram"
+          width="900" height="500"
+          loading="lazy"
+          style="width: 100%; border-radius: 6px; margin: 2em 0 0.6em; border: 1px solid #E4E4E0;"
+        />
+        <p style="font-size: 0.8rem; color: #6B7280; font-style: italic; margin-bottom: 2em;">Phase comparison: a compressed gas vessel (right, uniform vapour phase) versus a liquefied gas vessel (left, liquid-vapour equilibrium) illustrating the fundamental difference in propellant state during use.</p>
+
+        <!-- SECTION 2 -->
+        <section id="section-2">
+          <h2 style="font-family: 'Playfair Display', Georgia, serif; font-size: clamp(1.25rem, 2.5vw, 1.6rem); font-weight: 700; letter-spacing: -0.01em; margin: 2.4em 0 0.6em; padding-top: 0.4em;">How Liquefied Gas Propellants Work</h2>
+          <p style="margin-bottom: 1.4em;">Liquefied gas propellants — most commonly blends of liquefied petroleum gas (LPG: butane, isobutane, and propane) and dimethyl ether (DME) — are stored inside the aerosol can as a liquid in equilibrium with their own vapour. This liquid-vapour coexistence is the defining thermodynamic feature of these systems. As long as liquid propellant remains in the can, the vapour pressure above it is governed by the propellant's own vapour pressure curve at the prevailing temperature — not by how much propellant has been used. This is the fundamental engineering advantage of liquefied gas propellants: they provide consistent propellant pressure throughout most of the can's useful life, declining only once the liquid phase is exhausted.</p>
+
+          <p style="margin-bottom: 1.4em;">The vapour pressure of LPG blends is well-characterised by Raoult's Law for ideal mixtures, where each component contributes to total vapour pressure in proportion to its mole fraction in the liquid phase. The British Aerosol Manufacturers' Association (<a href="https://www.bama.co.uk" target="_blank" rel="noopener noreferrer" style="color: #0968e5;">BAMA</a>) and the European Aerosol Federation provide guidance on blending practices, with butane, isobutane, and propane each contributing different pressure levels depending on their proportion in the blend. Formulators select the blend composition to achieve a target vapour pressure appropriate for the product and its container rating.</p>
+
+          <h3 style="font-family: 'Playfair Display', Georgia, serif; font-size: 1.15rem; font-weight: 600; margin: 1.8em 0 0.5em;">DME as a Co-Propellant and Solvent</h3>
+          <p style="margin-bottom: 1.4em;">Dimethyl ether occupies a dual role in aerosol formulation: it functions simultaneously as a propellant and as a powerful co-solvent. Its water miscibility and strong solvency for many organic compounds make it unique among propellant choices, particularly valuable in formulations where complete solubilisation of active ingredients into the propellant phase is required. However, its solvency also means it can cause swelling in certain elastomers and polymer materials, requiring careful material compatibility testing of all valve components.</p>
+
+          <div style="border-left: 3px solid #16A34A; background: #F0FDF4; padding: 14px 18px; border-radius: 0 6px 6px 0; margin: 1.8em 0; font-size: 0.93rem;">
+            <strong style="color: #16A34A; display: block; margin-bottom: 4px;">Key Insight</strong>
+            Liquefied gas propellants exhibit temperature-dependent vapour pressure behaviour governed by the propellant's liquid-vapour equilibrium, not by the quantity of propellant remaining. This means spray performance stays consistent from first to near-last actuation — a critical advantage for consumer products where spray uniformity is a purchase-driving attribute.
+          </div>
+
+          <ul style="padding-left: 1.5em; margin-bottom: 1.4em;">
+            <li style="margin-bottom: 0.4em;">LPG blends: customisable vapour pressure by blend ratio; flammable; widely used in personal care, industrial, and household aerosols</li>
+            <li style="margin-bottom: 0.4em;">DME: dual propellant and co-solvent; water-miscible; excellent solvency; requires polymer compatibility verification</li>
+            <li style="margin-bottom: 0.4em;">HFCs and HFOs: non-flammable fluorinated propellants; used in pharmaceutical MDIs and specialty products</li>
+            <li style="margin-bottom: 0.4em;">Pressure remains nearly constant until liquid phase depletion — typically the last 5–10% of product life</li>
+          </ul>
+        </section>
+
+        <!-- SECTION 3 -->
+        <section id="section-3">
+          <h2 style="font-family: 'Playfair Display', Georgia, serif; font-size: clamp(1.25rem, 2.5vw, 1.6rem); font-weight: 700; letter-spacing: -0.01em; margin: 2.4em 0 0.6em; padding-top: 0.4em;">Pressure Profiles Compared: The Core Technical Distinction</h2>
+          <p style="margin-bottom: 1.4em;">The most practically consequential difference between compressed gas and liquefied gas aerosols is their pressure-depletion profile. In a compressed gas system, pressure follows a declining curve closely approximated by the ideal gas law: as product is dispensed and headspace volume increases, pressure decreases proportionally. In a liquefied gas system, pressure remains stable across the depletion curve because the liquid-vapour equilibrium maintains a constant vapour pressure at constant temperature — pressure drops only when the last of the liquid propellant evaporates.</p>
+
+          <p style="margin-bottom: 1.4em;">Consumer products with consistent spray requirements — hairsprays, deodorant body sprays, paint aerosols — universally favour liquefied gas propellants precisely because uniform pressure delivery translates to uniform spray output across the can's useful life. For a full breakdown of propellant options and their engineering properties, see our comprehensive guide to <a href="https://www.globalaerosols.com/aerosol-propellants-explained-lpg-vs-dme-vs-hfc-vs-n2-vs-co2" target="_top" style="color: #0968e5;">aerosol propellants explained</a>.</p>
+
+          <div style="overflow-x: auto; margin: 1.6em 0 2em;">
+            <table style="width: 100%; border-collapse: collapse; font-size: 0.88rem;">
+              <thead>
+                <tr style="background: #0A0A0A; color: #FFFFFF;">
+                  <th style="padding: 10px 14px; text-align: left; font-weight: 600; font-size: 0.8rem; letter-spacing: 0.03em;">Property</th>
+                  <th style="padding: 10px 14px; text-align: left; font-weight: 600; font-size: 0.8rem; letter-spacing: 0.03em;">Compressed Gas (N₂/CO₂)</th>
+                  <th style="padding: 10px 14px; text-align: left; font-weight: 600; font-size: 0.8rem; letter-spacing: 0.03em;">Liquefied Gas (LPG/DME)</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr><td style="padding: 9px 14px; border-bottom: 1px solid #E4E4E0; vertical-align: top;">Pressure profile during use</td><td style="padding: 9px 14px; border-bottom: 1px solid #E4E4E0; vertical-align: top;">Declining (follows ideal gas law)</td><td style="padding: 9px 14px; border-bottom: 1px solid #E4E4E0; vertical-align: top;">Near-constant (liquid-vapour equilibrium)</td></tr>
+                <tr style="background: #F4F4F2;"><td style="padding: 9px 14px; border-bottom: 1px solid #E4E4E0; vertical-align: top;">Spray consistency</td><td style="padding: 9px 14px; border-bottom: 1px solid #E4E4E0; vertical-align: top;">Decreases toward depletion</td><td style="padding: 9px 14px; border-bottom: 1px solid #E4E4E0; vertical-align: top;">Consistent throughout most of can life</td></tr>
+                <tr><td style="padding: 9px 14px; border-bottom: 1px solid #E4E4E0; vertical-align: top;">Flammability</td><td style="padding: 9px 14px; border-bottom: 1px solid #E4E4E0; vertical-align: top;">Non-flammable (N₂, CO₂)</td><td style="padding: 9px 14px; border-bottom: 1px solid #E4E4E0; vertical-align: top;">Flammable (LPG/DME); some HFCs non-flammable</td></tr>
+                <tr style="background: #F4F4F2;"><td style="padding: 9px 14px; border-bottom: 1px solid #E4E4E0; vertical-align: top;">GWP</td><td style="padding: 9px 14px; border-bottom: 1px solid #E4E4E0; vertical-align: top;">Zero (N₂); low (CO₂)</td><td style="padding: 9px 14px; border-bottom: 1px solid #E4E4E0; vertical-align: top;">Low (LPG, DME); varies (HFC/HFO)</td></tr>
+                <tr><td style="padding: 9px 14px; border-bottom: 1px solid #E4E4E0; vertical-align: top;">Solvency effect</td><td style="padding: 9px 14px; border-bottom: 1px solid #E4E4E0; vertical-align: top;">Negligible (N₂); moderate (CO₂)</td><td style="padding: 9px 14px; border-bottom: 1px solid #E4E4E0; vertical-align: top;">Significant (DME, LPG); varies by propellant</td></tr>
+                <tr style="background: #F4F4F2;"><td style="padding: 9px 14px; border-bottom: 1px solid #E4E4E0; vertical-align: top;">Temperature sensitivity</td><td style="padding: 9px 14px; border-bottom: 1px solid #E4E4E0; vertical-align: top;">Linear with absolute temperature</td><td style="padding: 9px 14px; border-bottom: 1px solid #E4E4E0; vertical-align: top;">Follows vapour pressure curve (steeper)</td></tr>
+                <tr><td style="padding: 9px 14px; border-bottom: 1px solid #E4E4E0; vertical-align: top;">Typical applications</td><td style="padding: 9px 14px; border-bottom: 1px solid #E4E4E0; vertical-align: top;">Food-grade, pharmaceutical, aqueous, sensitive formulations</td><td style="padding: 9px 14px; border-bottom: 1px solid #E4E4E0; vertical-align: top;">Personal care, household, industrial, paints</td></tr>
+              </tbody>
+            </table>
+          </div>
+
+          <p style="margin-bottom: 1.4em;">The <a href="https://webbook.nist.gov/chemistry/fluid/" target="_blank" rel="noopener noreferrer" style="color: #0968e5;">NIST WebBook thermodynamic database</a> provides vapour pressure data for individual propellant components across the relevant temperature ranges — essential reference data for any aerosol engineer designing systems for hot-climate distribution.</p>
+        </section>
+
+        <!-- INFOGRAPHIC IMAGE -->
+        <img
+          src={infographicUrl}
+          alt="compressed gas aerosol propellant comparison row of precision aerosol cans — Global Aerosols infographic"
+          width="900" height="500"
+          loading="lazy"
+          style="width: 100%; border-radius: 6px; margin: 2em 0 0.6em; border: 1px solid #E4E4E0;"
+        />
+        <p style="font-size: 0.8rem; color: #6B7280; font-style: italic; margin-bottom: 2em;">A spectrum of aerosol propellant systems — from compressed nitrogen and CO₂ to liquefied LPG blends — each with distinct pressure, solvency, and regulatory profiles that determine their appropriate application domain.</p>
+
+        <!-- SECTION 4 -->
+        <section id="section-4">
+          <h2 style="font-family: 'Playfair Display', Georgia, serif; font-size: clamp(1.25rem, 2.5vw, 1.6rem); font-weight: 700; letter-spacing: -0.01em; margin: 2.4em 0 0.6em; padding-top: 0.4em;">Spray Behaviour &amp; Performance Characteristics</h2>
+          <p style="margin-bottom: 1.4em;">The propellant system choice directly shapes every aspect of spray performance — from initial spray velocity and droplet size distribution to the quality of atomisation at near-empty. In a liquefied gas system, the propellant flash-evaporates as it exits the valve, producing the energy that atomises the product concentrate into fine droplets. This rapid phase change is a significant contributor to spray quality in LPG and DME systems. As detailed in our guide to <a href="https://www.globalaerosols.com/aerosol-propellants-explained-lpg-vs-dme-vs-hfc-vs-n2-vs-co2" target="_top" style="color: #0968e5;">aerosol propellants explained</a>, this flash evaporation mechanism is thermodynamically distinct from the mechanical expansion that occurs in compressed gas systems.</p>
+
+          <p style="margin-bottom: 1.4em;">In a compressed gas system, the liquid product is pushed out by gas pressure alone, without any flash evaporation from the propellant. The atomisation energy must come entirely from the mechanical energy of gas expansion and the design of the actuator/nozzle system — making nozzle engineering particularly critical. This topic is explored in depth in our <a href="https://www.globalaerosols.com/aerosol-technology-and-formulations" target="_top" style="color: #0968e5;">aerosol technology and formulations</a> resource.</p>
+
+          <div style="border-left: 3px solid #D97706; background: #FFFBEB; padding: 14px 18px; border-radius: 0 6px 6px 0; margin: 1.8em 0; font-size: 0.93rem;">
+            <strong style="color: #D97706; display: block; margin-bottom: 4px;">Rule of Thumb</strong>
+            Because compressed gas aerosols lose pressure throughout their life, the actuator and nozzle must be engineered to deliver acceptable spray performance at the minimum pressure that will be present at near-empty — typically the most demanding design constraint for compressed gas system development.
+          </div>
+
+          <h3 style="font-family: 'Playfair Display', Georgia, serif; font-size: 1.15rem; font-weight: 600; margin: 1.8em 0 0.5em;">Droplet Size and Particle Distribution</h3>
+          <p style="margin-bottom: 1.4em;">Droplet size in aerosol products is a critical performance and regulatory parameter, particularly in pharmaceutical and pesticide aerosols. As documented in peer-reviewed literature available via <a href="https://pubmed.ncbi.nlm.nih.gov" target="_blank" rel="noopener noreferrer" style="color: #0968e5;">PubMed</a>, liquefied gas propellants typically generate finer droplets with a narrower size distribution than compressed gas systems at equivalent initial pressure, because flash evaporation provides a powerful atomisation mechanism. For applications where fine particle fraction is a regulatory specification — such as metered-dose inhalers — this difference is decisive and is one reason pharmaceutical aerosols almost universally use liquefied fluorinated propellants (HFAs).</p>
+        </section>
+
+        <!-- SECTION 5 -->
+        <section id="section-5">
+          <h2 style="font-family: 'Playfair Display', Georgia, serif; font-size: clamp(1.25rem, 2.5vw, 1.6rem); font-weight: 700; letter-spacing: -0.01em; margin: 2.4em 0 0.6em; padding-top: 0.4em;">Selection Criteria for Aerosol Formulators and Engineers</h2>
+          <p style="margin-bottom: 1.4em;">Choosing between a compressed gas and liquefied gas propellant system is a multi-dimensional engineering decision that must be made early in product development, as it affects formulation chemistry, filling line configuration, container and valve selection, regulatory compliance, and end-user experience simultaneously. There is no universally superior system — each has domains in which it provides clear technical advantages.</p>
+
+          <p style="margin-bottom: 1.4em;">The choice begins with the formulation itself. If the active ingredient or carrier system is incompatible with the solvency of LPG or DME — for example, certain biologically active materials, aqueous-dominant formulations, or oxidation-sensitive compounds — a nitrogen-based compressed gas system may be the only viable option. Our <a href="https://www.globalaerosols.com/how-aerosol-cans-work" target="_top" style="color: #0968e5;">how aerosol cans work</a> guide provides a useful foundation for understanding how these propellant choices interact with the rest of the aerosol system.</p>
+
+          <h3 style="font-family: 'Playfair Display', Georgia, serif; font-size: 1.15rem; font-weight: 600; margin: 1.8em 0 0.5em;">Key Decision Factors</h3>
+          <ul style="padding-left: 1.5em; margin-bottom: 1.4em;">
+            <li style="margin-bottom: 0.4em;"><strong>Flammability requirement:</strong> If non-flammability is mandatory, compressed N₂ or CO₂ is required</li>
+            <li style="margin-bottom: 0.4em;"><strong>Spray consistency:</strong> Products where uniform spray output is a core requirement strongly favour liquefied gas</li>
+            <li style="margin-bottom: 0.4em;"><strong>Formulation compatibility:</strong> Aqueous systems without organic co-solvents are generally better served by nitrogen</li>
+            <li style="margin-bottom: 0.4em;"><strong>Regulatory market:</strong> Some markets impose flammability restrictions that dictate propellant choice</li>
+            <li style="margin-bottom: 0.4em;"><strong>Container pressure specification:</strong> Compressed gas systems require containers rated for higher initial charge pressures</li>
+            <li style="margin-bottom: 0.4em;"><strong>Environmental profile:</strong> Both system types can achieve low GWP; nitrogen is definitively zero-GWP</li>
+          </ul>
+        </section>
+
+        <!-- SECTION 6 -->
+        <section id="section-6">
+          <h2 style="font-family: 'Playfair Display', Georgia, serif; font-size: clamp(1.25rem, 2.5vw, 1.6rem); font-weight: 700; letter-spacing: -0.01em; margin: 2.4em 0 0.6em; padding-top: 0.4em;">Regulatory &amp; Safety Considerations</h2>
+          <p style="margin-bottom: 1.4em;">Both compressed gas and liquefied gas aerosol systems are subject to comprehensive regulatory oversight governing their design, testing, labelling, transport, and storage. The <a href="https://www.nfpa.org" target="_blank" rel="noopener noreferrer" style="color: #0968e5;">National Fire Protection Association's NFPA 30B</a> standard — the primary US code for aerosol storage — classifies aerosol products into three levels based on flammability, with Level 1 (non-flammable, typically compressed gas systems) receiving the most permissive warehouse storage requirements. LPG-based aerosols typically fall into Level 2 or Level 3 classification, requiring sprinkler systems and dedicated storage zone configurations.</p>
+
+          <p style="margin-bottom: 1.4em;">Transport classification is a significant practical consideration. Compressed gas aerosols using nitrogen or CO₂ carry less restrictive transport requirements than flammable aerosol classifications. LPG-based aerosols require compliance with IATA Dangerous Goods Regulations for air transport, IMDG Code for sea, and ADR for European road transport. Both system types require hot water bath testing per ISO standards to verify that cans can safely contain their charged pressure at elevated temperature — a standard quality release test for all filled aerosol products. For a comprehensive understanding, see our <a href="https://www.globalaerosols.com/aerosol-manufacturing-101-guide" target="_top" style="color: #0968e5;">Aerosol Manufacturing 101 guide</a> and our overview of <a href="https://www.globalaerosols.com/aerosol-can-safety-explained" target="_top" style="color: #0968e5;">aerosol can safety</a>.</p>
+        </section>
+
+        <!-- FAQ -->
+        <section id="faq" style="margin: 3em 0 2em;">
+          <h2 style="font-family: 'Playfair Display', Georgia, serif; font-size: 1.5rem; font-weight: 700; margin-bottom: 1.2em;">Frequently Asked Questions</h2>
+
+          <details style="border: 1px solid #E4E4E0; border-radius: 6px; margin-bottom: 10px; background: #FFFFFF;">
+            <summary style="font-weight: 600; font-size: 0.95rem; padding: 14px 18px; cursor: pointer; list-style: none; display: flex; justify-content: space-between; align-items: center;">What is the main difference between compressed gas and liquefied gas aerosols?</summary>
+            <div style="padding: 0 18px 16px; font-size: 0.92rem; color: #374151; line-height: 1.65;">Compressed gas aerosols store propellant entirely in the gas phase at high initial pressure, so internal pressure drops progressively as product is dispensed. Liquefied gas aerosols store propellant as a liquid in equilibrium with its own vapor, maintaining near-constant pressure throughout most of the product's life because liquid continuously evaporates to replace expelled vapor.</div>
+          </details>
+
+          <details style="border: 1px solid #E4E4E0; border-radius: 6px; margin-bottom: 10px; background: #FFFFFF;">
+            <summary style="font-weight: 600; font-size: 0.95rem; padding: 14px 18px; cursor: pointer; list-style: none; display: flex; justify-content: space-between; align-items: center;">Why do compressed gas aerosols lose spray force toward the end of the can?</summary>
+            <div style="padding: 0 18px 16px; font-size: 0.92rem; color: #374151; line-height: 1.65;">Because compressed gas aerosols contain a fixed quantity of gas with no liquid reservoir to replenish vapor, the internal pressure decreases with every actuation. As the headspace volume increases and gas quantity decreases, the driving force behind spray delivery weakens, resulting in progressively softer spray output near depletion.</div>
+          </details>
+
+          <details style="border: 1px solid #E4E4E0; border-radius: 6px; margin-bottom: 10px; background: #FFFFFF;">
+            <summary style="font-weight: 600; font-size: 0.95rem; padding: 14px 18px; cursor: pointer; list-style: none; display: flex; justify-content: space-between; align-items: center;">Which propellants are used in compressed gas aerosols?</summary>
+            <div style="padding: 0 18px 16px; font-size: 0.92rem; color: #374151; line-height: 1.65;">The most common propellants for compressed gas aerosol systems are nitrogen (N₂) and carbon dioxide (CO₂). Nitrogen is chemically inert, has no GWP, and is the preferred choice for food-contact and sensitive formulations. CO₂ offers higher initial pressure but can influence formulation pH and is often used in food carbonation and specific beverage aerosol applications.</div>
+          </details>
+
+          <details style="border: 1px solid #E4E4E0; border-radius: 6px; margin-bottom: 10px; background: #FFFFFF;">
+            <summary style="font-weight: 600; font-size: 0.95rem; padding: 14px 18px; cursor: pointer; list-style: none; display: flex; justify-content: space-between; align-items: center;">What is the constant pressure advantage of liquefied gas propellants?</summary>
+            <div style="padding: 0 18px 16px; font-size: 0.92rem; color: #374151; line-height: 1.65;">Liquefied gas propellants — such as LPG blends (butane, isobutane, propane) and dimethyl ether (DME) — maintain a constant vapor pressure determined by temperature rather than the volume of gas remaining. This means spray performance stays consistent from the first actuation to near-empty, which is essential for products where uniform delivery is a performance requirement.</div>
+          </details>
+
+          <details style="border: 1px solid #E4E4E0; border-radius: 6px; margin-bottom: 10px; background: #FFFFFF;">
+            <summary style="font-weight: 600; font-size: 0.95rem; padding: 14px 18px; cursor: pointer; list-style: none; display: flex; justify-content: space-between; align-items: center;">Are compressed gas aerosols safer than liquefied gas aerosols?</summary>
+            <div style="padding: 0 18px 16px; font-size: 0.92rem; color: #374151; line-height: 1.65;">Nitrogen and CO₂ compressed gas aerosols are non-flammable and present no flammability hazard during storage or use. LPG-based liquefied gas aerosols are classified as flammable and require compliance with NFPA 30B warehouse storage classifications and other regulatory controls. Both systems are safe when properly designed and handled within their respective engineering specifications.</div>
+          </details>
+
+          <details style="border: 1px solid #E4E4E0; border-radius: 6px; margin-bottom: 10px; background: #FFFFFF;">
+            <summary style="font-weight: 600; font-size: 0.95rem; padding: 14px 18px; cursor: pointer; list-style: none; display: flex; justify-content: space-between; align-items: center;">How does temperature affect compressed gas versus liquefied gas aerosol pressure?</summary>
+            <div style="padding: 0 18px 16px; font-size: 0.92rem; color: #374151; line-height: 1.65;">Compressed gas aerosols follow ideal gas law behaviour — pressure increases approximately linearly with temperature (in absolute Kelvin). Liquefied gas aerosols follow vapour pressure curves that also rise with temperature, but typically more steeply in the relevant temperature range, making thermal management especially critical for warehouse storage and transport compliance.</div>
+          </details>
+
+          <details style="border: 1px solid #E4E4E0; border-radius: 6px; margin-bottom: 10px; background: #FFFFFF;">
+            <summary style="font-weight: 600; font-size: 0.95rem; padding: 14px 18px; cursor: pointer; list-style: none; display: flex; justify-content: space-between; align-items: center;">When should a formulator choose a compressed gas aerosol over a liquefied gas system?</summary>
+            <div style="padding: 0 18px 16px; font-size: 0.92rem; color: #374151; line-height: 1.65;">Compressed gas systems are preferred when non-flammability is a regulatory or market requirement, when the formulation is incompatible with hydrocarbon or DME solvency, when the product is food-grade, or when the application tolerates a declining pressure profile. They are also favoured in pharmaceutical and medical aerosol contexts where propellant-formulation interaction must be minimised.</div>
+          </details>
+        </section>
+
+        <!-- CTA BLOCK -->
+        <div style="background: #0A0A0A; color: #FFFFFF; border-radius: 6px; padding: 40px 36px; margin: 3em 0; text-align: center;">
+          <h2 style="font-family: 'Playfair Display', Georgia, serif; font-size: 1.5rem; font-weight: 700; color: #FFFFFF; margin: 0 0 10px;">Need Expert Aerosol Consulting?</h2>
+          <p style="font-size: 0.95rem; color: #D1D5DB; margin: 0 0 24px; max-width: 500px; margin-left: auto; margin-right: auto;">Our team provides end-to-end aerosol technical consultancy — from formulation development and propellant selection to filling line setup, regulatory compliance, and market launch strategy.</p>
+          <a href="https://www.globalaerosols.com/contact" target="_top" style="display: inline-block; background: #FFFFFF; color: #0A0A0A; font-weight: 700; font-size: 0.9rem; letter-spacing: 0.03em; padding: 12px 28px; border-radius: 4px; text-decoration: none;">
+            Get a Free Consultation
+          </a>
+        </div>
+
+        <!-- RELATED ARTICLES -->
+        <section style="margin: 2.5em 0;">
+          <h2 style="font-family: 'Playfair Display', Georgia, serif; font-size: 1.3rem; font-weight: 700; margin-bottom: 1em;">Related Articles</h2>
+          <ul style="display: grid; grid-template-columns: 1fr 1fr; gap: 12px; list-style: none; padding: 0;">
+            <li><a href="https://www.globalaerosols.com/aerosol-propellants-explained-lpg-vs-dme-vs-hfc-vs-n2-vs-co2" target="_top" style="display: block; background: #FFFFFF; border: 1px solid #E4E4E0; border-radius: 6px; padding: 14px 16px; font-size: 0.88rem; font-weight: 600; color: #0A0A0A; line-height: 1.4;">Aerosol Propellants Explained: LPG vs DME vs HFC vs N₂ vs CO₂</a></li>
+            <li><a href="https://www.globalaerosols.com/propellant-influence-on-aerosol-performance" target="_top" style="display: block; background: #FFFFFF; border: 1px solid #E4E4E0; border-radius: 6px; padding: 14px 16px; font-size: 0.88rem; font-weight: 600; color: #0A0A0A; line-height: 1.4;">Propellant Influence on Aerosol Spray Performance</a></li>
+            <li><a href="https://www.globalaerosols.com/aerosol-manufacturing-101-guide" target="_top" style="display: block; background: #FFFFFF; border: 1px solid #E4E4E0; border-radius: 6px; padding: 14px 16px; font-size: 0.88rem; font-weight: 600; color: #0A0A0A; line-height: 1.4;">Aerosol Manufacturing 101: The Complete Technical Guide</a></li>
+            <li><a href="https://www.globalaerosols.com/how-aerosol-cans-work" target="_top" style="display: block; background: #FFFFFF; border: 1px solid #E4E4E0; border-radius: 6px; padding: 14px 16px; font-size: 0.88rem; font-weight: 600; color: #0A0A0A; line-height: 1.4;">How Aerosol Cans Work: Propellant, Pressure, Valve &amp; Spray Dynamics</a></li>
+            <li><a href="https://www.globalaerosols.com/aerosol-propellants-explained-lpg-vs-dme-vs-hfc-vs-n2-vs-co2" target="_top" style="display: block; background: #FFFFFF; border: 1px solid #E4E4E0; border-radius: 6px; padding: 14px 16px; font-size: 0.88rem; font-weight: 600; color: #0A0A0A; line-height: 1.4;">Aerosol Propellants Explained: LPG vs DME vs HFC vs N₂ vs CO₂</a></li>
+            <li><a href="https://www.globalaerosols.com/aerosol-chemistry-101" target="_top" style="display: block; background: #FFFFFF; border: 1px solid #E4E4E0; border-radius: 6px; padding: 14px 16px; font-size: 0.88rem; font-weight: 600; color: #0A0A0A; line-height: 1.4;">Aerosol Chemistry 101: Solvents, Binders, Surfactants &amp; Additives</a></li>
+            <li><a href="https://www.globalaerosols.com/from-lab-to-commercial-launch" target="_top" style="display: block; background: #FFFFFF; border: 1px solid #E4E4E0; border-radius: 6px; padding: 14px 16px; font-size: 0.88rem; font-weight: 600; color: #0A0A0A; line-height: 1.4;">From Lab to Factory: Aerosol R&amp;D to Commercial Manufacturing</a></li>
+            <li><a href="https://www.globalaerosols.com/choosing-the-right-product-consultant" target="_top" style="display: block; background: #FFFFFF; border: 1px solid #E4E4E0; border-radius: 6px; padding: 14px 16px; font-size: 0.88rem; font-weight: 600; color: #0A0A0A; line-height: 1.4;">How to Choose the Right Aerosol Product Consultant</a></li>
+          </ul>
+        </section>
+
+        <!-- AUTHOR BIO -->
+        <div style="display: flex; gap: 18px; align-items: flex-start; background: #FFFFFF; border: 1px solid #E4E4E0; border-radius: 6px; padding: 24px; margin: 2.5em 0;">
+          <div style="width: 52px; height: 52px; background: #0A0A0A; color: #FFFFFF; border-radius: 50%; display: flex; align-items: center; justify-content: center; font-weight: 700; font-size: 1rem; flex-shrink: 0;">AK</div>
+          <div>
+            <h3 style="font-family: 'Playfair Display', Georgia, serif; font-size: 1rem; font-weight: 700; margin: 0 0 2px;">Absar Khan</h3>
+            <div style="font-size: 0.78rem; color: #6B7280; margin-bottom: 10px;">Founder &amp; Lead Aerosol Consultant, Global Aerosols</div>
+            <p style="font-size: 0.87rem; line-height: 1.6; color: #374151; margin-bottom: 0.5em;">Absar Khan is a senior aerosol industry consultant with deep expertise spanning aerosol formulation, propellant technology, valve engineering, filling line setup, and regulatory compliance across global markets. His work integrates aerosol chemistry, GMP manufacturing practices, safety and flammability assessment, quality systems, and regulatory strategy for markets including India, the EU, and the US. As Founder and Lead Consultant at Global Aerosols, Absar leads technical and engineering teams delivering end-to-end aerosol solutions — from initial formulation and lab trials through pilot-scale testing, commercial manufacturing setup, and full market launch.</p>
+            <p style="margin-top: 10px; font-size: 0.87rem;">
+              <a href="https://www.linkedin.com/in/absar-khan-aerosol-consultant-and-formulator-78359b162" target="_blank" rel="noopener noreferrer" style="color: #0968e5;">Connect on LinkedIn →</a>
+            </p>
+          </div>
+        </div>
+
+      </article>
+    </div>
+
+  </main>
+
+  <!-- SCROLLSPY -->
+  <script is:inline>
+    (function () {
+      const links = document.querySelectorAll('aside ol li a');
+      const sections = Array.from(links)
+        .map(a => document.querySelector(a.getAttribute('href')))
+        .filter(Boolean);
+      if (!sections.length) return;
+      const observer = new IntersectionObserver(
+        entries => {
+          entries.forEach(entry => {
+            if (entry.isIntersecting) {
+              links.forEach(a => a.style.color = '#6B7280');
+              const active = document.querySelector(`aside ol li a[href="#${entry.target.id}"]`);
+              if (active) active.style.color = '#0968e5';
+            }
+          });
+        },
+        { rootMargin: '-20% 0px -70% 0px', threshold: 0 }
+      );
+      sections.forEach(s => observer.observe(s));
+    })();
+  </script>
+
+  <style>
+    @media (max-width: 900px) {
+      main > div[style*="grid"] {
+        grid-template-columns: 1fr !important;
+      }
+      aside {
+        position: static !important;
+        max-height: none !important;
+        margin-bottom: 32px;
+      }
+      article {
+        max-width: 100% !important;
+      }
+    }
+    @media (max-width: 600px) {
+      ul[style*="grid-template-columns: 1fr 1fr"] {
+        grid-template-columns: 1fr !important;
+      }
+    }
+    details summary::-webkit-details-marker { display: none; }
+    details summary::after { content: '+'; margin-left: auto; font-size: 1.2rem; color: #6B7280; }
+    details[open] summary::after { content: '−'; }
+  </style>
+</Layout>
