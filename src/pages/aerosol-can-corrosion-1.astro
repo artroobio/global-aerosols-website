@@ -1,64 +1,130 @@
 ---
 import Layout from '../layouts/Layout.astro';
 
-const corrosionPart1Schema = {
-  "@context": "https://schema.org",
-  "@type": "Article",
-  "headline": "Corrosion in Water-Based Aerosol Cans: Causes, Mechanisms & Industrial Control Measures",
-  "description": "A technical, fact-based overview of corrosion in water-based aerosol cans: causes, mechanisms, accelerating factors, and established industrial control measures for manufacturers.",
-  "image": "https://assets.zyrosite.com/A3QlOV94WLSaL6xE/aerosol-can-corrosion-cutaway-gBpXsKVxtIgRK5hf.jpg",
-  "author": {
-    "@type": "Person",
-    "name": "Absar Khan"
-  },
-  "publisher": {
-    "@type": "Organization",
-    "name": "Global Aerosols",
-    "logo": {
-      "@type": "ImageObject",
-      "url": "https://www.globalaerosols.com/logo.png"
-    }
-  },
-  "datePublished": "2025-11-07",
-  "dateModified": "2025-11-07",
-  "mainEntityOfPage": {
-    "@type": "WebPage",
-    "@id": "https://www.globalaerosols.com/aerosol-can-corrosion-1"
-  },
-  "articleSection": "Aerosols & Gas Dosing"
-};
+const slug = 'aerosol-can-corrosion-1';
+const heroUrl = 'https://assets.zyrosite.com/A3QlOV94WLSaL6xE/aerosol-can-corrosion-cutaway-gBpXsKVxtIgRK5hf.jpg';
 
-const breadcrumbSchema = {
+const schemas = {
   "@context": "https://schema.org",
-  "@type": "BreadcrumbList",
-  "itemListElement": [
+  "@graph": [
     {
-      "@type": "ListItem",
-      "position": 1,
-      "name": "Home",
-      "item": "https://www.globalaerosols.com"
+      "@type": "Organization",
+      "@id": "https://www.globalaerosols.com/#organization",
+      "name": "Global Aerosols",
+      "url": "https://www.globalaerosols.com/",
+      "logo": { "@type": "ImageObject", "url": "https://www.globalaerosols.com/logo.png" }
     },
     {
-      "@type": "ListItem",
-      "position": 2,
-      "name": "Blog",
-      "item": "https://www.globalaerosols.com/blog"
+      "@type": "WebSite",
+      "@id": "https://www.globalaerosols.com/#website",
+      "url": "https://www.globalaerosols.com/",
+      "name": "Global Aerosols",
+      "publisher": { "@id": "https://www.globalaerosols.com/#organization" }
     },
     {
-      "@type": "ListItem",
-      "position": 3,
-      "name": "Aerosol Can Corrosion - Part 1",
-      "item": "https://www.globalaerosols.com/aerosol-can-corrosion-1"
+      "@type": "Person",
+      "@id": "https://www.globalaerosols.com/#absar-khan",
+      "name": "Absar Khan",
+      "jobTitle": "Founder & Lead Aerosol Consultant",
+      "url": "https://www.linkedin.com/in/absar-khan-aerosol-consultant-and-formulator-78359b162",
+      "worksFor": { "@id": "https://www.globalaerosols.com/#organization" }
+    },
+    {
+      "@type": "BreadcrumbList",
+      "@id": `https://www.globalaerosols.com/${slug}#breadcrumb`,
+      "itemListElement": [
+        { "@type": "ListItem", "position": 1, "name": "Home", "item": "https://www.globalaerosols.com/" },
+        { "@type": "ListItem", "position": 2, "name": "Blog", "item": "https://www.globalaerosols.com/blog/" },
+        { "@type": "ListItem", "position": 3, "name": "Aerosol Can Corrosion - Part 1", "item": `https://www.globalaerosols.com/${slug}` }
+      ]
+    },
+    {
+      "@type": "BlogPosting",
+      "@id": `https://www.globalaerosols.com/${slug}#article`,
+      "headline": "Corrosion in Water-Based Aerosol Cans: Causes & Control",
+      "description": "Why do water-based aerosol cans corrode? Learn the electrochemical mechanisms, accelerating factors and proven industrial control measures for manufacturers.",
+      "image": { "@type": "ImageObject", "url": heroUrl },
+      "author": { "@id": "https://www.globalaerosols.com/#absar-khan" },
+      "publisher": { "@id": "https://www.globalaerosols.com/#organization" },
+      "datePublished": "2025-11-07",
+      "dateModified": "2026-07-29",
+      "mainEntityOfPage": { "@id": `https://www.globalaerosols.com/${slug}` },
+      "articleSection": "Aerosols & Gas Dosing",
+      "keywords": "aerosol can corrosion, water-based aerosol, electrochemical corrosion, pitting corrosion, crevice corrosion, internal lacquer, corrosion inhibitor, tinplate, ASTM B117",
+      "wordCount": 2280
+    },
+    {
+      "@type": "FAQPage",
+      "mainEntity": [
+        {
+          "@type": "Question",
+          "name": "Why are water-based aerosols more prone to corrosion than solvent-based ones?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Corrosion of steel is an electrochemical process that requires an electrolyte, and water is an excellent one. A solvent-based formulation provides very little ionic conductivity, so the anodic and cathodic reactions that drive metal loss cannot proceed readily. Introducing water, especially with dissolved salts or ionic surfactants, supplies exactly the conductive medium those reactions need."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "What role does the internal lacquer play?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "The internal lacquer is a barrier coating that physically separates the aqueous formulation from the metal substrate. Corrosion typically begins wherever that barrier is imperfect, such as at coating pinholes, scratches from handling, or the cut edge of a seam. Because the exposed area at a defect is very small relative to the surrounding coated metal, attack concentrates there and can perforate the wall locally."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "How does pH affect corrosion in an aerosol can?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Both strongly acidic and strongly alkaline conditions increase attack on the metals used in aerosol containers. Aluminium is amphoteric, meaning its protective oxide film dissolves at both low and high pH, so it is particularly sensitive to formulations that drift outside a near-neutral range. Controlling and buffering formulation pH is therefore one of the most direct levers available for corrosion control."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "What is crevice corrosion and where does it occur in an aerosol?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Crevice corrosion occurs in narrow gaps where the liquid becomes stagnant and its chemistry diverges from the bulk formulation, typically becoming more acidic and oxygen-depleted. In an aerosol container the classic locations are the crimp region under the valve cup, the side seam, and beneath the gasket. These areas are difficult to inspect, so failures often appear only after extended storage."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "How is corrosion resistance tested before launch?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "The standard approach is accelerated storage: filled cans are held at elevated temperature for a defined period and then opened and examined for metal attack, coating breakdown, and changes in the product. Salt spray exposure to methods such as ASTM B117 is used to compare coating systems on panels rather than filled units. Neither test predicts shelf life exactly, so results are used comparatively against a known-good control."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "Can corrosion cause an aerosol can to leak or burst?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Yes. Localised attack such as pitting can perforate the can wall, producing a slow leak that may appear months after filling. Corrosion also generates hydrogen at the cathodic sites, which adds to the internal pressure the container must contain. A wall thinned by corrosion combined with elevated pressure reduces the safety margin the can was designed with."
+          }
+        }
+      ]
+    },
+    {
+      "@type": "WebPage",
+      "@id": `https://www.globalaerosols.com/${slug}`,
+      "url": `https://www.globalaerosols.com/${slug}`,
+      "name": "Corrosion in Water-Based Aerosol Cans: Causes & Control",
+      "description": "Why do water-based aerosol cans corrode? Learn the electrochemical mechanisms, accelerating factors and proven industrial control measures for manufacturers.",
+      "isPartOf": { "@id": "https://www.globalaerosols.com/#website" },
+      "breadcrumb": { "@id": `https://www.globalaerosols.com/${slug}#breadcrumb` },
+      "primaryImageOfPage": { "@type": "ImageObject", "url": heroUrl },
+      "datePublished": "2025-11-07",
+      "dateModified": "2026-07-29"
     }
   ]
 };
-
-const schemas = [corrosionPart1Schema, breadcrumbSchema];
 ---
 
 <Layout
-  title="Corrosion in Water-Based Aerosol Cans - Part 1 | Global Aerosols"
-  description="A technical, fact-based overview of corrosion in water-based aerosol cans: causes, mechanisms, accelerating factors, and established industrial control measures for manufacturers."
+  title="Corrosion in Water-Based Aerosol Cans: Causes & Control"
+  description="Why do water-based aerosol cans corrode? Learn the electrochemical mechanisms, accelerating factors and proven industrial control measures for manufacturers."
   canonical="https://www.globalaerosols.com/aerosol-can-corrosion-1"
   ogImage="https://assets.zyrosite.com/A3QlOV94WLSaL6xE/aerosol-can-corrosion-cutaway-gBpXsKVxtIgRK5hf.jpg"
   ogType="article"
@@ -79,7 +145,7 @@ const schemas = [corrosionPart1Schema, breadcrumbSchema];
     <article class="blog-prose">
       <header class="post-header">
         <h1 class="gradient-text" style="font-size: 3rem; line-height: 1.15; font-weight: 900; margin-bottom: 20px;">
-          Corrosion in Water-Based Aerosol Cans: Causes, Mechanisms &amp; Industrial Control Measures — Part 1
+          Corrosion in Water-Based Aerosol Cans: Causes &amp; Control
         </h1>
         
         <!-- Post meta details -->
@@ -91,6 +157,8 @@ const schemas = [corrosionPart1Schema, breadcrumbSchema];
           <span style="width: 4px; height: 4px; border-radius: 50%; background-color: var(--border);"></span>
           <span>Published: <strong>Nov 7, 2025</strong></span>
           <span style="width: 4px; height: 4px; border-radius: 50%; background-color: var(--border);"></span>
+          <span>Updated: <strong>Jul 29, 2026</strong></span>
+          <span style="width: 4px; height: 4px; border-radius: 50%; background-color: var(--border);"></span>
           <span>Reading Time: <strong>15 min read</strong></span>
           <span style="width: 4px; height: 4px; border-radius: 50%; background-color: var(--border);"></span>
           <span style="background: #e0f2fe; color: #0369a1; padding: 2px 10px; border-radius: 50px; font-size: 0.75rem; font-weight: 700; text-transform: uppercase;">Aerosols &amp; Gas Dosing</span>
@@ -101,7 +169,7 @@ const schemas = [corrosionPart1Schema, breadcrumbSchema];
       <div class="image-slot">
         <img 
           src="https://assets.zyrosite.com/A3QlOV94WLSaL6xE/aerosol-can-corrosion-cutaway-gBpXsKVxtIgRK5hf.jpg" 
-          alt="Cutaway illustration of a water-based aerosol can showing internal corrosion and coating failure" 
+          alt="Cutaway of a water-based aerosol can showing internal corrosion zones and lacquer coating failure at the seam — Global Aerosols" 
           width="1200" 
           height="800" 
           loading="eager" 
@@ -231,10 +299,10 @@ const schemas = [corrosionPart1Schema, breadcrumbSchema];
       <!-- SECTION 3 -->
       <section class="section" id="accelerating-factors">
         <h2>3. Industrial Factors That Increase Corrosion Rate</h2>
-        <p>Corrosion rates are highly dependent on manufacturing practices, storage conditions, and ambient exposure throughout logistics cycles. Standard industrial operations can introduce variables that increase the speed of electrochemical degradation. The primary factors that accelerate internal can failures include:</p>
+        <p>The formulation-side drivers of these mechanisms — inhibitor packages, coating selection and pH control — are treated separately in <a href="/aerosol-can-corrosion-2" style="color: var(--primary); font-weight: 600;">Part 2 of this study</a>. Corrosion rates are highly dependent on manufacturing practices, storage conditions, and ambient exposure throughout logistics cycles. Standard industrial operations can introduce variables that increase the speed of electrochemical degradation. The primary factors that accelerate internal can failures include:</p>
 
         <h3>3.1 Temperature Elevation</h3>
-        <p>Corrosion reactions accelerate with temperature. Pressurized cans stored in hot environments show faster pitting and coating breakdown. Elevated temperatures also increase vapor pressure, affecting headspace dynamics.</p>
+        <p>Corrosion reactions accelerate with temperature. Pressurized cans stored in hot environments show faster pitting and coating breakdown. Elevated temperatures also increase vapor pressure, affecting headspace dynamics — the same temperature–pressure relationship described in our guide to <a href="/how-aerosol-cans-work" style="color: var(--primary); font-weight: 600;">how aerosol cans work</a>.</p>
 
         <h3>3.2 Moisture Cycling</h3>
         <p>Temperature fluctuations cause condensation in the headspace. Repeated wet-dry cycles are significantly more corrosive than constant exposure because they alternately concentrate and dilute surface ions, promoting localized attack.</p>
@@ -243,10 +311,10 @@ const schemas = [corrosionPart1Schema, breadcrumbSchema];
         <p>Residual oils, particulates, oxides, and welding residues disrupt coating adhesion and create initiation points. Metal packaging standards worldwide mandate thorough cleaning before coating to reduce corrosion risk.</p>
 
         <h3>3.4 Mechanical Damage to Internal Coatings</h3>
-        <p>During transport or filling, cans can deform. Even small dents can crack internal coatings, exposing fresh metal. Handling protocols that minimize denting reduce this failure mode.</p>
+        <p>During transport or filling, cans can deform. Even small dents can crack internal coatings, exposing fresh metal. Handling protocols that minimize denting reduce this failure mode. Where the coating breach sits near the crimp, the resulting attack frequently presents as one of the failure modes catalogued in <a href="/why-do-aerosol-cans-leak" style="color: var(--primary); font-weight: 600;">why aerosol cans leak</a>.</p>
 
         <h3>3.5 High Water Activity &amp; High Conductivity</h3>
-        <p>Higher dissolved ions and high-conductivity water allow faster electron flow, accelerating corrosion. Use of low-conductivity water in manufacturing reduces this risk.</p>
+        <p>Higher dissolved ions and high-conductivity water allow faster electron flow, accelerating corrosion. Use of low-conductivity water in manufacturing reduces this risk. The same dependence explains why <a href="https://en.wikipedia.org/wiki/Galvanic_corrosion" target="_blank" rel="noopener noreferrer" style="color: var(--primary); font-weight: 600;">galvanic corrosion</a> requires an electrolyte alongside dissimilar metals in electrical contact: remove the conductive path and the cell cannot operate.</p>
 
         <h3>3.6 Lengthy Storage Durations</h3>
         <p>The longer the product is stored, the greater the chance that pitting will initiate or that pH and other factors will drift. Shelf-life planning must account for long-term corrosion mechanisms.</p>
@@ -289,7 +357,7 @@ const schemas = [corrosionPart1Schema, breadcrumbSchema];
         <p>Common industry tests include burst pressure testing, humidity chamber exposure, cyclic corrosion tests, microscopic inspection of weld seams, coating continuity and adhesion checks, weight-loss tests for general corrosion, and pitting depth measurement using optical microscopy. Accelerated testing identifies corrosion risk early in development.</p>
 
         <h3>4.7 Proper Storage &amp; Logistics Management</h3>
-        <p>Cans must be stored at stable temperatures and away from corrosive atmospheres. Avoiding high heat prevents pressure cycling and condensation inside the can. Logistics protocols that minimize mechanical impacts protect coating integrity.</p>
+        <p>Cans must be stored at stable temperatures and away from corrosive atmospheres. Avoiding high heat prevents pressure cycling and condensation inside the can. Logistics protocols that minimize mechanical impacts protect coating integrity. Because substrate choice also governs corrosion behaviour, the trade-offs are compared in our guide to <a href="/aluminium-vs-tinplate-aerosol-cans" style="color: var(--primary); font-weight: 600;">aluminium versus tinplate aerosol cans</a>, and the gasket side of the interface is covered in <a href="/aerosol-valve-gasket-explained" style="color: var(--primary); font-weight: 600;">aerosol valve gasket materials</a>.</p>
       </section>
 
       <!-- SECTION 5: REFERENCES -->
@@ -312,6 +380,56 @@ const schemas = [corrosionPart1Schema, breadcrumbSchema];
               ISO Technical Committee 156 – Corrosion of Metals and Alloys
             </a>
           </li>
+        </ul>
+      </section>
+
+      <!-- FAQ -->
+      <section class="section" id="faq" style="margin-top: 50px;">
+        <h2>Frequently Asked Questions</h2>
+
+        <details style="border: 1px solid var(--border); border-radius: var(--radius-md); margin-bottom: 10px; background: #ffffff;">
+          <summary style="font-weight: 600; padding: 14px 18px; cursor: pointer;">Why are water-based aerosols more prone to corrosion than solvent-based ones?</summary>
+          <div style="padding: 0 18px 16px; color: var(--text-muted); line-height: 1.65;">Corrosion of steel is an electrochemical process that requires an electrolyte, and water is an excellent one. A solvent-based formulation provides very little ionic conductivity, so the anodic and cathodic reactions that drive metal loss cannot proceed readily. Introducing water, especially with dissolved salts or ionic surfactants, supplies exactly the conductive medium those reactions need.</div>
+        </details>
+
+        <details style="border: 1px solid var(--border); border-radius: var(--radius-md); margin-bottom: 10px; background: #ffffff;">
+          <summary style="font-weight: 600; padding: 14px 18px; cursor: pointer;">What role does the internal lacquer play?</summary>
+          <div style="padding: 0 18px 16px; color: var(--text-muted); line-height: 1.65;">The internal lacquer is a barrier coating that physically separates the aqueous formulation from the metal substrate. Corrosion typically begins wherever that barrier is imperfect, such as at coating pinholes, scratches from handling, or the cut edge of a seam. Because the exposed area at a defect is very small relative to the surrounding coated metal, attack concentrates there and can perforate the wall locally.</div>
+        </details>
+
+        <details style="border: 1px solid var(--border); border-radius: var(--radius-md); margin-bottom: 10px; background: #ffffff;">
+          <summary style="font-weight: 600; padding: 14px 18px; cursor: pointer;">How does pH affect corrosion in an aerosol can?</summary>
+          <div style="padding: 0 18px 16px; color: var(--text-muted); line-height: 1.65;">Both strongly acidic and strongly alkaline conditions increase attack on the metals used in aerosol containers. Aluminium is amphoteric, meaning its protective oxide film dissolves at both low and high pH, so it is particularly sensitive to formulations that drift outside a near-neutral range. Controlling and buffering formulation pH is therefore one of the most direct levers available for corrosion control.</div>
+        </details>
+
+        <details style="border: 1px solid var(--border); border-radius: var(--radius-md); margin-bottom: 10px; background: #ffffff;">
+          <summary style="font-weight: 600; padding: 14px 18px; cursor: pointer;">What is crevice corrosion and where does it occur in an aerosol?</summary>
+          <div style="padding: 0 18px 16px; color: var(--text-muted); line-height: 1.65;">Crevice corrosion occurs in narrow gaps where the liquid becomes stagnant and its chemistry diverges from the bulk formulation, typically becoming more acidic and oxygen-depleted. In an aerosol container the classic locations are the crimp region under the valve cup, the side seam, and beneath the gasket. These areas are difficult to inspect, so failures often appear only after extended storage.</div>
+        </details>
+
+        <details style="border: 1px solid var(--border); border-radius: var(--radius-md); margin-bottom: 10px; background: #ffffff;">
+          <summary style="font-weight: 600; padding: 14px 18px; cursor: pointer;">How is corrosion resistance tested before launch?</summary>
+          <div style="padding: 0 18px 16px; color: var(--text-muted); line-height: 1.65;">The standard approach is accelerated storage: filled cans are held at elevated temperature for a defined period and then opened and examined for metal attack, coating breakdown, and changes in the product. Salt spray exposure to methods such as ASTM B117 is used to compare coating systems on panels rather than filled units. Neither test predicts shelf life exactly, so results are used comparatively against a known-good control.</div>
+        </details>
+
+        <details style="border: 1px solid var(--border); border-radius: var(--radius-md); margin-bottom: 10px; background: #ffffff;">
+          <summary style="font-weight: 600; padding: 14px 18px; cursor: pointer;">Can corrosion cause an aerosol can to leak or burst?</summary>
+          <div style="padding: 0 18px 16px; color: var(--text-muted); line-height: 1.65;">Yes. Localised attack such as pitting can perforate the can wall, producing a slow leak that may appear months after filling. Corrosion also generates hydrogen at the cathodic sites, which adds to the internal pressure the container must contain. A wall thinned by corrosion combined with elevated pressure reduces the safety margin the can was designed with.</div>
+        </details>
+      </section>
+
+      <!-- RELATED ARTICLES -->
+      <section class="section" id="related-articles" style="margin-top: 50px;">
+        <h2>Related Articles</h2>
+        <ul style="display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 10px; list-style-type: none; padding-left: 0;">
+          <li><a href="/aerosol-can-corrosion-2" style="font-weight: 600; color: var(--primary);">Corrosion in Water-Based Aerosol Cans — Part 2: Formulations &amp; Coatings</a></li>
+          <li><a href="/why-do-aerosol-cans-leak" style="font-weight: 600; color: var(--primary);">Why Aerosol Cans Leak: Causes, Faults &amp; Proven Fixes</a></li>
+          <li><a href="/aerosol-manufacturing-101-guide" style="font-weight: 600; color: var(--primary);">Aerosol Manufacturing 101: The Complete Technical Guide</a></li>
+          <li><a href="/how-aerosol-cans-work" style="font-weight: 600; color: var(--primary);">How Aerosol Cans Work: Propellant, Pressure &amp; Valves</a></li>
+          <li><a href="/aerosol-propellants-explained-lpg-vs-dme-vs-hfc-vs-n2-vs-co2" style="font-weight: 600; color: var(--primary);">Aerosol Propellants Explained: LPG vs DME vs HFC vs N₂ vs CO₂</a></li>
+          <li><a href="/aerosol-chemistry-101" style="font-weight: 600; color: var(--primary);">Aerosol Chemistry 101: Solvents, Binders &amp; Surfactants</a></li>
+          <li><a href="/from-lab-to-commercial-launch" style="font-weight: 600; color: var(--primary);">From Lab to Factory: Aerosol R&amp;D to Commercial Manufacturing</a></li>
+          <li><a href="/choosing-the-right-product-consultant" style="font-weight: 600; color: var(--primary);">How to Choose the Right Aerosol Product Consultant</a></li>
         </ul>
       </section>
 
@@ -341,7 +459,7 @@ const schemas = [corrosionPart1Schema, breadcrumbSchema];
         <div>
           <h3 style="margin-top: 0; margin-bottom: 8px; font-family: 'Outfit', sans-serif; font-size: 1.3rem; font-weight: 700; color: var(--text-primary);">About the Specialist</h3>
           <p style="margin-top: 0; margin-bottom: 12px; font-size: 0.95rem; line-height: 1.6; color: var(--text-muted);">
-            <strong>Absar Khan</strong> is the principal consultant and chemical formulation architect at <strong>Global Formulation</strong>. He possesses cross-disciplinary engineering expertise spanning aerosol gassing systems, pharmaceutical manufacturing, sterile injectables, cosmetics, and green chemical plant setups. Absar leads scientific and engineering advisory teams supporting manufacturers globally in technology selection, GMP layouts, validation frameworks, and regulatory strategies.
+            <strong>Absar Khan</strong> is the founder and lead aerosol consultant at <strong>Global Aerosols</strong>. He possesses cross-disciplinary engineering expertise spanning aerosol corrosion and packaging compatibility, propellant systems, filling line design, and regulatory compliance. Absar leads scientific and engineering advisory teams supporting manufacturers globally in technology selection, GMP layouts, validation frameworks, and regulatory strategies.
           </p>
           <p style="margin: 0; font-size: 0.9rem;">
             <strong>LinkedIn Portfolio:</strong> 

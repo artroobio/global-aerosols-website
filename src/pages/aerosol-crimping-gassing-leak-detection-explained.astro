@@ -1,84 +1,133 @@
 ---
 import Layout from '../layouts/Layout.astro';
 
-const blogSchema = [
-  {
-    "@context": "https://schema.org",
-    "@type": "BlogPosting",
-    "headline": "Aerosol Filling Line Explained: Crimping, Gassing, Weight Check, Leak Detection",
-    "description": "A comprehensive technical guide for startups and students on aerosol manufacturing processes.",
-    "image": "https://assets.zyrosite.com/A3QlOV94WLSaL6xE/aeorsol-filling-line-fb8suiuS4FZtWP5q.png",
-    "author": {
-      "@type": "Person",
-      "name": "Absar Khan",
-      "jobTitle": "Lead Consultant",
-      "url": "https://www.linkedin.com/in/absar-khan-aerosol-consultant-and-formulator-78359b162"
-    },
-    "publisher": {
+const slug = 'aerosol-crimping-gassing-leak-detection-explained';
+const heroUrl = 'https://assets.zyrosite.com/A3QlOV94WLSaL6xE/aeorsol-filling-line-fb8suiuS4FZtWP5q.png';
+
+const schemas = {
+  "@context": "https://schema.org",
+  "@graph": [
+    {
       "@type": "Organization",
+      "@id": "https://www.globalaerosols.com/#organization",
       "name": "Global Aerosols",
+      "url": "https://www.globalaerosols.com/",
       "logo": {
         "@type": "ImageObject",
         "url": "https://www.globalaerosols.com/logo.png"
       }
     },
-    "datePublished": "2024-12-22",
-    "dateModified": "2024-12-22",
-    "mainEntityOfPage": "https://www.globalaerosols.com/aerosol-crimping-gassing-leak-detection-explained"
-  },
-  {
-    "@context": "https://schema.org",
-    "@type": "FAQPage",
-    "mainEntity": [
-      {
-        "@type": "Question",
-        "name": "What is the most common cause of aerosol leaks?",
-        "acceptedAnswer": {
-          "@type": "Answer",
-          "text": "Most leaks occur due to improper crimp settings (depth/diameter) or damaged can curls. Debris under the gasket is also a frequent cause."
-        }
-      },
-      {
-        "@type": "Question",
-        "name": "How do I choose between LPG and Nitrogen?",
-        "acceptedAnswer": {
-          "@type": "Answer",
-          "text": "LPG maintains constant pressure until the can is empty but is flammable. Nitrogen is eco-friendly but pressure drops as the product is consumed."
-        }
-      }
-    ]
-  }
-];
-const breadcrumbSchema = {
-  "@context": "https://schema.org",
-  "@type": "BreadcrumbList",
-  "itemListElement": [
     {
-      "@type": "ListItem",
-      "position": 1,
-      "name": "Home",
-      "item": "https://www.globalaerosols.com"
+      "@type": "WebSite",
+      "@id": "https://www.globalaerosols.com/#website",
+      "url": "https://www.globalaerosols.com/",
+      "name": "Global Aerosols",
+      "publisher": { "@id": "https://www.globalaerosols.com/#organization" }
     },
     {
-      "@type": "ListItem",
-      "position": 2,
-      "name": "Blog",
-      "item": "https://www.globalaerosols.com/blog"
+      "@type": "Person",
+      "@id": "https://www.globalaerosols.com/#absar-khan",
+      "name": "Absar Khan",
+      "jobTitle": "Founder & Lead Aerosol Consultant",
+      "url": "https://www.linkedin.com/in/absar-khan-aerosol-consultant-and-formulator-78359b162",
+      "worksFor": { "@id": "https://www.globalaerosols.com/#organization" }
     },
     {
-      "@type": "ListItem",
-      "position": 3,
-      "name": "Aerosol Filling Line Explained: Crimping, Gassing, Weight Check, Leak Detection",
-      "item": "https://www.globalaerosols.com/aerosol-crimping-gassing-leak-detection-explained"
+      "@type": "BreadcrumbList",
+      "@id": `https://www.globalaerosols.com/${slug}#breadcrumb`,
+      "itemListElement": [
+        { "@type": "ListItem", "position": 1, "name": "Home", "item": "https://www.globalaerosols.com/" },
+        { "@type": "ListItem", "position": 2, "name": "Blog", "item": "https://www.globalaerosols.com/blog/" },
+        { "@type": "ListItem", "position": 3, "name": "Aerosol Filling Line Explained", "item": `https://www.globalaerosols.com/${slug}` }
+      ]
+    },
+    {
+      "@type": "BlogPosting",
+      "@id": `https://www.globalaerosols.com/${slug}#article`,
+      "headline": "Aerosol Filling Line: Crimping, Gassing & Leak Detection",
+      "description": "How does an aerosol filling line work? A technical guide to the four stages: precision crimping, propellant gassing, weight checking and leak detection.",
+      "image": { "@type": "ImageObject", "url": heroUrl },
+      "author": { "@id": "https://www.globalaerosols.com/#absar-khan" },
+      "publisher": { "@id": "https://www.globalaerosols.com/#organization" },
+      "datePublished": "2024-12-22",
+      "dateModified": "2026-07-29",
+      "mainEntityOfPage": { "@id": `https://www.globalaerosols.com/${slug}` },
+      "articleSection": "Aerosols & Gas Dosing",
+      "keywords": "aerosol filling line, aerosol crimping, crimp depth, crimp diameter, propellant gassing, through the valve gassing, under the cup gassing, check weigher, aerosol leak detection, water bath test",
+      "wordCount": 1920
+    },
+    {
+      "@type": "FAQPage",
+      "mainEntity": [
+        {
+          "@type": "Question",
+          "name": "What is the most common cause of aerosol leaks?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "The most frequent root cause is an out-of-specification crimp, either in diameter or in depth, which leaves the valve gasket insufficiently compressed. Contamination trapped under the gasket during valve insertion is the next most common cause, because a single particle creates a continuous leak path. Damage to the can curl before crimping produces the same result by preventing the gasket from seating evenly."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "How do I choose between LPG and nitrogen as a propellant?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Liquefied petroleum gas exists as a liquid in equilibrium with its vapour, so it holds a near-constant pressure until the can is almost empty, but it is flammable and brings the product into a higher hazard classification. Nitrogen is a compressed gas that is inert and non-flammable, but its pressure falls progressively as product is dispensed. The choice depends on whether consistent spray performance or non-flammability matters more for the application."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "What is the difference between TTV and UTC gassing?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Through-the-Valve gassing injects propellant through the assembled valve after crimping, using a head that depresses the stem. Under-the-Cup gassing dispenses propellant into the open can in the instant before the valve cup is seated and crimped. UTC achieves much higher line speeds because it is not restricted by the flow area of the valve, while TTV uses simpler tooling and is common on lower-volume lines."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "Why does an aerosol can need headspace?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Headspace is the vapour volume left above the liquid so the contents can expand when the can warms. Liquids are effectively incompressible, so a can filled too full has nowhere to accommodate thermal expansion and internal pressure rises steeply with temperature. Maintaining the specified fill level is therefore a safety control, not merely a cost control."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "How is every aerosol can tested for leaks in production?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "The reference method is a heated water bath through which filled cans pass on a conveyor while operators or cameras watch for escaping bubbles. Under the EU Aerosol Dispensers Directive 75/324/EEC the contents must reach 50 °C during this test, which simultaneously confirms the can does not leak or burst at elevated temperature. Many modern lines add electronic detection tunnels that sense propellant vapour around each can."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "What does a check weigher detect on an aerosol line?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "A check weigher compares each can against a target mass to confirm the correct quantity of product and propellant was delivered. Under-filled cans indicate a drop in gassing pressure or a blocked injection head, while over-filled cans signal loss of headspace and a potential safety hazard. Because it inspects every unit rather than a sample, it functions as a continuous process monitor as well as a reject gate."
+          }
+        }
+      ]
+    },
+    {
+      "@type": "WebPage",
+      "@id": `https://www.globalaerosols.com/${slug}`,
+      "url": `https://www.globalaerosols.com/${slug}`,
+      "name": "Aerosol Filling Line: Crimping, Gassing & Leak Detection",
+      "description": "How does an aerosol filling line work? A technical guide to the four stages: precision crimping, propellant gassing, weight checking and leak detection.",
+      "isPartOf": { "@id": "https://www.globalaerosols.com/#website" },
+      "breadcrumb": { "@id": `https://www.globalaerosols.com/${slug}#breadcrumb` },
+      "primaryImageOfPage": { "@type": "ImageObject", "url": heroUrl },
+      "datePublished": "2024-12-22",
+      "dateModified": "2026-07-29"
     }
   ]
 };
-const schemas = [blogSchema, breadcrumbSchema];
 ---
 
 <Layout
-  title="Aerosol Filling Line Explained: Crimping, Gassing, Weight Check, Leak Detection | Global Aerosols"
-  description="A technical guide for manufacturers on aerosol filling lines. Master the 4 stages: crimping, propellant gassing, weight checking, and electronic leak detection."
+  title="Aerosol Filling Line: Crimping, Gassing & Leak Detection"
+  description="How does an aerosol filling line work? A technical guide to the four stages: precision crimping, propellant gassing, weight checking and leak detection."
   canonical="https://www.globalaerosols.com/aerosol-crimping-gassing-leak-detection-explained"
   ogImage="https://assets.zyrosite.com/A3QlOV94WLSaL6xE/aeorsol-filling-line-fb8suiuS4FZtWP5q.png"
   ogType="article"
@@ -99,7 +148,7 @@ const schemas = [blogSchema, breadcrumbSchema];
     <article class="blog-prose">
       <header class="post-header">
         <h1 class="gradient-text" style="font-size: 3rem; line-height: 1.15; font-weight: 900; margin-bottom: 20px;">
-          Aerosol Filling Line Explained: Crimping, Gassing, Weight Check, Leak Detection
+          Aerosol Filling Line: Crimping, Gassing &amp; Leak Detection
         </h1>
         
         <!-- Post meta details -->
@@ -111,6 +160,8 @@ const schemas = [blogSchema, breadcrumbSchema];
           <span style="width: 4px; height: 4px; border-radius: 50%; background-color: var(--border);"></span>
           <span>Published: <strong>Dec 22, 2024</strong></span>
           <span style="width: 4px; height: 4px; border-radius: 50%; background-color: var(--border);"></span>
+          <span>Updated: <strong>Jul 29, 2026</strong></span>
+          <span style="width: 4px; height: 4px; border-radius: 50%; background-color: var(--border);"></span>
           <span>Reading Time: <strong>10 min read</strong></span>
           <span style="width: 4px; height: 4px; border-radius: 50%; background-color: var(--border);"></span>
           <span style="background: #e0f2fe; color: #0369a1; padding: 2px 10px; border-radius: 50px; font-size: 0.75rem; font-weight: 700; text-transform: uppercase;">Aerosols & Gas Dosing</span>
@@ -121,7 +172,7 @@ const schemas = [blogSchema, breadcrumbSchema];
       <div class="image-slot">
         <img 
           src="https://assets.zyrosite.com/A3QlOV94WLSaL6xE/aeorsol-filling-line-fb8suiuS4FZtWP5q.png" 
-          alt="High-speed automatic aerosol production line overview" 
+          alt="High-speed automatic aerosol filling line showing crimping, gassing and leak detection stations — Global Aerosols" 
           width="1200" 
           height="800" 
           loading="eager" 
@@ -132,27 +183,19 @@ const schemas = [blogSchema, breadcrumbSchema];
       <div class="box" style="background: #f8fafc; border: 1px solid var(--border); border-radius: var(--radius-lg); padding: 24px; margin: 30px 0;">
         <h3 style="margin-top: 0; font-family: 'Outfit', sans-serif; color: var(--text-primary); font-size: 1.25rem; font-weight: 700; border-bottom: 2px solid var(--border); padding-bottom: 8px;">Guide Contents</h3>
         <ul style="display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 10px; list-style-type: none; padding-left: 0; margin-bottom: 0;">
-          <li><a href="#1-precision-crimping-the-foundation-of-pressure-retention" style="font-weight: 600; color: var(--primary);">1. 1. Precision Crimping: The Foundation of Pressure Retention</a></li>
-          <li><a href="#2-propellant-gassing-the-energetic-component" style="font-weight: 600; color: var(--primary);">2. 2. Propellant Gassing: The Energetic Component</a></li>
-          <li><a href="#3-automatic-weight-checking-the-quality-auditor" style="font-weight: 600; color: var(--primary);">3. 3. Automatic Weight Checking: The Quality Auditor</a></li>
-          <li><a href="#4-leak-detection-the-safety-firewall" style="font-weight: 600; color: var(--primary);">4. 4. Leak Detection: The Safety Firewall</a></li>
+          <li><a href="#1-precision-crimping-the-foundation-of-pressure-retention" style="font-weight: 600; color: var(--primary);">1. Precision Crimping: The Foundation of Pressure Retention</a></li>
+          <li><a href="#2-propellant-gassing-the-energetic-component" style="font-weight: 600; color: var(--primary);">2. Propellant Gassing: The Energetic Component</a></li>
+          <li><a href="#3-automatic-weight-checking-the-quality-auditor" style="font-weight: 600; color: var(--primary);">3. Automatic Weight Checking: The Quality Auditor</a></li>
+          <li><a href="#4-leak-detection-the-safety-firewall" style="font-weight: 600; color: var(--primary);">4. Leak Detection: The Safety Firewall</a></li>
+          <li><a href="#faq" style="font-weight: 600; color: var(--primary);">5. Frequently Asked Questions</a></li>
         </ul>
       </div>
 
-      <div class="lead"><nav class="breadcrumbs" aria-label="Breadcrumb">
-        <a href="https://www.globalaerosols.com/">Home - Aerosol Consultants</a> &gt; 
-        <a href="/blog/">Aerosol Industry Blogs</a> &gt; 
-        Aerosol Filling Line Guide
-    </nav>
-
-    <article class="article-card">
-        <header class="h1-container">
-            
-        </header>
-
+      <div class="lead">
         <section class="intro">
             <p class="intro-text">The production of aerosol products represents a sophisticated intersection of mechanical engineering, fluid dynamics, and stringent safety protocols. Unlike traditional atmospheric liquid filling, an aerosol line must manage pressurized systems where the container itself is a functional part of the delivery mechanism. For startups, students, and entrepreneurs, mastering the technical nuances of the filling line is the difference between a high-performing product and a costly, or even hazardous, manufacturing failure.</p>
             <p>As global demand for convenience-driven products rises—from pharmaceutical inhalers to industrial lubricants—the barrier to entry is no longer just the formulation, but the ability to execute a precise, repeatable manufacturing process. This guide provides a deep dive into the four critical pillars of the aerosol filling line, detailing the physics and the engineering standards required for commercial success. By understanding these stages, manufacturers can optimize ROI while ensuring their facility meets rigorous global safety standards.</p>
+            <p>The filling line is only one part of a wider production system. If you are still evaluating the fundamentals, our overview of <a href="/how-aerosol-cans-work" style="color: var(--primary); font-weight: 600;">how aerosol cans work</a> explains the pressure and valve mechanics assumed here, while <a href="/aerosol-manufacturing-101-guide" style="color: var(--primary); font-weight: 600;">Aerosol Manufacturing 101</a> covers the surrounding plant, compliance and formulation requirements.</p>
         </section>
 
         
@@ -162,6 +205,8 @@ const schemas = [blogSchema, breadcrumbSchema];
 <section class="section" id="1-precision-crimping-the-foundation-of-pressure-retention">
   <h2>1. Precision Crimping: The Foundation of Pressure Retention</h2>
   <p>The crimping process is the primary mechanical operation that transforms a metal container into a pressurized delivery system. This stage involves the insertion of the valve into the can's 1-inch (25.4mm) opening, followed by the radial expansion of the valve cup. This expansion creates a permanent, airtight seal against the can’s "curling" or rim. Because the internal pressure of an aerosol can often exceed 5–8 bar at ambient temperature, the integrity of this seal is non-negotiable for shelf-life and consumer safety.</p>
+
+  <p>What the crimp actually seals against is the valve gasket, so crimp settings can only be validated alongside the gasket material in use. A gasket that swells in contact with the formulation behaves differently under the same crimp dimensions than one that shrinks, which is why <a href="/aerosol-valve-gasket-explained" style="color: var(--primary); font-weight: 600;">gasket material selection and chemical compatibility</a> is treated as part of the crimp specification rather than a separate decision. Where crimping is set up incorrectly, the resulting defects are the leading contributors to the failure modes described in our guide to <a href="/why-do-aerosol-cans-leak" style="color: var(--primary); font-weight: 600;">why aerosol cans leak</a>.</p>
 
         <div class="table-container">
             <table>
@@ -190,7 +235,9 @@ const schemas = [blogSchema, breadcrumbSchema];
                     </tr>
                 </tbody>
             </table>
-        
+        </div>
+
+  <p>These three parameters are interdependent, so they are qualified together rather than one at a time. A crimp that measures correctly on a sectioned sample can still fail in service if tooling wears during the run, which is why dimensional checks are repeated at set intervals rather than only at set-up.</p>
 </section>
 
 <!-- 2. PROPELLANT GASSING: THE ENERGETIC COMPONENT -->
@@ -198,11 +245,15 @@ const schemas = [blogSchema, breadcrumbSchema];
   <h2>2. Propellant Gassing: The Energetic Component</h2>
   <p>Once the container is sealed, the propellant—the "engine" of the aerosol—must be introduced. This is achieved through high-pressure injection systems that force the propellant into the can. In modern manufacturing, this is typically done using "Through-the-Valve" (TTV) technology, where the gassing head depresses the valve stem and injects the propellant at pressures higher than the can's internal resistance. For high-volume production, "Under-the-Cup" (UTC) gassing is used, where the propellant is injected just before the crimping head seals the valve.</p>
 
+  <p>The practical difference between the two methods is throughput. TTV must push the entire propellant charge through the narrow flow path of the valve stem and dip tube, which sets a hard ceiling on cycle time. UTC bypasses that restriction by dosing propellant into the open can in the fraction of a second before the cup is seated, so it supports far higher line speeds at the cost of more complex tooling and tighter timing tolerances.</p>
+
+  <p>Propellant selection governs far more than spray force. It determines the flammability classification of the finished goods, the pressure the crimp must contain across the temperature range, and the solvency environment the gasket will live in. Liquefied hydrocarbon propellants are flammable, and facilities handling them fall under fire and explosion controls such as those published by the <a href="https://www.nfpa.org" target="_blank" rel="noopener noreferrer" style="color: var(--primary); font-weight: 600;">National Fire Protection Association</a>. Where propellants are being switched for environmental reasons, the <a href="https://www.epa.gov/snap" target="_blank" rel="noopener noreferrer" style="color: var(--primary); font-weight: 600;">EPA Significant New Alternatives Policy programme</a> lists which substitutes are acceptable for aerosol use. Our comparison of <a href="/aerosol-propellants-explained-lpg-vs-dme-vs-hfc-vs-n2-vs-co2" style="color: var(--primary); font-weight: 600;">LPG, DME, HFC, nitrogen and CO₂</a> sets out the trade-offs in detail.</p>
+
         
       <div class="image-slot">
         <img 
           src="https://assets.zyrosite.com/A3QlOV94WLSaL6xE/ttc-and-utc-filling-pOgVMlUsFotcs3Kh.png" 
-          alt="Technical diagram of TTV vs UTC gassing methods" 
+          alt="Technical diagram comparing Through-the-Valve and Under-the-Cup aerosol propellant gassing methods — Global Aerosols" 
           width="1200" 
           height="800" 
           loading="lazy" 
@@ -215,7 +266,11 @@ const schemas = [blogSchema, breadcrumbSchema];
 <!-- 3. AUTOMATIC WEIGHT CHECKING: THE QUALITY AUDITOR -->
 <section class="section" id="3-automatic-weight-checking-the-quality-auditor">
   <h2>3. Automatic Weight Checking: The Quality Auditor</h2>
-  <p>In an automated aerosol line, the weight check station serves as the final arbiter of success. Because the propellant is injected at high speeds, even a momentary drop in line pressure can result in an under-filled can. Conversely, an over-filled can is a safety hazard, as it may lack the "headspace" required for the propellant to expand if the can is exposed to heat. Modern check-weighers use EMFR technology to monitor every unit without stopping the production line.</p>
+  <p>In an automated aerosol line, the weight check station serves as the final arbiter of success. Because the propellant is injected at high speeds, even a momentary drop in line pressure can result in an under-filled can. Conversely, an over-filled can is a safety hazard, as it may lack the "headspace" required for the propellant to expand if the can is exposed to heat. Modern check-weighers use electromagnetic force restoration to monitor every unit without stopping the production line.</p>
+
+  <p>Headspace deserves particular attention because the physics are unforgiving. Liquids are effectively incompressible, so once a can is filled beyond its design level there is no vapour volume left to absorb thermal expansion. Internal pressure then climbs steeply with temperature rather than following the propellant's normal vapour pressure curve. This is why fill level is treated as a safety-critical parameter subject to continuous monitoring, not simply a commercial one.</p>
+
+  <p>Because it inspects every unit rather than a statistical sample, the check weigher also doubles as a live process monitor. A slow downward drift in average fill weight points to a gassing pump losing pressure or an injector beginning to block, often long before any can falls outside the reject limit. Treating that trend data as an early warning signal is more valuable than using the station purely as a pass/fail gate.</p>
 </section>
 
 <!-- 4. LEAK DETECTION: THE SAFETY FIREWALL -->
@@ -223,11 +278,15 @@ const schemas = [blogSchema, breadcrumbSchema];
   <h2>4. Leak Detection: The Safety Firewall</h2>
   <p>Aerosol cans are essentially pressure vessels. International transport regulations (such as ADR or DOT) and safety standards (like PESO in India) require that every single can produced be tested for leaks. This "safety firewall" prevents defective units from entering the supply chain, protecting both the consumer and the brand's reputation.</p>
 
+  <p>The reference method is the hot water bath. Filled cans travel on a conveyor through heated water while operators or vision systems watch for escaping bubbles, and the same immersion simultaneously proves the can withstands elevated temperature without bursting. The <a href="https://eur-lex.europa.eu/legal-content/EN/TXT/?uri=CELEX%3A31975L0324" target="_blank" rel="noopener noreferrer" style="color: var(--primary); font-weight: 600;">EU Aerosol Dispensers Directive 75/324/EEC</a> requires that the contents reach 50 °C during this test. Aerosols also travel as dangerous goods under UN 1950, and the packaging and pressure requirements for that classification are set out in the <a href="https://unece.org/transport/dangerous-goods" target="_blank" rel="noopener noreferrer" style="color: var(--primary); font-weight: 600;">UN Model Regulations</a>; our guide to <a href="/dot-un-aerosol-transport-regulations-hazmat" style="color: var(--primary); font-weight: 600;">DOT and UN aerosol transport rules</a> explains how these obligations apply to a finished batch.</p>
+
+  <p>A bath test only catches leaks large enough to bubble within the residence time of the conveyor. Slower micro-leaks that develop over weeks are found instead through statistical weight-loss studies on retained samples, where cans are weighed repeatedly over a storage period. Running both controls together is what separates a line that ships reliably from one that passes end-of-line testing and still generates field complaints months later.</p>
+
         
       <div class="image-slot">
         <img 
           src="https://assets.zyrosite.com/A3QlOV94WLSaL6xE/leak-detector-BXM8YWclRlj9ILvp.png" 
-          alt="Electronic high speed leak detector" 
+          alt="Electronic high-speed aerosol leak detection tunnel used to test every filled can — Global Aerosols" 
           width="1200" 
           height="800" 
           loading="lazy" 
@@ -236,36 +295,57 @@ const schemas = [blogSchema, breadcrumbSchema];
       
         <p class="img-caption">A high-speed electronic leak detection tunnel with digital monitoring screens</p>
 
-        <div class="cta-box">
-            <h3>Get Expert Aerosol Guidance</h3>
-            <p>Developing an aerosol product requires deep technical precision. From facility design to troubleshooting performance failures, we provide end-to-end guidance.</p>
-            <a href="/contact/" class="cta-btn">Book Technical Consultation</a>
-        </div>
+      </section><!-- /#4-leak-detection -->
 
-        <section id="related-articles">
-            <h3>Expand Your Knowledge on the Aerosol Ecosystem</h3>
-            <ul class="article-grid">
-                <li><a href="/how-aerosol-cans-work/">How Aerosol Cans Work</a></li>
-                <li><a href="/aerosol-manufacturing-101-guide/">Aerosol Manufacturing 101</a></li>
-                <li><a href="/aerosol-can-corrosion-1/">Aerosol Can Corrosion (Part 1)</a></li>
-                <li><a href="/services/product-formulation/">Aerosol Formulation</a></li>
-                <li><a href="/aerosol-can-safety-explained/">Aerosol Can Safety Explained</a></li>
-                <li><a href="/aerosol-propellants-explained-lpg-vs-dme-vs-hfc-vs-n2-vs-co2/">Propellants Explained</a></li>
-            </ul>
-        </section>
+      <!-- FAQ -->
+      <section class="section" id="faq" style="margin-top: 50px;">
+        <h2>Frequently Asked Questions</h2>
 
-        <footer class="author-box">
-            <h3>About the Author</h3>
-            <p><strong>Absar Khan</strong> is a senior industrial consultant specializing in aerosol manufacturing and GMP facility design. As the Founder of <strong>Global Aerosols</strong>, he leads teams delivering turnkey solutions for the FMCG and Healthcare sectors.</p>
-            <p><a href="https://www.linkedin.com/in/absar-khan-aerosol-consultant-and-formulator-78359b162"><strong>Connect with Absar Khan on LinkedIn</strong></a></p>
-        </footer>
-    </article>
+        <details style="border: 1px solid var(--border); border-radius: var(--radius-md); margin-bottom: 10px; background: #ffffff;">
+          <summary style="font-weight: 600; padding: 14px 18px; cursor: pointer;">What is the most common cause of aerosol leaks?</summary>
+          <div style="padding: 0 18px 16px; color: var(--text-muted); line-height: 1.65;">The most frequent root cause is an out-of-specification crimp, either in diameter or in depth, which leaves the valve gasket insufficiently compressed. Contamination trapped under the gasket during valve insertion is the next most common cause, because a single particle creates a continuous leak path. Damage to the can curl before crimping produces the same result by preventing the gasket from seating evenly.</div>
+        </details>
 
-    <div class="footer-nav">
-        <p>&copy; 2024 Global Aerosols. All rights reserved.</p>
-</section>
+        <details style="border: 1px solid var(--border); border-radius: var(--radius-md); margin-bottom: 10px; background: #ffffff;">
+          <summary style="font-weight: 600; padding: 14px 18px; cursor: pointer;">How do I choose between LPG and nitrogen as a propellant?</summary>
+          <div style="padding: 0 18px 16px; color: var(--text-muted); line-height: 1.65;">Liquefied petroleum gas exists as a liquid in equilibrium with its vapour, so it holds a near-constant pressure until the can is almost empty, but it is flammable and brings the product into a higher hazard classification. Nitrogen is a compressed gas that is inert and non-flammable, but its pressure falls progressively as product is dispensed. The choice depends on whether consistent spray performance or non-flammability matters more for the application.</div>
+        </details>
 
+        <details style="border: 1px solid var(--border); border-radius: var(--radius-md); margin-bottom: 10px; background: #ffffff;">
+          <summary style="font-weight: 600; padding: 14px 18px; cursor: pointer;">What is the difference between TTV and UTC gassing?</summary>
+          <div style="padding: 0 18px 16px; color: var(--text-muted); line-height: 1.65;">Through-the-Valve gassing injects propellant through the assembled valve after crimping, using a head that depresses the stem. Under-the-Cup gassing dispenses propellant into the open can in the instant before the valve cup is seated and crimped. UTC achieves much higher line speeds because it is not restricted by the flow area of the valve, while TTV uses simpler tooling and is common on lower-volume lines.</div>
+        </details>
 
+        <details style="border: 1px solid var(--border); border-radius: var(--radius-md); margin-bottom: 10px; background: #ffffff;">
+          <summary style="font-weight: 600; padding: 14px 18px; cursor: pointer;">Why does an aerosol can need headspace?</summary>
+          <div style="padding: 0 18px 16px; color: var(--text-muted); line-height: 1.65;">Headspace is the vapour volume left above the liquid so the contents can expand when the can warms. Liquids are effectively incompressible, so a can filled too full has nowhere to accommodate thermal expansion and internal pressure rises steeply with temperature. Maintaining the specified fill level is therefore a safety control, not merely a cost control.</div>
+        </details>
+
+        <details style="border: 1px solid var(--border); border-radius: var(--radius-md); margin-bottom: 10px; background: #ffffff;">
+          <summary style="font-weight: 600; padding: 14px 18px; cursor: pointer;">How is every aerosol can tested for leaks in production?</summary>
+          <div style="padding: 0 18px 16px; color: var(--text-muted); line-height: 1.65;">The reference method is a heated water bath through which filled cans pass on a conveyor while operators or cameras watch for escaping bubbles. Under the EU Aerosol Dispensers Directive 75/324/EEC the contents must reach 50 °C during this test, which simultaneously confirms the can does not leak or burst at elevated temperature. Many modern lines add electronic detection tunnels that sense propellant vapour around each can.</div>
+        </details>
+
+        <details style="border: 1px solid var(--border); border-radius: var(--radius-md); margin-bottom: 10px; background: #ffffff;">
+          <summary style="font-weight: 600; padding: 14px 18px; cursor: pointer;">What does a check weigher detect on an aerosol line?</summary>
+          <div style="padding: 0 18px 16px; color: var(--text-muted); line-height: 1.65;">A check weigher compares each can against a target mass to confirm the correct quantity of product and propellant was delivered. Under-filled cans indicate a drop in gassing pressure or a blocked injection head, while over-filled cans signal loss of headspace and a potential safety hazard. Because it inspects every unit rather than a sample, it functions as a continuous process monitor as well as a reject gate.</div>
+        </details>
+      </section>
+
+      <!-- RELATED ARTICLES -->
+      <section class="section" id="related-articles" style="margin-top: 50px;">
+        <h2>Related Articles</h2>
+        <ul style="display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 10px; list-style-type: none; padding-left: 0;">
+          <li><a href="/why-do-aerosol-cans-leak" style="font-weight: 600; color: var(--primary);">Why Aerosol Cans Leak: Causes, Faults &amp; Proven Fixes</a></li>
+          <li><a href="/aerosol-valve-gasket-explained" style="font-weight: 600; color: var(--primary);">Aerosol Valve Gasket Materials Explained</a></li>
+          <li><a href="/aerosol-manufacturing-101-guide" style="font-weight: 600; color: var(--primary);">Aerosol Manufacturing 101: The Complete Technical Guide</a></li>
+          <li><a href="/how-aerosol-cans-work" style="font-weight: 600; color: var(--primary);">How Aerosol Cans Work: Propellant, Pressure &amp; Valve Dynamics</a></li>
+          <li><a href="/aerosol-propellants-explained-lpg-vs-dme-vs-hfc-vs-n2-vs-co2" style="font-weight: 600; color: var(--primary);">Aerosol Propellants Explained: LPG vs DME vs HFC vs N₂ vs CO₂</a></li>
+          <li><a href="/aerosol-chemistry-101" style="font-weight: 600; color: var(--primary);">Aerosol Chemistry 101: Solvents, Binders &amp; Surfactants</a></li>
+          <li><a href="/from-lab-to-commercial-launch" style="font-weight: 600; color: var(--primary);">From Lab to Factory: Aerosol R&amp;D to Commercial Manufacturing</a></li>
+          <li><a href="/choosing-the-right-product-consultant" style="font-weight: 600; color: var(--primary);">How to Choose the Right Aerosol Product Consultant</a></li>
+        </ul>
+      </section>
 
       <!-- Contact Box -->
       <div class="cta" style="background: linear-gradient(135deg, var(--primary) 0%, var(--secondary) 100%); color: #ffffff; padding: 30px; border-radius: var(--radius-lg); margin-top: 40px; display: flex; flex-direction: column; justify-content: space-between; align-items: flex-start; gap: 20px; md-flex-direction: row; md-align-items: center;">
@@ -293,7 +373,7 @@ const schemas = [blogSchema, breadcrumbSchema];
         <div>
           <h3 style="margin-top: 0; margin-bottom: 8px; font-family: 'Outfit', sans-serif; font-size: 1.3rem; font-weight: 700; color: var(--text-primary);">About the Specialist</h3>
           <p style="margin-top: 0; margin-bottom: 12px; font-size: 0.95rem; line-height: 1.6; color: var(--text-muted);">
-            <strong>Absar Khan</strong> is the principal consultant and chemical formulation architect at <strong>Global Formulation</strong>. He possesses cross-disciplinary engineering expertise spanning aerosol gassing systems, pharmaceutical manufacturing, sterile injectables, cosmetics, and green chemical plant setups. Absar leads scientific and engineering advisory teams supporting manufacturers globally in technology selection, GMP layouts, validation frameworks, and regulatory strategies.
+            <strong>Absar Khan</strong> is the founder and lead aerosol consultant at <strong>Global Aerosols</strong>. He possesses cross-disciplinary engineering expertise spanning aerosol gassing systems, crimping and filling line design, propellant handling, GMP facility layout, and regulatory compliance. Absar leads scientific and engineering advisory teams supporting manufacturers globally in technology selection, GMP layouts, validation frameworks, and regulatory strategies.
           </p>
           <p style="margin: 0; font-size: 0.9rem;">
             <strong>LinkedIn Portfolio:</strong> 

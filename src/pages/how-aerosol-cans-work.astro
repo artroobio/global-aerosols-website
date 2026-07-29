@@ -1,82 +1,130 @@
 ---
 import Layout from '../layouts/Layout.astro';
 
-const blogSchema = {
+const slug = 'how-aerosol-cans-work';
+const heroUrl = 'https://assets.zyrosite.com/AGBzPMBJDQiwDGny/aerosol-can-cross-section-diagram-VPY1N1AooWNWTKYx.jpg';
+
+const schemas = {
   "@context": "https://schema.org",
-  "@type": "Article",
-  "headline": "How Aerosol Cans Work: Propellant, Pressure, Valve & Spray Dynamics Explained",
-  "author": {
-    "@type": "Person",
-    "name": "Absar Khan",
-    "url": "https://www.linkedin.com/in/absar-khan-aerosol-consultant-and-formulator-78359b162"
-  },
-  "publisher": {
-    "@type": "Organization",
-    "name": "Global Aerosols",
-    "logo": {
-      "@type": "ImageObject",
-      "url": "https://www.globalaerosols.com/logo.png"
-    }
-  },
-  "mainEntityOfPage": {
-    "@type": "WebPage",
-    "@id": "https://www.globalaerosols.com/how-aerosol-cans-work"
-  },
-  "datePublished": "2025-11-05",
-  "dateModified": "2025-11-05"
-};
-const breadcrumbSchema = {
-  "@context": "https://schema.org",
-  "@type": "FAQPage",
-  "mainEntity": [
+  "@graph": [
     {
-      "@type": "Question",
-      "name": "How much pressure is inside an aerosol can?",
-      "acceptedAnswer": {
-        "@type": "Answer",
-        "text": "Typically 3–8 bar at 20°C depending on propellant type and product category."
-      }
+      "@type": "Organization",
+      "@id": "https://www.globalaerosols.com/#organization",
+      "name": "Global Aerosols",
+      "url": "https://www.globalaerosols.com/",
+      "logo": { "@type": "ImageObject", "url": "https://www.globalaerosols.com/logo.png" }
     },
     {
-      "@type": "Question",
-      "name": "Can aerosol cans explode?",
-      "acceptedAnswer": {
-        "@type": "Answer",
-        "text": "Yes, if exposed to temperatures beyond design limits or if manufacturing defects exist."
-      }
+      "@type": "WebSite",
+      "@id": "https://www.globalaerosols.com/#website",
+      "url": "https://www.globalaerosols.com/",
+      "name": "Global Aerosols",
+      "publisher": { "@id": "https://www.globalaerosols.com/#organization" }
     },
     {
-      "@type": "Question",
-      "name": "Why do some aerosols spray as foam?",
-      "acceptedAnswer": {
-        "@type": "Answer",
-        "text": "Foaming depends on surfactant formulation combined with actuator air-mixing design."
-      }
+      "@type": "Person",
+      "@id": "https://www.globalaerosols.com/#absar-khan",
+      "name": "Absar Khan",
+      "jobTitle": "Founder & Lead Aerosol Consultant",
+      "url": "https://www.linkedin.com/in/absar-khan-aerosol-consultant-and-formulator-78359b162",
+      "worksFor": { "@id": "https://www.globalaerosols.com/#organization" }
     },
     {
-      "@type": "Question",
-      "name": "What is the safest aerosol propellant?",
-      "acceptedAnswer": {
-        "@type": "Answer",
-        "text": "Compressed gases and BOV systems offer the highest safety performance."
-      }
+      "@type": "BreadcrumbList",
+      "@id": `https://www.globalaerosols.com/${slug}#breadcrumb`,
+      "itemListElement": [
+        { "@type": "ListItem", "position": 1, "name": "Home", "item": "https://www.globalaerosols.com/" },
+        { "@type": "ListItem", "position": 2, "name": "Blog", "item": "https://www.globalaerosols.com/blog/" },
+        { "@type": "ListItem", "position": 3, "name": "How Aerosol Cans Work", "item": `https://www.globalaerosols.com/${slug}` }
+      ]
     },
     {
-      "@type": "Question",
-      "name": "Is aerosol manufacturing profitable in India?",
-      "acceptedAnswer": {
-        "@type": "Answer",
-        "text": "Yes, when technical design, safety compliance and formulation performance are correctly balanced."
-      }
+      "@type": "BlogPosting",
+      "@id": `https://www.globalaerosols.com/${slug}#article`,
+      "headline": "How Aerosol Cans Work: Propellant, Pressure & Valves",
+      "description": "How do aerosol cans work? A technical guide to propellant pressure, valve mechanics, actuator design and the spray dynamics inside every can.",
+      "image": { "@type": "ImageObject", "url": heroUrl },
+      "author": { "@id": "https://www.globalaerosols.com/#absar-khan" },
+      "publisher": { "@id": "https://www.globalaerosols.com/#organization" },
+      "mainEntityOfPage": { "@id": `https://www.globalaerosols.com/${slug}` },
+      "datePublished": "2025-11-05",
+      "dateModified": "2026-07-29",
+      "articleSection": "Aerosols & Gas Dosing",
+      "keywords": "how aerosol cans work, aerosol pressure, vapour pressure, aerosol valve, actuator, dip tube, atomisation, spray dynamics, bag-on-valve, propellant",
+      "wordCount": 3790
+    },
+    {
+      "@type": "FAQPage",
+      "mainEntity": [
+        {
+          "@type": "Question",
+          "name": "How much pressure is inside an aerosol can?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Most consumer aerosols operate in the region of 3–8 bar at 20 °C, with the exact figure set by the propellant and the product category. With a liquefied propellant the pressure is fixed by the vapour pressure of that propellant at the given temperature rather than by how much is in the can. Compressed gas systems start higher and fall progressively as product is dispensed."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "Can aerosol cans explode?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "A can can rupture if it is heated well beyond its design limit, because internal pressure rises with temperature while the burst strength of the container stays fixed. This is why aerosols carry warnings against storage above roughly 50 °C and against incineration. Cans are pressure-tested during production specifically to confirm a safety margin above normal service pressure."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "Why do some aerosols spray as foam?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Foam is produced when the formulation is an emulsion containing surfactants and the propellant is dispersed within the liquid phase. As the mixture leaves the valve, the dissolved propellant flashes to vapour inside the liquid film and expands it into a foam structure rather than breaking it into droplets. The actuator design controls how much that expansion is encouraged."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "What is the safest aerosol propellant?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "From a flammability standpoint the compressed gases nitrogen and carbon dioxide are the safest, because they are inert and non-flammable, unlike hydrocarbon propellants such as propane and butane. Bag-on-valve systems add a further margin by keeping the propellant physically separated from the product. The trade-off is that compressed gas systems lose pressure as the can empties."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "What does the dip tube do in an aerosol can?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "The dip tube carries liquid product from the bottom of the can up to the valve, so the can dispenses product rather than the vapour sitting in the headspace. Its diameter influences flow rate and therefore spray character. Products designed to be used inverted omit the dip tube, because in that orientation the valve already sits in the liquid phase."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "Why does an aerosol can feel cold during use?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Dispensing removes vapour from the headspace, and liquid propellant must evaporate to replace it. Evaporation absorbs latent heat from the remaining contents and the can wall, so the container cools measurably during sustained spraying. The same effect lowers vapour pressure temporarily, which is why spray force can weaken during a long continuous burst and recover once the can warms again."
+          }
+        }
+      ]
+    },
+    {
+      "@type": "WebPage",
+      "@id": `https://www.globalaerosols.com/${slug}`,
+      "url": `https://www.globalaerosols.com/${slug}`,
+      "name": "How Aerosol Cans Work: Propellant, Pressure & Valves",
+      "description": "How do aerosol cans work? A technical guide to propellant pressure, valve mechanics, actuator design and the spray dynamics inside every can.",
+      "isPartOf": { "@id": "https://www.globalaerosols.com/#website" },
+      "breadcrumb": { "@id": `https://www.globalaerosols.com/${slug}#breadcrumb` },
+      "primaryImageOfPage": { "@type": "ImageObject", "url": heroUrl },
+      "datePublished": "2025-11-05",
+      "dateModified": "2026-07-29"
     }
   ]
 };
-const schemas = [blogSchema, breadcrumbSchema];
 ---
 
 <Layout
-  title="How Aerosol Cans Work: Propellant, Pressure, Valve & Spray Dynamics Explained | Global Aerosols"
-  description="Learn how aerosol cans work with a complete technical guide on propellants, pressure, valves and spray dynamics. Ideal for startups, students and manufacturers in India and globally."
+  title="How Aerosol Cans Work: Propellant, Pressure & Valves"
+  description="How do aerosol cans work? A technical guide to propellant pressure, valve mechanics, actuator design and the spray dynamics inside every can."
   canonical="https://www.globalaerosols.com/how-aerosol-cans-work"
   ogImage="https://assets.zyrosite.com/AGBzPMBJDQiwDGny/aerosol-can-cross-section-diagram-VPY1N1AooWNWTKYx.jpg"
   ogType="article"
@@ -97,7 +145,7 @@ const schemas = [blogSchema, breadcrumbSchema];
     <article class="blog-prose">
       <header class="post-header">
         <h1 class="gradient-text" style="font-size: 3rem; line-height: 1.15; font-weight: 900; margin-bottom: 20px;">
-          How Aerosol Cans Work: Propellant, Pressure, Valve & Spray Dynamics Explained
+          How Aerosol Cans Work: Propellant, Pressure &amp; Valves
         </h1>
         
         <!-- Post meta details -->
@@ -108,6 +156,8 @@ const schemas = [blogSchema, breadcrumbSchema];
           </div>
           <span style="width: 4px; height: 4px; border-radius: 50%; background-color: var(--border);"></span>
           <span>Published: <strong>Nov 5, 2025</strong></span>
+          <span style="width: 4px; height: 4px; border-radius: 50%; background-color: var(--border);"></span>
+          <span>Updated: <strong>Jul 29, 2026</strong></span>
           <span style="width: 4px; height: 4px; border-radius: 50%; background-color: var(--border);"></span>
           <span>Reading Time: <strong>16 min read</strong></span>
           <span style="width: 4px; height: 4px; border-radius: 50%; background-color: var(--border);"></span>
@@ -244,12 +294,7 @@ const schemas = [blogSchema, breadcrumbSchema];
 
         <p>The can body provides mechanical strength and internal pressure containment.</p>
 
-        <ul>
-            <li><strong>Tinplate steel cans</strong>: Most common for industrial and FMCG aerosols. High strength,
-                economical, and externally lacquered for corrosion resistance.</li>
-            <li><strong>Aluminum cans</strong>: Used mainly in personal care and pharmaceuticals. Seamless construction,
-                better corrosion resistance, lighter weight, and superior surface finish.</li>
-        </ul>
+        <p>Two can materials dominate. <strong>Tinplate steel</strong> is the most common choice for industrial and FMCG aerosols because it is high-strength, economical, and externally lacquered for corrosion resistance, while <strong>aluminium</strong> is used mainly in personal care and pharmaceuticals for its seamless construction, better corrosion resistance, lighter weight, and superior surface finish. The full trade-off is set out in our comparison of <a href="/aluminium-vs-tinplate-aerosol-cans" style="color: var(--primary); font-weight: 600;">aluminium versus tinplate aerosol cans</a>.</p>
 
         <p>Typical pressure resistance: <strong>12&ndash;18 bar minimum deformation pressure</strong>, with burst
             pressures significantly higher as per international standards.</p>
@@ -337,10 +382,7 @@ const schemas = [blogSchema, breadcrumbSchema];
             mechanical compression at the time of spraying. The pressure exists continuously after filling.</p>
 
         <p>Two physical mechanisms are used:</p>
-        <ul>
-            <li><strong>Vapor pressure from liquefied gas propellants</strong></li>
-            <li><strong>Stored gas pressure from compressed gases</strong></li>
-        </ul>
+        <p>Internal pressure comes from one of two sources: the <strong>vapour pressure</strong> of a liquefied gas propellant, or the <strong>stored gas pressure</strong> of a compressed gas. Which one a product uses determines whether spray force stays constant or falls as the can empties, a distinction explored in our guide to <a href="/compressed-vs-liquefied-gas-aerosols-pressure-profiles" style="color: var(--primary); font-weight: 600;">compressed versus liquefied gas aerosols</a>.</p>
 
         <h3>Vapor Pressure vs Compressed Gas Pressure</h3>
 
@@ -373,10 +415,7 @@ const schemas = [blogSchema, breadcrumbSchema];
             temperature increases, internal pressure increases.</p>
 
         <p>For typical hydrocarbon propellants:</p>
-        <ul>
-            <li>Pressure rise is approximately <strong>0.6&ndash;0.8 bar per 10&deg;C</strong></li>
-            <li>At elevated temperatures (above 50&deg;C), internal pressure can reach unsafe levels</li>
-        </ul>
+        <p>As a working figure, pressure rises by roughly <strong>0.6&ndash;0.8 bar per 10&deg;C</strong>, so above about 50&deg;C internal pressure can reach unsafe levels. This is the physical reason behind the storage warnings printed on every can, and behind the temperature limits described in our guide to <a href="/aerosol-can-safety-explained" style="color: var(--primary); font-weight: 600;">aerosol can safety</a>.</p>
 
         <p>This is why all aerosol cans carry <strong>storage temperature limits</strong> and undergo <strong>thermal
                 stability and hot-water bath testing</strong> during manufacturing.</p>
@@ -483,10 +522,7 @@ const schemas = [blogSchema, breadcrumbSchema];
             <strong>gas-tight seal</strong> between the metallic cup and the moving valve stem.</p>
 
         <p>The stem contains:</p>
-        <ul>
-            <li>One or more lateral ports</li>
-            <li>A central axial bore</li>
-        </ul>
+        <p>The stem carries one or more lateral ports feeding a central axial bore, and the size of that restriction is what begins breaking the liquid stream into droplets.</p>
 
         <p>When unpressed, the gasket blocks the ports, sealing the pressurized system. When pressed, the ports align
             below the gasket, opening the flow path.</p>
@@ -523,12 +559,7 @@ const schemas = [blogSchema, breadcrumbSchema];
 
         <h3>Continuous vs Metered Valves</h3>
 
-        <ul>
-            <li><strong>Continuous valves</strong>: Product flows as long as the actuator is pressed. Used in cleaners,
-                sprays, lubricants.</li>
-            <li><strong>Metered-dose valves</strong>: Deliver a fixed volume per actuation. Used in pharmaceutical
-                inhalers and medical sprays.</li>
-        </ul>
+        <p>Valves fall into two families. <strong>Continuous valves</strong> flow product for as long as the actuator is held down and are used in cleaners, sprays, and lubricants, whereas <strong>metered-dose valves</strong> deliver a fixed volume per actuation for pharmaceutical inhalers and medical sprays. Both depend on the same elastomeric seal, covered in our guide to <a href="/aerosol-valve-gasket-explained" style="color: var(--primary); font-weight: 600;">aerosol valve gasket materials</a>.</p>
 
         
 </section>
@@ -581,16 +612,10 @@ const schemas = [blogSchema, breadcrumbSchema];
         </ul>
 
         <p>Small orifice:</p>
-        <ul>
-            <li>Fine mist</li>
-            <li>Slower output</li>
-        </ul>
+        <p>A smaller orifice produces a finer mist at a slower output rate.</p>
 
         <p>Large orifice:</p>
-        <ul>
-            <li>Coarse spray or jet</li>
-            <li>Higher discharge rate</li>
-        </ul>
+        <p>A larger orifice produces a coarser spray or jet at a higher discharge rate.</p>
 
         <p>Swirl chambers and inserts can impart rotational motion to the liquid, producing <strong>conical
                 sprays</strong>.</p>
@@ -624,7 +649,7 @@ const schemas = [blogSchema, breadcrumbSchema];
         </ol>
 
         <p>As long as liquid propellant remains in a liquefied system, internal pressure remains nearly constant,
-            ensuring consistent spray until near empty.</p>
+            ensuring consistent spray until near empty. That constancy is the defining advantage of liquefied systems and the main reason they are chosen over compressed gases, as detailed in our <a href="/aerosol-propellants-explained-lpg-vs-dme-vs-hfc-vs-n2-vs-co2" style="color: var(--primary); font-weight: 600;">propellant comparison</a>. When the seal that contains that pressure fails, the result is the set of failure modes covered in <a href="/why-do-aerosol-cans-leak" style="color: var(--primary); font-weight: 600;">why aerosol cans leak</a>.</p>
 
         
 </section>
@@ -632,6 +657,7 @@ const schemas = [blogSchema, breadcrumbSchema];
 <!-- DIFFERENCE BETWEEN BAG-ON-VALVE AND CONVENTIONAL AEROSOLS -->
 <section class="section" id="difference-between-bag-on-valve-and-conventional-aerosols">
   <h2>Difference Between Bag-on-Valve and Conventional Aerosols</h2>
+  <p>Bag-on-valve construction keeps the product inside a sealed laminate pouch while the propellant sits in the surrounding can, so the two never mix. Our dedicated guide to <a href="/bag-on-valve-technology-design-and-applications" style="color: var(--primary); font-weight: 600;">bag-on-valve technology</a> covers the design and filling considerations in full.</p>
   <div class="image-slot">
         <img 
           src="https://assets.zyrosite.com/A3QlOV94WLSaL6xE/bag-on-valve-vs-conventional-aerosol-GvTvECzbxSHCPmOE.jpg" 
@@ -924,7 +950,55 @@ const schemas = [blogSchema, breadcrumbSchema];
             as individual parts.</p>
 </section>
 
+<!-- FAQ -->
+<section class="section" id="faq" style="margin-top: 50px;">
+  <h2>Frequently Asked Questions</h2>
 
+  <details style="border: 1px solid var(--border); border-radius: var(--radius-md); margin-bottom: 10px; background: #ffffff;">
+    <summary style="font-weight: 600; padding: 14px 18px; cursor: pointer;">How much pressure is inside an aerosol can?</summary>
+    <div style="padding: 0 18px 16px; color: var(--text-muted); line-height: 1.65;">Most consumer aerosols operate in the region of 3–8 bar at 20 °C, with the exact figure set by the propellant and the product category. With a liquefied propellant the pressure is fixed by the vapour pressure of that propellant at the given temperature rather than by how much is in the can. Compressed gas systems start higher and fall progressively as product is dispensed.</div>
+  </details>
+
+  <details style="border: 1px solid var(--border); border-radius: var(--radius-md); margin-bottom: 10px; background: #ffffff;">
+    <summary style="font-weight: 600; padding: 14px 18px; cursor: pointer;">Can aerosol cans explode?</summary>
+    <div style="padding: 0 18px 16px; color: var(--text-muted); line-height: 1.65;">A can can rupture if it is heated well beyond its design limit, because internal pressure rises with temperature while the burst strength of the container stays fixed. This is why aerosols carry warnings against storage above roughly 50 °C and against incineration. Cans are pressure-tested during production specifically to confirm a safety margin above normal service pressure.</div>
+  </details>
+
+  <details style="border: 1px solid var(--border); border-radius: var(--radius-md); margin-bottom: 10px; background: #ffffff;">
+    <summary style="font-weight: 600; padding: 14px 18px; cursor: pointer;">Why do some aerosols spray as foam?</summary>
+    <div style="padding: 0 18px 16px; color: var(--text-muted); line-height: 1.65;">Foam is produced when the formulation is an emulsion containing surfactants and the propellant is dispersed within the liquid phase. As the mixture leaves the valve, the dissolved propellant flashes to vapour inside the liquid film and expands it into a foam structure rather than breaking it into droplets. The actuator design controls how much that expansion is encouraged.</div>
+  </details>
+
+  <details style="border: 1px solid var(--border); border-radius: var(--radius-md); margin-bottom: 10px; background: #ffffff;">
+    <summary style="font-weight: 600; padding: 14px 18px; cursor: pointer;">What is the safest aerosol propellant?</summary>
+    <div style="padding: 0 18px 16px; color: var(--text-muted); line-height: 1.65;">From a flammability standpoint the compressed gases nitrogen and carbon dioxide are the safest, because they are inert and non-flammable, unlike hydrocarbon propellants such as propane and butane. Bag-on-valve systems add a further margin by keeping the propellant physically separated from the product. The trade-off is that compressed gas systems lose pressure as the can empties.</div>
+  </details>
+
+  <details style="border: 1px solid var(--border); border-radius: var(--radius-md); margin-bottom: 10px; background: #ffffff;">
+    <summary style="font-weight: 600; padding: 14px 18px; cursor: pointer;">What does the dip tube do in an aerosol can?</summary>
+    <div style="padding: 0 18px 16px; color: var(--text-muted); line-height: 1.65;">The dip tube carries liquid product from the bottom of the can up to the valve, so the can dispenses product rather than the vapour sitting in the headspace. Its diameter influences flow rate and therefore spray character. Products designed to be used inverted omit the dip tube, because in that orientation the valve already sits in the liquid phase.</div>
+  </details>
+
+  <details style="border: 1px solid var(--border); border-radius: var(--radius-md); margin-bottom: 10px; background: #ffffff;">
+    <summary style="font-weight: 600; padding: 14px 18px; cursor: pointer;">Why does an aerosol can feel cold during use?</summary>
+    <div style="padding: 0 18px 16px; color: var(--text-muted); line-height: 1.65;">Dispensing removes vapour from the headspace, and liquid propellant must evaporate to replace it. Evaporation absorbs latent heat from the remaining contents and the can wall, so the container cools measurably during sustained spraying. The same effect lowers vapour pressure temporarily, which is why spray force can weaken during a long continuous burst and recover once the can warms again.</div>
+  </details>
+</section>
+
+<!-- RELATED ARTICLES -->
+<section class="section" id="related-articles" style="margin-top: 50px;">
+  <h2>Related Articles</h2>
+  <ul style="display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 10px; list-style-type: none; padding-left: 0;">
+    <li><a href="/why-do-aerosol-cans-leak" style="font-weight: 600; color: var(--primary);">Why Aerosol Cans Leak: Causes, Faults &amp; Proven Fixes</a></li>
+    <li><a href="/aerosol-valve-gasket-explained" style="font-weight: 600; color: var(--primary);">Aerosol Valve Gasket Materials: Types &amp; Compatibility</a></li>
+    <li><a href="/aerosol-manufacturing-101-guide" style="font-weight: 600; color: var(--primary);">Aerosol Manufacturing 101: The Complete Technical Guide</a></li>
+    <li><a href="/aerosol-crimping-gassing-leak-detection-explained" style="font-weight: 600; color: var(--primary);">Aerosol Filling Line: Crimping, Gassing &amp; Leak Detection</a></li>
+    <li><a href="/aerosol-propellants-explained-lpg-vs-dme-vs-hfc-vs-n2-vs-co2" style="font-weight: 600; color: var(--primary);">Aerosol Propellants Explained: LPG vs DME vs HFC vs N₂ vs CO₂</a></li>
+    <li><a href="/aerosol-chemistry-101" style="font-weight: 600; color: var(--primary);">Aerosol Chemistry 101: Solvents, Binders &amp; Surfactants</a></li>
+    <li><a href="/from-lab-to-commercial-launch" style="font-weight: 600; color: var(--primary);">From Lab to Factory: Aerosol R&amp;D to Commercial Manufacturing</a></li>
+    <li><a href="/choosing-the-right-product-consultant" style="font-weight: 600; color: var(--primary);">How to Choose the Right Aerosol Product Consultant</a></li>
+  </ul>
+</section>
 
       <!-- Contact Box -->
       <div class="cta" style="background: linear-gradient(135deg, var(--primary) 0%, var(--secondary) 100%); color: #ffffff; padding: 30px; border-radius: var(--radius-lg); margin-top: 40px; display: flex; flex-direction: column; justify-content: space-between; align-items: flex-start; gap: 20px; md-flex-direction: row; md-align-items: center;">
@@ -952,7 +1026,7 @@ const schemas = [blogSchema, breadcrumbSchema];
         <div>
           <h3 style="margin-top: 0; margin-bottom: 8px; font-family: 'Outfit', sans-serif; font-size: 1.3rem; font-weight: 700; color: var(--text-primary);">About the Specialist</h3>
           <p style="margin-top: 0; margin-bottom: 12px; font-size: 0.95rem; line-height: 1.6; color: var(--text-muted);">
-            <strong>Absar Khan</strong> is the principal consultant and chemical formulation architect at <strong>Global Formulation</strong>. He possesses cross-disciplinary engineering expertise spanning aerosol gassing systems, pharmaceutical manufacturing, sterile injectables, cosmetics, and green chemical plant setups. Absar leads scientific and engineering advisory teams supporting manufacturers globally in technology selection, GMP layouts, validation frameworks, and regulatory strategies.
+            <strong>Absar Khan</strong> is the founder and lead aerosol consultant at <strong>Global Aerosols</strong>. He possesses cross-disciplinary engineering expertise spanning aerosol valve and propellant engineering, filling line design, pressure and safety compliance, and formulation development. Absar leads scientific and engineering advisory teams supporting manufacturers globally in technology selection, GMP layouts, validation frameworks, and regulatory strategies.
           </p>
           <p style="margin: 0; font-size: 0.9rem;">
             <strong>LinkedIn Portfolio:</strong> 

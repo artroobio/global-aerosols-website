@@ -1,61 +1,130 @@
 ---
 import Layout from '../layouts/Layout.astro';
 
-const blogSchema = {
+const slug = 'aerosol-valve-gasket-explained';
+const heroUrl = 'https://assets.zyrosite.com/A3QlOV94WLSaL6xE/aerosol-valve-gasket-cross-section-t5Mg7GX97TASNqRU.png';
+
+const schemas = {
   "@context": "https://schema.org",
-  "@type": "BreadcrumbList",
-  "itemListElement": [
+  "@graph": [
     {
-      "@type": "ListItem",
-      "position": 1,
-      "name": "Home",
-      "item": "https://www.globalaerosols.com/"
+      "@type": "Organization",
+      "@id": "https://www.globalaerosols.com/#organization",
+      "name": "Global Aerosols",
+      "url": "https://www.globalaerosols.com/",
+      "logo": { "@type": "ImageObject", "url": "https://www.globalaerosols.com/logo.png" }
     },
     {
-      "@type": "ListItem",
-      "position": 2,
-      "name": "Blog",
-      "item": "https://www.globalaerosols.com/blog"
+      "@type": "WebSite",
+      "@id": "https://www.globalaerosols.com/#website",
+      "url": "https://www.globalaerosols.com/",
+      "name": "Global Aerosols",
+      "publisher": { "@id": "https://www.globalaerosols.com/#organization" }
     },
     {
-      "@type": "ListItem",
-      "position": 3,
-      "name": "Aerosol Valve Gasket Materials Explained"
+      "@type": "Person",
+      "@id": "https://www.globalaerosols.com/#absar-khan",
+      "name": "Absar Khan",
+      "jobTitle": "Founder & Lead Aerosol Consultant",
+      "url": "https://www.linkedin.com/in/absar-khan-aerosol-consultant-and-formulator-78359b162",
+      "worksFor": { "@id": "https://www.globalaerosols.com/#organization" }
+    },
+    {
+      "@type": "BreadcrumbList",
+      "@id": `https://www.globalaerosols.com/${slug}#breadcrumb`,
+      "itemListElement": [
+        { "@type": "ListItem", "position": 1, "name": "Home", "item": "https://www.globalaerosols.com/" },
+        { "@type": "ListItem", "position": 2, "name": "Blog", "item": "https://www.globalaerosols.com/blog/" },
+        { "@type": "ListItem", "position": 3, "name": "Aerosol Valve Gasket Materials", "item": `https://www.globalaerosols.com/${slug}` }
+      ]
+    },
+    {
+      "@type": "BlogPosting",
+      "@id": `https://www.globalaerosols.com/${slug}#article`,
+      "headline": "Aerosol Valve Gasket Materials: Types & Compatibility",
+      "description": "Which aerosol valve gasket material suits your formulation? Compare buna, neoprene, butyl and EPDM chemistry, compatibility testing and failure modes.",
+      "datePublished": "2025-01-01",
+      "dateModified": "2026-07-29",
+      "author": { "@id": "https://www.globalaerosols.com/#absar-khan" },
+      "publisher": { "@id": "https://www.globalaerosols.com/#organization" },
+      "image": { "@type": "ImageObject", "url": heroUrl },
+      "mainEntityOfPage": { "@id": `https://www.globalaerosols.com/${slug}` },
+      "articleSection": "Aerosols & Gas Dosing",
+      "keywords": "aerosol valve gasket, gasket materials, buna-N nitrile, neoprene gasket, butyl rubber, EPDM, compression set, elastomer swelling, chemical compatibility, valve seal failure",
+      "wordCount": 2120
+    },
+    {
+      "@type": "FAQPage",
+      "mainEntity": [
+        {
+          "@type": "Question",
+          "name": "What does an aerosol valve gasket actually do?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "The gasket is the elastomeric seal compressed between the valve cup and the can bead when the valve is crimped into place. It is the component that actually contains the internal pressure, because metal-to-metal contact alone cannot form a gas-tight joint. Every aerosol therefore depends on that ring of rubber staying resilient and chemically stable for the entire shelf life of the product."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "Which gasket materials are commonly used in aerosol valves?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "The common families are buna-N (nitrile), neoprene (polychloroprene), butyl rubber, and EPDM, with fluoroelastomers used for unusually aggressive formulations. Nitrile offers good resistance to hydrocarbon propellants and oils, while butyl and EPDM perform better with polar and water-based systems. No single elastomer suits every formulation, which is why material selection follows the product chemistry rather than a default."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "How do I choose a gasket material for my formulation?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Selection starts from the solvency of the concentrate and the propellant rather than from cost. A broadly useful rule is that chemically similar materials dissolve one another, so hydrocarbon-rich systems attack non-polar elastomers while polar and aqueous systems are better matched to butyl or EPDM. The candidate material is then confirmed by immersion testing in the actual finished formulation, never selected from a datasheet alone."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "What is compression set and why does it matter?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Compression set measures how much of its original thickness an elastomer fails to recover after being held compressed for a period at temperature. A gasket with high compression set gradually stops pushing back against the sealing faces, so the joint loses the contact force that keeps it gas-tight. It is one of the most useful predictors of whether a seal will still hold after months in a warm warehouse."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "What causes an aerosol valve gasket to swell?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Swelling occurs when solvent or propellant molecules are absorbed into the polymer network and force the chains apart. Moderate swelling can temporarily improve sealing by increasing contact pressure, but excessive swelling distorts the gasket, extracts plasticiser, and permanently weakens it. Because the effect depends on the specific solvent and elastomer pairing, it must be assessed with the real formulation."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "How is gasket compatibility tested before production?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "The standard approach is immersion testing, where weighed gasket samples are held in the finished formulation at elevated temperature and then re-measured for change in mass, volume, and hardness. Standardised methods for classifying and testing rubber materials are published by ASTM International, which allows results to be compared consistently between suppliers. These bench results are then confirmed with filled cans held under accelerated storage conditions."
+          }
+        }
+      ]
+    },
+    {
+      "@type": "WebPage",
+      "@id": `https://www.globalaerosols.com/${slug}`,
+      "url": `https://www.globalaerosols.com/${slug}`,
+      "name": "Aerosol Valve Gasket Materials: Types & Compatibility",
+      "description": "Which aerosol valve gasket material suits your formulation? Compare buna, neoprene, butyl and EPDM chemistry, compatibility testing and failure modes.",
+      "isPartOf": { "@id": "https://www.globalaerosols.com/#website" },
+      "breadcrumb": { "@id": `https://www.globalaerosols.com/${slug}#breadcrumb` },
+      "primaryImageOfPage": { "@type": "ImageObject", "url": heroUrl },
+      "datePublished": "2025-01-01",
+      "dateModified": "2026-07-29"
     }
   ]
 };
-const breadcrumbSchema = {
-  "@context": "https://schema.org",
-  "@type": "BlogPosting",
-  "headline": "Aerosol Valve Gasket Materials Explained: Chemistry, Compatibility & Failure Prevention",
-  "description": "Explore aerosol valve gasket materials: chemistry, compatibility, and failure prevention. Essential guide for startups, students, and developers to ensure reliable aerosol products.",
-  "datePublished": "2025-01-01",
-  "author": {
-    "@type": "Person",
-    "name": "Absar Khan",
-    "url": "https://www.linkedin.com/in/absar-khan-aerosol-consultant-and-formulator-78359b162"
-  },
-  "publisher": {
-    "@type": "Organization",
-    "name": "Global Aerosols",
-    "logo": {
-      "@type": "ImageObject",
-      "url": "https://www.globalaerosols.com/logo.png"
-    }
-  },
-  "image": "https://www.globalaerosols.com/images/aerosol-valve-gasket-featured.jpg",
-  "mainEntityOfPage": {
-    "@type": "WebPage",
-    "@id": "https://www.globalaerosols.com/aerosol-valve-gasket-explained"
-  },
-  "dateModified": "2025-01-01"
-};
-const schemas = [blogSchema, breadcrumbSchema];
 ---
 
 <Layout
-  title="Aerosol Valve Gasket Materials Explained: Chemistry, Compatibility & Failure Prevention | Global Aerosols"
-  description="Explore aerosol valve gasket materials: chemistry, compatibility, and failure prevention. Essential guide for startups, students, and developers to ensure reliable aerosol products."
+  title="Aerosol Valve Gasket Materials: Types & Compatibility"
+  description="Which aerosol valve gasket material suits your formulation? Compare buna, neoprene, butyl and EPDM chemistry, compatibility testing and failure modes."
   canonical="https://www.globalaerosols.com/aerosol-valve-gasket-explained"
   ogImage="https://assets.zyrosite.com/A3QlOV94WLSaL6xE/aerosol-valve-gasket-cross-section-t5Mg7GX97TASNqRU.png"
   ogType="article"
@@ -76,7 +145,7 @@ const schemas = [blogSchema, breadcrumbSchema];
     <article class="blog-prose">
       <header class="post-header">
         <h1 class="gradient-text" style="font-size: 3rem; line-height: 1.15; font-weight: 900; margin-bottom: 20px;">
-          Aerosol Valve Gasket Materials Explained: Chemistry, Compatibility & Failure Prevention
+          Aerosol Valve Gasket Materials: Types &amp; Compatibility
         </h1>
         
         <!-- Post meta details -->
@@ -88,6 +157,8 @@ const schemas = [blogSchema, breadcrumbSchema];
           <span style="width: 4px; height: 4px; border-radius: 50%; background-color: var(--border);"></span>
           <span>Published: <strong>Jan 1, 2025</strong></span>
           <span style="width: 4px; height: 4px; border-radius: 50%; background-color: var(--border);"></span>
+          <span>Updated: <strong>Jul 29, 2026</strong></span>
+          <span style="width: 4px; height: 4px; border-radius: 50%; background-color: var(--border);"></span>
           <span>Reading Time: <strong>15 min read</strong></span>
           <span style="width: 4px; height: 4px; border-radius: 50%; background-color: var(--border);"></span>
           <span style="background: #e0f2fe; color: #0369a1; padding: 2px 10px; border-radius: 50px; font-size: 0.75rem; font-weight: 700; text-transform: uppercase;">Aerosols & Gas Dosing</span>
@@ -98,7 +169,7 @@ const schemas = [blogSchema, breadcrumbSchema];
       <div class="image-slot">
         <img 
           src="https://assets.zyrosite.com/A3QlOV94WLSaL6xE/aerosol-valve-gasket-cross-section-t5Mg7GX97TASNqRU.png" 
-          alt="Cross-sectional diagram of an aerosol valve highlighting the gasket position" 
+          alt="Cross-sectional diagram of an aerosol valve showing the gasket sealing position between valve cup and can bead — Global Aerosols" 
           width="1200" 
           height="800" 
           loading="eager" 
@@ -109,49 +180,23 @@ const schemas = [blogSchema, breadcrumbSchema];
       <div class="box" style="background: #f8fafc; border: 1px solid var(--border); border-radius: var(--radius-lg); padding: 24px; margin: 30px 0;">
         <h3 style="margin-top: 0; font-family: 'Outfit', sans-serif; color: var(--text-primary); font-size: 1.25rem; font-weight: 700; border-bottom: 2px solid var(--border); padding-bottom: 8px;">Guide Contents</h3>
         <ul style="display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 10px; list-style-type: none; padding-left: 0; margin-bottom: 0;">
-          <li><a href="#table-of-contents" style="font-weight: 600; color: var(--primary);">1. Table of Contents</a></li>
-          <li><a href="#related-articles" style="font-weight: 600; color: var(--primary);">2. Related Articles</a></li>
+          <li><a href="#why-valve-gaskets-matter" style="font-weight: 600; color: var(--primary);">1. Why Valve Gaskets Matter</a></li>
+          <li><a href="#how-gaskets-function" style="font-weight: 600; color: var(--primary);">2. How Aerosol Valve Gaskets Function</a></li>
+          <li><a href="#fundamentals-chemistry" style="font-weight: 600; color: var(--primary);">3. Fundamentals of Gasket Chemistry</a></li>
+          <li><a href="#common-materials" style="font-weight: 600; color: var(--primary);">4. Common Gasket Materials</a></li>
+          <li><a href="#compatibility-product-type" style="font-weight: 600; color: var(--primary);">5. Compatibility by Product Type</a></li>
+          <li><a href="#testing" style="font-weight: 600; color: var(--primary);">6. Compatibility Testing</a></li>
+          <li><a href="#failure-modes" style="font-weight: 600; color: var(--primary);">7. Common Failure Modes</a></li>
+          <li><a href="#prevention" style="font-weight: 600; color: var(--primary);">8. Failure Prevention</a></li>
+          <li><a href="#faq" style="font-weight: 600; color: var(--primary);">9. Frequently Asked Questions</a></li>
         </ul>
       </div>
 
-      <div class="lead"><nav aria-label="breadcrumb" role="navigation">
-        <ol class="breadcrumb">
-            <li><a href="https://www.globalaerosols.com/" aria-label="Home">Home</a></li>
-            <li><a href="/blog/" aria-label="Blog">Blog</a></li>
-            <li>Aerosol Valve Gasket Materials Explained</li>
-        </ol>
-    </nav>
-    
-        <div class="gradient-box">
-            
-        </div>
+      <div class="lead">
         <p>Aerosol valves are precision-engineered systems where even the smallest component can determine product success or failure. Among these components, the valve gasket plays a decisive role in sealing, pressure retention, chemical resistance, and long-term reliability. Despite its importance, gasket selection is often treated as a commodity decision rather than a chemistry-driven engineering choice.</p>
         <p>This article explains aerosol valve gasket materials from a scientific and engineering perspective, focusing strictly on established material science, elastomer chemistry, and real-world compatibility data. The objective is to help startups, students, and product developers prevent failures, reduce recalls, and design aerosols that perform consistently across markets and climates.</p>
-        <figure>
-            
-            <figcaption>Cross-sectional diagram of an aerosol valve highlighting the gasket position</figcaption>
-        </figure>
-        <div class="toc" id="table-of-contents"></div>
+        <p>Because the gasket sits at the interface where the valve is crimped onto the can, its behaviour is inseparable from crimp quality and from the propellant it is exposed to. Readers troubleshooting a live problem may find our guides to <a href="/why-do-aerosol-cans-leak" style="color: var(--primary); font-weight: 600;">why aerosol cans leak</a> and the <a href="/aerosol-crimping-gassing-leak-detection-explained" style="color: var(--primary); font-weight: 600;">aerosol filling line</a> useful alongside this material guide.</p>
 
-<!-- TABLE OF CONTENTS -->
-<section class="section" id="table-of-contents">
-  <h2>Table of Contents</h2>
-  <ul>
-                <li>Why Valve Gaskets Matter in Aerosol Systems</li>
-                <li>How Aerosol Valve Gaskets Function</li>
-                <li>Fundamentals of Valve Gasket Chemistry</li>
-                <li>Common Aerosol Valve Gasket Materials</li>
-                <li>Chemical Compatibility by Product Type</li>
-                <li>Valve Gasket Compatibility Testing</li>
-                <li>Common Gasket-Related Failure Modes</li>
-                <li>Special Considerations for Indian and Tropical Markets</li>
-                <li>Failure Prevention Through Correct Gasket Selection</li>
-                <li>External Technical References</li>
-                <li>Understanding the Broader Aerosol Ecosystem</li>
-                <li>Design Your Aerosol Can in 3D</li>
-                <li>Frequently Asked Questions (FAQ)</li>
-            </ul>
-        </div>
         <div class="gradient-box">
             <h2 id="why-valve-gaskets-matter">Why Valve Gaskets Matter in Aerosol Systems</h2>
         </div>
@@ -195,73 +240,48 @@ const schemas = [blogSchema, breadcrumbSchema];
         <h3>NBR (Nitrile Rubber / Buna-N)</h3>
         <p>NBR is widely used in aerosol valves due to its good resistance to aliphatic hydrocarbons and oils. It performs reliably in solvent-based systems where polar solvents are limited.</p>
         <p>Typical characteristics of NBR gaskets:</p>
-        <table>
-            <thead>
-                <tr><th>Characteristic</th></tr>
-            </thead>
-            <tbody>
-                <tr><td>Good compatibility with LPG propellants</td></tr>
-                <tr><td>Moderate resistance to oils and greases</td></tr>
-                <tr><td>Poor resistance to water, alcohols, and ketones</td></tr>
-                <tr><td>Limited high-temperature performance</td></tr>
-            </tbody>
-        </table>
+        <ul>
+            <li>Good compatibility with LPG propellants</li>
+            <li>Moderate resistance to oils and greases</li>
+            <li>Poor resistance to water, alcohols, and ketones</li>
+            <li>Limited high-temperature performance</li>
+        </ul>
         <h3>EPDM (Ethylene Propylene Diene Monomer)</h3>
         <p>EPDM is selected for water-based and polar formulations. Its saturated polymer backbone offers excellent resistance to water, steam, and many detergents but poor resistance to hydrocarbons.</p>
         <p>Key EPDM properties include:</p>
-        <table>
-            <thead>
-                <tr><th>Property</th></tr>
-            </thead>
-            <tbody>
-                <tr><td>Excellent water and alcohol resistance</td></tr>
-                <tr><td>Very good ozone and heat resistance</td></tr>
-                <tr><td>Incompatible with mineral oils and LPG</td></tr>
-                <tr><td>Common in cosmetic and household aerosols</td></tr>
-            </tbody>
-        </table>
+        <ul>
+            <li>Excellent water and alcohol resistance</li>
+            <li>Very good ozone and heat resistance</li>
+            <li>Incompatible with mineral oils and LPG</li>
+            <li>Common in cosmetic and household aerosols</li>
+        </ul>
         <h3>Neoprene (Chloroprene Rubber)</h3>
         <p>Neoprene provides balanced performance across moderate chemical exposures. It is often used where neither extreme hydrocarbon nor extreme water resistance is required.</p>
         <p>Performance characteristics of neoprene gaskets:</p>
-        <table>
-            <thead>
-                <tr><th>Characteristic</th></tr>
-            </thead>
-            <tbody>
-                <tr><td>Moderate resistance to oils and solvents</td></tr>
-                <tr><td>Better weathering resistance than NBR</td></tr>
-                <tr><td>Limited compatibility with aggressive solvents</td></tr>
-                <tr><td>Stable mechanical properties under cycling</td></tr>
-            </tbody>
-        </table>
+        <ul>
+            <li>Moderate resistance to oils and solvents</li>
+            <li>Better weathering resistance than NBR</li>
+            <li>Limited compatibility with aggressive solvents</li>
+            <li>Stable mechanical properties under cycling</li>
+        </ul>
         <h3>Butyl Rubber (IIR)</h3>
         <p>Butyl rubber is valued for its extremely low gas permeability. It is used when vapor loss and pressure retention are critical over long storage periods.</p>
         <p>Butyl gasket attributes include:</p>
-        <table>
-            <thead>
-                <tr><th>Attribute</th></tr>
-            </thead>
-            <tbody>
-                <tr><td>Excellent gas impermeability</td></tr>
-                <tr><td>Good resistance to acids and alkalis</td></tr>
-                <tr><td>Limited solvent compatibility</td></tr>
-                <tr><td>Lower elastic recovery compared to NBR</td></tr>
-            </tbody>
-        </table>
+        <ul>
+            <li>Excellent gas impermeability</li>
+            <li>Good resistance to acids and alkalis</li>
+            <li>Limited solvent compatibility</li>
+            <li>Lower elastic recovery compared to NBR</li>
+        </ul>
         <h3>Fluoroelastomers (FKM / Viton®)</h3>
         <p>FKM gaskets represent the highest chemical resistance class used in aerosols. Their fluorinated polymer structure resists aggressive solvents, oils, and high temperatures.</p>
         <p>Characteristics of FKM gaskets:</p>
-        <table>
-            <thead>
-                <tr><th>Characteristic</th></tr>
-            </thead>
-            <tbody>
-                <tr><td>Exceptional chemical and solvent resistance</td></tr>
-                <tr><td>High-temperature stability</td></tr>
-                <tr><td>Low swelling across wide formulations</td></tr>
-                <tr><td>Higher material and processing cost</td></tr>
-            </tbody>
-        </table>
+        <ul>
+            <li>Exceptional chemical and solvent resistance</li>
+            <li>High-temperature stability</li>
+            <li>Low swelling across wide formulations</li>
+            <li>Higher material and processing cost</li>
+        </ul>
         <figure>
             
       <div class="image-slot">
@@ -285,22 +305,17 @@ const schemas = [blogSchema, breadcrumbSchema];
         <h3>Water-Based and Emulsion Systems</h3>
         <p>Water-based aerosols require elastomers that resist hydrolysis and maintain elasticity in polar environments. Hydrocarbon-compatible rubbers fail rapidly here.</p>
         <h3>Hydrocarbon Propellant Systems</h3>
-        <p>Liquefied petroleum gases diffuse easily into many elastomers. Resistance to swelling and plasticizer extraction is essential.</p>
+        <p>Liquefied petroleum gases diffuse easily into many elastomers. Resistance to swelling and plasticizer extraction is essential. The underlying reason is polarity: <a href="https://en.wikipedia.org/wiki/Nitrile_rubber" target="_blank" rel="noopener noreferrer" style="color: var(--primary); font-weight: 600;">nitrile rubber</a> owes its hydrocarbon resistance to the polar acrylonitrile content in the copolymer, and raising that content improves oil resistance while reducing low-temperature flexibility. Propellant choice therefore constrains gasket choice directly, as set out in our guide to <a href="/aerosol-propellants-explained-lpg-vs-dme-vs-hfc-vs-n2-vs-co2" style="color: var(--primary); font-weight: 600;">aerosol propellants</a>.</p>
         <p>Typical compatibility trends:</p>
-        <table>
-            <thead>
-                <tr><th>Trend</th></tr>
-            </thead>
-            <tbody>
-                <tr><td>NBR performs well with LPG but poorly with water</td></tr>
-                <tr><td>EPDM performs well with water but poorly with LPG</td></tr>
-                <tr><td>FKM performs well across most systems</td></tr>
-            </tbody>
-        </table>
+        <ul>
+            <li><strong>NBR</strong> — performs well with LPG but poorly with water</li>
+            <li><strong>EPDM</strong> — performs well with water but poorly with LPG</li>
+            <li><strong>FKM</strong> — performs well across most systems</li>
+        </ul>
         <div class="gradient-box">
             <h2 id="testing">Valve Gasket Compatibility Testing</h2>
         </div>
-        <p>Compatibility cannot be assumed from material datasheets alone. Testing under real formulation conditions is essential to avoid delayed field failures.</p>
+        <p>Compatibility cannot be assumed from material datasheets alone. Testing under real formulation conditions is essential to avoid delayed field failures. Standardised classification and test methods for rubber materials are published by <a href="https://www.astm.org" target="_blank" rel="noopener noreferrer" style="color: var(--primary); font-weight: 600;">ASTM International</a>, and equivalent international methods are maintained by <a href="https://www.iso.org" target="_blank" rel="noopener noreferrer" style="color: var(--primary); font-weight: 600;">ISO</a>; working to a named method is what makes results comparable between two suppliers.</p>
         <p>Standard validation approaches include:</p>
         <ul>
             <li>Immersion soak testing with dimensional measurement</li>
@@ -313,7 +328,7 @@ const schemas = [blogSchema, breadcrumbSchema];
       <div class="image-slot">
         <img 
           src="https://assets.zyrosite.com/A3QlOV94WLSaL6xE/aerosol-valve-gasket-compatibility-testing-u45nUaacf6Kr2pbW.png" 
-          alt="Laboratory gasket soak test setup" 
+          alt="Laboratory immersion soak test setup measuring aerosol valve gasket swelling and compatibility — Global Aerosols" 
           width="1200" 
           height="800" 
           loading="lazy" 
@@ -338,7 +353,7 @@ const schemas = [blogSchema, breadcrumbSchema];
       <div class="image-slot">
         <img 
           src="https://assets.zyrosite.com/A3QlOV94WLSaL6xE/aerosol-valve-gasket-swelling-failure.-Ifhpg2iW83VKx3iM.png" 
-          alt="Aerosol valve gasket swelling failure" 
+          alt="Aerosol valve gasket showing swelling failure after chemical incompatibility with the formulation — Global Aerosols" 
           width="1200" 
           height="800" 
           loading="lazy" 
@@ -376,26 +391,64 @@ const schemas = [blogSchema, breadcrumbSchema];
         <ul>
             <li><a href="https://www.parker.com/Literature/O-Ring%20Division%20Literature/ORD%205700.pdf">Parker O-Ring Handbook – Elastomer compatibility fundamentals</a></li>
             <li><a href="https://utexind.com/materials-resources/chemical-compatibility/">FKM & EPDM Chemical Compatibility Charts - Utex Industries</a></li>
-            <li>ISO 815 / ASTM D395 Compression Set Testing Standards</li>
+            <li>ISO 815 and ASTM D395 — the compression set test methods referenced throughout this guide</li>
+            <li>Where an aerosol is food-contact, the elastomer must also satisfy the rubber-article requirements administered by the <a href="https://www.fda.gov" target="_blank" rel="noopener noreferrer" style="color: var(--primary); font-weight: 600;">US Food and Drug Administration</a></li>
         </ul>
         <div class="gradient-box">
             <h2 id="ecosystem">Understanding the Broader Aerosol Ecosystem</h2>
         </div>
         <p>Valve gaskets do not function in isolation. Their performance is directly linked to can materials, propellants, filling methods, corrosion behavior, and safety systems. A holistic understanding of the aerosol ecosystem is essential for designing reliable and compliant products.</p>
         <p>For more information about the Aerosol ecosystem, please read our comprehensive articles that delve into the intricacies of aerosol product development: Explore <a href="/how-aerosol-cans-work/">how aerosol cans work</a>, gain foundational knowledge with <a href="/aerosol-manufacturing-101-guide/">aerosol manufacturing 101</a>, understand corrosion challenges in <a href="/aerosol-can-corrosion-1/">part 1</a> and <a href="/aerosol-can-corrosion-2/">part 2</a>, master <a href="/services/product-formulation/">aerosol formulation</a> techniques, ensure safety through <a href="/aerosol-can-safety-explained/">aerosol can safety explained</a>, compare propellants in <a href="/aerosol-propellants-explained-lpg-vs-dme-vs-hfc-vs-n2-vs-co2/">aerosol propellants explained: LPG vs DME vs HFC vs N2 vs CO2</a>, and learn about operations in <a href="/how-contract-aerosol-filling-works/">how contract aerosol filling works</a>. Together, these resources provide a complete engineering view of aerosol product development and commercialization from concept to shelf.</p>
-        <div class="related">
+
+<!-- FAQ -->
+<section class="section" id="faq" style="margin-top: 50px;">
+  <h2>Frequently Asked Questions</h2>
+
+  <details style="border: 1px solid var(--border); border-radius: var(--radius-md); margin-bottom: 10px; background: #ffffff;">
+    <summary style="font-weight: 600; padding: 14px 18px; cursor: pointer;">What does an aerosol valve gasket actually do?</summary>
+    <div style="padding: 0 18px 16px; color: var(--text-muted); line-height: 1.65;">The gasket is the elastomeric seal compressed between the valve cup and the can bead when the valve is crimped into place. It is the component that actually contains the internal pressure, because metal-to-metal contact alone cannot form a gas-tight joint. Every aerosol therefore depends on that ring of rubber staying resilient and chemically stable for the entire shelf life of the product.</div>
+  </details>
+
+  <details style="border: 1px solid var(--border); border-radius: var(--radius-md); margin-bottom: 10px; background: #ffffff;">
+    <summary style="font-weight: 600; padding: 14px 18px; cursor: pointer;">Which gasket materials are commonly used in aerosol valves?</summary>
+    <div style="padding: 0 18px 16px; color: var(--text-muted); line-height: 1.65;">The common families are buna-N (nitrile), neoprene (polychloroprene), butyl rubber, and EPDM, with fluoroelastomers used for unusually aggressive formulations. Nitrile offers good resistance to hydrocarbon propellants and oils, while butyl and EPDM perform better with polar and water-based systems. No single elastomer suits every formulation, which is why material selection follows the product chemistry rather than a default.</div>
+  </details>
+
+  <details style="border: 1px solid var(--border); border-radius: var(--radius-md); margin-bottom: 10px; background: #ffffff;">
+    <summary style="font-weight: 600; padding: 14px 18px; cursor: pointer;">How do I choose a gasket material for my formulation?</summary>
+    <div style="padding: 0 18px 16px; color: var(--text-muted); line-height: 1.65;">Selection starts from the solvency of the concentrate and the propellant rather than from cost. A broadly useful rule is that chemically similar materials dissolve one another, so hydrocarbon-rich systems attack non-polar elastomers while polar and aqueous systems are better matched to butyl or EPDM. The candidate material is then confirmed by immersion testing in the actual finished formulation, never selected from a datasheet alone.</div>
+  </details>
+
+  <details style="border: 1px solid var(--border); border-radius: var(--radius-md); margin-bottom: 10px; background: #ffffff;">
+    <summary style="font-weight: 600; padding: 14px 18px; cursor: pointer;">What is compression set and why does it matter?</summary>
+    <div style="padding: 0 18px 16px; color: var(--text-muted); line-height: 1.65;">Compression set measures how much of its original thickness an elastomer fails to recover after being held compressed for a period at temperature. A gasket with high compression set gradually stops pushing back against the sealing faces, so the joint loses the contact force that keeps it gas-tight. It is one of the most useful predictors of whether a seal will still hold after months in a warm warehouse.</div>
+  </details>
+
+  <details style="border: 1px solid var(--border); border-radius: var(--radius-md); margin-bottom: 10px; background: #ffffff;">
+    <summary style="font-weight: 600; padding: 14px 18px; cursor: pointer;">What causes an aerosol valve gasket to swell?</summary>
+    <div style="padding: 0 18px 16px; color: var(--text-muted); line-height: 1.65;">Swelling occurs when solvent or propellant molecules are absorbed into the polymer network and force the chains apart. Moderate swelling can temporarily improve sealing by increasing contact pressure, but excessive swelling distorts the gasket, extracts plasticiser, and permanently weakens it. Because the effect depends on the specific solvent and elastomer pairing, it must be assessed with the real formulation.</div>
+  </details>
+
+  <details style="border: 1px solid var(--border); border-radius: var(--radius-md); margin-bottom: 10px; background: #ffffff;">
+    <summary style="font-weight: 600; padding: 14px 18px; cursor: pointer;">How is gasket compatibility tested before production?</summary>
+    <div style="padding: 0 18px 16px; color: var(--text-muted); line-height: 1.65;">The standard approach is immersion testing, where weighed gasket samples are held in the finished formulation at elevated temperature and then re-measured for change in mass, volume, and hardness. Standardised methods for classifying and testing rubber materials are published by ASTM International, which allows results to be compared consistently between suppliers. These bench results are then confirmed with filled cans held under accelerated storage conditions.</div>
+  </details>
 </section>
 
 <!-- RELATED ARTICLES -->
 <section class="section" id="related-articles">
   <h2>Related Articles</h2>
-  <ul>
-                <li><a href="/how-aerosol-cans-work/">How Aerosol Cans Work</a></li>
-                <li><a href="/aerosol-manufacturing-101-guide/">Aerosol Manufacturing 101</a></li>
-                <li><a href="/services/product-formulation/">Aerosol Formulation</a></li>
-                <li><a href="/aerosol-propellants-explained-lpg-vs-dme-vs-hfc-vs-n2-vs-co2/">Aerosol Propellants Explained</a></li>
-            </ul>
-        </div>
+  <ul style="display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 10px; list-style-type: none; padding-left: 0;">
+    <li><a href="/why-do-aerosol-cans-leak" style="font-weight: 600; color: var(--primary);">Why Aerosol Cans Leak: Causes, Faults &amp; Proven Fixes</a></li>
+    <li><a href="/aerosol-crimping-gassing-leak-detection-explained" style="font-weight: 600; color: var(--primary);">Aerosol Filling Line: Crimping, Gassing &amp; Leak Detection</a></li>
+    <li><a href="/aerosol-manufacturing-101-guide" style="font-weight: 600; color: var(--primary);">Aerosol Manufacturing 101: The Complete Technical Guide</a></li>
+    <li><a href="/how-aerosol-cans-work" style="font-weight: 600; color: var(--primary);">How Aerosol Cans Work: Propellant, Pressure &amp; Valve Dynamics</a></li>
+    <li><a href="/aerosol-propellants-explained-lpg-vs-dme-vs-hfc-vs-n2-vs-co2" style="font-weight: 600; color: var(--primary);">Aerosol Propellants Explained: LPG vs DME vs HFC vs N₂ vs CO₂</a></li>
+    <li><a href="/aerosol-chemistry-101" style="font-weight: 600; color: var(--primary);">Aerosol Chemistry 101: Solvents, Binders &amp; Surfactants</a></li>
+    <li><a href="/from-lab-to-commercial-launch" style="font-weight: 600; color: var(--primary);">From Lab to Factory: Aerosol R&amp;D to Commercial Manufacturing</a></li>
+    <li><a href="/choosing-the-right-product-consultant" style="font-weight: 600; color: var(--primary);">How to Choose the Right Aerosol Product Consultant</a></li>
+  </ul>
+</section>
         <div class="gradient-box">
             <h2 id="design">Design Your Aerosol Can in 3D</h2>
         </div>
@@ -406,10 +459,7 @@ const schemas = [blogSchema, breadcrumbSchema];
         <p>For aluminium monoblock cans:<br />
         <a href="/services/canwrap-3d-aluminium/">/services/canwrap-3d-aluminium/</a>
         </p>
-        <div class="faq" id="faq">
-</section>
-
-
+      </div><!-- /.lead -->
 
       <!-- Contact Box -->
       <div class="cta" style="background: linear-gradient(135deg, var(--primary) 0%, var(--secondary) 100%); color: #ffffff; padding: 30px; border-radius: var(--radius-lg); margin-top: 40px; display: flex; flex-direction: column; justify-content: space-between; align-items: flex-start; gap: 20px; md-flex-direction: row; md-align-items: center;">
@@ -437,7 +487,7 @@ const schemas = [blogSchema, breadcrumbSchema];
         <div>
           <h3 style="margin-top: 0; margin-bottom: 8px; font-family: 'Outfit', sans-serif; font-size: 1.3rem; font-weight: 700; color: var(--text-primary);">About the Specialist</h3>
           <p style="margin-top: 0; margin-bottom: 12px; font-size: 0.95rem; line-height: 1.6; color: var(--text-muted);">
-            <strong>Absar Khan</strong> is the principal consultant and chemical formulation architect at <strong>Global Formulation</strong>. He possesses cross-disciplinary engineering expertise spanning aerosol gassing systems, pharmaceutical manufacturing, sterile injectables, cosmetics, and green chemical plant setups. Absar leads scientific and engineering advisory teams supporting manufacturers globally in technology selection, GMP layouts, validation frameworks, and regulatory strategies.
+            <strong>Absar Khan</strong> is the founder and lead aerosol consultant at <strong>Global Aerosols</strong>. He possesses cross-disciplinary engineering expertise spanning aerosol valve and gasket engineering, propellant compatibility, filling line design, and regulatory compliance. Absar leads scientific and engineering advisory teams supporting manufacturers globally in technology selection, GMP layouts, validation frameworks, and regulatory strategies.
           </p>
           <p style="margin: 0; font-size: 0.9rem;">
             <strong>LinkedIn Portfolio:</strong> 
