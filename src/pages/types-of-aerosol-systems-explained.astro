@@ -1,32 +1,138 @@
 ---
 import Layout from '../layouts/Layout.astro';
 
-const blogSchema = {
+const slug = 'types-of-aerosol-systems-explained';
+const heroUrl = 'https://assets.zyrosite.com/A3QlOV94WLSaL6xE/types-of-aerosol-systems-hero-L6N57rq4MndQwNYS.png';
+
+const schemas = {
   "@context": "https://schema.org",
-  "@type": "Organization",
-  "name": "Global Aerosols",
-  "url": "https://www.globalaerosols.com",
-  "logo": "https://www.globalaerosols.com/assets/logo.png",
-  "sameAs": [
-    "https://www.linkedin.com/in/absar-khan-aerosol-consultant-and-formulator-78359b162"
+  "@graph": [
+    {
+      "@type": "Organization",
+      "@id": "https://www.globalaerosols.com/#organization",
+      "name": "Global Aerosols",
+      "url": "https://www.globalaerosols.com/",
+      "logo": { "@type": "ImageObject", "url": "https://www.globalaerosols.com/logo.png" },
+      "sameAs": [
+        "https://www.linkedin.com/in/absar-khan-aerosol-consultant-and-formulator-78359b162"
+      ]
+    },
+    {
+      "@type": "WebSite",
+      "@id": "https://www.globalaerosols.com/#website",
+      "url": "https://www.globalaerosols.com/",
+      "name": "Global Aerosols",
+      "publisher": { "@id": "https://www.globalaerosols.com/#organization" },
+      "potentialAction": {
+        "@type": "SearchAction",
+        "target": "https://www.globalaerosols.com/?s={search_term_string}",
+        "query-input": "required name=search_term_string"
+      }
+    },
+    {
+      "@type": "Person",
+      "@id": "https://www.globalaerosols.com/#absar-khan",
+      "name": "Absar Khan",
+      "jobTitle": "Founder & Lead Aerosol Consultant",
+      "url": "https://www.linkedin.com/in/absar-khan-aerosol-consultant-and-formulator-78359b162",
+      "worksFor": { "@id": "https://www.globalaerosols.com/#organization" }
+    },
+    {
+      "@type": "BreadcrumbList",
+      "@id": `https://www.globalaerosols.com/${slug}#breadcrumb`,
+      "itemListElement": [
+        { "@type": "ListItem", "position": 1, "name": "Home", "item": "https://www.globalaerosols.com/" },
+        { "@type": "ListItem", "position": 2, "name": "Blog", "item": "https://www.globalaerosols.com/blog/" },
+        { "@type": "ListItem", "position": 3, "name": "Types of Aerosol Systems", "item": `https://www.globalaerosols.com/${slug}` }
+      ]
+    },
+    {
+      "@type": "BlogPosting",
+      "@id": `https://www.globalaerosols.com/${slug}#article`,
+      "headline": "Types of Aerosol Systems: Solution, Emulsion & BOV",
+      "description": "What are the four aerosol system types? Compare solution, emulsion, suspension and bag-on-valve designs, their chemistry and how to select one.",
+      "image": { "@type": "ImageObject", "url": heroUrl },
+      "author": { "@id": "https://www.globalaerosols.com/#absar-khan" },
+      "publisher": { "@id": "https://www.globalaerosols.com/#organization" },
+      "datePublished": "2025-11-10",
+      "dateModified": "2026-07-29",
+      "mainEntityOfPage": { "@id": `https://www.globalaerosols.com/${slug}` },
+      "articleSection": "Aerosols & Gas Dosing",
+      "keywords": "types of aerosol systems, solution aerosol, emulsion aerosol, suspension aerosol, bag-on-valve, BOV, two-phase system, three-phase system, aerosol formulation",
+      "wordCount": 1780
+    },
+    {
+      "@type": "FAQPage",
+      "mainEntity": [
+        {
+          "@type": "Question",
+          "name": "What are the main types of aerosol systems?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "The four systems in common industrial use are solution, emulsion, suspension, and bag-on-valve. The first three describe how the concentrate and propellant coexist inside the can, while bag-on-valve is a mechanical design in which the two are physically separated. Which one applies is decided by the product chemistry rather than by preference."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "What is a solution aerosol system?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "In a solution system the active concentrate and the propellant form a single homogeneous liquid phase, so the can contains liquid plus its own vapour and nothing else. This gives the most consistent spray and the simplest manufacturing, because there is nothing to separate or settle. It requires the propellant and concentrate to be genuinely mutually soluble, which limits it to compatible chemistries."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "How does an emulsion aerosol system work?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "An emulsion system holds two immiscible liquids, typically water and a hydrocarbon propellant, as a dispersion stabilised by surfactants. What the can dispenses depends on which phase is continuous and where the propellant sits, which is how foams and creams are produced. These systems need shaking before use and are the most sensitive to surfactant selection and storage temperature."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "When is a suspension aerosol system used?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "A suspension is used when the active is an insoluble solid, such as a pigment, powder, or solid lubricant, that must be dispersed rather than dissolved. The formulation problem is keeping those particles suspended and preventing them from caking or blocking the valve and dip tube. Rheology modifiers and controlled particle size are the primary tools, and the product almost always requires shaking."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "What advantage does bag-on-valve offer?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Bag-on-valve keeps the product inside a sealed laminate pouch while the propellant occupies the surrounding can, so the two never mix. This allows the propellant to be inert compressed gas, permits any spray orientation, and reduces the product's exposure to oxygen. It is the standard approach for sterile pharmaceutical and sensitive personal care products, at higher component cost."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "How do I choose between these aerosol systems?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Start from whether the active dissolves in the propellant, forms an emulsion with it, or must be suspended as a solid, because that answer eliminates most options immediately. Then consider whether the product is oxygen-sensitive or must spray in any orientation, which points toward bag-on-valve. Cost and filling-line capability are applied as constraints at the end rather than as the starting point."
+          }
+        }
+      ]
+    },
+    {
+      "@type": "WebPage",
+      "@id": `https://www.globalaerosols.com/${slug}`,
+      "url": `https://www.globalaerosols.com/${slug}`,
+      "name": "Types of Aerosol Systems: Solution, Emulsion & BOV",
+      "description": "What are the four aerosol system types? Compare solution, emulsion, suspension and bag-on-valve designs, their chemistry and how to select one.",
+      "isPartOf": { "@id": "https://www.globalaerosols.com/#website" },
+      "breadcrumb": { "@id": `https://www.globalaerosols.com/${slug}#breadcrumb` },
+      "primaryImageOfPage": { "@type": "ImageObject", "url": heroUrl },
+      "datePublished": "2025-11-10",
+      "dateModified": "2026-07-29"
+    }
   ]
 };
-const breadcrumbSchema = {
-  "@context": "https://schema.org",
-  "@type": "WebSite",
-  "url": "https://www.globalaerosols.com",
-  "potentialAction": {
-    "@type": "SearchAction",
-    "target": "https://www.globalaerosols.com/?s={search_term_string}",
-    "query-input": "required name=search_term_string"
-  }
-};
-const schemas = [blogSchema, breadcrumbSchema];
 ---
 
 <Layout
-  title="Types of Aerosol Systems Explained: Solution, Emulsion, Suspension &amp; Bag-on-Valve | Global Aerosols"
-  description="Technical guide explaining the types of aerosol systems including solution, emulsion, suspension and bag-on-valve systems for product developers, startups and manufacturers."
+  title="Types of Aerosol Systems: Solution, Emulsion & BOV"
+  description="What are the four aerosol system types? Compare solution, emulsion, suspension and bag-on-valve designs, their chemistry and how to select one."
   canonical="https://www.globalaerosols.com/types-of-aerosol-systems-explained"
   ogImage="https://assets.zyrosite.com/A3QlOV94WLSaL6xE/types-of-aerosol-systems-hero-L6N57rq4MndQwNYS.png"
   ogType="article"
@@ -47,7 +153,7 @@ const schemas = [blogSchema, breadcrumbSchema];
     <article class="blog-prose">
       <header class="post-header">
         <h1 class="gradient-text" style="font-size: 3rem; line-height: 1.15; font-weight: 900; margin-bottom: 20px;">
-          Types of Aerosol Systems Explained: Solution, Emulsion, Suspension &amp; Bag-on-Valve
+          Types of Aerosol Systems: Solution, Emulsion &amp; BOV
         </h1>
         
         <!-- Post meta details -->
@@ -58,6 +164,8 @@ const schemas = [blogSchema, breadcrumbSchema];
           </div>
           <span style="width: 4px; height: 4px; border-radius: 50%; background-color: var(--border);"></span>
           <span>Published: <strong>Nov 10, 2025</strong></span>
+          <span style="width: 4px; height: 4px; border-radius: 50%; background-color: var(--border);"></span>
+          <span>Updated: <strong>Jul 29, 2026</strong></span>
           <span style="width: 4px; height: 4px; border-radius: 50%; background-color: var(--border);"></span>
           <span>Reading Time: <strong>14 min read</strong></span>
           <span style="width: 4px; height: 4px; border-radius: 50%; background-color: var(--border);"></span>
@@ -80,7 +188,6 @@ const schemas = [blogSchema, breadcrumbSchema];
       <div class="box" style="background: #f8fafc; border: 1px solid var(--border); border-radius: var(--radius-lg); padding: 24px; margin: 30px 0;">
         <h3 style="margin-top: 0; font-family: 'Outfit', sans-serif; color: var(--text-primary); font-size: 1.25rem; font-weight: 700; border-bottom: 2px solid var(--border); padding-bottom: 8px;">Guide Contents</h3>
         <ul style="display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 10px; list-style-type: none; padding-left: 0; margin-bottom: 0;">
-          <li><a href="#table-of-contents" style="font-weight: 600; color: var(--primary);">1. Table of Contents</a></li>
           <li><a href="#introduction-why-understanding-aerosol-systems-is-critical-for-startups" style="font-weight: 600; color: var(--primary);">2. Introduction – Why Understanding Aerosol Systems Is Critical for Startups</a></li>
           <li><a href="#what-is-an-aerosol-system-basic-technical-overview" style="font-weight: 600; color: var(--primary);">3. What Is an Aerosol System? (Basic Technical Overview)</a></li>
           <li><a href="#solution-aerosol-system" style="font-weight: 600; color: var(--primary);">4. Solution Aerosol System</a></li>
@@ -98,9 +205,7 @@ const schemas = [blogSchema, breadcrumbSchema];
 
       <div class="lead"><section class="section">
             <div class="hero">
-                <div class="hero-title-box">
-                    
-                </div>
+                
                 <div class="hero-image-box">
                     <figure style="max-width:1000px;margin:0 auto;">
                         
@@ -109,49 +214,9 @@ const schemas = [blogSchema, breadcrumbSchema];
                     </figure>
                 </div>
             </div>
-            <div class="section gradient-section" aria-label="Table of Contents"></div>
+            
 
-<!-- TABLE OF CONTENTS -->
-<section class="section" id="table-of-contents">
-  <h2>Table of Contents</h2>
-  <ul>
-                    <li>Introduction – Why Understanding Aerosol Systems Is Critical for Startups</li>
-                    <li>What Is an Aerosol System? (Basic Technical Overview)</li>
-                    <li>Solution Aerosol System</li>
-                    <li>Emulsion Aerosol System</li>
-                    <li>Suspension Aerosol System</li>
-                    <li>Bag-on-Valve (BOV) Aerosol System</li>
-                    <li>Comparison: Solution vs Emulsion vs Suspension vs BOV</li>
-                    <li>How to Select the Right Aerosol System for Your Product</li>
-                    <li>Common Failure Problems in Each Aerosol System</li>
-                    <li>Commercialization Readiness &amp; Regulatory Overview</li>
-                    <li>How Global Aerosols Supports Aerosol System Selection</li>
-                    <li>External Technical References</li>
-                    <li>FAQ</li>
-                    <li>About the Author</li>
-                </ul>
-            </div>
-            <p>Understanding aerosol systems is fundamental to designing safe, stable, and commercially successful
-                aerosol products. The choice of aerosol system directly affects product performance, regulatory
-                compliance, filling feasibility, shelf life, and end-user experience.</p>
-            <p>This article provides a fact-based technical explanation of the four primary aerosol systems used
-                globally:</p>
-            <ul>
-                <li>Solution</li>
-                <li>Emulsion</li>
-                <li>Suspension</li>
-                <li>Bag-on-Valve (BOV)</li>
-            </ul>
-            <p>It is written for students, startup founders, product developers, and industrial entrepreneurs operating
-                in India and international markets.</p>
-            <figure style="max-width:720px;margin:0.5rem auto 0.75rem;">
-                <img src="https://assets.zyrosite.com/A3QlOV94WLSaL6xE/overview-of-aerosol-system-types-diagram.jpg-uPf21xndDCAkvCqa.png"
-                    alt="Overview diagram of solution, emulsion, suspension and bag-on-valve aerosol systems"
-                    loading="lazy" style="width:100%;height:auto;border-radius:0.6rem;" />
-                <figcaption style="font-size:0.8rem;color:#4b5563;margin-top:0.25rem;">Overview diagram of different
-                    aerosol system types</figcaption>
-            </figure>
-        </section>
+
 
         <section class="section">
 </section>
@@ -190,7 +255,7 @@ const schemas = [blogSchema, breadcrumbSchema];
             <figure style="max-width:720px;margin:0.5rem auto 0.75rem;">
                 <img src="https://assets.zyrosite.com/A3QlOV94WLSaL6xE/aerosol-can-cross-section-components.jpg-rgcWcHa1iiQgJsa9.png"
                     alt="Cross-section diagram showing internal components of an aerosol can including valve and dip tube"
-                    loading="lazy" style="width:100%;height:auto;border-radius:0.6rem;" />
+                    loading="lazy" style="width:100%;height:auto;border-radius:0.6rem;" width="800" height="450" />
                 <figcaption style="font-size:0.8rem;color:#4b5563;margin-top:0.25rem;">Cross-section diagram of aerosol
                     can with components</figcaption>
             </figure>
@@ -202,6 +267,7 @@ const schemas = [blogSchema, breadcrumbSchema];
 <!-- SOLUTION AEROSOL SYSTEM -->
 <section class="section" id="solution-aerosol-system">
   <h2>Solution Aerosol System</h2>
+        <p>Because a solution system depends on the concentrate and propellant being mutually soluble, propellant selection is effectively a solubility decision — the options are compared in our guide to <a href="/aerosol-propellants-explained-lpg-vs-dme-vs-hfc-vs-n2-vs-co2" style="color: var(--primary); font-weight: 600;">aerosol propellants</a>, and the underlying solvency principles in <a href="/aerosol-chemistry-101" style="color: var(--primary); font-weight: 600;">aerosol chemistry 101</a>.</p>
   <p>A solution aerosol system is a single-phase homogeneous system in which the active ingredients and
                 propellant are fully miscible.</p>
             <p>The formulation exists as a true solution under pressure and remains uniform throughout shelf life.</p>
@@ -228,10 +294,7 @@ const schemas = [blogSchema, breadcrumbSchema];
                 <li>Lower rejection rate</li>
             </ul>
             <h3>Limitations</h3>
-            <ul>
-                <li>Limited to ingredients soluble in propellant or solvent system</li>
-                <li>Not suitable for insoluble solids or pigments</li>
-            </ul>
+            <p>The limitation is solubility: a solution system only works for ingredients that dissolve fully in the propellant or solvent, which rules out insoluble solids and pigments.</p>
             <h3>Startup Manufacturing Considerations</h3>
             <ul>
                 <li>Solubility testing is mandatory</li>
@@ -247,12 +310,10 @@ const schemas = [blogSchema, breadcrumbSchema];
 <!-- EMULSION AEROSOL SYSTEM -->
 <section class="section" id="emulsion-aerosol-system">
   <h2>Emulsion Aerosol System</h2>
+        <p>Emulsion systems are usually water-based, which introduces a corrosion risk to the container that solvent systems do not have. That interaction is examined in our two-part study of <a href="/aerosol-can-corrosion-1" style="color: var(--primary); font-weight: 600;">corrosion in water-based aerosol cans</a>.</p>
   <p>An emulsion aerosol system consists of two immiscible liquid phases stabilized by emulsifiers. The system
                 can be:</p>
-            <ul>
-                <li>Oil-in-Water (O/W)</li>
-                <li>Water-in-Oil (W/O)</li>
-            </ul>
+            <p>Emulsions are classified by which phase is continuous — oil-in-water (O/W) or water-in-oil (W/O) — and that choice determines whether the product dispenses as a foam, a cream, or a spray.</p>
             <h3>Common Applications</h3>
             <ul>
                 <li>Shaving foams</li>
@@ -293,6 +354,7 @@ const schemas = [blogSchema, breadcrumbSchema];
 <!-- SUSPENSION AEROSOL SYSTEM -->
 <section class="section" id="suspension-aerosol-system">
   <h2>Suspension Aerosol System</h2>
+        <p>Suspended solids are the most common cause of valve and dip-tube blockage, so valve clearances and gasket compatibility matter more here than in a clear solution; see <a href="/aerosol-valve-gasket-explained" style="color: var(--primary); font-weight: 600;">aerosol valve gasket materials</a>.</p>
   <p>Suspension aerosol systems contain solid particles dispersed in a liquid phase under pressure. These
                 particles do not dissolve and must remain uniformly distributed during storage and use.</p>
             <p>Typical applications include:</p>
@@ -331,7 +393,7 @@ const schemas = [blogSchema, breadcrumbSchema];
             <figure style="max-width:720px;margin:0.5rem auto 0.75rem;">
                 <img src="https://assets.zyrosite.com/A3QlOV94WLSaL6xE/suspension-aerosol-particle-settling.jpg-m02w4tzat9WJ91xG.png"
                     alt="Sedimentation and settling behavior of particles in a suspension aerosol system" loading="lazy"
-                    style="width:100%;height:auto;border-radius:0.6rem;" />
+                    style="width:100%;height:auto;border-radius:0.6rem;" width="800" height="450" />
                 <figcaption style="font-size:0.8rem;color:#4b5563;margin-top:0.25rem;">Settling behavior in suspension
                     aerosol</figcaption>
             </figure>
@@ -343,6 +405,7 @@ const schemas = [blogSchema, breadcrumbSchema];
 <!-- BAG-ON-VALVE (BOV) AEROSOL SYSTEM -->
 <section class="section" id="bag-on-valve-bov-aerosol-system">
   <h2>Bag-on-Valve (BOV) Aerosol System</h2>
+        <p>Our dedicated guide to <a href="/bag-on-valve-technology-design-and-applications" style="color: var(--primary); font-weight: 600;">bag-on-valve technology</a> covers pouch construction, filling and applications in more detail, and <a href="/how-aerosol-cans-work" style="color: var(--primary); font-weight: 600;">how aerosol cans work</a> explains the pressure behaviour a compressed-gas BOV inherits.</p>
   <p>Bag-on-Valve is a mechanically separated aerosol system where the product is sealed inside a collapsible
                 bag, and the propellant remains outside the bag.</p>
             <p>The product does not contact the propellant at any stage.</p>
@@ -395,10 +458,7 @@ const schemas = [blogSchema, breadcrumbSchema];
                 <li>Most challenging: Suspension</li>
             </ul>
             <h3>Valve Stress</h3>
-            <ul>
-                <li>Suspension has the highest wear</li>
-                <li>BOV has minimal contamination risk</li>
-            </ul>
+            <p>In service, suspension systems place the highest wear on the valve because of abrasive solids, whereas bag-on-valve carries the lowest contamination risk since the product never contacts the propellant or the can wall.</p>
             <h3>Cost Structure</h3>
             <ul>
                 <li>Lowest: Solution</li>
@@ -483,6 +543,7 @@ const schemas = [blogSchema, breadcrumbSchema];
 <!-- COMMERCIALIZATION READINESS &AMP; REGULATORY OVERVIEW -->
 <section class="section" id="commercialization-readiness-amp-regulatory-overview">
   <h2>Commercialization Readiness &amp; Regulatory Overview</h2>
+        <p>Whichever system is chosen, it must survive the filling line and the leak test before it can ship; those stages are described in our <a href="/aerosol-crimping-gassing-leak-detection-explained" style="color: var(--primary); font-weight: 600;">aerosol filling line guide</a>. Aerosols also travel as dangerous goods, and the classification and packaging duties are set out in the <a href="https://unece.org/transport/dangerous-goods" target="_blank" rel="noopener noreferrer" style="color: var(--primary); font-weight: 600;">UN Model Regulations</a>, with US and EU obligations summarised by the <a href="https://www.epa.gov/stationary-sources-air-pollution/aerosol-coatings" target="_blank" rel="noopener noreferrer" style="color: var(--primary); font-weight: 600;">US EPA</a> and enforced in Europe under the Aerosol Dispensers Directive.</p>
   <p>In India, aerosol products fall under multiple regulatory frameworks.</p>
             <p>Key compliance areas include:</p>
             <ul>
@@ -517,7 +578,7 @@ const schemas = [blogSchema, breadcrumbSchema];
             <figure style="max-width:720px;margin:0.5rem auto 0.75rem;">
                 <img src="https://assets.zyrosite.com/A3QlOV94WLSaL6xE/industrial-aerosol-filling-line-consultancy-ZU6zudFt62zW5jNo.png"
                     alt="Industrial aerosol filling line used for automated aerosol manufacturing and consultancy"
-                    loading="lazy" style="width:100%;height:auto;border-radius:0.6rem;" />
+                    loading="lazy" style="width:100%;height:auto;border-radius:0.6rem;" width="800" height="450" />
                 <figcaption style="font-size:0.8rem;color:#4b5563;margin-top:0.25rem;">Industrial aerosol filling line
                     consultancy</figcaption>
             </figure>
@@ -540,6 +601,59 @@ const schemas = [blogSchema, breadcrumbSchema];
 </section>
 
 
+
+
+      </section><!-- /.lead inner section -->
+      </div><!-- /.lead -->
+
+      <!-- FAQ -->
+      <section class="section" id="faq" style="margin-top: 50px;">
+        <h2>Frequently Asked Questions</h2>
+
+        <details style="border: 1px solid var(--border); border-radius: var(--radius-md); margin-bottom: 10px; background: #ffffff;">
+          <summary style="font-weight: 600; padding: 14px 18px; cursor: pointer;">What are the main types of aerosol systems?</summary>
+          <div style="padding: 0 18px 16px; color: var(--text-muted); line-height: 1.65;">The four systems in common industrial use are solution, emulsion, suspension, and bag-on-valve. The first three describe how the concentrate and propellant coexist inside the can, while bag-on-valve is a mechanical design in which the two are physically separated. Which one applies is decided by the product chemistry rather than by preference.</div>
+        </details>
+
+        <details style="border: 1px solid var(--border); border-radius: var(--radius-md); margin-bottom: 10px; background: #ffffff;">
+          <summary style="font-weight: 600; padding: 14px 18px; cursor: pointer;">What is a solution aerosol system?</summary>
+          <div style="padding: 0 18px 16px; color: var(--text-muted); line-height: 1.65;">In a solution system the active concentrate and the propellant form a single homogeneous liquid phase, so the can contains liquid plus its own vapour and nothing else. This gives the most consistent spray and the simplest manufacturing, because there is nothing to separate or settle. It requires the propellant and concentrate to be genuinely mutually soluble, which limits it to compatible chemistries.</div>
+        </details>
+
+        <details style="border: 1px solid var(--border); border-radius: var(--radius-md); margin-bottom: 10px; background: #ffffff;">
+          <summary style="font-weight: 600; padding: 14px 18px; cursor: pointer;">How does an emulsion aerosol system work?</summary>
+          <div style="padding: 0 18px 16px; color: var(--text-muted); line-height: 1.65;">An emulsion system holds two immiscible liquids, typically water and a hydrocarbon propellant, as a dispersion stabilised by surfactants. What the can dispenses depends on which phase is continuous and where the propellant sits, which is how foams and creams are produced. These systems need shaking before use and are the most sensitive to surfactant selection and storage temperature.</div>
+        </details>
+
+        <details style="border: 1px solid var(--border); border-radius: var(--radius-md); margin-bottom: 10px; background: #ffffff;">
+          <summary style="font-weight: 600; padding: 14px 18px; cursor: pointer;">When is a suspension aerosol system used?</summary>
+          <div style="padding: 0 18px 16px; color: var(--text-muted); line-height: 1.65;">A suspension is used when the active is an insoluble solid, such as a pigment, powder, or solid lubricant, that must be dispersed rather than dissolved. The formulation problem is keeping those particles suspended and preventing them from caking or blocking the valve and dip tube. Rheology modifiers and controlled particle size are the primary tools, and the product almost always requires shaking.</div>
+        </details>
+
+        <details style="border: 1px solid var(--border); border-radius: var(--radius-md); margin-bottom: 10px; background: #ffffff;">
+          <summary style="font-weight: 600; padding: 14px 18px; cursor: pointer;">What advantage does bag-on-valve offer?</summary>
+          <div style="padding: 0 18px 16px; color: var(--text-muted); line-height: 1.65;">Bag-on-valve keeps the product inside a sealed laminate pouch while the propellant occupies the surrounding can, so the two never mix. This allows the propellant to be inert compressed gas, permits any spray orientation, and reduces the product's exposure to oxygen. It is the standard approach for sterile pharmaceutical and sensitive personal care products, at higher component cost.</div>
+        </details>
+
+        <details style="border: 1px solid var(--border); border-radius: var(--radius-md); margin-bottom: 10px; background: #ffffff;">
+          <summary style="font-weight: 600; padding: 14px 18px; cursor: pointer;">How do I choose between these aerosol systems?</summary>
+          <div style="padding: 0 18px 16px; color: var(--text-muted); line-height: 1.65;">Start from whether the active dissolves in the propellant, forms an emulsion with it, or must be suspended as a solid, because that answer eliminates most options immediately. Then consider whether the product is oxygen-sensitive or must spray in any orientation, which points toward bag-on-valve. Cost and filling-line capability are applied as constraints at the end rather than as the starting point.</div>
+        </details>
+      </section>
+
+      <!-- RELATED ARTICLES -->
+      <section class="section" id="related-articles" style="margin-top: 50px;">
+        <h2>Related Articles</h2>
+        <ul style="display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 10px; list-style-type: none; padding-left: 0;">
+          <li><a href="/bag-on-valve-technology-design-and-applications" style="font-weight: 600; color: var(--primary);">Bag-on-Valve Technology: Design and Applications</a></li>
+          <li><a href="/aerosol-chemistry-101" style="font-weight: 600; color: var(--primary);">Aerosol Chemistry 101: Solvents, Binders &amp; Surfactants</a></li>
+          <li><a href="/aerosol-manufacturing-101-guide" style="font-weight: 600; color: var(--primary);">Aerosol Manufacturing 101: The Complete Technical Guide</a></li>
+          <li><a href="/how-aerosol-cans-work" style="font-weight: 600; color: var(--primary);">How Aerosol Cans Work: Propellant, Pressure &amp; Valves</a></li>
+          <li><a href="/aerosol-propellants-explained-lpg-vs-dme-vs-hfc-vs-n2-vs-co2" style="font-weight: 600; color: var(--primary);">Aerosol Propellants Explained: LPG vs DME vs HFC vs N&#8322; vs CO&#8322;</a></li>
+          <li><a href="/from-lab-to-commercial-launch" style="font-weight: 600; color: var(--primary);">From Lab to Factory: Aerosol R&amp;D to Commercial Manufacturing</a></li>
+          <li><a href="/choosing-the-right-product-consultant" style="font-weight: 600; color: var(--primary);">How to Choose the Right Aerosol Product Consultant</a></li>
+        </ul>
+      </section>
 
       <!-- Contact Box -->
       <div class="cta" style="background: linear-gradient(135deg, var(--primary) 0%, var(--secondary) 100%); color: #ffffff; padding: 30px; border-radius: var(--radius-lg); margin-top: 40px; display: flex; flex-direction: column; justify-content: space-between; align-items: flex-start; gap: 20px; md-flex-direction: row; md-align-items: center;">
@@ -567,7 +681,7 @@ const schemas = [blogSchema, breadcrumbSchema];
         <div>
           <h3 style="margin-top: 0; margin-bottom: 8px; font-family: 'Outfit', sans-serif; font-size: 1.3rem; font-weight: 700; color: var(--text-primary);">About the Specialist</h3>
           <p style="margin-top: 0; margin-bottom: 12px; font-size: 0.95rem; line-height: 1.6; color: var(--text-muted);">
-            <strong>Absar Khan</strong> is the principal consultant and chemical formulation architect at <strong>Global Formulation</strong>. He possesses cross-disciplinary engineering expertise spanning aerosol gassing systems, pharmaceutical manufacturing, sterile injectables, cosmetics, and green chemical plant setups. Absar leads scientific and engineering advisory teams supporting manufacturers globally in technology selection, GMP layouts, validation frameworks, and regulatory strategies.
+            <strong>Absar Khan</strong> is the founder and lead aerosol consultant at <strong>Global Aerosols</strong>. He possesses cross-disciplinary engineering expertise spanning aerosol system design, emulsion and suspension formulation, bag-on-valve technology, and regulatory compliance. Absar leads scientific and engineering advisory teams supporting manufacturers globally in technology selection, GMP layouts, validation frameworks, and regulatory strategies.
           </p>
           <p style="margin: 0; font-size: 0.9rem;">
             <strong>LinkedIn Portfolio:</strong> 

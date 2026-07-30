@@ -1,64 +1,130 @@
 ---
 import Layout from '../layouts/Layout.astro';
 
-const corrosionPart2Schema = {
-  "@context": "https://schema.org",
-  "@type": "Article",
-  "headline": "Corrosion in Water-Based Aerosol Cans — Part 2: Formulation Interactions, Coating Behavior & Vapor–Liquid Phase Corrosion",
-  "description": "A fact-based technical analysis of formulation-driven corrosion in water-based aerosol cans, including vapor-phase effects, liquid-phase corrosion, coating failure pathways, and laboratory evaluation methods.",
-  "image": "https://assets.zyrosite.com/A3QlOV94WLSaL6xE/formulation-corrosion-control-infographic-zeCQf7eDige7CGuH.jpg",
-  "author": {
-    "@type": "Person",
-    "name": "Absar Khan"
-  },
-  "publisher": {
-    "@type": "Organization",
-    "name": "Global Aerosols",
-    "logo": {
-      "@type": "ImageObject",
-      "url": "https://www.globalaerosols.com/logo.png"
-    }
-  },
-  "datePublished": "2025-11-07",
-  "dateModified": "2025-11-07",
-  "mainEntityOfPage": {
-    "@type": "WebPage",
-    "@id": "https://www.globalaerosols.com/aerosol-can-corrosion-2"
-  },
-  "articleSection": "Aerosols & Gas Dosing"
-};
+const slug = 'aerosol-can-corrosion-2';
+const heroUrl = 'https://assets.zyrosite.com/A3QlOV94WLSaL6xE/formulation-corrosion-control-infographic-zeCQf7eDige7CGuH.jpg';
 
-const breadcrumbSchema = {
+const schemas = {
   "@context": "https://schema.org",
-  "@type": "BreadcrumbList",
-  "itemListElement": [
+  "@graph": [
     {
-      "@type": "ListItem",
-      "position": 1,
-      "name": "Home",
-      "item": "https://www.globalaerosols.com"
+      "@type": "Organization",
+      "@id": "https://www.globalaerosols.com/#organization",
+      "name": "Global Aerosols",
+      "url": "https://www.globalaerosols.com/",
+      "logo": { "@type": "ImageObject", "url": "https://www.globalaerosols.com/logo.png" }
     },
     {
-      "@type": "ListItem",
-      "position": 2,
-      "name": "Blog",
-      "item": "https://www.globalaerosols.com/blog"
+      "@type": "WebSite",
+      "@id": "https://www.globalaerosols.com/#website",
+      "url": "https://www.globalaerosols.com/",
+      "name": "Global Aerosols",
+      "publisher": { "@id": "https://www.globalaerosols.com/#organization" }
     },
     {
-      "@type": "ListItem",
-      "position": 3,
-      "name": "Aerosol Can Corrosion - Part 2",
-      "item": "https://www.globalaerosols.com/aerosol-can-corrosion-2"
+      "@type": "Person",
+      "@id": "https://www.globalaerosols.com/#absar-khan",
+      "name": "Absar Khan",
+      "jobTitle": "Founder & Lead Aerosol Consultant",
+      "url": "https://www.linkedin.com/in/absar-khan-aerosol-consultant-and-formulator-78359b162",
+      "worksFor": { "@id": "https://www.globalaerosols.com/#organization" }
+    },
+    {
+      "@type": "BreadcrumbList",
+      "@id": `https://www.globalaerosols.com/${slug}#breadcrumb`,
+      "itemListElement": [
+        { "@type": "ListItem", "position": 1, "name": "Home", "item": "https://www.globalaerosols.com/" },
+        { "@type": "ListItem", "position": 2, "name": "Blog", "item": "https://www.globalaerosols.com/blog/" },
+        { "@type": "ListItem", "position": 3, "name": "Aerosol Can Corrosion - Part 2", "item": `https://www.globalaerosols.com/${slug}` }
+      ]
+    },
+    {
+      "@type": "BlogPosting",
+      "@id": `https://www.globalaerosols.com/${slug}#article`,
+      "headline": "Aerosol Can Corrosion Part 2: Formulations & Coatings",
+      "description": "How do formulation and coating choices drive aerosol can corrosion? Part 2 covers vapour-phase attack, inhibitor packages and lab evaluation methods.",
+      "image": { "@type": "ImageObject", "url": heroUrl },
+      "author": { "@id": "https://www.globalaerosols.com/#absar-khan" },
+      "publisher": { "@id": "https://www.globalaerosols.com/#organization" },
+      "datePublished": "2025-11-07",
+      "dateModified": "2026-07-29",
+      "mainEntityOfPage": { "@id": `https://www.globalaerosols.com/${slug}` },
+      "articleSection": "Aerosols & Gas Dosing",
+      "keywords": "aerosol can corrosion, formulation corrosion, vapour-phase corrosion, headspace corrosion, internal lacquer, epoxy phenolic coating, corrosion inhibitor, accelerated storage testing",
+      "wordCount": 2470
+    },
+    {
+      "@type": "FAQPage",
+      "mainEntity": [
+        {
+          "@type": "Question",
+          "name": "How does formulation pH affect internal can corrosion?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "pH governs which corrosion reactions are thermodynamically favourable at the metal surface. Strongly acidic conditions promote direct dissolution of steel, while strongly alkaline conditions attack aluminium because its protective oxide film is amphoteric and dissolves at both extremes. Holding the formulation near neutral and buffering it against drift over shelf life is therefore one of the most effective single controls available."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "What is vapour-phase corrosion in an aerosol can?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Vapour-phase corrosion occurs in the headspace above the liquid, where the metal is not immersed but is still exposed to water vapour and volatile species. Condensation forms a thin, often highly concentrated electrolyte film on the upper dome and valve cup. Because that film can be more aggressive than the bulk liquid, corrosion sometimes appears first in the headspace rather than below the liquid line."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "Why do coated cans still corrode?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "No organic coating is a perfect barrier. Lacquers contain microscopic pores, are thinned over formed radii, and can be scratched during handling or cut at the seam. Water and ions permeate the film slowly even where it is intact, and at any discontinuity the small exposed anode is surrounded by a large cathodic area, which concentrates attack and drives rapid local penetration."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "Do corrosion inhibitors replace the need for a good coating?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "No. Inhibitors and coatings address the problem at different points and are used together. A coating is a physical barrier that limits how much electrolyte reaches the metal, whereas an inhibitor acts chemically at the surface to slow the anodic or cathodic reaction where the barrier has failed. Relying on an inhibitor to compensate for a poor coating generally shortens shelf life rather than extending it."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "How do propellants influence corrosion behaviour?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Propellants change both the chemistry and the physics of the headspace. Hydrocarbon propellants exert solvency on the organic coating and can soften or extract components from it over time, while carbon dioxide dissolves to form carbonic acid and lowers pH. The propellant also sets the internal pressure, and pressure combined with a wall thinned by corrosion reduces the container safety margin."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "What laboratory methods evaluate corrosion before launch?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Accelerated storage of filled cans at elevated temperature is the primary method, followed by destructive teardown to inspect the metal, coating, and valve components. Panel-level screening uses salt spray exposure to methods such as ASTM B117 to rank coating systems quickly. Because neither approach reproduces real distribution exactly, results are interpreted against a known-good control rather than as an absolute shelf-life prediction."
+          }
+        }
+      ]
+    },
+    {
+      "@type": "WebPage",
+      "@id": `https://www.globalaerosols.com/${slug}`,
+      "url": `https://www.globalaerosols.com/${slug}`,
+      "name": "Aerosol Can Corrosion Part 2: Formulations & Coatings",
+      "description": "How do formulation and coating choices drive aerosol can corrosion? Part 2 covers vapour-phase attack, inhibitor packages and lab evaluation methods.",
+      "isPartOf": { "@id": "https://www.globalaerosols.com/#website" },
+      "breadcrumb": { "@id": `https://www.globalaerosols.com/${slug}#breadcrumb` },
+      "primaryImageOfPage": { "@type": "ImageObject", "url": heroUrl },
+      "datePublished": "2025-11-07",
+      "dateModified": "2026-07-29"
     }
   ]
 };
-
-const schemas = [corrosionPart2Schema, breadcrumbSchema];
 ---
 
 <Layout
-  title="Corrosion in Water-Based Aerosol Cans - Part 2 | Global Aerosols"
-  description="A fact-based technical analysis of formulation-driven corrosion in water-based aerosol cans, including vapor-phase effects, liquid-phase corrosion, coating failure pathways, and laboratory evaluation methods."
+  title="Aerosol Can Corrosion Part 2: Formulations & Coatings"
+  description="How do formulation and coating choices drive aerosol can corrosion? Part 2 covers vapour-phase attack, inhibitor packages and lab evaluation methods."
   canonical="https://www.globalaerosols.com/aerosol-can-corrosion-2"
   ogImage="https://assets.zyrosite.com/A3QlOV94WLSaL6xE/formulation-corrosion-control-infographic-zeCQf7eDige7CGuH.jpg"
   ogType="article"
@@ -79,7 +145,7 @@ const schemas = [corrosionPart2Schema, breadcrumbSchema];
     <article class="blog-prose">
       <header class="post-header">
         <h1 class="gradient-text" style="font-size: 3rem; line-height: 1.15; font-weight: 900; margin-bottom: 20px;">
-          Corrosion in Water-Based Aerosol Cans — Part 2: Formulation Interactions, Coating Behavior &amp; Vapor–Liquid Phase Corrosion
+          Aerosol Can Corrosion Part 2: Formulations &amp; Coatings
         </h1>
         
         <!-- Post meta details -->
@@ -90,6 +156,8 @@ const schemas = [corrosionPart2Schema, breadcrumbSchema];
           </div>
           <span style="width: 4px; height: 4px; border-radius: 50%; background-color: var(--border);"></span>
           <span>Published: <strong>Nov 7, 2025</strong></span>
+          <span style="width: 4px; height: 4px; border-radius: 50%; background-color: var(--border);"></span>
+          <span>Updated: <strong>Jul 29, 2026</strong></span>
           <span style="width: 4px; height: 4px; border-radius: 50%; background-color: var(--border);"></span>
           <span>Reading Time: <strong>15 min read</strong></span>
           <span style="width: 4px; height: 4px; border-radius: 50%; background-color: var(--border);"></span>
@@ -129,16 +197,17 @@ const schemas = [corrosionPart2Schema, breadcrumbSchema];
           <li><a href="#analytical-testing" style="font-weight: 600; color: var(--primary);">7. Analytical &amp; Accelerated Testing</a></li>
           <li><a href="#formulation-control" style="font-weight: 600; color: var(--primary);">8. Formulation Control Approaches</a></li>
           <li><a href="#references" style="font-weight: 600; color: var(--primary);">9. External References</a></li>
+          <li><a href="#faq" style="font-weight: 600; color: var(--primary);">10. Frequently Asked Questions</a></li>
         </ul>
       </div>
 
       <!-- SECTION 1 -->
       <section class="section" id="formulation-influence">
         <h2>1. How Formulation Components Influence Internal Corrosion</h2>
-        <p>Water-based formulations introduce a range of interactions that directly influence the corrosion profile of the can. These interactions occur in both the liquid phase and the vapor phase, and are strongly affected by pH, ionic strength, surfactants, solvents, and dissolved gases.</p>
+        <p>Water-based formulations introduce a range of interactions that directly influence the corrosion profile of the can. These interactions occur in both the liquid phase and the vapor phase, and are strongly affected by pH, ionic strength, surfactants, solvents, and dissolved gases. The underlying electrochemistry and the container-side factors are covered in <a href="/aerosol-can-corrosion-1" style="color: var(--primary); font-weight: 600;">Part 1 of this study</a>; this part concentrates on what the formulation itself contributes.</p>
 
         <h3>1.1 Water Content and Water Activity</h3>
-        <p>Water activity determines how efficiently ions and gases migrate through the solution. Higher water activity increases electrolyte mobility, which in turn enhances the corrosion rate. Even small increases in available water can accelerate coating penetration and interfacial reactions.</p>
+        <p>Water activity determines how efficiently ions and gases migrate through the solution. Higher water activity increases electrolyte mobility, which in turn enhances the corrosion rate. Even small increases in available water can accelerate coating penetration and interfacial reactions. This is the same dependence that makes an electrolyte a precondition for <a href="https://en.wikipedia.org/wiki/Galvanic_corrosion" target="_blank" rel="noopener noreferrer" style="color: var(--primary); font-weight: 600;">galvanic corrosion</a>: without a conductive path, the cell cannot operate.</p>
 
         <h3>1.2 Surfactant and Wetting Effects</h3>
         <div class="image-slot">
@@ -195,7 +264,7 @@ const schemas = [corrosionPart2Schema, breadcrumbSchema];
       <!-- SECTION 3 -->
       <section class="section" id="vapor-phase">
         <h2>3. Vapor-Phase Corrosion and Headspace Effects</h2>
-        <p>Corrosion does not only occur in the liquid phase. In water-based aerosols, vapor-phase corrosion is equally significant, especially on upper walls, domes, and headspace metal surfaces.</p>
+        <p>Corrosion does not only occur in the liquid phase. In water-based aerosols, vapor-phase corrosion is equally significant, especially on upper walls, domes, and headspace metal surfaces. The headspace exists because every aerosol needs vapour volume for thermal expansion, as explained in our guide to <a href="/how-aerosol-cans-work" style="color: var(--primary); font-weight: 600;">how aerosol cans work</a>, and perforation of that upper region is one of the routes to the failures catalogued in <a href="/why-do-aerosol-cans-leak" style="color: var(--primary); font-weight: 600;">why aerosol cans leak</a>.</p>
 
         <h3>3.1 Condensation Cycles</h3>
         <p>Temperature fluctuations drive evaporation and condensation cycles inside the can. Condensed moisture forms thin electrolyte films capable of supporting corrosion reactions. This process is well documented in metal can technology and food packaging sectors.</p>
@@ -213,6 +282,7 @@ const schemas = [corrosionPart2Schema, breadcrumbSchema];
       <!-- SECTION 4 -->
       <section class="section" id="coating-performance">
         <h2>4. Internal Coating Performance and Failure Modes</h2>
+        <p>Coating choice is constrained by the substrate beneath it, so the tinplate-versus-aluminium decision and the coating decision are made together — the trade-offs are compared in our guide to <a href="/aluminium-vs-tinplate-aerosol-cans" style="color: var(--primary); font-weight: 600;">aluminium versus tinplate aerosol cans</a>.</p>
         <p>Internal coatings in aerosol cans are engineered to resist both liquid and vapor-phase corrosion. However, their performance depends on application quality, resin chemistry, thickness, and storage conditions.</p>
 
         <h3>4.1 Coating Permeability</h3>
@@ -244,6 +314,7 @@ const schemas = [corrosionPart2Schema, breadcrumbSchema];
       <!-- SECTION 6 -->
       <section class="section" id="propellant-interactions">
         <h2>6. Propellant and Headspace Interactions</h2>
+        <p>Propellant choice changes the chemistry the coating and gasket must survive, so it is a corrosion decision as much as a performance one. Our comparison of <a href="/aerosol-propellants-explained-lpg-vs-dme-vs-hfc-vs-n2-vs-co2" style="color: var(--primary); font-weight: 600;">LPG, DME, HFC, nitrogen and CO&#8322;</a> sets out the options, and the elastomer side of the same interface is covered in <a href="/aerosol-valve-gasket-explained" style="color: var(--primary); font-weight: 600;">aerosol valve gasket materials</a>.</p>
         <p>The propellant contributes to corrosion behavior through its effect on pressure, humidity, solubility, and temperature sensitivity.</p>
 
         <h3>6.1 Water–Propellant Partitioning</h3>
@@ -259,7 +330,7 @@ const schemas = [corrosionPart2Schema, breadcrumbSchema];
       <!-- SECTION 7 -->
       <section class="section" id="analytical-testing">
         <h2>7. Analytical and Accelerated Testing Methods</h2>
-        <p>To evaluate the long-term packaging compatibility of new formulations, manufacturers must execute a series of standardized tests. These accelerated testing protocols check the mechanical integrity of the metal can, the adhesion properties of the internal lacquer, and pressure retention over time. The established analytical methods used to verify container stability include:</p>
+        <p>To evaluate the long-term packaging compatibility of new formulations, manufacturers must execute a series of standardized tests. These accelerated testing protocols check the mechanical integrity of the metal can, the adhesion properties of the internal lacquer, and pressure retention over time. Panel-level coating comparisons commonly use the salt spray practice published by <a href="https://www.astm.org" target="_blank" rel="noopener noreferrer" style="color: var(--primary); font-weight: 600;">ASTM International</a> as B117, while corrosion terminology and test selection follow the standards maintained by <a href="https://www.iso.org" target="_blank" rel="noopener noreferrer" style="color: var(--primary); font-weight: 600;">ISO</a>. The established analytical methods used to verify container stability include:</p>
         <ul>
           <li>Coating continuity and adhesion testing to verify polymer lining coverage.</li>
           <li>Optical and microscopic inspection of defect propagation on metal surfaces.</li>
@@ -328,6 +399,57 @@ const schemas = [corrosionPart2Schema, breadcrumbSchema];
         <p>This section expands the corrosion model by focusing on formulation-driven mechanisms. Both liquid-phase and vapor-phase pathways influence corrosion behavior, while coating performance, solvent interactions, pH drift, humidity cycles, and propellant dynamics determine long-term stability. Understanding these mechanisms enables more accurate prediction of failure modes and supports the engineering of robust water-based aerosol products.</p>
       </section>
 
+
+      <!-- FAQ -->
+      <section class="section" id="faq" style="margin-top: 50px;">
+        <h2>Frequently Asked Questions</h2>
+
+        <details style="border: 1px solid var(--border); border-radius: var(--radius-md); margin-bottom: 10px; background: #ffffff;">
+          <summary style="font-weight: 600; padding: 14px 18px; cursor: pointer;">How does formulation pH affect internal can corrosion?</summary>
+          <div style="padding: 0 18px 16px; color: var(--text-muted); line-height: 1.65;">pH governs which corrosion reactions are thermodynamically favourable at the metal surface. Strongly acidic conditions promote direct dissolution of steel, while strongly alkaline conditions attack aluminium because its protective oxide film is amphoteric and dissolves at both extremes. Holding the formulation near neutral and buffering it against drift over shelf life is therefore one of the most effective single controls available.</div>
+        </details>
+
+        <details style="border: 1px solid var(--border); border-radius: var(--radius-md); margin-bottom: 10px; background: #ffffff;">
+          <summary style="font-weight: 600; padding: 14px 18px; cursor: pointer;">What is vapour-phase corrosion in an aerosol can?</summary>
+          <div style="padding: 0 18px 16px; color: var(--text-muted); line-height: 1.65;">Vapour-phase corrosion occurs in the headspace above the liquid, where the metal is not immersed but is still exposed to water vapour and volatile species. Condensation forms a thin, often highly concentrated electrolyte film on the upper dome and valve cup. Because that film can be more aggressive than the bulk liquid, corrosion sometimes appears first in the headspace rather than below the liquid line.</div>
+        </details>
+
+        <details style="border: 1px solid var(--border); border-radius: var(--radius-md); margin-bottom: 10px; background: #ffffff;">
+          <summary style="font-weight: 600; padding: 14px 18px; cursor: pointer;">Why do coated cans still corrode?</summary>
+          <div style="padding: 0 18px 16px; color: var(--text-muted); line-height: 1.65;">No organic coating is a perfect barrier. Lacquers contain microscopic pores, are thinned over formed radii, and can be scratched during handling or cut at the seam. Water and ions permeate the film slowly even where it is intact, and at any discontinuity the small exposed anode is surrounded by a large cathodic area, which concentrates attack and drives rapid local penetration.</div>
+        </details>
+
+        <details style="border: 1px solid var(--border); border-radius: var(--radius-md); margin-bottom: 10px; background: #ffffff;">
+          <summary style="font-weight: 600; padding: 14px 18px; cursor: pointer;">Do corrosion inhibitors replace the need for a good coating?</summary>
+          <div style="padding: 0 18px 16px; color: var(--text-muted); line-height: 1.65;">No. Inhibitors and coatings address the problem at different points and are used together. A coating is a physical barrier that limits how much electrolyte reaches the metal, whereas an inhibitor acts chemically at the surface to slow the anodic or cathodic reaction where the barrier has failed. Relying on an inhibitor to compensate for a poor coating generally shortens shelf life rather than extending it.</div>
+        </details>
+
+        <details style="border: 1px solid var(--border); border-radius: var(--radius-md); margin-bottom: 10px; background: #ffffff;">
+          <summary style="font-weight: 600; padding: 14px 18px; cursor: pointer;">How do propellants influence corrosion behaviour?</summary>
+          <div style="padding: 0 18px 16px; color: var(--text-muted); line-height: 1.65;">Propellants change both the chemistry and the physics of the headspace. Hydrocarbon propellants exert solvency on the organic coating and can soften or extract components from it over time, while carbon dioxide dissolves to form carbonic acid and lowers pH. The propellant also sets the internal pressure, and pressure combined with a wall thinned by corrosion reduces the container safety margin.</div>
+        </details>
+
+        <details style="border: 1px solid var(--border); border-radius: var(--radius-md); margin-bottom: 10px; background: #ffffff;">
+          <summary style="font-weight: 600; padding: 14px 18px; cursor: pointer;">What laboratory methods evaluate corrosion before launch?</summary>
+          <div style="padding: 0 18px 16px; color: var(--text-muted); line-height: 1.65;">Accelerated storage of filled cans at elevated temperature is the primary method, followed by destructive teardown to inspect the metal, coating, and valve components. Panel-level screening uses salt spray exposure to methods such as ASTM B117 to rank coating systems quickly. Because neither approach reproduces real distribution exactly, results are interpreted against a known-good control rather than as an absolute shelf-life prediction.</div>
+        </details>
+      </section>
+
+      <!-- RELATED ARTICLES -->
+      <section class="section" id="related-articles" style="margin-top: 50px;">
+        <h2>Related Articles</h2>
+        <ul style="display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 10px; list-style-type: none; padding-left: 0;">
+          <li><a href="/aerosol-can-corrosion-1" style="font-weight: 600; color: var(--primary);">Corrosion in Water-Based Aerosol Cans — Part 1</a></li>
+          <li><a href="/why-do-aerosol-cans-leak" style="font-weight: 600; color: var(--primary);">Why Aerosol Cans Leak: Causes, Faults &amp; Proven Fixes</a></li>
+          <li><a href="/aerosol-manufacturing-101-guide" style="font-weight: 600; color: var(--primary);">Aerosol Manufacturing 101: The Complete Technical Guide</a></li>
+          <li><a href="/how-aerosol-cans-work" style="font-weight: 600; color: var(--primary);">How Aerosol Cans Work: Propellant, Pressure &amp; Valves</a></li>
+          <li><a href="/aerosol-propellants-explained-lpg-vs-dme-vs-hfc-vs-n2-vs-co2" style="font-weight: 600; color: var(--primary);">Aerosol Propellants Explained: LPG vs DME vs HFC vs N&#8322; vs CO&#8322;</a></li>
+          <li><a href="/aerosol-chemistry-101" style="font-weight: 600; color: var(--primary);">Aerosol Chemistry 101: Solvents, Binders &amp; Surfactants</a></li>
+          <li><a href="/from-lab-to-commercial-launch" style="font-weight: 600; color: var(--primary);">From Lab to Factory: Aerosol R&amp;D to Commercial Manufacturing</a></li>
+          <li><a href="/choosing-the-right-product-consultant" style="font-weight: 600; color: var(--primary);">How to Choose the Right Aerosol Product Consultant</a></li>
+        </ul>
+      </section>
+
       <!-- Contact Box (SEO Checklist target="_top") -->
       <div class="cta" style="background: linear-gradient(135deg, var(--primary) 0%, var(--secondary) 100%); color: #ffffff; padding: 30px; border-radius: var(--radius-lg); margin-top: 40px; display: flex; flex-direction: column; justify-content: space-between; align-items: flex-start; gap: 20px; md-flex-direction: row; md-align-items: center;">
         <div class="left">
@@ -354,7 +476,7 @@ const schemas = [corrosionPart2Schema, breadcrumbSchema];
         <div>
           <h3 style="margin-top: 0; margin-bottom: 8px; font-family: 'Outfit', sans-serif; font-size: 1.3rem; font-weight: 700; color: var(--text-primary);">About the Specialist</h3>
           <p style="margin-top: 0; margin-bottom: 12px; font-size: 0.95rem; line-height: 1.6; color: var(--text-muted);">
-            <strong>Absar Khan</strong> is the principal consultant and chemical formulation architect at <strong>Global Formulation</strong>. He possesses cross-disciplinary engineering expertise spanning aerosol gassing systems, pharmaceutical manufacturing, sterile injectables, cosmetics, and green chemical plant setups. Absar leads scientific and engineering advisory teams supporting manufacturers globally in technology selection, GMP layouts, validation frameworks, and regulatory strategies.
+            <strong>Absar Khan</strong> is the founder and lead aerosol consultant at <strong>Global Aerosols</strong>. He possesses cross-disciplinary engineering expertise spanning aerosol corrosion and coating evaluation, formulation compatibility, propellant systems, and regulatory compliance. Absar leads scientific and engineering advisory teams supporting manufacturers globally in technology selection, GMP layouts, validation frameworks, and regulatory strategies.
           </p>
           <p style="margin: 0; font-size: 0.9rem;">
             <strong>LinkedIn Portfolio:</strong> 

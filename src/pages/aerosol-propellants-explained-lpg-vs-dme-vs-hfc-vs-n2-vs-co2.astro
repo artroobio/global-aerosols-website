@@ -1,47 +1,130 @@
 ---
 import Layout from '../layouts/Layout.astro';
 
-const blogSchema = {
+const slug = 'aerosol-propellants-explained-lpg-vs-dme-vs-hfc-vs-n2-vs-co2';
+const heroUrl = 'https://assets.zyrosite.com/A3QlOV94WLSaL6xE/aerosol-can-cross-section-components.jpg-rgcWcHa1iiQgJsa9.png';
+
+const schemas = {
   "@context": "https://schema.org",
-  "@type": "Article",
-  "headline": "Aerosol Propellants Explained: LPG vs DME vs HFC vs N₂ vs CO₂",
-  "author": {
-    "@type": "Person",
-    "name": "Absar Khan"
-  },
-  "publisher": {
-    "@type": "Organization",
-    "name": "Global Aerosols",
-    "logo": {
-      "@type": "ImageObject",
-      "url": "https://www.globalaerosols.com/logo.png"
-    }
-  },
-  "mainEntityOfPage": {
-    "@type": "WebPage",
-    "@id": "https://www.globalaerosols.com/aerosol-propellants-explained-lpg-vs-dme-vs-hfc-vs-n2-vs-co2"
-  },
-  "datePublished": "2025-11-12",
-  "dateModified": "2025-11-12"
-};
-const breadcrumbSchema = {
-  "@context": "https://schema.org",
-  "@type": "BreadcrumbList",
-  "itemListElement": [
+  "@graph": [
     {
-      "@type": "ListItem",
-      "position": 1,
-      "name": "Aerosol Propellants",
-      "item": "https://www.globalaerosols.com/aerosol-propellants-explained-lpg-vs-dme-vs-hfc-vs-n2-vs-co2"
+      "@type": "Organization",
+      "@id": "https://www.globalaerosols.com/#organization",
+      "name": "Global Aerosols",
+      "url": "https://www.globalaerosols.com/",
+      "logo": { "@type": "ImageObject", "url": "https://www.globalaerosols.com/logo.png" }
+    },
+    {
+      "@type": "WebSite",
+      "@id": "https://www.globalaerosols.com/#website",
+      "url": "https://www.globalaerosols.com/",
+      "name": "Global Aerosols",
+      "publisher": { "@id": "https://www.globalaerosols.com/#organization" }
+    },
+    {
+      "@type": "Person",
+      "@id": "https://www.globalaerosols.com/#absar-khan",
+      "name": "Absar Khan",
+      "jobTitle": "Founder & Lead Aerosol Consultant",
+      "url": "https://www.linkedin.com/in/absar-khan-aerosol-consultant-and-formulator-78359b162",
+      "worksFor": { "@id": "https://www.globalaerosols.com/#organization" }
+    },
+    {
+      "@type": "BreadcrumbList",
+      "@id": `https://www.globalaerosols.com/${slug}#breadcrumb`,
+      "itemListElement": [
+        { "@type": "ListItem", "position": 1, "name": "Home", "item": "https://www.globalaerosols.com/" },
+        { "@type": "ListItem", "position": 2, "name": "Blog", "item": "https://www.globalaerosols.com/blog/" },
+        { "@type": "ListItem", "position": 3, "name": "Aerosol Propellants Explained", "item": `https://www.globalaerosols.com/${slug}` }
+      ]
+    },
+    {
+      "@type": "BlogPosting",
+      "@id": `https://www.globalaerosols.com/${slug}#article`,
+      "headline": "Aerosol Propellants: LPG vs DME vs HFC vs N₂ vs CO₂",
+      "description": "Which aerosol propellant should you use? Compare LPG, DME, HFC, nitrogen and CO₂ on vapour pressure, flammability, solvency and global warming potential.",
+      "image": { "@type": "ImageObject", "url": heroUrl },
+      "author": { "@id": "https://www.globalaerosols.com/#absar-khan" },
+      "publisher": { "@id": "https://www.globalaerosols.com/#organization" },
+      "datePublished": "2025-11-12",
+      "dateModified": "2026-07-29",
+      "mainEntityOfPage": { "@id": `https://www.globalaerosols.com/${slug}` },
+      "articleSection": "Aerosols & Gas Dosing",
+      "keywords": "aerosol propellants, LPG propellant, dimethyl ether, DME, HFC-134a, HFC-152a, nitrogen propellant, carbon dioxide propellant, vapour pressure, global warming potential, propellant selection",
+      "wordCount": 2760
+    },
+    {
+      "@type": "FAQPage",
+      "mainEntity": [
+        {
+          "@type": "Question",
+          "name": "What is the difference between a liquefied and a compressed gas propellant?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "A liquefied propellant is stored mostly as a liquid in equilibrium with its own vapour, so as vapour is used the liquid evaporates to replace it and pressure stays almost constant until the liquid is exhausted. A compressed gas such as nitrogen is stored entirely as gas, so pressure falls progressively as the headspace expands. This single difference explains most of the performance gap between the two families."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "Why is LPG still the most widely used aerosol propellant?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Blends of propane, isobutane and n-butane cover a wide, finely adjustable pressure range, deliver constant pressure through the life of the can, and have very low global warming potential. They are also inexpensive and widely available. The trade-off is flammability, which raises the hazard classification of the finished product and imposes storage and transport controls."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "What makes dimethyl ether different from other propellants?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Dimethyl ether is unusual because it is appreciably soluble in water, which no hydrocarbon propellant is. That property allows a single-phase water-based aerosol without an emulsifier, which is valuable for reducing volatile organic compound content. It is flammable and a strong solvent, so gasket and coating compatibility must be verified carefully."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "Are HFC propellants being phased out?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "They are being phased down rather than banned outright. The Kigali Amendment to the Montreal Protocol commits parties to reducing hydrofluorocarbon consumption over time, and regional rules such as the EU F-gas Regulation restrict higher-GWP compounds in many applications. HFC-134a remains valuable where non-flammability is essential, but its high global warming potential is driving substitution toward hydrofluoroolefins."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "When should a compressed gas propellant be chosen?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Compressed gases suit products that must be non-flammable, food-contact, or free of any solvency effect on the concentrate. Nitrogen is inert and has no global warming potential, which makes it the default for food and pharmaceutical aerosols. The accepted cost is a declining pressure profile, unless the design uses a bag-on-valve system to compensate."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "How does propellant choice affect the valve gasket?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Liquefied hydrocarbon propellants and dimethyl ether act as solvents on elastomers, causing swelling, plasticiser extraction, or loss of compression set over time. Compressed gases are chemically inert and exert no such effect. Gasket material must therefore be selected against the specific propellant, and confirmed by immersion testing in the finished formulation rather than from a datasheet."
+          }
+        }
+      ]
+    },
+    {
+      "@type": "WebPage",
+      "@id": `https://www.globalaerosols.com/${slug}`,
+      "url": `https://www.globalaerosols.com/${slug}`,
+      "name": "Aerosol Propellants: LPG vs DME vs HFC vs N₂ vs CO₂",
+      "description": "Which aerosol propellant should you use? Compare LPG, DME, HFC, nitrogen and CO₂ on vapour pressure, flammability, solvency and global warming potential.",
+      "isPartOf": { "@id": "https://www.globalaerosols.com/#website" },
+      "breadcrumb": { "@id": `https://www.globalaerosols.com/${slug}#breadcrumb` },
+      "primaryImageOfPage": { "@type": "ImageObject", "url": heroUrl },
+      "datePublished": "2025-11-12",
+      "dateModified": "2026-07-29"
     }
   ]
 };
-const schemas = [blogSchema, breadcrumbSchema];
 ---
 
 <Layout
-  title="Aerosol Propellants Explained: LPG vs DME vs HFC vs N₂ vs CO₂ for Indian & Global Manufacturers | Global Aerosols"
-  description="Technical guide to aerosol propellants including LPG, DME, HFC, nitrogen, carbon dioxide and compressed air for Indian and global manufacturers."
+  title="Aerosol Propellants: LPG vs DME vs HFC vs N₂ vs CO₂"
+  description="Which aerosol propellant should you use? Compare LPG, DME, HFC, nitrogen and CO₂ on vapour pressure, flammability, solvency and global warming potential."
   canonical="https://www.globalaerosols.com/aerosol-propellants-explained-lpg-vs-dme-vs-hfc-vs-n2-vs-co2"
   ogImage="https://assets.zyrosite.com/A3QlOV94WLSaL6xE/aerosol-can-cross-section-components.jpg-rgcWcHa1iiQgJsa9.png"
   ogType="article"
@@ -62,7 +145,7 @@ const schemas = [blogSchema, breadcrumbSchema];
     <article class="blog-prose">
       <header class="post-header">
         <h1 class="gradient-text" style="font-size: 3rem; line-height: 1.15; font-weight: 900; margin-bottom: 20px;">
-          Aerosol Propellants Explained: LPG vs DME vs HFC vs N₂ vs CO₂ for Indian & Global Manufacturers
+          Aerosol Propellants: LPG vs DME vs HFC vs N₂ vs CO₂
         </h1>
         
         <!-- Post meta details -->
@@ -74,6 +157,8 @@ const schemas = [blogSchema, breadcrumbSchema];
           <span style="width: 4px; height: 4px; border-radius: 50%; background-color: var(--border);"></span>
           <span>Published: <strong>Nov 12, 2025</strong></span>
           <span style="width: 4px; height: 4px; border-radius: 50%; background-color: var(--border);"></span>
+          <span>Updated: <strong>Jul 29, 2026</strong></span>
+          <span style="width: 4px; height: 4px; border-radius: 50%; background-color: var(--border);"></span>
           <span>Reading Time: <strong>18 min read</strong></span>
           <span style="width: 4px; height: 4px; border-radius: 50%; background-color: var(--border);"></span>
           <span style="background: #e0f2fe; color: #0369a1; padding: 2px 10px; border-radius: 50px; font-size: 0.75rem; font-weight: 700; text-transform: uppercase;">Aerosols & Gas Dosing</span>
@@ -84,7 +169,7 @@ const schemas = [blogSchema, breadcrumbSchema];
       <div class="image-slot">
         <img 
           src="https://assets.zyrosite.com/A3QlOV94WLSaL6xE/aerosol-can-cross-section-components.jpg-rgcWcHa1iiQgJsa9.png" 
-          alt="Cross section of aerosol can showing liquid propellant vapor phase dip tube and valve" 
+          alt="Aerosol can cross-section showing liquid propellant, vapour phase headspace, dip tube and valve — Global Aerosols" 
           width="1200" 
           height="800" 
           loading="eager" 
@@ -95,44 +180,206 @@ const schemas = [blogSchema, breadcrumbSchema];
       <div class="box" style="background: #f8fafc; border: 1px solid var(--border); border-radius: var(--radius-lg); padding: 24px; margin: 30px 0;">
         <h3 style="margin-top: 0; font-family: 'Outfit', sans-serif; color: var(--text-primary); font-size: 1.25rem; font-weight: 700; border-bottom: 2px solid var(--border); padding-bottom: 8px;">Guide Contents</h3>
         <ul style="display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 10px; list-style-type: none; padding-left: 0; margin-bottom: 0;">
-          
+          <li><a href="#what-is-a-propellant" style="font-weight: 600; color: var(--primary);">1. What Is a Propellant in an Aerosol System?</a></li>
+          <li><a href="#why-selection-matters" style="font-weight: 600; color: var(--primary);">2. Why Propellant Selection Is Critical</a></li>
+          <li><a href="#lpg" style="font-weight: 600; color: var(--primary);">3. Liquefied Hydrocarbon Propellants (LPG)</a></li>
+          <li><a href="#dme" style="font-weight: 600; color: var(--primary);">4. Dimethyl Ether (DME)</a></li>
+          <li><a href="#hfc" style="font-weight: 600; color: var(--primary);">5. Hydrofluorocarbons (HFC-134a, HFC-152a)</a></li>
+          <li><a href="#compressed-gases" style="font-weight: 600; color: var(--primary);">6. Compressed Gases: Nitrogen and Carbon Dioxide</a></li>
+          <li><a href="#compressed-air" style="font-weight: 600; color: var(--primary);">7. Compressed Air</a></li>
+          <li><a href="#comparison" style="font-weight: 600; color: var(--primary);">8. Technical Comparison of Major Propellants</a></li>
+          <li><a href="#regulatory" style="font-weight: 600; color: var(--primary);">9. Environmental and Regulatory Framework</a></li>
+          <li><a href="#selection" style="font-weight: 600; color: var(--primary);">10. How to Select the Right Propellant</a></li>
+          <li><a href="#problems" style="font-weight: 600; color: var(--primary);">11. Problems Caused by Incorrect Propellant Selection</a></li>
+          <li><a href="#future" style="font-weight: 600; color: var(--primary);">12. Where Aerosol Propellants Are Heading</a></li>
+          <li><a href="#faq" style="font-weight: 600; color: var(--primary);">13. Frequently Asked Questions</a></li>
         </ul>
       </div>
 
+
       <div class="lead">
-      
+        <p>An aerosol propellant is the pressurised component that supplies the energy to expel product from the can and, in most systems, to break it into droplets. It is not a passive filler: the propellant sets the internal pressure the container must withstand, the flammability classification of the finished goods, the spray character the user experiences, and the chemical environment every seal and coating inside the can must survive. Choosing it is the first irreversible engineering decision in an aerosol project, because almost every other component is specified around it.</p>
 
-      <div class="toc-box">
-  <strong>Table of Contents</strong>
-  <ol style="margin:8px 0 0 18px;padding:0;">
-    <li>What Is a Propellant in an Aerosol System?</li>
-    <li>Why Propellant Selection Is Critical for Product Success</li>
-    <li>Types of Aerosol Propellants – Technical Overview
-      <ol style="margin-top:6px;">
-        <li>LPG (Liquefied Petroleum Gas)</li>
-        <li>DME (Dimethyl Ether)</li>
-        <li>HFCs (Hydrofluorocarbons)</li>
-        <li>Nitrogen (N₂)</li>
-        <li>Carbon Dioxide (CO₂)</li>
-        <li>Compressed Air</li>
-      </ol>
-    </li>
-    <li>Technical Comparison of All Major Propellants</li>
-    <li>Cost Comparison of Aerosol Propellants (India vs Global)</li>
-    <li>Environmental &amp; Regulatory Perspective</li>
-    <li>How to Select the Right Propellant for Your Product</li>
-    <li>Common Formulation Problems Linked to Wrong Propellant Selection</li>
-    <li>Future of Aerosol Propellants – Trends &amp; Innovations</li>
-    <li>How Global Aerosols Supports Propellant Selection &amp; Compliance</li>
-    <li>Frequently Asked Questions (FAQ)</li>
-    <li>For Deeper Understanding of the Aerosol Ecosystem</li>
-    <li>Selected External Technical References</li>
-    <li>Get Expert Aerosol Guidance</li>
-    <li>About the Author</li>
-  </ol>
-<div class="cta-box"></div>
+        <p>This guide compares the propellant families in commercial use — liquefied hydrocarbons, dimethyl ether, hydrofluorocarbons, and the compressed gases nitrogen and carbon dioxide — on the properties that actually decide a formulation: vapour pressure, flammability, solvency, and environmental profile.</p>
+
+        <section class="section" id="what-is-a-propellant">
+          <h2 style="margin-top: 2em;">What Is a Propellant in an Aerosol System?</h2>
+          <p>Propellants divide into two fundamentally different families, and the distinction governs how the product behaves from first spray to last. A <strong>liquefied propellant</strong> is stored predominantly as a liquid in equilibrium with its own vapour above it. As vapour is drawn off during dispensing, liquid evaporates to replace it, so the pressure returns to the same value dictated by temperature alone. A <strong>compressed gas</strong> is stored entirely in the gas phase, so removing gas permanently lowers the pressure.</p>
+
+          <p>That difference produces the single most visible performance contrast between the two. A liquefied system delivers near-constant spray force until the liquid propellant is exhausted, whereas a compressed gas system starts strong and weakens progressively as the can empties. The pressure profiles are examined in detail in our comparison of <a href="/compressed-vs-liquefied-gas-aerosols-pressure-profiles" style="color: var(--primary); font-weight: 600;">compressed gas versus liquefied gas aerosols</a>, and the mechanics of how that pressure becomes a spray are covered in <a href="/how-aerosol-cans-work" style="color: var(--primary); font-weight: 600;">how aerosol cans work</a>.</p>
+
+          <p>For a liquefied propellant the pressure inside the can is its <a href="https://en.wikipedia.org/wiki/Vapor_pressure" target="_blank" rel="noopener noreferrer" style="color: var(--primary); font-weight: 600;">vapour pressure</a> at the storage temperature. This is a material property, not a fill quantity, which is why a half-empty can of hairspray sprays with the same force as a full one and why the same can sprays harder on a hot day.</p>
+        </section>
+
+        <section class="section" id="why-selection-matters">
+          <h2 style="margin-top: 2em;">Why Propellant Selection Is Critical</h2>
+          <p>Propellant choice propagates through the entire product specification. It fixes the pressure the can and crimp must contain across the whole service temperature range, which in turn sets the container gauge and the burst margin. It determines whether the finished product is classified as flammable, which decides warehouse storage category, transport documentation, and label warnings. It also defines the solvency environment the valve gasket and internal lacquer will sit in for the product's entire shelf life.</p>
+
+          <p>Getting this wrong is expensive because the consequences surface late. A propellant that slowly swells the gasket produces leaks months after filling, and a propellant that raises pressure beyond the container's comfortable range produces failures only when stock reaches a hot climate. Both failure routes are catalogued in our guide to <a href="/why-do-aerosol-cans-leak" style="color: var(--primary); font-weight: 600;">why aerosol cans leak</a>.</p>
+        </section>
+
+        <section class="section" id="lpg">
+          <h2 style="margin-top: 2em;">Liquefied Hydrocarbon Propellants (LPG)</h2>
+          <p>Liquefied petroleum gas is the dominant aerosol propellant worldwide. In aerosol use it means aerosol-grade propane, isobutane, and n-butane, purified well beyond fuel grade to remove sulphur compounds and heavy ends that would otherwise taint the product or corrode the can. These three are used less as individual propellants than as a blending set.</p>
+
+          <p>Their value lies in that blendability. Each component has a different vapour pressure at a given temperature — approximately 8.3 bar for propane, 3.0 bar for isobutane, and 2.1 bar for n-butane at 20 °C — so a formulator can hit almost any target pressure by adjusting the ratio. Because the blend is liquefied, that target pressure then holds steady for the life of the can. Our guide to <a href="/propellant-blend-formulation-vapor-pressure-lpg" style="color: var(--primary); font-weight: 600;">propellant blend formulation</a> covers how those ratios are calculated.</p>
+
+          <p>Hydrocarbons also have very low global warming potential, on the order of a few times that of carbon dioxide, and they are inexpensive and widely available. The decisive drawback is flammability. An LPG-propelled product is a flammable aerosol, which brings it under fire protection requirements such as those published by the <a href="https://www.nfpa.org" target="_blank" rel="noopener noreferrer" style="color: var(--primary); font-weight: 600;">National Fire Protection Association</a> and raises the hazard tier for storage and transport. Hydrocarbons are also active solvents, so they contribute to dissolving the concentrate but equally attack unsuitable elastomers.</p>
+        </section>
+
+        <section class="section" id="dme">
+          <h2 style="margin-top: 2em;">Dimethyl Ether (DME)</h2>
+          <p>Dimethyl ether occupies a niche no hydrocarbon can fill. It is a liquefied propellant with a vapour pressure of roughly 5.1 bar at 20 °C, placing it between isobutane and propane, but its defining property is that it is appreciably soluble in water. No hydrocarbon propellant is.</p>
+
+          <p>That solubility allows a genuinely single-phase water-based aerosol without an emulsifier, which is a powerful tool for reducing volatile organic compound content while keeping the simplicity and spray consistency of a solution system. DME is also a strong solvent in its own right, which helps with difficult concentrates but demands careful verification of gasket and lacquer compatibility. It is flammable, and it has a very short atmospheric lifetime and correspondingly negligible global warming potential. Our dedicated <a href="/dimethyl-ether-dme-aerosol-propellant-guide" style="color: var(--primary); font-weight: 600;">DME propellant guide</a> covers its toxicology and compatibility in full.</p>
+        </section>
+
+        <section class="section" id="hfc">
+          <h2 style="margin-top: 2em;">Hydrofluorocarbons (HFC-134a and HFC-152a)</h2>
+          <p>Hydrofluorocarbons entered aerosol use as replacements for chlorofluorocarbons after the latter were phased out for damaging stratospheric ozone. The two relevant to aerosols behave very differently from one another and should not be treated as interchangeable.</p>
+
+          <p><strong>HFC-134a</strong> is non-flammable, with a vapour pressure near 5.7 bar at 20 °C, and it is the reason it remains in use: for a product that must not be flammable and cannot tolerate a declining pressure profile, it is one of very few options. Its problem is a global warming potential in the region of 1,400 times that of carbon dioxide on a hundred-year basis. <strong>HFC-152a</strong> has a far lower global warming potential, around 124, but it is flammable, which removes the main advantage of choosing an HFC in the first place.</p>
+
+          <p>Both sit inside a tightening regulatory framework. The <a href="https://www.epa.gov/snap" target="_blank" rel="noopener noreferrer" style="color: var(--primary); font-weight: 600;">EPA Significant New Alternatives Policy programme</a> lists which substitutes are acceptable for each aerosol end use, and equivalent restrictions apply in Europe under the F-gas Regulation.</p>
+        </section>
+
+        <section class="section" id="compressed-gases">
+          <h2 style="margin-top: 2em;">Compressed Gases: Nitrogen and Carbon Dioxide</h2>
+          <p>Nitrogen and carbon dioxide are charged into the headspace as gases and never liquefy at aerosol service conditions. Both are non-flammable, which is often the whole reason for selecting them, and both avoid any solvency effect on the concentrate.</p>
+
+          <p><strong>Nitrogen</strong> is chemically inert, has no global warming potential, and does not dissolve appreciably in most formulations, making it the standard choice for food-contact and pharmaceutical aerosols. <strong>Carbon dioxide</strong> provides more available pressure for a given charge but is moderately soluble in water and in many organic liquids, and dissolved carbon dioxide forms carbonic acid that lowers formulation pH. In a water-based product that pH shift is a corrosion risk in its own right, as discussed in our study of <a href="/aerosol-can-corrosion-1" style="color: var(--primary); font-weight: 600;">corrosion in water-based aerosol cans</a>. Their behaviour in food applications is covered in <a href="/food-grade-aerosols-nitrous-oxide-co2-applications" style="color: var(--primary); font-weight: 600;">food-grade aerosols</a>.</p>
+
+          <p>The shared limitation is the declining pressure profile. Where consistent output matters, the usual remedy is a <a href="/bag-on-valve-technology-design-and-applications" style="color: var(--primary); font-weight: 600;">bag-on-valve system</a>, which isolates the product in a pouch and lets an inert compressed gas act on its outside.</p>
+        </section>
+
+        <section class="section" id="compressed-air">
+          <h2 style="margin-top: 2em;">Compressed Air</h2>
+          <p>Compressed air appears occasionally as the cheapest possible propellant, but its oxygen content is a liability. Oxygen in prolonged contact with the concentrate promotes oxidative degradation of fragrances, dyes, unsaturated oils, and many actives, and it can support combustion in a formulation that would otherwise be difficult to ignite. Its use is therefore restricted to a small number of tolerant, typically aqueous products where shelf life demands are modest.</p>
+        </section>
+
+        <section class="section" id="comparison">
+          <h2 style="margin-top: 2em;">Technical Comparison of Major Propellants</h2>
+          <p>The table below summarises the properties that most often decide a selection. Vapour pressures are approximate absolute values at 20 °C, and global warming potentials are the commonly cited hundred-year figures; both should be confirmed against current supplier data for any specific grade before it is designed into a product.</p>
+          <div class="table-container" style="overflow-x: auto; margin: 24px 0;">
+            <table>
+              <thead>
+                <tr>
+                  <th>Propellant</th>
+                  <th>Type</th>
+                  <th>Vapour pressure at 20 &deg;C</th>
+                  <th>Flammability</th>
+                  <th>GWP (100-yr)</th>
+                  <th>Notable characteristic</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr><td>Propane</td><td>Liquefied</td><td>~8.3 bar</td><td>Flammable</td><td>~3</td><td>Highest pressure of the common hydrocarbons</td></tr>
+                <tr><td>Isobutane</td><td>Liquefied</td><td>~3.0 bar</td><td>Flammable</td><td>~3</td><td>The usual mid-range blending workhorse</td></tr>
+                <tr><td>n-Butane</td><td>Liquefied</td><td>~2.1 bar</td><td>Flammable</td><td>~4</td><td>Lowest pressure hydrocarbon option</td></tr>
+                <tr><td>DME</td><td>Liquefied</td><td>~5.1 bar</td><td>Flammable</td><td>~1</td><td>Water-soluble; enables single-phase aqueous systems</td></tr>
+                <tr><td>HFC-134a</td><td>Liquefied</td><td>~5.7 bar</td><td>Non-flammable</td><td>~1430</td><td>Non-flammable but high GWP; being phased down</td></tr>
+                <tr><td>HFC-152a</td><td>Liquefied</td><td>~5.1 bar</td><td>Flammable</td><td>~124</td><td>Lower GWP than 134a but loses non-flammability</td></tr>
+                <tr><td>Nitrogen</td><td>Compressed</td><td>Charge-dependent</td><td>Non-flammable</td><td>0</td><td>Fully inert; food and pharmaceutical default</td></tr>
+                <tr><td>Carbon dioxide</td><td>Compressed</td><td>Charge-dependent</td><td>Non-flammable</td><td>1</td><td>Partly soluble; lowers pH via carbonic acid</td></tr>
+              </tbody>
+            </table>
+          </div>
+          <p>Read across the table and the pattern is clear: no propellant is simultaneously non-flammable, low-GWP, constant-pressure, and solvency-free. Every real selection trades one of those away.</p>
+        </section>
+
+        <section class="section" id="regulatory">
+          <h2 style="margin-top: 2em;">Environmental and Regulatory Framework</h2>
+          <p>Aerosol propellants have been shaped by environmental regulation more than by any other force. The Montreal Protocol eliminated chlorofluorocarbons because of their ozone-depleting potential, which is what brought hydrocarbons and HFCs into the industry in the first place. The Kigali Amendment then turned attention to the climate impact of the HFC replacements, committing parties to a phase-down of HFC consumption on an agreed schedule.</p>
+
+          <p>Three regimes matter in practice. Ozone and climate obligations flow from the Montreal Protocol and its amendments. Regional f-gas rules, notably in the European Union, restrict high-GWP compounds in specific applications. Separately, volatile organic compound limits constrain how much evaporating organic material a product may contain, with limits for aerosol coatings published by the <a href="https://www.epa.gov/stationary-sources-air-pollution/aerosol-coatings" target="_blank" rel="noopener noreferrer" style="color: var(--primary); font-weight: 600;">US EPA</a>. Because hydrocarbon propellants are themselves volatile organic compounds, propellant choice and VOC compliance are the same decision.</p>
+
+          <p>Transport adds a further layer: aerosols ship as dangerous goods under UN 1950, with packaging and pressure duties set out in the <a href="https://unece.org/transport/dangerous-goods" target="_blank" rel="noopener noreferrer" style="color: var(--primary); font-weight: 600;">UN Model Regulations</a>. Our guide to <a href="/dot-un-aerosol-transport-regulations-hazmat" style="color: var(--primary); font-weight: 600;">DOT and UN transport rules</a> explains how this applies to a finished batch.</p>
+        </section>
+
+        <section class="section" id="selection">
+          <h2 style="margin-top: 2em;">How to Select the Right Propellant</h2>
+          <p>Selection is best treated as an elimination sequence rather than an open comparison, because the hard constraints remove most candidates before cost is even considered. Work through the questions in this order:</p>
+          <ol>
+            <li><strong>Is non-flammability mandatory?</strong> If the application, market, or customer requires it, the field narrows immediately to nitrogen, carbon dioxide, or HFC-134a.</li>
+            <li><strong>Is the product food-contact or inhaled?</strong> These demand a propellant with an established safety profile for that route, which in practice means an inert compressed gas or a pharmaceutical-grade liquefied propellant.</li>
+            <li><strong>Must spray performance stay constant to the last dose?</strong> If so, a liquefied propellant or a bag-on-valve design is required, since a plain compressed gas system will fade.</li>
+            <li><strong>Is the concentrate water-based?</strong> Water and hydrocarbons do not mix without an emulsifier, so this points to DME, to a compressed gas, or to an emulsion system.</li>
+            <li><strong>What pressure does the container and valve tolerate?</strong> Set the target from the container rating with margin for the hottest expected storage, then blend to meet it.</li>
+            <li><strong>Are the elastomers and lacquer compatible?</strong> Confirm by immersion testing in the finished formulation, never from a supplier datasheet alone.</li>
+          </ol>
+          <p>Only once those six are satisfied does cost and local availability decide between the remaining options. Reversing that order is how projects end up re-qualifying components late.</p>
+        </section>
+
+        <section class="section" id="problems">
+          <h2 style="margin-top: 2em;">Problems Caused by Incorrect Propellant Selection</h2>
+          <p>Most propellant-related failures share a common signature: the product performs acceptably at the bench and fails weeks or months later in the field. Recognising the pattern shortens diagnosis considerably.</p>
+          <ul>
+            <li><strong>Gasket swelling and leakage</strong> &mdash; a hydrocarbon or DME propellant paired with an incompatible elastomer, producing slow pressure loss after storage.</li>
+            <li><strong>Pressure excursions in hot climates</strong> &mdash; a blend targeted at ambient temperature rather than worst-case transit conditions.</li>
+            <li><strong>Concentrate separation</strong> &mdash; a propellant that is not genuinely miscible with the concentrate, so the can requires shaking that the product was never designed to need.</li>
+            <li><strong>Coarse or weak spray late in the can</strong> &mdash; a compressed gas chosen where the application actually needed a constant pressure profile.</li>
+            <li><strong>Unexpected pH drift</strong> &mdash; carbon dioxide dissolving into an aqueous concentrate and forming carbonic acid, with corrosion consequences for the container.</li>
+            <li><strong>Reclassification late in development</strong> &mdash; a flammable propellant selected without accounting for the storage and transport burden that classification imposes.</li>
+          </ul>
+        </section>
+
+        <section class="section" id="future">
+          <h2 style="margin-top: 2em;">Where Aerosol Propellants Are Heading</h2>
+          <p>The active direction of travel is toward hydrofluoroolefins, which are structurally similar to HFCs but contain a carbon-carbon double bond that makes them break down rapidly in the lower atmosphere. HFO-1234ze is the relevant example for aerosols: it offers a global warming potential below one while retaining much of the handling behaviour that made HFC-134a useful. Our guide to <a href="/hfo-1234ze-propellant-low-gwp-alternative" style="color: var(--primary); font-weight: 600;">HFO-1234ze as a low-GWP alternative</a> covers its properties in detail.</p>
+
+          <p>Alongside that substitution, the established levers remain in use: shifting to compressed gases where the application tolerates a falling pressure profile, adopting bag-on-valve to make compressed gases behave more like liquefied ones, and reformulating to water-based systems to cut volatile organic compound load. None of these is universally applicable, which is why the selection sequence above matters more than any single favoured technology.</p>
+        </section>
+      </div>
 
 
+      <!-- FAQ -->
+      <section class="section" id="faq" style="margin-top: 50px;">
+        <h2>Frequently Asked Questions</h2>
+
+        <details style="border: 1px solid var(--border); border-radius: var(--radius-md); margin-bottom: 10px; background: #ffffff;">
+          <summary style="font-weight: 600; padding: 14px 18px; cursor: pointer;">What is the difference between a liquefied and a compressed gas propellant?</summary>
+          <div style="padding: 0 18px 16px; color: var(--text-muted); line-height: 1.65;">A liquefied propellant is stored mostly as a liquid in equilibrium with its own vapour, so as vapour is used the liquid evaporates to replace it and pressure stays almost constant until the liquid is exhausted. A compressed gas such as nitrogen is stored entirely as gas, so pressure falls progressively as the headspace expands. This single difference explains most of the performance gap between the two families.</div>
+        </details>
+
+        <details style="border: 1px solid var(--border); border-radius: var(--radius-md); margin-bottom: 10px; background: #ffffff;">
+          <summary style="font-weight: 600; padding: 14px 18px; cursor: pointer;">Why is LPG still the most widely used aerosol propellant?</summary>
+          <div style="padding: 0 18px 16px; color: var(--text-muted); line-height: 1.65;">Blends of propane, isobutane and n-butane cover a wide, finely adjustable pressure range, deliver constant pressure through the life of the can, and have very low global warming potential. They are also inexpensive and widely available. The trade-off is flammability, which raises the hazard classification of the finished product and imposes storage and transport controls.</div>
+        </details>
+
+        <details style="border: 1px solid var(--border); border-radius: var(--radius-md); margin-bottom: 10px; background: #ffffff;">
+          <summary style="font-weight: 600; padding: 14px 18px; cursor: pointer;">What makes dimethyl ether different from other propellants?</summary>
+          <div style="padding: 0 18px 16px; color: var(--text-muted); line-height: 1.65;">Dimethyl ether is unusual because it is appreciably soluble in water, which no hydrocarbon propellant is. That property allows a single-phase water-based aerosol without an emulsifier, which is valuable for reducing volatile organic compound content. It is flammable and a strong solvent, so gasket and coating compatibility must be verified carefully.</div>
+        </details>
+
+        <details style="border: 1px solid var(--border); border-radius: var(--radius-md); margin-bottom: 10px; background: #ffffff;">
+          <summary style="font-weight: 600; padding: 14px 18px; cursor: pointer;">Are HFC propellants being phased out?</summary>
+          <div style="padding: 0 18px 16px; color: var(--text-muted); line-height: 1.65;">They are being phased down rather than banned outright. The Kigali Amendment to the Montreal Protocol commits parties to reducing hydrofluorocarbon consumption over time, and regional rules such as the EU F-gas Regulation restrict higher-GWP compounds in many applications. HFC-134a remains valuable where non-flammability is essential, but its high global warming potential is driving substitution toward hydrofluoroolefins.</div>
+        </details>
+
+        <details style="border: 1px solid var(--border); border-radius: var(--radius-md); margin-bottom: 10px; background: #ffffff;">
+          <summary style="font-weight: 600; padding: 14px 18px; cursor: pointer;">When should a compressed gas propellant be chosen?</summary>
+          <div style="padding: 0 18px 16px; color: var(--text-muted); line-height: 1.65;">Compressed gases suit products that must be non-flammable, food-contact, or free of any solvency effect on the concentrate. Nitrogen is inert and has no global warming potential, which makes it the default for food and pharmaceutical aerosols. The accepted cost is a declining pressure profile, unless the design uses a bag-on-valve system to compensate.</div>
+        </details>
+
+        <details style="border: 1px solid var(--border); border-radius: var(--radius-md); margin-bottom: 10px; background: #ffffff;">
+          <summary style="font-weight: 600; padding: 14px 18px; cursor: pointer;">How does propellant choice affect the valve gasket?</summary>
+          <div style="padding: 0 18px 16px; color: var(--text-muted); line-height: 1.65;">Liquefied hydrocarbon propellants and dimethyl ether act as solvents on elastomers, causing swelling, plasticiser extraction, or loss of compression set over time. Compressed gases are chemically inert and exert no such effect. Gasket material must therefore be selected against the specific propellant, and confirmed by immersion testing in the finished formulation rather than from a datasheet.</div>
+        </details>
+      </section>
+
+      <!-- RELATED ARTICLES -->
+      <section class="section" id="related-articles" style="margin-top: 50px;">
+        <h2>Related Articles</h2>
+        <ul style="display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 10px; list-style-type: none; padding-left: 0;">
+          <li><a href="/compressed-vs-liquefied-gas-aerosols-pressure-profiles" style="font-weight: 600; color: var(--primary);">Compressed Gas vs Liquefied Gas Aerosols: Pressure Profiles</a></li>
+          <li><a href="/propellant-blend-formulation-vapor-pressure-lpg" style="font-weight: 600; color: var(--primary);">Propellant Blend Formulation: Vapour Pressure Control</a></li>
+          <li><a href="/aerosol-manufacturing-101-guide" style="font-weight: 600; color: var(--primary);">Aerosol Manufacturing 101: The Complete Technical Guide</a></li>
+          <li><a href="/how-aerosol-cans-work" style="font-weight: 600; color: var(--primary);">How Aerosol Cans Work: Propellant, Pressure &amp; Valves</a></li>
+          <li><a href="/aerosol-chemistry-101" style="font-weight: 600; color: var(--primary);">Aerosol Chemistry 101: Solvents, Binders &amp; Surfactants</a></li>
+          <li><a href="/from-lab-to-commercial-launch" style="font-weight: 600; color: var(--primary);">From Lab to Factory: Aerosol R&amp;D to Commercial Manufacturing</a></li>
+          <li><a href="/choosing-the-right-product-consultant" style="font-weight: 600; color: var(--primary);">How to Choose the Right Aerosol Product Consultant</a></li>
+        </ul>
+      </section>
 
       <!-- Contact Box -->
       <div class="cta" style="background: linear-gradient(135deg, var(--primary) 0%, var(--secondary) 100%); color: #ffffff; padding: 30px; border-radius: var(--radius-lg); margin-top: 40px; display: flex; flex-direction: column; justify-content: space-between; align-items: flex-start; gap: 20px; md-flex-direction: row; md-align-items: center;">
@@ -160,7 +407,7 @@ const schemas = [blogSchema, breadcrumbSchema];
         <div>
           <h3 style="margin-top: 0; margin-bottom: 8px; font-family: 'Outfit', sans-serif; font-size: 1.3rem; font-weight: 700; color: var(--text-primary);">About the Specialist</h3>
           <p style="margin-top: 0; margin-bottom: 12px; font-size: 0.95rem; line-height: 1.6; color: var(--text-muted);">
-            <strong>Absar Khan</strong> is the principal consultant and chemical formulation architect at <strong>Global Formulation</strong>. He possesses cross-disciplinary engineering expertise spanning aerosol gassing systems, pharmaceutical manufacturing, sterile injectables, cosmetics, and green chemical plant setups. Absar leads scientific and engineering advisory teams supporting manufacturers globally in technology selection, GMP layouts, validation frameworks, and regulatory strategies.
+            <strong>Absar Khan</strong> is the founder and lead aerosol consultant at <strong>Global Aerosols</strong>. He possesses cross-disciplinary engineering expertise spanning propellant selection and blending, vapour pressure control, valve compatibility, filling line design, and regulatory compliance. Absar leads scientific and engineering advisory teams supporting manufacturers globally in technology selection, GMP layouts, validation frameworks, and regulatory strategies.
           </p>
           <p style="margin: 0; font-size: 0.9rem;">
             <strong>LinkedIn Portfolio:</strong> 

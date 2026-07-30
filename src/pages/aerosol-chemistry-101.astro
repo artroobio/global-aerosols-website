@@ -1,19 +1,25 @@
 ---
 import Layout from '../layouts/Layout.astro';
 
-const blogSchema = {
+const slug = 'aerosol-chemistry-101';
+const heroUrl = 'https://assets.zyrosite.com/A3QlOV94WLSaL6xE/aerosol-can-cross-section-diagram-MYf4Y9ARTiNEfLSl.jpg';
+
+const schemas = {
   "@context": "https://schema.org",
   "@graph": [
     {
       "@type": "Organization",
+      "@id": "https://www.globalaerosols.com/#organization",
       "name": "Global Aerosols",
-      "url": "https://www.globalaerosols.com",
-      "logo": "https://www.globalaerosols.com/assets/logo.png"
+      "url": "https://www.globalaerosols.com/",
+      "logo": { "@type": "ImageObject", "url": "https://www.globalaerosols.com/logo.png" }
     },
     {
       "@type": "WebSite",
-      "url": "https://www.globalaerosols.com",
+      "@id": "https://www.globalaerosols.com/#website",
+      "url": "https://www.globalaerosols.com/",
       "name": "Global Aerosols",
+      "publisher": { "@id": "https://www.globalaerosols.com/#organization" },
       "potentialAction": {
         "@type": "SearchAction",
         "target": "https://www.globalaerosols.com/?s={search_term_string}",
@@ -22,64 +28,45 @@ const blogSchema = {
     },
     {
       "@type": "Person",
+      "@id": "https://www.globalaerosols.com/#absar-khan",
       "name": "Absar Khan",
       "url": "https://www.linkedin.com/in/absar-khan-aerosol-consultant-and-formulator-78359b162",
-      "jobTitle": "Founder & Lead Consultant",
-      "affiliation": "Global Aerosols"
-    },
-    {
-      "@type": "Article",
-      "headline": "Aerosol Chemistry 101: Complete Guide to Solvents, Binders, Surfactants & Additives",
-      "description": "Technical guide to aerosol formulation chemistry covering solvents, binders, surfactants, and additives.",
-      "image": "https://www.globalaerosols.com/assets/aerosol-chemistry-101-featured.jpg",
-      "author": {
-        "@type": "Person",
-        "name": "Absar Khan"
-      },
-      "publisher": {
-        "@type": "Organization",
-        "name": "Global Aerosols",
-        "logo": {
-          "@type": "ImageObject",
-          "url": "https://www.globalaerosols.com/assets/logo.png"
-        }
-      },
-      "datePublished": "2025-03-01",
-      "dateModified": "2025-03-01",
-      "mainEntityOfPage": "https://www.globalaerosols.com/aerosol-chemistry-101"
+      "jobTitle": "Founder & Lead Aerosol Consultant",
+      "worksFor": { "@id": "https://www.globalaerosols.com/#organization" }
     },
     {
       "@type": "BreadcrumbList",
+      "@id": `https://www.globalaerosols.com/${slug}#breadcrumb`,
       "itemListElement": [
-        {
-          "@type": "ListItem",
-          "position": 1,
-          "name": "Home",
-          "item": "https://www.globalaerosols.com"
-        },
-        {
-          "@type": "ListItem",
-          "position": 2,
-          "name": "Blog",
-          "item": "https://www.globalaerosols.com/blogs"
-        },
-        {
-          "@type": "ListItem",
-          "position": 3,
-          "name": "Aerosol Chemistry 101",
-          "item": "https://www.globalaerosols.com/aerosol-chemistry-101"
-        }
+        { "@type": "ListItem", "position": 1, "name": "Home", "item": "https://www.globalaerosols.com/" },
+        { "@type": "ListItem", "position": 2, "name": "Blog", "item": "https://www.globalaerosols.com/blog/" },
+        { "@type": "ListItem", "position": 3, "name": "Aerosol Chemistry 101", "item": `https://www.globalaerosols.com/${slug}` }
       ]
+    },
+    {
+      "@type": "BlogPosting",
+      "@id": `https://www.globalaerosols.com/${slug}#article`,
+      "headline": "Aerosol Chemistry 101: Solvents, Binders & Surfactants",
+      "description": "A technical guide to aerosol chemistry: how solvents, binders, surfactants and additives determine spray quality, film formation and formulation stability.",
+      "image": { "@type": "ImageObject", "url": heroUrl },
+      "author": { "@id": "https://www.globalaerosols.com/#absar-khan" },
+      "publisher": { "@id": "https://www.globalaerosols.com/#organization" },
+      "datePublished": "2025-11-09",
+      "dateModified": "2026-07-29",
+      "mainEntityOfPage": { "@id": `https://www.globalaerosols.com/${slug}` },
+      "articleSection": "Aerosols & Gas Dosing",
+      "keywords": "aerosol chemistry, aerosol solvents, binders, surfactants, additives, solubility parameter, HLB, film formation, formulation stability, concentrate",
+      "wordCount": 2460
     },
     {
       "@type": "FAQPage",
       "mainEntity": [
         {
           "@type": "Question",
-          "name": "What is the most commonly used solvent in aerosol products?",
+          "name": "What is the most commonly used solvent class in aerosol products?",
           "acceptedAnswer": {
             "@type": "Answer",
-            "text": "Hydrocarbons, acetone, isopropyl alcohol, and esters are the most widely used solvents."
+            "text": "Hydrocarbon and oxygenated solvents dominate solvent-based aerosols, with the specific choice driven by how well it dissolves the resin system and how fast it needs to evaporate. Alcohols are the workhorse in personal care because they are cosmetically acceptable and volatile. In every case the solvent must also be compatible with the propellant, since the two form a single liquid phase inside the can."
           }
         },
         {
@@ -87,51 +74,62 @@ const blogSchema = {
           "name": "Can water be used as a solvent in aerosols?",
           "acceptedAnswer": {
             "@type": "Answer",
-            "text": "Yes, with proper surfactants, preservatives, and corrosion inhibitors."
+            "text": "Yes, and water-based aerosols are widely used to reduce volatile organic compound content. The trade-offs are that water is an electrolyte and therefore raises the corrosion risk to the container, it does not mix with hydrocarbon propellants without an emulsifier, and its high latent heat of vaporisation slows drying. These systems normally require an internally lacquered can and a corrosion inhibitor package."
           }
         },
         {
           "@type": "Question",
-          "name": "Which binder provides the highest gloss in spray paints?",
+          "name": "What does a binder do in an aerosol formulation?",
           "acceptedAnswer": {
             "@type": "Answer",
-            "text": "Acrylic resins provide the highest gloss and durability."
+            "text": "The binder is the film-forming resin that remains on the substrate once the solvent and propellant have evaporated. It provides adhesion, cohesion, gloss, hardness and durability, so it largely determines the performance the user actually sees. Binder choice also sets the solvent requirement, because the resin must stay fully dissolved in the can and only form a film after spraying."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "Why are surfactants needed in aerosol systems?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Surfactants lower interfacial tension so that two otherwise immiscible phases can be held as a stable emulsion, which is what makes water-based and foam aerosols possible. They also control wetting on the target surface and, in foam products, stabilise the bubble walls as propellant flashes off. Selection is usually guided by the hydrophilic-lipophilic balance of the surfactant relative to the phase being emulsified."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "How does solubility parameter matching help formulation?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Solubility parameters express the cohesive energy density of a liquid or polymer, and materials with similar values tend to be mutually soluble. Matching the parameter of the solvent blend to that of the resin gives a stable, clear concentrate and reduces the risk of the binder precipitating in the can. The same reasoning predicts whether a propellant will swell the valve gasket."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "What additives are typically used in aerosol formulations?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Common additive classes include corrosion inhibitors to protect the container, defoamers or foam stabilisers depending on the product, ultraviolet absorbers for coatings, and rheology modifiers to keep pigments suspended. Each is added to solve a specific defined problem, because every additional component increases the number of possible interactions in the can. Additives are therefore kept to the minimum set that the product genuinely requires."
           }
         }
       ]
+    },
+    {
+      "@type": "WebPage",
+      "@id": `https://www.globalaerosols.com/${slug}`,
+      "url": `https://www.globalaerosols.com/${slug}`,
+      "name": "Aerosol Chemistry 101: Solvents, Binders & Surfactants",
+      "description": "A technical guide to aerosol chemistry: how solvents, binders, surfactants and additives determine spray quality, film formation and formulation stability.",
+      "isPartOf": { "@id": "https://www.globalaerosols.com/#website" },
+      "breadcrumb": { "@id": `https://www.globalaerosols.com/${slug}#breadcrumb` },
+      "primaryImageOfPage": { "@type": "ImageObject", "url": heroUrl },
+      "datePublished": "2025-11-09",
+      "dateModified": "2026-07-29"
     }
   ]
 };
-const breadcrumbSchema = {
-  "@context": "https://schema.org",
-  "@type": "BreadcrumbList",
-  "itemListElement": [
-    {
-      "@type": "ListItem",
-      "position": 1,
-      "name": "Home",
-      "item": "https://www.globalaerosols.com"
-    },
-    {
-      "@type": "ListItem",
-      "position": 2,
-      "name": "Blog",
-      "item": "https://www.globalaerosols.com/blog"
-    },
-    {
-      "@type": "ListItem",
-      "position": 3,
-      "name": "Aerosol Chemistry 101: Complete Guide to Solvents, Binders, Surfactants & Additives",
-      "item": "https://www.globalaerosols.com/aerosol-chemistry-101"
-    }
-  ]
-};
-const schemas = [blogSchema, breadcrumbSchema];
 ---
 
 <Layout
-  title="Aerosol Chemistry 101: Complete Guide to Solvents, Binders, Surfactants & Additives | Global Aerosols"
-  description="Aerosol Chemistry 101: Technical guide to solvents, binders, surfactants, and additives for students, startups, and entrepreneurs in the aerosol industry."
+  title="Aerosol Chemistry 101: Solvents, Binders & Surfactants"
+  description="A technical guide to aerosol chemistry: how solvents, binders, surfactants and additives determine spray quality, film formation and formulation stability."
   canonical="https://www.globalaerosols.com/aerosol-chemistry-101"
   ogImage="https://assets.zyrosite.com/A3QlOV94WLSaL6xE/aerosol-can-cross-section-diagram-MYf4Y9ARTiNEfLSl.jpg"
   ogType="article"
@@ -152,7 +150,7 @@ const schemas = [blogSchema, breadcrumbSchema];
     <article class="blog-prose">
       <header class="post-header">
         <h1 class="gradient-text" style="font-size: 3rem; line-height: 1.15; font-weight: 900; margin-bottom: 20px;">
-          Aerosol Chemistry 101: Complete Guide to Solvents, Binders, Surfactants & Additives
+          Aerosol Chemistry 101: Solvents, Binders &amp; Surfactants
         </h1>
         
         <!-- Post meta details -->
@@ -163,6 +161,8 @@ const schemas = [blogSchema, breadcrumbSchema];
           </div>
           <span style="width: 4px; height: 4px; border-radius: 50%; background-color: var(--border);"></span>
           <span>Published: <strong>Nov 9, 2025</strong></span>
+          <span style="width: 4px; height: 4px; border-radius: 50%; background-color: var(--border);"></span>
+          <span>Updated: <strong>Jul 29, 2026</strong></span>
           <span style="width: 4px; height: 4px; border-radius: 50%; background-color: var(--border);"></span>
           <span>Reading Time: <strong>15 min read</strong></span>
           <span style="width: 4px; height: 4px; border-radius: 50%; background-color: var(--border);"></span>
@@ -305,10 +305,11 @@ const schemas = [blogSchema, breadcrumbSchema];
 <!-- AEROSOL SOLVENTS – THE BACKBONE OF SPRAY BEHAVIOR -->
 <section class="section" id="aerosol-solvents-the-backbone-of-spray-behavior">
   <h2>Aerosol Solvents – The Backbone of Spray Behavior</h2>
+        <p>Solvent choice cannot be separated from propellant choice, because the two share a single liquid phase inside the can. Our comparison of <a href="/aerosol-propellants-explained-lpg-vs-dme-vs-hfc-vs-n2-vs-co2" style="color: var(--primary); font-weight: 600;">LPG, DME, HFC, nitrogen and CO&#8322;</a> covers how each propellant contributes solvency, and the <a href="/types-of-aerosol-systems-explained" style="color: var(--primary); font-weight: 600;">solution, emulsion and suspension system types</a> determine whether a single-phase solvent blend is even possible.</p>
   <figure style="margin:16px 0;text-align:center;">
             <img src="https://assets.zyrosite.com/A3QlOV94WLSaL6xE/aerosol-solvent-evaporation-rate-comparison-hlcOCft9Tl2dkPdd.webp"
                 alt="Comparison chart of fast, medium and slow evaporating solvents used in aerosol formulations"
-                loading="lazy" decoding="async" style="max-width:100%;height:auto;border-radius:6px;" />
+                loading="lazy" decoding="async" style="max-width:100%;height:auto;border-radius:6px;" width="800" height="450" />
             <figcaption style="font-size:0.85rem;color:#4b5563;margin-top:6px;">Relative evaporation behavior of fast,
                 medium and slow solvents used in aerosol formulation design.</figcaption>
         </figure>
@@ -395,10 +396,11 @@ const schemas = [blogSchema, breadcrumbSchema];
 <!-- AEROSOL BINDERS (RESINS) – THE FILM FORMERS -->
 <section class="section" id="aerosol-binders-resins-the-film-formers">
   <h2>Aerosol Binders (Resins) – The Film Formers</h2>
+        <p>Binder performance is only realised if the film is delivered correctly, which makes resin choice inseparable from valve and actuator design; the delivery side is covered in <a href="/how-aerosol-cans-work" style="color: var(--primary); font-weight: 600;">how aerosol cans work</a>.</p>
   <figure style="margin:16px 0;text-align:center;">
             <img src="https://assets.zyrosite.com/A3QlOV94WLSaL6xE/aerosol-binder-film-formation-microscopic-2ElN0c2mbyTihQ6B.webp"
                 alt="Microscopic view of resin binder forming a continuous film after solvent evaporation in aerosol coating"
-                loading="lazy" decoding="async" style="max-width:100%;height:auto;border-radius:6px;" />
+                loading="lazy" decoding="async" style="max-width:100%;height:auto;border-radius:6px;" width="800" height="450" />
             <figcaption style="font-size:0.85rem;color:#4b5563;margin-top:6px;">Microscopic representation of binder
                 resin coalescing to form a continuous protective film.</figcaption>
         </figure>
@@ -438,16 +440,10 @@ const schemas = [blogSchema, breadcrumbSchema];
         </ul>
 
         <p><strong>Epoxy Resins</strong></p>
-        <ul>
-            <li>Excellent chemical and corrosion resistance</li>
-            <li>Used in primers and industrial coatings</li>
-        </ul>
+        <p>Epoxy resins offer excellent chemical and corrosion resistance, which is why they are used in primers and industrial coatings rather than decorative topcoats.</p>
 
         <p><strong>Polyurethane (PU) Resins</strong></p>
-        <ul>
-            <li>High flexibility and abrasion resistance</li>
-            <li>Used in specialty performance coatings</li>
-        </ul>
+        <p>Polyurethane resins combine high flexibility with abrasion resistance, making them the usual choice for specialty performance coatings.</p>
 
         <h3>Binder Selection Depends On</h3>
 
@@ -472,10 +468,11 @@ const schemas = [blogSchema, breadcrumbSchema];
 <!-- SURFACTANTS IN AEROSOLS – THE STABILITY ENGINEERS -->
 <section class="section" id="surfactants-in-aerosols-the-stability-engineers">
   <h2>Surfactants in Aerosols – The Stability Engineers</h2>
+        <p>Surfactant behaviour is what makes emulsion and foam products work, and the same interfacial chemistry governs how a spray wets its target. Where these systems use water, the corrosion consequences for the container are covered in our two-part study of <a href="/aerosol-can-corrosion-1" style="color: var(--primary); font-weight: 600;">corrosion in water-based aerosol cans</a>.</p>
   <figure style="margin:16px 0;text-align:center;">
             <img src="https://assets.zyrosite.com/A3QlOV94WLSaL6xE/aerosol-emulsion-vs-phase-separation-diagram.webp-UGFtzVs6NPKTVjQh.jpg"
                 alt="Diagram showing stable emulsion versus phase separation in aerosol formulations with and without surfactants"
-                loading="lazy" decoding="async" style="max-width:100%;height:auto;border-radius:6px;" />
+                loading="lazy" decoding="async" style="max-width:100%;height:auto;border-radius:6px;" width="800" height="450" />
             <figcaption style="font-size:0.85rem;color:#4b5563;margin-top:6px;">Stable emulsion versus phase separation
                 behavior based on surfactant efficiency.</figcaption>
         </figure>
@@ -528,10 +525,11 @@ const schemas = [blogSchema, breadcrumbSchema];
 <!-- AEROSOL ADDITIVES – SMALL QUANTITIES, LARGE IMPACT -->
 <section class="section" id="aerosol-additives-small-quantities-large-impact">
   <h2>Aerosol Additives – Small Quantities, Large Impact</h2>
+        <p>Additive and raw-material specifications are normally written against published test methods so that two suppliers can be compared on the same basis; the relevant classification and test standards are maintained by <a href="https://www.astm.org" target="_blank" rel="noopener noreferrer" style="color: var(--primary); font-weight: 600;">ASTM International</a> and <a href="https://www.iso.org" target="_blank" rel="noopener noreferrer" style="color: var(--primary); font-weight: 600;">ISO</a>. Where a coating is intended to reduce solvent emissions, the applicable limits for aerosol coatings are set by the <a href="https://www.epa.gov/stationary-sources-air-pollution/aerosol-coatings" target="_blank" rel="noopener noreferrer" style="color: var(--primary); font-weight: 600;">US EPA aerosol coatings programme</a>.</p>
   <figure style="margin:16px 0;text-align:center;">
             <img src="https://assets.zyrosite.com/A3QlOV94WLSaL6xE/aerosol-additive-interaction-diagram-aV69tcxISNPIsrUQ.jpg"
                 alt="Schematic showing how aerosol additives interact within the liquid formulation matrix"
-                loading="lazy" decoding="async" style="max-width:100%;height:auto;border-radius:6px;" />
+                loading="lazy" decoding="async" style="max-width:100%;height:auto;border-radius:6px;" width="800" height="450" />
             <figcaption style="font-size:0.85rem;color:#4b5563;margin-top:6px;">Functional interaction of aerosol
                 additives with solvents and binders inside the liquid matrix.</figcaption>
         </figure>
@@ -572,6 +570,7 @@ const schemas = [blogSchema, breadcrumbSchema];
 <!-- HOW THESE INGREDIENTS WORK TOGETHER INSIDE THE CAN -->
 <section class="section" id="how-these-ingredients-work-together-inside-the-can">
   <h2>How These Ingredients Work Together Inside the Can</h2>
+        <p>The finished concentrate must remain a single stable system for the whole shelf life, which is why scale-up trials are run before commercial filling — the staged process is described in <a href="/from-lab-to-commercial-launch" style="color: var(--primary); font-weight: 600;">from lab to commercial launch</a>.</p>
   <p>An aerosol formulation is a <strong>closed, pressurized, multi-phase chemical reactor</strong>. Inside the
             can:</p>
 
@@ -634,6 +633,7 @@ const schemas = [blogSchema, breadcrumbSchema];
 <!-- COMMON AEROSOL FORMULATION PROBLEMS AND CHEMICAL CAUSES -->
 <section class="section" id="common-aerosol-formulation-problems-and-chemical-causes">
   <h2>Common Aerosol Formulation Problems and Chemical Causes</h2>
+        <p>Several of these problems present as packaging failures rather than formulation faults. Where a chemical incompatibility attacks the seal or the container, the mechanisms are set out in <a href="/aerosol-valve-gasket-explained" style="color: var(--primary); font-weight: 600;">aerosol valve gasket materials</a> and <a href="/why-do-aerosol-cans-leak" style="color: var(--primary); font-weight: 600;">why aerosol cans leak</a>.</p>
   <p>Chemical instability inside a pressurized aerosol canister can lead to severe product failures, from early corrosion to complete nozzle clogging. Many of these issues are not mechanical, but arise from chemical incompatibilities, poor solubility, or unstable emulsion systems. Resolving these formulation problems requires a systematic investigation into their chemical root causes.</p>
   <table>
             <tr>
@@ -717,17 +717,68 @@ const schemas = [blogSchema, breadcrumbSchema];
 <section class="section" id="external-technical-references-for-deeper-study">
   <h2>External Technical References (For Deeper Study)</h2>
   <ul>
-            <li>European Aerosol Federation – Technical Guidance<br />
-                <a href="https://www.aerosol.org">https://www.aerosol.org</a>
+            <li><strong>European Aerosol Federation (FEA)</strong> — technical guidance and industry standards for aerosol manufacture.<br />
+                <a href="https://www.aerosol.org" target="_blank" rel="noopener noreferrer">https://www.aerosol.org</a>
             </li>
-
-            <li>Society of Cosmetic Chemists – Aerosol Science Resources<br />
-                <a href="https://www.scconline.org">https://www.scconline.org</a>
+            <li><strong>Society of Cosmetic Chemists</strong> — peer-reviewed aerosol and personal care formulation science.<br />
+                <a href="https://www.scconline.org" target="_blank" rel="noopener noreferrer">https://www.scconline.org</a>
+            </li>
+            <li><strong>ASTM International</strong> — published test methods for solvents, resins and finished aerosol products.<br />
+                <a href="https://www.astm.org" target="_blank" rel="noopener noreferrer">https://www.astm.org</a>
             </li>
         </ul>
 </section>
 
 
+
+
+      <!-- FAQ -->
+      <section class="section" id="faq" style="margin-top: 50px;">
+        <h2>Frequently Asked Questions</h2>
+
+        <details style="border: 1px solid var(--border); border-radius: var(--radius-md); margin-bottom: 10px; background: #ffffff;">
+          <summary style="font-weight: 600; padding: 14px 18px; cursor: pointer;">What is the most commonly used solvent class in aerosol products?</summary>
+          <div style="padding: 0 18px 16px; color: var(--text-muted); line-height: 1.65;">Hydrocarbon and oxygenated solvents dominate solvent-based aerosols, with the specific choice driven by how well it dissolves the resin system and how fast it needs to evaporate. Alcohols are the workhorse in personal care because they are cosmetically acceptable and volatile. In every case the solvent must also be compatible with the propellant, since the two form a single liquid phase inside the can.</div>
+        </details>
+
+        <details style="border: 1px solid var(--border); border-radius: var(--radius-md); margin-bottom: 10px; background: #ffffff;">
+          <summary style="font-weight: 600; padding: 14px 18px; cursor: pointer;">Can water be used as a solvent in aerosols?</summary>
+          <div style="padding: 0 18px 16px; color: var(--text-muted); line-height: 1.65;">Yes, and water-based aerosols are widely used to reduce volatile organic compound content. The trade-offs are that water is an electrolyte and therefore raises the corrosion risk to the container, it does not mix with hydrocarbon propellants without an emulsifier, and its high latent heat of vaporisation slows drying. These systems normally require an internally lacquered can and a corrosion inhibitor package.</div>
+        </details>
+
+        <details style="border: 1px solid var(--border); border-radius: var(--radius-md); margin-bottom: 10px; background: #ffffff;">
+          <summary style="font-weight: 600; padding: 14px 18px; cursor: pointer;">What does a binder do in an aerosol formulation?</summary>
+          <div style="padding: 0 18px 16px; color: var(--text-muted); line-height: 1.65;">The binder is the film-forming resin that remains on the substrate once the solvent and propellant have evaporated. It provides adhesion, cohesion, gloss, hardness and durability, so it largely determines the performance the user actually sees. Binder choice also sets the solvent requirement, because the resin must stay fully dissolved in the can and only form a film after spraying.</div>
+        </details>
+
+        <details style="border: 1px solid var(--border); border-radius: var(--radius-md); margin-bottom: 10px; background: #ffffff;">
+          <summary style="font-weight: 600; padding: 14px 18px; cursor: pointer;">Why are surfactants needed in aerosol systems?</summary>
+          <div style="padding: 0 18px 16px; color: var(--text-muted); line-height: 1.65;">Surfactants lower interfacial tension so that two otherwise immiscible phases can be held as a stable emulsion, which is what makes water-based and foam aerosols possible. They also control wetting on the target surface and, in foam products, stabilise the bubble walls as propellant flashes off. Selection is usually guided by the hydrophilic-lipophilic balance of the surfactant relative to the phase being emulsified.</div>
+        </details>
+
+        <details style="border: 1px solid var(--border); border-radius: var(--radius-md); margin-bottom: 10px; background: #ffffff;">
+          <summary style="font-weight: 600; padding: 14px 18px; cursor: pointer;">How does solubility parameter matching help formulation?</summary>
+          <div style="padding: 0 18px 16px; color: var(--text-muted); line-height: 1.65;">Solubility parameters express the cohesive energy density of a liquid or polymer, and materials with similar values tend to be mutually soluble. Matching the parameter of the solvent blend to that of the resin gives a stable, clear concentrate and reduces the risk of the binder precipitating in the can. The same reasoning predicts whether a propellant will swell the valve gasket.</div>
+        </details>
+
+        <details style="border: 1px solid var(--border); border-radius: var(--radius-md); margin-bottom: 10px; background: #ffffff;">
+          <summary style="font-weight: 600; padding: 14px 18px; cursor: pointer;">What additives are typically used in aerosol formulations?</summary>
+          <div style="padding: 0 18px 16px; color: var(--text-muted); line-height: 1.65;">Common additive classes include corrosion inhibitors to protect the container, defoamers or foam stabilisers depending on the product, ultraviolet absorbers for coatings, and rheology modifiers to keep pigments suspended. Each is added to solve a specific defined problem, because every additional component increases the number of possible interactions in the can. Additives are therefore kept to the minimum set that the product genuinely requires.</div>
+        </details>
+      </section>
+
+      <!-- RELATED ARTICLES -->
+      <section class="section" id="related-articles" style="margin-top: 50px;">
+        <h2>Related Articles</h2>
+        <ul style="display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 10px; list-style-type: none; padding-left: 0;">
+          <li><a href="/aerosol-propellants-explained-lpg-vs-dme-vs-hfc-vs-n2-vs-co2" style="font-weight: 600; color: var(--primary);">Aerosol Propellants Explained: LPG vs DME vs HFC vs N&#8322; vs CO&#8322</a></li>
+          <li><a href="/types-of-aerosol-systems-explained" style="font-weight: 600; color: var(--primary);">Types of Aerosol Systems: Solution, Emulsion &amp; Suspension</a></li>
+          <li><a href="/aerosol-manufacturing-101-guide" style="font-weight: 600; color: var(--primary);">Aerosol Manufacturing 101: The Complete Technical Guide</a></li>
+          <li><a href="/how-aerosol-cans-work" style="font-weight: 600; color: var(--primary);">How Aerosol Cans Work: Propellant, Pressure &amp; Valves</a></li>
+          <li><a href="/from-lab-to-commercial-launch" style="font-weight: 600; color: var(--primary);">From Lab to Factory: Aerosol R&amp;D to Commercial Manufacturing</a></li>
+          <li><a href="/choosing-the-right-product-consultant" style="font-weight: 600; color: var(--primary);">How to Choose the Right Aerosol Product Consultant</a></li>
+        </ul>
+      </section>
 
       <!-- Contact Box -->
       <div class="cta" style="background: linear-gradient(135deg, var(--primary) 0%, var(--secondary) 100%); color: #ffffff; padding: 30px; border-radius: var(--radius-lg); margin-top: 40px; display: flex; flex-direction: column; justify-content: space-between; align-items: flex-start; gap: 20px; md-flex-direction: row; md-align-items: center;">
@@ -755,7 +806,7 @@ const schemas = [blogSchema, breadcrumbSchema];
         <div>
           <h3 style="margin-top: 0; margin-bottom: 8px; font-family: 'Outfit', sans-serif; font-size: 1.3rem; font-weight: 700; color: var(--text-primary);">About the Specialist</h3>
           <p style="margin-top: 0; margin-bottom: 12px; font-size: 0.95rem; line-height: 1.6; color: var(--text-muted);">
-            <strong>Absar Khan</strong> is the principal consultant and chemical formulation architect at <strong>Global Formulation</strong>. He possesses cross-disciplinary engineering expertise spanning aerosol gassing systems, pharmaceutical manufacturing, sterile injectables, cosmetics, and green chemical plant setups. Absar leads scientific and engineering advisory teams supporting manufacturers globally in technology selection, GMP layouts, validation frameworks, and regulatory strategies.
+            <strong>Absar Khan</strong> is the founder and lead aerosol consultant at <strong>Global Aerosols</strong>. He possesses cross-disciplinary engineering expertise spanning aerosol formulation chemistry, solvent and resin selection, propellant compatibility, and regulatory compliance. Absar leads scientific and engineering advisory teams supporting manufacturers globally in technology selection, GMP layouts, validation frameworks, and regulatory strategies.
           </p>
           <p style="margin: 0; font-size: 0.9rem;">
             <strong>LinkedIn Portfolio:</strong> 
