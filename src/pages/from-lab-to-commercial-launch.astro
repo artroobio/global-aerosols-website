@@ -1,48 +1,130 @@
 ---
 import Layout from '../layouts/Layout.astro';
 
-const blogSchema = {
+const slug = 'from-lab-to-commercial-launch';
+const heroUrl = 'https://assets.zyrosite.com/A3QlOV94WLSaL6xE/rd-to-pilot-to-commercial-manufacturing-process-ja70rdtisjlefsbq-3wicMDl4Dh8OiSym.png';
+
+const schemas = {
   "@context": "https://schema.org",
-  "@type": "Organization",
-  "name": "Global Aerosols",
-  "url": "https://www.globalaerosols.com/",
-  "logo": ""
-};
-const breadcrumbSchema = {
-  "@context": "https://schema.org",
-  "@type": "Article",
-  "mainEntityOfPage": {
-    "@type": "WebPage",
-    "@id": "https://www.globalaerosols.com/from-lab-to-commercial-launch"
-  },
-  "headline": "From Lab to Commercial Launch: Scaling Aerosol Formulations from R&D to Manufacturing",
-  "description": "A detailed aerosol industry guide explaining the transition from lab-scale formulation to pilot trials and commercial manufacturing.",
-  "articleSection": "Aerosol Manufacturing Scale-Up",
-  "author": {
-    "@type": "Person",
-    "name": "Absar Khan"
-  },
-  "publisher": {
-    "@type": "Organization",
-    "name": "Global Aerosols",
-    "logo": {
-      "@type": "ImageObject",
-      "url": "https://www.globalaerosols.com/logo.png"
+  "@graph": [
+    {
+      "@type": "Organization",
+      "@id": "https://www.globalaerosols.com/#organization",
+      "name": "Global Aerosols",
+      "url": "https://www.globalaerosols.com/",
+      "logo": { "@type": "ImageObject", "url": "https://www.globalaerosols.com/logo.png" }
+    },
+    {
+      "@type": "WebSite",
+      "@id": "https://www.globalaerosols.com/#website",
+      "url": "https://www.globalaerosols.com/",
+      "name": "Global Aerosols",
+      "publisher": { "@id": "https://www.globalaerosols.com/#organization" }
+    },
+    {
+      "@type": "Person",
+      "@id": "https://www.globalaerosols.com/#absar-khan",
+      "name": "Absar Khan",
+      "jobTitle": "Founder & Lead Aerosol Consultant",
+      "url": "https://www.linkedin.com/in/absar-khan-aerosol-consultant-and-formulator-78359b162",
+      "worksFor": { "@id": "https://www.globalaerosols.com/#organization" }
+    },
+    {
+      "@type": "BreadcrumbList",
+      "@id": `https://www.globalaerosols.com/${slug}#breadcrumb`,
+      "itemListElement": [
+        { "@type": "ListItem", "position": 1, "name": "Home", "item": "https://www.globalaerosols.com/" },
+        { "@type": "ListItem", "position": 2, "name": "Blog", "item": "https://www.globalaerosols.com/blog/" },
+        { "@type": "ListItem", "position": 3, "name": "Aerosol Scale-Up", "item": `https://www.globalaerosols.com/${slug}` }
+      ]
+    },
+    {
+      "@type": "BlogPosting",
+      "@id": `https://www.globalaerosols.com/${slug}#article`,
+      "headline": "Aerosol Scale-Up: From R&D to Commercial Launch",
+      "description": "How do aerosol products scale from lab to commercial launch? Learn propellant behaviour, valve compatibility, filling-line validation and stability testing.",
+      "image": { "@type": "ImageObject", "url": heroUrl },
+      "author": { "@id": "https://www.globalaerosols.com/#absar-khan" },
+      "publisher": { "@id": "https://www.globalaerosols.com/#organization" },
+      "datePublished": "2025-12-05",
+      "dateModified": "2026-07-29",
+      "mainEntityOfPage": { "@id": `https://www.globalaerosols.com/${slug}` },
+      "articleSection": "Aerosols & Gas Dosing",
+      "keywords": "aerosol scale-up, pilot trials, commercial aerosol manufacturing, R&D to production, filling line validation, propellant stability testing",
+      "wordCount": 2030
+    },
+    {
+      "@type": "FAQPage",
+      "mainEntity": [
+        {
+          "@type": "Question",
+          "name": "Can aerosol production start without pilot trials?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "No. Aerosol products must undergo pilot validation to check propellant stability, valve performance, filling behavior, and spray characteristics. Skipping this step leads to high failure rates during commercial manufacturing, because defects that only appear at production line speeds and volumes are never caught at lab scale."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "How long does it take to go from R&D to commercial launch?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Depending on the product category, the timeline ranges from around 3 months for simple, low-risk aerosols to 18 months or more for high-performance or industrial aerosols requiring extended stability and compatibility testing. Regulatory approval timelines and the number of pilot iterations needed are usually the biggest variables."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "Do formulations change during scale-up?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Yes. Most aerosol products undergo controlled adjustments in propellant ratios, solvent balance, inhibitor levels, or valve selection to optimize performance at commercial scale. These are deliberate, tested changes made in response to pilot-trial results, not ad hoc tweaks made after commercial launch."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "What is the main difference between pilot-scale and commercial-scale filling?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Pilot-scale filling runs at low speed on equipment similar in principle but smaller in throughput than a commercial line, which allows close inspection of every unit. Commercial-scale filling must sustain the same crimp quality, gassing accuracy, and leak-test pass rate at full production speed, where a defect that appears once in a thousand pilot units can appear far more often once volumes increase."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "Why is stability testing repeated at each scale-up stage?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "A formulation that is stable in a lab-mixed batch is not guaranteed to remain stable once it is produced on production-scale mixing and filling equipment, because shear, fill speed, and batch homogeneity all differ. Repeating accelerated storage and compatibility testing at each stage confirms the product mixed and filled at that scale still meets the same specification as the original lab sample."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "What causes most aerosol scale-up failures?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Most failures trace back to differences between lab and production conditions that were not tested for at pilot scale, such as gassing pressure consistency, valve-gasket compatibility under sustained production speed, or fill-weight variation. This is why the pilot stage exists specifically to surface these issues before they appear at full commercial volume, when a defect is far more costly to correct."
+          }
+        }
+      ]
+    },
+    {
+      "@type": "WebPage",
+      "@id": `https://www.globalaerosols.com/${slug}`,
+      "url": `https://www.globalaerosols.com/${slug}`,
+      "name": "Aerosol Scale-Up: From R&D to Commercial Launch",
+      "description": "How do aerosol products scale from lab to commercial launch? Learn propellant behaviour, valve compatibility, filling-line validation and stability testing.",
+      "isPartOf": { "@id": "https://www.globalaerosols.com/#website" },
+      "breadcrumb": { "@id": `https://www.globalaerosols.com/${slug}#breadcrumb` },
+      "primaryImageOfPage": { "@type": "ImageObject", "url": heroUrl },
+      "datePublished": "2025-12-05",
+      "dateModified": "2026-07-29"
     }
-  },
-  "image": {
-    "@type": "ImageObject",
-    "url": "https://assets.zyrosite.com/A3QlOV94WLSaL6xE/rd-to-pilot-to-commercial-manufacturing-process-ja70rdtisjlefsbq-3wicMDl4Dh8OiSym.png"
-  },
-  "datePublished": "2025-12-05",
-  "dateModified": "2025-12-05"
+  ]
 };
-const schemas = [blogSchema, breadcrumbSchema];
 ---
 
 <Layout
-  title="Aerosol Scale-Up: From R&D to Pilot Trials and Commercial Manufacturing | Global Aerosols"
-  description="Learn how aerosol products move from R&D to pilot trials and full commercial manufacturing. Covers propellant behavior, valve compatibility, filling-line validation, and stability testing."
+  title="Aerosol Scale-Up: From R&D to Commercial Launch"
+  description="How do aerosol products scale from lab to commercial launch? Learn propellant behaviour, valve compatibility, filling-line validation and stability testing."
   canonical="https://www.globalaerosols.com/from-lab-to-commercial-launch"
   ogImage="https://assets.zyrosite.com/A3QlOV94WLSaL6xE/rd-to-pilot-to-commercial-manufacturing-process-ja70rdtisjlefsbq-3wicMDl4Dh8OiSym.png"
   ogType="article"
@@ -63,7 +145,7 @@ const schemas = [blogSchema, breadcrumbSchema];
     <article class="blog-prose">
       <header class="post-header">
         <h1 class="gradient-text" style="font-size: 3rem; line-height: 1.15; font-weight: 900; margin-bottom: 20px;">
-          Aerosol Scale-Up: From R&D to Pilot Trials and Commercial Manufacturing
+          Aerosol Scale-Up: From R&amp;D to Commercial Launch
         </h1>
         
         <!-- Post meta details -->
@@ -74,6 +156,8 @@ const schemas = [blogSchema, breadcrumbSchema];
           </div>
           <span style="width: 4px; height: 4px; border-radius: 50%; background-color: var(--border);"></span>
           <span>Published: <strong>Dec 5, 2025</strong></span>
+          <span style="width: 4px; height: 4px; border-radius: 50%; background-color: var(--border);"></span>
+          <span>Updated: <strong>Jul 29, 2026</strong></span>
           <span style="width: 4px; height: 4px; border-radius: 50%; background-color: var(--border);"></span>
           <span>Reading Time: <strong>12 min read</strong></span>
           <span style="width: 4px; height: 4px; border-radius: 50%; background-color: var(--border);"></span>
@@ -113,26 +197,10 @@ const schemas = [blogSchema, breadcrumbSchema];
       </div>
 
       <div class="lead">
-            <div class="toc-title">On this page</div>
-            <ul>
-                <li>Why Scale-Up Stages Matter in Aerosols</li>
-                <li>R&D Formulation for Aerosol Products</li>
-                <li>Pilot Scale Aerosol Manufacturing</li>
-                <li>Commercial Aerosol Production</li>
-                <li>Key Differences Table</li>
-                <li>How Aerosol Products Move from R&D to Commercial</li>
-                <li>Real-World Aerosol Example</li>
-                <li>Which Stage You Should Be At</li>
-                <li>Regulatory, Quality & Compliance</li>
-                <li>Work With Global Aerosols</li>
-                <li>FAQs</li>
-            </ul>
-        </div>
-
         <figure>
-            
-            <figcaption>Aerosol scale-up process: R&D → pilot scale → commercial production.</figcaption>
-        </figure></div>
+            <figcaption>Aerosol scale-up process: R&amp;D → pilot scale → commercial production.</figcaption>
+        </figure>
+      </div>
 
 <!-- <STRONG>WHY SCALE-UP STAGES MATTER IN AEROSOLS</STRONG> -->
 <section class="section" id="why-scale-up-stages-matter-in-aerosols">
@@ -153,6 +221,7 @@ const schemas = [blogSchema, breadcrumbSchema];
 <!-- <STRONG>R&D FORMULATION FOR AEROSOL PRODUCTS</STRONG> -->
 <section class="section" id="rd-formulation-for-aerosol-products">
   <h2><strong>R&D Formulation for Aerosol Products</strong></h2>
+        <p>R&amp;D formulation decisions made here are constrained by the same solvent, binder and surfactant chemistry covered in <a href="/aerosol-chemistry-101" style="color: var(--primary); font-weight: 600;">aerosol chemistry 101</a>, and by which of the <a href="/types-of-aerosol-systems-explained" style="color: var(--primary); font-weight: 600;">solution, emulsion or suspension system types</a> the product actually is.</p>
   <p>The R&D stage establishes the chemical and physical foundation of an aerosol product. At this level, small
             batches are used to identify the correct solvent system, emulsifier system (if applicable), propellant
             class, corrosion inhibition chemistry, and spray-performance targets. The objective is not production
@@ -198,6 +267,7 @@ const schemas = [blogSchema, breadcrumbSchema];
 <!-- <STRONG>PILOT SCALE AEROSOL MANUFACTURING</STRONG> -->
 <section class="section" id="pilot-scale-aerosol-manufacturing">
   <h2><strong>Pilot Scale Aerosol Manufacturing</strong></h2>
+        <p>Pilot trials exist to validate the same crimping, gassing and leak-detection sequence used at commercial scale, described in full in our <a href="/aerosol-crimping-gassing-leak-detection-explained" style="color: var(--primary); font-weight: 600;">aerosol filling line guide</a>.</p>
   <p>Pilot scale is the bridge between laboratory success and commercial feasibility. At this stage, the
             formulation is produced using semi-industrial equipment to validate heat transfer, mixing energy, propellant
             dissolution, pressure behavior, and filling parameters. Pilot trials also reveal real-world issues that are
@@ -242,6 +312,7 @@ const schemas = [blogSchema, breadcrumbSchema];
 <!-- <STRONG>COMMERCIAL AEROSOL PRODUCTION</STRONG> -->
 <section class="section" id="commercial-aerosol-production">
   <h2><strong>Commercial Aerosol Production</strong></h2>
+        <p>Commercial-scale pressure and burst-test requirements are covered in <a href="/aerosol-can-safety-explained" style="color: var(--primary); font-weight: 600;">aerosol can safety</a>, and propellant selection at this stage follows the trade-offs in our comparison of <a href="/aerosol-propellants-explained-lpg-vs-dme-vs-hfc-vs-n2-vs-co2" style="color: var(--primary); font-weight: 600;">LPG, DME, HFC, nitrogen and CO&#8322;</a>.</p>
   <p>Commercial production focuses on consistent large-scale manufacturing while maintaining cost efficiency,
             quality standards, and regulatory compliance. In standard aerosol production lines, valves are inserted and
             crimped before propellant filling, except in specific under-the-cup gassing systems. This operational
@@ -320,7 +391,7 @@ const schemas = [blogSchema, breadcrumbSchema];
                     </tr>
                 </tbody>
             </table>
-        
+        </div>
 </section>
 
 <!-- <STRONG>HOW AEROSOL PRODUCTS MOVE FROM R&D TO COMMERCIAL PRODUCTION</STRONG> -->
@@ -406,6 +477,7 @@ const schemas = [blogSchema, breadcrumbSchema];
 <!-- <STRONG>REGULATORY, QUALITY & COMPLIANCE REQUIREMENTS</STRONG> -->
 <section class="section" id="regulatory-quality-compliance-requirements">
   <h2><strong>Regulatory, Quality & Compliance Requirements</strong></h2>
+        <p>Transport classification and packaging duties for the finished aerosol are set out in <a href="/dot-un-aerosol-transport-regulations-hazmat" style="color: var(--primary); font-weight: 600;">DOT and UN aerosol transport rules</a>. Standardised test methods referenced throughout scale-up are published by <a href="https://www.astm.org" target="_blank" rel="noopener noreferrer" style="color: var(--primary); font-weight: 600;">ASTM International</a> and <a href="https://www.iso.org" target="_blank" rel="noopener noreferrer" style="color: var(--primary); font-weight: 600;">ISO</a>, and in the EU the applicable framework is the <a href="https://eur-lex.europa.eu/legal-content/EN/TXT/?uri=CELEX%3A31975L0324" target="_blank" rel="noopener noreferrer" style="color: var(--primary); font-weight: 600;">Aerosol Dispensers Directive 75/324/EEC</a>.</p>
   <p>Aerosol manufacturing includes additional safety and regulatory requirements due to flammable propellants,
             pressurized cans, and hardware-specific performance parameters. Quality systems become progressively more
             detailed as production scales from lab to commercial.</p>
@@ -453,7 +525,21 @@ const schemas = [blogSchema, breadcrumbSchema];
                     </tr>
                 </tbody>
             </table>
-        
+        </div>
+</section>
+
+<!-- RELATED ARTICLES -->
+<section class="section" id="related-articles" style="margin-top: 50px;">
+  <h2>Related Articles</h2>
+  <ul style="display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 10px; list-style-type: none; padding-left: 0;">
+    <li><a href="/aerosol-manufacturing-101-guide" style="font-weight: 600; color: var(--primary);">Aerosol Manufacturing 101: Technical Guide to Formulation &amp; Safety</a></li>
+    <li><a href="/aerosol-crimping-gassing-leak-detection-explained" style="font-weight: 600; color: var(--primary);">Aerosol Filling Line: Crimping, Gassing &amp; Leak Detection</a></li>
+    <li><a href="/aerosol-can-safety-explained" style="font-weight: 600; color: var(--primary);">Aerosol Can Safety: Pressure, Burst Tests &amp; DOT Rules</a></li>
+    <li><a href="/aerosol-chemistry-101" style="font-weight: 600; color: var(--primary);">Aerosol Chemistry 101: Solvents, Binders &amp; Surfactants</a></li>
+    <li><a href="/aerosol-propellants-explained-lpg-vs-dme-vs-hfc-vs-n2-vs-co2" style="font-weight: 600; color: var(--primary);">Aerosol Propellants Explained: LPG vs DME vs HFC vs N₂ vs CO₂</a></li>
+    <li><a href="/how-aerosol-cans-work" style="font-weight: 600; color: var(--primary);">How Aerosol Cans Work: Propellant, Pressure &amp; Valves</a></li>
+    <li><a href="/choosing-the-right-product-consultant" style="font-weight: 600; color: var(--primary);">How to Choose the Right Aerosol Product Consultant</a></li>
+  </ul>
 </section>
 
 <!-- <STRONG>WORK WITH GLOBAL AEROSOLS</STRONG> -->
@@ -478,15 +564,36 @@ const schemas = [blogSchema, breadcrumbSchema];
   <h3>Can aerosol production start without pilot trials?</h3>
         <p>No. Aerosol products must undergo pilot validation to check propellant stability, valve performance, filling
             behavior, and spray characteristics. Skipping this step leads to high failure rates during commercial
-            manufacturing.</p>
+            manufacturing, because defects that only appear at production line speeds and volumes are never caught at lab scale.</p>
 
-        <h3>How long does it take to go from R&D to commercial launch?</h3>
-        <p>Depending on the product category, the timeline ranges from 3 months for simple aerosols to 18 months for
-            high-performance or industrial aerosols requiring extended testing.</p>
+        <h3>How long does it take to go from R&amp;D to commercial launch?</h3>
+        <p>Depending on the product category, the timeline ranges from around 3 months for simple, low-risk aerosols
+            to 18 months or more for high-performance or industrial aerosols requiring extended stability and
+            compatibility testing. Regulatory approval timelines and the number of pilot iterations needed are usually
+            the biggest variables.</p>
 
         <h3>Do formulations change during scale-up?</h3>
         <p>Yes. Most aerosol products undergo controlled adjustments in propellant ratios, solvent balance, inhibitor
-            levels, or valve selection to optimize performance at commercial scale.</p>
+            levels, or valve selection to optimize performance at commercial scale. These are deliberate, tested
+            changes made in response to pilot-trial results, not ad hoc tweaks made after commercial launch.</p>
+
+        <h3>What is the main difference between pilot-scale and commercial-scale filling?</h3>
+        <p>Pilot-scale filling runs at low speed on equipment similar in principle but smaller in throughput than a
+            commercial line, which allows close inspection of every unit. Commercial-scale filling must sustain the
+            same crimp quality, gassing accuracy, and leak-test pass rate at full production speed, where a defect
+            that appears once in a thousand pilot units can appear far more often once volumes increase.</p>
+
+        <h3>Why is stability testing repeated at each scale-up stage?</h3>
+        <p>A formulation that is stable in a lab-mixed batch is not guaranteed to remain stable once it is produced
+            on production-scale mixing and filling equipment, because shear, fill speed, and batch homogeneity all
+            differ. Repeating accelerated storage and compatibility testing at each stage confirms the product mixed
+            and filled at that scale still meets the same specification as the original lab sample.</p>
+
+        <h3>What causes most aerosol scale-up failures?</h3>
+        <p>Most failures trace back to differences between lab and production conditions that were not tested for
+            at pilot scale, such as gassing pressure consistency, valve-gasket compatibility under sustained
+            production speed, or fill-weight variation. This is why the pilot stage exists specifically to surface
+            these issues before they appear at full commercial volume, when a defect is far more costly to correct.</p>
 </section>
 
 <!-- <STRONG>FURTHER READING ON AEROSOL SCIENCE</STRONG> -->
@@ -555,7 +662,7 @@ const schemas = [blogSchema, breadcrumbSchema];
         <div>
           <h3 style="margin-top: 0; margin-bottom: 8px; font-family: 'Outfit', sans-serif; font-size: 1.3rem; font-weight: 700; color: var(--text-primary);">About the Specialist</h3>
           <p style="margin-top: 0; margin-bottom: 12px; font-size: 0.95rem; line-height: 1.6; color: var(--text-muted);">
-            <strong>Absar Khan</strong> is the principal consultant and chemical formulation architect at <strong>Global Formulation</strong>. He possesses cross-disciplinary engineering expertise spanning aerosol gassing systems, pharmaceutical manufacturing, sterile injectables, cosmetics, and green chemical plant setups. Absar leads scientific and engineering advisory teams supporting manufacturers globally in technology selection, GMP layouts, validation frameworks, and regulatory strategies.
+            <strong>Absar Khan</strong> is the founder and lead aerosol consultant at <strong>Global Aerosols</strong>. He possesses cross-disciplinary engineering expertise spanning aerosol scale-up, pilot trial design, filling line validation, and regulatory compliance. Absar leads scientific and engineering advisory teams supporting manufacturers globally in technology selection, GMP layouts, validation frameworks, and regulatory strategies.
           </p>
           <p style="margin: 0; font-size: 0.9rem;">
             <strong>LinkedIn Portfolio:</strong> 

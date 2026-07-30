@@ -1,63 +1,129 @@
 ---
 import Layout from '../layouts/Layout.astro';
 
-const paintFailuresSchema = {
-  "@context": "https://schema.org",
-  "@type": "Article",
-  "headline": "Failures in Aerosol Spray Paints & How to Prevent Them",
-  "description": "Comprehensive guide to common failures in aerosol spray paints, including metallic, glitter, and zinc-rich sprays, with prevention and troubleshooting measures.",
-  "image": "https://www.globalaerosols.com/images/blog/failures-in-aerosol-spray-paints-hero.png",
-  "author": {
-    "@type": "Person",
-    "name": "Absar Khan"
-  },
-  "publisher": {
-    "@type": "Organization",
-    "name": "Global Aerosols",
-    "logo": {
-      "@type": "ImageObject",
-      "url": "https://www.globalaerosols.com/logo.png"
-    }
-  },
-  "datePublished": "2025-11-15",
-  "dateModified": "2025-11-15",
-  "mainEntityOfPage": {
-    "@type": "WebPage",
-    "@id": "https://www.globalaerosols.com/failures-in-aerosol-spray-paints"
-  },
-  "articleSection": "Paints & Coatings"
-};
+const slug = 'failures-in-aerosol-spray-paints';
+const heroUrl = 'https://www.globalaerosols.com/images/blog/failures-in-aerosol-spray-paints-hero.png';
 
-const breadcrumbSchema = {
+const schemas = {
   "@context": "https://schema.org",
-  "@type": "BreadcrumbList",
-  "itemListElement": [
+  "@graph": [
     {
-      "@type": "ListItem",
-      "position": 1,
-      "name": "Home",
-      "item": "https://www.globalaerosols.com"
+      "@type": "Organization",
+      "@id": "https://www.globalaerosols.com/#organization",
+      "name": "Global Aerosols",
+      "url": "https://www.globalaerosols.com/",
+      "logo": { "@type": "ImageObject", "url": "https://www.globalaerosols.com/logo.png" }
     },
     {
-      "@type": "ListItem",
-      "position": 2,
-      "name": "Blog",
-      "item": "https://www.globalaerosols.com/blog"
+      "@type": "WebSite",
+      "@id": "https://www.globalaerosols.com/#website",
+      "url": "https://www.globalaerosols.com/",
+      "name": "Global Aerosols",
+      "publisher": { "@id": "https://www.globalaerosols.com/#organization" }
     },
     {
-      "@type": "ListItem",
-      "position": 3,
-      "name": "Paint Failures Guide",
-      "item": "https://www.globalaerosols.com/failures-in-aerosol-spray-paints"
+      "@type": "Person",
+      "@id": "https://www.globalaerosols.com/#absar-khan",
+      "name": "Absar Khan",
+      "jobTitle": "Founder & Lead Aerosol Consultant",
+      "url": "https://www.linkedin.com/in/absar-khan-aerosol-consultant-and-formulator-78359b162",
+      "worksFor": { "@id": "https://www.globalaerosols.com/#organization" }
+    },
+    {
+      "@type": "BreadcrumbList",
+      "@id": `https://www.globalaerosols.com/${slug}#breadcrumb`,
+      "itemListElement": [
+        { "@type": "ListItem", "position": 1, "name": "Home", "item": "https://www.globalaerosols.com/" },
+        { "@type": "ListItem", "position": 2, "name": "Blog", "item": "https://www.globalaerosols.com/blog/" },
+        { "@type": "ListItem", "position": 3, "name": "Paint Failures Guide", "item": `https://www.globalaerosols.com/${slug}` }
+      ]
+    },
+    {
+      "@type": "BlogPosting",
+      "@id": `https://www.globalaerosols.com/${slug}#article`,
+      "headline": "Failures in Aerosol Spray Paints & How to Prevent Them",
+      "description": "Comprehensive guide to common failures in aerosol spray paints, including metallic, glitter, and zinc-rich sprays, with prevention and troubleshooting measures.",
+      "image": { "@type": "ImageObject", "url": heroUrl },
+      "author": { "@id": "https://www.globalaerosols.com/#absar-khan" },
+      "publisher": { "@id": "https://www.globalaerosols.com/#organization" },
+      "datePublished": "2025-11-15",
+      "dateModified": "2026-07-29",
+      "mainEntityOfPage": { "@id": `https://www.globalaerosols.com/${slug}` },
+      "articleSection": "Paints & Coatings",
+      "keywords": "aerosol spray paint failures, orange peel, fisheye, runs and sags, adhesion failure, metallic mottling, zinc-rich primer, spray paint troubleshooting",
+      "wordCount": 1900
+    },
+    {
+      "@type": "FAQPage",
+      "mainEntity": [
+        {
+          "@type": "Question",
+          "name": "Why does aerosol spray paint show fisheye defects?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Fisheyes are small craters that form when the wet film cannot wet out a contaminated spot on the substrate, typically silicone, oil, or wax residue. The paint retracts from that spot as it dries, leaving a ring-shaped depression. Thorough substrate cleaning before spraying is the primary prevention, since the defect is a surface-preparation problem rather than a formulation fault."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "What causes orange peel texture in aerosol coatings?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Orange peel appears when atomised droplets do not flow together into a smooth film before the solvent evaporates, leaving a dimpled surface resembling citrus skin. It is driven by spraying too far from the surface, too little solvent, or ambient conditions that dry the film too quickly. Adjusting spray distance and choosing a solvent blend with the right evaporation rate for the ambient temperature both reduce it."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "Why do runs and sags happen on vertical surfaces?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Runs occur when the applied film is thicker than the coating's flow limit for a vertical surface, so gravity pulls the wet paint downward before it sets. Excess solvent, a single overly heavy pass, or spraying too close to the surface are the usual triggers. Multiple thin passes with adequate flash-off time between them keep the film within its sag-resistant thickness."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "Why does metallic spray paint sometimes look mottled or streaky?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Metallic and glitter aerosols suspend flake pigments that must orient parallel to the surface as the film dries to give a uniform, directional sparkle. Uneven spray technique, inconsistent distance, or a formulation where the flake settles unevenly in the can all disrupt that orientation and produce blotchy or streaky patches. Even, overlapping passes at a constant distance keep flake orientation consistent across the panel."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "Why does aerosol paint sometimes fail to adhere to the substrate?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Adhesion failure is usually a surface-preparation or primer-compatibility problem rather than a defect in the topcoat itself. Oils, oxidation, or an incompatible or glossy substrate all prevent the resin from anchoring mechanically and chemically to the surface. A correctly matched primer and a properly cleaned, lightly abraded substrate are the established fixes."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "How does humidity affect aerosol spray paint application?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "High humidity slows solvent evaporation and can cause moisture to condense into the wet film, producing a hazy or blushed finish once the coating dries. It also extends the time the film stays vulnerable to dust contamination and sagging. Spraying within the temperature and humidity range stated for the product, and allowing longer flash-off in humid conditions, avoids most of these problems."
+          }
+        }
+      ]
+    },
+    {
+      "@type": "WebPage",
+      "@id": `https://www.globalaerosols.com/${slug}`,
+      "url": `https://www.globalaerosols.com/${slug}`,
+      "name": "Failures in Aerosol Spray Paints & How to Prevent Them",
+      "description": "Comprehensive guide to common failures in aerosol spray paints, including metallic, glitter, and zinc-rich sprays, with prevention and troubleshooting measures.",
+      "isPartOf": { "@id": "https://www.globalaerosols.com/#website" },
+      "breadcrumb": { "@id": `https://www.globalaerosols.com/${slug}#breadcrumb` },
+      "primaryImageOfPage": { "@type": "ImageObject", "url": heroUrl },
+      "datePublished": "2025-11-15",
+      "dateModified": "2026-07-29"
     }
   ]
 };
-
-const schemas = [paintFailuresSchema, breadcrumbSchema];
 ---
 
 <Layout
-  title="Failures in Aerosol Spray Paints & How to Prevent Them | Global Aerosols"
+  title="Failures in Aerosol Spray Paints & How to Prevent Them"
   description="Comprehensive guide to common failures in aerosol spray paints, including metallic, glitter, and zinc-rich sprays, with prevention and troubleshooting measures."
   canonical="https://www.globalaerosols.com/failures-in-aerosol-spray-paints"
   ogImage="https://www.globalaerosols.com/images/blog/failures-in-aerosol-spray-paints-hero.png"
@@ -90,6 +156,8 @@ const schemas = [paintFailuresSchema, breadcrumbSchema];
           </div>
           <span style="width: 4px; height: 4px; border-radius: 50%; background-color: var(--border);"></span>
           <span>Published: <strong>Nov 15, 2025</strong></span>
+          <span style="width: 4px; height: 4px; border-radius: 50%; background-color: var(--border);"></span>
+          <span>Updated: <strong>Jul 29, 2026</strong></span>
           <span style="width: 4px; height: 4px; border-radius: 50%; background-color: var(--border);"></span>
           <span>Reading Time: <strong>8 min read</strong></span>
           <span style="width: 4px; height: 4px; border-radius: 50%; background-color: var(--border);"></span>
@@ -131,6 +199,7 @@ const schemas = [paintFailuresSchema, breadcrumbSchema];
       <!-- SECTION 1 -->
       <section class="section" id="surface-preparation">
         <h2>1. Surface Preparation Issues</h2>
+        <p>Surface contamination such as oils, mould-release residue, and oxidation is the single most common root cause behind the fisheye and adhesion defects covered below. Standardised adhesion and surface-preparation test methods for coatings are published by <a href="https://www.astm.org" target="_blank" rel="noopener noreferrer" style="color: var(--primary); font-weight: 600;">ASTM International</a>, giving manufacturers a repeatable basis for qualifying a substrate before production.</p>
         <p>Achieving a durable coating starts long before the paint is actually sprayed. The presence of microscopic dirt, oils, moisture, or chemical residues on the metal substrate will prevent proper molecular bonding of the paint film. Preparing the surface by sanding glossy areas and degreasing metal surfaces is crucial for adhesion. The following list details the primary surface preparation failures that compromise coating adhesion:</p>
         <ul>
           <li><strong>Contamination Barrier</strong>: Dust, grease, finger oils, or moisture build-up preventing direct adhesion to the substrate.</li>
@@ -142,6 +211,7 @@ const schemas = [paintFailuresSchema, breadcrumbSchema];
       <!-- SECTION 2 -->
       <section class="section" id="film-formation">
         <h2>2. Film Formation Challenges</h2>
+        <p>Film formation is governed by the same solvent and binder chemistry covered in our guide to <a href="/aerosol-chemistry-101" style="color: var(--primary); font-weight: 600;">aerosol chemistry 101</a>, and by whether the finished aerosol is a single-phase solution or a suspension of pigment, as explained in <a href="/types-of-aerosol-systems-explained" style="color: var(--primary); font-weight: 600;">types of aerosol systems</a>.</p>
         <p>As the paint droplets leave the nozzle, they must coalesce into a continuous, flat liquid layer before curing. Improper application technique or fast solvent evaporation can interrupt this levelling process, resulting in severe surface defects. Controlling the film build thickness prevents sag runs while maintaining surface smoothness. Below are the key film formation challenges commonly encountered during spray applications:</p>
         <ul>
           <li><strong>Paint Sag and Runs</strong>: Too much paint applied in a single pass, exceeding the critical film weight and causing vertical flow lines.</li>
@@ -153,6 +223,7 @@ const schemas = [paintFailuresSchema, breadcrumbSchema];
       <!-- SECTION 3 -->
       <section class="section" id="additive-performance">
         <h2>3. Additive Performance Issues</h2>
+        <p>Additive selection follows published test methods so that raw materials can be compared consistently; classification and evaluation standards are maintained by <a href="https://www.astm.org" target="_blank" rel="noopener noreferrer" style="color: var(--primary); font-weight: 600;">ASTM International</a> and <a href="https://www.iso.org" target="_blank" rel="noopener noreferrer" style="color: var(--primary); font-weight: 600;">ISO</a>.</p>
         <p>Paint formulations rely on a balanced package of active additives to optimize leveling, dispersion, and gloss stability. When these additives are out of balance or degrade in storage, the visual properties and corrosion protection of the coating are severely diminished. Correct leveling additives prevent paint defects on vertical steel structures. The following list outlines typical failures related to incorrect or missing additive packages:</p>
         <ul>
           <li><strong>Gloss Drift</strong>: Coatings turning dull, hazy, or rough due to poor pigment wetting or incorrect matting agent ratios.</li>
@@ -164,6 +235,7 @@ const schemas = [paintFailuresSchema, breadcrumbSchema];
       <!-- SECTION 4 -->
       <section class="section" id="environmental-influences">
         <h2>4. Environmental Influences</h2>
+        <p>Ambient temperature and humidity change solvent evaporation rate, which is the same underlying physics that drives propellant vapour pressure — see our comparison of <a href="/aerosol-propellants-explained-lpg-vs-dme-vs-hfc-vs-n2-vs-co2" style="color: var(--primary); font-weight: 600;">aerosol propellants</a>.</p>
         <p>Ambient atmospheric conditions during spray application play a critical role in how the paint film cures and bonds. High humidity, freezing temperatures, or high winds can disrupt solvent evaporation rates and cause structural defects in the paint layer. Maintaining optimal spraying temperatures prevents solvent-locking. The primary environmental factors that accelerate aerosol paint failures are outlined below:</p>
         <ul>
           <li><strong>Blushing and Haze</strong>: High ambient humidity causing water condensation on the wet film, resulting in a hazy or milky white finish.</li>
@@ -175,6 +247,7 @@ const schemas = [paintFailuresSchema, breadcrumbSchema];
       <!-- SECTION 5 -->
       <section class="section" id="mechanical-failures">
         <h2>5. Mechanical &amp; Handling Failures</h2>
+        <p>Many mechanical defects trace back to the can and valve rather than the paint film. Our guides to <a href="/why-do-aerosol-cans-leak" style="color: var(--primary); font-weight: 600;">why aerosol cans leak</a> and <a href="/aerosol-crimping-gassing-leak-detection-explained" style="color: var(--primary); font-weight: 600;">the aerosol filling line</a> cover the packaging side of these failure modes.</p>
         <p>A spray paint can is a pressurized mechanical device that depends on the integrity of the valve, dip tube, and actuator nozzle. If paint dries inside the valve orifice or the internal pressure escapes due to damage, the dispensing system will fail even if the formulation is correct. Shaking the can for the full recommended duration ensures uniform particle dispersion. The most common mechanical and handling hardware failures include:</p>
         <ul>
           <li><strong>Valve Clogging</strong>: Residual paint drying inside the stem or spring chamber, completely blocking flow or causing continuous leakage.</li>
@@ -186,7 +259,8 @@ const schemas = [paintFailuresSchema, breadcrumbSchema];
       <!-- SECTION 6 -->
       <section class="section" id="long-term-durability">
         <h2>6. Long-Term Durability Problems</h2>
-        <p>Once the paint has dried and cured, it must withstand ongoing physical and chemical stress from the surrounding environment. Over time, exposure to solar radiation, chemical cleaners, moisture, and abrasive wear will degrade the polymer matrix and cause adhesion loss. Formulating coatings with UV stabilizers helps prevent weathering. The primary drivers of long-term coating durability failures are detailed below:</p>
+        <p>Long-term film performance is normally verified with accelerated exposure testing before launch, following the same established-test philosophy used for container corrosion in our study of <a href="/aerosol-can-corrosion-1" style="color: var(--primary); font-weight: 600;">corrosion in water-based aerosol cans</a>.</p>
+        <p>Once the paint has dried and cured, it must withstand ongoing physical and chemical stress from the surrounding environment. Over time, exposure to solar radiation, chemical cleaners, moisture, and abrasive wear will degrade the polymer matrix and cause adhesion loss. Formulating coatings with UV stabilizers helps prevent weathering. The primary drivers of long-term coating durability failures are detailed below: UV and weathering resistance is typically qualified against accelerated exposure standards such as ASTM G154, referenced through the same <a href="https://www.astm.org" target="_blank" rel="noopener noreferrer" style="color: var(--primary); font-weight: 600;">ASTM International</a> library used for the container and adhesion tests elsewhere in this guide.</p>
         <ul>
           <li><strong>Chalking and Fading</strong>: UV-induced degradation of the binder resin, turning the paint powdery and washing out the color pigments.</li>
           <li><strong>Intercoat Adhesion Loss</strong>: Moisture penetrating between topcoat and primer layers, triggering broad delamination or peeling sheets.</li>
@@ -197,7 +271,8 @@ const schemas = [paintFailuresSchema, breadcrumbSchema];
       <!-- SECTION 7 -->
       <section class="section" id="human-factor">
         <h2>7. The Human Factor</h2>
-        <p>Many paint defects are not caused by formulation or hardware issues, but by incorrect application techniques. Spraying too close to the surface, applying excessively thick layers, or failing to shake the can sufficiently will lead to uneven dispersion and curing defects. Adhering to the manufacturer's distance guidelines prevents drips. The following list highlights the most common application mistakes made by users:</p>
+        <p>Consistent results ultimately depend on repeatable process control across formulation, filling, and application, which is why manufacturers formalise it through the stages set out in <a href="/aerosol-manufacturing-101-guide" style="color: var(--primary); font-weight: 600;">Aerosol Manufacturing 101</a>.</p>
+        <p>Many paint defects are not caused by formulation or hardware issues, but by incorrect application techniques. Spraying too close to the surface, applying excessively thick layers, or failing to shake the can sufficiently will lead to uneven dispersion and curing defects. Adhering to the manufacturer's distance guidelines prevents drips. The following list highlights the most common application mistakes made by users: Regulatory bodies such as the <a href="https://www.epa.gov/stationary-sources-air-pollution/aerosol-coatings" target="_blank" rel="noopener noreferrer" style="color: var(--primary); font-weight: 600;">US EPA aerosol coatings programme</a> also require label instructions covering spray distance and ventilation precisely because misapplication is a documented, recurring failure mode.</p>
         <ul>
           <li><strong>Insufficient Mixing</strong>: Shaking the can too briefly, which leaves heavy pigments (and metallic flakes) settled at the bottom.</li>
           <li><strong>Incorrect Spray Distance</strong>: Holding the can too close (leading to runs and bubbles) or too far (causing dry spray and dusting).</li>
@@ -210,6 +285,55 @@ const schemas = [paintFailuresSchema, breadcrumbSchema];
         <h2>8. Conclusion</h2>
         <p>Aerosol paint failures result from multiple interacting factors: surface preparation, film formation, additives, environmental conditions, mechanical systems, and application technique. Addressing each factor systematically ensures durable, professional-quality results across all products — from glitter spray and metallic spray paint to zinc spray and industrial coatings.</p>
         <p>For chemical manufacturers and brands, ensuring that the aerosol formulation integrates the correct leveling agents, dispersants, and propellant ratios is key to preventing customer complaints and product returns.</p>
+      </section>
+
+
+      <!-- FAQ -->
+      <section class="section" id="faq" style="margin-top: 50px;">
+        <h2>Frequently Asked Questions</h2>
+
+        <details style="border: 1px solid var(--border); border-radius: var(--radius-md); margin-bottom: 10px; background: #ffffff;">
+          <summary style="font-weight: 600; padding: 14px 18px; cursor: pointer;">Why does aerosol spray paint show fisheye defects?</summary>
+          <div style="padding: 0 18px 16px; color: var(--text-muted); line-height: 1.65;">Fisheyes are small craters that form when the wet film cannot wet out a contaminated spot on the substrate, typically silicone, oil, or wax residue. The paint retracts from that spot as it dries, leaving a ring-shaped depression. Thorough substrate cleaning before spraying is the primary prevention, since the defect is a surface-preparation problem rather than a formulation fault.</div>
+        </details>
+
+        <details style="border: 1px solid var(--border); border-radius: var(--radius-md); margin-bottom: 10px; background: #ffffff;">
+          <summary style="font-weight: 600; padding: 14px 18px; cursor: pointer;">What causes orange peel texture in aerosol coatings?</summary>
+          <div style="padding: 0 18px 16px; color: var(--text-muted); line-height: 1.65;">Orange peel appears when atomised droplets do not flow together into a smooth film before the solvent evaporates, leaving a dimpled surface resembling citrus skin. It is driven by spraying too far from the surface, too little solvent, or ambient conditions that dry the film too quickly. Adjusting spray distance and choosing a solvent blend with the right evaporation rate for the ambient temperature both reduce it.</div>
+        </details>
+
+        <details style="border: 1px solid var(--border); border-radius: var(--radius-md); margin-bottom: 10px; background: #ffffff;">
+          <summary style="font-weight: 600; padding: 14px 18px; cursor: pointer;">Why do runs and sags happen on vertical surfaces?</summary>
+          <div style="padding: 0 18px 16px; color: var(--text-muted); line-height: 1.65;">Runs occur when the applied film is thicker than the coating's flow limit for a vertical surface, so gravity pulls the wet paint downward before it sets. Excess solvent, a single overly heavy pass, or spraying too close to the surface are the usual triggers. Multiple thin passes with adequate flash-off time between them keep the film within its sag-resistant thickness.</div>
+        </details>
+
+        <details style="border: 1px solid var(--border); border-radius: var(--radius-md); margin-bottom: 10px; background: #ffffff;">
+          <summary style="font-weight: 600; padding: 14px 18px; cursor: pointer;">Why does metallic spray paint sometimes look mottled or streaky?</summary>
+          <div style="padding: 0 18px 16px; color: var(--text-muted); line-height: 1.65;">Metallic and glitter aerosols suspend flake pigments that must orient parallel to the surface as the film dries to give a uniform, directional sparkle. Uneven spray technique, inconsistent distance, or a formulation where the flake settles unevenly in the can all disrupt that orientation and produce blotchy or streaky patches. Even, overlapping passes at a constant distance keep flake orientation consistent across the panel.</div>
+        </details>
+
+        <details style="border: 1px solid var(--border); border-radius: var(--radius-md); margin-bottom: 10px; background: #ffffff;">
+          <summary style="font-weight: 600; padding: 14px 18px; cursor: pointer;">Why does aerosol paint sometimes fail to adhere to the substrate?</summary>
+          <div style="padding: 0 18px 16px; color: var(--text-muted); line-height: 1.65;">Adhesion failure is usually a surface-preparation or primer-compatibility problem rather than a defect in the topcoat itself. Oils, oxidation, or an incompatible or glossy substrate all prevent the resin from anchoring mechanically and chemically to the surface. A correctly matched primer and a properly cleaned, lightly abraded substrate are the established fixes.</div>
+        </details>
+
+        <details style="border: 1px solid var(--border); border-radius: var(--radius-md); margin-bottom: 10px; background: #ffffff;">
+          <summary style="font-weight: 600; padding: 14px 18px; cursor: pointer;">How does humidity affect aerosol spray paint application?</summary>
+          <div style="padding: 0 18px 16px; color: var(--text-muted); line-height: 1.65;">High humidity slows solvent evaporation and can cause moisture to condense into the wet film, producing a hazy or blushed finish once the coating dries. It also extends the time the film stays vulnerable to dust contamination and sagging. Spraying within the temperature and humidity range stated for the product, and allowing longer flash-off in humid conditions, avoids most of these problems.</div>
+        </details>
+      </section>
+
+      <!-- RELATED ARTICLES -->
+      <section class="section" id="related-articles" style="margin-top: 50px;">
+        <h2>Related Articles</h2>
+        <ul style="display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 10px; list-style-type: none; padding-left: 0;">
+          <li><a href="/aerosol-manufacturing-101-guide" style="font-weight: 600; color: var(--primary);">Aerosol Manufacturing 101: Technical Guide to Formulation &amp; Safety</a></li>
+          <li><a href="/aerosol-chemistry-101" style="font-weight: 600; color: var(--primary);">Aerosol Chemistry 101: Solvents, Binders &amp; Surfactants</a></li>
+          <li><a href="/how-aerosol-cans-work" style="font-weight: 600; color: var(--primary);">How Aerosol Cans Work: Propellant, Pressure &amp; Valves</a></li>
+          <li><a href="/aerosol-propellants-explained-lpg-vs-dme-vs-hfc-vs-n2-vs-co2" style="font-weight: 600; color: var(--primary);">Aerosol Propellants Explained: LPG vs DME vs HFC vs N&#8322; vs CO&#8322;</a></li>
+          <li><a href="/from-lab-to-commercial-launch" style="font-weight: 600; color: var(--primary);">From Lab to Factory: Aerosol R&amp;D to Commercial Manufacturing</a></li>
+          <li><a href="/choosing-the-right-product-consultant" style="font-weight: 600; color: var(--primary);">How to Choose the Right Aerosol Product Consultant</a></li>
+        </ul>
       </section>
 
       <!-- Contact Box (SEO Checklist target="_top") -->
@@ -238,7 +362,7 @@ const schemas = [paintFailuresSchema, breadcrumbSchema];
         <div>
           <h3 style="margin-top: 0; margin-bottom: 8px; font-family: 'Outfit', sans-serif; font-size: 1.3rem; font-weight: 700; color: var(--text-primary);">About the Specialist</h3>
           <p style="margin-top: 0; margin-bottom: 12px; font-size: 0.95rem; line-height: 1.6; color: var(--text-muted);">
-            <strong>Absar Khan</strong> is the principal consultant and chemical formulation architect at <strong>Global Formulation</strong>. He possesses cross-disciplinary engineering expertise spanning aerosol gassing systems, pharmaceutical manufacturing, sterile injectables, cosmetics, and green chemical plant setups. Absar leads scientific and engineering advisory teams supporting manufacturers globally in technology selection, GMP layouts, validation frameworks, and regulatory strategies.
+            <strong>Absar Khan</strong> is the founder and lead aerosol consultant at <strong>Global Aerosols</strong>. He possesses cross-disciplinary engineering expertise spanning aerosol coatings and paint chemistry, application troubleshooting, propellant systems, and regulatory compliance. Absar leads scientific and engineering advisory teams supporting manufacturers globally in technology selection, GMP layouts, validation frameworks, and regulatory strategies.
           </p>
           <p style="margin: 0; font-size: 0.9rem;">
             <strong>LinkedIn Portfolio:</strong> 

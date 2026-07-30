@@ -1,84 +1,130 @@
 ---
 import Layout from '../layouts/Layout.astro';
 
-const blogSchema = {
+const slug = 'aerosol-can-safety-explained';
+const heroUrl = 'https://assets.zyrosite.com/A3QlOV94WLSaL6xE/aerosol-can-safety-hero.jpg-WrmFk9oWFvFRxxCz.png';
+
+const schemas = {
   "@context": "https://schema.org",
-  "@type": "Article",
-  "headline": "Aerosol Can Safety Explained: Pressure Calculations, Burst Tests & Global DOT Compliance",
-  "author": {
-    "@type": "Person",
-    "name": "Absar Khan",
-    "url": "https://www.linkedin.com/in/absar-khan-aerosol-consultant-and-formulator-78359b162"
-  },
-  "publisher": {
-    "@type": "Organization",
-    "name": "Global Aerosols",
-    "logo": {
-      "@type": "ImageObject",
-      "url": "https://www.globalaerosols.com/logo.png"
-    }
-  },
-  "mainEntityOfPage": {
-    "@type": "WebPage",
-    "@id": "https://www.globalaerosols.com/aerosol-can-safety-explained"
-  },
-  "image": "https://www.globalaerosols.com/assets/aerosol-safety-hero.jpg",
-  "description": "Technical, fact-based guide to aerosol can safety, pressure calculations, burst testing, and DOT compliance.",
-  "datePublished": "2025-11-16",
-  "dateModified": "2025-11-16"
-};
-const breadcrumbSchema = {
-  "@context": "https://schema.org",
-  "@type": "FAQPage",
-  "mainEntity": [
+  "@graph": [
     {
-      "@type": "Question",
-      "name": "What is the normal working pressure of an aerosol can?",
-      "acceptedAnswer": {
-        "@type": "Answer",
-        "text": "Typical working pressure for tinplate cans is 8–10 bar at 55°C and aluminium 12–15 bar."
-      }
+      "@type": "Organization",
+      "@id": "https://www.globalaerosols.com/#organization",
+      "name": "Global Aerosols",
+      "url": "https://www.globalaerosols.com/",
+      "logo": { "@type": "ImageObject", "url": "https://www.globalaerosols.com/logo.png" }
     },
     {
-      "@type": "Question",
-      "name": "Why is burst testing required?",
-      "acceptedAnswer": {
-        "@type": "Answer",
-        "text": "Burst testing verifies structural integrity beyond operating limits and ensures DOT/UN compliance."
-      }
+      "@type": "WebSite",
+      "@id": "https://www.globalaerosols.com/#website",
+      "url": "https://www.globalaerosols.com/",
+      "name": "Global Aerosols",
+      "publisher": { "@id": "https://www.globalaerosols.com/#organization" }
     },
     {
-      "@type": "Question",
-      "name": "What temperature is used for aerosol hot-water bath testing?",
-      "acceptedAnswer": {
-        "@type": "Answer",
-        "text": "50–55°C, simulating elevated transport and storage conditions."
-      }
+      "@type": "Person",
+      "@id": "https://www.globalaerosols.com/#absar-khan",
+      "name": "Absar Khan",
+      "jobTitle": "Founder & Lead Aerosol Consultant",
+      "url": "https://www.linkedin.com/in/absar-khan-aerosol-consultant-and-formulator-78359b162",
+      "worksFor": { "@id": "https://www.globalaerosols.com/#organization" }
     },
     {
-      "@type": "Question",
-      "name": "How does propellant choice affect safety?",
-      "acceptedAnswer": {
-        "@type": "Answer",
-        "text": "Each propellant has a unique vapor pressure curve, affecting can selection and fill ratios."
-      }
+      "@type": "BreadcrumbList",
+      "@id": `https://www.globalaerosols.com/${slug}#breadcrumb`,
+      "itemListElement": [
+        { "@type": "ListItem", "position": 1, "name": "Home", "item": "https://www.globalaerosols.com/" },
+        { "@type": "ListItem", "position": 2, "name": "Blog", "item": "https://www.globalaerosols.com/blog/" },
+        { "@type": "ListItem", "position": 3, "name": "Aerosol Can Safety", "item": `https://www.globalaerosols.com/${slug}` }
+      ]
     },
     {
-      "@type": "Question",
-      "name": "Can non-certified aerosol cans be used?",
-      "acceptedAnswer": {
-        "@type": "Answer",
-        "text": "Non-certified cans increase safety risks and restrict export compliance."
-      }
+      "@type": "BlogPosting",
+      "@id": `https://www.globalaerosols.com/${slug}#article`,
+      "headline": "Aerosol Can Safety: Pressure, Burst Tests & DOT Rules",
+      "description": "How safe is your aerosol can? Learn burst-test pressure calculations, hot water bath testing and global DOT/UN compliance requirements for manufacturers.",
+      "image": { "@type": "ImageObject", "url": heroUrl },
+      "author": { "@id": "https://www.globalaerosols.com/#absar-khan" },
+      "publisher": { "@id": "https://www.globalaerosols.com/#organization" },
+      "datePublished": "2025-11-16",
+      "dateModified": "2026-07-29",
+      "mainEntityOfPage": { "@id": `https://www.globalaerosols.com/${slug}` },
+      "articleSection": "Aerosols & Gas Dosing",
+      "keywords": "aerosol can safety, burst pressure, hot water bath test, DOT compliance, UN 1950, pressure vessel design, aerosol regulations",
+      "wordCount": 2200
+    },
+    {
+      "@type": "FAQPage",
+      "mainEntity": [
+        {
+          "@type": "Question",
+          "name": "What is the normal working pressure of an aerosol can?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Typical service pressure at 55 degrees Celsius is around 8 to 10 bar for tinplate cans and 12 to 15 bar for aluminium cans, though the exact figure depends on the propellant and fill ratio used. This is the pressure the container must withstand throughout its labelled temperature range, not just at room temperature. Design margin above this working pressure is what the burst test verifies."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "Why is burst testing required for aerosol cans?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Burst testing confirms the container fails only well above its normal operating pressure, giving a documented safety margin rather than an assumption. Regulators require it because a can that ruptures in transport or storage is a direct hazard to people and property. It is destructive testing performed on production samples, not on every unit shipped."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "What temperature is used for aerosol hot water bath testing?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "The standard hot water bath test brings the can's contents to 50 to 55 degrees Celsius, simulating the elevated temperatures a can can realistically reach during transport or warehousing. Every filled can is required to pass through this bath without leaking or bursting before it leaves the production line. It is a 100 percent inspection, unlike burst testing which is done on samples."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "How does propellant choice affect aerosol can safety?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Each propellant follows its own vapour pressure curve, so the same can design will run at a different internal pressure depending on which propellant is used and at what fill ratio. Choosing a propellant without checking that pressure envelope against the container's rated burst pressure removes the safety margin the design assumed. This is why propellant and container are always qualified together, not independently."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "Can non-certified aerosol cans be legally sold?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "No, in the markets that matter commercially. Aerosols are regulated as dangerous goods for transport, and both DOT in the United States and the UN Model Regulations internationally require the container to meet defined pressure and testing standards before it can be shipped. Using an uncertified can also removes the manufacturer's basis for the safety margin the whole product design relies on."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "What happens if an aerosol can is overfilled?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Overfilling reduces the headspace available for the propellant vapour to expand into as temperature rises, which pushes internal pressure toward the can's design limit faster than intended. Because liquids are effectively incompressible, there is very little margin once headspace is lost. Correct fill weight and volume are therefore treated as safety controls, checked continuously on the filling line rather than only at design stage."
+          }
+        }
+      ]
+    },
+    {
+      "@type": "WebPage",
+      "@id": `https://www.globalaerosols.com/${slug}`,
+      "url": `https://www.globalaerosols.com/${slug}`,
+      "name": "Aerosol Can Safety: Pressure, Burst Tests & DOT Rules",
+      "description": "How safe is your aerosol can? Learn burst-test pressure calculations, hot water bath testing and global DOT/UN compliance requirements for manufacturers.",
+      "isPartOf": { "@id": "https://www.globalaerosols.com/#website" },
+      "breadcrumb": { "@id": `https://www.globalaerosols.com/${slug}#breadcrumb` },
+      "primaryImageOfPage": { "@type": "ImageObject", "url": heroUrl },
+      "datePublished": "2025-11-16",
+      "dateModified": "2026-07-29"
     }
   ]
 };
-const schemas = [blogSchema, breadcrumbSchema];
 ---
 
 <Layout
-  title="Aerosol Can Safety Explained: Pressure Calculations, Burst Tests & Global DOT Compliance | Global Aerosols"
-  description="Technical, fact-based guide to aerosol can safety: pressure calculations, burst testing, DOT guidelines and best practices for startups and manufacturers."
+  title="Aerosol Can Safety: Pressure, Burst Tests & DOT Rules"
+  description="How safe is your aerosol can? Learn burst-test pressure calculations, hot water bath testing and global DOT/UN compliance requirements for manufacturers."
   canonical="https://www.globalaerosols.com/aerosol-can-safety-explained"
   ogImage="https://assets.zyrosite.com/A3QlOV94WLSaL6xE/aerosol-can-safety-hero.jpg-WrmFk9oWFvFRxxCz.png"
   ogType="article"
@@ -99,7 +145,7 @@ const schemas = [blogSchema, breadcrumbSchema];
     <article class="blog-prose">
       <header class="post-header">
         <h1 class="gradient-text" style="font-size: 3rem; line-height: 1.15; font-weight: 900; margin-bottom: 20px;">
-          Aerosol Can Safety Explained: Pressure Calculations, Burst Tests & Global DOT Compliance
+          Aerosol Can Safety: Pressure, Burst Tests &amp; DOT Rules
         </h1>
         
         <!-- Post meta details -->
@@ -111,6 +157,8 @@ const schemas = [blogSchema, breadcrumbSchema];
           <span style="width: 4px; height: 4px; border-radius: 50%; background-color: var(--border);"></span>
           <span>Published: <strong>Nov 16, 2025</strong></span>
           <span style="width: 4px; height: 4px; border-radius: 50%; background-color: var(--border);"></span>
+          <span>Updated: <strong>Jul 29, 2026</strong></span>
+          <span style="width: 4px; height: 4px; border-radius: 50%; background-color: var(--border);"></span>
           <span>Reading Time: <strong>15 min read</strong></span>
           <span style="width: 4px; height: 4px; border-radius: 50%; background-color: var(--border);"></span>
           <span style="background: #e0f2fe; color: #0369a1; padding: 2px 10px; border-radius: 50px; font-size: 0.75rem; font-weight: 700; text-transform: uppercase;">Aerosols & Gas Dosing</span>
@@ -121,7 +169,7 @@ const schemas = [blogSchema, breadcrumbSchema];
       <div class="image-slot">
         <img 
           src="https://assets.zyrosite.com/A3QlOV94WLSaL6xE/aerosol-can-safety-hero.jpg-WrmFk9oWFvFRxxCz.png" 
-          alt="Aerosol can safety visual representing pressure and safety engineering" 
+          alt="Aerosol can undergoing pressure and burst-test safety engineering evaluation — Global Aerosols" 
           width="1200" 
           height="800" 
           loading="eager" 
@@ -189,7 +237,7 @@ const schemas = [blogSchema, breadcrumbSchema];
                 <p style="font-size:0.95rem;color:var(--muted)"><img
                         src="https://assets.zyrosite.com/A3QlOV94WLSaL6xE/aerosol-internal-pressure-diagram-0SQybrUe7byFNFKM.jpg"
                         alt="Internal pressure diagram showing gas and liquid phases inside an aerosol can"
-                        style="width:100%;max-width:650px;height:auto;border-radius:6px" loading="lazy" />
+                        width="650" height="365" style="width:100%;max-width:650px;height:auto;border-radius:6px" loading="lazy" />
                 <p style="font-size:0.8rem;color:#666;text-align:center;margin-top:4px">Figure 2: Internal pressure
                     distribution inside an aerosol can</p>
                 </p>
@@ -223,6 +271,7 @@ const schemas = [blogSchema, breadcrumbSchema];
 <!-- UNDERSTANDING AEROSOL CAN PRESSURE BASICS -->
 <section class="section" id="understanding-aerosol-can-pressure-basics">
   <h2>Understanding Aerosol Can Pressure Basics</h2>
+        <p>Pressure behaviour differs fundamentally between propellant types, a distinction covered in full in our guide to <a href="/compressed-vs-liquefied-gas-aerosols-pressure-profiles" style="color: var(--primary); font-weight: 600;">compressed versus liquefied gas aerosols</a> and <a href="/how-aerosol-cans-work" style="color: var(--primary); font-weight: 600;">how aerosol cans work</a>.</p>
   <p>Aerosol pressure arises primarily from the vapor pressure of the propellant inside the container.
                 Propellants such as LPG (propane–butane mixtures), DME, CO₂, and HFC-152a each exert specific vapor
                 pressures at given temperatures. Since aerosols are stored and transported at varying temperatures,
@@ -305,6 +354,7 @@ const schemas = [blogSchema, breadcrumbSchema];
 <!-- BURST TESTING EXPLAINED (THE ULTIMATE CAN SAFETY TEST) -->
 <section class="section" id="burst-testing-explained-the-ultimate-can-safety-test">
   <h2>Burst Testing Explained (The Ultimate Can Safety Test)</h2>
+        <p>Burst testing verifies the container independently of the seal; the crimp and gasket side of the safety envelope is covered separately in <a href="/aerosol-valve-gasket-explained" style="color: var(--primary); font-weight: 600;">aerosol valve gasket materials</a> and <a href="/why-do-aerosol-cans-leak" style="color: var(--primary); font-weight: 600;">why aerosol cans leak</a>.</p>
   <p>Burst testing is the definitive mechanical test that ensures an aerosol can can withstand extreme
                 internal pressures beyond normal operating conditions. The test simulates a worst-case scenario by
                 gradually increasing pressure—usually with water in hydrostatic equipment—until the can mechanically
@@ -345,7 +395,7 @@ const schemas = [blogSchema, breadcrumbSchema];
             <p style="color:var(--muted)"><img
                     src="https://assets.zyrosite.com/A3QlOV94WLSaL6xE/hydrostatic-burst-test-machine.jpg-ETfIt8tTERAR09th.png"
                     alt="Hydrostatic burst testing machine used to determine aerosol can burst pressure"
-                    style="width:100%;max-width:650px;height:auto;border-radius:6px" loading="lazy" />
+                    width="650" height="365" style="width:100%;max-width:650px;height:auto;border-radius:6px" loading="lazy" />
             <p style="font-size:0.8rem;color:#666;text-align:center;margin-top:4px">Figure 3: Hydrostatic burst test
                 machine</p>
             </p>
@@ -354,6 +404,7 @@ const schemas = [blogSchema, breadcrumbSchema];
 <!-- GLOBAL REGULATORY STANDARDS FOR AEROSOL CAN SAFETY -->
 <section class="section" id="global-regulatory-standards-for-aerosol-can-safety">
   <h2>Global Regulatory Standards for Aerosol Can Safety</h2>
+        <p>Testing thresholds referenced throughout this guide follow standardised methods published by <a href="https://www.astm.org" target="_blank" rel="noopener noreferrer" style="color: var(--primary); font-weight: 600;">ASTM International</a> and <a href="https://www.iso.org" target="_blank" rel="noopener noreferrer" style="color: var(--primary); font-weight: 600;">ISO</a>, and in the EU the applicable framework is the <a href="https://eur-lex.europa.eu/legal-content/EN/TXT/?uri=CELEX%3A31975L0324" target="_blank" rel="noopener noreferrer" style="color: var(--primary); font-weight: 600;">Aerosol Dispensers Directive 75/324/EEC</a>.</p>
   <p>Aerosol packaging safety is governed by well-established global regulations applicable to transport,
                 manufacturing, and labeling. Compliance ensures safe handling through the supply chain and acceptance in
                 international markets. These standards define pressure requirements, testing procedures, and approved
@@ -399,6 +450,7 @@ const schemas = [blogSchema, breadcrumbSchema];
 <!-- DOT GUIDELINES: WHAT INDIAN & GLOBAL BRANDS MUST KNOW -->
 <section class="section" id="dot-guidelines-what-indian-global-brands-must-know">
   <h2>DOT Guidelines: What Indian & Global Brands Must Know</h2>
+        <p>Full classification and packaging requirements for shipping aerosols as UN 1950 dangerous goods are set out in the <a href="https://unece.org/transport/dangerous-goods" target="_blank" rel="noopener noreferrer" style="color: var(--primary); font-weight: 600;">UN Model Regulations</a>, and covered in depth in our guide to <a href="/dot-un-aerosol-transport-regulations-hazmat" style="color: var(--primary); font-weight: 600;">DOT and UN aerosol transport rules</a>.</p>
   <p>DOT classifications directly relate to the minimum strength and test performance required from aerosol
                 cans. DOT-2P applies to certain lightweight tinplate cans, while DOT-2Q applies to higher-strength,
                 pressurized containers. These markings indicate that the can meets defined test and burst pressure
@@ -440,6 +492,7 @@ const schemas = [blogSchema, breadcrumbSchema];
 <!-- SAFETY BEST PRACTICES FOR AEROSOL STARTUPS -->
 <section class="section" id="safety-best-practices-for-aerosol-startups">
   <h2>Safety Best Practices for Aerosol Startups</h2>
+        <p>These practices are formalised across the manufacturing stages described in <a href="/aerosol-manufacturing-101-guide" style="color: var(--primary); font-weight: 600;">Aerosol Manufacturing 101</a> and the scale-up sequence in <a href="/from-lab-to-commercial-launch" style="color: var(--primary); font-weight: 600;">from lab to commercial launch</a>.</p>
   <p>New aerosol manufacturers frequently face safety issues due to improper propellant selection, inaccurate
                 filling, or insufficient quality control. A structured approach ensures safe operations and maintains
                 compliance with domestic and international regulations.</p>
@@ -535,13 +588,63 @@ const schemas = [blogSchema, breadcrumbSchema];
             <p style="font-size:0.95rem;color:var(--muted)"><img
                     src="https://assets.zyrosite.com/A3QlOV94WLSaL6xE/aerosol-safety-lifecycle-flowchart-AQgixKiVS7EwChd6.png"
                     alt="Flowchart of aerosol safety lifecycle from design to compliance"
-                    style="width:100%;max-width:650px;height:auto;border-radius:6px" loading="lazy" />
+                    width="650" height="365" style="width:100%;max-width:650px;height:auto;border-radius:6px" loading="lazy" />
             <p style="font-size:0.8rem;color:#666;text-align:center;margin-top:4px">Figure 4: Aerosol safety lifecycle
                 flowchart</p>
             </p>
 </section>
 
 
+
+
+      <!-- FAQ -->
+      <section class="section" id="faq" style="margin-top: 50px;">
+        <h2>Frequently Asked Questions</h2>
+
+        <details style="border: 1px solid var(--border); border-radius: var(--radius-md); margin-bottom: 10px; background: #ffffff;">
+          <summary style="font-weight: 600; padding: 14px 18px; cursor: pointer;">What is the normal working pressure of an aerosol can?</summary>
+          <div style="padding: 0 18px 16px; color: var(--text-muted); line-height: 1.65;">Typical service pressure at 55 degrees Celsius is around 8 to 10 bar for tinplate cans and 12 to 15 bar for aluminium cans, though the exact figure depends on the propellant and fill ratio used. This is the pressure the container must withstand throughout its labelled temperature range, not just at room temperature. Design margin above this working pressure is what the burst test verifies.</div>
+        </details>
+
+        <details style="border: 1px solid var(--border); border-radius: var(--radius-md); margin-bottom: 10px; background: #ffffff;">
+          <summary style="font-weight: 600; padding: 14px 18px; cursor: pointer;">Why is burst testing required for aerosol cans?</summary>
+          <div style="padding: 0 18px 16px; color: var(--text-muted); line-height: 1.65;">Burst testing confirms the container fails only well above its normal operating pressure, giving a documented safety margin rather than an assumption. Regulators require it because a can that ruptures in transport or storage is a direct hazard to people and property. It is destructive testing performed on production samples, not on every unit shipped.</div>
+        </details>
+
+        <details style="border: 1px solid var(--border); border-radius: var(--radius-md); margin-bottom: 10px; background: #ffffff;">
+          <summary style="font-weight: 600; padding: 14px 18px; cursor: pointer;">What temperature is used for aerosol hot water bath testing?</summary>
+          <div style="padding: 0 18px 16px; color: var(--text-muted); line-height: 1.65;">The standard hot water bath test brings the can's contents to 50 to 55 degrees Celsius, simulating the elevated temperatures a can can realistically reach during transport or warehousing. Every filled can is required to pass through this bath without leaking or bursting before it leaves the production line. It is a 100 percent inspection, unlike burst testing which is done on samples.</div>
+        </details>
+
+        <details style="border: 1px solid var(--border); border-radius: var(--radius-md); margin-bottom: 10px; background: #ffffff;">
+          <summary style="font-weight: 600; padding: 14px 18px; cursor: pointer;">How does propellant choice affect aerosol can safety?</summary>
+          <div style="padding: 0 18px 16px; color: var(--text-muted); line-height: 1.65;">Each propellant follows its own vapour pressure curve, so the same can design will run at a different internal pressure depending on which propellant is used and at what fill ratio. Choosing a propellant without checking that pressure envelope against the container's rated burst pressure removes the safety margin the design assumed. This is why propellant and container are always qualified together, not independently.</div>
+        </details>
+
+        <details style="border: 1px solid var(--border); border-radius: var(--radius-md); margin-bottom: 10px; background: #ffffff;">
+          <summary style="font-weight: 600; padding: 14px 18px; cursor: pointer;">Can non-certified aerosol cans be legally sold?</summary>
+          <div style="padding: 0 18px 16px; color: var(--text-muted); line-height: 1.65;">No, in the markets that matter commercially. Aerosols are regulated as dangerous goods for transport, and both DOT in the United States and the UN Model Regulations internationally require the container to meet defined pressure and testing standards before it can be shipped. Using an uncertified can also removes the manufacturer's basis for the safety margin the whole product design relies on.</div>
+        </details>
+
+        <details style="border: 1px solid var(--border); border-radius: var(--radius-md); margin-bottom: 10px; background: #ffffff;">
+          <summary style="font-weight: 600; padding: 14px 18px; cursor: pointer;">What happens if an aerosol can is overfilled?</summary>
+          <div style="padding: 0 18px 16px; color: var(--text-muted); line-height: 1.65;">Overfilling reduces the headspace available for the propellant vapour to expand into as temperature rises, which pushes internal pressure toward the can's design limit faster than intended. Because liquids are effectively incompressible, there is very little margin once headspace is lost. Correct fill weight and volume are therefore treated as safety controls, checked continuously on the filling line rather than only at design stage.</div>
+        </details>
+      </section>
+
+      <!-- RELATED ARTICLES -->
+      <section class="section" id="related-articles" style="margin-top: 50px;">
+        <h2>Related Articles</h2>
+        <ul style="display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 10px; list-style-type: none; padding-left: 0;">
+          <li><a href="/aerosol-manufacturing-101-guide" style="font-weight: 600; color: var(--primary);">Aerosol Manufacturing 101: Technical Guide to Formulation &amp; Safety</a></li>
+          <li><a href="/dot-un-aerosol-transport-regulations-hazmat" style="font-weight: 600; color: var(--primary);">DOT &amp; UN Aerosol Transport Regulations</a></li>
+          <li><a href="/how-aerosol-cans-work" style="font-weight: 600; color: var(--primary);">How Aerosol Cans Work: Propellant, Pressure &amp; Valves</a></li>
+          <li><a href="/aerosol-propellants-explained-lpg-vs-dme-vs-hfc-vs-n2-vs-co2" style="font-weight: 600; color: var(--primary);">Aerosol Propellants Explained: LPG vs DME vs HFC vs N&#8322; vs CO&#8322;</a></li>
+          <li><a href="/aerosol-chemistry-101" style="font-weight: 600; color: var(--primary);">Aerosol Chemistry 101: Solvents, Binders &amp; Surfactants</a></li>
+          <li><a href="/from-lab-to-commercial-launch" style="font-weight: 600; color: var(--primary);">From Lab to Factory: Aerosol R&amp;D to Commercial Manufacturing</a></li>
+          <li><a href="/choosing-the-right-product-consultant" style="font-weight: 600; color: var(--primary);">How to Choose the Right Aerosol Product Consultant</a></li>
+        </ul>
+      </section>
 
       <!-- Contact Box -->
       <div class="cta" style="background: linear-gradient(135deg, var(--primary) 0%, var(--secondary) 100%); color: #ffffff; padding: 30px; border-radius: var(--radius-lg); margin-top: 40px; display: flex; flex-direction: column; justify-content: space-between; align-items: flex-start; gap: 20px; md-flex-direction: row; md-align-items: center;">
@@ -569,7 +672,7 @@ const schemas = [blogSchema, breadcrumbSchema];
         <div>
           <h3 style="margin-top: 0; margin-bottom: 8px; font-family: 'Outfit', sans-serif; font-size: 1.3rem; font-weight: 700; color: var(--text-primary);">About the Specialist</h3>
           <p style="margin-top: 0; margin-bottom: 12px; font-size: 0.95rem; line-height: 1.6; color: var(--text-muted);">
-            <strong>Absar Khan</strong> is the principal consultant and chemical formulation architect at <strong>Global Formulation</strong>. He possesses cross-disciplinary engineering expertise spanning aerosol gassing systems, pharmaceutical manufacturing, sterile injectables, cosmetics, and green chemical plant setups. Absar leads scientific and engineering advisory teams supporting manufacturers globally in technology selection, GMP layouts, validation frameworks, and regulatory strategies.
+            <strong>Absar Khan</strong> is the founder and lead aerosol consultant at <strong>Global Aerosols</strong>. He possesses cross-disciplinary engineering expertise spanning aerosol pressure vessel design, burst testing, DOT/UN compliance, and regulatory strategy. Absar leads scientific and engineering advisory teams supporting manufacturers globally in technology selection, GMP layouts, validation frameworks, and regulatory strategies.
           </p>
           <p style="margin: 0; font-size: 0.9rem;">
             <strong>LinkedIn Portfolio:</strong> 
