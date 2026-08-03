@@ -1,0 +1,658 @@
+---
+import Layout from '../layouts/Layout.astro';
+
+const orgSchema = {
+  "@context": "https://schema.org",
+  "@type": "Organization",
+  "name": "Global Aerosols",
+  "url": "https://www.globalaerosols.com",
+  "logo": "https://www.globalaerosols.com/logo.png",
+  "sameAs": [
+    "https://www.linkedin.com/in/absar-khan-aerosol-consultant-and-formulator-78359b162"
+  ]
+};
+
+const websiteSchema = {
+  "@context": "https://schema.org",
+  "@type": "WebSite",
+  "url": "https://www.globalaerosols.com",
+  "potentialAction": {
+    "@type": "SearchAction",
+    "target": "https://www.globalaerosols.com/search?q={search_term_string}",
+    "query-input": "required name=search_term_string"
+  }
+};
+
+const authorSchema = {
+  "@context": "https://schema.org",
+  "@type": "Person",
+  "name": "Absar Khan",
+  "jobTitle": "Founder & Lead Aerosol Consultant",
+  "url": "https://www.linkedin.com/in/absar-khan-aerosol-consultant-and-formulator-78359b162",
+  "affiliation": {
+    "@type": "Organization",
+    "name": "Global Aerosols"
+  }
+};
+
+const blogSchema = {
+  "@context": "https://schema.org",
+  "@type": "BlogPosting",
+  "headline": "Metered Dose Valve Engineering: Dose Accuracy, Consistency & Leak Standards",
+  "description": "Explore metered dose valve engineering — how MDV design controls dose accuracy, consistency, and leak performance in aerosol products. Technical guide for formulators.",
+  "image": "https://cdn.globalaerosols.com/images/metered-dose-valve-engineering-dose-accuracy/metered-dose-valve-engineering-dose-accuracy-hero-globalaerosols.webp",
+  "author": {
+    "@type": "Person",
+    "name": "Absar Khan"
+  },
+  "publisher": {
+    "@type": "Organization",
+    "name": "Global Aerosols",
+    "logo": {
+      "@type": "ImageObject",
+      "url": "https://www.globalaerosols.com/logo.png"
+    }
+  },
+  "datePublished": "2026-08-02",
+  "dateModified": "2026-08-02",
+  "mainEntityOfPage": {
+    "@type": "WebPage",
+    "@id": "https://www.globalaerosols.com/metered-dose-valve-engineering-dose-accuracy"
+  },
+  "articleSection": "Aerosol Propellants & Valves",
+  "keywords": "metered dose valve aerosol, aerosol valve dose accuracy, metered valve leak testing, MDV dose consistency, aerosol valve specifications, metered dose valve design",
+  "wordCount": "2650"
+};
+
+const breadcrumbSchema = {
+  "@context": "https://schema.org",
+  "@type": "BreadcrumbList",
+  "itemListElement": [
+    {
+      "@type": "ListItem",
+      "position": 1,
+      "name": "Home",
+      "item": "https://www.globalaerosols.com"
+    },
+    {
+      "@type": "ListItem",
+      "position": 2,
+      "name": "Blog",
+      "item": "https://www.globalaerosols.com/blog"
+    },
+    {
+      "@type": "ListItem",
+      "position": 3,
+      "name": "Metered Dose Valve Engineering: Dose Accuracy, Consistency & Leak Standards",
+      "item": "https://www.globalaerosols.com/metered-dose-valve-engineering-dose-accuracy"
+    }
+  ]
+};
+
+const faqSchema = {
+  "@context": "https://schema.org",
+  "@type": "FAQPage",
+  "mainEntity": [
+    {
+      "@type": "Question",
+      "name": "What is a metered dose valve in aerosol products?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "A metered dose valve (MDV) is a precision aerosol valve that delivers a fixed, reproducible quantity of product with each actuation. It achieves this through an internal metering chamber — a small cavity of defined volume that fills with formulation between actuations and empties completely upon each press. MDVs are essential in pharmaceutical inhalers, topical drug sprays, and any application where dose precision directly affects safety or efficacy."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "How does a metered dose valve achieve consistent dose output?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Dose consistency in an MDV depends on three interacting factors: the precision-engineered volume of the metering chamber, the complete and repeatable filling and emptying cycle of that chamber, and the dimensional tolerances of the valve stem and body. Between actuations, the metering chamber refills with formulation through an inlet orifice; on actuation, the stem movement simultaneously closes the inlet and opens the outlet, expelling only the metered volume. Any variability in stem travel, gasket deformation, or chamber volume propagates directly into delivered dose variability."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "What standards govern aerosol valve leak testing?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Aerosol valve leak performance is evaluated under several international frameworks. For pharmaceutical MDIs, ICH Q1A stability guidelines require leak rate assessment over the product shelf life. The EU Aerosol Dispensers Directive 75/324/EEC specifies maximum permissible leak rates for consumer aerosols. ASTM D3925 provides a standard test method for aerosol dispensers that covers leak detection during filling and finished product QC. Individual pharmacopoeial monographs (USP, Ph.Eur.) establish limits specifically for inhalation aerosol leakage."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "What materials are used for metered dose valve gaskets?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Gasket material selection is one of the most critical decisions in MDV design, because the gasket must seal under pressure without swelling, hardening, or extracting materials into the formulation. The most common materials are EPDM rubber, Buna-N (nitrile), neoprene, and thermoplastic elastomers. For HFA-propelled pharmaceutical MDIs, specific elastomer grades are qualified under regulatory submissions because extractables and leachables from the gasket must meet toxicological thresholds documented in FDA and EMA guidance."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "How is aerosol valve dose accuracy tested?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Dose accuracy testing for MDVs typically involves gravimetric methods — weighing the mass delivered per actuation using a precision balance — or volumetric collection into a calibrated vessel. For pharmaceutical inhalation products, dose uniformity is assessed using apparatus described in pharmacopoeial methods such as the Andersen Cascade Impactor. In industrial or consumer aerosol contexts, spray-weight tests per ASTM D5964 provide spray rate data used to infer valve consistency."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "What causes dose-to-dose variability in metered dose valves?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Dose variability in MDVs arises from several interrelated sources. Incomplete metering chamber fill — caused by high-viscosity formulations, entrained propellant gas, or inadequate dwell time between actuations — directly reduces delivered dose. Gasket creep or swell under prolonged propellant contact alters the effective chamber volume. Stem travel inconsistency due to manufacturing tolerance variation changes the outlet orifice opening. Particle agglomeration in suspension formulations can partially block the inlet orifice."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "What is the difference between a metered dose valve and a continuous spray valve?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "A continuous spray valve (CSV) delivers product for as long as the actuator is depressed, with no fixed per-actuation volume. A metered dose valve, by contrast, delivers only the pre-defined volume held in its metering chamber per actuation, regardless of how long the actuator is held down. CSVs are used in household, personal care, and industrial products where variable application is acceptable. MDVs are mandatory wherever a reproducible unit dose must be guaranteed — primarily pharmaceutical aerosols and precision technical spray applications."
+      }
+    }
+  ]
+};
+
+const webpageSchema = {
+  "@context": "https://schema.org",
+  "@type": "WebPage",
+  "@id": "https://www.globalaerosols.com/metered-dose-valve-engineering-dose-accuracy",
+  "url": "https://www.globalaerosols.com/metered-dose-valve-engineering-dose-accuracy",
+  "name": "Metered Dose Valve Engineering: Dose Accuracy, Consistency & Leak Standards",
+  "description": "Explore metered dose valve engineering — how MDV design controls dose accuracy, consistency, and leak performance in aerosol products. Technical guide for formulators.",
+  "isPartOf": {
+    "@type": "WebSite",
+    "url": "https://www.globalaerosols.com"
+  },
+  "breadcrumb": {
+    "@type": "BreadcrumbList",
+    "itemListElement": [
+      { "@type": "ListItem", "position": 1, "name": "Home", "item": "https://www.globalaerosols.com" },
+      { "@type": "ListItem", "position": 2, "name": "Blog", "item": "https://www.globalaerosols.com/blog" },
+      { "@type": "ListItem", "position": 3, "name": "Metered Dose Valve Engineering: Dose Accuracy, Consistency & Leak Standards", "item": "https://www.globalaerosols.com/metered-dose-valve-engineering-dose-accuracy" }
+    ]
+  },
+  "primaryImageOfPage": {
+    "@type": "ImageObject",
+    "url": "https://cdn.globalaerosols.com/images/metered-dose-valve-engineering-dose-accuracy/metered-dose-valve-engineering-dose-accuracy-hero-globalaerosols.webp"
+  },
+  "datePublished": "2026-08-02",
+  "dateModified": "2026-08-02"
+};
+
+const schemas = [orgSchema, websiteSchema, authorSchema, blogSchema, breadcrumbSchema, faqSchema, webpageSchema];
+---
+
+<Layout
+  title="Metered Dose Valve Engineering: Dose Accuracy & Leak Standards"
+  description="Explore metered dose valve engineering — how MDV design controls dose accuracy, consistency, and leak performance in aerosol products. Technical guide for formulators."
+  canonical="https://www.globalaerosols.com/metered-dose-valve-engineering-dose-accuracy"
+  ogImage="https://cdn.globalaerosols.com/images/metered-dose-valve-engineering-dose-accuracy/metered-dose-valve-engineering-dose-accuracy-hero-globalaerosols.webp"
+  ogType="article"
+  schemaJson={schemas}
+>
+  <main class="section-container" style="max-width: 100%; padding-left: 48px; padding-right: 48px; padding-top: 40px; padding-bottom: 80px;">
+    
+    <!-- HTML5 Compliant Breadcrumbs -->
+    <nav aria-label="Breadcrumb" style="display: flex; gap: 8px; font-size: 0.85rem; color: var(--text-muted); margin-bottom: 24px; font-family: 'Inter', sans-serif;">
+      <a href="/" style="color: var(--text-muted);">Home</a>
+      <span>&gt;</span>
+      <a href="/blog/" style="color: var(--text-muted);">Blog</a>
+      <span>&gt;</span>
+      <span style="color: var(--text-primary); font-weight: 500;">Aerosol Propellants &amp; Valves</span>
+    </nav>
+
+    <!-- Main article container -->
+    <article class="blog-prose">
+      <header class="post-header">
+        <h1 class="gradient-text" style="font-size: 3rem; line-height: 1.15; font-weight: 900; margin-bottom: 20px;">
+          Metered Dose Valve Engineering: Dose Accuracy, Consistency &amp; Leak Standards
+        </h1>
+        
+        <!-- Post meta details -->
+        <div style="display: flex; align-items: center; gap: 16px; font-size: 0.9rem; color: var(--text-muted); margin-bottom: 30px; font-family: 'Inter', sans-serif; font-weight: 500; border-bottom: 1px solid var(--border); padding-bottom: 20px;">
+          <div style="display: flex; align-items: center; gap: 8px;">
+            <span style="width: 28px; height: 28px; background: var(--primary); color: white; display: flex; align-items: center; justify-content: center; border-radius: 50%; font-weight: 700; font-size: 0.75rem;">AK</span>
+            <span>By <strong>Absar Khan</strong></span>
+          </div>
+          <span style="width: 4px; height: 4px; border-radius: 50%; background-color: var(--border);"></span>
+          <span>Published: <strong>Aug 2, 2026</strong></span>
+          <span style="width: 4px; height: 4px; border-radius: 50%; background-color: var(--border);"></span>
+          <span>Reading Time: <strong>13 min read</strong></span>
+          <span style="width: 4px; height: 4px; border-radius: 50%; background-color: var(--border);"></span>
+          <span style="background: #e0f2fe; color: #0369a1; padding: 2px 10px; border-radius: 50px; font-size: 0.75rem; font-weight: 700; text-transform: uppercase;">Propellants &amp; Valves</span>
+        </div>
+      </header>
+
+      <!-- Primary Featured Image -->
+      <div class="image-slot">
+        <img 
+          src="https://cdn.globalaerosols.com/images/metered-dose-valve-engineering-dose-accuracy/metered-dose-valve-engineering-dose-accuracy-hero-globalaerosols.webp" 
+          alt="Metered dose valve aerosol components disassembled on a precision engineering bench — Global Aerosols" 
+          width="1200" 
+          height="800" 
+          loading="eager" 
+        />
+      </div>
+
+      <!-- Table of Contents -->
+      <div class="box" style="background: #f8fafc; border: 1px solid var(--border); border-radius: var(--radius-lg); padding: 24px; margin: 30px 0;">
+        <h3 style="margin-top: 0; font-family: 'Outfit', sans-serif; color: var(--text-primary); font-size: 1.25rem; font-weight: 700; border-bottom: 2px solid var(--border); padding-bottom: 8px;">Guide Contents</h3>
+        <ul style="display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 10px; list-style-type: none; padding-left: 0; margin-bottom: 0;">
+          <li><a href="#section-1" style="font-weight: 600; color: var(--primary);">1. What Is a Metered Dose Valve?</a></li>
+          <li><a href="#section-2" style="font-weight: 600; color: var(--primary);">2. Valve Anatomy & Component Functions</a></li>
+          <li><a href="#section-3" style="font-weight: 600; color: var(--primary);">3. Dose Accuracy: Engineering Determinants</a></li>
+          <li><a href="#section-4" style="font-weight: 600; color: var(--primary);">4. Leak Performance & Industry Standards</a></li>
+          <li><a href="#section-5" style="font-weight: 600; color: var(--primary);">5. Gasket Material Selection</a></li>
+          <li><a href="#section-6" style="font-weight: 600; color: var(--primary);">6. MDV vs Continuous Spray Valves</a></li>
+          <li><a href="#section-7" style="font-weight: 600; color: var(--primary);">7. Testing & Quality Control</a></li>
+          <li><a href="#faq" style="font-weight: 600; color: var(--primary);">8. Frequently Asked Questions</a></li>
+        </ul>
+      </div>
+
+      <section class="section">
+        <p>A <strong>metered dose valve</strong> is a precision aerosol valve that delivers a fixed, reproducible quantity of product with every actuation — regardless of canister fill level, actuation force, or orientation. It achieves this through a small internal metering chamber whose volume is defined during manufacture, filling on the upstroke and discharging completely on the downstroke. This engineering precision makes metered dose valves the foundation of pharmaceutical inhaler technology, topical drug delivery, and any aerosol application where an inconsistent dose creates a safety, efficacy, or regulatory problem.</p>
+        <p>Understanding how metered dose valves are designed, how their dose accuracy is characterised, and what failure modes affect their leak performance is essential knowledge for aerosol formulators, product development engineers, and quality assurance teams working across both pharmaceutical and industrial aerosol sectors. This guide provides a complete technical overview of MDV engineering — covering component function, dose variability mechanisms, gasket compatibility, leak standards, and QC testing protocols.</p>
+      </section>
+
+      <!-- Section 1 -->
+      <section id="section-1" class="section">
+        <h2>What Is a Metered Dose Valve?</h2>
+        <p>A metered dose valve (MDV) is a subtype of aerosol dispensing valve engineered to deliver a pre-defined unit volume of product per actuation cycle. Unlike continuous spray valves, which allow product to flow for as long as the actuator is depressed, an MDV physically limits each discharge to the volume of its internal metering chamber — typically expressed in microlitres (µL) for pharmaceutical applications or in milligrams (mg) of spray weight for consumer aerosols. The principle is mechanically elegant: the metering chamber fills passively between actuations and is isolated from the bulk formulation at the moment of delivery.</p>
+        <p>Metered dose valves are most prominently associated with pressurised Metered Dose Inhalers (pMDIs), where each actuation must deliver a precise drug dose to the patient's airways. However, the same valve class is used in topical pharmaceutical sprays, metered-dose nasal sprays, and certain precision industrial applications. As detailed in our guide to <a href="https://www.globalaerosols.com/aerosol-propellants-explained-lpg-vs-dme-vs-hfc-vs-n2-vs-co2" target="_top">aerosol propellants</a>, the propellant system interacts intimately with valve design — propellant vapour pressure, density, and solvent properties all influence whether the metering chamber fills and empties with the reproducibility that MDV engineering demands.</p>
+        <ul>
+          <li>MDVs deliver a fixed volume per actuation, independent of canister pressure at time of use</li>
+          <li>Standard chamber volumes range from approximately 25 µL to 100 µL in pharmaceutical applications, and up to several hundred µL in consumer metered sprays</li>
+          <li>The valve housing, stem, metering chamber body, inlet gasket, and outlet gasket are the five primary subcomponents</li>
+          <li>MDVs may be designed for upright, inverted, or any-orientation use depending on dip tube and chamber geometry</li>
+        </ul>
+      </section>
+
+      <!-- Section 2 -->
+      <section id="section-2" class="section">
+        <h2>Valve Anatomy &amp; Component Functions</h2>
+        <p>The metered dose valve is a multi-component precision assembly in which every element has a defined engineering function. Failure or dimensional drift in any single component propagates directly into delivered dose variability or leak failure — which is why MDV manufacturing tolerances are among the tightest in the consumer goods or pharmaceutical packaging supply chain. Understanding the function of each component is the prerequisite for diagnosing dose inconsistency, selecting compatible materials, and specifying qualification tests. The <a href="https://www.globalaerosols.com/aerosol-valve-gasket-explained" target="_top">aerosol valve gasket</a> in particular deserves attention as the component most sensitive to formulation chemistry.</p>
+        
+        <div class="table-responsive" style="overflow-x: auto; margin: 1.5rem 0;">
+          <table style="width: 100%; border-collapse: collapse; font-size: 0.9rem;">
+            <thead>
+              <tr style="background: var(--text-primary); color: #fff;">
+                <th style="padding: 10px 14px; text-align: left;">Component</th>
+                <th style="padding: 10px 14px; text-align: left;">Primary Function</th>
+                <th style="padding: 10px 14px; text-align: left;">Key Engineering Parameter</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td style="padding: 9px 14px; border-bottom: 1px solid var(--border);">Valve Housing (Body)</td>
+                <td style="padding: 9px 14px; border-bottom: 1px solid var(--border);">Encases all internal components; interfaces with the aerosol can cup via a crimp</td>
+                <td style="padding: 9px 14px; border-bottom: 1px solid var(--border);">Dimensional accuracy at crimp seat; internal bore concentricity</td>
+              </tr>
+              <tr style="background: #f4f4f2;">
+                <td style="padding: 9px 14px; border-bottom: 1px solid var(--border);">Metering Chamber</td>
+                <td style="padding: 9px 14px; border-bottom: 1px solid var(--border);">Defines the exact volume delivered per actuation</td>
+                <td style="padding: 9px 14px; border-bottom: 1px solid var(--border);">Chamber volume tolerance (typically ±2–5% for pharmaceutical MDIs)</td>
+              </tr>
+              <tr>
+                <td style="padding: 9px 14px; border-bottom: 1px solid var(--border);">Valve Stem</td>
+                <td style="padding: 9px 14px; border-bottom: 1px solid var(--border);">Translates actuator depression into port opening/closing sequence</td>
+                <td style="padding: 9px 14px; border-bottom: 1px solid var(--border);">Stem length, travel distance, and orifice diameter</td>
+              </tr>
+              <tr style="background: #f4f4f2;">
+                <td style="padding: 9px 14px; border-bottom: 1px solid var(--border);">Return Spring</td>
+                <td style="padding: 9px 14px; border-bottom: 1px solid var(--border);">Resets stem to closed position after each actuation</td>
+                <td style="padding: 9px 14px; border-bottom: 1px solid var(--border);">Spring constant — too stiff increases actuation force; too weak causes incomplete closure</td>
+              </tr>
+              <tr>
+                <td style="padding: 9px 14px; border-bottom: 1px solid var(--border);">Inlet (Tank) Gasket</td>
+                <td style="padding: 9px 14px; border-bottom: 1px solid var(--border);">Seals metering chamber from bulk formulation between actuations; opens on upstroke to allow fill</td>
+                <td style="padding: 9px 14px; border-bottom: 1px solid var(--border);">Elastomer grade, swell resistance, and sealing force</td>
+              </tr>
+              <tr style="background: #f4f4f2;">
+                <td style="padding: 9px 14px; border-bottom: 1px solid var(--border);">Outlet (Stem) Gasket</td>
+                <td style="padding: 9px 14px; border-bottom: 1px solid var(--border);">Maintains can pressure seal when valve is at rest; opens on downstroke to allow dose discharge</td>
+                <td style="padding: 9px 14px; border-bottom: 1px solid var(--border);">Creep resistance under sustained propellant pressure</td>
+              </tr>
+              <tr>
+                <td style="padding: 9px 14px; border-bottom: 1px solid var(--border);">Dip Tube</td>
+                <td style="padding: 9px 14px; border-bottom: 1px solid var(--border);">Delivers liquid formulation from the can base to the valve inlet in upright-use products</td>
+                <td style="padding: 9px 14px; border-bottom: 1px solid var(--border);">Internal diameter, length, and material compatibility</td>
+              </tr>
+              <tr style="background: #f4f4f2;">
+                <td style="padding: 9px 14px; border-bottom: 1px solid var(--border);">Valve Cup</td>
+                <td style="padding: 9px 14px; border-bottom: 1px solid var(--border);">The metal disc crimped onto the aerosol can opening, housing the valve assembly</td>
+                <td style="padding: 9px 14px; border-bottom: 1px solid var(--border);">Crimp dimensions and sealing geometry per aerosol can standard</td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+
+        <p>The inlet and outlet gaskets operate in a precisely sequenced manner. On downstroke (actuation), the stem first closes the inlet port — isolating the metering chamber from the bulk formulation — and then opens the outlet port, allowing the metered volume to discharge through the stem orifice and actuator. On upstroke (release), the outlet closes before the inlet reopens, allowing the bulk formulation to refill the metering chamber for the next dose. This sequencing is governed entirely by the geometry of the stem and housing; there are no active control elements.</p>
+      </section>
+
+      <!-- Diagram Image -->
+      <div class="image-slot">
+        <img 
+          src="https://cdn.globalaerosols.com/images/metered-dose-valve-engineering-dose-accuracy/metered-dose-valve-engineering-dose-accuracy-diagram-globalaerosols.webp" 
+          alt="Metered dose valve aerosol process diagram — dose accuracy measurement in laboratory apparatus | Global Aerosols" 
+          width="900" 
+          height="500" 
+          loading="lazy" 
+        />
+        <p style="font-size: 0.82rem; color: var(--text-muted); font-style: italic; margin-top: 8px;">Metered dose valve components in laboratory precision measurement — the metering chamber fill-and-discharge cycle is the fundamental mechanism controlling aerosol dose accuracy.</p>
+      </div>
+
+      <!-- Section 3 -->
+      <section id="section-3" class="section">
+        <h2>Dose Accuracy: Engineering Determinants</h2>
+        <p>Dose accuracy in a metered dose valve is the outcome of a tight engineering system — not a single component property. Every dimensional variable in the valve assembly contributes to the statistical distribution of delivered doses measured across an actuation sequence. In pharmaceutical MDI development, regulators expect manufacturers to characterise this distribution through dose uniformity testing at the beginning, middle, and end of canister life, demonstrating that delivered doses remain within an acceptable range throughout the product shelf life. For consumer aerosol products, while regulatory requirements are less stringent, consistent dose weight directly affects consumer perception of product quality.</p>
+
+        <div class="callout" style="border-left: 3px solid #16a34a; background: #f0fdf4; padding: 14px 18px; border-radius: 0 6px 6px 0; margin: 1.8em 0; font-size: 0.93rem;">
+          <strong style="color: #16a34a; display: block; margin-bottom: 4px;">Key Insight</strong>
+          The metering chamber volume is defined by the moulded geometry of the valve body — not adjustable in production. This is why dimensional qualification of the metering chamber at mould validation stage is the single most consequential quality control intervention in MDV manufacturing.
+        </div>
+
+        <p>The principal engineering variables that determine dose accuracy include:</p>
+        <ul>
+          <li><strong>Metering chamber volume precision:</strong> Injection-moulded polymer chambers carry inherent dimensional variation. Tolerances tighter than ±2% of nominal volume require high-precision tooling and rigorous in-process dimensional monitoring.</li>
+          <li><strong>Inlet orifice geometry:</strong> The inlet orifice determines how quickly the metering chamber refills between actuations. If the orifice is too small, rapid repeat actuations may deliver sub-dose volumes because the chamber has not fully refilled.</li>
+          <li><strong>Stem travel distance:</strong> The distance the stem travels on actuation must fully open the outlet orifice to allow complete chamber emptying. Insufficient stem travel causes partial discharge — the single most common cause of low-dose actuation failures.</li>
+          <li><strong>Gasket sealing integrity:</strong> An inlet gasket that does not seal fully allows bulk formulation to bleed into the metering chamber during discharge, increasing the delivered dose unpredictably. An outlet gasket that does not fully reseal allows pressure leakage between actuations, affecting subsequent dose volumes.</li>
+          <li><strong>Formulation viscosity and density:</strong> High-viscosity formulations fill the metering chamber more slowly, making dose volume sensitive to the dwell time between consecutive actuations.</li>
+          <li><strong>Temperature effects:</strong> Propellant vapour pressure is temperature-dependent. At higher temperatures, elevated pressure within the can increases the force driving formulation into the metering chamber and affects the thermodynamic state of the formulation at the point of discharge.</li>
+        </ul>
+
+        <p>According to <a href="https://www.astm.org" target="_blank" rel="noopener noreferrer">ASTM International</a>, the test method ASTM D5964 provides a standardised procedure for measuring aerosol spray rate — a commonly used proxy for valve consistency in consumer aerosol quality control, where individual dose weighing per actuation is not routinely feasible.</p>
+      </section>
+
+      <!-- Section 4 -->
+      <section id="section-4" class="section">
+        <h2>Leak Performance &amp; Industry Standards</h2>
+        <p>Aerosol valve leak performance is a product safety and regulatory compliance issue of the highest importance. A leaking valve compromises product integrity, creates fire and explosion hazards in storage environments, exposes users to propellant inhalation, and results in non-conformance with the regulations that govern aerosol products in every major market. Leak performance in metered dose valves is more demanding than in continuous spray valves because the MDV must maintain a seal at both the inlet and outlet gasket simultaneously throughout the product shelf life — under conditions of sustained propellant pressure, formulation exposure, and cyclic thermal stress.</p>
+
+        <div class="callout" style="border-left: 3px solid #d97706; background: #fffbeb; padding: 14px 18px; border-radius: 0 6px 6px 0; margin: 1.8em 0; font-size: 0.93rem;">
+          <strong style="color: #d97706; display: block; margin-bottom: 4px;">Rule of Thumb</strong>
+          For pharmaceutical MDIs, gasket swell of more than approximately 10–15% in the relevant propellant system is generally considered a disqualifying result during material qualification — because excessive swell alters the sealing geometry and changes both leak rate and metering chamber volume in a non-linear and irreversible manner.
+        </div>
+
+        <div class="table-responsive" style="overflow-x: auto; margin: 1.5rem 0;">
+          <table style="width: 100%; border-collapse: collapse; font-size: 0.9rem;">
+            <thead>
+              <tr style="background: var(--text-primary); color: #fff;">
+                <th style="padding: 10px 14px; text-align: left;">Standard / Regulation</th>
+                <th style="padding: 10px 14px; text-align: left;">Jurisdiction</th>
+                <th style="padding: 10px 14px; text-align: left;">Relevance to MDV Leak Performance</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td style="padding: 9px 14px; border-bottom: 1px solid var(--border);">EU Aerosol Dispensers Directive 75/324/EEC</td>
+                <td style="padding: 9px 14px; border-bottom: 1px solid var(--border);">European Union</td>
+                <td style="padding: 9px 14px; border-bottom: 1px solid var(--border);">Sets maximum permissible leak rate for finished aerosol products; defines hot water bath test conditions</td>
+              </tr>
+              <tr style="background: #f4f4f2;">
+                <td style="padding: 9px 14px; border-bottom: 1px solid var(--border);">ASTM D3925</td>
+                <td style="padding: 9px 14px; border-bottom: 1px solid var(--border);">International / US</td>
+                <td style="padding: 9px 14px; border-bottom: 1px solid var(--border);">Standard practice for aerosol dispensers — includes leak detection during filling and at finished product QC stage</td>
+              </tr>
+              <tr>
+                <td style="padding: 9px 14px; border-bottom: 1px solid var(--border);">ICH Q1A (Stability Testing)</td>
+                <td style="padding: 9px 14px; border-bottom: 1px solid var(--border);">Pharmaceutical (Global)</td>
+                <td style="padding: 9px 14px; border-bottom: 1px solid var(--border);">Requires leak rate measurement at defined stability time points to confirm product integrity over shelf life</td>
+              </tr>
+              <tr style="background: #f4f4f2;">
+                <td style="padding: 9px 14px; border-bottom: 1px solid var(--border);">USP &lt;601&gt; / Ph.Eur. 2.9.44</td>
+                <td style="padding: 9px 14px; border-bottom: 1px solid var(--border);">Pharmaceutical (US / EU)</td>
+                <td style="padding: 9px 14px; border-bottom: 1px solid var(--border);">Pharmacopoeial leak rate limits for pressurised inhalation aerosols; specifies measurement method</td>
+              </tr>
+              <tr>
+                <td style="padding: 9px 14px; border-bottom: 1px solid var(--border);">ISO 9001 Quality Systems</td>
+                <td style="padding: 9px 14px; border-bottom: 1px solid var(--border);">International</td>
+                <td style="padding: 9px 14px; border-bottom: 1px solid var(--border);">Framework for systematic in-process and finished product leak testing as part of the quality management system</td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+
+        <p>The EU Aerosol Dispensers Directive — available in full text at <a href="https://eur-lex.europa.eu/legal-content/EN/TXT/?uri=CELEX%3A31975L0324" target="_blank" rel="noopener noreferrer">EUR-Lex</a> — requires that aerosol dispensers are tested by immersion in a water bath at 50°C and that any product showing leakage fails the test. For metered dose valve assemblies, this test assesses the integrity of the complete sealing system — not merely the outlet gasket. Products showing visible bubbling, deformation, or pressure equalisation during the hot water test are rejected. This test is universally employed during filling line qualification and periodic production sampling across both consumer and pharmaceutical aerosol manufacturing.</p>
+      </section>
+
+      <!-- Infographic Image -->
+      <div class="image-slot">
+        <img 
+          src="https://cdn.globalaerosols.com/images/metered-dose-valve-engineering-dose-accuracy/metered-dose-valve-engineering-dose-accuracy-infographic-globalaerosols.webp" 
+          alt="Metered dose valve comparison infographic — leak testing with sealed glass test tubes under pressure | Global Aerosols" 
+          width="900" 
+          height="500" 
+          loading="lazy" 
+        />
+        <p style="font-size: 0.82rem; color: var(--text-muted); font-style: italic; margin-top: 8px;">Valve leak performance is assessed through a combination of hot water bath testing, gravimetric leak rate measurement, and formulation-specific compatibility studies over the product shelf life.</p>
+      </div>
+
+      <!-- Section 5 -->
+      <section id="section-5" class="section">
+        <h2>Gasket Material Selection for Metered Dose Valves</h2>
+        <p>The elastomer gaskets within a metered dose valve are the component most vulnerable to chemical attack from the formulation and propellant system. Unlike metallic valve components — which are largely chemically inert — elastomer gaskets can absorb propellant, swell in the presence of organic solvents, harden through plasticiser extraction, or leach compounding agents into the formulation. For pharmaceutical MDIs, gasket materials are regulatory substances of interest because extractables and leachables from elastomers must be characterised and assessed against inhalation toxicological thresholds as required by FDA and EMA guidelines.</p>
+
+        <p>This makes the gasket qualification process one of the most time-consuming elements of MDV product development. As covered in our technical overview of <a href="https://www.globalaerosols.com/aerosol-valve-gasket-explained" target="_top">aerosol valve gaskets</a>, the interaction between the elastomer and the formulation must be evaluated for dimensional swell, weight change, tensile property retention, and leachables profile before an elastomer grade is released for production use. The <a href="https://echa.europa.eu/regulations/reach" target="_blank" rel="noopener noreferrer">ECHA REACH regulation</a> also applies to gasket compounding agents used in aerosol products placed on the EU market, adding a chemical registration dimension to material selection.</p>
+
+        <div class="table-responsive" style="overflow-x: auto; margin: 1.5rem 0;">
+          <table style="width: 100%; border-collapse: collapse; font-size: 0.9rem;">
+            <thead>
+              <tr style="background: var(--text-primary); color: #fff;">
+                <th style="padding: 10px 14px; text-align: left;">Elastomer Class</th>
+                <th style="padding: 10px 14px; text-align: left;">Typical Use Case</th>
+                <th style="padding: 10px 14px; text-align: left;">Key Properties</th>
+                <th style="padding: 10px 14px; text-align: left;">Limitations</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td style="padding: 9px 14px; border-bottom: 1px solid var(--border);">EPDM</td>
+                <td style="padding: 9px 14px; border-bottom: 1px solid var(--border);">HFA-propelled pharmaceutical MDIs; water-based aerosols</td>
+                <td style="padding: 9px 14px; border-bottom: 1px solid var(--border);">Excellent HFA compatibility; low extractables when properly compounded; good compression set resistance</td>
+                <td style="padding: 9px 14px; border-bottom: 1px solid var(--border);">Poor resistance to hydrocarbon solvents and LPG propellants</td>
+              </tr>
+              <tr style="background: #f4f4f2;">
+                <td style="padding: 9px 14px; border-bottom: 1px solid var(--border);">Buna-N (Nitrile / NBR)</td>
+                <td style="padding: 9px 14px; border-bottom: 1px solid var(--border);">LPG-propelled consumer aerosols; solvent-based products</td>
+                <td style="padding: 9px 14px; border-bottom: 1px solid var(--border);">Good hydrocarbon resistance; cost-effective; wide availability of compound grades</td>
+                <td style="padding: 9px 14px; border-bottom: 1px solid var(--border);">Not suitable for HFA or acetone-containing formulations</td>
+              </tr>
+              <tr>
+                <td style="padding: 9px 14px; border-bottom: 1px solid var(--border);">Neoprene (Polychloroprene)</td>
+                <td style="padding: 9px 14px; border-bottom: 1px solid var(--border);">General industrial aerosols; products containing DME</td>
+                <td style="padding: 9px 14px; border-bottom: 1px solid var(--border);">Moderate solvent resistance; good mechanical durability; stable dimensional properties</td>
+                <td style="padding: 9px 14px; border-bottom: 1px solid var(--border);">Inferior to EPDM for HFA; some grades extract chlorinated compounds into formulation</td>
+              </tr>
+              <tr style="background: #f4f4f2;">
+                <td style="padding: 9px 14px; border-bottom: 1px solid var(--border);">Thermoplastic Elastomers (TPE/TPV)</td>
+                <td style="padding: 9px 14px; border-bottom: 1px solid var(--border);">Speciality pharmaceutical and personal care aerosols</td>
+                <td style="padding: 9px 14px; border-bottom: 1px solid var(--border);">Can be engineered for very low extractables; no cure system compounds; precise dimensional control</td>
+                <td style="padding: 9px 14px; border-bottom: 1px solid var(--border);">Higher material cost; compression set performance at elevated temperature must be carefully validated</td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+
+        <div class="callout" style="border-left: 3px solid #16a34a; background: #f0fdf4; padding: 14px 18px; border-radius: 0 6px 6px 0; margin: 1.8em 0; font-size: 0.93rem;">
+          <strong style="color: #16a34a; display: block; margin-bottom: 4px;">Key Insight</strong>
+          EPDM is the dominant gasket material in HFA-propelled pharmaceutical MDI valves because HFA-134a and HFA-227ea are non-polar fluorocarbon propellants with very low solvating power for most elastomers — EPDM swells minimally, maintaining its sealing geometry and metering chamber volume over the entire product shelf life.
+        </div>
+      </section>
+
+      <!-- Section 6 -->
+      <section id="section-6" class="section">
+        <h2>MDV vs Continuous Spray Valves: Technical Comparison</h2>
+        <p>The choice between a metered dose valve and a continuous spray valve (CSV) is determined by the dose precision requirement of the product, not merely the intended application. Many aerosol products that appear to require precision — such as hair sprays or personal care mists — actually use continuous spray valves, because their performance depends on applied quantity being controlled by user judgement rather than mechanical metering. Conversely, pharmaceutical aerosols require metered dose valves as a non-negotiable design requirement because drug delivery safety depends on each actuation delivering a consistent pharmacological dose.</p>
+
+        <p>For a comprehensive technical grounding in how different propellant systems interact with valve type selection, our guide on <a href="https://www.globalaerosols.com/how-aerosol-cans-work" target="_top">how aerosol cans work</a> provides the foundational context. The propellant's vapour pressure, its miscibility with the concentrate, and whether the formulation is a solution or suspension all affect which valve architecture delivers optimal performance. This is also relevant when considering the full aerosol manufacturing process as described in our <a href="https://www.globalaerosols.com/aerosol-manufacturing-101-guide" target="_top">Aerosol Manufacturing 101 guide</a>.</p>
+
+        <div class="table-responsive" style="overflow-x: auto; margin: 1.5rem 0;">
+          <table style="width: 100%; border-collapse: collapse; font-size: 0.9rem;">
+            <thead>
+              <tr style="background: var(--text-primary); color: #fff;">
+                <th style="padding: 10px 14px; text-align: left;">Parameter</th>
+                <th style="padding: 10px 14px; text-align: left;">Metered Dose Valve (MDV)</th>
+                <th style="padding: 10px 14px; text-align: left;">Continuous Spray Valve (CSV)</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td style="padding: 9px 14px; border-bottom: 1px solid var(--border);">Dose per actuation</td>
+                <td style="padding: 9px 14px; border-bottom: 1px solid var(--border);">Fixed volume — defined by metering chamber</td>
+                <td style="padding: 9px 14px; border-bottom: 1px solid var(--border);">Variable — proportional to actuation duration</td>
+              </tr>
+              <tr style="background: #f4f4f2;">
+                <td style="padding: 9px 14px; border-bottom: 1px solid var(--border);">Primary application sectors</td>
+                <td style="padding: 9px 14px; border-bottom: 1px solid var(--border);">Pharmaceutical inhalers, topical drug sprays, precision industrial</td>
+                <td style="padding: 9px 14px; border-bottom: 1px solid var(--border);">Personal care, household, industrial, food</td>
+              </tr>
+              <tr>
+                <td style="padding: 9px 14px; border-bottom: 1px solid var(--border);">Regulatory requirement</td>
+                <td style="padding: 9px 14px; border-bottom: 1px solid var(--border);">Mandatory for pharmaceutical aerosols (pMDI)</td>
+                <td style="padding: 9px 14px; border-bottom: 1px solid var(--border);">Standard for consumer aerosol products</td>
+              </tr>
+              <tr style="background: #f4f4f2;">
+                <td style="padding: 9px 14px; border-bottom: 1px solid var(--border);">Component complexity</td>
+                <td style="padding: 9px 14px; border-bottom: 1px solid var(--border);">Higher — metering chamber, inlet/outlet gaskets, precision stem</td>
+                <td style="padding: 9px 14px; border-bottom: 1px solid var(--border);">Lower — fewer subcomponents, wider tolerance stack</td>
+              </tr>
+              <tr>
+                <td style="padding: 9px 14px; border-bottom: 1px solid var(--border);">Material qualification burden</td>
+                <td style="padding: 9px 14px; border-bottom: 1px solid var(--border);">High — extractables/leachables assessment for pharmaceutical use</td>
+                <td style="padding: 9px 14px; border-bottom: 1px solid var(--border);">Lower — compatibility testing for product-specific solvents and propellants</td>
+              </tr>
+              <tr style="background: #f4f4f2;">
+                <td style="padding: 9px 14px; border-bottom: 1px solid var(--border);">Unit cost</td>
+                <td style="padding: 9px 14px; border-bottom: 1px solid var(--border);">Higher — reflects precision manufacturing and tighter tolerances</td>
+                <td style="padding: 9px 14px; border-bottom: 1px solid var(--border);">Lower — high-volume commodity components</td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+      </section>
+
+      <!-- Infographic Image -->
+      <div class="image-slot" style="margin: 30px 0;">
+        <img 
+          src="https://cdn.globalaerosols.com/images/metered-dose-valve-engineering-dose-accuracy/metered-dose-valve-engineering-dose-accuracy-infographic-globalaerosols.webp" 
+          alt="Metered dose valve comparison infographic — quality control specifications & standards | Global Aerosols" 
+          width="900" 
+          height="500" 
+          loading="lazy" 
+        />
+        <p style="font-size: 0.82rem; color: var(--text-muted); font-style: italic; margin-top: 8px;">Metered dose valve engineering specifications and quality control performance criteria overview.</p>
+      </div>
+
+      <!-- Section 7 -->
+      <section id="section-7" class="section">
+        <h2>Testing &amp; Quality Control for Metered Dose Valves</h2>
+        <p>Quality control of metered dose valve performance spans the entire product lifecycle — from incoming component inspection, through in-process filling line checks, to finished product release testing and ongoing stability monitoring. The high precision required of MDVs means that quality failures at any stage can result in products with dose accuracy or leak performance outside specification, with potentially serious consequences in pharmaceutical applications. In consumer aerosol markets, valve QC failures manifest as user complaints about inconsistent spray output, premature emptying, or leaking products.</p>
+
+        <p>The <a href="https://www.bama.co.uk" target="_blank" rel="noopener noreferrer">British Aerosol Manufacturers' Association (BAMA)</a> publishes technical guidance on aerosol quality control practices that includes recommended sampling frequencies, acceptance criteria, and test methods for valve performance at both component receipt and finished goods stages. Their guidance is aligned with the EU Aerosol Dispensers Directive requirements and provides a practical framework applicable to manufacturers serving European and international markets.</p>
+
+        <p>Key QC tests for metered dose valves include:</p>
+        <ul>
+          <li><strong>Actuation force testing:</strong> Measures the force required to actuate the valve stem. Excessive actuation force indicates spring rate drift, gasket swelling, or stem/body interference. Insufficient force suggests spring fatigue or loss of sealing contact.</li>
+          <li><strong>Spray weight / dose weight per actuation:</strong> Gravimetric measurement of delivered mass per actuation across a defined number of shots. This is the primary functional measure of dose accuracy for both pharmaceutical and consumer aerosol products.</li>
+          <li><strong>Leak rate testing:</strong> Hot water bath immersion per EU Aerosol Dispensers Directive; gravimetric leak rate measurement (weight loss per unit time) for pharmaceutical products; electronic leak detection on high-speed filling lines using ultrasonic or pressure-decay methods.</li>
+          <li><strong>Total number of metered shots:</strong> Verification that the canister delivers at least the labelled number of actuations, confirming metering chamber function and fill weight accuracy over the complete product life.</li>
+          <li><strong>Valve crimp integrity:</strong> Dimensional inspection of the crimp geometry between valve cup and can opening — the primary seal against internal pressure loss outside the valve mechanism itself.</li>
+          <li><strong>Gasket swell testing:</strong> Immersion of gasket specimens in the formulation and/or propellant for defined durations at elevated temperature, measuring dimensional change, weight change, and mechanical property retention. Per <a href="https://pubchem.ncbi.nlm.nih.gov" target="_blank" rel="noopener noreferrer">PubChem</a>, the propellant's solubility parameter and polarity index are reliable indicators of elastomer swell risk prior to physical testing.</li>
+        </ul>
+      </section>
+
+      <!-- FAQ Section -->
+      <section id="faq" class="section" style="margin-top: 3rem;">
+        <h2 style="font-size: 2rem; font-weight: 800; margin-bottom: 1.5rem;">Frequently Asked Questions</h2>
+
+        <details style="border: 1px solid var(--border); border-radius: 6px; margin-bottom: 10px; background: var(--surface);">
+          <summary style="font-weight: 600; font-size: 0.95rem; padding: 14px 18px; cursor: pointer; list-style: none; display: flex; justify-content: space-between; align-items: center;">
+            What is a metered dose valve in aerosol products?
+          </summary>
+          <div style="padding: 0 18px 16px; font-size: 0.92rem; color: #374151; line-height: 1.65;">A metered dose valve (MDV) is a precision aerosol valve that delivers a fixed, reproducible quantity of product with each actuation. It achieves this through an internal metering chamber — a small cavity of defined volume that fills with formulation between actuations and empties completely upon each press. MDVs are essential in pharmaceutical inhalers, topical drug sprays, and any application where dose precision directly affects safety or efficacy.</div>
+        </details>
+
+        <details style="border: 1px solid var(--border); border-radius: 6px; margin-bottom: 10px; background: var(--surface);">
+          <summary style="font-weight: 600; font-size: 0.95rem; padding: 14px 18px; cursor: pointer; list-style: none; display: flex; justify-content: space-between; align-items: center;">
+            How does a metered dose valve achieve consistent dose output?
+          </summary>
+          <div style="padding: 0 18px 16px; font-size: 0.92rem; color: #374151; line-height: 1.65;">Dose consistency in an MDV depends on three interacting factors: the precision-engineered volume of the metering chamber, the complete and repeatable filling and emptying cycle of that chamber, and the dimensional tolerances of the valve stem and body. Between actuations, the metering chamber refills with formulation through an inlet orifice; on actuation, the stem movement simultaneously closes the inlet and opens the outlet, expelling only the metered volume. Any variability in stem travel, gasket deformation, or chamber volume propagates directly into delivered dose variability.</div>
+        </details>
+
+        <details style="border: 1px solid var(--border); border-radius: 6px; margin-bottom: 10px; background: var(--surface);">
+          <summary style="font-weight: 600; font-size: 0.95rem; padding: 14px 18px; cursor: pointer; list-style: none; display: flex; justify-content: space-between; align-items: center;">
+            What standards govern aerosol valve leak testing?
+          </summary>
+          <div style="padding: 0 18px 16px; font-size: 0.92rem; color: #374151; line-height: 1.65;">Aerosol valve leak performance is evaluated under several international frameworks. For pharmaceutical MDIs, ICH Q1A stability guidelines require leak rate assessment over the product shelf life. The EU Aerosol Dispensers Directive 75/324/EEC specifies maximum permissible leak rates for consumer aerosols. ASTM D3925 provides a standard test method for aerosol dispensers that covers leak detection during filling and finished product QC. Individual pharmacopoeial monographs (USP, Ph.Eur.) establish limits specifically for inhalation aerosol leakage.</div>
+        </details>
+
+        <details style="border: 1px solid var(--border); border-radius: 6px; margin-bottom: 10px; background: var(--surface);">
+          <summary style="font-weight: 600; font-size: 0.95rem; padding: 14px 18px; cursor: pointer; list-style: none; display: flex; justify-content: space-between; align-items: center;">
+            What materials are used for metered dose valve gaskets?
+          </summary>
+          <div style="padding: 0 18px 16px; font-size: 0.92rem; color: #374151; line-height: 1.65;">Gasket material selection is one of the most critical decisions in MDV design, because the gasket must seal under pressure without swelling, hardening, or extracting materials into the formulation. The most common materials are EPDM (ethylene propylene diene monomer) rubber, Buna-N (nitrile), neoprene, and thermoplastic elastomers. For HFA-propelled pharmaceutical MDIs, specific elastomer grades are qualified under regulatory submissions because extractables and leachables from the gasket must meet toxicological thresholds documented in FDA and EMA guidance.</div>
+        </details>
+
+        <details style="border: 1px solid var(--border); border-radius: 6px; margin-bottom: 10px; background: var(--surface);">
+          <summary style="font-weight: 600; font-size: 0.95rem; padding: 14px 18px; cursor: pointer; list-style: none; display: flex; justify-content: space-between; align-items: center;">
+            How is aerosol valve dose accuracy tested?
+          </summary>
+          <div style="padding: 0 18px 16px; font-size: 0.92rem; color: #374151; line-height: 1.65;">Dose accuracy testing for MDVs typically involves gravimetric methods — weighing the mass delivered per actuation using a precision balance — or volumetric collection into a calibrated vessel. For pharmaceutical inhalation products, dose uniformity is assessed using apparatus described in pharmacopoeial methods such as the Andersen Cascade Impactor. In industrial or consumer aerosol contexts, spray-weight tests per ASTM D5964 provide spray rate data used to infer valve consistency.</div>
+        </details>
+
+        <details style="border: 1px solid var(--border); border-radius: 6px; margin-bottom: 10px; background: var(--surface);">
+          <summary style="font-weight: 600; font-size: 0.95rem; padding: 14px 18px; cursor: pointer; list-style: none; display: flex; justify-content: space-between; align-items: center;">
+            What causes dose-to-dose variability in metered dose valves?
+          </summary>
+          <div style="padding: 0 18px 16px; font-size: 0.92rem; color: #374151; line-height: 1.65;">Dose variability in MDVs arises from several interrelated sources. Incomplete metering chamber fill — caused by high-viscosity formulations, entrained propellant gas, or inadequate dwell time between actuations — directly reduces delivered dose. Gasket creep or swell under prolonged propellant contact alters the effective chamber volume. Stem travel inconsistency due to manufacturing tolerance variation changes the outlet orifice opening. Particle agglomeration in suspension formulations can partially block the inlet orifice, and operator actuation force and speed affect how fully the chamber is expelled.</div>
+        </details>
+
+        <details style="border: 1px solid var(--border); border-radius: 6px; margin-bottom: 10px; background: var(--surface);">
+          <summary style="font-weight: 600; font-size: 0.95rem; padding: 14px 18px; cursor: pointer; list-style: none; display: flex; justify-content: space-between; align-items: center;">
+            What is the difference between a metered dose valve and a continuous spray valve?
+          </summary>
+          <div style="padding: 0 18px 16px; font-size: 0.92rem; color: #374151; line-height: 1.65;">A continuous spray valve (CSV) delivers product for as long as the actuator is depressed, with no fixed per-actuation volume. A metered dose valve, by contrast, delivers only the pre-defined volume held in its metering chamber per actuation, regardless of how long the actuator is held down. CSVs are used in household, personal care, and industrial products where variable application is acceptable. MDVs are mandatory wherever a reproducible unit dose must be guaranteed — primarily pharmaceutical aerosols and precision technical spray applications.</div>
+        </details>
+      </section>
+
+      <!-- CTA Block -->
+      <div style="background: var(--text-primary); color: #FFFFFF; border-radius: 6px; padding: 40px 36px; margin: 3em 0; text-align: center;">
+        <h2 style="font-size: 1.5rem; font-weight: 700; color: #FFFFFF; margin: 0 0 10px;">Need Expert Aerosol Consulting?</h2>
+        <p style="font-size: 0.95rem; color: #D1D5DB; margin: 0 0 24px; max-width: 500px; margin-left: auto; margin-right: auto;">Our team provides end-to-end aerosol technical consultancy — from formulation development and propellant selection to filling line setup, regulatory compliance, and market launch strategy.</p>
+        <a href="https://www.globalaerosols.com/contact" target="_top" style="display: inline-block; background: #FFFFFF; color: var(--text-primary); font-weight: 700; font-size: 0.9rem; letter-spacing: 0.03em; padding: 12px 28px; border-radius: 4px; text-decoration: none;">
+          Get a Free Consultation
+        </a>
+      </div>
+
+      <!-- Related Articles -->
+      <section style="margin: 2.5em 0;">
+        <h2 style="font-family: 'Playfair Display', Georgia, serif; font-size: 1.3rem; font-weight: 700; margin-bottom: 1em;">Related Articles</h2>
+        <ul style="display: grid; grid-template-columns: 1fr 1fr; gap: 12px; list-style: none; padding: 0;">
+          <li><a href="https://www.globalaerosols.com/aerosol-valve-gasket-explained" target="_top" style="display: block; background: var(--surface); border: 1px solid var(--border); border-radius: 6px; padding: 14px 16px; font-size: 0.88rem; font-weight: 600; color: var(--text-primary);">Aerosol Valve Gasket Materials Explained</a></li>
+          <li><a href="https://www.globalaerosols.com/aerosol-crimping-gassing-leak-detection-explained" target="_top" style="display: block; background: var(--surface); border: 1px solid var(--border); border-radius: 6px; padding: 14px 16px; font-size: 0.88rem; font-weight: 600; color: var(--text-primary);">Aerosol Crimping, Gassing &amp; Leak Detection Explained</a></li>
+          <li><a href="https://www.globalaerosols.com/aerosol-manufacturing-101-guide" target="_top" style="display: block; background: var(--surface); border: 1px solid var(--border); border-radius: 6px; padding: 14px 16px; font-size: 0.88rem; font-weight: 600; color: var(--text-primary);">Aerosol Manufacturing 101: The Complete Technical Guide</a></li>
+          <li><a href="https://www.globalaerosols.com/how-aerosol-cans-work" target="_top" style="display: block; background: var(--surface); border: 1px solid var(--border); border-radius: 6px; padding: 14px 16px; font-size: 0.88rem; font-weight: 600; color: var(--text-primary);">How Aerosol Cans Work: Propellant, Pressure, Valve &amp; Spray Dynamics</a></li>
+          <li><a href="https://www.globalaerosols.com/aerosol-propellants-explained-lpg-vs-dme-vs-hfc-vs-n2-vs-co2" target="_top" style="display: block; background: var(--surface); border: 1px solid var(--border); border-radius: 6px; padding: 14px 16px; font-size: 0.88rem; font-weight: 600; color: var(--text-primary);">Aerosol Propellants Explained: LPG vs DME vs HFC vs N₂ vs CO₂</a></li>
+          <li><a href="https://www.globalaerosols.com/aerosol-chemistry-101" target="_top" style="display: block; background: var(--surface); border: 1px solid var(--border); border-radius: 6px; padding: 14px 16px; font-size: 0.88rem; font-weight: 600; color: var(--text-primary);">Aerosol Chemistry 101: Solvents, Binders, Surfactants &amp; Additives</a></li>
+          <li><a href="https://www.globalaerosols.com/from-lab-to-commercial-launch" target="_top" style="display: block; background: var(--surface); border: 1px solid var(--border); border-radius: 6px; padding: 14px 16px; font-size: 0.88rem; font-weight: 600; color: var(--text-primary);">From Lab to Factory: Aerosol R&amp;D to Commercial Manufacturing</a></li>
+          <li><a href="https://www.globalaerosols.com/choosing-the-right-product-consultant" target="_top" style="display: block; background: var(--surface); border: 1px solid var(--border); border-radius: 6px; padding: 14px 16px; font-size: 0.88rem; font-weight: 600; color: var(--text-primary);">How to Choose the Right Aerosol Product Consultant</a></li>
+        </ul>
+      </section>
+
+      <!-- Author Bio -->
+      <div style="display: flex; gap: 18px; align-items: flex-start; background: var(--surface); border: 1px solid var(--border); border-radius: 6px; padding: 24px; margin: 2.5em 0;">
+        <div style="width: 52px; height: 52px; background: var(--text-primary); color: #FFFFFF; border-radius: 50%; display: flex; align-items: center; justify-content: center; font-weight: 700; font-size: 1rem; flex-shrink: 0;">AK</div>
+        <div>
+          <h3 style="font-size: 1rem; font-weight: 700; margin: 0 0 2px;">Absar Khan</h3>
+          <div style="font-size: 0.78rem; color: var(--text-muted); margin-bottom: 10px;">Founder &amp; Lead Aerosol Consultant, Global Aerosols</div>
+          <p style="font-size: 0.87rem; line-height: 1.6; color: #374151;">Absar Khan is a senior aerosol industry consultant with deep expertise spanning aerosol formulation, propellant technology, valve engineering, filling line setup, and regulatory compliance across global markets. His work integrates aerosol chemistry, GMP manufacturing practices, safety and flammability assessment, quality systems, and regulatory strategy for markets including India, the EU, and the US. As Founder and Lead Consultant at Global Aerosols, Absar leads technical and engineering teams delivering end-to-end aerosol solutions — from initial formulation and lab trials through pilot-scale testing, commercial manufacturing setup, and full market launch.</p>
+          <p style="margin-top:10px; font-size: 0.87rem;">
+            <a href="https://www.linkedin.com/in/absar-khan-aerosol-consultant-and-formulator-78359b162" target="_blank" rel="noopener noreferrer">Connect on LinkedIn →</a>
+          </p>
+        </div>
+      </div>
+
+    </article>
+  </main>
+</Layout>
