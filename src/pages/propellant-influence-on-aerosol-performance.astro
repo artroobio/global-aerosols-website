@@ -1,64 +1,124 @@
 ---
 import Layout from '../layouts/Layout.astro';
 
+const slug = 'propellant-influence-on-aerosol-performance';
+const heroUrl = '/images/blog/propellant-influence-on-aerosol-performance-hero.jpg';
+
+const faqs = [
+  {
+    q: "How does propellant choice affect aerosol spray force?",
+    a: "Spray force originates from the pressure differential between the can interior and ambient atmosphere, which accelerates the formulation through the valve orifice. Propellants that maintain higher, more stable pressure throughout discharge — such as LPG and engineered HFC blends — produce finer droplets and more consistent spray patterns than propellants with a rapidly decaying pressure curve."
+  },
+  {
+    q: "What is the difference between liquefied and compressed gas propellants?",
+    a: "Liquefied gas propellants, including LPG and DME, maintain relatively constant vapor pressure during discharge because liquid propellant continues evaporating to replace what is expelled. Compressed gases such as CO₂ and N₂ have no liquid reservoir to replenish, so their pressure decays progressively as the can empties, producing a weaker spray toward the end of product life."
+  },
+  {
+    q: "Which aerosol propellants have solvency properties?",
+    a: "DME is the primary solvent propellant used in aerosols, capable of dissolving resins, oils, and active ingredients and reducing the need for co-solvents. LPG, CO₂, and N₂ are non-solvent propellants that require external solvents in the formulation, giving them more predictable material compatibility with valve elastomers and packaging."
+  },
+  {
+    q: "Why does aerosol spray weaken in cold temperatures?",
+    a: "Vapor pressure is temperature-dependent, so as ambient or product temperature drops, the propellant generates less driving pressure and delivers a weaker spray. This effect is more pronounced with compressed gas propellants like N₂, which already lose pressure through the can's life, than with liquefied gas propellants whose vapor pressure curve is defined by the blend composition."
+  },
+  {
+    q: "How do formulators choose a propellant for a specific application?",
+    a: "Propellant selection is aligned with end-use requirements: paints and coatings commonly use LPG or LPG/DME blends for strong, consistent spray force, cleaners and degreasers use LPG or CO₂, personal care products often use DME or HFCs for fine atomization and formulation compatibility, and technical aerosols use N₂ or CO₂ where non-flammability is required."
+  },
+  {
+    q: "What performance failures are commonly linked to propellant selection?",
+    a: "Common propellant-related failures include pressure drop before the can is empty, weak spray in cold conditions, phase separation over shelf life, and inconsistent spray pattern — issues that are often misattributed to the valve or formulation when the underlying cause is a thermodynamic mismatch between the propellant and the product design."
+  }
+];
+
 const blogSchema = {
   "@context": "https://schema.org",
-  "@type": "Article",
-  "headline": "Propellant Influence on Aerosol Performance: LPG vs DME vs HFC vs CO₂ vs N₂",
-  "author": {
-    "@type": "Person",
-    "name": "Absar Khan",
-    "url": "https://www.linkedin.com/in/absar-khan-aerosol-consultant-and-formulator-78359b162"
-  },
-  "publisher": {
-    "@type": "Organization",
-    "name": "Global Aerosols",
-    "logo": {
-      "@type": "ImageObject",
-      "url": "https://www.globalaerosols.com/logo.png"
-    }
-  },
-  "mainEntityOfPage": {
-    "@type": "WebPage",
-    "@id": "https://www.globalaerosols.com/propellant-influence-on-aerosol-performance"
-  },
-  "datePublished": "2026-01-10",
-  "dateModified": "2026-01-10"
-};
-const breadcrumbSchema = {
-  "@context": "https://schema.org",
-  "@type": "BreadcrumbList",
-  "itemListElement": [
+  "@graph": [
     {
-      "@type": "ListItem",
-      "position": 1,
-      "name": "Home",
-      "item": "https://www.globalaerosols.com"
+      "@type": "Organization",
+      "@id": "https://www.globalaerosols.com/#organization",
+      "name": "Global Aerosols",
+      "url": "https://www.globalaerosols.com/",
+      "logo": { "@type": "ImageObject", "url": "https://www.globalaerosols.com/logo.png" },
+      "sameAs": ["https://www.linkedin.com/in/absar-khan-aerosol-consultant-and-formulator-78359b162"]
     },
     {
-      "@type": "ListItem",
-      "position": 2,
-      "name": "Technical Articles",
-      "item": "https://www.globalaerosols.com/blog"
+      "@type": "WebSite",
+      "@id": "https://www.globalaerosols.com/#website",
+      "url": "https://www.globalaerosols.com/",
+      "name": "Global Aerosols",
+      "publisher": { "@id": "https://www.globalaerosols.com/#organization" },
+      "potentialAction": {
+        "@type": "SearchAction",
+        "target": "https://www.globalaerosols.com/search?q={search_term_string}",
+        "query-input": "required name=search_term_string"
+      }
     },
     {
-      "@type": "ListItem",
-      "position": 3,
-      "name": "Propellant Influence on Aerosol Performance",
-      "item": "https://www.globalaerosols.com/propellant-influence-on-aerosol-performance"
+      "@type": "Person",
+      "name": "Absar Khan",
+      "jobTitle": "Founder & Lead Aerosol Consultant",
+      "url": "https://www.linkedin.com/in/absar-khan-aerosol-consultant-and-formulator-78359b162",
+      "affiliation": { "@id": "https://www.globalaerosols.com/#organization" }
+    },
+    {
+      "@type": "BreadcrumbList",
+      "@id": `https://www.globalaerosols.com/${slug}/#breadcrumb`,
+      "itemListElement": [
+        { "@type": "ListItem", "position": 1, "name": "Home", "item": "https://www.globalaerosols.com/" },
+        { "@type": "ListItem", "position": 2, "name": "Blog", "item": "https://www.globalaerosols.com/blog" },
+        { "@type": "ListItem", "position": 3, "name": "Propellant Influence on Aerosol Performance", "item": `https://www.globalaerosols.com/${slug}/` }
+      ]
+    },
+    {
+      "@type": "BlogPosting",
+      "@id": `https://www.globalaerosols.com/${slug}/#article`,
+      "headline": "Propellant Influence on Aerosol Performance: LPG vs DME vs HFC vs CO₂ vs N₂",
+      "description": "Propellant influence on aerosol performance spans vapor pressure, spray force, and atomization. Compare LPG, DME, HFC, CO2, and N2 for formulators.",
+      "image": { "@type": "ImageObject", "url": heroUrl },
+      "author": {
+        "@type": "Person",
+        "name": "Absar Khan",
+        "url": "https://www.linkedin.com/in/absar-khan-aerosol-consultant-and-formulator-78359b162"
+      },
+      "publisher": { "@id": "https://www.globalaerosols.com/#organization" },
+      "datePublished": "2026-01-10",
+      "dateModified": "2026-08-10",
+      "mainEntityOfPage": { "@id": `https://www.globalaerosols.com/${slug}/` },
+      "articleSection": "Aerosols & Gas Dosing",
+      "keywords": "propellant influence on aerosol performance, aerosol propellant comparison, LPG propellant, DME propellant, HFC propellant, CO2 propellant, N2 propellant, vapor pressure, spray force, atomization",
+      "wordCount": 1793
+    },
+    {
+      "@type": "FAQPage",
+      "mainEntity": faqs.map(f => ({
+        "@type": "Question",
+        "name": f.q,
+        "acceptedAnswer": { "@type": "Answer", "text": f.a }
+      }))
+    },
+    {
+      "@type": "WebPage",
+      "@id": `https://www.globalaerosols.com/${slug}/`,
+      "url": `https://www.globalaerosols.com/${slug}/`,
+      "name": "Propellant Influence on Aerosol Performance: LPG vs DME vs HFC vs CO₂ vs N₂",
+      "description": "Propellant influence on aerosol performance spans vapor pressure, spray force, and atomization. Compare LPG, DME, HFC, CO2, and N2 for formulators.",
+      "isPartOf": { "@id": "https://www.globalaerosols.com/#website" },
+      "primaryImageOfPage": { "@type": "ImageObject", "url": heroUrl },
+      "datePublished": "2026-01-10",
+      "dateModified": "2026-08-10"
     }
   ]
 };
-const schemas = [blogSchema, breadcrumbSchema];
 ---
 
 <Layout
-  title="Propellant Influence on Aerosol Performance: LPG vs DME vs HFC vs CO₂ vs N₂ | Global Aerosols"
-  description="Technical guide explaining how LPG, DME, HFC, CO₂, and N₂ propellants influence aerosol performance through vapor pressure, spray force, atomization physics, and solvency behavior."
-  canonical="https://www.globalaerosols.com/propellant-influence-on-aerosol-performance"
-  ogImage="/images/blog/propellant-influence-on-aerosol-performance-hero.jpg"
+  title="Propellant Influence on Aerosol Spray Performance"
+  description="Propellant influence on aerosol performance spans vapor pressure, spray force, and atomization. Compare LPG, DME, HFC, CO2, and N2 for formulators."
+  canonical="https://www.globalaerosols.com/propellant-influence-on-aerosol-performance/"
+  ogImage={heroUrl}
   ogType="article"
-  schemaJson={schemas}
+  schemaJson={blogSchema}
 >
   <main class="section-container" style="max-width: 100%; padding-left: 48px; padding-right: 48px; padding-top: 40px; padding-bottom: 80px;">
     
@@ -87,6 +147,8 @@ const schemas = [blogSchema, breadcrumbSchema];
           <span style="width: 4px; height: 4px; border-radius: 50%; background-color: var(--border);"></span>
           <span>Published: <strong>Jan 10, 2026</strong></span>
           <span style="width: 4px; height: 4px; border-radius: 50%; background-color: var(--border);"></span>
+          <span>Updated: <strong>Aug 10, 2026</strong></span>
+          <span style="width: 4px; height: 4px; border-radius: 50%; background-color: var(--border);"></span>
           <span>Reading Time: <strong>13 min read</strong></span>
           <span style="width: 4px; height: 4px; border-radius: 50%; background-color: var(--border);"></span>
           <span style="background: #e0f2fe; color: #0369a1; padding: 2px 10px; border-radius: 50px; font-size: 0.75rem; font-weight: 700; text-transform: uppercase;">Aerosols & Gas Dosing</span>
@@ -95,12 +157,12 @@ const schemas = [blogSchema, breadcrumbSchema];
 
       <!-- Primary Featured Image -->
       <div class="image-slot">
-        <img 
-          src="/images/blog/propellant-influence-on-aerosol-performance-hero.jpg" 
-          alt="Propellant Influence on Aerosol Performance: LPG vs DME vs HFC vs CO₂ vs N₂" 
-          width="1200" 
-          height="800" 
-          loading="eager" 
+        <img
+          src={heroUrl}
+          alt="Aerosol propellant comparison: LPG, DME, HFC, CO2, and N2 vapor pressure and spray performance — Global Aerosols"
+          width="1200"
+          height="800"
+          loading="eager"
         />
       </div>
 
@@ -116,6 +178,8 @@ const schemas = [blogSchema, breadcrumbSchema];
           <li><a href="#application-based-propellant-selection" style="font-weight: 600; color: var(--primary);">6. Application-Based Propellant Selection</a></li>
           <li><a href="#common-performance-failures-linked-to-propellant-choice" style="font-weight: 600; color: var(--primary);">7. Common Performance Failures Linked to Propellant Choice</a></li>
           <li><a href="#engineering-the-spray-not-just-filling-a-can" style="font-weight: 600; color: var(--primary);">8. Engineering the Spray, Not Just Filling a Can</a></li>
+          <li><a href="#faq" style="font-weight: 600; color: var(--primary);">9. Frequently Asked Questions</a></li>
+          <li><a href="#related-articles" style="font-weight: 600; color: var(--primary);">10. Related Articles</a></li>
         </ul>
       </div>
 
@@ -144,6 +208,9 @@ const schemas = [blogSchema, breadcrumbSchema];
                 <li>Technical Comparison</li>
                 <li>Application-Based Selection</li>
                 <li>Performance Failures</li>
+                <li>Engineering the Spray</li>
+                <li>Frequently Asked Questions</li>
+                <li>Related Articles</li>
             </ul>
         </div>
 
@@ -170,7 +237,9 @@ const schemas = [blogSchema, breadcrumbSchema];
                 making their physical properties central to system behavior.</p>
             <p>A change in propellant type can alter spray force, droplet size distribution, and discharge rate even
                 when all other components remain unchanged. This is why propellant selection must be treated as an
-                <strong>engineering decision</strong>, not a commodity choice.</p>
+                <strong>engineering decision</strong>, not a commodity choice. See our
+                <a href="/aerosols">aerosol propellants and valves</a> resource for the broader engineering context
+                propellant selection sits within.</p>
             <ul>
                 <li>Internal pressure stability over temperature</li>
                 <li>Spray consistency from full to empty can</li>
@@ -191,7 +260,10 @@ const schemas = [blogSchema, breadcrumbSchema];
                 pressure changes with temperature.</p>
             <p>Liquefied gas propellants maintain relatively constant pressure during discharge, while compressed gases
                 show pressure decay as product is expelled. This difference explains many observed performance
-                variations across propellant systems.</p>
+                variations across propellant systems. Reference vapor pressure curves for individual propellant
+                components are published in the <a href="https://webbook.nist.gov">NIST WebBook thermodynamic database</a>.
+                See our guide to <a href="/propellant-blend-formulation-vapor-pressure-lpg/">propellant blend formulation</a>
+                for how binary LPG mixture ratios are used to target a specific vapor pressure.</p>
             <!-- IMAGE: Vapor pressure curves and temperature vs pressure graph -->
             <h3>Vapor Pressure Behavior by Propellant Type</h3>
             <table>
@@ -240,7 +312,9 @@ const schemas = [blogSchema, breadcrumbSchema];
                 pressure magnitude, flow velocity, and fluid properties.</p>
             <p>Propellants influence atomization not by chemistry alone, but by how consistently they maintain pressure
                 during discharge. Higher and more stable pressure produces finer droplets and more uniform spray
-                patterns.</p>
+                patterns. The actuator's orifice geometry converts this pressure into the final spray — see our guide to
+                <a href="/aerosol-actuators-101/">aerosol actuator design</a> for how orifice diameter and swirl
+                chamber geometry interact with propellant pressure to shape droplet size.</p>
             <!-- IMAGE: Aerosol spray atomization and valve–actuator diagram -->
             <table>
                 <tr>
@@ -286,7 +360,10 @@ const schemas = [blogSchema, breadcrumbSchema];
                 as resins, oils, or active ingredients. This property affects formulation simplicity, phase stability,
                 and packaging compatibility.</p>
             <p>Solvent behavior must be aligned with formulation goals. Improper use can cause swelling of seals,
-                extraction of elastomers, or destabilization of concentrates.</p>
+                extraction of elastomers, or destabilization of concentrates. Physical and solvency property data for
+                individual propellants is documented in <a href="https://pubchem.ncbi.nlm.nih.gov">PubChem</a>. See our
+                dedicated guide to <a href="/dimethyl-ether-dme-aerosol-propellant-guide/">DME as an aerosol propellant</a>
+                for its solvency parameters and valve elastomer compatibility in more depth.</p>
             <table>
                 <tr>
                     <th>Category</th>
@@ -313,7 +390,12 @@ const schemas = [blogSchema, breadcrumbSchema];
 <section class="section" id="technical-comparison-of-common-aerosol-propellants">
   <h2>Technical Comparison of Common Aerosol Propellants</h2>
   <p>When evaluated objectively, each propellant system offers trade-offs that must be aligned with
-                application, climate, and regulatory constraints.</p>
+                application, climate, and regulatory constraints. No single propellant is superior across every
+                metric — LPG and HFC hold pressure most consistently, DME contributes solvency that the others lack,
+                and CO₂ and N₂ trade spray consistency for non-flammability. The table below summarizes the four
+                factors formulators weigh most heavily when selecting a propellant system; see our detailed comparison
+                of <a href="/compressed-vs-liquefied-gas-aerosols-pressure-profiles/">compressed gas vs liquefied gas
+                aerosols</a> for the underlying pressure-profile mechanics behind these differences.</p>
             <!-- IMAGE: Propellant comparison and safety classification -->
             <table>
                 <tr>
@@ -367,7 +449,11 @@ const schemas = [blogSchema, breadcrumbSchema];
   <h2>Application-Based Propellant Selection</h2>
   <p>Propellant choice must align with end-use requirements rather than general performance metrics.
                 Industrial coatings, personal care products, and technical aerosols impose different demands on spray
-                behavior and formulation compatibility.</p>
+                behavior and formulation compatibility. Regulatory pressure to reduce global warming potential is
+                driving adoption of low-GWP alternatives tracked by the
+                <a href="https://ozone.unep.org">UNEP Ozone Secretariat</a> under the Kigali Amendment — see our guide
+                to <a href="/hfo-1234ze-propellant-low-gwp-alternative/">HFO-1234ze as a low-GWP propellant</a> for one
+                such alternative gaining traction in personal care and pharmaceutical aerosols.</p>
             <ul>
                 <li>Paints and coatings: LPG or LPG/DME blends</li>
                 <li>Cleaners and degreasers: LPG or CO₂</li>
@@ -383,7 +469,11 @@ const schemas = [blogSchema, breadcrumbSchema];
 <section class="section" id="common-performance-failures-linked-to-propellant-choice">
   <h2>Common Performance Failures Linked to Propellant Choice</h2>
   <p>Many aerosol failures originate from mismatches between propellant physics and product design. These
-                issues are often misattributed to valves or formulations when the root cause is thermodynamic.</p>
+                issues are often misattributed to valves or formulations when the root cause is thermodynamic.
+                Flammability risk in particular is governed by the propellant's flash point — see our explainer on
+                <a href="/flash-point-explained/">why flash point matters in aerosol safety</a> for how this single
+                property drives flammability classification. Storage classification for flammable propellant blends
+                follows <a href="https://www.nfpa.org">NFPA 30B</a>.</p>
             <ul>
                 <li>Pressure drop before can is empty</li>
                 <li>Weak spray in cold conditions</li>
@@ -402,9 +492,43 @@ const schemas = [blogSchema, breadcrumbSchema];
   <p>An aerosol product is a <strong>closed thermodynamic system</strong>, not just a container for chemicals.
                 Propellant selection determines whether the system behaves predictably across temperature, usage rate,
                 and storage conditions.</p>
+            <p>Because vapor pressure, solvency, and flammability are properties of the propellant itself rather than
+                the formulation around it, no amount of downstream adjustment to the actuator, valve, or fragrance load
+                can fully compensate for a propellant mismatched to the product's performance requirements. Treating
+                propellant selection as an early, deliberate engineering decision — rather than a late-stage sourcing
+                choice — is what separates a product that performs consistently for its full shelf life from one that
+                weakens, separates, or fails a burst test after the fact.</p>
         </section>
 
         <section>
+</section>
+
+<!-- FREQUENTLY ASKED QUESTIONS -->
+<section class="section" id="faq">
+  <h2>Frequently Asked Questions</h2>
+  <div class="box" style="background: #f8fafc; border: 1px solid var(--border); border-radius: var(--radius-lg); padding: 8px 24px; margin: 10px 0;">
+    {faqs.map((f) => (
+      <details style="border-bottom: 1px solid var(--border); padding: 14px 0;">
+        <summary style="font-weight: 700; cursor: pointer; color: var(--text-primary); font-family: 'Outfit', sans-serif;">{f.q}</summary>
+        <p style="margin-top: 10px; color: var(--text-muted); line-height: 1.7;">{f.a}</p>
+      </details>
+    ))}
+  </div>
+</section>
+
+<!-- RELATED ARTICLES -->
+<section class="section" id="related-articles">
+  <h2>Related Articles</h2>
+  <ul>
+    <li><a href="/food-grade-aerosols-nitrous-oxide-co2-applications/">Food-Grade Aerosols: Nitrous Oxide and CO₂</a></li>
+    <li><a href="/nfpa-30b-aerosol-warehouse-storage-classification/">NFPA 30B: Aerosol Warehouse Storage Classification</a></li>
+    <li><a href="/aerosol-manufacturing-101-guide/">Aerosol Manufacturing 101</a></li>
+    <li><a href="/how-aerosol-cans-work/">How Aerosol Cans Work</a></li>
+    <li><a href="/aerosol-propellants-explained-lpg-vs-dme-vs-hfc-vs-n2-vs-co2/">Aerosol Propellants Explained</a></li>
+    <li><a href="/aerosol-chemistry-101/">Aerosol Chemistry 101</a></li>
+    <li><a href="/from-lab-to-commercial-launch/">From Lab to Commercial Launch</a></li>
+    <li><a href="/choosing-the-right-product-consultant/">Choosing the Right Aerosol Product Consultant</a></li>
+  </ul>
 </section>
 
 

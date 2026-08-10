@@ -1,6 +1,36 @@
 ---
 import Layout from '../layouts/Layout.astro';
 
+const slug = 'aluminium-vs-tinplate-aerosol-cans';
+const heroUrl = 'https://assets.zyrosite.com/A3QlOV94WLSaL6xE/aluminium-vs-tinplate-aerosol-cans-eEMtHFRNf1wXioTs.png';
+
+const faqs = [
+  {
+    q: "Are aluminium aerosol cans safer than tinplate cans?",
+    a: "Both materials are safe when correctly designed, coated, and tested to applicable aerosol standards. Safety depends on engineering and quality control, not material alone."
+  },
+  {
+    q: "Which aerosol can material is cheaper in India?",
+    a: "Tinplate cans are generally cheaper per unit in India due to local steel availability, but total cost depends on volume, transport, and application."
+  },
+  {
+    q: "Can the same filling line be used for aluminium and tinplate cans?",
+    a: "Yes, with proper changeovers and crimp adjustments, most modern filling lines can handle both can types."
+  },
+  {
+    q: "Which material offers better shelf life?",
+    a: "Shelf life depends more on internal coatings and formulation compatibility than on the base metal itself."
+  },
+  {
+    q: "Do aluminium and tinplate aerosol cans require different crimping setups?",
+    a: "Both can types use the same standard valve crimp profiles, but tinplate's higher rigidity and aluminium's ductility mean crimp height and roll pressure must be validated separately for each material during filling-line changeover to maintain a hermetic seal."
+  },
+  {
+    q: "Which aerosol can material is more sustainable?",
+    a: "Both aluminium and tinplate are fully recyclable through established recovery streams. Aluminium recycling consumes significantly less energy than primary production and commands a higher scrap value, while tinplate recycling remains robust but requires additional separation steps to remove coatings and the tin layer."
+  }
+];
+
 const blogSchema = {
   "@context": "https://schema.org",
   "@graph": [
@@ -8,19 +38,20 @@ const blogSchema = {
       "@type": "Organization",
       "@id": "https://www.globalaerosols.com/#organization",
       "name": "Global Aerosols",
-      "url": "https://www.globalaerosols.com",
-      "logo": {
-        "@type": "ImageObject",
-        "url": "https://www.globalaerosols.com/logo.png"
-      }
+      "url": "https://www.globalaerosols.com/",
+      "logo": { "@type": "ImageObject", "url": "https://www.globalaerosols.com/logo.png" },
+      "sameAs": ["https://www.linkedin.com/in/absar-khan-aerosol-consultant-and-formulator-78359b162"]
     },
     {
       "@type": "WebSite",
       "@id": "https://www.globalaerosols.com/#website",
-      "url": "https://www.globalaerosols.com",
+      "url": "https://www.globalaerosols.com/",
       "name": "Global Aerosols",
-      "publisher": {
-        "@id": "https://www.globalaerosols.com/#organization"
+      "publisher": { "@id": "https://www.globalaerosols.com/#organization" },
+      "potentialAction": {
+        "@type": "SearchAction",
+        "target": "https://www.globalaerosols.com/search?q={search_term_string}",
+        "query-input": "required name=search_term_string"
       }
     },
     {
@@ -28,126 +59,63 @@ const blogSchema = {
       "@id": "https://www.globalaerosols.com/#person",
       "name": "Absar Khan",
       "url": "https://www.linkedin.com/in/absar-khan-aerosol-consultant-and-formulator-78359b162",
-      "jobTitle": "Lead Consultant",
-      "worksFor": {
-        "@id": "https://www.globalaerosols.com/#organization"
-      }
+      "jobTitle": "Founder & Lead Aerosol Consultant",
+      "worksFor": { "@id": "https://www.globalaerosols.com/#organization" }
     },
     {
       "@type": "BreadcrumbList",
+      "@id": `https://www.globalaerosols.com/${slug}/#breadcrumb`,
       "itemListElement": [
-        {
-          "@type": "ListItem",
-          "position": 1,
-          "name": "Home",
-          "item": "https://www.globalaerosols.com"
-        },
-        {
-          "@type": "ListItem",
-          "position": 2,
-          "name": "Blog",
-          "item": "https://www.globalaerosols.com/blog"
-        },
-        {
-          "@type": "ListItem",
-          "position": 3,
-          "name": "Aluminium vs Tinplate Aerosol Cans",
-          "item": "https://www.globalaerosols.com/aluminium-vs-tinplate-aerosol-cans"
-        }
+        { "@type": "ListItem", "position": 1, "name": "Home", "item": "https://www.globalaerosols.com/" },
+        { "@type": "ListItem", "position": 2, "name": "Blog", "item": "https://www.globalaerosols.com/blog" },
+        { "@type": "ListItem", "position": 3, "name": "Aluminium vs Tinplate Aerosol Cans", "item": `https://www.globalaerosols.com/${slug}/` }
       ]
     },
     {
       "@type": "BlogPosting",
+      "@id": `https://www.globalaerosols.com/${slug}/#article`,
       "headline": "Aluminium vs Tinplate Aerosol Cans: Cost, Performance & Manufacturing Comparison",
-      "name": "Aluminium vs Tinplate Aerosol Cans: Cost, Performance & Manufacturing Comparison",
-      "description": "Fact-based comparison of aluminium and tinplate aerosol cans focusing on manufacturing, corrosion behavior, and cost structures.",
-      "author": {
-        "@id": "https://www.globalaerosols.com/#person"
-      },
-      "publisher": {
-        "@id": "https://www.globalaerosols.com/#organization"
-      },
+      "description": "Aluminium vs tinplate aerosol cans differ in manufacturing, pressure performance, corrosion resistance, and cost — a technical comparison for engineers.",
+      "image": { "@type": "ImageObject", "url": heroUrl },
+      "author": { "@id": "https://www.globalaerosols.com/#person" },
+      "publisher": { "@id": "https://www.globalaerosols.com/#organization" },
       "datePublished": "2026-01-04",
-      "dateModified": "2026-01-04",
-      "image": "https://assets.zyrosite.com/A3QlOV94WLSaL6xE/aluminium-vs-tinplate-aerosol-cans-eEMtHFRNf1wXioTs.png",
-      "mainEntityOfPage": {
-        "@type": "WebPage",
-        "@id": "https://www.globalaerosols.com/aluminium-vs-tinplate-aerosol-cans"
-      }
+      "dateModified": "2026-08-10",
+      "mainEntityOfPage": { "@id": `https://www.globalaerosols.com/${slug}/` },
+      "articleSection": "Aerosols & Gas Dosing",
+      "keywords": "aluminium aerosol cans, tinplate aerosol cans, aerosol can materials, aerosol can cost comparison, aerosol can corrosion resistance, aerosol can pressure rating, impact extrusion, aerosol can sustainability",
+      "wordCount": 1801
     },
     {
       "@type": "FAQPage",
-      "mainEntity": [
-        {
-          "@type": "Question",
-          "name": "Are aluminium aerosol cans safer than tinplate cans?",
-          "acceptedAnswer": {
-            "@type": "Answer",
-            "text": "Both materials are safe when correctly designed, coated, and tested to applicable aerosol standards. Safety depends on engineering and quality control, not material alone."
-          }
-        },
-        {
-          "@type": "Question",
-          "name": "Which aerosol can material is cheaper in India?",
-          "acceptedAnswer": {
-            "@type": "Answer",
-            "text": "Tinplate cans are generally cheaper per unit in India due to local steel availability, but total cost depends on volume, transport, and application."
-          }
-        },
-        {
-          "@type": "Question",
-          "name": "Can the same filling line be used for aluminium and tinplate cans?",
-          "acceptedAnswer": {
-            "@type": "Answer",
-            "text": "Yes, with proper changeovers and crimp adjustments, most modern filling lines can handle both can types."
-          }
-        },
-        {
-          "@type": "Question",
-          "name": "Which material offers better shelf life?",
-          "acceptedAnswer": {
-            "@type": "Answer",
-            "text": "Shelf life depends more on internal coatings and formulation compatibility than on the base metal itself."
-          }
-        }
-      ]
-    }
-  ]
-};
-const breadcrumbSchema = {
-  "@context": "https://schema.org",
-  "@type": "BreadcrumbList",
-  "itemListElement": [
-    {
-      "@type": "ListItem",
-      "position": 1,
-      "name": "Home",
-      "item": "https://www.globalaerosols.com"
+      "mainEntity": faqs.map(f => ({
+        "@type": "Question",
+        "name": f.q,
+        "acceptedAnswer": { "@type": "Answer", "text": f.a }
+      }))
     },
     {
-      "@type": "ListItem",
-      "position": 2,
-      "name": "Blog",
-      "item": "https://www.globalaerosols.com/blog"
-    },
-    {
-      "@type": "ListItem",
-      "position": 3,
+      "@type": "WebPage",
+      "@id": `https://www.globalaerosols.com/${slug}/`,
+      "url": `https://www.globalaerosols.com/${slug}/`,
       "name": "Aluminium vs Tinplate Aerosol Cans: Cost, Performance & Manufacturing Comparison",
-      "item": "https://www.globalaerosols.com/aluminium-vs-tinplate-aerosol-cans"
+      "description": "Aluminium vs tinplate aerosol cans differ in manufacturing, pressure performance, corrosion resistance, and cost — a technical comparison for engineers.",
+      "isPartOf": { "@id": "https://www.globalaerosols.com/#website" },
+      "primaryImageOfPage": { "@type": "ImageObject", "url": heroUrl },
+      "datePublished": "2026-01-04",
+      "dateModified": "2026-08-10"
     }
   ]
 };
-const schemas = [blogSchema, breadcrumbSchema];
 ---
 
 <Layout
-  title="Aluminium vs Tinplate Aerosol Cans: Cost, Performance & Manufacturing Comparison | Global Aerosols"
-  description="A technical comparison of aluminium vs tinplate aerosol cans covering manufacturing processes, cost structures, pressure ratings, and corrosion resistance for engineers and startups."
-  canonical="https://www.globalaerosols.com/aluminium-vs-tinplate-aerosol-cans"
-  ogImage="https://assets.zyrosite.com/A3QlOV94WLSaL6xE/aluminium-vs-tinplate-aerosol-cans-eEMtHFRNf1wXioTs.png"
+  title="Aluminium vs Tinplate Aerosol Cans: Cost & Performance"
+  description="Aluminium vs tinplate aerosol cans differ in manufacturing, pressure performance, corrosion resistance, and cost — a technical comparison for engineers."
+  canonical="https://www.globalaerosols.com/aluminium-vs-tinplate-aerosol-cans/"
+  ogImage={heroUrl}
   ogType="article"
-  schemaJson={schemas}
+  schemaJson={blogSchema}
 >
   <main class="section-container" style="max-width: 100%; padding-left: 48px; padding-right: 48px; padding-top: 40px; padding-bottom: 80px;">
     
@@ -176,6 +144,8 @@ const schemas = [blogSchema, breadcrumbSchema];
           <span style="width: 4px; height: 4px; border-radius: 50%; background-color: var(--border);"></span>
           <span>Published: <strong>Jan 4, 2026</strong></span>
           <span style="width: 4px; height: 4px; border-radius: 50%; background-color: var(--border);"></span>
+          <span>Updated: <strong>Aug 10, 2026</strong></span>
+          <span style="width: 4px; height: 4px; border-radius: 50%; background-color: var(--border);"></span>
           <span>Reading Time: <strong>16 min read</strong></span>
           <span style="width: 4px; height: 4px; border-radius: 50%; background-color: var(--border);"></span>
           <span style="background: #e0f2fe; color: #0369a1; padding: 2px 10px; border-radius: 50px; font-size: 0.75rem; font-weight: 700; text-transform: uppercase;">Aerosols & Gas Dosing</span>
@@ -184,12 +154,12 @@ const schemas = [blogSchema, breadcrumbSchema];
 
       <!-- Primary Featured Image -->
       <div class="image-slot">
-        <img 
-          src="https://assets.zyrosite.com/A3QlOV94WLSaL6xE/aluminium-vs-tinplate-aerosol-cans-eEMtHFRNf1wXioTs.png" 
-          alt="Side-by-side comparison of aluminium and tinplate aerosol cans" 
-          width="1200" 
-          height="800" 
-          loading="eager" 
+        <img
+          src={heroUrl}
+          alt="Side-by-side comparison of aluminium and tinplate aerosol cans — Global Aerosols"
+          width="1200"
+          height="800"
+          loading="eager"
         />
       </div>
 
@@ -206,6 +176,8 @@ const schemas = [blogSchema, breadcrumbSchema];
           <li><a href="#cost-comparison-aluminium-vs-tinplate-aerosol-cans" style="font-weight: 600; color: var(--primary);">7. Cost Comparison: Aluminium vs Tinplate Aerosol Cans</a></li>
           <li><a href="#sustainability-and-recycling-considerations" style="font-weight: 600; color: var(--primary);">8. Sustainability and Recycling Considerations</a></li>
           <li><a href="#which-can-is-better-for-startups-and-new-brands" style="font-weight: 600; color: var(--primary);">9. Which Can Is Better for Startups and New Brands?</a></li>
+          <li><a href="#faq" style="font-weight: 600; color: var(--primary);">10. Frequently Asked Questions</a></li>
+          <li><a href="#related-articles" style="font-weight: 600; color: var(--primary);">11. Related Articles</a></li>
         </ul>
       </div>
 
@@ -229,7 +201,7 @@ const schemas = [blogSchema, breadcrumbSchema];
 
             <p>Selecting the correct aerosol can material is a foundational engineering decision that affects product safety, long-term stability, regulatory compliance, manufacturing efficiency, and overall cost structure. Aluminium and tinplate (steel) are the two dominant materials used globally for aerosol packaging, each backed by decades of industrial use and well-established standards.</p>
 
-            <p>This article provides a fact-based, technically accurate comparison of aluminium and tinplate aerosol cans, focusing on manufacturing processes, mechanical performance, corrosion behavior, cost structures, and practical selection criteria, with relevance for startups, students, and entrepreneurs operating in India and global markets.</p>
+            <p>This article provides a fact-based, technically accurate comparison of aluminium and tinplate aerosol cans, focusing on manufacturing processes, mechanical performance, corrosion behavior, cost structures, and practical selection criteria, with relevance for startups, students, and entrepreneurs operating in India and global markets. For the underlying valve and pressure mechanics that both can types must accommodate, see our guide to <a href="/how-aerosol-cans-work/">how aerosol cans work</a>.</p>
 
             <figure>
                 
@@ -249,6 +221,7 @@ const schemas = [blogSchema, breadcrumbSchema];
                     <li>Sustainability and Recycling</li>
                     <li>Which Can Is Better for Startups?</li>
                     <li>Frequently Asked Questions</li>
+                    <li>Related Articles</li>
                 </ul>
             </div>
 
@@ -257,8 +230,8 @@ const schemas = [blogSchema, breadcrumbSchema];
 <!-- WHY AEROSOL CAN MATERIAL SELECTION MATTERS -->
 <section class="section" id="why-aerosol-can-material-selection-matters">
   <h2>Why Aerosol Can Material Selection Matters</h2>
-  <p>Aerosol cans are pressure vessels that must safely contain liquefied or compressed propellants, maintain formulation stability for years, and remain compatible with automated high-speed filling lines. The choice of can material directly influences pressure tolerance, internal coating requirements, transport economics, and recyclability.</p>
-                <p>An incorrect material choice can lead to corrosion failures, deformation, valve leakage, or regulatory non-compliance—issues that often surface only after products reach the market, when remediation is costly.</p>
+  <p>Aerosol cans are pressure vessels that must safely contain liquefied or compressed propellants, maintain formulation stability for years, and remain compatible with automated high-speed filling lines. The choice of can material directly influences pressure tolerance, internal coating requirements, transport economics, and recyclability. Material and construction requirements are addressed in technical guidance published by the <a href="https://aerosol.org">European Aerosol Federation (FEA)</a>.</p>
+                <p>An incorrect material choice can lead to corrosion failures, deformation, valve leakage, or regulatory non-compliance—issues that often surface only after products reach the market, when remediation is costly. See our foundational <a href="/aerosol-manufacturing-101-guide/">Aerosol Manufacturing 101 guide</a> for how material selection fits into the broader formulation and safety system.</p>
 
                 <h3>Key implications of can material selection include:</h3>
                 <div class="table-responsive">
@@ -298,7 +271,7 @@ const schemas = [blogSchema, breadcrumbSchema];
 <section class="section" id="what-are-aluminium-aerosol-cans">
   <h2>What Are Aluminium Aerosol Cans?</h2>
   <p>Aluminium aerosol cans are manufactured as seamless, single-piece containers using the impact extrusion process. A slug of aluminium is cold-formed into a cylindrical can body with an integral dome, eliminating side seams entirely. This seamless construction provides uniform wall thickness and excellent surface finish.</p>
-                <p>Aluminium cans are widely used in cosmetics, pharmaceuticals, food aerosols, and premium personal care products, where aesthetics, weight reduction, and corrosion resistance are critical.</p>
+                <p>Aluminium cans are widely used in cosmetics, pharmaceuticals, food aerosols, and premium personal care products, where aesthetics, weight reduction, and corrosion resistance are critical. Can material selection is one part of the broader discipline covered in our <a href="/aerosol-technology-and-formulations">aerosol technology and formulations</a> resource.</p>
 
                 <h3>Key technical characteristics of aluminium aerosol cans:</h3>
                 <ul>
@@ -316,14 +289,14 @@ const schemas = [blogSchema, breadcrumbSchema];
 <section class="section" id="what-are-tinplate-aerosol-cans">
   <h2>What Are Tinplate Aerosol Cans?</h2>
   <p>Tinplate aerosol cans are made from tin-coated low-carbon steel sheets, formed into cylindrical bodies through deep drawing or three-piece welded construction. The base and dome are attached separately using mechanical seaming, resulting in a multi-component structure.</p>
-                <p>Tinplate cans dominate automotive, industrial, household, paint, and insecticide aerosols, where mechanical strength, high-pressure tolerance, and cost efficiency are prioritized over aesthetics.</p>
+                <p>Tinplate cans dominate automotive, industrial, household, paint, and insecticide aerosols, where mechanical strength, high-pressure tolerance, and cost efficiency are prioritized over aesthetics. See our step-by-step breakdown of <a href="/how-aerosol-cans-are-manufatured/">how aerosol cans are manufactured</a> for the full impact-extrusion and sheet-forming processes behind both can types.</p>
 
                 <figure>
                     
       <div class="image-slot">
         <img 
           src="https://assets.zyrosite.com/A3QlOV94WLSaL6xE/tinplate-aerosol-can-welded-seam-LUrNrVikIalvQyk0.png" 
-          alt="Close-up of a tinplate aerosol can welded side seam" 
+          alt="Close-up of a tinplate aerosol can welded side seam — Global Aerosols"
           width="1200" 
           height="800" 
           loading="lazy" 
@@ -349,7 +322,7 @@ const schemas = [blogSchema, breadcrumbSchema];
 <section class="section" id="manufacturing-process-comparison">
   <h2>Manufacturing Process Comparison</h2>
   <p>The manufacturing route defines not only the physical properties of the can but also its cost structure and quality control complexity. Aluminium and tinplate cans follow fundamentally different forming technologies, each with specific engineering trade-offs.</p>
-                <p>Aluminium impact extrusion requires high-tonnage presses and precise slug metallurgy, while tinplate can production relies on sheet forming, welding, and multiple seaming operations.</p>
+                <p>Aluminium impact extrusion requires high-tonnage presses and precise slug metallurgy, while tinplate can production relies on sheet forming, welding, and multiple seaming operations. Seam and joint count directly affects leak risk on the filling line — see our walkthrough of <a href="/aerosol-crimping-gassing-leak-detection-explained/">crimping, gassing, and leak detection</a> for how these interfaces are tested before dispatch.</p>
 
                 <h3>Manufacturing Differences in Summary:</h3>
                 <div class="table-responsive">
@@ -393,7 +366,7 @@ const schemas = [blogSchema, breadcrumbSchema];
 <!-- MECHANICAL STRENGTH AND PRESSURE PERFORMANCE -->
 <section class="section" id="mechanical-strength-and-pressure-performance">
   <h2>Mechanical Strength and Pressure Performance</h2>
-  <p>Pressure resistance is a critical safety parameter governed by international aerosol standards. While both materials meet regulatory requirements when properly specified, their mechanical behavior differs under stress.</p>
+  <p>Pressure resistance is a critical safety parameter governed by international aerosol standards. While both materials meet regulatory requirements when properly specified, their mechanical behavior differs under stress. Burst and pressure-cycle testing follows standardized methods maintained by <a href="https://www.astm.org">ASTM International</a>. See our guide to <a href="/aerosol-can-safety-explained/">aerosol can safety and burst testing</a> for how these pressure thresholds and DOT compliance are calculated.</p>
                 <p>Tinplate steel has higher yield strength and resists deformation more effectively at high internal pressures. Aluminium, while ductile, relies on precise wall thickness control and dome geometry for pressure resistance.</p>
 
                 <figure>
@@ -401,7 +374,7 @@ const schemas = [blogSchema, breadcrumbSchema];
       <div class="image-slot">
         <img 
           src="https://assets.zyrosite.com/A3QlOV94WLSaL6xE/hydrostatic-burst-test-machine.jpg-ETfIt8tTERAR09th.png" 
-          alt="Hydrostatic burst pressure testing machine for aerosol cans" 
+          alt="Hydrostatic burst pressure testing machine for aerosol cans — Global Aerosols"
           width="1200" 
           height="800" 
           loading="lazy" 
@@ -427,14 +400,14 @@ const schemas = [blogSchema, breadcrumbSchema];
 <section class="section" id="corrosion-behavior-and-internal-coatings">
   <h2>Corrosion Behavior and Internal Coatings</h2>
   <p>Neither aluminium nor tinplate aerosol cans are universally corrosion-proof without coatings. Internal corrosion is influenced by formulation pH, water content, solvent polarity, and propellant chemistry.</p>
-                <p>Aluminium forms a natural oxide layer that provides baseline corrosion resistance, but aggressive formulations still require epoxy, polyester, or BPA-NI coatings. Tinplate steel is inherently susceptible to corrosion and always requires a protective internal lacquer.</p>
+                <p>Aluminium forms a natural <a href="https://en.wikipedia.org/wiki/Passivation_(chemistry)">passivating oxide layer</a> that provides baseline corrosion resistance, but aggressive formulations still require epoxy, polyester, or BPA-NI coatings. Tinplate steel is inherently susceptible to corrosion and always requires a protective internal lacquer. See our two-part breakdown of <a href="/aerosol-can-corrosion-1/">aerosol can corrosion causes and control</a> for the electrochemical mechanisms behind these failure modes.</p>
 
                 <figure>
                     
       <div class="image-slot">
         <img 
           src="https://assets.zyrosite.com/A3QlOV94WLSaL6xE/pitting-corrosion-aerosol-can-Yx6etsNY7rxHNQVz.jpg" 
-          alt="Internal pitting corrosion inside an aerosol can" 
+          alt="Internal pitting corrosion inside an aerosol can — Global Aerosols"
           width="1200" 
           height="800" 
           loading="lazy" 
@@ -477,14 +450,14 @@ const schemas = [blogSchema, breadcrumbSchema];
 <section class="section" id="cost-comparison-aluminium-vs-tinplate-aerosol-cans">
   <h2>Cost Comparison: Aluminium vs Tinplate Aerosol Cans</h2>
   <p>Cost comparison must consider total landed cost, not just ex-factory can pricing. Raw material prices, energy consumption, transport weight, and minimum order quantities all influence final economics.</p>
-                <p>In general, tinplate cans are cheaper per unit at high volumes, while aluminium cans carry higher material and processing costs but offer logistics savings due to lower weight.</p>
+                <p>In general, tinplate cans are cheaper per unit at high volumes, while aluminium cans carry higher material and processing costs but offer logistics savings due to lower weight. Can cost is only one line item in total filling economics — see our breakdown of <a href="/how-contract-aerosol-filling-works/">contract aerosol filling costs</a> for how component pricing fits into overall production cost.</p>
 
                 <figure>
                     
       <div class="image-slot">
         <img 
           src="https://assets.zyrosite.com/A3QlOV94WLSaL6xE/aluminium-vs-tinplate-aerosol-cost-comparison-4o8V6rxekZqaqRVa.png" 
-          alt="Chart comparing cost drivers of aluminium vs tinplate cans" 
+          alt="Chart comparing cost drivers of aluminium vs tinplate cans — Global Aerosols"
           width="1200" 
           height="800" 
           loading="lazy" 
@@ -510,7 +483,7 @@ const schemas = [blogSchema, breadcrumbSchema];
 <section class="section" id="sustainability-and-recycling-considerations">
   <h2>Sustainability and Recycling Considerations</h2>
   <p>Both aluminium and tinplate are fully recyclable and widely recovered through established recycling streams. Aluminium offers higher scrap value and requires significantly less energy to recycle compared to primary production.</p>
-                <p>Tinplate recycling is also mature but involves separation processes to remove coatings and tin layers.</p>
+                <p>Tinplate recycling is also mature but involves separation processes to remove coatings and tin layers. Industry-wide recycling and sustainability data for both materials is tracked by the <a href="https://bama.co.uk">British Aerosol Manufacturers' Association</a>.</p>
                 
                 <h3>Sustainability comparison highlights:</h3>
                 <ul>
@@ -569,6 +542,34 @@ const schemas = [blogSchema, breadcrumbSchema];
             </section>
 
             <section id="references">
+</section>
+
+<!-- FREQUENTLY ASKED QUESTIONS -->
+<section class="section" id="faq">
+  <h2>Frequently Asked Questions</h2>
+  <div class="box" style="background: #f8fafc; border: 1px solid var(--border); border-radius: var(--radius-lg); padding: 8px 24px; margin: 10px 0;">
+    {faqs.map((f) => (
+      <details style="border-bottom: 1px solid var(--border); padding: 14px 0;">
+        <summary style="font-weight: 700; cursor: pointer; color: var(--text-primary); font-family: 'Outfit', sans-serif;">{f.q}</summary>
+        <p style="margin-top: 10px; color: var(--text-muted); line-height: 1.7;">{f.a}</p>
+      </details>
+    ))}
+  </div>
+</section>
+
+<!-- RELATED ARTICLES -->
+<section class="section" id="related-articles">
+  <h2>Related Articles</h2>
+  <ul>
+    <li><a href="/aerosol-can-corrosion-2/">Aerosol Can Corrosion Part 2: Formulations &amp; Coatings</a></li>
+    <li><a href="/aerosol-valve-gasket-explained/">Aerosol Valve Gasket Materials: Types &amp; Compatibility</a></li>
+    <li><a href="/aerosol-manufacturing-101-guide/">Aerosol Manufacturing 101</a></li>
+    <li><a href="/how-aerosol-cans-work/">How Aerosol Cans Work</a></li>
+    <li><a href="/aerosol-propellants-explained-lpg-vs-dme-vs-hfc-vs-n2-vs-co2/">Aerosol Propellants Explained</a></li>
+    <li><a href="/aerosol-chemistry-101/">Aerosol Chemistry 101</a></li>
+    <li><a href="/from-lab-to-commercial-launch/">From Lab to Commercial Launch</a></li>
+    <li><a href="/choosing-the-right-product-consultant/">Choosing the Right Aerosol Product Consultant</a></li>
+  </ul>
 </section>
 
 
