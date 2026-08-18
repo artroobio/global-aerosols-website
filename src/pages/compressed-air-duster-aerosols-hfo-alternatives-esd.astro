@@ -1,0 +1,984 @@
+---
+import Layout from '../layouts/Layout.astro';
+
+const schemas = [
+  {
+    "@context": "https://schema.org",
+    "@type": "Organization",
+    "name": "Global Aerosols",
+    "url": "https://www.globalaerosols.com",
+    "logo": "https://www.globalaerosols.com/logo.png",
+    "sameAs": [
+      "https://www.linkedin.com/in/absar-khan-aerosol-consultant-and-formulator-78359b162"
+    ]
+  },
+  {
+    "@context": "https://schema.org",
+    "@type": "WebSite",
+    "url": "https://www.globalaerosols.com",
+    "potentialAction": {
+      "@type": "SearchAction",
+      "target": "https://www.globalaerosols.com/search?q={search_term_string}",
+      "query-input": "required name=search_term_string"
+    }
+  },
+  {
+    "@context": "https://schema.org",
+    "@type": "Person",
+    "name": "Absar Khan",
+    "jobTitle": "Founder & Lead Aerosol Consultant",
+    "url": "https://www.linkedin.com/in/absar-khan-aerosol-consultant-and-formulator-78359b162",
+    "affiliation": {
+      "@type": "Organization",
+      "name": "Global Aerosols"
+    }
+  },
+  {
+    "@context": "https://schema.org",
+    "@type": "BlogPosting",
+    "headline": "Compressed Air Duster Aerosols: HFO Alternatives, ESD Safety & Handling",
+    "description": "Learn how compressed air duster aerosols work, why HFO-1234ze is replacing HFC-134a, how ESD-safe formulations protect electronics, and safe handling practices.",
+    "image": "https://cdn.globalaerosols.com/images/compressed-air-duster-aerosols-hfo-alternatives-esd/compressed-air-duster-aerosols-hfo-alternatives-esd-hero-globalaerosols.webp",
+    "author": {
+      "@type": "Person",
+      "name": "Absar Khan"
+    },
+    "publisher": {
+      "@type": "Organization",
+      "name": "Global Aerosols",
+      "logo": {
+        "@type": "ImageObject",
+        "url": "https://www.globalaerosols.com/logo.png"
+      }
+    },
+    "datePublished": "2026-08-17",
+    "dateModified": "2026-08-17",
+    "mainEntityOfPage": {
+      "@type": "WebPage",
+      "@id": "https://www.globalaerosols.com/compressed-air-duster-aerosols-hfo-alternatives-esd"
+    },
+    "articleSection": "Industrial & Specialty Aerosols",
+    "keywords": "compressed air duster aerosol, electronics duster aerosol, ESD safe aerosol duster, HFO1234ze duster aerosol, aerosol computer cleaning, canned air alternative HFO",
+    "wordCount": "2680"
+  },
+  {
+    "@context": "https://schema.org",
+    "@type": "BreadcrumbList",
+    "itemListElement": [
+      {
+        "@type": "ListItem",
+        "position": 1,
+        "name": "Home",
+        "item": "https://www.globalaerosols.com"
+      },
+      {
+        "@type": "ListItem",
+        "position": 2,
+        "name": "Blog",
+        "item": "https://www.globalaerosols.com/blog"
+      },
+      {
+        "@type": "ListItem",
+        "position": 3,
+        "name": "Compressed Air Duster Aerosols: HFO Alternatives, ESD Safety & Handling",
+        "item": "https://www.globalaerosols.com/compressed-air-duster-aerosols-hfo-alternatives-esd"
+      }
+    ]
+  },
+  {
+    "@context": "https://schema.org",
+    "@type": "FAQPage",
+    "mainEntity": [
+      {
+        "@type": "Question",
+        "name": "What propellant is used in compressed air duster aerosols?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "Most modern compressed air duster aerosols use liquefied gas propellants rather than actual compressed air. Historically HFC-134a (1,1,1,2-tetrafluoroethane) was the dominant propellant, but due to its high global warming potential (GWP of 1,430), the industry is transitioning to HFO-1234ze (GWP of 1) and HFO-1234yf (GWP of 4) under pressure from the Kigali Amendment and EU F-Gas Regulations. Some products use difluoroethane (HFC-152a) as an intermediate option."
+        }
+      },
+      {
+        "@type": "Question",
+        "name": "What does ESD-safe mean for aerosol dusters?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "ESD-safe (Electrostatic Discharge-safe) aerosol dusters are formulated with antistatic additives or use propellants with inherent low charge-generating characteristics. When a compressed gas stream passes through a plastic nozzle at high velocity, friction can generate static charges capable of damaging sensitive semiconductor components. ESD-safe formulations mitigate this by using antistatic agents or by controlling propellant purity and nozzle material to keep triboelectric charge generation below thresholds defined in IPC and JEDEC standards."
+        }
+      },
+      {
+        "@type": "Question",
+        "name": "Why is HFO-1234ze replacing HFC-134a in electronics dusters?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "HFO-1234ze (trans-1,3,3,3-tetrafluoropropene) has a global warming potential (GWP) of just 1, compared to 1,430 for HFC-134a. This makes it compliant with the Kigali Amendment phase-down schedules and EU F-Gas Regulation targets that restrict high-GWP fluorinated gases. HFO-1234ze has comparable vapour pressure and spray characteristics to HFC-134a, making it a technically viable drop-in replacement for duster aerosol applications, though formulation adjustments for gasket and valve compatibility are necessary."
+        }
+      },
+      {
+        "@type": "Question",
+        "name": "Can compressed air duster aerosols damage electronics?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "Used correctly, aerosol dusters are safe for electronics. Damage risks arise when the can is inverted during use, causing liquefied propellant to be expelled as a liquid stream that can cause cold thermal shock or leave residue on components. Holding the can at an excessive angle or shaking before use increases this risk. Best practice is to hold the can upright, use short bursts, maintain a minimum safe distance from sensitive components (typically 5\u201310 cm), and select an ESD-rated product for sensitive semiconductor environments."
+        }
+      },
+      {
+        "@type": "Question",
+        "name": "Is HFO-1234ze flammable in aerosol duster products?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "HFO-1234ze (trans isomer) has a lower flammability limit (LFL) that places it in GHS Flammable Gas Category 2 (mildly flammable), in contrast to HFC-134a which is non-flammable. This difference requires updated labelling, storage, and handling protocols. In aerosol duster applications, the concentration discharged into open air disperses rapidly, reducing practical ignition risk during normal use; however, use near open flames or in enclosed unventilated spaces must be avoided, and NFPA 30B storage requirements should be observed."
+        }
+      },
+      {
+        "@type": "Question",
+        "name": "What is the shelf life and storage requirement for aerosol dusters?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "Compressed air duster aerosols typically have a stated shelf life of two to three years when stored under correct conditions. Per NFPA 30B and DOT 49 CFR Part 173, flammable aerosols must be stored away from ignition sources, in cool dry conditions below 50\u00b0C, and not exposed to direct sunlight or mechanical impact. HFO-based dusters classified as mildly flammable require additional segregation from ignition sources compared to earlier non-flammable HFC formulations."
+        }
+      },
+      {
+        "@type": "Question",
+        "name": "What should I look for when selecting an aerosol duster for sensitive electronics?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "Key selection criteria include: (1) ESD or antistatic rating confirmed against IPC-7711 or JEDEC standards for the sensitivity level of your components; (2) propellant type \u2014 HFO-1234ze or HFO-1234yf for low environmental impact; (3) residue-free formulation \u2014 the propellant should leave no liquid or oily film on circuit boards; (4) nozzle design \u2014 extension tube for precise targeting; (5) compliance with any applicable environmental regulations in your jurisdiction. For military or aerospace applications, MIL-PRF-85570 or equivalent cleaning standard compliance may also be relevant."
+        }
+      }
+    ]
+  },
+  {
+    "@context": "https://schema.org",
+    "@type": "WebPage",
+    "@id": "https://www.globalaerosols.com/compressed-air-duster-aerosols-hfo-alternatives-esd",
+    "url": "https://www.globalaerosols.com/compressed-air-duster-aerosols-hfo-alternatives-esd",
+    "name": "Compressed Air Duster Aerosols: HFO Alternatives, ESD Safety & Handling",
+    "description": "Learn how compressed air duster aerosols work, why HFO-1234ze is replacing HFC-134a, how ESD-safe formulations protect electronics, and safe handling practices.",
+    "isPartOf": {
+      "@type": "WebSite",
+      "url": "https://www.globalaerosols.com"
+    },
+    "breadcrumb": {
+      "@type": "BreadcrumbList",
+      "itemListElement": [
+        {
+          "@type": "ListItem",
+          "position": 1,
+          "name": "Home",
+          "item": "https://www.globalaerosols.com"
+        },
+        {
+          "@type": "ListItem",
+          "position": 2,
+          "name": "Blog",
+          "item": "https://www.globalaerosols.com/blog"
+        },
+        {
+          "@type": "ListItem",
+          "position": 3,
+          "name": "Compressed Air Duster Aerosols: HFO Alternatives, ESD Safety & Handling",
+          "item": "https://www.globalaerosols.com/compressed-air-duster-aerosols-hfo-alternatives-esd"
+        }
+      ]
+    },
+    "primaryImageOfPage": {
+      "@type": "ImageObject",
+      "url": "https://cdn.globalaerosols.com/images/compressed-air-duster-aerosols-hfo-alternatives-esd/compressed-air-duster-aerosols-hfo-alternatives-esd-hero-globalaerosols.webp"
+    },
+    "datePublished": "2026-08-17",
+    "dateModified": "2026-08-17"
+  }
+];
+---
+
+<Layout
+  title="Compressed Air Duster Aerosols: HFO, ESD & Safe Handling"
+  description="Learn how compressed air duster aerosols work, why HFO-1234ze is replacing HFC-134a, how ESD-safe formulations protect electronics, and safe handling practices."
+  canonical="https://www.globalaerosols.com/compressed-air-duster-aerosols-hfo-alternatives-esd"
+  ogImage="https://cdn.globalaerosols.com/images/compressed-air-duster-aerosols-hfo-alternatives-esd/compressed-air-duster-aerosols-hfo-alternatives-esd-hero-globalaerosols.webp"
+  schemaJson={schemas}
+>
+  <div class="blog-container">
+    <!-- SITE HEADER -->
+  <header class="site-header">
+    <a href="https://www.globalaerosols.com" target="_top">
+      Global <span>Aerosols</span>
+    </a>
+  </header>
+
+  <!-- POST HERO BAND -->
+  <div class="post-hero">
+    <div class="post-hero-inner">
+
+      <!-- BREADCRUMB -->
+      <nav class="breadcrumb" aria-label="Breadcrumb">
+        <a href="https://www.globalaerosols.com" target="_top">Home</a>
+        <span>›</span>
+        <a href="https://www.globalaerosols.com/blog" target="_top">Blog</a>
+        <span>›</span>
+        <span>Compressed Air Duster Aerosols</span>
+      </nav>
+
+      <span class="category-badge">Industrial &amp; Specialty Aerosols</span>
+
+      <h1>Compressed Air Duster Aerosols: HFO Alternatives, ESD Safety &amp; Handling</h1>
+
+      <div class="post-meta">
+        <span>By Global Aerosols Team</span>
+        <span>August 17, 2026</span>
+        <span>13 min read</span>
+      </div>
+
+      <!-- HERO IMAGE -->
+      <div class="hero-img-wrap">
+        <img
+          src="https://cdn.globalaerosols.com/images/compressed-air-duster-aerosols-hfo-alternatives-esd/compressed-air-duster-aerosols-hfo-alternatives-esd-hero-globalaerosols.webp"
+          alt="Compressed air duster aerosol cleaning electronics circuit board in industrial setting — Global Aerosols"
+          width="1140" height="480"
+          loading="eager"
+          srcset="https://cdn.globalaerosols.com/images/compressed-air-duster-aerosols-hfo-alternatives-esd/compressed-air-duster-aerosols-hfo-alternatives-esd-hero-globalaerosols.webp?w=640 640w, https://cdn.globalaerosols.com/images/compressed-air-duster-aerosols-hfo-alternatives-esd/compressed-air-duster-aerosols-hfo-alternatives-esd-hero-globalaerosols.webp?w=1140 1140w"
+          sizes="(max-width: 640px) 100vw, 1140px">
+      </div>
+
+    </div>
+  </div>
+
+  <!-- TWO-COLUMN BODY -->
+  <div class="page-body">
+
+    <!-- LEFT: STICKY TOC SIDEBAR -->
+    <aside class="toc-sidebar">
+      <nav aria-label="Table of Contents">
+        <div class="toc-heading">In This Article</div>
+        <ol>
+          <li><a href="#section-1" target="_top">How Aerosol Dusters Work</a></li>
+          <li><a href="#section-2" target="_top">Propellant Comparison: HFC vs HFO</a></li>
+          <li><a href="#section-3" target="_top">ESD Safety in Electronics Dusters</a></li>
+          <li><a href="#section-4" target="_top">Regulatory Drivers for HFO Adoption</a></li>
+          <li><a href="#section-5" target="_top">Formulation & Valve Compatibility</a></li>
+          <li><a href="#section-6" target="_top">Safe Handling & Storage Practices</a></li>
+          <li><a href="#faq" target="_top">Frequently Asked Questions</a></li>
+        </ol>
+      </nav>
+    </aside>
+
+    <!-- RIGHT: ARTICLE CONTENT -->
+    <div class="article-col">
+
+      <!-- INTRO -->
+      <p><strong>Compressed air duster aerosols</strong> are pressurised canisters that discharge a high-velocity stream of liquefied gas propellant to dislodge dust, particulates, and debris from sensitive electronic components, optical lenses, and precision instruments. They do not contain compressed air in the conventional sense — the propellant is a liquefied fluorinated gas that vaporises rapidly upon discharge, producing the cleaning gas stream. As regulatory pressure from the Kigali Amendment and the EU F-Gas Regulation intensifies, the aerosol industry is completing a major propellant transition from high-GWP HFCs such as HFC-134a to low-GWP hydrofluoroolefin (HFO) alternatives, principally HFO-1234ze. For engineers, procurement managers, and electronics maintenance professionals, understanding this transition — and its implications for ESD safety, flammability classification, and handling protocols — is increasingly important to both compliance and equipment protection.</p>
+
+      <!-- SECTION 1 -->
+      <section id="section-1">
+        <h2>How Compressed Air Duster Aerosols Work</h2>
+        <p>Aerosol duster canisters operate on the same fundamental principle as other liquefied-gas aerosol products. The propellant is stored inside the can in a two-phase equilibrium: a liquid phase at the bottom and a vapour phase above it that maintains internal pressure. When the valve is actuated, the pressure differential forces propellant vapour — and occasionally atomised liquid — through the valve orifice and the extension tube at high velocity. This directed gas stream displaces loose contamination from surfaces without physical contact. The propellant itself does not react with the substrate; it simply provides the kinetic energy needed to lift and remove particulates. Understanding this mechanism also explains a key misuse risk: inverting the can during use allows liquid propellant to be expelled directly, which can cause thermal shock and surface residue on components.</p>
+        <ul>
+          <li><strong>Valve type:</strong> Continuous-spray tilt or vertical valve with stem orifice sized for controlled flow rate</li>
+          <li><strong>Extension tube:</strong> Flexible plastic straw enabling precise directional delivery</li>
+          <li><strong>Propellant phase behaviour:</strong> Liquefied gas vaporises upon pressure release, cooling the stream and producing rapid gas expansion</li>
+          <li><strong>Spray distance:</strong> Manufacturers typically recommend a minimum 5–10 cm standoff from sensitive components to prevent liquid impingement and cold shock</li>
+        </ul>
+
+        <p>The spray rate, plume geometry, and thermal output of the gas stream are all governed by propellant vapour pressure at ambient temperature, the valve orifice diameter, and the nozzle insert design. This is why selecting the correct propellant — particularly during the current industry reformulation — has direct consequences for product performance, not just environmental compliance. As described in our broader overview of <a href="https://www.globalaerosols.com/industrial" target="_top">industrial aerosol products and their engineering requirements</a>, each application category places distinct demands on the propellant system.</p>
+      </section>
+
+      <!-- DIAGRAM IMAGE -->
+      <img
+        class="article-img"
+        src="https://cdn.globalaerosols.com/images/compressed-air-duster-aerosols-hfo-alternatives-esd/compressed-air-duster-aerosols-hfo-alternatives-esd-diagram-globalaerosols.webp"
+        alt="Aerosol duster process diagram — ESD-safe nozzle directing gas stream for electronics cleaning | Global Aerosols"
+        width="900" height="500"
+        loading="lazy">
+      <p class="img-caption">A precision ESD-safe aerosol duster nozzle directing a focused, controlled gas stream — illustrating the condensation-free vaporisation that distinguishes HFO-based formulations from older HFC products.</p>
+
+      <!-- SECTION 2 -->
+      <section id="section-2">
+        <h2>Propellant Comparison: HFC-134a vs HFO Alternatives</h2>
+        <p>For over two decades, HFC-134a (1,1,1,2-tetrafluoroethane) was the dominant propellant in electronics duster aerosols. Its non-flammability, low toxicity, compatibility with common valve materials, and stable vapour pressure made it the preferred choice. However, with a <a href="https://webbook.nist.gov" target="_blank" rel="noopener noreferrer">global warming potential (GWP) of 1,430 relative to CO₂ over 100 years (NIST WebBook thermodynamic data)</a>, it is classified as a high-GWP F-gas subject to phase-down under multiple regulatory regimes. The primary HFO alternatives now entering the duster market are HFO-1234ze(E) (trans-1,3,3,3-tetrafluoropropene) and HFO-1234yf (2,3,3,3-tetrafluoropropene), both with GWPs below 10.</p>
+
+        <div class="table-wrap">
+          <table class="data-table">
+            <thead>
+              <tr>
+                <th>Property</th>
+                <th>HFC-134a</th>
+                <th>HFO-1234ze(E)</th>
+                <th>HFO-1234yf</th>
+                <th>HFC-152a</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td>GWP (100-year)</td>
+                <td>1,430</td>
+                <td>1</td>
+                <td>4</td>
+                <td>124</td>
+              </tr>
+              <tr>
+                <td>Boiling Point (°C)</td>
+                <td>−26.1</td>
+                <td>−18.9</td>
+                <td>−29.4</td>
+                <td>−24.0</td>
+              </tr>
+              <tr>
+                <td>Vapour Pressure at 20°C (bar)</td>
+                <td>~5.7</td>
+                <td>~3.5</td>
+                <td>~6.2</td>
+                <td>~5.1</td>
+              </tr>
+              <tr>
+                <td>GHS Flammability Class</td>
+                <td>Non-flammable</td>
+                <td>Cat. 2 (mildly flammable)</td>
+                <td>Cat. 2 (mildly flammable)</td>
+                <td>Cat. 1 (flammable)</td>
+              </tr>
+              <tr>
+                <td>ODP</td>
+                <td>0</td>
+                <td>0</td>
+                <td>0</td>
+                <td>0</td>
+              </tr>
+              <tr>
+                <td>Primary Regulatory Status</td>
+                <td>EU phase-down; Kigali restricted</td>
+                <td>Preferred low-GWP transition</td>
+                <td>Automotive standard; gaining aerosol adoption</td>
+                <td>Intermediate; flammable label required</td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+
+        <p>The lower vapour pressure of HFO-1234ze(E) compared to HFC-134a means reformulated duster products may exhibit a slightly reduced gas flow rate at lower ambient temperatures. This is a critical formulation consideration for manufacturers: valve orifice dimensions may require adjustment to maintain equivalent cleaning performance across the temperature range. The <a href="https://www.epa.gov/snap" target="_blank" rel="noopener noreferrer">EPA SNAP (Significant New Alternatives Policy) programme</a> lists both HFO-1234ze and HFO-1234yf as acceptable substitutes for HFC-134a in several non-refrigerant end uses, providing a US regulatory pathway for reformulation. For a deeper understanding of how propellant vapour pressure governs aerosol performance, see our guide to <a href="https://www.globalaerosols.com/aerosol-propellants-explained-lpg-vs-dme-vs-hfc-vs-n2-vs-co2" target="_top">aerosol propellants explained</a>.</p>
+      </section>
+
+      <!-- SECTION 3 -->
+      <section id="section-3">
+        <h2>ESD Safety in Electronics Duster Aerosols</h2>
+        <p>Electrostatic discharge (ESD) is a silent but severe risk in electronics maintenance and manufacturing environments. When a high-velocity gas stream passes through a plastic nozzle or extension tube, friction between propellant molecules and nozzle surfaces generates triboelectric charge. This charge can accumulate on the nozzle tip and discharge directly into sensitive semiconductor devices — integrated circuits, MOSFETs, and fine-pitch components — causing immediate failure or latent damage that may not manifest until later in service. ESD damage thresholds for modern ICs are measured in hundreds of volts, and a poorly specified duster aerosol can generate charges far exceeding this. ESD-safe aerosol duster formulations address this through two principal strategies: antistatic additive systems and propellant-plus-nozzle-material selection that minimises triboelectric generation.</p>
+
+        <div class="callout">
+          <strong>Key Insight</strong>
+          ESD-safe certification for aerosol dusters is not determined by the propellant alone — nozzle tube material, antistatic additive chemistry, and propellant purity all interact. Products claiming ESD compliance should reference IPC-7711/7721 or JEDEC JESD625 standards; these define the charge generation thresholds and test protocols relevant to PCB rework and semiconductor handling environments.
+        </div>
+
+        <h3>Antistatic Additive Strategies</h3>
+        <p>Antistatic agents used in aerosol duster formulations function by increasing the surface conductivity of the nozzle and gas stream, allowing generated charge to dissipate rather than accumulate. These additives must be compatible with the propellant system, must not deposit residue on sensitive electronic surfaces, and must not compromise the flammability classification of the final product. The selection of antistatic chemistry is therefore constrained by multiple competing requirements and represents a meaningful point of formulation expertise. Quaternary ammonium compounds, certain amine derivatives, and conductive polymer additives have all been employed, though the specific chemistry of any commercial ESD-safe duster product is proprietary.</p>
+
+        <h3>Nozzle Material Selection</h3>
+        <p>The extension tube material in contact with the propellant gas stream determines a significant portion of triboelectric charge generation. Highly insulating polymers such as standard polypropylene generate the highest charge; antistatic or dissipative plastics with carbon-black loading or inherent conductivity are preferred for ESD-sensitive applications. Specifiers should confirm nozzle tube material specifications with the product supplier when ESD protection is a primary requirement, particularly in semiconductor wafer handling, PCBA rework, or military/aerospace maintenance environments.</p>
+      </section>
+
+      <!-- INFOGRAPHIC IMAGE -->
+      <img
+        class="article-img"
+        src="https://cdn.globalaerosols.com/images/compressed-air-duster-aerosols-hfo-alternatives-esd/compressed-air-duster-aerosols-hfo-alternatives-esd-infographic-globalaerosols.webp"
+        alt="Compressed air duster comparison infographic — HFO, HFC and compressed gas aerosol propellant variants | Global Aerosols"
+        width="900" height="500"
+        loading="lazy">
+      <p class="img-caption">A comparison of aerosol duster propellant canister types — HFO-1234ze, HFC-134a, and compressed gas variants — illustrating the product range available as the industry transitions away from high-GWP fluorinated propellants.</p>
+
+      <!-- SECTION 4 -->
+      <section id="section-4">
+        <h2>Regulatory Drivers for HFO Adoption in Aerosol Dusters</h2>
+        <p>The shift away from HFC-134a in aerosol dusters is driven by overlapping regulatory frameworks at global, regional, and national levels. The <a href="https://ozone.unep.org" target="_blank" rel="noopener noreferrer">Kigali Amendment to the Montreal Protocol</a>, which entered into force in 2019, established a binding international schedule for HFC phase-down by all signatory nations. The EU F-Gas Regulation (EU 517/2014 and its successor) imposes sector-specific restrictions and a GWP cap system that effectively prohibits HFC-134a in many new aerosol applications. In the United States, the EPA's AIM Act authorises HFC phase-down rules across sectors. These parallel pressures are creating a global convergence toward HFO propellants for all aerosol product categories where a technically suitable low-GWP alternative exists — and for duster aerosols, HFO-1234ze meets this criterion.</p>
+
+        <div class="callout callout-amber">
+          <strong>Rule of Thumb</strong>
+          Any aerosol duster product procured for use in the European market from 2025 onward should be verified for HFC-134a-free formulation. EU F-Gas Regulation enforcement timelines are firm, and distributors stocking HFC-134a-based dusters face significant inventory compliance exposure if stock is purchased beyond the applicable phase-out date for their specific product category.
+        </div>
+
+        <p>The reclassification of HFO-1234ze as a mildly flammable gas (GHS Category 2) has created a secondary compliance requirement: products reformulated with HFO propellants may now require updated Safety Data Sheets, revised GHS labelling, updated NFPA 30B storage classification, and new transport documents under DOT 49 CFR Part 173. Manufacturers and distributors transitioning their duster product ranges must complete this documentation update in parallel with reformulation — a process that requires coordination between aerosol formulation teams, regulatory affairs, and supply chain. As covered in our article on <a href="https://www.globalaerosols.com/compressed-vs-liquefied-gas-aerosols-pressure-profiles" target="_top">compressed vs liquefied gas aerosol systems</a>, pressure profile changes during propellant reformulation also require engineering validation before commercial release.</p>
+      </section>
+
+      <!-- SECTION 5 -->
+      <section id="section-5">
+        <h2>Formulation & Valve Compatibility Considerations</h2>
+        <p>Transitioning an aerosol duster from HFC-134a to an HFO propellant is not a simple solvent swap. HFO-1234ze has different solubility characteristics, a distinct polarity profile, and different interactions with elastomeric gasket materials compared to HFC-134a. Valve manufacturers have conducted extensive compatibility testing for HFO propellants, but formulators must verify compatibility for their specific valve supplier, gasket material grade, and stem polymer. Neoprene and EPDM gaskets — commonly used in HFC-134a duster valves — generally perform well with HFO-1234ze, but butyl rubber and certain grades of Buna-N may show different swell or hardness change profiles. The precise magnitude of any dimensional change depends on the grade and cross-link density of the elastomer, and compatibility testing with the exact valve specification is mandatory before commercial production.</p>
+
+        <h3>Valve Orifice and Flow Rate</h3>
+        <p>The lower vapour pressure of HFO-1234ze relative to HFC-134a means that direct propellant-for-propellant replacement in an existing valve may produce a lower flow rate and reduced cleaning velocity at the nozzle outlet. For precision electronics dusting, this performance change may be acceptable or may require valve orifice resizing to maintain equivalent air stream velocity. Manufacturers should conduct spray rate testing per <a href="https://www.astm.org" target="_blank" rel="noopener noreferrer">ASTM D5964</a> methodology on reformulated products to quantify and document the change, and update product specifications accordingly before release to market.</p>
+
+        <h3>Can Compatibility and Internal Pressure</h3>
+        <p>Aerosol duster cans used with HFO-1234ze operate at lower internal pressures than equivalent HFC-134a products, which is generally favourable from a can specification and safety pressure margin perspective. Tin-plated steel and aluminium monobloc can constructions that previously certified for HFC-134a will typically retain adequate safety margin with HFO-1234ze. However, any change in propellant must be validated against the applicable pressure vessel standard — in the EU this means compliance with the <a href="https://eur-lex.europa.eu/legal-content/EN/TXT/?uri=CELEX%3A31975L0324" target="_blank" rel="noopener noreferrer">Aerosol Dispensers Directive 75/324/EEC</a>, which specifies pressure testing at 50°C and bung test requirements that govern maximum permissible internal pressure at that reference temperature.</p>
+      </section>
+
+      <!-- SECTION 6 -->
+      <section id="section-6">
+        <h2>Safe Handling and Storage Practices for Aerosol Dusters</h2>
+        <p>Safe handling of compressed air duster aerosols is straightforward when the product's classification is well understood, but the introduction of HFO propellants has changed the flammability classification of many duster products and therefore the handling and storage obligations that apply. HFC-134a duster aerosols were classified as non-flammable, requiring only standard aerosol storage precautions. HFO-1234ze-based products, classified as GHS Flammable Gas Category 2, require the additional precautions applicable to mildly flammable aerosols: segregation from ignition sources, avoidance of use near open flames or sparking equipment, and storage in compliance with NFPA 30B flammable aerosol provisions. End users — particularly facilities management teams and electronics technicians — may require updated training when switching from HFC-based to HFO-based duster products.</p>
+
+        <h3>Correct Use Technique</h3>
+        <p>Regardless of propellant type, correct use technique prevents the majority of duster-related equipment incidents. The can should be held upright at all times during use; inverting the can expels liquid propellant rather than vapour, causing localised cold burn and potential residue contamination on electronic components. Short, controlled bursts are more effective than sustained spray for dislodging particulates, and the nozzle should be held at least 5–10 centimetres from the surface being cleaned. In ESD-sensitive environments, the user should be grounded via a wrist strap before using any aerosol duster, even an ESD-safe rated product, as a secondary precaution.</p>
+
+        <h3>Storage Requirements</h3>
+        <p>Both HFC and HFO aerosol dusters share common aerosol storage requirements: storage below 50°C, away from direct sunlight, heat sources, and open flames, and not subject to mechanical impact or puncture. For HFO-based dusters with flammable gas labelling, additional requirements apply under NFPA 30B regarding quantity limits for in-room storage versus dedicated flammable storage cabinets, and distance from ignition sources. Facilities using large volumes of aerosol dusters — such as electronics service depots or data centre maintenance operations — should review their storage practice against NFPA 30B when transitioning to HFO-formulated products.</p>
+
+        <div class="callout">
+          <strong>Key Insight</strong>
+          User inhalation of aerosol duster propellant vapour is a documented misuse risk. Both HFC-134a and HFO propellants can cause rapid oxygen displacement in enclosed spaces at high concentrations, and deliberate inhalation creates cardiac sensitisation and asphyxiation risk. This hazard should be clearly addressed in SDS Section 7 (handling) and Section 11 (toxicological information) for all aerosol duster products, and is especially relevant for products held in consumer-accessible environments.
+        </div>
+      </section>
+
+      <!-- FAQ -->
+      <section class="faq-section" id="faq">
+        <h2>Frequently Asked Questions</h2>
+
+        <details class="faq-item">
+          <summary>What propellant is used in compressed air duster aerosols?</summary>
+          <div class="faq-answer">Most modern compressed air duster aerosols use liquefied gas propellants rather than actual compressed air. Historically HFC-134a (1,1,1,2-tetrafluoroethane) was the dominant propellant, but due to its high global warming potential (GWP of 1,430), the industry is transitioning to HFO-1234ze (GWP of 1) and HFO-1234yf (GWP of 4) under pressure from the Kigali Amendment and EU F-Gas Regulations. Some products use difluoroethane (HFC-152a) as an intermediate option.</div>
+        </details>
+
+        <details class="faq-item">
+          <summary>What does ESD-safe mean for aerosol dusters?</summary>
+          <div class="faq-answer">ESD-safe (Electrostatic Discharge-safe) aerosol dusters are formulated with antistatic additives or use propellants with inherent low charge-generating characteristics. When a compressed gas stream passes through a plastic nozzle at high velocity, friction can generate static charges capable of damaging sensitive semiconductor components. ESD-safe formulations mitigate this by using antistatic agents or by controlling propellant purity and nozzle material to keep triboelectric charge generation below thresholds defined in IPC and JEDEC standards.</div>
+        </details>
+
+        <details class="faq-item">
+          <summary>Why is HFO-1234ze replacing HFC-134a in electronics dusters?</summary>
+          <div class="faq-answer">HFO-1234ze (trans-1,3,3,3-tetrafluoropropene) has a global warming potential (GWP) of just 1, compared to 1,430 for HFC-134a. This makes it compliant with the Kigali Amendment phase-down schedules and EU F-Gas Regulation targets that restrict high-GWP fluorinated gases. HFO-1234ze has comparable vapour pressure and spray characteristics to HFC-134a, making it a technically viable drop-in replacement for duster aerosol applications, though formulation adjustments for gasket and valve compatibility are necessary.</div>
+        </details>
+
+        <details class="faq-item">
+          <summary>Can compressed air duster aerosols damage electronics?</summary>
+          <div class="faq-answer">Used correctly, aerosol dusters are safe for electronics. Damage risks arise when the can is inverted during use, causing liquefied propellant to be expelled as a liquid stream that can cause cold thermal shock or leave residue on components. Holding the can at an excessive angle or shaking before use increases this risk. Best practice is to hold the can upright, use short bursts, maintain a minimum safe distance from sensitive components (typically 5–10 cm), and select an ESD-rated product for sensitive semiconductor environments.</div>
+        </details>
+
+        <details class="faq-item">
+          <summary>Is HFO-1234ze flammable in aerosol duster products?</summary>
+          <div class="faq-answer">HFO-1234ze (trans isomer) has a lower flammability limit (LFL) that places it in GHS Flammable Gas Category 2 (mildly flammable), in contrast to HFC-134a which is non-flammable. This difference requires updated labelling, storage, and handling protocols. In aerosol duster applications, the concentration discharged into open air disperses rapidly, reducing practical ignition risk during normal use; however, use near open flames or in enclosed unventilated spaces must be avoided, and NFPA 30B storage requirements should be observed.</div>
+        </details>
+
+        <details class="faq-item">
+          <summary>What is the shelf life and storage requirement for aerosol dusters?</summary>
+          <div class="faq-answer">Compressed air duster aerosols typically have a stated shelf life of two to three years when stored under correct conditions. Per NFPA 30B and DOT 49 CFR Part 173, flammable aerosols must be stored away from ignition sources, in cool dry conditions below 50°C, and not exposed to direct sunlight or mechanical impact. HFO-based dusters classified as mildly flammable require additional segregation from ignition sources compared to earlier non-flammable HFC formulations.</div>
+        </details>
+
+        <details class="faq-item">
+          <summary>What should I look for when selecting an aerosol duster for sensitive electronics?</summary>
+          <div class="faq-answer">Key selection criteria include: (1) ESD or antistatic rating confirmed against IPC-7711 or JEDEC standards for the sensitivity level of your components; (2) propellant type — HFO-1234ze or HFO-1234yf for low environmental impact; (3) residue-free formulation — the propellant should leave no liquid or oily film on circuit boards; (4) nozzle design — extension tube for precise targeting; (5) compliance with any applicable environmental regulations in your jurisdiction. For military or aerospace applications, MIL-PRF-85570 or equivalent cleaning standard compliance may also be relevant.</div>
+        </details>
+      </section>
+
+      <!-- CTA BLOCK -->
+      <div class="cta-block">
+        <h2>Need Expert Aerosol Consulting?</h2>
+        <p>Our team provides end-to-end aerosol technical consultancy — from formulation development and propellant selection to filling line setup, regulatory compliance, and market launch strategy.</p>
+        <a href="https://www.globalaerosols.com/contact" target="_top" class="cta-btn">
+          Get a Free Consultation
+        </a>
+      </div>
+
+      <!-- RELATED ARTICLES -->
+      <section class="related-section">
+        <h2>Related Articles</h2>
+        <ul class="related-grid">
+          <li><a href="https://www.globalaerosols.com/aerosol-contact-cleaners" target="_top">Aerosol Contact Cleaners for Electronics: Chemistry, Standards & Selection</a></li>
+          <li><a href="https://www.globalaerosols.com/aerosol-freeze-sprays-thermal-management-electronics" target="_top">Aerosol Freeze Sprays & Thermal Management Products for Electronics</a></li>
+          <li><a href="https://www.globalaerosols.com/aerosol-manufacturing-101-guide" target="_top">Aerosol Manufacturing 101: The Complete Technical Guide</a></li>
+          <li><a href="https://www.globalaerosols.com/how-aerosol-cans-work" target="_top">How Aerosol Cans Work: Propellant, Pressure, Valve &amp; Spray Dynamics</a></li>
+          <li><a href="https://www.globalaerosols.com/aerosol-propellants-explained-lpg-vs-dme-vs-hfc-vs-n2-vs-co2" target="_top">Aerosol Propellants Explained: LPG vs DME vs HFC vs N₂ vs CO₂</a></li>
+          <li><a href="https://www.globalaerosols.com/aerosol-chemistry-101" target="_top">Aerosol Chemistry 101: Solvents, Binders, Surfactants &amp; Additives</a></li>
+          <li><a href="https://www.globalaerosols.com/from-lab-to-commercial-launch" target="_top">From Lab to Factory: Aerosol R&amp;D to Commercial Manufacturing</a></li>
+          <li><a href="https://www.globalaerosols.com/choosing-the-right-product-consultant" target="_top">How to Choose the Right Aerosol Product Consultant</a></li>
+        </ul>
+      </section>
+
+      <!-- AUTHOR BIO -->
+      <div class="author-bio">
+        <div class="author-avatar">AK</div>
+        <div class="author-info">
+          <h3>Absar Khan</h3>
+          <div class="author-role">Founder &amp; Lead Aerosol Consultant, Global Aerosols</div>
+          <p>Absar Khan is a senior aerosol industry consultant with deep expertise spanning aerosol formulation, propellant technology, valve engineering, filling line setup, and regulatory compliance across global markets. His work integrates aerosol chemistry, GMP manufacturing practices, safety and flammability assessment, quality systems, and regulatory strategy for markets including India, the EU, and the US. As Founder and Lead Consultant at Global Aerosols, Absar leads technical and engineering teams delivering end-to-end aerosol solutions — from initial formulation and lab trials through pilot-scale testing, commercial manufacturing setup, and full market launch.</p>
+          <p style="margin-top:10px;">
+            <a href="https://www.linkedin.com/in/absar-khan-aerosol-consultant-and-formulator-78359b162" target="_blank" rel="noopener noreferrer">Connect on LinkedIn →</a>
+          </p>
+        </div>
+      </div>
+
+    </div><!-- /.article-col -->
+  </div><!-- /.page-body -->
+
+  <!-- SITE FOOTER -->
+  <footer class="site-footer">
+    <p>© 2026 <a href="https://www.globalaerosols.com" target="_top">Global Aerosols</a>. All rights reserved.</p>
+    <p style="margin-top:6px;">
+      <a href="https://www.globalaerosols.com/contact" target="_top">Contact</a> &nbsp;|&nbsp;
+      <a href="https://www.globalaerosols.com/blog" target="_top">Blog</a>
+    </p>
+  </footer>
+
+  <!-- SCROLLSPY -->
+  <script>
+    (function () {
+      const links = document.querySelectorAll('.toc-sidebar ol li a');
+      const sections = Array.from(links)
+        .map(a => document.querySelector(a.getAttribute('href')))
+        .filter(Boolean);
+
+      if (!sections.length) return;
+
+      const observer = new IntersectionObserver(
+        entries => {
+          entries.forEach(entry => {
+            if (entry.isIntersecting) {
+              links.forEach(a => a.classList.remove('toc-active'));
+              const active = document.querySelector(
+                '.toc-sidebar ol li a[href="#' + entry.target.id + '"]'
+              );
+              if (active) active.classList.add('toc-active');
+            }
+          });
+        },
+        { rootMargin: '-20% 0px -70% 0px', threshold: 0 }
+      );
+
+      sections.forEach(s => observer.observe(s));
+    })();
+  </script>
+  </div>
+</Layout>
+
+<style>
+    /* ─── DESIGN TOKENS ─────────────────────────────── */
+    :root {
+      --bg:           #F9F9F7;
+      --surface:      #FFFFFF;
+      --border:       #E4E4E0;
+      --text-primary: #0A0A0A;
+      --text-muted:   #6B7280;
+      --accent:       #0968e5;
+      --green:        #16A34A;
+      --amber:        #D97706;
+      --radius:       6px;
+      --font-serif:   'Source Serif 4', Georgia, serif;
+      --font-display: 'Playfair Display', Georgia, serif;
+    }
+
+    /* ─── RESET & BASE ───────────────────────────────── */
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    html { scroll-behavior: smooth; }
+    body {
+      background: var(--bg);
+      color: var(--text-primary);
+      font-family: var(--font-serif);
+      font-size: 17px;
+      line-height: 1.72;
+      -webkit-font-smoothing: antialiased;
+    }
+    a { color: var(--accent); text-decoration: none; }
+    a:hover { text-decoration: underline; }
+    img { display: block; max-width: 100%; height: auto; }
+
+    /* ─── SITE HEADER ────────────────────────────────── */
+    .site-header {
+      position: sticky; top: 0; z-index: 100;
+      background: var(--surface);
+      border-bottom: 1px solid var(--border);
+      height: 64px;
+      display: flex; align-items: center;
+      padding: 0 32px;
+    }
+    .site-header a {
+      font-family: var(--font-display);
+      font-size: 1.25rem;
+      font-weight: 700;
+      color: var(--text-primary);
+      letter-spacing: -0.02em;
+    }
+    .site-header a span { color: var(--accent); }
+
+    /* ─── POST HERO BAND ─────────────────────────────── */
+    .post-hero {
+      background: var(--surface);
+      border-bottom: 1px solid var(--border);
+      padding: 0 0 0 0;
+    }
+    .post-hero-inner {
+      max-width: 1140px;
+      margin: 0 auto;
+      padding: 36px 32px 0;
+    }
+    .breadcrumb {
+      font-size: 0.8rem;
+      color: var(--text-muted);
+      margin-bottom: 16px;
+    }
+    .breadcrumb a { color: var(--text-muted); }
+    .breadcrumb a:hover { color: var(--accent); text-decoration: none; }
+    .breadcrumb span { margin: 0 6px; }
+
+    .category-badge {
+      display: inline-block;
+      font-size: 0.72rem;
+      font-weight: 700;
+      letter-spacing: 0.06em;
+      text-transform: uppercase;
+      color: var(--accent);
+      border: 1px solid var(--accent);
+      border-radius: 3px;
+      padding: 3px 10px;
+      margin-bottom: 18px;
+    }
+
+    .post-hero h1 {
+      font-family: var(--font-display);
+      font-size: clamp(1.75rem, 4vw, 2.6rem);
+      font-weight: 700;
+      line-height: 1.2;
+      letter-spacing: -0.02em;
+      color: var(--text-primary);
+      max-width: 760px;
+      margin-bottom: 16px;
+    }
+
+    .post-meta {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 20px;
+      font-size: 0.82rem;
+      color: var(--text-muted);
+      margin-bottom: 32px;
+    }
+    .post-meta span { display: flex; align-items: center; gap: 5px; }
+
+    .hero-img-wrap {
+      width: 100%;
+      border-radius: 10px 10px 0 0;
+      overflow: hidden;
+      max-height: 480px;
+    }
+    .hero-img-wrap img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      display: block;
+    }
+
+    /* ─── TWO-COLUMN BODY ────────────────────────────── */
+    .page-body {
+      max-width: 1140px;
+      margin: 0 auto;
+      padding: 48px 32px 80px;
+      display: grid;
+      grid-template-columns: 260px 1fr;
+      gap: 48px;
+      align-items: start;
+    }
+
+    /* ─── TOC SIDEBAR ────────────────────────────────── */
+    .toc-sidebar {
+      position: sticky;
+      top: 84px;
+      max-height: calc(100vh - 104px);
+      overflow-y: auto;
+    }
+    .toc-sidebar nav {
+      background: var(--surface);
+      border: 1px solid var(--border);
+      border-radius: var(--radius);
+      padding: 20px;
+    }
+    .toc-sidebar .toc-heading {
+      font-size: 0.7rem;
+      font-weight: 700;
+      letter-spacing: 0.09em;
+      text-transform: uppercase;
+      color: var(--text-muted);
+      margin-bottom: 14px;
+    }
+    .toc-sidebar ol {
+      list-style: none;
+      padding: 0;
+      display: flex;
+      flex-direction: column;
+      gap: 2px;
+    }
+    .toc-sidebar ol li a {
+      display: block;
+      font-size: 0.82rem;
+      line-height: 1.45;
+      color: var(--text-muted);
+      padding: 5px 8px 5px 10px;
+      border-left: 2px solid transparent;
+      border-radius: 0 3px 3px 0;
+      transition: color 0.15s, border-color 0.15s;
+    }
+    .toc-sidebar ol li a:hover,
+    .toc-sidebar ol li a.toc-active {
+      color: var(--accent);
+      border-left-color: var(--accent);
+      background: #EEF4FD;
+      text-decoration: none;
+    }
+
+    /* ─── ARTICLE CONTENT ────────────────────────────── */
+    .article-col {
+      min-width: 0;
+      max-width: 720px;
+    }
+
+    .article-col p {
+      margin-bottom: 1.4em;
+    }
+    .article-col h2 {
+      font-family: var(--font-display);
+      font-size: clamp(1.25rem, 2.5vw, 1.6rem);
+      font-weight: 700;
+      letter-spacing: -0.01em;
+      color: var(--text-primary);
+      margin: 2.4em 0 0.6em;
+      padding-top: 0.4em;
+    }
+    .article-col h3 {
+      font-family: var(--font-display);
+      font-size: 1.15rem;
+      font-weight: 600;
+      color: var(--text-primary);
+      margin: 1.8em 0 0.5em;
+    }
+    .article-col ul, .article-col ol {
+      padding-left: 1.5em;
+      margin-bottom: 1.4em;
+    }
+    .article-col li { margin-bottom: 0.4em; }
+
+    /* ─── ARTICLE IMAGES ─────────────────────────────── */
+    .article-img {
+      width: 100%;
+      border-radius: var(--radius);
+      margin: 2em 0 0.6em;
+      border: 1px solid var(--border);
+    }
+    .img-caption {
+      font-size: 0.8rem;
+      color: var(--text-muted);
+      font-style: italic;
+      margin-bottom: 2em;
+    }
+
+    /* ─── DATA TABLE ─────────────────────────────────── */
+    .table-wrap { overflow-x: auto; margin: 1.6em 0 2em; }
+    .data-table {
+      width: 100%;
+      border-collapse: collapse;
+      font-size: 0.88rem;
+    }
+    .data-table thead tr {
+      background: var(--text-primary);
+      color: #FFFFFF;
+    }
+    .data-table th {
+      padding: 10px 14px;
+      text-align: left;
+      font-weight: 600;
+      font-size: 0.8rem;
+      letter-spacing: 0.03em;
+    }
+    .data-table td {
+      padding: 9px 14px;
+      border-bottom: 1px solid var(--border);
+      vertical-align: top;
+    }
+    .data-table tbody tr:nth-child(even) { background: #F4F4F2; }
+
+    /* ─── CALLOUTS ───────────────────────────────────── */
+    .callout {
+      border-left: 3px solid var(--green);
+      background: #F0FDF4;
+      padding: 14px 18px;
+      border-radius: 0 var(--radius) var(--radius) 0;
+      margin: 1.8em 0;
+      font-size: 0.93rem;
+    }
+    .callout strong { color: var(--green); display: block; margin-bottom: 4px; }
+    .callout-amber {
+      border-left-color: var(--amber);
+      background: #FFFBEB;
+    }
+    .callout-amber strong { color: var(--amber); }
+
+    /* ─── FAQ ────────────────────────────────────────── */
+    .faq-section { margin: 3em 0 2em; }
+    .faq-section > h2 {
+      font-family: var(--font-display);
+      font-size: 1.5rem;
+      font-weight: 700;
+      margin-bottom: 1.2em;
+    }
+    details.faq-item {
+      border: 1px solid var(--border);
+      border-radius: var(--radius);
+      margin-bottom: 10px;
+      background: var(--surface);
+    }
+    details.faq-item summary {
+      font-weight: 600;
+      font-size: 0.95rem;
+      padding: 14px 18px;
+      cursor: pointer;
+      list-style: none;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+    details.faq-item summary::after {
+      content: '+';
+      font-size: 1.2rem;
+      font-weight: 400;
+      color: var(--text-muted);
+      flex-shrink: 0;
+      margin-left: 12px;
+    }
+    details.faq-item[open] summary::after { content: '−'; }
+    .faq-answer {
+      padding: 0 18px 16px;
+      font-size: 0.92rem;
+      color: #374151;
+      line-height: 1.65;
+    }
+
+    /* ─── CTA BLOCK ──────────────────────────────────── */
+    .cta-block {
+      background: var(--text-primary);
+      color: #FFFFFF;
+      border-radius: var(--radius);
+      padding: 40px 36px;
+      margin: 3em 0;
+      text-align: center;
+    }
+    .cta-block h2 {
+      font-family: var(--font-display);
+      font-size: 1.5rem;
+      font-weight: 700;
+      color: #FFFFFF;
+      margin: 0 0 10px;
+    }
+    .cta-block p {
+      font-size: 0.95rem;
+      color: #D1D5DB;
+      margin: 0 0 24px;
+      max-width: 500px;
+      margin-left: auto;
+      margin-right: auto;
+    }
+    .cta-btn {
+      display: inline-block;
+      background: #FFFFFF;
+      color: var(--text-primary);
+      font-weight: 700;
+      font-size: 0.9rem;
+      letter-spacing: 0.03em;
+      padding: 12px 28px;
+      border-radius: 4px;
+      text-decoration: none;
+      transition: opacity 0.15s;
+    }
+    .cta-btn:hover { opacity: 0.88; text-decoration: none; }
+
+    /* ─── RELATED ARTICLES ───────────────────────────── */
+    .related-section { margin: 2.5em 0; }
+    .related-section > h2 {
+      font-family: var(--font-display);
+      font-size: 1.3rem;
+      font-weight: 700;
+      margin-bottom: 1em;
+    }
+    .related-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 12px;
+      list-style: none;
+      padding: 0;
+    }
+    .related-grid li a {
+      display: block;
+      background: var(--surface);
+      border: 1px solid var(--border);
+      border-radius: var(--radius);
+      padding: 14px 16px;
+      font-size: 0.88rem;
+      font-weight: 600;
+      color: var(--text-primary);
+      transition: border-color 0.15s, color 0.15s;
+      line-height: 1.4;
+    }
+    .related-grid li a:hover {
+      border-color: var(--accent);
+      color: var(--accent);
+      text-decoration: none;
+    }
+
+    /* ─── AUTHOR BIO ─────────────────────────────────── */
+    .author-bio {
+      display: flex;
+      gap: 18px;
+      align-items: flex-start;
+      background: var(--surface);
+      border: 1px solid var(--border);
+      border-radius: var(--radius);
+      padding: 24px;
+      margin: 2.5em 0;
+    }
+    .author-avatar {
+      width: 52px; height: 52px;
+      background: var(--text-primary);
+      color: #FFFFFF;
+      border-radius: 50%;
+      display: flex; align-items: center; justify-content: center;
+      font-weight: 700; font-size: 1rem;
+      flex-shrink: 0;
+    }
+    .author-info h3 {
+      font-family: var(--font-display);
+      font-size: 1rem;
+      font-weight: 700;
+      margin: 0 0 2px;
+    }
+    .author-role {
+      font-size: 0.78rem;
+      color: var(--text-muted);
+      margin-bottom: 10px;
+    }
+    .author-info p { font-size: 0.87rem; line-height: 1.6; color: #374151; }
+
+    /* ─── SITE FOOTER ────────────────────────────────── */
+    .site-footer {
+      background: var(--text-primary);
+      color: #9CA3AF;
+      text-align: center;
+      padding: 32px;
+      font-size: 0.82rem;
+    }
+    .site-footer a { color: #D1D5DB; }
+    .site-footer a:hover { color: #FFFFFF; }
+
+    /* ─── RESPONSIVE ─────────────────────────────────── */
+    @media (max-width: 900px) {
+      .page-body {
+        grid-template-columns: 1fr;
+        gap: 0;
+        padding: 32px 20px 60px;
+      }
+      .toc-sidebar {
+        position: static;
+        max-height: none;
+        margin-bottom: 32px;
+      }
+      .toc-sidebar nav { border-radius: var(--radius); }
+      .article-col { max-width: 100%; }
+    }
+    @media (max-width: 600px) {
+      .post-hero-inner { padding: 24px 20px 0; }
+      .site-header { padding: 0 20px; }
+      .related-grid { grid-template-columns: 1fr; }
+      .cta-block { padding: 28px 20px; }
+      .author-bio { flex-direction: column; }
+    }
+  </style>

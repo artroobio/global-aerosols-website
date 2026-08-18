@@ -2,16 +2,21 @@
 import Layout from '../lc/layouts/Layout.astro';
 import ContactFormVideo from '../lc/components/ContactFormVideo.astro';
 
+const heroUrl = "https://cdn.globalaerosols.com/images/cosmetics-and-personal-care-aerosols-guide/cosmetics-and-personal-care-aerosols-guide-hero-globalaerosols.webp";
+const diagramUrl = "https://cdn.globalaerosols.com/images/cosmetics-and-personal-care-aerosols-guide/cosmetics-and-personal-care-aerosols-guide-diagram-globalaerosols.webp";
+const infographicUrl = "https://cdn.globalaerosols.com/images/cosmetics-and-personal-care-aerosols-guide/cosmetics-and-personal-care-aerosols-guide-infographic-globalaerosols.webp";
+
 const jsonLd = {
   "@context": "https://schema.org",
   "@type": "Article",
   "headline": "Cosmetics & Personal Care Aerosols: The Complete Formulation Guide",
   "description": "A comprehensive guide to aerosol formulations in cosmetics and personal care — deodorants, hair sprays, dry shampoos, mousses, and sunscreen sprays — including propellant selection, valve engineering, and regulatory compliance.",
+  "image": heroUrl,
   "author": { "@type": "Person", "name": "Absar Khan" },
   "publisher": { "@type": "Organization", "name": "Global Aerosols", "url": "https://www.globalaerosols.com" },
   "url": "https://www.globalaerosols.com/cosmetics-and-personal-care-aerosols-guide",
   "datePublished": "2024-06-01",
-  "dateModified": "2026-05-01"
+  "dateModified": "2026-08-18"
 };
 ---
 
@@ -19,6 +24,7 @@ const jsonLd = {
   title="Cosmetics & Personal Care Aerosols: Formulation Guide | Global Aerosols"
   description="Complete guide to aerosol formulations in cosmetics and personal care — deodorants, hair sprays, dry shampoos, mousses, and sunscreen sprays. Propellant selection, valve engineering, and regulatory compliance."
   canonical="https://www.globalaerosols.com/cosmetics-and-personal-care-aerosols-guide"
+  ogImage={heroUrl}
 >
   <script type="application/ld+json" set:html={JSON.stringify(jsonLd)} />
 
@@ -45,6 +51,18 @@ const jsonLd = {
       <p class="lead">
         Aerosol delivery systems have transformed personal care — enabling precise dosing, uniform coverage, and superior consumer experience across deodorants, hair sprays, dry shampoos, setting sprays, mousses, and sunscreen sprays. This guide covers the science of cosmetic aerosol formulation: from propellant chemistry and actuator engineering to EU Cosmetics Regulation compliance and GMP manufacturing.
       </p>
+
+      <!-- Hero Image -->
+      <figure style="margin: 30px 0; border-radius: 12px; overflow: hidden;">
+        <img
+          src={heroUrl}
+          alt="Cosmetics and personal care aerosol product formulation and laboratory testing — Global Aerosols"
+          width="1200"
+          height="630"
+          loading="eager"
+          style="width: 100%; border-radius: 12px; border: 1px solid #e2e8f0; display: block;"
+        />
+      </figure>
 
       <div class="toc-box">
         <h3>Table of Contents</h3>
@@ -103,6 +121,21 @@ const jsonLd = {
         <p>Polymer (polyvinylpyrrolidone/vinyl acetate copolymer) 2–8%, denatured ethanol 30–50%, plasticiser (dioctyl sebacate) 0.5–2%, fragrance 0.3–1%, HFA/hydrocarbon propellant 50–65%. Hold level is modified by increasing polymer concentration or switching to higher molecular weight grades.</p>
         <h3>Dry Shampoo Sprays</h3>
         <p>Starch/silica powder 3–8% dispersed in volatile silicone (cyclopentasiloxane) or isododecane carrier 10–25%, hydrocarbon propellant 65–80%. Milling particle size to D90 &lt; 30 µm ensures uniform suspension and prevents valve clogging. A dispersing surfactant (PEG-12 dimethicone) prevents particle agglomeration.</p>
+        
+        <!-- Diagram Image -->
+        <figure style="margin: 32px 0;">
+          <img
+            src={diagramUrl}
+            alt="Cosmetic aerosol emulsion stabilization and surfactant testing inside laboratory beaker | Global Aerosols diagram"
+            width="900"
+            height="500"
+            loading="lazy"
+            style="width: 100%; border-radius: 12px; border: 1px solid #e2e8f0; display: block;"
+          />
+          <figcaption style="font-size: 0.85rem; color: #64748b; font-style: italic; margin-top: 8px; text-align: center;">
+            Figure 1: Emulsion stability and fine droplet dispersion evaluation in cosmetic aerosol concentrate systems.
+          </figcaption>
+        </figure>
       </section>
 
       <section id="packaging">
@@ -116,6 +149,21 @@ const jsonLd = {
           <li><strong>Valve Types</strong>: Metered dose valves (MDV) for precise per-actuation dosing; continuous spray valves for hair care; female valves for inverted-use products; BOV valves for compressed-gas systems.</li>
           <li><strong>Actuator Engineering</strong>: Mechanical breakup (MB) actuators atomise liquid by forcing it through a tangential slot and orifice — producing droplet sizes of 20–200 µm depending on orifice diameter (0.2–0.6 mm). Fine-mist actuators use higher pressure differentials to produce MMAD &lt; 30 µm.</li>
         </ul>
+        
+        <!-- Infographic Image -->
+        <figure style="margin: 32px 0;">
+          <img
+            src={infographicUrl}
+            alt="Cosmetics and personal care aerosols formulation matrix and propellant selection guide | Global Aerosols infographic"
+            width="900"
+            height="500"
+            loading="lazy"
+            style="width: 100%; border-radius: 12px; border: 1px solid #e2e8f0; display: block;"
+          />
+          <figcaption style="font-size: 0.85rem; color: #64748b; font-style: italic; margin-top: 8px; text-align: center;">
+            Figure 2: Comprehensive formulation parameters, active ingredients, and propellant choices across key cosmetic aerosol product categories.
+          </figcaption>
+        </figure>
       </section>
 
       <section id="stability">

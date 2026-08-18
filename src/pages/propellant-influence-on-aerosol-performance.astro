@@ -2,7 +2,9 @@
 import Layout from '../layouts/Layout.astro';
 
 const slug = 'propellant-influence-on-aerosol-performance';
-const heroUrl = '/images/blog/propellant-influence-on-aerosol-performance-hero.jpg';
+const heroUrl = 'https://cdn.globalaerosols.com/images/propellant-influence-on-aerosol-performance/propellant-influence-on-aerosol-performance-hero-globalaerosols.webp';
+const diagramUrl = 'https://cdn.globalaerosols.com/images/propellant-influence-on-aerosol-performance/propellant-influence-on-aerosol-performance-diagram-globalaerosols.webp';
+const infographicUrl = 'https://cdn.globalaerosols.com/images/propellant-influence-on-aerosol-performance/propellant-influence-on-aerosol-performance-infographic-globalaerosols.webp';
 
 const faqs = [
   {
@@ -264,7 +266,19 @@ const blogSchema = {
                 components are published in the <a href="https://webbook.nist.gov">NIST WebBook thermodynamic database</a>.
                 See our guide to <a href="/propellant-blend-formulation-vapor-pressure-lpg/">propellant blend formulation</a>
                 for how binary LPG mixture ratios are used to target a specific vapor pressure.</p>
-            <!-- IMAGE: Vapor pressure curves and temperature vs pressure graph -->
+            <figure style="margin: 32px 0;">
+                <img
+                    src={diagramUrl}
+                    alt="Vapor-liquid equilibrium testing of aerosol propellant and concentrate in laboratory pressure glass apparatus | Global Aerosols diagram"
+                    width="900"
+                    height="500"
+                    loading="lazy"
+                    style="width: 100%; border-radius: 8px; border: 1px solid var(--border);"
+                />
+                <figcaption style="font-size: 0.85rem; color: var(--text-muted); font-style: italic; margin-top: 8px; text-align: center;">
+                    Figure 1: Laboratory evaluation of vapor-liquid equilibrium and phase stability between liquefied propellant and concentrate formulation.
+                </figcaption>
+            </figure>
             <h3>Vapor Pressure Behavior by Propellant Type</h3>
             <table>
                 <tr>
@@ -396,7 +410,19 @@ const blogSchema = {
                 factors formulators weigh most heavily when selecting a propellant system; see our detailed comparison
                 of <a href="/compressed-vs-liquefied-gas-aerosols-pressure-profiles/">compressed gas vs liquefied gas
                 aerosols</a> for the underlying pressure-profile mechanics behind these differences.</p>
-            <!-- IMAGE: Propellant comparison and safety classification -->
+            <figure style="margin: 32px 0;">
+                <img
+                    src={infographicUrl}
+                    alt="Propellant comparison infographic: LPG, DME, HFC-134a, CO2, and N2 pressure stability and properties | Global Aerosols infographic"
+                    width="900"
+                    height="500"
+                    loading="lazy"
+                    style="width: 100%; border-radius: 8px; border: 1px solid var(--border);"
+                />
+                <figcaption style="font-size: 0.85rem; color: var(--text-muted); font-style: italic; margin-top: 8px; text-align: center;">
+                    Figure 2: Physical properties, pressure stability, and handling classification across major industrial aerosol propellants.
+                </figcaption>
+            </figure>
             <table>
                 <tr>
                     <th>Factor</th>
