@@ -1,0 +1,926 @@
+---
+import Layout from '../layouts/Layout.astro';
+
+const schemas = [
+  {
+    "@context": "https://schema.org",
+    "@type": "Organization",
+    "name": "Global Aerosols",
+    "url": "https://www.globalaerosols.com",
+    "logo": "https://www.globalaerosols.com/logo.png",
+    "sameAs": [
+      "https://www.linkedin.com/in/absar-khan-aerosol-consultant-and-formulator-78359b162"
+    ]
+  },
+  {
+    "@context": "https://schema.org",
+    "@type": "WebSite",
+    "url": "https://www.globalaerosols.com",
+    "potentialAction": {
+      "@type": "SearchAction",
+      "target": "https://www.globalaerosols.com/search?q={search_term_string}",
+      "query-input": "required name=search_term_string"
+    }
+  },
+  {
+    "@context": "https://schema.org",
+    "@type": "Person",
+    "name": "Absar Khan",
+    "jobTitle": "Founder & Lead Aerosol Consultant",
+    "url": "https://www.linkedin.com/in/absar-khan-aerosol-consultant-and-formulator-78359b162",
+    "affiliation": {
+      "@type": "Organization",
+      "name": "Global Aerosols"
+    }
+  },
+  {
+    "@context": "https://schema.org",
+    "@type": "BlogPosting",
+    "headline": "Aerosol Fill Weight & Headspace Optimization for Consistent Performance",
+    "description": "Aerosol fill weight optimization prevents underfill and overfill. Learn headspace calculation, weight-check methods, and consistency strategies.",
+    "image": "https://cdn.globalaerosols.com/images/aerosol-fill-weight-headspace-optimization/aerosol-fill-weight-headspace-optimization-hero-globalaerosols.webp",
+    "author": {
+      "@type": "Person",
+      "name": "Absar Khan"
+    },
+    "publisher": {
+      "@type": "Organization",
+      "name": "Global Aerosols",
+      "logo": {
+        "@type": "ImageObject",
+        "url": "https://www.globalaerosols.com/logo.png"
+      }
+    },
+    "datePublished": "2026-09-13",
+    "dateModified": "2026-09-13",
+    "mainEntityOfPage": {
+      "@type": "WebPage",
+      "@id": "https://www.globalaerosols.com/aerosol-fill-weight-headspace-optimization"
+    },
+    "articleSection": "Aerosol Technology & Engineering",
+    "keywords": "aerosol fill weight optimization, aerosol headspace calculation, fill weight aerosol can, aerosol underfill overfill, aerosol filling line weight check, aerosol product consistency",
+    "wordCount": "2281"
+  },
+  {
+    "@context": "https://schema.org",
+    "@type": "BreadcrumbList",
+    "itemListElement": [
+      {
+        "@type": "ListItem",
+        "position": 1,
+        "name": "Home",
+        "item": "https://www.globalaerosols.com"
+      },
+      {
+        "@type": "ListItem",
+        "position": 2,
+        "name": "Blog",
+        "item": "https://www.globalaerosols.com/blog"
+      },
+      {
+        "@type": "ListItem",
+        "position": 3,
+        "name": "Aerosol Fill Weight & Headspace Optimization for Consistent Performance",
+        "item": "https://www.globalaerosols.com/aerosol-fill-weight-headspace-optimization"
+      }
+    ]
+  },
+  {
+    "@context": "https://schema.org",
+    "@type": "FAQPage",
+    "mainEntity": [
+      {
+        "@type": "Question",
+        "name": "What is headspace in an aerosol can and why does it matter?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "Headspace is the empty volume left above the filled product inside a sealed aerosol can, occupied by propellant vapor and, in compressed-gas systems, the compressed gas itself. It matters because headspace volume directly affects internal can pressure at a given temperature — too little headspace can drive pressure above the can's rated burst strength as temperature rises, while excessive headspace can leave insufficient propellant to fully dispense the product."
+        }
+      },
+      {
+        "@type": "Question",
+        "name": "What happens if an aerosol can is overfilled?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "Overfilling reduces headspace below the design target, which can cause internal pressure to rise beyond the can's rated proof pressure at elevated storage or transport temperatures, since liquid product is far less compressible than the vapor phase it displaces. This raises the risk of valve failure, can deformation, or in severe cases rupture, and is why fill weight and headspace verification are treated as safety-critical checks, not just quality checks, on a filling line."
+        }
+      },
+      {
+        "@type": "Question",
+        "name": "What happens if an aerosol can is underfilled?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "Underfilling does not typically create a safety risk, but it directly affects product consistency and consumer experience — a can with less product than labeled will empty faster than expected, may show weaker spray performance toward the end of its life as the liquid-to-vapor ratio shifts, and can trigger regulatory net-content violations if actual weight falls outside the declared tolerance on the label."
+        }
+      },
+      {
+        "@type": "Question",
+        "name": "How is aerosol fill weight checked on a production line?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "Most aerosol filling lines use in-line or off-line precision checkweighing, where each filled can (or a statistically sampled subset) is weighed after propellant gassing and compared against an upper and lower control limit derived from the target fill weight. Automated checkweighers can reject out-of-tolerance cans in real time, while periodic manual sampling and calibrated bench scales are typically used to verify the automated system's accuracy."
+        }
+      },
+      {
+        "@type": "Question",
+        "name": "Does headspace requirement change between propellant types?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "Yes. Liquefied gas propellants such as LPG and DME maintain a relatively constant vapor pressure as long as any liquid propellant phase remains, which changes how headspace affects performance compared to compressed gas systems like nitrogen or CO2, where the gas obeys general gas law behavior and headspace volume directly and continuously affects delivered pressure throughout the can's life. Compressed gas systems generally require more careful headspace and fill volume control to maintain consistent spray performance from first use to last."
+        }
+      },
+      {
+        "@type": "Question",
+        "name": "How does temperature affect fill weight and headspace decisions?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "Formulators must set headspace targets based on the maximum expected storage and transport temperature the product will encounter, since vapor pressure inside a sealed aerosol can rises with temperature. A headspace calculation validated only at room temperature can leave insufficient margin under hot warehouse or vehicle conditions, which is why pressure testing protocols specify elevated test temperatures rather than ambient conditions alone."
+        }
+      },
+      {
+        "@type": "Question",
+        "name": "Is fill weight the same as net content on the label?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "Not exactly. Fill weight on a production line typically refers to the total weight of concentrate plus propellant dispensed into the can, while net content on the label generally refers to the usable product weight or volume a consumer can expect to dispense, excluding the portion of propellant that remains undispensable at end of life. Manufacturers must reconcile these two figures carefully to ensure label net content claims are accurate and consistently achievable."
+        }
+      },
+      {
+        "@type": "Question",
+        "name": "Can fill weight and headspace be validated without full-scale production trials?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "Early-stage headspace and fill weight targets can be estimated using propellant vapor pressure data and can dimensional specifications, but final validation requires actual filled samples tested for internal pressure across the intended temperature range and checked against burst and proof pressure requirements. Lab-scale trials are a useful starting point, but commercial-scale filling equipment tolerances also need to be verified before a fill weight specification can be finalized for production."
+        }
+      }
+    ]
+  },
+  {
+    "@context": "https://schema.org",
+    "@type": "WebPage",
+    "@id": "https://www.globalaerosols.com/aerosol-fill-weight-headspace-optimization",
+    "url": "https://www.globalaerosols.com/aerosol-fill-weight-headspace-optimization",
+    "name": "Aerosol Fill Weight & Headspace Optimization for Consistent Performance",
+    "description": "Aerosol fill weight optimization prevents underfill and overfill. Learn headspace calculation, weight-check methods, and consistency strategies.",
+    "isPartOf": {
+      "@type": "WebSite",
+      "url": "https://www.globalaerosols.com"
+    },
+    "breadcrumb": {
+      "@type": "BreadcrumbList",
+      "itemListElement": [
+        { "@type": "ListItem", "position": 1, "name": "Home", "item": "https://www.globalaerosols.com" },
+        { "@type": "ListItem", "position": 2, "name": "Blog", "item": "https://www.globalaerosols.com/blog" },
+        { "@type": "ListItem", "position": 3, "name": "Aerosol Fill Weight & Headspace Optimization for Consistent Performance", "item": "https://www.globalaerosols.com/aerosol-fill-weight-headspace-optimization" }
+      ]
+    },
+    "primaryImageOfPage": {
+      "@type": "ImageObject",
+      "url": "https://cdn.globalaerosols.com/images/aerosol-fill-weight-headspace-optimization/aerosol-fill-weight-headspace-optimization-hero-globalaerosols.webp"
+    },
+    "datePublished": "2026-09-13",
+    "dateModified": "2026-09-13"
+  }
+];
+---
+
+<Layout
+  title="Aerosol Fill Weight Optimization: Headspace Guide"
+  description="Aerosol fill weight optimization prevents underfill and overfill. Learn headspace calculation, weight-check methods, and consistency strategies."
+  canonical="https://www.globalaerosols.com/aerosol-fill-weight-headspace-optimization"
+  ogImage="https://cdn.globalaerosols.com/images/aerosol-fill-weight-headspace-optimization/aerosol-fill-weight-headspace-optimization-hero-globalaerosols.webp"
+  schemaJson={schemas}
+>
+  <div class="blog-container">
+    <!-- SITE HEADER -->
+  <header class="site-header">
+    <a href="https://www.globalaerosols.com" target="_top">
+      Global <span>Aerosols</span>
+    </a>
+  </header>
+
+  <!-- POST HERO BAND -->
+  <div class="post-hero">
+    <div class="post-hero-inner">
+
+      <!-- BREADCRUMB -->
+      <nav class="breadcrumb" aria-label="Breadcrumb">
+        <a href="https://www.globalaerosols.com" target="_top">Home</a>
+        <span>›</span>
+        <a href="https://www.globalaerosols.com/blog" target="_top">Blog</a>
+        <span>›</span>
+        <span>Aerosol Fill Weight &amp; Headspace Optimization</span>
+      </nav>
+
+      <span class="category-badge">Aerosol Technology &amp; Engineering</span>
+
+      <h1>Aerosol Fill Weight &amp; Headspace Optimization for Consistent Performance</h1>
+
+      <div class="post-meta">
+        <span>By Global Aerosols Team</span>
+        <span>September 13, 2026</span>
+        <span>13 min read</span>
+      </div>
+
+      <!-- HERO IMAGE -->
+      <div class="hero-img-wrap">
+        <img
+          src="https://cdn.globalaerosols.com/images/aerosol-fill-weight-headspace-optimization/aerosol-fill-weight-headspace-optimization-hero-globalaerosols.webp"
+          alt="Aerosol fill weight optimization precision balance scale weighing aerosol can during filling — Global Aerosols"
+          width="1140" height="480"
+          loading="eager"
+          srcset="https://cdn.globalaerosols.com/images/aerosol-fill-weight-headspace-optimization/aerosol-fill-weight-headspace-optimization-hero-globalaerosols.webp?w=640 640w, https://cdn.globalaerosols.com/images/aerosol-fill-weight-headspace-optimization/aerosol-fill-weight-headspace-optimization-hero-globalaerosols.webp?w=1140 1140w"
+          sizes="(max-width: 640px) 100vw, 1140px">
+      </div>
+
+    </div>
+  </div>
+
+  <!-- TWO-COLUMN BODY -->
+  <div class="page-body">
+
+    <!-- LEFT: STICKY TOC SIDEBAR -->
+    <aside class="toc-sidebar">
+      <nav aria-label="Table of Contents">
+        <div class="toc-heading">In This Article</div>
+        <ol>
+          <li><a href="#section-1" target="_top">What Fill Weight and Headspace Mean</a></li>
+          <li><a href="#section-2" target="_top">Why Headspace Governs Internal Pressure</a></li>
+          <li><a href="#section-3" target="_top">Calculating a Headspace Target</a></li>
+          <li><a href="#section-4" target="_top">Weight-Check Methods on the Filling Line</a></li>
+          <li><a href="#section-5" target="_top">Underfill vs Overfill: Consequences</a></li>
+          <li><a href="#section-6" target="_top">Maintaining Consistency at Scale</a></li>
+          <li><a href="#faq" target="_top">Frequently Asked Questions</a></li>
+        </ol>
+      </nav>
+    </aside>
+
+    <!-- RIGHT: ARTICLE CONTENT -->
+    <div class="article-col">
+
+      <!-- INTRO -->
+      <p><strong>Aerosol fill weight optimization</strong> is the process of setting and controlling how much product and propellant go into each can so that internal pressure, spray performance, and labeled net content all stay within their required ranges. It works by balancing the volume of liquid product against the headspace left for propellant vapor, since that headspace directly determines how much internal pressure the can will reach across its expected temperature range. This matters for aerosol manufacturers because a fill weight and headspace specification that looks correct on paper can still produce pressure failures, inconsistent spray performance, or regulatory net-content violations if it is not validated against real filling line tolerances and worst-case storage temperatures.</p>
+
+      <!-- SECTION 1 -->
+      <section id="section-1">
+        <h2>What Fill Weight and Headspace Mean</h2>
+        <p>Fill weight refers to the total weight of product concentrate and propellant dispensed into an aerosol can during manufacturing, while headspace is the remaining empty volume inside the sealed can above the liquid fill level, occupied by propellant vapor or compressed gas. These two figures are directly linked — for a can of fixed internal volume, increasing fill weight reduces headspace, and reducing fill weight increases it. Getting this relationship right is a core engineering task in aerosol production, not a simple dosing question, because headspace behaves according to gas physics that determine whether the finished can is safe, functional, and consistent from the first spray to the last.</p>
+        <ul>
+          <li><strong>Fill weight:</strong> Total mass of concentrate plus propellant added to each can</li>
+          <li><strong>Headspace:</strong> Empty internal volume left for propellant vapor or compressed gas above the liquid fill</li>
+          <li><strong>Can internal volume:</strong> Fixed by can size and construction, so fill weight and headspace are inversely related</li>
+          <li><strong>Target range:</strong> Both are set with an upper and lower control limit, not a single exact number</li>
+        </ul>
+        <p>Because fill weight and headspace decisions are made early in the production process and are difficult to correct after crimping, they are typically finalized during formulation development and validated again during scale-up, a transition covered in detail in our <a href="https://www.globalaerosols.com/aerosol-manufacturing-101-guide" target="_top">Aerosol Manufacturing 101 guide</a>.</p>
+      </section>
+
+      <!-- DIAGRAM IMAGE -->
+      <img
+        class="article-img"
+        src="https://cdn.globalaerosols.com/images/aerosol-fill-weight-headspace-optimization/aerosol-fill-weight-headspace-optimization-diagram-globalaerosols.webp"
+        alt="Aerosol fill weight optimization headspace cross-section diagram with fill levels marked — Global Aerosols"
+        width="900" height="500"
+        loading="lazy">
+      <p class="img-caption">Cross-section view of an aerosol can showing the liquid fill level and the headspace reserved above it for propellant vapor.</p>
+
+      <!-- SECTION 2 -->
+      <section id="section-2">
+        <h2>Why Headspace Governs Internal Pressure</h2>
+        <p>Internal can pressure is a function of headspace volume, propellant type, and temperature, and understanding this relationship is central to setting a safe fill specification. In a liquefied gas system such as an LPG or DME propellant, pressure remains relatively stable as long as some liquid propellant phase is present, because the liquid continuously replenishes the vapor phase as it is consumed — but reducing headspace still reduces the thermal expansion room available, which becomes critical at elevated temperature. In a compressed gas system using nitrogen or carbon dioxide, headspace volume has an even more direct effect, since compressed gas pressure follows general gas law behavior and changes continuously as headspace volume changes.</p>
+        <div class="callout">
+          <strong>Key Insight</strong>
+          Headspace must be sized against the maximum credible storage or transport temperature the product will see, not typical ambient conditions — a can validated only at room temperature can still exceed safe pressure limits in a hot warehouse or delivery vehicle.
+        </div>
+        <p>This is why aerosol pressure testing protocols specify elevated test temperatures rather than relying on ambient measurements. For a deeper look at how these tests are structured, see our guide on <a href="https://www.globalaerosols.com/vapor-pressure-measurement-aerosol-test-methods" target="_top">vapor pressure measurement test methods</a>, which explains the standard temperature points used to validate a can's pressure margin.</p>
+      </section>
+
+      <!-- SECTION 3 -->
+      <section id="section-3">
+        <h2>Calculating a Headspace Target</h2>
+        <p>Setting an initial headspace target starts with the propellant's vapor pressure data at the maximum expected storage temperature — available from sources such as the <a href="https://webbook.nist.gov" target="_blank" rel="noopener noreferrer">NIST WebBook thermodynamic database</a> for common hydrocarbon and compressed gas propellants — cross-referenced against the aerosol can's rated proof and burst pressure from its manufacturer specification. Formulators build in a safety margin between the calculated maximum internal pressure at worst-case temperature and the can's rated pressure limits, since manufacturing variation, propellant blend tolerance, and filling equipment accuracy all introduce some variability around the target fill weight.</p>
+        <div class="table-wrap">
+          <table class="data-table">
+            <thead>
+              <tr>
+                <th>Propellant System</th>
+                <th>Headspace Sensitivity</th>
+                <th>Primary Design Consideration</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr><td>Liquefied gas (LPG, DME)</td><td>Moderate — pressure stable while liquid phase remains</td><td>Thermal expansion margin at elevated storage temperature</td></tr>
+              <tr><td>Compressed gas (N₂, CO₂)</td><td>High — pressure follows headspace volume directly</td><td>End-of-life spray performance as gas depletes</td></tr>
+              <tr><td>Bag-on-valve systems</td><td>Low direct sensitivity — propellant isolated from product</td><td>Propellant chamber volume sized independently of product fill</td></tr>
+            </tbody>
+          </table>
+        </div>
+        <p>Early-stage headspace calculations from vapor pressure data are a useful starting estimate, but they must be confirmed with actual filled samples tested across the intended temperature range before a specification is finalized for commercial production, since dimensional tolerances in real cans and valves introduce variation that a theoretical calculation cannot fully capture.</p>
+      </section>
+
+      <!-- SECTION 4 -->
+      <section id="section-4">
+        <h2>Weight-Check Methods on the Filling Line</h2>
+        <p>Verifying that each can meets its fill weight specification is typically handled through in-line automated checkweighing immediately after the gassing step, where scales weigh each can (or a statistically representative sample) and compare the result against upper and lower control limits derived from the target fill weight. Fill weight is closely tied to the aerosol fill test methodology described in <a href="https://www.astm.org" target="_blank" rel="noopener noreferrer">ASTM D3925</a>, a recognized standard covering the sampling and testing of aerosol products for fill weight and related quality attributes. Cans falling outside tolerance are automatically rejected or flagged for manual review, and control limit breaches are logged for quality trend analysis rather than treated as isolated events.</p>
+        <ul>
+          <li><strong>100% in-line checkweighing:</strong> Every can weighed automatically as it exits the gassing station</li>
+          <li><strong>Statistical sampling:</strong> A defined percentage of cans weighed periodically against control limits</li>
+          <li><strong>Bench-scale calibration checks:</strong> Manual verification against calibrated reference weights to confirm in-line scale accuracy</li>
+          <li><strong>Trend monitoring:</strong> Control charts tracking fill weight drift over a production run to catch gradual equipment drift before it produces out-of-tolerance cans</li>
+        </ul>
+        <div class="callout callout-amber">
+          <strong>Rule of Thumb</strong>
+          Checkweigher calibration drift is one of the most common causes of gradual, undetected fill weight deviation on a production line — scheduled calibration verification against traceable reference weights should be a fixed part of any filling line's standard operating procedure, not a reactive response to a quality complaint.
+        </div>
+        <p>For manufacturers evaluating whether to build in-house filling capability or work with a contract filler, weight-check infrastructure and calibration practices are a key differentiator worth assessing directly, a topic explored further in our guide to <a href="https://www.globalaerosols.com/how-contract-aerosol-filling-works" target="_top">how contract aerosol filling works</a>.</p>
+      </section>
+
+      <!-- INFOGRAPHIC IMAGE -->
+      <img
+        class="article-img"
+        src="https://cdn.globalaerosols.com/images/aerosol-fill-weight-headspace-optimization/aerosol-fill-weight-headspace-optimization-infographic-globalaerosols.webp"
+        alt="Aerosol fill weight optimization filling line weight check station comparison — Global Aerosols"
+        width="900" height="500"
+        loading="lazy">
+      <p class="img-caption">Filling line weight-check station comparing filled aerosol cans against target fill weight control limits before final packaging.</p>
+
+      <!-- SECTION 5 -->
+      <section id="section-5">
+        <h2>Underfill vs Overfill: Consequences</h2>
+        <p>Overfill and underfill carry meaningfully different risk profiles, and understanding both is necessary to set control limits that are neither dangerously loose nor unnecessarily tight. Overfilling reduces headspace below its design target, which raises the risk that internal pressure at elevated temperature will approach or exceed the can's rated burst pressure — a safety-relevant failure mode, not just a quality defect. Underfilling is generally not a safety risk, but it directly undermines product consistency: a can with less product than intended empties sooner than labeled, and toward the end of its life may show degraded spray characteristics as the ratio of remaining liquid to vapor phase shifts.</p>
+        <ul>
+          <li><strong>Overfill risk:</strong> Reduced headspace, elevated pressure risk at high temperature, potential valve or can failure</li>
+          <li><strong>Underfill risk:</strong> Reduced usable product, inconsistent end-of-life spray performance, possible net-content labeling violation</li>
+          <li><strong>Shared consequence:</strong> Both erode consumer trust in product consistency across a batch or between batches</li>
+        </ul>
+        <p>Net content accuracy is also a labeling compliance question in its own right, since declared weight or volume on the label must match what the product actually delivers within an accepted tolerance — a consideration that sits alongside the broader <a href="https://www.globalaerosols.com/aerosol-can-safety-explained" target="_top">aerosol can safety framework</a> that governs pressure-related risk more broadly.</p>
+      </section>
+
+      <!-- SECTION 6 -->
+      <section id="section-6">
+        <h2>Maintaining Consistency at Scale</h2>
+        <p>Fill weight consistency becomes harder to maintain as production volume scales, since minor equipment wear, propellant blend variability, and ambient temperature shifts on the factory floor can all introduce small deviations that compound across a long production run. Manufacturers address this by combining tight equipment calibration schedules, statistical process control on fill weight data, and periodic full-batch pressure sampling rather than relying on any single control point in isolation.</p>
+        <p>The crimping and gassing steps immediately surrounding the fill weight check are themselves sources of variability worth understanding in detail — valve seating quality and gas injection accuracy both interact with fill weight to determine final headspace, which is covered thoroughly in our <a href="https://www.globalaerosols.com/aerosol-crimping-gassing-leak-detection-explained" target="_top">crimping, gassing, and leak detection guide</a>. Teams should treat fill weight and headspace validation as an ongoing production control discipline rather than a one-time specification set during formulation development, since raw material, equipment, and environmental variables all shift over a product's commercial life. A broader view of how these technology and formulation decisions fit together across the aerosol development process is available in our <a href="https://www.globalaerosols.com/aerosol-technology-and-formulations" target="_top">Aerosol Technology &amp; Formulations</a> resource hub.</p>
+      </section>
+
+      <!-- FAQ -->
+      <section class="faq-section" id="faq">
+        <h2>Frequently Asked Questions</h2>
+
+        <details class="faq-item">
+          <summary>What is headspace in an aerosol can and why does it matter?</summary>
+          <div class="faq-answer">Headspace is the empty volume left above the filled product inside a sealed aerosol can, occupied by propellant vapor and, in compressed-gas systems, the compressed gas itself. It matters because headspace volume directly affects internal can pressure at a given temperature — too little headspace can drive pressure above the can's rated burst strength as temperature rises, while excessive headspace can leave insufficient propellant to fully dispense the product.</div>
+        </details>
+
+        <details class="faq-item">
+          <summary>What happens if an aerosol can is overfilled?</summary>
+          <div class="faq-answer">Overfilling reduces headspace below the design target, which can cause internal pressure to rise beyond the can's rated proof pressure at elevated storage or transport temperatures, since liquid product is far less compressible than the vapor phase it displaces. This raises the risk of valve failure, can deformation, or in severe cases rupture, and is why fill weight and headspace verification are treated as safety-critical checks, not just quality checks, on a filling line.</div>
+        </details>
+
+        <details class="faq-item">
+          <summary>What happens if an aerosol can is underfilled?</summary>
+          <div class="faq-answer">Underfilling does not typically create a safety risk, but it directly affects product consistency and consumer experience — a can with less product than labeled will empty faster than expected, may show weaker spray performance toward the end of its life as the liquid-to-vapor ratio shifts, and can trigger regulatory net-content violations if actual weight falls outside the declared tolerance on the label.</div>
+        </details>
+
+        <details class="faq-item">
+          <summary>How is aerosol fill weight checked on a production line?</summary>
+          <div class="faq-answer">Most aerosol filling lines use in-line or off-line precision checkweighing, where each filled can (or a statistically sampled subset) is weighed after propellant gassing and compared against an upper and lower control limit derived from the target fill weight. Automated checkweighers can reject out-of-tolerance cans in real time, while periodic manual sampling and calibrated bench scales are typically used to verify the automated system's accuracy.</div>
+        </details>
+
+        <details class="faq-item">
+          <summary>Does headspace requirement change between propellant types?</summary>
+          <div class="faq-answer">Yes. Liquefied gas propellants such as LPG and DME maintain a relatively constant vapor pressure as long as any liquid propellant phase remains, which changes how headspace affects performance compared to compressed gas systems like nitrogen or CO2, where the gas obeys general gas law behavior and headspace volume directly and continuously affects delivered pressure throughout the can's life. Compressed gas systems generally require more careful headspace and fill volume control to maintain consistent spray performance from first use to last.</div>
+        </details>
+
+        <details class="faq-item">
+          <summary>How does temperature affect fill weight and headspace decisions?</summary>
+          <div class="faq-answer">Formulators must set headspace targets based on the maximum expected storage and transport temperature the product will encounter, since vapor pressure inside a sealed aerosol can rises with temperature. A headspace calculation validated only at room temperature can leave insufficient margin under hot warehouse or vehicle conditions, which is why pressure testing protocols specify elevated test temperatures rather than ambient conditions alone.</div>
+        </details>
+
+        <details class="faq-item">
+          <summary>Is fill weight the same as net content on the label?</summary>
+          <div class="faq-answer">Not exactly. Fill weight on a production line typically refers to the total weight of concentrate plus propellant dispensed into the can, while net content on the label generally refers to the usable product weight or volume a consumer can expect to dispense, excluding the portion of propellant that remains undispensable at end of life. Manufacturers must reconcile these two figures carefully to ensure label net content claims are accurate and consistently achievable.</div>
+        </details>
+
+        <details class="faq-item">
+          <summary>Can fill weight and headspace be validated without full-scale production trials?</summary>
+          <div class="faq-answer">Early-stage headspace and fill weight targets can be estimated using propellant vapor pressure data and can dimensional specifications, but final validation requires actual filled samples tested for internal pressure across the intended temperature range and checked against burst and proof pressure requirements. Lab-scale trials are a useful starting point, but commercial-scale filling equipment tolerances also need to be verified before a fill weight specification can be finalized for production.</div>
+        </details>
+      </section>
+
+      <!-- CTA BLOCK -->
+      <div class="cta-block">
+        <h2>Need Expert Aerosol Consulting?</h2>
+        <p>Our team provides end-to-end aerosol technical consultancy — from formulation development and propellant selection to filling line setup, regulatory compliance, and market launch strategy.</p>
+        <a href="https://www.globalaerosols.com/contact" target="_top" class="cta-btn">
+          Get a Free Consultation
+        </a>
+      </div>
+
+      <!-- RELATED ARTICLES -->
+      <section class="related-section">
+        <h2>Related Articles</h2>
+        <ul class="related-grid">
+          <li><a href="https://www.globalaerosols.com/aerosol-crimping-gassing-leak-detection-explained" target="_top">Aerosol Crimping, Gassing &amp; Leak Detection Explained</a></li>
+          <li><a href="https://www.globalaerosols.com/how-contract-aerosol-filling-works" target="_top">How Contract Aerosol Filling Works</a></li>
+          <li><a href="https://www.globalaerosols.com/aerosol-manufacturing-101-guide" target="_top">Aerosol Manufacturing 101: The Complete Technical Guide</a></li>
+          <li><a href="https://www.globalaerosols.com/how-aerosol-cans-work" target="_top">How Aerosol Cans Work: Propellant, Pressure, Valve &amp; Spray Dynamics</a></li>
+          <li><a href="https://www.globalaerosols.com/aerosol-propellants-explained-lpg-vs-dme-vs-hfc-vs-n2-vs-co2" target="_top">Aerosol Propellants Explained: LPG vs DME vs HFC vs N₂ vs CO₂</a></li>
+          <li><a href="https://www.globalaerosols.com/aerosol-chemistry-101" target="_top">Aerosol Chemistry 101: Solvents, Binders, Surfactants &amp; Additives</a></li>
+          <li><a href="https://www.globalaerosols.com/from-lab-to-commercial-launch" target="_top">From Lab to Factory: Aerosol R&amp;D to Commercial Manufacturing</a></li>
+          <li><a href="https://www.globalaerosols.com/choosing-the-right-product-consultant" target="_top">How to Choose the Right Aerosol Product Consultant</a></li>
+        </ul>
+      </section>
+
+      <!-- AUTHOR BIO -->
+      <div class="author-bio">
+        <div class="author-avatar">AK</div>
+        <div class="author-info">
+          <h3>Absar Khan</h3>
+          <div class="author-role">Founder &amp; Lead Aerosol Consultant, Global Aerosols</div>
+          <p>Absar Khan is a senior aerosol industry consultant with deep expertise spanning aerosol formulation, propellant technology, valve engineering, filling line setup, and regulatory compliance across global markets. His work integrates aerosol chemistry, GMP manufacturing practices, safety and flammability assessment, quality systems, and regulatory strategy for markets including India, the EU, and the US. As Founder and Lead Consultant at Global Aerosols, Absar leads technical and engineering teams delivering end-to-end aerosol solutions — from initial formulation and lab trials through pilot-scale testing, commercial manufacturing setup, and full market launch.</p>
+          <p style="margin-top:10px;">
+            <a href="https://www.linkedin.com/in/absar-khan-aerosol-consultant-and-formulator-78359b162" target="_blank" rel="noopener noreferrer">Connect on LinkedIn →</a>
+          </p>
+        </div>
+      </div>
+
+    </div><!-- /.article-col -->
+  </div><!-- /.page-body -->
+
+  <!-- SITE FOOTER -->
+  <footer class="site-footer">
+    <p>© 2026 <a href="https://www.globalaerosols.com" target="_top">Global Aerosols</a>. All rights reserved.</p>
+    <p style="margin-top:6px;">
+      <a href="https://www.globalaerosols.com/contact" target="_top">Contact</a> &nbsp;|&nbsp;
+      <a href="https://www.globalaerosols.com/blog" target="_top">Blog</a>
+    </p>
+  </footer>
+
+  <!-- SCROLLSPY -->
+  <script>
+    (function () {
+      const links = document.querySelectorAll('.toc-sidebar ol li a');
+      const sections = Array.from(links)
+        .map(a => document.querySelector(a.getAttribute('href')))
+        .filter(Boolean);
+
+      if (!sections.length) return;
+
+      const observer = new IntersectionObserver(
+        entries => {
+          entries.forEach(entry => {
+            if (entry.isIntersecting) {
+              links.forEach(a => a.classList.remove('toc-active'));
+              const active = document.querySelector(
+                '.toc-sidebar ol li a[href="#' + entry.target.id + '"]'
+              );
+              if (active) active.classList.add('toc-active');
+            }
+          });
+        },
+        { rootMargin: '-20% 0px -70% 0px', threshold: 0 }
+      );
+
+      sections.forEach(s => observer.observe(s));
+    })();
+  </script>
+  </div>
+</Layout>
+
+<style>
+    /* ─── DESIGN TOKENS ─────────────────────────────── */
+    :root {
+      --bg:           #F9F9F7;
+      --surface:      #FFFFFF;
+      --border:       #E4E4E0;
+      --text-primary: #0A0A0A;
+      --text-muted:   #6B7280;
+      --accent:       #0968e5;
+      --green:        #16A34A;
+      --amber:        #D97706;
+      --radius:       6px;
+      --font-serif:   'Source Serif 4', Georgia, serif;
+      --font-display: 'Playfair Display', Georgia, serif;
+    }
+
+    /* ─── RESET & BASE ───────────────────────────────── */
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    html { scroll-behavior: smooth; }
+    body {
+      background: var(--bg);
+      color: var(--text-primary);
+      font-family: var(--font-serif);
+      font-size: 17px;
+      line-height: 1.72;
+      -webkit-font-smoothing: antialiased;
+    }
+    a { color: var(--accent); text-decoration: none; }
+    a:hover { text-decoration: underline; }
+    img { display: block; max-width: 100%; height: auto; }
+
+    /* ─── SITE HEADER ────────────────────────────────── */
+    .site-header {
+      position: sticky; top: 0; z-index: 100;
+      background: var(--surface);
+      border-bottom: 1px solid var(--border);
+      height: 64px;
+      display: flex; align-items: center;
+      padding: 0 32px;
+    }
+    .site-header a {
+      font-family: var(--font-display);
+      font-size: 1.25rem;
+      font-weight: 700;
+      color: var(--text-primary);
+      letter-spacing: -0.02em;
+    }
+    .site-header a span { color: var(--accent); }
+
+    /* ─── POST HERO BAND ─────────────────────────────── */
+    .post-hero {
+      background: var(--surface);
+      border-bottom: 1px solid var(--border);
+      padding: 0 0 0 0;
+    }
+    .post-hero-inner {
+      max-width: 1140px;
+      margin: 0 auto;
+      padding: 36px 32px 0;
+    }
+    .breadcrumb {
+      font-size: 0.8rem;
+      color: var(--text-muted);
+      margin-bottom: 16px;
+    }
+    .breadcrumb a { color: var(--text-muted); }
+    .breadcrumb a:hover { color: var(--accent); text-decoration: none; }
+    .breadcrumb span { margin: 0 6px; }
+
+    .category-badge {
+      display: inline-block;
+      font-size: 0.72rem;
+      font-weight: 700;
+      letter-spacing: 0.06em;
+      text-transform: uppercase;
+      color: var(--accent);
+      border: 1px solid var(--accent);
+      border-radius: 3px;
+      padding: 3px 10px;
+      margin-bottom: 18px;
+    }
+
+    .post-hero h1 {
+      font-family: var(--font-display);
+      font-size: clamp(1.75rem, 4vw, 2.6rem);
+      font-weight: 700;
+      line-height: 1.2;
+      letter-spacing: -0.02em;
+      color: var(--text-primary);
+      max-width: 760px;
+      margin-bottom: 16px;
+    }
+
+    .post-meta {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 20px;
+      font-size: 0.82rem;
+      color: var(--text-muted);
+      margin-bottom: 32px;
+    }
+    .post-meta span { display: flex; align-items: center; gap: 5px; }
+
+    .hero-img-wrap {
+      width: 100%;
+      border-radius: 10px 10px 0 0;
+      overflow: hidden;
+      max-height: 480px;
+    }
+    .hero-img-wrap img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      display: block;
+    }
+
+    /* ─── TWO-COLUMN BODY ────────────────────────────── */
+    .page-body {
+      max-width: 1140px;
+      margin: 0 auto;
+      padding: 48px 32px 80px;
+      display: grid;
+      grid-template-columns: 260px 1fr;
+      gap: 48px;
+      align-items: start;
+    }
+
+    /* ─── TOC SIDEBAR ────────────────────────────────── */
+    .toc-sidebar {
+      position: sticky;
+      top: 84px;
+      max-height: calc(100vh - 104px);
+      overflow-y: auto;
+    }
+    .toc-sidebar nav {
+      background: var(--surface);
+      border: 1px solid var(--border);
+      border-radius: var(--radius);
+      padding: 20px;
+    }
+    .toc-sidebar .toc-heading {
+      font-size: 0.7rem;
+      font-weight: 700;
+      letter-spacing: 0.09em;
+      text-transform: uppercase;
+      color: var(--text-muted);
+      margin-bottom: 14px;
+    }
+    .toc-sidebar ol {
+      list-style: none;
+      padding: 0;
+      display: flex;
+      flex-direction: column;
+      gap: 2px;
+    }
+    .toc-sidebar ol li a {
+      display: block;
+      font-size: 0.82rem;
+      line-height: 1.45;
+      color: var(--text-muted);
+      padding: 5px 8px 5px 10px;
+      border-left: 2px solid transparent;
+      border-radius: 0 3px 3px 0;
+      transition: color 0.15s, border-color 0.15s;
+    }
+    .toc-sidebar ol li a:hover,
+    .toc-sidebar ol li a.toc-active {
+      color: var(--accent);
+      border-left-color: var(--accent);
+      background: #EEF4FD;
+      text-decoration: none;
+    }
+
+    /* ─── ARTICLE CONTENT ────────────────────────────── */
+    .article-col {
+      min-width: 0;
+      max-width: 720px;
+    }
+
+    .article-col p {
+      margin-bottom: 1.4em;
+    }
+    .article-col h2 {
+      font-family: var(--font-display);
+      font-size: clamp(1.25rem, 2.5vw, 1.6rem);
+      font-weight: 700;
+      letter-spacing: -0.01em;
+      color: var(--text-primary);
+      margin: 2.4em 0 0.6em;
+      padding-top: 0.4em;
+    }
+    .article-col h3 {
+      font-family: var(--font-display);
+      font-size: 1.15rem;
+      font-weight: 600;
+      color: var(--text-primary);
+      margin: 1.8em 0 0.5em;
+    }
+    .article-col ul, .article-col ol {
+      padding-left: 1.5em;
+      margin-bottom: 1.4em;
+    }
+    .article-col li { margin-bottom: 0.4em; }
+
+    /* ─── ARTICLE IMAGES ─────────────────────────────── */
+    .article-img {
+      width: 100%;
+      border-radius: var(--radius);
+      margin: 2em 0 0.6em;
+      border: 1px solid var(--border);
+    }
+    .img-caption {
+      font-size: 0.8rem;
+      color: var(--text-muted);
+      font-style: italic;
+      margin-bottom: 2em;
+    }
+
+    /* ─── DATA TABLE ─────────────────────────────────── */
+    .table-wrap { overflow-x: auto; margin: 1.6em 0 2em; }
+    .data-table {
+      width: 100%;
+      border-collapse: collapse;
+      font-size: 0.88rem;
+    }
+    .data-table thead tr {
+      background: var(--text-primary);
+      color: #FFFFFF;
+    }
+    .data-table th {
+      padding: 10px 14px;
+      text-align: left;
+      font-weight: 600;
+      font-size: 0.8rem;
+      letter-spacing: 0.03em;
+    }
+    .data-table td {
+      padding: 9px 14px;
+      border-bottom: 1px solid var(--border);
+      vertical-align: top;
+    }
+    .data-table tbody tr:nth-child(even) { background: #F4F4F2; }
+
+    /* ─── CALLOUTS ───────────────────────────────────── */
+    .callout {
+      border-left: 3px solid var(--green);
+      background: #F0FDF4;
+      padding: 14px 18px;
+      border-radius: 0 var(--radius) var(--radius) 0;
+      margin: 1.8em 0;
+      font-size: 0.93rem;
+    }
+    .callout strong { color: var(--green); display: block; margin-bottom: 4px; }
+    .callout-amber {
+      border-left-color: var(--amber);
+      background: #FFFBEB;
+    }
+    .callout-amber strong { color: var(--amber); }
+
+    /* ─── FAQ ────────────────────────────────────────── */
+    .faq-section { margin: 3em 0 2em; }
+    .faq-section > h2 {
+      font-family: var(--font-display);
+      font-size: 1.5rem;
+      font-weight: 700;
+      margin-bottom: 1.2em;
+    }
+    details.faq-item {
+      border: 1px solid var(--border);
+      border-radius: var(--radius);
+      margin-bottom: 10px;
+      background: var(--surface);
+    }
+    details.faq-item summary {
+      font-weight: 600;
+      font-size: 0.95rem;
+      padding: 14px 18px;
+      cursor: pointer;
+      list-style: none;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+    details.faq-item summary::after {
+      content: '+';
+      font-size: 1.2rem;
+      font-weight: 400;
+      color: var(--text-muted);
+      flex-shrink: 0;
+      margin-left: 12px;
+    }
+    details.faq-item[open] summary::after { content: '−'; }
+    .faq-answer {
+      padding: 0 18px 16px;
+      font-size: 0.92rem;
+      color: #374151;
+      line-height: 1.65;
+    }
+
+    /* ─── CTA BLOCK ──────────────────────────────────── */
+    .cta-block {
+      background: var(--text-primary);
+      color: #FFFFFF;
+      border-radius: var(--radius);
+      padding: 40px 36px;
+      margin: 3em 0;
+      text-align: center;
+    }
+    .cta-block h2 {
+      font-family: var(--font-display);
+      font-size: 1.5rem;
+      font-weight: 700;
+      color: #FFFFFF;
+      margin: 0 0 10px;
+    }
+    .cta-block p {
+      font-size: 0.95rem;
+      color: #D1D5DB;
+      margin: 0 0 24px;
+      max-width: 500px;
+      margin-left: auto;
+      margin-right: auto;
+    }
+    .cta-btn {
+      display: inline-block;
+      background: #FFFFFF;
+      color: var(--text-primary);
+      font-weight: 700;
+      font-size: 0.9rem;
+      letter-spacing: 0.03em;
+      padding: 12px 28px;
+      border-radius: 4px;
+      text-decoration: none;
+      transition: opacity 0.15s;
+    }
+    .cta-btn:hover { opacity: 0.88; text-decoration: none; }
+
+    /* ─── RELATED ARTICLES ───────────────────────────── */
+    .related-section { margin: 2.5em 0; }
+    .related-section > h2 {
+      font-family: var(--font-display);
+      font-size: 1.3rem;
+      font-weight: 700;
+      margin-bottom: 1em;
+    }
+    .related-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 12px;
+      list-style: none;
+      padding: 0;
+    }
+    .related-grid li a {
+      display: block;
+      background: var(--surface);
+      border: 1px solid var(--border);
+      border-radius: var(--radius);
+      padding: 14px 16px;
+      font-size: 0.88rem;
+      font-weight: 600;
+      color: var(--text-primary);
+      transition: border-color 0.15s, color 0.15s;
+      line-height: 1.4;
+    }
+    .related-grid li a:hover {
+      border-color: var(--accent);
+      color: var(--accent);
+      text-decoration: none;
+    }
+
+    /* ─── AUTHOR BIO ─────────────────────────────────── */
+    .author-bio {
+      display: flex;
+      gap: 18px;
+      align-items: flex-start;
+      background: var(--surface);
+      border: 1px solid var(--border);
+      border-radius: var(--radius);
+      padding: 24px;
+      margin: 2.5em 0;
+    }
+    .author-avatar {
+      width: 52px; height: 52px;
+      background: var(--text-primary);
+      color: #FFFFFF;
+      border-radius: 50%;
+      display: flex; align-items: center; justify-content: center;
+      font-weight: 700; font-size: 1rem;
+      flex-shrink: 0;
+    }
+    .author-info h3 {
+      font-family: var(--font-display);
+      font-size: 1rem;
+      font-weight: 700;
+      margin: 0 0 2px;
+    }
+    .author-role {
+      font-size: 0.78rem;
+      color: var(--text-muted);
+      margin-bottom: 10px;
+    }
+    .author-info p { font-size: 0.87rem; line-height: 1.6; color: #374151; }
+
+    /* ─── SITE FOOTER ────────────────────────────────── */
+    .site-footer {
+      background: var(--text-primary);
+      color: #9CA3AF;
+      text-align: center;
+      padding: 32px;
+      font-size: 0.82rem;
+    }
+    .site-footer a { color: #D1D5DB; }
+    .site-footer a:hover { color: #FFFFFF; }
+
+    /* ─── RESPONSIVE ─────────────────────────────────── */
+    @media (max-width: 900px) {
+      .page-body {
+        grid-template-columns: 1fr;
+        gap: 0;
+        padding: 32px 20px 60px;
+      }
+      .toc-sidebar {
+        position: static;
+        max-height: none;
+        margin-bottom: 32px;
+      }
+      .toc-sidebar nav { border-radius: var(--radius); }
+      .article-col { max-width: 100%; }
+    }
+    @media (max-width: 600px) {
+      .post-hero-inner { padding: 24px 20px 0; }
+      .site-header { padding: 0 20px; }
+      .related-grid { grid-template-columns: 1fr; }
+      .cta-block { padding: 28px 20px; }
+      .author-bio { flex-direction: column; }
+    }
+  </style>
