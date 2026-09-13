@@ -78,6 +78,15 @@ To match the high-quality, professional photorealistic and 3D visual standards o
      - Diagram alt: `{topic} process diagram — {descriptor} | Global Aerosols`
      - Infographic alt: `{topic} comparison infographic — {descriptor} | Global Aerosols`
 
+3. **FALLBACK — No `generate_image` tool available in this session:**
+   If the agent has no image-generation tool available (confirmed via `ToolSearch` or equivalent — do not silently skip images or fabricate fake generated output), do NOT block the rest of the pipeline. Instead:
+   - Write a `Blogskill/placeholder_prompts_{slug}.json` file containing the three intended prompts (`hero`, `diagram`, `infographic`) built from the Prompt Structures above, populated with this topic's `image_descriptors`.
+   - Run `python Blogskill/generate_placeholder_images.py {slug}` to render three clearly-labeled placeholder WebP cards (dark editorial background, "PLACEHOLDER — {TYPE}" heading, slug, dimensions, and the wrapped intended AI prompt text) directly into `Blog/{slug}/images/` at the correct filenames and dimensions (1200×630 hero, 900×500 diagram/infographic).
+   - Upload them to R2 exactly as in Step 5 using `python Blogskill/upload_slug_to_r2.py {slug}` (reads credentials from the project `.env` — never hardcode credentials in a script).
+   - Continue the rest of the pipeline (HTML, Astro page, blog listing, meta.json, state.json) normally, using the placeholder CDN URLs.
+   - In `meta.json`, set `"images_are_placeholders": true` and add an `"images_placeholder_note"` explaining that real AI-generated images still need to replace the placeholders (pointing at the saved prompts file and the upload script for the swap-in later).
+   - Tell the user explicitly in the final output summary that images are placeholders pending real generation.
+
 ---
 
 ### STEP 5 — UPLOAD TO CLOUDFLARE R2
