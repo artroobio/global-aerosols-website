@@ -26,51 +26,75 @@ ACCESS_KEY = env["CLOUDFLARE_R2_ACCESS_KEY_ID"]
 SECRET_KEY = env["CLOUDFLARE_R2_SECRET_ACCESS_KEY"]
 BUCKET_NAME = env["CLOUDFLARE_R2_BUCKET_NAME"]
 
-brain_dir = r"C:\Users\atind\.gemini\antigravity-ide\brain\9650f0e9-fa6d-468f-8c87-aa57674ab1c4"
+# Batch 2 Brain Dir (Sep 14)
+brain_dir_b2 = r"C:\Users\atind\.gemini\antigravity-ide\brain\2186b8b2-e54e-46ba-a687-edea07ab339f"
 
 blogs_to_process = [
     {
-        "slug": "carb-aerosol-voc-regulations-reformulation",
+        "slug": "tilt-valve-vs-vertical-valve-aerosol-selection",
         "images": [
             {
                 "type": "hero",
-                "src": os.path.join(brain_dir, "carb_voc_hero_1789307177155.jpg"),
-                "filename": "carb-aerosol-voc-regulations-reformulation-hero-globalaerosols.webp",
+                "src": os.path.join(brain_dir_b2, "tilt_valve_hero_1789330303663.jpg"),
+                "filename": "tilt-valve-vs-vertical-valve-aerosol-selection-hero-globalaerosols.webp",
                 "dimensions": (1200, 630)
             },
             {
                 "type": "diagram",
-                "src": os.path.join(brain_dir, "carb_voc_diagram_1789307199399.jpg"),
-                "filename": "carb-aerosol-voc-regulations-reformulation-diagram-globalaerosols.webp",
+                "src": os.path.join(brain_dir_b2, "tilt_valve_diagram_1789330320166.jpg"),
+                "filename": "tilt-valve-vs-vertical-valve-aerosol-selection-diagram-globalaerosols.webp",
                 "dimensions": (900, 500)
             },
             {
                 "type": "infographic",
-                "src": os.path.join(brain_dir, "carb_voc_infographic_1789307223019.jpg"),
-                "filename": "carb-aerosol-voc-regulations-reformulation-infographic-globalaerosols.webp",
+                "src": os.path.join(brain_dir_b2, "tilt_valve_infog_1789330335814.jpg"),
+                "filename": "tilt-valve-vs-vertical-valve-aerosol-selection-infographic-globalaerosols.webp",
                 "dimensions": (900, 500)
             }
         ]
     },
     {
-        "slug": "aerosol-fill-weight-headspace-optimization",
+        "slug": "aerosol-body-mist-vs-fragrance-spray-alcohol",
         "images": [
             {
                 "type": "hero",
-                "src": os.path.join(brain_dir, "fill_weight_hero_1789307241370.jpg"),
-                "filename": "aerosol-fill-weight-headspace-optimization-hero-globalaerosols.webp",
+                "src": os.path.join(brain_dir_b2, "body_mist_hero_1789330351652.jpg"),
+                "filename": "aerosol-body-mist-vs-fragrance-spray-alcohol-hero-globalaerosols.webp",
                 "dimensions": (1200, 630)
             },
             {
                 "type": "diagram",
-                "src": os.path.join(brain_dir, "fill_headspace_diagram_1789307262712.jpg"),
-                "filename": "aerosol-fill-weight-headspace-optimization-diagram-globalaerosols.webp",
+                "src": os.path.join(brain_dir_b2, "body_mist_diagram_1789330504806.jpg"),
+                "filename": "aerosol-body-mist-vs-fragrance-spray-alcohol-diagram-globalaerosols.webp",
                 "dimensions": (900, 500)
             },
             {
                 "type": "infographic",
-                "src": os.path.join(brain_dir, "fill_weight_infographic_1789307281171.jpg"),
-                "filename": "aerosol-fill-weight-headspace-optimization-infographic-globalaerosols.webp",
+                "src": os.path.join(brain_dir_b2, "body_mist_infog_1789330519447.jpg"),
+                "filename": "aerosol-body-mist-vs-fragrance-spray-alcohol-infographic-globalaerosols.webp",
+                "dimensions": (900, 500)
+            }
+        ]
+    },
+    {
+        "slug": "eu-aerosol-dispensers-directive-testing-labeling",
+        "images": [
+            {
+                "type": "hero",
+                "src": os.path.join(brain_dir_b2, "eu_directive_hero_1789330538215.jpg"),
+                "filename": "eu-aerosol-dispensers-directive-testing-labeling-hero-globalaerosols.webp",
+                "dimensions": (1200, 630)
+            },
+            {
+                "type": "diagram",
+                "src": os.path.join(brain_dir_b2, "eu_directive_diag_1789330555254.jpg"),
+                "filename": "eu-aerosol-dispensers-directive-testing-labeling-diagram-globalaerosols.webp",
+                "dimensions": (900, 500)
+            },
+            {
+                "type": "infographic",
+                "src": os.path.join(brain_dir_b2, "eu_directive_infog_1789330570365.jpg"),
+                "filename": "eu-aerosol-dispensers-directive-testing-labeling-infographic-globalaerosols.webp",
                 "dimensions": (900, 500)
             }
         ]
@@ -117,6 +141,11 @@ for blog in blogs_to_process:
         img_resized.save(dest1, "WEBP", quality=92)
         img_resized.save(dest2, "WEBP", quality=92)
         print(f"Saved {filename} ({dims[0]}x{dims[1]}) -> {dest1} & {dest2}")
+        
+        if os.path.exists(os.path.join(BASE_DIR, "Blogskill", slug)):
+            dest3 = os.path.join(BASE_DIR, "Blogskill", slug, "images", filename)
+            img_resized.save(dest3, "WEBP", quality=92)
+            print(f"Also synced to {dest3}")
     
     # 2. Upload to R2
     print("\n--- STEP 2: Uploading to Cloudflare R2 ---")
@@ -154,17 +183,18 @@ for blog in blogs_to_process:
     if upload_success:
         print("\n--- STEP 4: Updating meta.json ---")
         meta_path = os.path.join(BASE_DIR, "Blog", slug, "meta.json")
-        with open(meta_path, "r", encoding="utf-8") as f:
-            meta_data = json.load(f)
-            
-        meta_data["r2_upload_status"] = "success"
-        if "images_are_placeholders" in meta_data:
-            del meta_data["images_are_placeholders"]
-        if "images_placeholder_note" in meta_data:
-            del meta_data["images_placeholder_note"]
-            
-        with open(meta_path, "w", encoding="utf-8") as f:
-            json.dump(meta_data, f, indent=2, ensure_ascii=False)
-        print(f"Updated {meta_path}: cleared placeholder flags, confirmed r2_upload_status='success'")
+        if os.path.exists(meta_path):
+            with open(meta_path, "r", encoding="utf-8") as f:
+                meta_data = json.load(f)
+                
+            meta_data["r2_upload_status"] = "success"
+            if "images_are_placeholders" in meta_data:
+                del meta_data["images_are_placeholders"]
+            if "images_placeholder_note" in meta_data:
+                del meta_data["images_placeholder_note"]
+                
+            with open(meta_path, "w", encoding="utf-8") as f:
+                json.dump(meta_data, f, indent=2, ensure_ascii=False)
+            print(f"Updated {meta_path}: cleared placeholder flags, confirmed r2_upload_status='success'")
 
 print("\n\nAll blog images processed and uploaded successfully!")
