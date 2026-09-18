@@ -1,3 +1,22 @@
+# Security headers, applied to every response.
+# CSP allowlist is built from the site's actual external resource origins
+# (checked via grep across src/ on 2026-09-18, not guessed):
+#   - fonts.googleapis.com / fonts.gstatic.com : Google Fonts
+#   - cdn.globalaerosols.com                   : product/blog images (R2 CDN)
+#   - cdn.globalformulation.com                : contact page background video
+#   - cdn.babylonjs.com / assets.babylonjs.com : BabylonJS engine + env texture (CanWrap 3D)
+#   - cdnjs.cloudflare.com                     : Three.js r128 (CanWrap 3D hero preview)
+#   - esm.sh                                   : Three.js modules + Tween.js (CanWrap 3D Aluminium)
+# script-src/style-src need 'unsafe-inline': GSAP animates via direct inline
+# style mutation, and every page carries its own inline JSON-LD <script>
+# block, which a static build can't practically hash or nonce per-page.
+/*
+  X-Content-Type-Options: nosniff
+  X-Frame-Options: SAMEORIGIN
+  Referrer-Policy: strict-origin-when-cross-origin
+  Strict-Transport-Security: max-age=31536000; includeSubDomains
+  Content-Security-Policy: default-src 'self'; script-src 'self' 'unsafe-inline' https://cdn.babylonjs.com https://cdnjs.cloudflare.com https://esm.sh; style-src 'self' 'unsafe-inline' https://fonts.googleapis.com; font-src 'self' https://fonts.gstatic.com; img-src 'self' data: https://cdn.globalaerosols.com; media-src 'self' https://cdn.globalformulation.com; connect-src 'self' https://cdn.globalaerosols.com https://cdn.babylonjs.com https://assets.babylonjs.com https://esm.sh; frame-src 'none'; frame-ancestors 'self'; object-src 'none'; base-uri 'self'; form-action 'self'
+
 # Cloudflare Pages cache rules.
 # Lighthouse "Use efficient cache lifetimes" — long-cache static assets so
 # repeat visits and subpage navigation load from local browser cache.
