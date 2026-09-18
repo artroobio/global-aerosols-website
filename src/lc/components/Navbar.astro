@@ -199,7 +199,7 @@ const softwareItems = [
                       <source src={item.image} type="video/webm" />
                     </video>
                   ) : (
-                    <img src={item.image} alt={item.label} loading="eager" decoding="async" />
+                    <img src={item.image} alt={item.label} loading="lazy" decoding="async" />
                   )}
                 </div>
                 <div class="mega-info">
