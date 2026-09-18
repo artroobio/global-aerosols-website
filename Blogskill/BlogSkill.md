@@ -141,17 +141,17 @@ Every blog `<head>` MUST contain ALL of the following, no exceptions:
 <meta name="referrer" content="strict-origin-when-cross-origin">
 
 <!-- CANONICAL -->
-<link rel="canonical" href="https://www.globalaerosols.com/{slug}">
+<link rel="canonical" href="https://www.globalaerosols.com/{slug}/">
 
 <!-- HREFLANG -->
-<link rel="alternate" hreflang="en" href="https://www.globalaerosols.com/{slug}">
-<link rel="alternate" hreflang="x-default" href="https://www.globalaerosols.com/{slug}">
+<link rel="alternate" hreflang="en" href="https://www.globalaerosols.com/{slug}/">
+<link rel="alternate" hreflang="x-default" href="https://www.globalaerosols.com/{slug}/">
 
 <!-- OPEN GRAPH -->
 <meta property="og:title" content="{title}">
 <meta property="og:description" content="{meta description}">
 <meta property="og:image" content="{r2-hero-url}">
-<meta property="og:url" content="https://www.globalaerosols.com/{slug}">
+<meta property="og:url" content="https://www.globalaerosols.com/{slug}/">
 <meta property="og:type" content="article">
 <meta property="og:site_name" content="Global Aerosols">
 
@@ -232,7 +232,7 @@ Every blog `<head>` MUST contain ALL of the following, no exceptions:
   "@type": "BlogPosting",
   "headline": "{title}",
   "description": "{meta description}",
-  "image": "{r2-hero-url}",
+  "image": { "@type": "ImageObject", "url": "{r2-hero-url}", "width": 1200, "height": 630 },
   "author": {
     "@type": "Person",
     "name": "Absar Khan"
@@ -249,7 +249,13 @@ Every blog `<head>` MUST contain ALL of the following, no exceptions:
   "dateModified": "{YYYY-MM-DD}",
   "mainEntityOfPage": {
     "@type": "WebPage",
-    "@id": "https://www.globalaerosols.com/{slug}"
+    "@id": "https://www.globalaerosols.com/{slug}/"
+  },
+  "isPartOf": {
+    "@type": "Blog",
+    "@id": "https://www.globalaerosols.com/blog/#blog",
+    "name": "Global Aerosols Blog",
+    "url": "https://www.globalaerosols.com/blog/"
   },
   "articleSection": "{category}",
   "keywords": "{primary_keyword}, {supporting_keywords comma separated}",
@@ -273,13 +279,13 @@ Every blog `<head>` MUST contain ALL of the following, no exceptions:
       "@type": "ListItem",
       "position": 2,
       "name": "Blog",
-      "item": "https://www.globalaerosols.com/blog"
+      "item": "https://www.globalaerosols.com/blog/"
     },
     {
       "@type": "ListItem",
       "position": 3,
       "name": "{title}",
-      "item": "https://www.globalaerosols.com/{slug}"
+      "item": "https://www.globalaerosols.com/{slug}/"
     }
   ]
 }
@@ -311,8 +317,8 @@ Every blog `<head>` MUST contain ALL of the following, no exceptions:
 {
   "@context": "https://schema.org",
   "@type": "WebPage",
-  "@id": "https://www.globalaerosols.com/{slug}",
-  "url": "https://www.globalaerosols.com/{slug}",
+  "@id": "https://www.globalaerosols.com/{slug}/",
+  "url": "https://www.globalaerosols.com/{slug}/",
   "name": "{title}",
   "description": "{meta description}",
   "isPartOf": {
@@ -323,8 +329,8 @@ Every blog `<head>` MUST contain ALL of the following, no exceptions:
     "@type": "BreadcrumbList",
     "itemListElement": [
       { "@type": "ListItem", "position": 1, "name": "Home", "item": "https://www.globalaerosols.com" },
-      { "@type": "ListItem", "position": 2, "name": "Blog", "item": "https://www.globalaerosols.com/blog" },
-      { "@type": "ListItem", "position": 3, "name": "{title}", "item": "https://www.globalaerosols.com/{slug}" }
+      { "@type": "ListItem", "position": 2, "name": "Blog", "item": "https://www.globalaerosols.com/blog/" },
+      { "@type": "ListItem", "position": 3, "name": "{title}", "item": "https://www.globalaerosols.com/{slug}/" }
     ]
   },
   "primaryImageOfPage": {
@@ -407,8 +413,10 @@ defaults above = 8 links total.
 **Link mechanics:**
 ALL internal links MUST use `target="_top"` for correct navigation:
 ```html
-<a href="https://www.globalaerosols.com/{slug}" target="_top">Anchor text</a>
+<a href="https://www.globalaerosols.com/{slug}/" target="_top">Anchor text</a>
 ```
+
+The site is built with `trailingSlash: 'always'`, so EVERY internal URL ends in `/` — hrefs, canonical, hreflang, `og:url`, the blog-listing `url`, and schema `@id` / `url` / `item` values. A slashless URL triggers a redirect and no longer matches the canonical. (Files such as `logo.png`, `favicon.svg`, and `rss.xml` are not paths and take no slash.)
 
 ALL external links MUST use `target="_blank" rel="noopener noreferrer"`:
 ```html
@@ -921,7 +929,7 @@ Copy this shell exactly; populate every `{placeholder}` from the topic data.
       <nav class="breadcrumb" aria-label="Breadcrumb">
         <a href="https://www.globalaerosols.com" target="_top">Home</a>
         <span>›</span>
-        <a href="https://www.globalaerosols.com/blog" target="_top">Blog</a>
+        <a href="https://www.globalaerosols.com/blog/" target="_top">Blog</a>
         <span>›</span>
         <span>{Short Title}</span>
       </nav>
@@ -936,7 +944,11 @@ Copy this shell exactly; populate every `{placeholder}` from the topic data.
         <span>{X} min read</span>
       </div>
 
-      <!-- HERO IMAGE — full bleed, rounded top corners -->
+      <!-- HERO IMAGE — full bleed, rounded top corners.
+           Wrapped in <figure>; the <figcaption> is a SIBLING of .hero-img-wrap, never inside it
+           (that box has overflow:hidden + max-height and would clip the caption).
+           Caption = the hero alt text without the "— Global Aerosols" suffix. -->
+      <figure style="margin: 0;">
       <div class="hero-img-wrap">
         <img
           src="{r2-hero-url}"
@@ -946,6 +958,8 @@ Copy this shell exactly; populate every `{placeholder}` from the topic data.
           srcset="{r2-hero-url}?w=640 640w, {r2-hero-url}?w=1140 1140w"
           sizes="(max-width: 640px) 100vw, 1140px">
       </div>
+      <figcaption style="margin: 10px 0 0; padding: 0 4px; font-size: 0.85rem; color: var(--text-muted); text-align: center;">{hero caption}</figcaption>
+    </figure>
 
     </div>
   </div>
@@ -1022,9 +1036,9 @@ Copy this shell exactly; populate every `{placeholder}` from the topic data.
 
       <!-- IN-BODY INTERNAL LINKS (Tier 1) — weave min 3–4 into prose;
            at least 1 must link to the category landing page.
-           Example: ...as detailed in our <a href="https://www.globalaerosols.com/{slug}" target="_top">{related topic}</a>,
+           Example: ...as detailed in our <a href="https://www.globalaerosols.com/{slug}/" target="_top">{related topic}</a>,
            the choice of {X} directly affects {Y}. For the full picture, see our
-           <a href="https://www.globalaerosols.com/{category-slug}" target="_top">{Category}</a> guide. -->
+           <a href="https://www.globalaerosols.com/{category-slug}/" target="_top">{Category}</a> guide. -->
 
       <!-- EXTERNAL LINKS — minimum 3, woven into body prose (NOT a list at the end).
            Select sources from Section H External Authority Links Reference Library.
@@ -1118,7 +1132,7 @@ Copy this shell exactly; populate every `{placeholder}` from the topic data.
       <div class="cta-block">
         <h2>Need Expert Aerosol Consulting?</h2>
         <p>Our team provides end-to-end aerosol technical consultancy — from formulation development and propellant selection to filling line setup, regulatory compliance, and market launch strategy.</p>
-        <a href="https://www.globalaerosols.com/contact" target="_top" class="cta-btn">
+        <a href="https://www.globalaerosols.com/contact/" target="_top" class="cta-btn">
           Get a Free Consultation
         </a>
       </div>
@@ -1129,12 +1143,12 @@ Copy this shell exactly; populate every `{placeholder}` from the topic data.
         <ul class="related-grid">
           <li><a href="{internal_link_1}" target="_top">{Article Title 1}</a></li>
           <li><a href="{internal_link_2}" target="_top">{Article Title 2}</a></li>
-          <li><a href="https://www.globalaerosols.com/aerosol-manufacturing-101-guide" target="_top">Aerosol Manufacturing 101: The Complete Technical Guide</a></li>
-          <li><a href="https://www.globalaerosols.com/how-aerosol-cans-work" target="_top">How Aerosol Cans Work: Propellant, Pressure, Valve & Spray Dynamics</a></li>
-          <li><a href="https://www.globalaerosols.com/aerosol-propellants-explained-lpg-vs-dme-vs-hfc-vs-n2-vs-co2" target="_top">Aerosol Propellants Explained: LPG vs DME vs HFC vs N₂ vs CO₂</a></li>
-          <li><a href="https://www.globalaerosols.com/aerosol-chemistry-101" target="_top">Aerosol Chemistry 101: Solvents, Binders, Surfactants & Additives</a></li>
-          <li><a href="https://www.globalaerosols.com/from-lab-to-commercial-launch" target="_top">From Lab to Factory: Aerosol R&D to Commercial Manufacturing</a></li>
-          <li><a href="https://www.globalaerosols.com/choosing-the-right-product-consultant" target="_top">How to Choose the Right Aerosol Product Consultant</a></li>
+          <li><a href="https://www.globalaerosols.com/aerosol-manufacturing-101-guide/" target="_top">Aerosol Manufacturing 101: The Complete Technical Guide</a></li>
+          <li><a href="https://www.globalaerosols.com/how-aerosol-cans-work/" target="_top">How Aerosol Cans Work: Propellant, Pressure, Valve & Spray Dynamics</a></li>
+          <li><a href="https://www.globalaerosols.com/aerosol-propellants-explained-lpg-vs-dme-vs-hfc-vs-n2-vs-co2/" target="_top">Aerosol Propellants Explained: LPG vs DME vs HFC vs N₂ vs CO₂</a></li>
+          <li><a href="https://www.globalaerosols.com/aerosol-chemistry-101/" target="_top">Aerosol Chemistry 101: Solvents, Binders, Surfactants & Additives</a></li>
+          <li><a href="https://www.globalaerosols.com/from-lab-to-commercial-launch/" target="_top">From Lab to Factory: Aerosol R&D to Commercial Manufacturing</a></li>
+          <li><a href="https://www.globalaerosols.com/choosing-the-right-product-consultant/" target="_top">How to Choose the Right Aerosol Product Consultant</a></li>
         </ul>
       </section>
 
@@ -1158,8 +1172,8 @@ Copy this shell exactly; populate every `{placeholder}` from the topic data.
   <footer class="site-footer">
     <p>© 2025 <a href="https://www.globalaerosols.com" target="_top">Global Aerosols</a>. All rights reserved.</p>
     <p style="margin-top:6px;">
-      <a href="https://www.globalaerosols.com/contact" target="_top">Contact</a> &nbsp;|&nbsp;
-      <a href="https://www.globalaerosols.com/blog" target="_top">Blog</a>
+      <a href="https://www.globalaerosols.com/contact/" target="_top">Contact</a> &nbsp;|&nbsp;
+      <a href="https://www.globalaerosols.com/blog/" target="_top">Blog</a>
     </p>
   </footer>
 
@@ -1399,7 +1413,7 @@ Print this checklist with pass/fail in the output summary:
   "category": "{category}",
   "primary_keyword": "{primary_keyword}",
   "supporting_keywords": ["kw1", "kw2", "kw3", "kw4", "kw5"],
-  "canonical": "https://www.globalaerosols.com/{slug}",
+  "canonical": "https://www.globalaerosols.com/{slug}/",
   "author": "Global Aerosols Team",
   "author_schema": "Absar Khan",
   "date_published": "{YYYY-MM-DD}",
@@ -1445,7 +1459,7 @@ To make the blog post live on the active Astro server:
    - Convert the HTML body of the generated `index.html` to a native Astro component page.
    - Place it inside the `src/pages/` directory as `src/pages/{slug}.astro`.
    - Wrap the article content within the global `<Layout>` element from `src/layouts/Layout.astro`.
-   - Place all 6 JSON-LD schema objects (Organization, WebSite, Person, BreadcrumbList, BlogPosting, FAQPage) in the frontmatter and pass them to the layout's `schemaJson` prop.
+   - Place all 7 JSON-LD schema objects (Organization, WebSite, Person, BlogPosting, BreadcrumbList, FAQPage, WebPage) in the frontmatter and pass them to the layout's `schemaJson` prop.
 
 2. **Add to the Blog Listing Page (`src/pages/blog/index.astro`):**
    - Open `src/pages/blog/index.astro` and locate the `allPosts` static array.
@@ -1454,7 +1468,7 @@ To make the blog post live on the active Astro server:
      {
        title: "{Title}",
        description: "{Meta Description}",
-       url: "/{slug}",
+       url: "/{slug}/",
        publishDate: "{Publish Date}",
        category: "{Category}",
        author: "Global Aerosols Team",
