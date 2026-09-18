@@ -785,6 +785,18 @@ const steps = [
       gap: 14px;
     }
   }
+
+  /* Respect prefers-reduced-motion: text/eyebrow reveal elements start at
+     opacity:0 and are only ever animated to visible by GSAP ScrollTrigger
+     below. If the user prefers reduced motion we never run that JS-driven
+     scroll animation, so force the settled state here instead of leaving
+     this content permanently invisible. */
+  @media (prefers-reduced-motion: reduce) {
+    .blue-char, .cc, .pink-char, .industries-eyebrow {
+      opacity: 1 !important;
+      transform: none !important;
+    }
+  }
 </style>
 
 <script>
