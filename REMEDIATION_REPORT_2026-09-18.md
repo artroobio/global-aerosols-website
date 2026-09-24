@@ -101,3 +101,22 @@ One thing worth knowing up front: **the plan changed once, mid-flight, by your o
 ## How to review
 
 All 33 commits are on `main`, unpushed. `git log a74155d..HEAD` (excluding your own `55b4a77` commit that landed just before this session, which I didn't touch) shows them in order — each one's message explains what it fixed, why, and how it was verified. Nothing here was pushed to `origin/main`; that's your call to make whenever you're ready.
+
+---
+
+## Rescan addendum — 2026-09-25
+
+You asked for a rescan to confirm everything was implemented cleanly. It wasn't a re-read of the same commits — every check was re-run from scratch against the actual current files and the real rendered `dist/client` output, not against my own earlier verification. That surfaced one real regression from the remediation itself, plus several pre-existing bugs the original audit's sampling never happened to hit. Both are now fixed, on top of the 33 commits above (4 more commits, still local/unpushed).
+
+**One thing worth knowing about your own tooling**: two commits landed on `main` between the remediation and this rescan that I didn't make (`d65ad48` and `bb567ff`, both yours). Your `Blogskill/BlogSkill.md` template was updated to bake in the post-audit conventions (ImageObject dimensions, Blog `isPartOf`, figure/figcaption, trailing-slash links) — so new posts your pipeline generates now follow them automatically — and 137 more trailing-slash links got fixed across 10 posts. A new post (`aerosol-silicone-spray-applications-risks.astro`, topic #27) was also published. I checked it against every category in this report — it's clean already, which the template update explains.
+
+**Regression found and fixed**: promoting the shared layouts' content-wrapper to `<main id="main-content">` (for the skip-link fix) created a real bug on 52 pages that already had their own inner `<main class="section-container">` — two nested `<main>` elements, which is invalid HTML. Demoted each page's own wrapper to a `<div>` (same class/style, zero visual change) and verified across all 93 rendered pages that main-count, h1-count, and general tag balance (div/section/article/figure/header/footer/nav/ul/li/a) all check out — except `canwrap3d`, which correctly has neither, being a pure redirect with no body.
+
+**Pre-existing bugs found, unrelated to the remediation** (verified these predate this session — not something introduced by the 33 commits):
+- `how-aerosol-cans-are-manufatured.astro` had the exact same migration-artifact pattern as the 8 pages fixed earlier, missed originally because its duplicate breadcrumb used a lowercase `aria-label="breadcrumb"` that evaded the audit's case-sensitive check. Cleaned up the same way (duplicate breadcrumb/article/TOC + 13 dead stub sections), and fixed its real Guide-Contents TOC's `#faq` link, which pointed at the now-removed stub instead of the real section (`id="faq-content"`).
+- 5 section IDs across 3 pages (`aerosol-chemistry-101`, `flash-point-explained`, `types-of-aerosol-systems-explained`) had `amp-` baked into the URL fragment from an unescaped `&` in the heading leaking into the slug generator. Fixed the IDs to match what each page's own table of contents already correctly expected — confirmed via a sitewide grep that these were the only instances of the pattern.
+- One section on `aerosol-mold-release-agents-silicone-vs-non-silicone.astro` had an id copy-pasted from an unrelated article, unrelated to its actual content — corrected.
+- `PharmaceuticalsIndustriesWeServe.astro` was the only one of 9 sibling components missing `id="serve-section"`, silently breaking that page's "Explore Services" button.
+- `formulations-and-technology.astro`'s hero CTA linked `#process`; the real section id is `ft-process`.
+
+All of these were found by checking every `href="#x"` sitewide against actual ids in the rendered DOM (not source-file-only, which produces false positives when the target id lives in an imported component) — a check the original 15-post-sample audit didn't run exhaustively. Final state: 0 broken in-page anchors, 0 duplicate ids, 0 nested `<main>` issues, 0 trailing-slash violations, all 106 JSON-LD blocks across 94 pages parse as valid JSON, across the entire site.
