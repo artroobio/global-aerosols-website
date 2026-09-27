@@ -753,11 +753,15 @@ const rightPills = [
       { opacity: 0, x: -12, color: "#2563eb", webkitTextFillColor: "#2563eb" },
       {
         opacity: 1, x: 0,
-        color: "#ffffff", webkitTextFillColor: "#ffffff",
+        color: "#2563eb", webkitTextFillColor: "#2563eb",
         duration: 0.45, stagger: 0.015, ease: "power3.out"
       },
       '-=0.25'
     )
+    .to(".industries-section-pharmaceuticals .blue-char", {
+      color: "#ffffff", webkitTextFillColor: "#ffffff",
+      duration: 1.0, stagger: 0.015, ease: "power2.inOut"
+    }, '-=0.5')
     .fromTo(".diagram-container",
       { opacity: 0, scale: 0.97 },
       {
@@ -767,7 +771,9 @@ const rightPills = [
           revealPills();
         }
       },
-      '-=0.35'
+      // -=0.9 (not -=0.35): keeps the diagram entry at its original time
+      // despite the longer title recolor above.
+      '-=0.9'
     );
   }
 

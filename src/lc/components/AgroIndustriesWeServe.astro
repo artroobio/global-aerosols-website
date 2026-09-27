@@ -766,7 +766,7 @@ const rightPills = [
     )
     .to(".industries-section-agro .blue-char", {
       color: "#ffffff", webkitTextFillColor: "#ffffff",
-      duration: 0.45, stagger: 0.015, ease: "power2.inOut"
+      duration: 1.0, stagger: 0.015, ease: "power2.inOut"
     }, '-=0.5')
     .fromTo(".diagram-container",
       { opacity: 0, scale: 0.97 },
@@ -777,7 +777,9 @@ const rightPills = [
           revealPills();
         }
       },
-      '-=0.35'
+      // -=0.9 (not -=0.35): keeps the diagram entry at its original time
+      // despite the longer title recolor above.
+      '-=0.9'
     );
   }
 
