@@ -325,18 +325,24 @@ import { gsap } from 'gsap';
         }
 
         // ── Ripple lifecycle ──────────────────────────────────────────────
-        var rippleDestroy = null;   // teardown fn while the ripple is alive, else null
-        var webglFailed   = false;  // WebGL unsupported → never (re)build
-        var introDone     = false;  // run the title/CTA intro animation only once
+        // The ripple is built once and kept alive for the lifetime of the page.
+        // buildRipple() installs an IntersectionObserver that parks its rAF loop
+        // whenever the canvas leaves the viewport, so an off-screen ripple costs
+        // nothing to keep around. There is deliberately NO scroll-driven teardown:
+        // destroying the canvas pulled an opaque layer out of the DOM instantly
+        // while the static <img> behind it was only starting its 0.8s opacity
+        // fade-in, exposing the bare #010a0a background for a beat — the visible
+        // "blink" when scrolling from the hero into the next section.
+        var introDone = false;  // run the title/CTA intro animation only once
 
-        // Reveal title + CTA via the ripple-synced intro (first build only).
+        // Reveal title + CTA via the ripple-synced intro.
         function onRippleReadyManaged() {
-            if (introDone) return;  // on rebuilds the content is already visible
+            if (introDone) return;
             introDone = true;
             onRippleReady();
         }
 
-        // Reveal title + CTA without a ripple (WebGL unavailable, first time only).
+        // Reveal title + CTA without a ripple (WebGL unavailable).
         function revealContentFallback() {
             if (introDone) return;
             introDone = true;
@@ -352,48 +358,11 @@ import { gsap } from 'gsap';
             }
         }
 
-        function startRipple() {
-            if (rippleDestroy || webglFailed) return;
-            var ok = buildRipple(rippleCanvas, heroImage, onRippleReadyManaged);
-            if (typeof ok === 'function') {
-                rippleDestroy = ok;
-            } else {
-                webglFailed = true;
-                revealContentFallback();
-            }
-        }
-
-        function stopRipple() {
-            if (!rippleDestroy) return;
-            rippleDestroy();
-            rippleDestroy = null;
-
-            if (rippleCanvas && rippleCanvas.parentNode) {
-                var fresh = rippleCanvas.cloneNode(false);
-                fresh.style.opacity = '0'; // stay hidden until the new ripple swaps it in
-                rippleCanvas.parentNode.replaceChild(fresh, rippleCanvas);
-                rippleCanvas = fresh;
-            }
-        }
-
-        // Hysteresis thresholds (px)
-        var BUILD_AT  = 10;
-        var UNLOAD_AT = 80;
-
-        function onHeroScroll() {
-            if (webglFailed) return;
-            var y = window.scrollY || window.pageYOffset || 0;
-            if (y > UNLOAD_AT) {
-                stopRipple();
-            } else if (y <= BUILD_AT) {
-                startRipple();
-            }
-        }
-        window.addEventListener('scroll', onHeroScroll, { passive: true });
-
-        // Initial build only if the hero is actually in view on load.
-        if ((window.scrollY || window.pageYOffset || 0) <= BUILD_AT) {
-            startRipple();
+        // Built unconditionally rather than gated on scroll position: a page
+        // restored mid-scroll must still have the ripple ready at the top, and
+        // there is no longer a scroll listener that would build it later.
+        if (typeof buildRipple(rippleCanvas, heroImage, onRippleReadyManaged) !== 'function') {
+            revealContentFallback();
         }
 
         // Trigger reveal immediately without waiting for WebGL texture load to optimize Speed Index / FCP / LCP
@@ -613,6 +582,12 @@ import { gsap } from 'gsap';
 
         img.src = fallbackImg.src;
 
+        // Full teardown: cancels the rAF loop, drops the listeners/observer and
+        // frees the GL objects, restoring the static <img>. Nothing calls it now —
+        // the ripple lives as long as the page — but it stays as this function's
+        // truthy success signal and as the hook to use if a teardown is ever needed
+        // again. Any future caller must let the <img> finish its 0.8s fade-in before
+        // removing the canvas, or the hero will blink #010a0a as it did before.
         function destroy() {
             if (destroyed) return;
             destroyed = true;
