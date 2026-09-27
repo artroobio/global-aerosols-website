@@ -65,7 +65,7 @@
       • PubChem (pubchem.ncbi.nlm.nih.gov) — vapor pressure, boiling point, GHS class, LD50
       • NIST WebBook (webbook.nist.gov) — thermodynamic/pressure-temperature data
       • PubMed (pubmed.ncbi.nlm.nih.gov) — peer-reviewed research, inhalation studies
-- [ ] Industry association where relevant: BAMA (bama.co.uk), FEA (aerosol.org), CSPA (cspa.org), IATA (iata.org)
+- [ ] Industry association where relevant: BAMA (bama.co.uk), FEA (aerosol.org), HCPA, formerly CSPA (thehcpa.org), IATA (iata.org)
 - [ ] Wikipedia only for well-established chemistry/physics definitions — never for regulatory or safety claims
 - [ ] All external links use target="_blank" rel="noopener noreferrer"
 - [ ] Each link placed at the exact point in the prose where the claim is made

@@ -1,67 +1,130 @@
 ---
 import Layout from '../layouts/Layout.astro';
 
+const slug = 'understanding-sds-tds-and-coa-for-aerosol-products';
+const heroUrl = 'https://cdn.globalaerosols.com/images/blog/aerosol-documentation-guide-main-4sQmTfoYN6JxFx58.webp';
+
 const blogSchema = {
   "@context": "https://schema.org",
-  "@type": "BlogPosting",
-  "headline": "The Startup’s Guide to Aerosol Documentation: Understanding SDS, TDS & COA",
-  "description": "Master the technical documentation required for aerosol manufacturing. A deep dive into SDS, TDS, and COA for global and Indian markets.",
-  "image": "https://cdn.globalaerosols.com/images/blog/aerosol-documentation-guide-main-4sQmTfoYN6JxFx58.webp",
-  "author": {
-    "@type": "Person",
-    "name": "Absar Khan"
-  },
-  "publisher": {
-    "@type": "Organization",
-    "name": "Global Aerosols",
-    "logo": {
-      "@type": "ImageObject",
-      "url": "https://www.globalaerosols.com/logo.png"
-    }
-  },
-  "datePublished": "2026-04-25",
-  "dateModified": "2026-04-25",
-  "mainEntityOfPage": {
-    "@type": "WebPage",
-    "@id": "https://www.globalaerosols.com/understanding-sds-tds-and-coa-for-aerosol-products"
-  }, "isPartOf": { "@type": "Blog", "@id": "https://www.globalaerosols.com/blog/#blog", "name": "Global Aerosols Blog", "url": "https://www.globalaerosols.com/blog/" },
-  "keywords": "Aerosol Product Documentation, Safety Data Sheet (SDS), Technical Data Sheet (TDS), Certificate of Analysis (COA), Aerosol Compliance India",
-  "wordCount": "1250"
-};
-const breadcrumbSchema = {
-  "@context": "https://schema.org",
-  "@type": "BreadcrumbList",
-  "itemListElement": [
+  "@graph": [
     {
-      "@type": "ListItem",
-      "position": 1,
-      "name": "Home",
-      "item": "https://www.globalaerosols.com"
+      "@type": "Organization",
+      "@id": "https://www.globalaerosols.com/#organization",
+      "name": "Global Aerosols",
+      "url": "https://www.globalaerosols.com/",
+      "logo": {
+        "@type": "ImageObject",
+        "url": "https://www.globalaerosols.com/logo.png"
+      },
+      "sameAs": [
+        "https://www.linkedin.com/in/absar-khan-aerosol-consultant-and-formulator-78359b162"
+      ]
     },
     {
-      "@type": "ListItem",
-      "position": 2,
-      "name": "Blog",
-      "item": "https://www.globalaerosols.com/blog"
+      "@type": "WebSite",
+      "@id": "https://www.globalaerosols.com/#website",
+      "url": "https://www.globalaerosols.com/",
+      "name": "Global Aerosols",
+      "publisher": { "@id": "https://www.globalaerosols.com/#organization" },
+      "potentialAction": {
+        "@type": "SearchAction",
+        "target": "https://www.globalaerosols.com/search?q={search_term_string}",
+        "query-input": "required name=search_term_string"
+      }
     },
     {
-      "@type": "ListItem",
-      "position": 3,
-      "name": "The Startup’s Guide to Aerosol Documentation: Understanding SDS, TDS & COA | Global Aerosols",
-      "item": "https://www.globalaerosols.com/understanding-sds-tds-and-coa-for-aerosol-products"
+      "@type": "Person",
+      "name": "Absar Khan",
+      "jobTitle": "Founder & Lead Aerosol Consultant",
+      "url": "https://www.linkedin.com/in/absar-khan-aerosol-consultant-and-formulator-78359b162",
+      "affiliation": { "@id": "https://www.globalaerosols.com/#organization" }
+    },
+    {
+      "@type": "BreadcrumbList",
+      "@id": `https://www.globalaerosols.com/${slug}/#breadcrumb`,
+      "itemListElement": [
+        { "@type": "ListItem", "position": 1, "name": "Home", "item": "https://www.globalaerosols.com/" },
+        { "@type": "ListItem", "position": 2, "name": "Blog", "item": "https://www.globalaerosols.com/blog/" },
+        { "@type": "ListItem", "position": 3, "name": "SDS, TDS & COA for Aerosol Products", "item": `https://www.globalaerosols.com/${slug}/` }
+      ]
+    },
+    {
+      "@type": "BlogPosting",
+      "@id": `https://www.globalaerosols.com/${slug}/#blogposting`,
+      "headline": "SDS, TDS & COA for Aerosol Products: A Startup Guide",
+      "description": "Learn what SDS, TDS and COA documents contain, how they differ, and which GHS, BIS and transport rules apply to aerosol products before your first batch ships.",
+      "image": { "@type": "ImageObject", "url": heroUrl },
+      "author": {
+        "@type": "Person",
+        "name": "Absar Khan",
+        "url": "https://www.linkedin.com/in/absar-khan-aerosol-consultant-and-formulator-78359b162"
+      },
+      "publisher": { "@id": "https://www.globalaerosols.com/#organization" },
+      "datePublished": "2026-04-25",
+      "dateModified": "2026-09-25",
+      "mainEntityOfPage": { "@id": `https://www.globalaerosols.com/${slug}/` }, "isPartOf": { "@type": "Blog", "@id": "https://www.globalaerosols.com/blog/#blog", "name": "Global Aerosols Blog", "url": "https://www.globalaerosols.com/blog/" },
+      "articleSection": "Aerosols & Gas Dosing",
+      "keywords": "SDS TDS COA aerosol products, aerosol product documentation, safety data sheet aerosol, technical data sheet aerosol, certificate of analysis aerosol, GHS aerosol classification, SDS 16 sections, UN 1950 aerosol transport, aerosol batch documentation, aerosol compliance India, BIS aerosol standards",
+      "wordCount": 2172
+    },
+    {
+      "@type": "FAQPage",
+      "mainEntity": [
+        {
+          "@type": "Question",
+          "name": "What is the difference between an SDS, a TDS, and a COA for an aerosol product?",
+          "acceptedAnswer": { "@type": "Answer", "text": "The SDS communicates hazards and safe handling in the 16-section GHS format and is required for hazardous chemical products under GHS-aligned rules. The TDS describes performance, physical properties, and application instructions for a product line, and no rule prescribes its layout. Each COA reports the measured test results of one specific batch against the specification limits. Together they cover safety, performance, and quality." }
+        },
+        {
+          "@type": "Question",
+          "name": "Which SDS sections matter most for an aerosol product?",
+          "acceptedAnswer": { "@type": "Answer", "text": "Section 2 carries the hazard classification, signal word, and hazard statements, including H222 or H223 for flammable aerosols and H229 for the pressurized container. Section 3 declares the propellant and solvent ingredients, and Section 9 reports properties such as flash point and vapor pressure. Transport data appears in Section 14 as the UN 1950 classification, and Section 7 covers storage precautions such as the 50 °C temperature limit." }
+        },
+        {
+          "@type": "Question",
+          "name": "What is the UN number for aerosols, and why does it appear on the SDS?",
+          "acceptedAnswer": { "@type": "Answer", "text": "Aerosols ship under UN 1950, with the proper shipping name \"Aerosols\", in Class 2 of the UN Model Regulations for the Transport of Dangerous Goods. Section 14 of the SDS records this classification so carriers and freight forwarders can document the shipment correctly. The Class 2 division depends on the flammability of the aerosol: Division 2.1 covers flammable aerosols and Division 2.2 covers non-flammable, non-toxic ones." }
+        },
+        {
+          "@type": "Question",
+          "name": "Is a COA required for every batch of aerosol product?",
+          "acceptedAnswer": { "@type": "Answer", "text": "No GHS or HazCom rule requires a COA for general consumer or industrial aerosols, so its use is set by customer agreements and quality systems. Quality systems such as ISO 9001 require documented evidence that each batch conforms before release, and the COA is the standard form of that evidence. For pharmaceutical products, batch release testing under GMP is mandatory, and the COA documents its results." }
+        },
+        {
+          "@type": "Question",
+          "name": "How often must an SDS be updated?",
+          "acceptedAnswer": { "@type": "Answer", "text": "OSHA's Hazard Communication Standard sets no fixed renewal date, but new significant information about a chemical's hazards or protective measures must be added to the SDS within three months. A formulation change alters the hazard classification data, so it triggers a revision as well. The revised SDS then goes to customers and distributors in the supply chain." }
+        },
+        {
+          "@type": "Question",
+          "name": "What information appears on an aerosol COA?",
+          "acceptedAnswer": { "@type": "Answer", "text": "An aerosol COA reports batch-specific results for parameters such as internal pressure at a stated temperature, net content, and the assay of the active ingredient. Each result sits beside its specification limit from the TDS. The COA also carries the batch number, the test method behind each result, and an authorized signature. Together these details let a customer trace any result back to one production run." }
+        }
+      ]
+    },
+    {
+      "@type": "WebPage",
+      "@id": `https://www.globalaerosols.com/${slug}/`,
+      "url": `https://www.globalaerosols.com/${slug}/`,
+      "name": "SDS, TDS & COA for Aerosol Products: A Startup Guide",
+      "description": "Learn what SDS, TDS and COA documents contain, how they differ, and which GHS, BIS and transport rules apply to aerosol products before your first batch ships.",
+      "isPartOf": { "@id": "https://www.globalaerosols.com/#website" },
+      "primaryImageOfPage": { "@type": "ImageObject", "url": heroUrl },
+      "datePublished": "2026-04-25",
+      "dateModified": "2026-09-25",
+      "breadcrumb": { "@id": `https://www.globalaerosols.com/${slug}/#breadcrumb` }
     }
   ]
 };
-const schemas = [blogSchema, breadcrumbSchema];
 ---
 
 <Layout
-  title="The Startup's Guide to Aerosol Documentation: SDS, TDS & COA"
-  description="A comprehensive technical guide for startups on mastering SDS, TDS, and COA for aerosol products — safety, quality, and regulatory compliance."
-  canonical="https://www.globalaerosols.com/understanding-sds-tds-and-coa-for-aerosol-products"
+  title="SDS, TDS & COA for Aerosol Products: A Startup Guide"
+  description="Learn what SDS, TDS and COA documents contain, how they differ, and which GHS, BIS and transport rules apply to aerosol products before your first batch ships."
+  canonical="https://www.globalaerosols.com/understanding-sds-tds-and-coa-for-aerosol-products/"
   ogImage="https://cdn.globalaerosols.com/images/blog/aerosol-documentation-guide-main-4sQmTfoYN6JxFx58.webp"
   ogType="article"
-  schemaJson={schemas}
+  schemaJson={blogSchema}
 >
   <div class="section-container" style="max-width: 100%; padding-left: 48px; padding-right: 48px; padding-top: 40px; padding-bottom: 80px;">
     
@@ -78,7 +141,7 @@ const schemas = [blogSchema, breadcrumbSchema];
     <article class="blog-prose">
       <header class="post-header">
         <h1 class="gradient-text" style="font-size: 3rem; line-height: 1.15; font-weight: 900; margin-bottom: 20px;">
-          The Startup’s Guide to Aerosol Documentation: Understanding SDS, TDS & COA | Global Aerosols
+          SDS, TDS & COA for Aerosol Products: A Startup Guide
         </h1>
         
         <!-- Post meta details -->
@@ -90,6 +153,8 @@ const schemas = [blogSchema, breadcrumbSchema];
           <span style="width: 4px; height: 4px; border-radius: 50%; background-color: var(--border);"></span>
           <span>Published: <strong>Apr 25, 2026</strong></span>
           <span style="width: 4px; height: 4px; border-radius: 50%; background-color: var(--border);"></span>
+          <span>Updated: <strong>Sep 25, 2026</strong></span>
+          <span style="width: 4px; height: 4px; border-radius: 50%; background-color: var(--border);"></span>
           <span>Reading Time: <strong>13 min read</strong></span>
           <span style="width: 4px; height: 4px; border-radius: 50%; background-color: var(--border);"></span>
           <span style="background: #e0f2fe; color: #0369a1; padding: 2px 10px; border-radius: 50px; font-size: 0.75rem; font-weight: 700; text-transform: uppercase;">Aerosols & Gas Dosing</span>
@@ -100,7 +165,7 @@ const schemas = [blogSchema, breadcrumbSchema];
       <figure class="image-slot">
         <img 
           src="https://cdn.globalaerosols.com/images/blog/aerosol-documentation-guide-main-4sQmTfoYN6JxFx58.webp" 
-          alt="Aerosol technical documentation and cans on a professional desk" 
+          alt="Consultant reviewing SDS, TDS and COA technical reports beside three aerosol cans on an office desk — Global Aerosols"
           width="1200" 
           height="800" 
           loading="eager" 
@@ -118,6 +183,7 @@ const schemas = [blogSchema, breadcrumbSchema];
           <li><a href="#technical-data-sheet-tds-the-performance-blueprint-of-your-aerosol-product" style="font-weight: 600; color: var(--primary);">3. Technical Data Sheet (TDS): The Performance Blueprint of Your Aerosol Product</a></li>
           <li><a href="#certificate-of-analysis-coa-the-seal-of-quality-for-every-batch" style="font-weight: 600; color: var(--primary);">4. Certificate of Analysis (COA): The Seal of Quality for Every Batch</a></li>
           <li><a href="#navigating-indian-and-global-standards-compliance-for-startups" style="font-weight: 600; color: var(--primary);">5. Navigating Indian and Global Standards: Compliance for Startups</a></li>
+          <li><a href="#faq" style="font-weight: 600; color: var(--primary);">6. SDS, TDS &amp; COA FAQs for Aerosol Products</a></li>
         </ul>
       </div>
 
@@ -126,20 +192,13 @@ const schemas = [blogSchema, breadcrumbSchema];
 <!-- INTRODUCTION: WHY TECHNICAL DOCUMENTATION IS THE BACKBONE OF AEROSOL SUCCESS -->
 <section class="section" id="introduction-why-technical-documentation-is-the-backbone-of-aerosol-success">
   <h2>Introduction: Why Technical Documentation is the Backbone of Aerosol Success</h2>
-  <p>For any startup or entrepreneur entering the aerosol industry, the complexity of chemical formulation and high-pressure packaging can be daunting. Success in this field is not just about a great fragrance or a powerful lubricant; it is built upon a foundation of rigorous technical documentation that ensures safety, performance, and legal compliance. Without the correct paperwork, a product cannot be legally sold, transported, or even manufactured in a professional facility.</p>
-  <p>
-                    For any startup or entrepreneur entering the aerosol industry, the complexity of chemical
-                    formulation and high-pressure packaging can be daunting. Success in this field is not just about a
-                    great fragrance or a powerful lubricant; it is built upon a foundation of rigorous technical
-                    documentation that ensures safety, performance, and legal compliance. Without the correct paperwork,
-                    a product cannot be legally sold, transported, or even manufactured in a professional facility.
-                </p>
+  <p>For any startup or entrepreneur entering the aerosol industry, the complexity of chemical formulation and high-pressure packaging can be daunting. Success in this field is not just about a great fragrance or a powerful lubricant. It is built upon a foundation of rigorous technical documentation that ensures safety, performance, and legal compliance. Without the correct paperwork, a product cannot be legally sold, transported, or even manufactured in a professional facility. Three documents carry that weight for every aerosol product: the Safety Data Sheet (SDS), the Technical Data Sheet (TDS), and the Certificate of Analysis (COA).</p>
                 <p>
                     Technical documentation serves as the universal language between formulators, manufacturers,
                     regulators, and consumers. It bridges the gap between a lab-scale prototype and a commercially
                     viable product. In the aerosol world, where products contain pressurized gases and flammable
                     solvents, these documents are not just bureaucratic requirements—they are critical safety tools that
-                    protect lives and property.
+                    protect lives and property. They also support the wider framework described in our guide to <a href="/aerosol-can-safety-explained/">aerosol can safety</a>.
                 </p>
                 <ul>
                     <li>Ensures legal compliance with global and local regulatory bodies.</li>
@@ -148,33 +207,76 @@ const schemas = [blogSchema, breadcrumbSchema];
                     <li>Builds trust with distributors, retailers, and end-users.</li>
                     <li>Facilitates seamless international trade by adhering to GHS standards.</li>
                 </ul>
+                <p>The three documents divide the work between hazard communication, product performance, and batch quality, as the comparison below shows.</p>
+
+                <div class="data-table" style="overflow-x: auto; margin: 20px 0;">
+                    <table style="width: 100%; border-collapse: collapse; font-size: 0.92rem;">
+                        <thead>
+                            <tr style="background: var(--primary); color: white;">
+                                <th style="padding: 12px 16px; text-align: left;">Attribute</th>
+                                <th style="padding: 12px 16px; text-align: left;">SDS</th>
+                                <th style="padding: 12px 16px; text-align: left;">TDS</th>
+                                <th style="padding: 12px 16px; text-align: left;">COA</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr style="border-bottom: 1px solid var(--border);">
+                                <td style="padding: 12px 16px;">Purpose</td>
+                                <td style="padding: 12px 16px;">Hazard communication and safe handling</td>
+                                <td style="padding: 12px 16px;">Performance, properties, and application guidance</td>
+                                <td style="padding: 12px 16px;">Verification that one batch meets specification</td>
+                            </tr>
+                            <tr style="border-bottom: 1px solid var(--border); background: #f8fafc;">
+                                <td style="padding: 12px 16px;">Scope</td>
+                                <td style="padding: 12px 16px;">One product formulation</td>
+                                <td style="padding: 12px 16px;">One product line</td>
+                                <td style="padding: 12px 16px;">One production batch</td>
+                            </tr>
+                            <tr style="border-bottom: 1px solid var(--border);">
+                                <td style="padding: 12px 16px;">Format</td>
+                                <td style="padding: 12px 16px;">16 sections in a fixed order</td>
+                                <td style="padding: 12px 16px;">No prescribed layout</td>
+                                <td style="padding: 12px 16px;">Batch number, test methods, results, and authorized signature</td>
+                            </tr>
+                            <tr style="border-bottom: 1px solid var(--border); background: #f8fafc;">
+                                <td style="padding: 12px 16px;">Primary readers</td>
+                                <td style="padding: 12px 16px;">Logistics teams, emergency responders, regulators</td>
+                                <td style="padding: 12px 16px;">Engineers, procurement officers, end users</td>
+                                <td style="padding: 12px 16px;">Quality teams, customers, auditors</td>
+                            </tr>
+                            <tr>
+                                <td style="padding: 12px 16px;">Basis</td>
+                                <td style="padding: 12px 16px;">Required for hazardous products under GHS-aligned rules such as OSHA HazCom</td>
+                                <td style="padding: 12px 16px;">Set by the manufacturer</td>
+                                <td style="padding: 12px 16px;">Set by customer agreements and quality systems such as ISO 9001</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+
+                <p>The sections below take each document in turn, beginning with the SDS because its format and update rules are the most tightly regulated.</p>
             </section>
 
 
 <!-- SAFETY DATA SHEET (SDS): ENSURING OPERATIONAL AND CONSUMER SAFETY -->
 <section class="section" id="safety-data-sheet-sds-ensuring-operational-and-consumer-safety">
   <h2>Safety Data Sheet (SDS): Ensuring Operational and Consumer Safety</h2>
-  <p>The Safety Data Sheet (SDS), formerly known as MSDS, is perhaps the most critical document in the aerosol ecosystem. It provides comprehensive information about a chemical product's properties, physical and environmental hazards, protective measures, and safety precautions for handling, storing, and transporting the product. For aerosols, the SDS must specifically address the risks associated with propellants, which are often highly flammable or pressurized.</p>
-  <p>
-                    The Safety Data Sheet (SDS), formerly known as MSDS, is perhaps the most critical document in the
-                    aerosol ecosystem. It provides comprehensive information about a chemical product's properties,
-                    physical and environmental hazards, protective measures, and safety precautions for handling,
-                    storing, and transporting the product. For aerosols, the SDS must specifically address the risks
-                    associated with propellants, which are often highly flammable or pressurized.
-                </p>
+  <p>The Safety Data Sheet (SDS), formerly known as MSDS, is the core hazard communication document for an aerosol product. It provides comprehensive information about a chemical product's properties, physical and environmental hazards, protective measures, and safety precautions for handling, storing, and transporting the product. For aerosols, the SDS must specifically address the risks associated with propellants: hydrocarbon propellants such as propane and butane are flammable, and every propellant is stored under pressure.</p>
                 <p>
                     A well-drafted SDS follows the Globally Harmonized System (GHS) of Classification and Labelling of
                     Chemicals. This international standard ensures that hazard communication is consistent across
                     borders, which is vital for any startup looking to scale globally. An SDS is divided into 16
                     sections, each covering specific aspects of the product's profile, from emergency first-aid measures
-                    to ecological impact.
+                    to ecological impact. In the United States, the OSHA
+                    <a href="https://www.osha.gov/hazcom">Hazard Communication Standard</a> prescribes the same 16
+                    sections in a fixed order.
                 </p>
 
                 
       <div class="image-slot">
         <img 
           src="https://cdn.globalaerosols.com/images/blog/ghs-aerosol-safety-symbols-tbdO5O1LdFSu0Y3V.webp" 
-          alt="GHS safety pictograms for flammable and pressurized aerosols" 
+          alt="GHS hazard pictograms for aerosol products showing flame, gas cylinder and health hazard symbols — Global Aerosols"
           width="1200" 
           height="800" 
           loading="lazy" 
@@ -184,28 +286,39 @@ const schemas = [blogSchema, breadcrumbSchema];
 
                 <h3>Key Sections of an Aerosol SDS You Must Understand</h3>
                 <p>
-                    While all 16 sections are important, sections 2 (Hazard Identification), 9 (Physical and Chemical
-                    Properties), and 14 (Transport Information) are particularly critical for aerosol products. Section
-                    2 will display pictograms for flammability and pressure, while Section 14 outlines the UN number
-                    (typically UN1950 for aerosols) and shipping classification. Startups must ensure these sections
-                    accurately reflect the specific propellant mix and solvent system used in their formulation.
+                    While all 16 sections are important, Section 2 (Hazard Identification), Section 9 (Physical and
+                    Chemical Properties), and Section 14 (Transport Information) carry the most weight for aerosol
+                    products. Section 2 states the hazard classification, signal word, hazard statements, and
+                    pictograms. Flammable aerosols fall into GHS Category 1 (H222, extremely flammable aerosol) or
+                    Category 2 (H223, flammable aerosol), and every aerosol category adds H229, the
+                    pressurized-container statement.
+                </p>
+                <p>
+                    Section 9 reports properties such as flash point and vapor pressure, which our guide to
+                    <a href="/flash-point-explained/">flash point</a> explains in depth. Section 14 outlines the UN number
+                    (UN 1950 for aerosols) and the shipping classification, following the rules in our guide to
+                    <a href="/dot-un-aerosol-transport-regulations-hazmat/">DOT and UN aerosol transport regulations</a>.
+                    Startups must ensure these sections accurately reflect the specific propellant mix and solvent system
+                    used in their formulation.
                 </p>
                 <ul>
-                    <li><strong>Hazard Identification:</strong> Lists pictograms and signal words (e.g., "Danger")
-                        associated with flammability and pressure.</li>
+                    <li><strong>Hazard Identification:</strong> Lists the pictograms, the signal word ("Danger" or
+                        "Warning"), and the hazard statements for the aerosol's GHS category.</li>
                     <li><strong>First-Aid Measures:</strong> Critical for responding to accidental inhalation or skin
                         contact.</li>
-                    <li><strong>Handling and Storage:</strong> Specifies temperature limits (typically below 50°C) to
-                        prevent can explosions.</li>
+                    <li><strong>Handling and Storage:</strong> Specifies storage precautions, including the 50 °C
+                        maximum temperature that aerosol labels also state; warehouse layouts follow rules such as
+                        <a href="/nfpa-30b-aerosol-warehouse-storage-classification/">NFPA 30B storage classification</a>.</li>
                     <li><strong>Transport Information:</strong> Essential for logistics partners to handle "Limited
                         Quantity" or "Dangerous Goods" shipments.</li>
                 </ul>
+                <p>With the hazard sections in place, the next task is keeping the SDS current as the formulation and the regulations change.</p>
 
                 <h3>Regulatory Compliance (GHS) and SDS Management</h3>
                 <p>
                     Proper hazard communication is governed globally by the <a href="https://unece.org/about-ghs">United Nations GHS (Globally Harmonized System)</a>.
                     Managing SDS is an ongoing responsibility; these documents must be updated whenever the formulation
-                    changes or new toxicological data becomes available. For entrepreneurs in India, adhering to the GHS
+                    changes or new toxicological data becomes available. Under OSHA's Hazard Communication Standard, new significant hazard information must be added to the SDS within three months. For entrepreneurs in India, adhering to the GHS
                     framework is increasingly important as Indian regulations align closer with international standards
                     like REACH (EU) and OSHA (USA). Proper SDS management protects the startup from liability and
                     ensures that every stakeholder in the supply chain is aware of the risks.
@@ -216,16 +329,10 @@ const schemas = [blogSchema, breadcrumbSchema];
 <!-- TECHNICAL DATA SHEET (TDS): THE PERFORMANCE BLUEPRINT OF YOUR AEROSOL PRODUCT -->
 <section class="section" id="technical-data-sheet-tds-the-performance-blueprint-of-your-aerosol-product">
   <h2>Technical Data Sheet (TDS): The Performance Blueprint of Your Aerosol Product</h2>
-  <p>While the SDS focuses on safety, the Technical Data Sheet (TDS) is all about performance and application. Think of the TDS as the "product manual" that describes the technical characteristics, benefits, and recommended usage of the aerosol. It is used by procurement officers, engineers, and end-users to determine if the product meets their specific technical requirements for a given task.</p>
-  <p>
-                    While the SDS focuses on safety, the Technical Data Sheet (TDS) is all about performance and
-                    application. Think of the TDS as the "product manual" that describes the technical characteristics,
-                    benefits, and recommended usage of the aerosol. It is used by procurement officers, engineers, and
-                    end-users to determine if the product meets their specific technical requirements for a given task.
-                </p>
+  <p>While the SDS focuses on safety, the Technical Data Sheet (TDS) is all about performance and application. Think of the TDS as the "product manual" that describes the technical characteristics, benefits, and recommended usage of the aerosol. It is used by procurement officers, engineers, and end-users to determine if the product meets their specific technical requirements for a given task. No GHS or HazCom rule prescribes a TDS layout, so each manufacturer chooses which properties and test results to publish.</p>
                 <p>
-                    A professional TDS highlights the "Engineering" behind the product. For a spray paint, it might
-                    detail the drying time and gloss level; for an industrial lubricant, it would focus on load-carrying
+                    A professional TDS highlights the "Engineering" behind the product. For a spray paint, the TDS
+                    details drying time and gloss level; for an industrial lubricant, it focuses on load-carrying
                     capacity and temperature range. For startups, a high-quality TDS is a powerful marketing tool that
                     demonstrates technical authority and provides the "reason to believe" for potential high-value
                     clients.
@@ -235,7 +342,7 @@ const schemas = [blogSchema, breadcrumbSchema];
       <div class="image-slot">
         <img 
           src="https://cdn.globalaerosols.com/images/blog/aerosol-quality-control-laboratory-wsouDsk5lJaoDC6b.webp" 
-          alt="High-tech aerosol quality control laboratory" 
+          alt="Technician running an aerosol pressure test in a quality control laboratory for batch COA data — Global Aerosols"
           width="1200" 
           height="800" 
           loading="lazy" 
@@ -246,8 +353,9 @@ const schemas = [blogSchema, breadcrumbSchema];
                 <h3>What Goes Into an Aerosol TDS? (Formulation to Finish)</h3>
                 <p>
                     A comprehensive TDS should include physical constants such as density, viscosity of the base liquid,
-                    and the type of propellant used. It also specifies the spray pattern (cone, fan, or stream) and the
-                    delivery rate (grams per second). These metrics are vital for ensuring that the product performs as
+                    and the type of propellant used. It also specifies the spray pattern (cone, fan, or stream), which the
+                    actuator's internal geometry sets as described in <a href="/aerosol-actuators-101/">aerosol actuators 101</a>,
+                    and the delivery rate (grams per second). These metrics are vital for ensuring that the product performs as
                     expected in the hands of the consumer, providing a consistent experience from the first spray to the
                     last.
                 </p>
@@ -261,6 +369,7 @@ const schemas = [blogSchema, breadcrumbSchema];
                     <li><strong>Performance Metrics:</strong> Corrosion resistance, dielectric strength, or
                         antimicrobial efficacy (depending on product type).</li>
                 </ul>
+                <p>A TDS built this way answers a buyer's technical questions before the first sample ships, and the COA then confirms each batch against the same figures.</p>
             </section>
 
 
@@ -268,17 +377,13 @@ const schemas = [blogSchema, breadcrumbSchema];
 <section class="section" id="certificate-of-analysis-coa-the-seal-of-quality-for-every-batch">
   <h2>Certificate of Analysis (COA): The Seal of Quality for Every Batch</h2>
   <p>The Certificate of Analysis (COA) is a document issued by the Quality Control (QC) department that confirms a specific batch of product meets its technical specifications. Unlike the TDS, which provides general characteristics for the product line, the COA is batch-specific. It contains the actual test results from the laboratory for that particular manufacturing run, providing a paper trail for quality assurance.</p>
-  <p>
-                    The Certificate of Analysis (COA) is a document issued by the Quality Control (QC) department that
-                    confirms a specific batch of product meets its technical specifications. Unlike the TDS, which
-                    provides general characteristics for the product line, the COA is batch-specific. It contains the
-                    actual test results from the laboratory for that particular manufacturing run, providing a paper
-                    trail for quality assurance.
-                </p>
                 <p>
                     For startups, providing a COA with every shipment is a sign of industrial maturity. It proves that
                     the manufacturer is testing every batch for critical parameters like internal pressure, net weight,
-                    and active ingredient concentration. In sectors like pharmaceuticals or food-grade aerosols, a COA
+                    and active ingredient concentration. Net-weight checks follow the methods in our guide to
+                    <a href="/aerosol-fill-weight-headspace-optimization/">aerosol fill weight and headspace optimization</a>.
+                    Quality systems such as <a href="https://www.iso.org">ISO 9001</a> require documented evidence that each
+                    batch conforms before release. In sectors like pharmaceuticals or food-grade aerosols, a COA
                     is non-negotiable and must be archived for several years to satisfy regulatory audits and potential
                     product recalls.
                 </p>
@@ -286,9 +391,12 @@ const schemas = [blogSchema, breadcrumbSchema];
                 <h3>COA vs. TDS: Understanding the Critical Difference</h3>
                 <p>
                     The most common mistake made by new entrepreneurs is confusing the TDS with the COA. While the TDS
-                    states what the product *should* be, the COA states what the product *is* for a specific batch
-                    number. The COA will list the specification range (the acceptable limits) alongside the actual value
-                    recorded during testing. This transparency is crucial for troubleshooting if a customer reports a
+                    states what the product <em>should</em> be, the COA states what the product <em>is</em> for a specific batch
+                    number. The COA lists the specification range (the acceptable limits) alongside the actual value
+                    recorded during testing. It also identifies the batch number, the test method behind each result, and
+                    an authorized signature, as summarized in this
+                    <a href="https://en.wikipedia.org/wiki/Certificate_of_analysis">certificate of analysis overview</a>.
+                    This transparency is crucial for troubleshooting if a customer reports a
                     performance failure in the field.
                 </p>
 
@@ -315,27 +423,21 @@ const schemas = [blogSchema, breadcrumbSchema];
                             <td>Pass</td>
                         </tr>
                         <tr>
-                            <td>Active Ingredient %</td>
-                            <td>12% - 15%</td>
-                            <td>13.8%</td>
+                            <td>Active Ingredient Assay</td>
+                            <td>Approved specification range</td>
+                            <td>Result within range</td>
                             <td>Pass</td>
                         </tr>
                     </tbody>
                 </table>
+                <p>Each row pairs a specification limit with a measured result, so a failed batch traces back to a single parameter.</p>
             </section>
 
 
 <!-- NAVIGATING INDIAN AND GLOBAL STANDARDS: COMPLIANCE FOR STARTUPS -->
 <section class="section" id="navigating-indian-and-global-standards-compliance-for-startups">
   <h2>Navigating Indian and Global Standards: Compliance for Startups</h2>
-  <p>Compliance is a moving target, especially for aerosol products which are subject to both chemical and pressure vessel regulations. In India, the Bureau of Indian Standards (BIS) provides guidelines like IS 13101 for aerosol containers. Globally, compliance with the UN Model Regulations for the Transport of Dangerous Goods is essential for any export activity. Understanding these frameworks early in the product development cycle saves startups from costly redesigns and legal hurdles.</p>
-  <p>
-                    Compliance is a moving target, especially for aerosol products which are subject to both chemical
-                    and pressure vessel regulations. In India, the Bureau of Indian Standards (BIS) provides guidelines
-                    like IS 13101 for aerosol containers. Globally, compliance with the UN Model Regulations for the
-                    Transport of Dangerous Goods is essential for any export activity. Understanding these frameworks
-                    early in the product development cycle saves startups from costly redesigns and legal hurdles.
-                </p>
+  <p>Compliance is a moving target, especially for aerosol products which are subject to both chemical and pressure vessel regulations. In India, the Bureau of Indian Standards (BIS) publishes IS 8449 for non-returnable metal aerosol dispensers and IS 8469 for methods of testing the flammability of aerosol products. Globally, compliance with the UN Model Regulations for the Transport of Dangerous Goods is essential for any export activity. Exports to Europe add the labeling and testing rules of the <a href="/eu-aerosol-dispensers-directive-testing-labeling/">EU Aerosol Dispensers Directive</a>. Understanding these frameworks early in the product development cycle saves startups from costly redesigns and legal hurdles.</p>
                 <p>
                     Furthermore, environmental regulations are becoming stricter. The transition away from high-GWP
                     (Global Warming Potential) propellants like HFCs toward more sustainable options like LPG, DME, or
@@ -350,9 +452,56 @@ const schemas = [blogSchema, breadcrumbSchema];
                             Standards</a> for technical specifications.</li>
                     <li><strong>GHS Compliance:</strong> Essential for international hazard communication.</li>
                     <li><strong>VOC Regulations:</strong> Monitoring volatile organic compounds to meet environmental
-                        targets.</li>
+                        targets, as in the <a href="/carb-aerosol-voc-regulations-reformulation/">CARB aerosol VOC limits</a>.</li>
                 </ul>
+                <p>Reflecting these four frameworks in the SDS, TDS, and COA from the first pilot batch keeps the documentation ready when a distributor or regulator asks for it.</p>
             </section>
+
+<!-- FAQ -->
+<section class="section" id="faq">
+  <h2>SDS, TDS &amp; COA FAQs for Aerosol Products</h2>
+  <div style="margin-top: 20px; display: flex; flex-direction: column; gap: 16px;">
+    <details style="border: 1px solid var(--border); border-radius: var(--radius-lg); padding: 16px 20px;">
+      <summary style="font-weight: 700; cursor: pointer; font-family: 'Outfit', sans-serif; font-size: 1.05rem;">What is the difference between an SDS, a TDS, and a COA for an aerosol product?</summary>
+      <p style="margin-top: 12px;">The SDS communicates hazards and safe handling in the 16-section GHS format and is required for hazardous chemical products under GHS-aligned rules. The TDS describes performance, physical properties, and application instructions for a product line, and no rule prescribes its layout. Each COA reports the measured test results of one specific batch against the specification limits. Together they cover safety, performance, and quality.</p>
+    </details>
+    <details style="border: 1px solid var(--border); border-radius: var(--radius-lg); padding: 16px 20px;">
+      <summary style="font-weight: 700; cursor: pointer; font-family: 'Outfit', sans-serif; font-size: 1.05rem;">Which SDS sections matter most for an aerosol product?</summary>
+      <p style="margin-top: 12px;">Section 2 carries the hazard classification, signal word, and hazard statements, including H222 or H223 for flammable aerosols and H229 for the pressurized container. Section 3 declares the propellant and solvent ingredients, and Section 9 reports properties such as flash point and vapor pressure. Transport data appears in Section 14 as the UN 1950 classification, and Section 7 covers storage precautions such as the 50 °C temperature limit.</p>
+    </details>
+    <details style="border: 1px solid var(--border); border-radius: var(--radius-lg); padding: 16px 20px;">
+      <summary style="font-weight: 700; cursor: pointer; font-family: 'Outfit', sans-serif; font-size: 1.05rem;">What is the UN number for aerosols, and why does it appear on the SDS?</summary>
+      <p style="margin-top: 12px;">Aerosols ship under UN 1950, with the proper shipping name "Aerosols", in Class 2 of the UN Model Regulations for the Transport of Dangerous Goods. Section 14 of the SDS records this classification so carriers and freight forwarders can document the shipment correctly. The Class 2 division depends on the flammability of the aerosol: Division 2.1 covers flammable aerosols and Division 2.2 covers non-flammable, non-toxic ones.</p>
+    </details>
+    <details style="border: 1px solid var(--border); border-radius: var(--radius-lg); padding: 16px 20px;">
+      <summary style="font-weight: 700; cursor: pointer; font-family: 'Outfit', sans-serif; font-size: 1.05rem;">Is a COA required for every batch of aerosol product?</summary>
+      <p style="margin-top: 12px;">No GHS or HazCom rule requires a COA for general consumer or industrial aerosols, so its use is set by customer agreements and quality systems. Quality systems such as ISO 9001 require documented evidence that each batch conforms before release, and the COA is the standard form of that evidence. For pharmaceutical products, batch release testing under GMP is mandatory, and the COA documents its results.</p>
+    </details>
+    <details style="border: 1px solid var(--border); border-radius: var(--radius-lg); padding: 16px 20px;">
+      <summary style="font-weight: 700; cursor: pointer; font-family: 'Outfit', sans-serif; font-size: 1.05rem;">How often must an SDS be updated?</summary>
+      <p style="margin-top: 12px;">OSHA's Hazard Communication Standard sets no fixed renewal date, but new significant information about a chemical's hazards or protective measures must be added to the SDS within three months. A formulation change alters the hazard classification data, so it triggers a revision as well. The revised SDS then goes to customers and distributors in the supply chain.</p>
+    </details>
+    <details style="border: 1px solid var(--border); border-radius: var(--radius-lg); padding: 16px 20px;">
+      <summary style="font-weight: 700; cursor: pointer; font-family: 'Outfit', sans-serif; font-size: 1.05rem;">What information appears on an aerosol COA?</summary>
+      <p style="margin-top: 12px;">An aerosol COA reports batch-specific results for parameters such as internal pressure at a stated temperature, net content, and the assay of the active ingredient. Each result sits beside its specification limit from the TDS. The COA also carries the batch number, the test method behind each result, and an authorized signature. Together these details let a customer trace any result back to one production run.</p>
+    </details>
+  </div>
+</section>
+
+      <!-- Related Articles -->
+      <section class="section" id="related-articles" style="margin-top: 50px; background: #f8fafc; border: 1px solid var(--border); padding: 30px; border-radius: var(--radius-lg);">
+        <h3 style="margin-top: 0; font-family: 'Outfit', sans-serif; font-size: 1.2rem; font-weight: 700;">Related Articles &amp; Further Reading</h3>
+        <ul style="list-style: disc; padding-left: 1.5em; columns: 2; column-gap: 2em;">
+          <li><a href="/aerosol-crimping-gassing-leak-detection-explained/">Aerosol Filling Line: Crimping, Gassing &amp; Leak Detection</a></li>
+          <li><a href="/how-contract-aerosol-filling-works/">How Contract Aerosol Filling Works</a></li>
+          <li><a href="/aerosol-manufacturing-101-guide/">Aerosol Manufacturing 101: Technical Guide to Formulation &amp; Safety</a></li>
+          <li><a href="/how-aerosol-cans-work/">How Aerosol Cans Work: Propellant, Pressure &amp; Valves</a></li>
+          <li><a href="/aerosol-propellants-explained-lpg-vs-dme-vs-hfc-vs-n2-vs-co2/">Aerosol Propellants: LPG vs DME vs HFC vs N₂ vs CO₂</a></li>
+          <li><a href="/aerosol-chemistry-101/">Aerosol Chemistry 101: Solvents, Binders &amp; Surfactants</a></li>
+          <li><a href="/from-lab-to-commercial-launch/">Aerosol Scale-Up: From R&amp;D to Commercial Launch</a></li>
+          <li><a href="/choosing-the-right-product-consultant/">Choosing the Right Aerosol Consultant</a></li>
+        </ul>
+      </section>
 
 
 

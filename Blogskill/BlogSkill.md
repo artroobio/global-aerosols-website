@@ -1044,7 +1044,7 @@ Copy this shell exactly; populate every `{placeholder}` from the topic data.
            Select sources from Section H External Authority Links Reference Library.
            Priority: the primary standard/regulation for the topic FIRST, then a technical
            database (PubChem/NIST/PubMed) for any physical/chemical claim, then an industry
-           association (BAMA/FEA/CSPA) or peer-reviewed source for market/efficacy context.
+           association (BAMA/FEA/HCPA) or peer-reviewed source for market/efficacy context.
            ALL external links MUST use target="_blank" rel="noopener noreferrer" -->
 
       <!-- ── SECTION 3 ── -->
@@ -1218,6 +1218,8 @@ Every article must contain **minimum 3 external authority links** woven naturall
 
 **Rule:** If a source is listed here, you have permission to use it. If a source is NOT listed here, do not invent or guess URLs. Use only the sources below plus Wikipedia technical articles for well-established science topics.
 
+**Verification status (every URL below re-checked 2026-09-25):** all entries resolve except the ones that block automated checks with HTTP 403 or a bot challenge — `unece.org`, `echa.europa.eu`, `phmsa.dot.gov`, `aerosol.org`, `iso.org`, and `eur-lex.europa.eu`. Those are legitimate sites that load in a normal browser, but a script cannot confirm them. Do not add NEW links to them from an automated run; prefer a verified alternative above (e.g. `osha.gov/laws-regs/...` for the HazCom text, `ecfr.gov` for 49 CFR). Re-run the URL check before relying on this list; agencies move pages (the OSHA, EPA, and CARB URLs, the CPCB domain, and the CSPA/HCPA rename were all stale before this date).
+
 ---
 
 #### STANDARDS BODIES
@@ -1236,14 +1238,18 @@ Every article must contain **minimum 3 external authority links** woven naturall
 
 | Source | URL | Use for |
 |--------|-----|---------|
-| US EPA — VOC & Aerosols | https://www.epa.gov/stationary-sources-air-pollution/aerosol-coatings | VOC limits for aerosol coatings. Use for topics 44, 50, any VOC reformulation article. |
+| US EPA — VOC & Aerosols | https://www.epa.gov/stationary-sources-air-pollution/aerosol-coatings-national-volatile-organic-compound-emission | National VOC standards for aerosol coatings. Use for topics 44, 50, any VOC reformulation article. |
+| US EPA — Consumer Products VOC | https://www.epa.gov/stationary-sources-air-pollution/consumer-products-national-volatile-organic-compound-emission | National VOC standards for consumer products (40 CFR 59 Subpart C). Use for cleaner, air care, and automotive-care VOC articles. |
 | US EPA — SNAP Program (propellants) | https://www.epa.gov/snap | Significant New Alternatives Policy for refrigerants/propellants. Use for HFO, HFC phase-out topics (12, 14). |
-| OSHA — Flammable Aerosols | https://www.osha.gov/flammable-liquids | Workplace storage, handling, labelling of flammable aerosols. Use for regulatory and safety category. |
-| OSHA — HazCom / SDS | https://www.osha.gov/hazard-communication | GHS/HazCom 2012 requirements for SDS and labeling. Use for topic 46 and any SDS/labeling article. |
+| OSHA — Flammable Liquids | https://www.osha.gov/laws-regs/regulations/standardnumber/1910/1910.106 | 29 CFR 1910.106 workplace storage and handling of flammable liquids. Use for regulatory and safety category. |
+| OSHA — HazCom / SDS | https://www.osha.gov/hazcom | GHS/HazCom 2012 requirements for SDS and labeling. Use for topic 46 and any SDS/labeling article. |
+| OSHA — HazCom standard text | https://www.osha.gov/laws-regs/regulations/standardnumber/1910/1910.1200 | 29 CFR 1910.1200: the 16 SDS sections (g)(2) and the three-month SDS update rule (g)(5). |
+| OSHA — Control of Hazardous Energy | https://www.osha.gov/control-hazardous-energy | Lockout/tagout (29 CFR 1910.147). Use for electrical cleaning and equipment-servicing safety. |
 | FDA — Cosmetics | https://www.fda.gov/cosmetics | OTC drug aerosols (antiperspirant, sunscreen, insect repellent), cosmetic labeling. Use for personal care category topics 35, 40. |
 | PHMSA / DOT Hazmat | https://www.phmsa.dot.gov/hazmat/transporting-hazardous-materials | Aerosol transport by road, air, sea. 49 CFR Part 173. Use for topic 42. |
 | 49 CFR (eCFR) | https://www.ecfr.gov/current/title-49 | The actual text of US hazmat transport regulations. Link when citing specific 49 CFR sections. |
-| CARB — Aerosol Coatings | https://ww2.arb.ca.gov/our-work/programs/aerosol-coatings-regulation | California VOC limits by product category. Use for topic 44, 50. |
+| CARB — Aerosol Coatings | https://ww2.arb.ca.gov/our-work/programs/consumer-products-enforcement/aerosol-coating-product-regulation | California aerosol coating product regulation (VOC and reactivity limits). Use for topic 44, 50. |
+| CARB — Consumer Products Program | https://ww2.arb.ca.gov/our-work/programs/consumer-products-program/about | California VOC limits set by consumer product category. Use for cleaner, air care, and automotive-care VOC articles. |
 
 ---
 
@@ -1264,7 +1270,7 @@ Every article must contain **minimum 3 external authority links** woven naturall
 | Source | URL | Use for |
 |--------|-----|---------|
 | Bureau of Indian Standards (BIS) | https://www.bis.gov.in | IS 7099 and related aerosol standards, BIS certification. Use for topic 45 and any India manufacturing article. |
-| CPCB — Air Quality | https://cpcb.nic.in | Central Pollution Control Board VOC and emission norms in India. Use for Indian VOC/regulatory articles. |
+| CPCB — Air Quality | https://cpcb.gov.in | Central Pollution Control Board VOC and emission norms in India. Use for Indian VOC/regulatory articles. |
 | DGFT — Foreign Trade | https://www.dgft.gov.in | Import/export policy for aerosol products and propellants in India. |
 
 ---
@@ -1273,7 +1279,7 @@ Every article must contain **minimum 3 external authority links** woven naturall
 
 | Source | URL | Use for |
 |--------|-----|---------|
-| IATA — Dangerous Goods | https://www.iata.org/en/programs/cargo/dgr | Air transport of aerosol hazmat, packing instructions (PI 202, PI 203). Use for topic 42. |
+| IATA — Dangerous Goods | https://www.iata.org/en/programs/cargo/dangerous-goods | Air transport of aerosol hazmat, packing instructions (PI 202, PI 203). Use for topic 42. |
 | UNEP — Ozone Secretariat | https://ozone.unep.org | Montreal Protocol, Kigali Amendment, HFC phase-down schedules. Use for propellant phase-out topics (12, 19). |
 | UNECE — GHS | https://unece.org/ghs | Global Harmonized System original documentation. Use for GHS/HazCom articles (topic 46). |
 
@@ -1283,9 +1289,9 @@ Every article must contain **minimum 3 external authority links** woven naturall
 
 | Source | URL | Use for |
 |--------|-----|---------|
-| BAMA (British Aerosol Manufacturers' Association) | https://www.bama.co.uk | Aerosol industry statistics, technical guidance, sustainability reports. Use for any aerosol market or sustainability topic. |
+| BAMA (British Aerosol Manufacturers' Association) | https://bama.co.uk | Aerosol industry statistics, technical guidance, sustainability reports. Use for any aerosol market or sustainability topic. |
 | FEA (European Aerosol Federation) | https://aerosol.org | European aerosol production data, technical guidelines, VOC compliance tools. Use for EU-market topics. |
-| CSPA (Consumer Specialty Products Association) | https://www.cspa.org | US aerosol market data, VOC regulatory updates, product stewardship. Use for US-market or industry-overview articles. |
+| HCPA (Household & Commercial Products Association, formerly CSPA) | https://www.thehcpa.org | US aerosol market data, VOC regulatory updates, product stewardship. Use for US-market or industry-overview articles. |
 | Cosmetics Europe | https://cosmeticseurope.eu | EU cosmetics industry guidance, safety assessment frameworks. Use for EU personal care aerosol topics. |
 | Personal Care Products Council (PCPC) | https://www.personalcarecouncil.org | US cosmetics industry standards, ingredient safety reviews. Use for personal care topics in US context. |
 
@@ -1367,7 +1373,7 @@ Print this checklist with pass/fail in the output summary:
 - [ ] Minimum 3–4 contextual internal links woven into BODY text (not just footer)
 - [ ] At least 1 in-body link to the relevant category landing page
 - [ ] Minimum 3 external authority links woven into body prose (see Section H for full source library)
-- [ ] Sources match the topic category: Standards (ASTM/ISO/NFPA/DOT) + Regulatory (EPA/OSHA/FDA/ECHA/CARB/BIS) + Technical database (PubChem/NIST/PubMed) + Industry association (BAMA/FEA/CSPA) — select from Section H
+- [ ] Sources match the topic category: Standards (ASTM/ISO/NFPA/DOT) + Regulatory (EPA/OSHA/FDA/ECHA/CARB/BIS) + Technical database (PubChem/NIST/PubMed) + Industry association (BAMA/FEA/HCPA) — select from Section H
 - [ ] No invented or guessed URLs — every external link must come from the Section H reference library
 - [ ] External links placed contextually in relevant body paragraphs — NOT as a list at the end
 - [ ] CTA button links to https://www.globalaerosols.com/contact with target="_top"
