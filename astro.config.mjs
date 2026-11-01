@@ -30,7 +30,8 @@ export default defineConfig({
         !page.includes('/dashboard/') &&
         !page.includes('/cart/') &&
         !page.includes('/checkout/') &&
-        !page.includes('/store/search/'),
+        !page.includes('/store/search/') &&
+        !page.includes('/canwrap3d/'),
     }),
   ],
 });
